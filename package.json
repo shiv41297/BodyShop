@@ -19,7 +19,9 @@
     "add": "^2.0.6",
     "axios": "^0.27.2",
     "clevertap-web-sdk": "^1.3.5",
+    "date-fns": "^2.29.3",
     "firebase": "^9.15.0",
+    "lodash": "^4.17.21",
     "next": "12.2.4",
     "or": "^0.2.0",
     "react": "18.2.0",
@@ -31,6 +33,7 @@
     "uuid": "^9.0.0"
   },
   "devDependencies": {
+    "@types/lodash": "^4.14.191",
     "@types/node": "18.6.4",
     "@types/react": "18.0.17",
     "@types/react-dom": "18.0.6",

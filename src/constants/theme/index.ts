@@ -1,32 +1,29 @@
-
-
-import { createTheme } from '@mui/material/styles';
+import { createTheme } from "@material-ui/core";
 
 const theme = createTheme({
-  
-  // overrides: {
-  //   MuiCssBaseline: {
-  //     "@global": {
-  //       body: {
-  //         fontFamily: [
-  //           "-apple-system",
-  //           "BlinkMacSystemFont",
-  //           "Segoe UI",
-  //           "Roboto",
-  //           "Oxygen",
-  //           "Ubuntu",
-  //           "Cantarell",
-  //           "Fira Sans",
-  //           "Droid Sans",
-  //           "Helvetica Neue",
-  //           "sans-serif",
-  //         ].join(","),
-  //         fontSize: 16,
-  //         fontWeight: 600,
-  //       },
-  //     },
-  //   },
-  // },
+  overrides: {
+    MuiCssBaseline: {
+      "@global": {
+        body: {
+          fontFamily: [
+            "-apple-system",
+            "BlinkMacSystemFont",
+            "Segoe UI",
+            "Roboto",
+            "Oxygen",
+            "Ubuntu",
+            "Cantarell",
+            "Fira Sans",
+            "Droid Sans",
+            "Helvetica Neue",
+            "sans-serif",
+          ].join(","),
+          fontSize: 16,
+          fontWeight: 600,
+        },
+      },
+    },
+  },
   palette: {
     primary: {
       light: "#004240",
@@ -73,3 +70,5 @@ const theme = createTheme({
     },
   },
 });
+
+export default theme;
