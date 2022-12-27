@@ -4,7 +4,7 @@ import {
   createStyles,
   Dialog,
   Typography,
-  Grid,
+  // Grid,
   Divider,
 } from "@material-ui/core";
 import { Box } from "@mui/material";
@@ -106,12 +106,12 @@ interface Props {
 
 const MessageDialogue = ({
   open = true,
-  handleClose,
-  onOk,
+  // handleClose,
+  // onOk,
   heading = "",
   message,
-  cancelText,
-  okText,
+  // cancelText,
+  // okText,
 
   icon,
   headingClass,
@@ -121,9 +121,9 @@ const MessageDialogue = ({
 Props) => {
   const classes = useStyles();
 
-  const onSubmit = (_e: any) => {
-    onOk();
-  };
+  // const onSubmit = (_e: any) => {
+  //   onOk();
+  // };
 
   return (
     <React.Fragment>

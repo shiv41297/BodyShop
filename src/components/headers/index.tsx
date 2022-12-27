@@ -19,9 +19,10 @@ import { useSelector, useDispatch } from "react-redux";
 import { Badge, Box } from "@mui/material";
 import { ROUTE_CONSTANTS } from "../../constants/routeConstants";
 import MessageDialogue from "../../common/product/messageDialogue";
-import { showSkeleton, getHomeData, hideSkeleton, showLoader, hideLoader } from "../../state/actions/homeActions";
+import { showSkeleton, getHomeData, hideSkeleton } from "../../state/actions/homeActions";
 import { isAuthenticated } from "../../utils/session";
 import SearchIndex from "../searchModal";
+
 // import {
 //   CART,
 //   HEART_FILLED,
@@ -212,9 +213,7 @@ const Headers = () => {
     );
     history.push("/");
   };
-  function getDashboardData(): any {
-    throw new Error("Function not implemented.");
-  }
+ 
 
   return (
     <>

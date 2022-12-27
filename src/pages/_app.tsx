@@ -17,6 +17,7 @@ import Headers from "../components/headers";
 import createEmotionCache from "../../utility/createEmotionCache";
 import "../../styles/globals.css";
 import theme from "../constants/theme";
+import Head from "next/head";
 interface MyAppProps extends AppProps {
   emotionCache?: EmotionCache;
 }
@@ -28,6 +29,10 @@ const MyApp: React.FunctionComponent<MyAppProps> = (props) => {
   const { Component, emotionCache = clientSideEmotionCache, pageProps } = props;
 
   return (
+    <>
+    <Head>
+    
+    </Head>
     <CacheProvider value={emotionCache}>
       <ThemeProvider theme={lightTheme}>
         <CssBaseline />
@@ -39,6 +44,8 @@ const MyApp: React.FunctionComponent<MyAppProps> = (props) => {
         </Provider>
       </ThemeProvider>
     </CacheProvider>
+    </>
+    
   );
 };
 

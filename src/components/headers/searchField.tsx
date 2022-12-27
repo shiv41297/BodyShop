@@ -56,7 +56,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function SearchField({ handleClick, value, clearSearch,placeHolder }: any) {
+export default function SearchField({ handleClick, value, placeHolder }: any) {
   const classes = useStyles();
   const history = useRouter();
   const dispatch = useDispatch();
