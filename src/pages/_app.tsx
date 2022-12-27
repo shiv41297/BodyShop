@@ -1,5 +1,3 @@
-
-
 import * as React from "react";
 import type { AppProps } from "next/app";
 import { Provider } from "react-redux";
@@ -17,7 +15,6 @@ import Headers from "../components/headers";
 import createEmotionCache from "../../utility/createEmotionCache";
 import "../../styles/globals.css";
 import theme from "../constants/theme";
-import Head from "next/head";
 interface MyAppProps extends AppProps {
   emotionCache?: EmotionCache;
 }
@@ -30,22 +27,18 @@ const MyApp: React.FunctionComponent<MyAppProps> = (props) => {
 
   return (
     <>
-    <Head>
-    
-    </Head>
-    <CacheProvider value={emotionCache}>
-      <ThemeProvider theme={lightTheme}>
-        <CssBaseline />
-        <Provider store={store}>
-        <Headers />
-          <Component {...pageProps} />
-          <Footer />
-
-        </Provider>
-      </ThemeProvider>
-    </CacheProvider>
+      
+      <CacheProvider value={emotionCache}>
+        <ThemeProvider theme={lightTheme}>
+          <CssBaseline />
+          <Provider store={store}>
+            <Headers />
+            <Component {...pageProps} />
+            <Footer />
+          </Provider>
+        </ThemeProvider>
+      </CacheProvider>
     </>
-    
   );
 };
 
