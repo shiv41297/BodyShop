@@ -23,21 +23,6 @@ export const loadingReducer = (
   }
 };
 
-/**
- * Global Loading reducer
- */
-// export const homeReducer = (
-//   state: HomeModal = new HomeModal(),
-//   action: any
-// ) => {
-//   switch (action.type) {
-//     case Utils.ActionName.HOME_PAGE_DATA:
-//       return { ...state, ...action.payload };
-//     default:
-//       return state;
-//   }
-// };
-
 export const homeReducer = (
   state = {
     homeData: "",
