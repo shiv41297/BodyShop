@@ -1,5 +1,4 @@
-import { createTheme } from "@mui/material/styles";
-import { red } from "@mui/material/colors";
+import { createTheme } from "@material-ui/core";
 // Create a theme instance.
 const theme = createTheme({
   palette: {
@@ -9,9 +8,7 @@ const theme = createTheme({
     secondary: {
       main: "#19857b",
     },
-    error: {
-      main: red.A400,
-    },
+   
   },
 });
 export default theme;

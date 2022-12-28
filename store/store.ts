@@ -10,6 +10,7 @@ import {
   loadingReducer,
 } from "../component/components/pagesComponents/home/reducer";
 import aboutReducer from "./about/aboutReducer";
+import { productDetailReducer } from "./productDetail/reducer";
 
 const combinedReducer = combineReducers({
   counter,
@@ -18,6 +19,7 @@ const combinedReducer = combineReducers({
   configReducer: configReducer,
   loadingReducer: loadingReducer,
   aboutReducer: aboutReducer,
+  productDetailReducer: productDetailReducer,
 });
 
 // @ts-ignore

@@ -25,7 +25,7 @@ import { getAuthToken } from "../../utils/session";
 import { useDispatch } from "react-redux";
 import { useRouter } from "next/router";
 import { ROUTE_CONSTANTS } from "../../constants/routeConstants";
-import { getTopSearch, userSearch } from "../../state/actions/homeActions";
+import { getTopSearch, userSearch } from "../pagesComponents/home/actions";
 // import { SEARCHICON } from "utils/constantImages";
 
 const useStyles = makeStyles((theme) => ({
