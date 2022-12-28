@@ -1,6 +1,7 @@
 import { createStore, applyMiddleware, combineReducers } from "redux";
 import { HYDRATE, createWrapper } from "next-redux-wrapper";
 import { composeWithDevTools } from "redux-devtools-extension";
+import thunk from "redux-thunk";
 import counter from "./counter/reducer";
 import users from "./user/reducer";
 import {
@@ -8,6 +9,7 @@ import {
   homeReducer,
   loadingReducer,
 } from "../component/components/pagesComponents/home/reducer";
+import aboutReducer from "./about/aboutReducer";
 
 const combinedReducer = combineReducers({
   counter,
@@ -15,6 +17,7 @@ const combinedReducer = combineReducers({
   homeReducer: homeReducer,
   configReducer: configReducer,
   loadingReducer: loadingReducer,
+  aboutReducer: aboutReducer,
 });
 
 // @ts-ignore
@@ -31,7 +34,10 @@ const masterReducer = (state, action) => {
 };
 
 const initStore = () => {
-  return createStore(masterReducer, composeWithDevTools(applyMiddleware()));
+  return createStore(
+    masterReducer,
+    composeWithDevTools(applyMiddleware(thunk))
+  );
 };
 
 export const wrapper = createWrapper(initStore);
