@@ -4,17 +4,16 @@ import { composeWithDevTools } from "redux-devtools-extension";
 import counter from "./counter/reducer";
 import users from "./user/reducer";
 import {
-  homeReducer,
   configReducer,
+  homeReducer,
   loadingReducer,
-} from "../component/state/reducers/homeReducer";
+} from "../component/components/pagesComponents/home/reducer";
 
 const combinedReducer = combineReducers({
   counter,
   users,
   homeReducer: homeReducer,
   configReducer: configReducer,
-
   loadingReducer: loadingReducer,
 });
 
@@ -22,16 +21,8 @@ const combinedReducer = combineReducers({
 const masterReducer = (state, action) => {
   if (action.type === HYDRATE) {
     const nextState = {
-      ...state,
-      counter: {
-        count: state.counter.count + action.payload.counter.count,
-      },
-      users: {
-        users: [
-          // @ts-ignore
-          ...new Set([...action.payload.users.users, ...state.users.users]),
-        ],
-      },
+      ...state, // use previous state
+      ...action.payload, // apply delta from hydration
     };
     return nextState;
   } else {

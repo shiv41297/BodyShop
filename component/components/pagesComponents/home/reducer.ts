@@ -5,7 +5,12 @@ import Utils from "../../../utils";
  * Global Loading reducer
  */
 export const loadingReducer = (
-  state: LoadingModal = new LoadingModal(),
+  state = {
+    isLoading: true,
+    mainLoading: false,
+    skeletonLoader: false,
+    paytmLoader: false,
+  },
   action: any
 ) => {
   switch (action.type) {
@@ -17,7 +22,6 @@ export const loadingReducer = (
       return state;
   }
 };
-
 
 /**
  * Global Loading reducer
@@ -34,9 +38,20 @@ export const loadingReducer = (
 //   }
 // };
 
-
-export const homeReducer = (state = new HomeModal(), action: any) => {
-  console.log("test",action.type)
+export const homeReducer = (
+  state = {
+    homeData: "",
+    menuData: [],
+    memberShipData: [],
+    mobileHomeData: [],
+    footerMenu: [],
+    mobileMenusData: [],
+    fromPath: "",
+    authToken: "",
+  },
+  action: any
+) => {
+  console.log("test", action.type);
   switch (action.type) {
     case "getHomeData":
       return { ...state, homeData: [...action.payload] };
@@ -57,16 +72,22 @@ export const homeReducer = (state = new HomeModal(), action: any) => {
   }
 };
 
-
-export const configReducer = (state = new ConfigModal(), action: any) => {
+export const configReducer = (
+  state = {
+    generalConfigs: "",
+    paymentConfigs: "",
+    metaData: "",
+  },
+  action: any
+) => {
   switch (action.type) {
     case "setConfig":
       return {
         ...state,
-        ...action.payload
+        ...action.payload,
       };
 
     default:
       return state;
   }
-}
+};
