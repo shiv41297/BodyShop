@@ -1,6 +1,6 @@
-import Utils from "../../../utils";
-import ActionName from "../../../utils/actionName"
-import request from "../../../utils/request";
+import Utils from "../../component/utils";
+import request from "../../component/utils/request";
+import ActionName from "../../component/utils/actionName";
 
 export function showSkeleton() {
   return { type: ActionName.SKELETON_LOADING, payload: { skeletonLoader: true } }
@@ -78,13 +78,12 @@ const filterDataForMobile = (data: any) => {
 export const getHomeData = (callback?: Function) => {
   return (dispatch: any, _getState: any) => {
     // dispatch(showLoader());
-    let url = Utils.endPoints.HOME
+    // let url = Utils.endPoints.HOME
+    let url = "https://bodyshopstgapi.appskeeper.in/user-service/api/v1/users/page/home"
     request.get(url).then((resp) => {
       if (resp) {
-        // all data
         const data = [...resp?.data?.data];
-        // web home data
-        // const arr = convertObjToArray(data)
+       
         const webData = filterDataForWeb(data);
         const sortedData = webData.sort((a: any, b: any) => {
           return Number(a.position) - Number(b.position)
@@ -107,21 +106,11 @@ export const getHomeData = (callback?: Function) => {
           callback(resp?.data?.data)
         }
       }
-      // else{
-      //   dispatch(hideLoader());
-      //   dispatch(hideSkeleton())
-      // }
-      // dispatch(hideLoader())
+     
     })
       .catch((_err) => {
         dispatch(hideSkeleton())
-        // dispatch({
-        //   type: "show-alert",
-        //   payload: {
-        //     type: "error",
-        //     message: "Something went wrong",
-        //   },
-        // });
+      
       });
   };
 }

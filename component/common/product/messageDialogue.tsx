@@ -1,19 +1,13 @@
-import {
-  Theme,
-  makeStyles,
-  createStyles,
-  Dialog,
-  Typography,
-  // Grid,
-  Divider,
-} from "@material-ui/core";
-import { Box } from "@mui/material";
+
+import { Box, Dialog, Divider,  Theme, Typography } from "@mui/material";
 import React from "react";
+import { makeStyles } from "@mui/styles";
+
 // import { CROSS } from "utils/constantImages";
 // import CustomButton from "../button";
 
-const useStyles = makeStyles((theme: Theme) =>
-  createStyles({
+const useStyles : any= makeStyles((theme: Theme) =>
+  ({
     root: {
       "&:first-child": {
         paddingTop: 0,

@@ -1,4 +1,3 @@
-import { makeStyles, createStyles, Theme } from "@material-ui/core";
 import Utils from "../../utils";
 import Slider from "react-slick";
 import { useDispatch, useSelector } from "react-redux";
@@ -10,11 +9,13 @@ import SkeletonProductView from "../skeletonList/skeletonProductView";
 // import  RECOMMENDED_LEFT from "../../../assets/images/recommendedArrow.png";
 import { isGuestUser } from "../../utils/session";
 import { ReducersModal } from "../../models";
-import { showSkeleton, hideSkeleton } from "../../state/actions/homeActions";
 import Product from "../product";
+import { makeStyles } from "@mui/styles";
+import { Theme } from "@mui/material";
+import { showSkeleton, hideSkeleton } from "../../../store/home/action";
 
 const useStyles = makeStyles((theme: Theme) =>
-  createStyles({
+ ({
     recommendedRoot: {
       // padding: theme.spacing(0, 2),
       [theme.breakpoints.down("xs")]: {

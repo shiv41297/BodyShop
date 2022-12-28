@@ -1,16 +1,19 @@
 import React, { useEffect } from 'react'
-import { Typography, makeStyles, createStyles, Theme, Divider } from "@material-ui/core";
 // import { Link, NavLink, useLocation } from "react-router-dom";
 import Utils from "../../utils";
 import { categoryViewed, updateProfile } from '../../utils/event/action';
 import clsx from 'clsx';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
+import { makeStyles } from "@mui/styles";
+
+import {  Typography, Divider, Theme } from '@mui/material';
 // import { RIGHT_ARROW } from 'utils/constantImages';
 const IMAGE_URL = Utils.constants?.menuImage
 
-const useStyles = makeStyles((theme: Theme) =>
-  createStyles({
+
+const useStyles : any = makeStyles((theme: Theme) =>
+  ({
     miniHeaderRoot: {
       backgroundColor: "var(--white)",
       paddingTop: theme.spacing(1.5),

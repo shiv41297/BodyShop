@@ -2,7 +2,7 @@ import axios from 'axios';
 import { isAuthenticated, getAuthToken, isGuestUser } from './session';
 import Utils from '.';
 import { v4 as uuidv4 } from 'uuid';
-import { hideLoader } from '../components/pagesComponents/home/actions';
+// import { hideLoader } from "../components/pagesComponents/home/actions";
 // import { initStore } from "../../store/store";
 
 // const initstore = initStore;
@@ -55,35 +55,36 @@ instance.interceptors.request.use(
 
 // Add a request interceptor
 instance.interceptors.response.use(
-  (success) => {
-    return success;
-  },
-  (err) => {
-    // if (err.response.status === 503) { //under maintainance
-    //     initstore.dispatch({ type: "undermaintainance", payload: { undermaintainance: 1 } })
-    //     initstore.dispatch(hideLoader())
-    // }
-    // else {
-    //     initstore.dispatch({ type: "undermaintainance", payload: { undermaintainance: 0 } })
+    (success) => {
+        return success;
+    },
+    (err) => {
+        // if (err.response.status === 503) { //under maintainance
+        //     initstore.dispatch({ type: "undermaintainance", payload: { undermaintainance: 1 } })
+        //     initstore.dispatch(hideLoader())
+        // }
+        // else {
+        //     initstore.dispatch({ type: "undermaintainance", payload: { undermaintainance: 0 } })
+            
+            // if (!window.navigator.onLine) {
+            //     initstore.dispatch(hideLoader())
+            //     initstore.dispatch({
+            //         type: "show-alert",
+            //         payload: {
+            //             type: "error",
+            //             message: "You are offline. Please check internet connection",
+            //         },
+            //     })
+            //     return;
+            // } else if (err.response.status === Utils.statusCode.UNAUTHENTICATED) {
+            //     removeSession();
+               
+            // }
+            return err;
 
-    // if (!window.navigator.onLine) {
-    //     initstore.dispatch(hideLoader())
-    //     initstore.dispatch({
-    //         type: "show-alert",
-    //         payload: {
-    //             type: "error",
-    //             message: "You are offline. Please check internet connection",
-    //         },
-    //     })
-    //     return;
-    // } else if (err.response.status === Utils.statusCode.UNAUTHENTICATED) {
-    //     removeSession();
-
+        }
+        // return Promise.reject(err);
     // }
-    return err;
-  }
-  // return Promise.reject(err);
-  // }
 );
 
 // Alter defaults after instance has been created

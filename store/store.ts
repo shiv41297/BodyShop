@@ -4,13 +4,10 @@ import { composeWithDevTools } from "redux-devtools-extension";
 import thunk from "redux-thunk";
 import counter from "./counter/reducer";
 import users from "./user/reducer";
-import {
-  configReducer,
-  homeReducer,
-  loadingReducer,
-} from "../component/components/pagesComponents/home/reducer";
+
 import aboutReducer from "./about/aboutReducer";
 import { productDetailReducer } from "../component/components/productDetail/reducer";
+import { configReducer, homeReducer, loadingReducer } from "./home/reducer";
 
 const combinedReducer = combineReducers({
   counter,
@@ -35,7 +32,7 @@ const masterReducer = (state, action) => {
   }
 };
 
-const initStore = () => {
+export const initStore = () => {
   return createStore(
     masterReducer,
     composeWithDevTools(applyMiddleware(thunk))

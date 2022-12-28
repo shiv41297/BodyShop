@@ -1,18 +1,14 @@
-import {
-  makeStyles,
-  createStyles,
-  Theme,
-  Grid,
-  Typography,
-  Button,
-} from "@material-ui/core";
+
+import { Button, Grid, Theme, Typography } from "@mui/material";
 import clsx from "clsx";
 import _ from "lodash";
 // import { ICON_TWO, PRODUCT_PLACEHOLDER } from "utils/constantImages";
 import Utils from "../../utils";
+import { makeStyles } from "@mui/styles";
+
 
 const useStyles = makeStyles((theme: Theme) =>
-  createStyles({
+  ({
     doubleCardRoot: {
       position: "relative",
       overflow: "hidden",
