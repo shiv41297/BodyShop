@@ -77,17 +77,17 @@ export const getHomeData = (callback?: Function) => {
         });
 
         // mobile home data
-        const mobileData = filterDataForMobile(data);
-        const sortedMobileData = mobileData.sort((a: any, b: any) => {
-          return Number(a?.position) - Number(b?.position)
-        });
-        dispatch({
-          type: 'getMobileHomeData',
-          payload: [...sortedMobileData]
-        });
-        if (callback) {
-          callback(resp?.data?.data)
-        }
+        // const mobileData = filterDataForMobile(data);
+        // const sortedMobileData = mobileData.sort((a: any, b: any) => {
+        //   return Number(a?.position) - Number(b?.position)
+        // });
+        // dispatch({
+        //   type: 'getMobileHomeData',
+        //   payload: [...sortedMobileData]
+        // });
+        // if (callback) {
+        //   callback(resp?.data?.data)
+        // }
       }
      
     })

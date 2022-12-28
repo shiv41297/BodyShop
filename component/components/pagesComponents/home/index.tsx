@@ -42,8 +42,10 @@ const useStyles: any = makeStyles((theme: Theme) =>
 
 const Home = () => {
   const classes = useStyles();
+  const { query } = useRouter();
+
+  console.log({query})
   const homeData = useSelector((state: ReducersModal) => {
-    console.log("query", state)
     return state.homeReducer.homeData})
   const dispatch : any= useDispatch()
   const history = useRouter()
