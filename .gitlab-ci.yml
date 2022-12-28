@@ -3,7 +3,6 @@ stages:
   - dev_deploy
 
 dev_build:
-  image: node:14.19
   stage: dev_build
   script:
     - cp $DEV_ENV .env
