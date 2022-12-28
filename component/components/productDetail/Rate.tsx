@@ -1,33 +1,39 @@
-import React from "react";
-import Rating from "@material-ui/lab/Rating";
+import React from 'react';
+import {
+  Rating,
+  ToggleButton,
+  ToggleButtonGroup,
+  Typography,
+  Divider,
+  Skeleton,
+  Box,
+  Theme,
+} from '@mui/material';
 import clsx from 'clsx';
-import ToggleButton from "@material-ui/lab/ToggleButton";
-import ToggleButtonGroup from "@material-ui/lab/ToggleButtonGroup";
-import { makeStyles, Typography, Divider } from "@material-ui/core";
-import ReactHtmlParser from "react-html-parser";
-import { useDispatch } from "react-redux";
-import { useEffect } from "react";
-import Utils from "../../utils";
-import { ProductDetailModal, ReducersModal } from "../../models";
-import { useSelector } from "react-redux";
-import Skeleton from "@mui/material/Skeleton";
-import CustomRadio from "../../components/common/miniCart/CustomRadio";
-import CustomAccordion from "../../components/customAccordion";
-import Ingredients from "./ingredients";
-import { Box } from "@mui/material";
+import { makeStyles } from '@mui/styles';
+// import ReactHtmlParser from "react-html-parser";
+import { useDispatch, useSelector } from 'react-redux';
+import { useEffect } from 'react';
+import Utils from '../../utils';
+import { ProductDetailModal, ReducersModal } from '../../models';
+import CustomAccordion from '../../customAccordion';
+// import CustomRadio from "../../components/common/miniCart/CustomRadio";
+// import CustomAccordion from "../../components/customAccordion";
+import IngredientsModal from './ingredientsModal';
+import CustomRadio from '../../common/miniCart/CustomRadio';
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles((theme: Theme) => ({
   ratingContainer: {
-    display: "flex",
-    alignItems: "center",
-    margin: "10px 0px",
-    "& .MuiRating-root": {
-      color: "var(--main-opacity)",
+    display: 'flex',
+    alignItems: 'center',
+    margin: '10px 0px',
+    '& .MuiRating-root': {
+      color: 'var(--main-opacity)',
     },
-    [theme.breakpoints.down("sm")]: {
-      margin: "40px 0px",
+    [theme.breakpoints.down('sm')]: {
+      margin: '40px 0px',
     },
-    [theme.breakpoints.down("xs")]: {
+    [theme.breakpoints.down('xs')]: {
       margin: theme.spacing(15, 0, 0, 0),
     },
   },
@@ -35,267 +41,258 @@ const useStyles = makeStyles((theme) => ({
     font: `normal ${theme.typography.fontWeightBold} ${theme.spacing(
       1.5
     )}px Work Sans`,
-    lineHeight: "16px",
-    margin: "0px 5px 0px 0px",
-    letterSpacing: "1px",
+    lineHeight: '16px',
+    margin: '0px 5px 0px 0px',
+    letterSpacing: '1px',
   },
   rating1: {
     font: `normal ${theme.typography.fontWeightBold} ${theme.spacing(
       1.5
     )}px Work Sans`,
-    lineHeight: "16px",
-    margin: "0px 3px",
-    letterSpacing: "1px",
-    color: "var(--light-gray)",
+    lineHeight: '16px',
+    margin: '0px 3px',
+    letterSpacing: '1px',
+    color: 'var(--light-gray)',
   },
   subHeading: {
     font: `normal ${theme.typography.fontWeightBold} ${theme.spacing(
       1.4
     )}px Work Sans`,
-    textTransform: "capitalize",
-    lineHeight: "38px",
-    letterSpacing: "0.333px",
+    textTransform: 'capitalize',
+    lineHeight: '38px',
+    letterSpacing: '0.333px',
   },
   details: {
     font: `normal ${theme.typography.fontWeightMedium} ${theme.spacing(
       1.4
     )}px Work Sans`,
-    lineHeight: "22px",
-    letterSpacing: "0.333px",
-    display: "inline-block",
-    width: "552px",
+    lineHeight: '22px',
+    letterSpacing: '0.333px',
+    display: 'inline-block',
+    width: '552px',
     // whiteSpace: "nowrap",
     // overflow: "hidden !important",
-    textOverflow: "ellipsis",
-    [theme.breakpoints.down("md")]: {
-      width: "auto",
-      whiteSpace: "normal",
+    textOverflow: 'ellipsis',
+    [theme.breakpoints.down('md')]: {
+      width: 'auto',
+      whiteSpace: 'normal',
     },
   },
   details1: {
     font: `normal ${theme.typography.fontWeightMedium} ${theme.spacing(
       1.4
     )}px Work Sans`,
-    lineHeight: "22px",
-    letterSpacing: "0.333px",
-    display: "inline-block",
-    overflow: "hide",
-    "& ul": {
+    lineHeight: '22px',
+    letterSpacing: '0.333px',
+    display: 'inline-block',
+    overflow: 'hide',
+    '& ul': {
       marginLeft: theme.spacing(1.5),
     },
-    [theme.breakpoints.down("xs")]: {
-      font: `normal ${theme.spacing(
-        1.4
-      )}px Work Sans Regular`,
-      lineHeight: "22.4px",
-    }
+    [theme.breakpoints.down('xs')]: {
+      font: `normal ${theme.spacing(1.4)}px Work Sans Regular`,
+      lineHeight: '22.4px',
+    },
   },
   detailsContainer: {
-    margin: "15px 0",
-
+    margin: '15px 0',
   },
   innerButtonWrapper: {
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
   },
   buttonContainer: {
-    "& .MuiToggleButton-root": {
-      border: "1px solid var(--light-gray-text)",
-      padding: "13px 22px",
-      textTransform: "none",
-      borderRadius: "2px",
+    '& .MuiToggleButton-root': {
+      border: '1px solid var(--light-gray-text)',
+      padding: '13px 22px',
+      textTransform: 'none',
+      borderRadius: '2px',
       font: `normal ${theme.typography.fontWeightMedium} ${theme.spacing(
         1.3
       )}px Work Sans`,
-      lineHeight: "15px",
-      color: "var(--light-gray)",
-      position: "relative",
-      boxSizing: "border-box",
-      overflow: "hidden",
+      lineHeight: '15px',
+      color: 'var(--light-gray)',
+      position: 'relative',
+      boxSizing: 'border-box',
+      overflow: 'hidden',
     },
-    "& .MuiToggleButtonGroup-groupedHorizontal": {
-      marginRight: "20px",
-      [theme.breakpoints.down("md")]: {
+    '& .MuiToggleButtonGroup-groupedHorizontal': {
+      marginRight: '20px',
+      [theme.breakpoints.down('md')]: {
         // margin: theme.spacing(1)
       },
     },
-    "& .MuiToggleButton-root.Mui-selected": {
-      color: "var(--white)",
-      backgroundColor: "var(--main-opacity)",
+    '& .MuiToggleButton-root.Mui-selected': {
+      color: 'var(--white)',
+      backgroundColor: 'var(--main-opacity)',
     },
   },
   label: {
-    margin: "10px 0",
+    margin: '10px 0',
     font: `normal ${theme.typography.fontWeightMedium} ${theme.spacing(
       1.4
     )}px Work Sans`,
-    lineHeight: "16px",
+    lineHeight: '16px',
   },
   readMore: {
-    display: "none",
+    display: 'none',
   },
   read: {
-    display: "inline",
+    display: 'inline',
   },
   readMoreButton: {
-    display: "block",
-    border: "none",
-    color: "var(--main-opacity)",
-    backgroundColor: "var(--white)",
-    cursor: "pointer",
+    display: 'block',
+    border: 'none',
+    color: 'var(--main-opacity)',
+    backgroundColor: 'var(--white)',
+    cursor: 'pointer',
     font: `normal ${theme.typography.fontWeightBold} ${theme.spacing(
       1.4
     )}px Work Sans`,
-    [theme.breakpoints.down("md")]: {
-      display: "none",
+    [theme.breakpoints.down('md')]: {
+      display: 'none',
     },
   },
   toggleContainer: {
-    "& .MuiToggleButtonGroup-root": {
-      display: "flex",
-      flexWrap: "wrap",
-      [theme.breakpoints.down("md")]: {},
+    '& .MuiToggleButtonGroup-root': {
+      display: 'flex',
+      flexWrap: 'wrap',
+      [theme.breakpoints.down('md')]: {},
     },
   },
   fontLabel: {
     font: `normal ${theme.typography.fontWeightBold} ${theme.spacing(
       1.6
     )}px Work Sans`,
-    color: "var(--secondary-black)",
+    color: 'var(--secondary-black)',
     margin: theme.spacing(1.0),
-    textAlign: "center",
-    [theme.breakpoints.down("sm")]: {
+    textAlign: 'center',
+    [theme.breakpoints.down('sm')]: {
       margin: theme.spacing(1),
-      textAlign: "center",
+      textAlign: 'center',
     },
   },
   fontError: {
     font: `normal ${theme.typography.fontWeightBold} ${theme.spacing(
       1.2
     )}px Work Sans`,
-    color: "#FF0707",
-    lineHeight: "14.08px",
+    color: '#FF0707',
+    lineHeight: '14.08px',
     margin: theme.spacing(0),
-    textAlign: "center",
-    [theme.breakpoints.down("sm")]: {
+    textAlign: 'center',
+    [theme.breakpoints.down('sm')]: {
       margin: theme.spacing(1),
-      textAlign: "center",
+      textAlign: 'center',
     },
   },
   fontErrorShade: {
     font: `normal ${theme.typography.fontWeightBold} ${theme.spacing(
       1.2
     )}px Work Sans`,
-    color: "#FF0707",
-    lineHeight: "14.08px",
+    color: '#FF0707',
+    lineHeight: '14.08px',
     margin: theme.spacing(0.2),
-    textAlign: "left",
-    [theme.breakpoints.down("sm")]: {
+    textAlign: 'left',
+    [theme.breakpoints.down('sm')]: {
       margin: theme.spacing(0.2),
-      textAlign: "left",
+      textAlign: 'left',
     },
   },
   colorSubheading: {
     font: `normal ${theme.typography.fontWeightBold} ${theme.spacing(
       1.2
     )}px Work Sans`,
-    color: "#FF0707",
-    lineHeight: "14.08px",
+    color: '#FF0707',
+    lineHeight: '14.08px',
     margin: theme.spacing(0.2),
-    textAlign: "left",
-    [theme.breakpoints.down("sm")]: {
+    textAlign: 'left',
+    [theme.breakpoints.down('sm')]: {
       margin: theme.spacing(0.2),
-      textAlign: "left",
+      textAlign: 'left',
     },
   },
   multiLineEllipsis: {
-    overflow: "hidden",
-    textOverflow: "ellipsis",
-    display: "-webkit-box",
-    "-webkit-line-clamp": 2,
-    "-webkit-box-orient": "vertical",
+    overflow: 'hidden',
+    textOverflow: 'ellipsis',
+    display: '-webkit-box',
+    '-webkit-line-clamp': 2,
+    '-webkit-box-orient': 'vertical',
     width: '80%',
   },
   name: {
-    display: "block",
+    display: 'block',
   },
   headContainer: {
-    display: "flex",
-    justifyContent: "space-between",
-    margin: "10px 0px",
+    display: 'flex',
+    justifyContent: 'space-between',
+    margin: '10px 0px',
   },
   selectSize: {
-    font: `normal ${theme.spacing(
-      1.8
-    )}px Recoleta Alt Bold`,
-    lineHeight: "24px",
-    letterSpacing: "0.02em",
-    color: "var(--secondary-black)",
+    font: `normal ${theme.spacing(1.8)}px Recoleta Alt Bold`,
+    lineHeight: '24px',
+    letterSpacing: '0.02em',
+    color: 'var(--secondary-black)',
     margin: theme.spacing(3, 0, 1.5, 0),
-    [theme.breakpoints.down("sm")]: {
+    [theme.breakpoints.down('sm')]: {
       margin: theme.spacing(3, 0, 1, 0),
-      font: `normal ${theme.spacing(
-        1.6
-      )}px Recoleta Alt Bold`,
+      font: `normal ${theme.spacing(1.6)}px Recoleta Alt Bold`,
     },
   },
   leftCaption: {
     font: `normal ${theme.typography.fontWeightBold} ${theme.spacing(
       1.6
     )}px Recoleta Alt`,
-    lineHeight: "15px",
-    letterSpacing: "0.02em",
-    color: "var(--secondary-black)",
+    lineHeight: '15px',
+    letterSpacing: '0.02em',
+    color: 'var(--secondary-black)',
     margin: theme.spacing(2, 0, 1.5, 0),
-    [theme.breakpoints.down("sm")]: {
+    [theme.breakpoints.down('sm')]: {
       margin: theme.spacing(1, 0, 1, 0),
-      font: `normal ${theme.spacing(
-        1.6
-      )}px Recoleta Alt Bold`,
+      font: `normal ${theme.spacing(1.6)}px Recoleta Alt Bold`,
     },
   },
   rightCaption: {
     font: `normal ${theme.typography.fontWeightBold} ${theme.spacing(
       1.3
     )}px Work Sans`,
-    lineHeight: "15px",
+    lineHeight: '15px',
     margin: theme.spacing(2, 0, 1.5, 0),
-    color: "var(--main-opacity)",
-    backgroundColor: "var(--white)",
+    color: 'var(--main-opacity)',
+    backgroundColor: 'var(--white)',
   },
   colorContainer: {
-    display: "flex",
+    display: 'flex',
   },
   shades: {
-    display: "flex",
-    flexWrap: "wrap",
-    "& > *": {
+    display: 'flex',
+    flexWrap: 'wrap',
+    '& > *': {
       height: 64,
-      [theme.breakpoints.down("xs")]: {
-        height: "72px",
-      }
+      [theme.breakpoints.down('xs')]: {
+        height: '72px',
+      },
       // width: 50,
     },
-    [theme.breakpoints.down("sm")]: {
-      overflowY: "scroll",
-      flexWrap: "nowrap",
-      "&::-webkit-scrollbar": {
-        display: "none",
+    [theme.breakpoints.down('sm')]: {
+      overflowY: 'scroll',
+      flexWrap: 'nowrap',
+      '&::-webkit-scrollbar': {
+        display: 'none',
       },
     },
     // paddingLeft: '10px'
   },
   selectShadeBox: {
-    height: "80px",
-    width: "80px",
-    marginLeft: "2px",
-    flex: "0 0 auto",
+    height: '80px',
+    width: '80px',
+    marginLeft: '2px',
+    flex: '0 0 auto',
   },
   ShadeDivider: {
-    width: "2px",
-    marginLeft: "10px",
-    backgroundColor: "#F2F2F2",
+    width: '2px',
+    marginLeft: '10px',
+    backgroundColor: '#F2F2F2',
     // [theme.breakpoints.down("xs")]:{
     //   marginLeft: "0px",
     //   backgroundColour: "none",
@@ -306,26 +303,26 @@ const useStyles = makeStyles((theme) => ({
     font: `normal ${theme.typography.fontWeightLight} ${theme.spacing(
       1.3
     )}px Work Sans`,
-    lineHeight: "15.25px",
-    letterSpacing: "1px",
-    marginBottom: "5px",
-    textTransform: "uppercase",
+    lineHeight: '15.25px',
+    letterSpacing: '1px',
+    marginBottom: '5px',
+    textTransform: 'uppercase',
   },
   amountDiv: {
-    display: "flex",
-    alignItems: "center",
+    display: 'flex',
+    alignItems: 'center',
     margin: theme.spacing(0.5, 0),
-    flexDirection: "column",
+    flexDirection: 'column',
   },
   amount: {
     font: `normal ${theme.spacing(1.5)}px Work Sans SemiBold`,
-    color: "var(--secondary-black)",
+    color: 'var(--secondary-black)',
     marginRight: theme.spacing(0.5),
   },
   ratingSection: {
     font: `normal ${theme.spacing(1.5)}px Work Sans Bold`,
-    color: "black",
-    padding: "0px 3px",
+    color: 'black',
+    padding: '0px 3px',
     // marginRight: theme.spacing(0.5),
   },
   amount1: {
@@ -340,29 +337,29 @@ const useStyles = makeStyles((theme) => ({
     font: `normal ${theme.typography.fontWeightMedium} ${theme.spacing(
       1.5
     )}px Work Sans`,
-    color: "var(--light-gray)",
-    textDecorationLine: "line-through",
+    color: 'var(--light-gray)',
+    textDecorationLine: 'line-through',
   },
   discountPrice: {
     font: `normal ${theme.typography.fontWeightMedium} ${theme.spacing(
       2.4
     )}px Work Sans`,
-    color: "var(--grey-color)",
-    lineHeight: "28px",
-    textDecoration: "line-through",
-    marginRight: "12px",
+    color: 'var(--grey-color)',
+    lineHeight: '28px',
+    textDecoration: 'line-through',
+    marginRight: '12px',
   },
   originalPrice: {
     font: `normal ${theme.typography.fontWeightBold} ${theme.spacing(
       2.4
     )}px Work Sans`,
-    color: "var(--secondary-black)",
-    lineHeight: "28px",
+    color: 'var(--secondary-black)',
+    lineHeight: '28px',
   },
   rateDiv: {
-    display: "flex",
-    justifyContent: "space-between",
-    alignItems: "baseline",
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'baseline',
   },
   line: {
     // height: "1px",
@@ -372,17 +369,17 @@ const useStyles = makeStyles((theme) => ({
     // position: "relative",
     // top: "-22px",
     // left: "-2px",
-    width: "calc(1.414 * 200px)",
-    transform: "rotate(-27deg)",
-    transformOrigin: "bottom left",
-    borderTop: "1px solid var(--light-gray)",
-    position: "absolute",
-    bottom: "-1px",
-    left: "-1px",
-    boxSizing: "border-box",
+    width: 'calc(1.414 * 200px)',
+    transform: 'rotate(-27deg)',
+    transformOrigin: 'bottom left',
+    borderTop: '1px solid var(--light-gray)',
+    position: 'absolute',
+    bottom: '-1px',
+    left: '-1px',
+    boxSizing: 'border-box',
   },
   accordionHeading: {
-    fontWeight: "bold",
+    fontWeight: 'bold',
   },
   divider3: {
     // margin: "10px 0px 11px 0px",
@@ -405,19 +402,19 @@ const Rate = (_props: any) => {
     productDetail.selectedVariant
   );
   const [state, setState] = React.useState<any>({
-    sizeData: [""],
-    shadeData: [""],
+    sizeData: [''],
+    shadeData: [''],
     shadeChanged: false,
     sizeChanged: false,
     size_shadeData: false,
     showReadMore: true,
-    selectedShade: "",
-    selectedLabel: "",
+    selectedShade: '',
+    selectedLabel: '',
     selectedPrice: 0,
-    selectedAmount: "0 ml",
+    selectedAmount: '0 ml',
     specialPrice: 0,
     outOfStock: false,
-    selectedSizeShade: "",
+    selectedSizeShade: '',
     selectedVariantData: null,
   });
   // const reviewData = useSelector(
@@ -442,7 +439,7 @@ const Rate = (_props: any) => {
     });
 
     dispatch({
-      type: "getProductData",
+      type: 'getProductData',
       payload: {
         selectedVariant: product,
         selectedVariantData: selectedProduct,
@@ -479,7 +476,11 @@ const Rate = (_props: any) => {
     return state.loadingReducer.skeletonLoader;
   });
 
-  const options = configurableOptions?.values?.sort((a: any, b: any) => a?.label?.slice(0, a?.label?.length - 2) - b?.label?.slice(0, b?.label?.length - 2));
+  const options = configurableOptions?.values?.sort(
+    (a: any, b: any) =>
+      a?.label?.slice(0, a?.label?.length - 2) -
+      b?.label?.slice(0, b?.label?.length - 2)
+  );
 
   return (
     <div>
@@ -487,7 +488,7 @@ const Rate = (_props: any) => {
         <Skeleton variant="rectangular" />
       ) : (
         <div className={classes.ratingContainer}>
-          <a href={"#reviewsAndReviews"}>
+          <a href={'#reviewsAndReviews'}>
             <Rating
               className={classes.rating}
               name="read-only"
@@ -533,20 +534,20 @@ const Rate = (_props: any) => {
             </div> */}
             {Utils.CommonFunctions.getAttributeValue(
               productData?.customAttributes,
-              "description"
+              'description'
             ) ? (
               <CustomAccordion
-                id={"description"}
+                id={'description'}
                 className={classes.accordionHeading}
                 heading="What does it do for you ?"
                 details={
                   <Typography className={classes.details1}>
-                    {ReactHtmlParser(
+                    {/* {ReactHtmlParser(
                       Utils.CommonFunctions.getAttributeValue(
                         productData?.customAttributes,
-                        "description"
+                        'description'
                       )
-                    )}
+                    )} */}
                   </Typography>
                 }
                 openByDefault={true}
@@ -559,13 +560,13 @@ const Rate = (_props: any) => {
         <Divider light className={classes.divider3} />
       ) : null}
 
-      <Ingredients />
+      {/* <IngredientsModal /> */}
 
       {skeletonLoader ? (
         <Skeleton variant="rectangular" height={150} />
       ) : (
         <>
-          {productData?.type === "configurable" ? (
+          {productData?.type === 'configurable' ? (
             Utils.constants.productVariant.indexOf(
               configurableOptions?.attribute_key
             ) > -1 ? (
@@ -583,34 +584,40 @@ const Rate = (_props: any) => {
                     {state.selectedLabel}
                   </Typography>
                   <div className={classes.colorContainer}>
-                    <Box sx={{ display: { xs: "none", sm: "block" } }}>
-                    <div>
-                      <div
-                        className={classes.selectShadeBox}
-                        style={{
-                          backgroundColor:
-                            Utils.CommonFunctions.getColor(selectedVariant),
-                        }}
-                      ></div>
+                    <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
+                      <div>
+                        <div
+                          className={classes.selectShadeBox}
+                          style={{
+                            backgroundColor:
+                              Utils.CommonFunctions.getColor(selectedVariant),
+                          }}
+                        ></div>
 
-                      {!productDetail?.selectedVariantData?.isInStock ? (
-                        <Typography
-                          className={classes.fontErrorShade}
-                          style={{ color: "#FF0707" }}
-                        >
-                          {"Out of Stock"}
-                        </Typography>
-                      ) : selectedVariant?.label ?
-                        <Typography
-                          className={clsx(classes.colorSubheading, classes.multiLineEllipsis)}
-                          style={{ color: "#004236" }}
-                        > {selectedVariant.label} </Typography> : null}
-                    </div>
+                        {!productDetail?.selectedVariantData?.isInStock ? (
+                          <Typography
+                            className={classes.fontErrorShade}
+                            style={{ color: '#FF0707' }}
+                          >
+                            {'Out of Stock'}
+                          </Typography>
+                        ) : selectedVariant?.label ? (
+                          <Typography
+                            className={clsx(
+                              classes.colorSubheading,
+                              classes.multiLineEllipsis
+                            )}
+                            style={{ color: '#004236' }}
+                          >
+                            {' '}
+                            {selectedVariant.label}{' '}
+                          </Typography>
+                        ) : null}
+                      </div>
 
-                    <div className={classes.ShadeDivider}></div>
-
+                      <div className={classes.ShadeDivider}></div>
                     </Box>
-                   
+
                     <div className={classes.shades}>
                       {options.map((val: any, i: any) => {
                         let configProduct = configurableLinks.find(
@@ -621,21 +628,22 @@ const Rate = (_props: any) => {
 
                         let shadeColor = Utils.CommonFunctions.getColor(val);
                         return (
-                          configProduct &&
-                          <React.Fragment key={i}>
-                            <CustomRadio
-                              style={{ backgroundColor: shadeColor }}
-                              isInStock={configProduct?.isInStock}
-                              checked={
-                                selectedVariant?.value_index ===
-                                val?.value_index
-                              }
-                              value={val?.value_index}
-                              name="shade"
-                              onChange={() => selectVariant(val)}
-                            />
-                            {/* {/ <StyledCheckbox style={{ backgroundColor: shadeColor, borderRadius: '50%', marginBottom: '3px' }} checked={val?.value_index === selectedVariant?.value_index} value={val?.value_index} name="shade" onClick={() => selectVariant(val)} /> /} */}
-                          </React.Fragment>
+                          configProduct && (
+                            <React.Fragment key={i}>
+                              <CustomRadio
+                                style={{ backgroundColor: shadeColor }}
+                                isInStock={configProduct?.isInStock}
+                                checked={
+                                  selectedVariant?.value_index ===
+                                  val?.value_index
+                                }
+                                value={val?.value_index}
+                                name="shade"
+                                onChange={() => selectVariant(val)}
+                              />
+                              {/* {/ <StyledCheckbox style={{ backgroundColor: shadeColor, borderRadius: '50%', marginBottom: '3px' }} checked={val?.value_index === selectedVariant?.value_index} value={val?.value_index} name="shade" onClick={() => selectVariant(val)} /> /} */}
+                            </React.Fragment>
+                          )
                         );
                       })}
                     </div>
@@ -665,70 +673,71 @@ const Rate = (_props: any) => {
                           (item: any) => item.size === val.label
                         );
                         let discPrice = product?.customAttributes?.find(
-                          (item: any) => item.attribute_code === "special_price"
+                          (item: any) => item.attribute_code === 'special_price'
                         );
                         let price = product?.price;
                         return (
-                          product &&
-                          <div onClick={() => selectVariant(val)} key={i}>
-                            <ToggleButton
-                              selected={
-                                // selectedVariant?.isInstock&&
-                                val?.value_index ===
-                                selectedVariant?.value_index
-                              }
-                              value={val.value_index}
-                              aria-label="left aligned"
-                            >
-                              <div>
-                                {val.label}
-                                {!product?.isInStock && (
-                                  <div className={classes.line}></div>
-                                )}
-                              </div>
-                            </ToggleButton>
-                            <div className={classes.amountDiv}>
-                              {discPrice?.value ? (
-                                <>
-                                  <Typography className={classes.fontLabel}>
-                                    ₹
-                                    {Utils.CommonFunctions.decimalFlat(
-                                      discPrice?.value,
-                                      0
-                                    )}
-                                  </Typography>
-                                  {
-                                    <Typography className={classes.mrp}>
+                          product && (
+                            <div onClick={() => selectVariant(val)} key={i}>
+                              <ToggleButton
+                                selected={
+                                  // selectedVariant?.isInstock&&
+                                  val?.value_index ===
+                                  selectedVariant?.value_index
+                                }
+                                value={val.value_index}
+                                aria-label="left aligned"
+                              >
+                                <div>
+                                  {val.label}
+                                  {!product?.isInStock && (
+                                    <div className={classes.line}></div>
+                                  )}
+                                </div>
+                              </ToggleButton>
+                              <div className={classes.amountDiv}>
+                                {discPrice?.value ? (
+                                  <>
+                                    <Typography className={classes.fontLabel}>
+                                      ₹
+                                      {Utils.CommonFunctions.decimalFlat(
+                                        discPrice?.value,
+                                        0
+                                      )}
+                                    </Typography>
+                                    {
+                                      <Typography className={classes.mrp}>
+                                        ₹
+                                        {Utils.CommonFunctions.decimalFlat(
+                                          price,
+                                          0
+                                        )}
+                                      </Typography>
+                                    }
+                                  </>
+                                ) : (
+                                  <>
+                                    <Typography className={classes.fontLabel}>
                                       ₹
                                       {Utils.CommonFunctions.decimalFlat(
                                         price,
                                         0
                                       )}
                                     </Typography>
-                                  }
-                                </>
-                              ) : (
-                                <>
-                                  <Typography className={classes.fontLabel}>
-                                    ₹
-                                    {Utils.CommonFunctions.decimalFlat(
-                                      price,
-                                      0
-                                    )}
-                                  </Typography>
-                                </>
-                              )}
+                                  </>
+                                )}
+                              </div>
+                              {/* {/ <Typography className={classes.fontLabel}>₹{`${Math.round(price)}`}</Typography> /} */}
+                              {!product?.isInStock ? (
+                                <Typography
+                                  className={classes.fontError}
+                                  style={{ color: '#FF0707' }}
+                                >
+                                  Out of Stock
+                                </Typography>
+                              ) : null}
                             </div>
-                            {/* {/ <Typography className={classes.fontLabel}>₹{`${Math.round(price)}`}</Typography> /} */}
-                            {!product?.isInStock ? (
-                              <Typography
-                                className={classes.fontError}
-                                style={{ color: "#FF0707" }}
-                              >
-                                Out of Stock
-                              </Typography>
-                            ) : null}
-                          </div>
+                          )
                         );
                       })}
                     </ToggleButtonGroup>

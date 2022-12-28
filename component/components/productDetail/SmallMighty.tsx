@@ -1,5 +1,6 @@
 // import ContainedButton from "../../components/containedButton";
-import { makeStyles, Typography } from '@material-ui/core';
+import { Theme, Typography } from '@mui/material';
+import { makeStyles } from '@mui/styles';
 import { useRouter } from 'next/router';
 // import ReactHtmlParser from "react-html-parser";
 // import CustomAccordion from "../../components/customAccordion";
@@ -10,7 +11,7 @@ import { ReducersModal } from '../../models';
 
 const IMAGE_URL = `${process.env.REACT_APP_MEDIA_URL}`;
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles((theme: Theme) => ({
   smallButMighty: {
     '& .MuiButton-root': {
       padding: '16px 16px',

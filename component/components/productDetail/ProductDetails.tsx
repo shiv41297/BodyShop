@@ -1,76 +1,70 @@
-import { makeStyles, Typography } from "@material-ui/core";
-import Utils from "./../../utils";
-import _ from "lodash";
-import { useSelector } from "react-redux";
-import { ReducersModal } from "../../models";
-import Skeleton from "@mui/material/Skeleton";
+import { Theme, Typography } from '@mui/material';
+import { makeStyles } from '@mui/styles';
+import Utils from './../../utils';
+import _ from 'lodash';
+import { useSelector } from 'react-redux';
+import { ReducersModal } from '../../models';
+import Skeleton from '@mui/material/Skeleton';
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles((theme: Theme) => ({
   headContainer: {
-    display: "flex",
-    justifyContent: "space-between",
-    margin: "0px 0px",
+    display: 'flex',
+    justifyContent: 'space-between',
+    margin: '0px 0px',
   },
   nameContainer: {
-    display: "flex",
-    justifyContent: "space-between",
-    alignItems: "baseline",
-    width: "100%",
-    [theme.breakpoints.down("sm")]: {
-      width: "100%",
-      "& :nth-child(1)": {
-        flexBasis: "50%",
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'baseline',
+    width: '100%',
+    [theme.breakpoints.down('sm')]: {
+      width: '100%',
+      '& :nth-child(1)': {
+        flexBasis: '50%',
       },
-      "& :nth-child(2)": {
+      '& :nth-child(2)': {
         // flexBasis: "60%"
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "end",
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'end',
       },
     },
   },
   heading: {
-    font: `normal ${theme.spacing(
-      2.2
-    )}px Work Sans semiBold`,
-    textTransform: "capitalize",
-    lineHeight: "38px",
-    paddingRight: "28px",
-    [theme.breakpoints.down("xs")]: {
-      lineHeight: "25px",
-      font: `normal ${theme.spacing(
-        2
-      )}px Recoleta Alt Bold`,
-      letterSpacing: "0.04em",
-      paddingRight: "0px",
-
+    font: `normal ${theme.spacing(2.2)}px Work Sans semiBold`,
+    textTransform: 'capitalize',
+    lineHeight: '38px',
+    paddingRight: '28px',
+    [theme.breakpoints.down('xs')]: {
+      lineHeight: '25px',
+      font: `normal ${theme.spacing(2)}px Recoleta Alt Bold`,
+      letterSpacing: '0.04em',
+      paddingRight: '0px',
     },
   },
   caption: {
     font: `normal ${theme.typography.fontWeightBold} ${theme.spacing(
       1.3
     )}px Work Sans`,
-    lineHeight: "15px",
-    color: "var(--light-gray)",
-    margin: "8px 0",
-    [theme.breakpoints.down("xs")]:{
-      font: `normal ${theme.spacing(
-        1.2
-      )}px Work Sans Regular`,
-    }
+    lineHeight: '15px',
+    color: 'var(--light-gray)',
+    margin: '8px 0',
+    [theme.breakpoints.down('xs')]: {
+      font: `normal ${theme.spacing(1.2)}px Work Sans Regular`,
+    },
   },
   taxCaption: {
     font: `normal ${theme.typography.fontWeightBold} ${theme.spacing(
       1.3
     )}px Work Sans`,
-    lineHeight: "15px",
-    color: "var(--light-gray)",
+    lineHeight: '15px',
+    color: 'var(--light-gray)',
   },
   amount: {
     font: `normal ${theme.typography.fontWeightBold} ${theme.spacing(
       1.5
     )}px Work Sans`,
-    color: "var(--secondary-black)",
+    color: 'var(--secondary-black)',
     marginRight: theme.spacing(0.5),
   },
   price: {
@@ -78,8 +72,8 @@ const useStyles = makeStyles((theme) => ({
     font: `normal ${theme.typography.fontWeightMedium} ${theme.spacing(
       1.5
     )}px Work Sans`,
-    color: "var(--light-gray)",
-    textDecorationLine: "line-through",
+    color: 'var(--light-gray)',
+    textDecorationLine: 'line-through',
   },
   specialPrice: {
     font: `normal ${theme.typography.fontWeightBold} ${theme.spacing(
@@ -92,30 +86,30 @@ const useStyles = makeStyles((theme) => ({
     font: `normal ${theme.typography.fontWeightMedium} ${theme.spacing(
       2.4
     )}px Work Sans`,
-    color: "var(--grey-color)",
-    lineHeight: "28px",
-    textDecoration: "line-through",
-    marginRight: "12px",
+    color: 'var(--grey-color)',
+    lineHeight: '28px',
+    textDecoration: 'line-through',
+    marginRight: '12px',
   },
   originalPrice: {
     font: `normal ${theme.typography.fontWeightBold} ${theme.spacing(
       2.4
     )}px Work Sans`,
-    color: "var(--secondary-black)",
-    lineHeight: "28px",
-    [theme.breakpoints.down("xs")]: {
+    color: 'var(--secondary-black)',
+    lineHeight: '28px',
+    [theme.breakpoints.down('xs')]: {
       font: `normal ${theme.typography.fontWeightBold} ${theme.spacing(
         2.2
       )}px Work Sans Bold`,
     },
   },
   skeletonContent: {
-    display: "flex",
-    justifyContent: "space-between",
-    marginBottom: "10px",
+    display: 'flex',
+    justifyContent: 'space-between',
+    marginBottom: '10px',
   },
   skeleton: {
-    margin: "5px 0px",
+    margin: '5px 0px',
   },
 }));
 
@@ -133,11 +127,14 @@ const ProductDetails = (props: any) => {
   let discPrice: any;
   if (priceData?.selectedVariantData) {
     discPrice = _.find(priceData?.selectedVariantData?.customAttributes, {
-      attribute_code: "special_price",
+      attribute_code: 'special_price',
     });
     // let discPrice1 = productData?.customAttributes?.find((item: any) => item.attribute_code == 'special_price')
   }
-  let configurableProduct = productData?.configurableProductLinks?.find((item: any) => item?.isInStock) || productData?.configurableProductLinks[0]
+  let configurableProduct =
+    productData?.configurableProductLinks?.find(
+      (item: any) => item?.isInStock
+    ) || productData?.configurableProductLinks[0];
   const skeletonLoader = useSelector((state: ReducersModal) => {
     return state.loadingReducer.skeletonLoader;
   });
@@ -150,13 +147,13 @@ const ProductDetails = (props: any) => {
               className={classes.skeleton}
               variant="rectangular"
               height={20}
-              width={"55%"}
+              width={'55%'}
             />
             <Skeleton
               className={classes.skeleton}
               variant="rectangular"
               height={20}
-              width={"30%"}
+              width={'30%'}
             />
           </div>
         ))
@@ -193,7 +190,7 @@ const ProductDetails = (props: any) => {
                 {discPrice ? (
                   <>
                     <span className={classes.discountPrice}>
-                      {" "}
+                      {' '}
                       ₹
                       {Utils.CommonFunctions.decimalFlat(
                         priceData?.selectedVariantData?.price
@@ -217,28 +214,30 @@ const ProductDetails = (props: any) => {
           </div>
         </div>
       ) : (
-        ""
+        ''
       )}
-      {skeletonLoader ?
+      {skeletonLoader ? (
         <Skeleton
           className={classes.skeleton}
           variant="rectangular"
           height={20}
-          width={"30%"}
-        /> :
-
+          width={'30%'}
+        />
+      ) : (
         <div
           dangerouslySetInnerHTML={{
             __html:
-              productData?.type === "configurable" ? _.find(configurableProduct?.customAttributes, { attribute_code: "short_description" })?.value
-                :
-                _.find(productData?.customAttributes, {
-                  attribute_code: "short_description",
-                })?.value || "",
+              productData?.type === 'configurable'
+                ? _.find(configurableProduct?.customAttributes, {
+                    attribute_code: 'short_description',
+                  })?.value
+                : _.find(productData?.customAttributes, {
+                    attribute_code: 'short_description',
+                  })?.value || '',
           }}
           className={classes.caption}
         />
-      }
+      )}
     </div>
   );
 };

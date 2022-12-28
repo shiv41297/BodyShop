@@ -1,56 +1,56 @@
-import { makeStyles, Typography } from "@material-ui/core";
-import { useState } from "react";
-import { useSelector } from "react-redux";
-import CustomAccordion from "../../components/customAccordion";
-import { ReducersModal } from "../../models";
-import ReactHtmlParser from "react-html-parser";
-import clsx from "clsx";
-import _ from "lodash";
-import IngredientsModal from "./ingredientsModal";
+import { Theme, Typography } from '@mui/material';
+import { makeStyles } from '@mui/styles';
+import { useState } from 'react';
+import { useSelector } from 'react-redux';
+// import CustomAccordion from "../../components/customAccordion";
+import { ReducersModal } from '../../models';
+// import ReactHtmlParser from "react-html-parser";
+import clsx from 'clsx';
+import _ from 'lodash';
+import IngredientsModal from './ingredientsModal';
+import CustomAccordion from '../../customAccordion';
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles((theme: Theme) => ({
   minusMarginTop: {
-    "& .MuiAccordionSummary-content.Mui-expanded": {
-      marginTop: "-10px !important",
+    '& .MuiAccordionSummary-content.Mui-expanded': {
+      marginTop: '-10px !important',
     },
   },
   ingredientsContent: {
-    marginTop: "-10px !important",
+    marginTop: '-10px !important',
   },
   description: {
-    marginTop: "10px",
+    marginTop: '10px',
     font: `normal 400 ${theme.spacing(1.5)}px Work Sans`,
-    lineHeight: "27px",
-    [theme.breakpoints.down("xs")]:{
+    lineHeight: '27px',
+    [theme.breakpoints.down('xs')]: {
       font: `normal ${theme.spacing(1.5)}px Work Sans Regular`,
-
-    }
+    },
   },
   title: {
-    marginTop: "10px",
+    marginTop: '10px',
     font: `normal 700 ${theme.spacing(1.4)}px  Recoleta Alt`,
-    color: "black",
-    [theme.breakpoints.down("xs")]:{
+    color: 'black',
+    [theme.breakpoints.down('xs')]: {
       font: `normal ${theme.spacing(1.4)}px Work Sans SemiBold`,
-
-    }
+    },
   },
   ingredients: {
-    marginTop: "-10px",
-    cursor: "pointer",
+    marginTop: '-10px',
+    cursor: 'pointer',
     // margin: theme.spacing(0, 0, 4, 0),
-    font: "normal 700 14px Work Sans",
-    color: "var(--main-opacity)",
-    lineHeight: "16px",
-    "& ul": {
-      paddingLeft: "20px",
+    font: 'normal 700 14px Work Sans',
+    color: 'var(--main-opacity)',
+    lineHeight: '16px',
+    '& ul': {
+      paddingLeft: '20px',
     },
-    [theme.breakpoints.down("xs")]:{
-      font: "normal 14px Work Sans SemiBold",
-    }
+    [theme.breakpoints.down('xs')]: {
+      font: 'normal 14px Work Sans SemiBold',
+    },
   },
   marginTop: {
-    marginTop: "10px",
+    marginTop: '10px',
   },
 }));
 function Ingredients() {
@@ -68,15 +68,15 @@ function Ingredients() {
       });
 
       if (attributeObj && attributeObj?.value) {
-        if (attributeObj.value?.includes("&lt")) {
-          let new_value = attributeObj?.value?.replaceAll("&lt;", "<");
-          new_value = new_value?.replaceAll("&gt;", ">");
+        if (attributeObj.value?.includes('&lt')) {
+          let new_value = attributeObj?.value?.replaceAll('&lt;', '<');
+          new_value = new_value?.replaceAll('&gt;', '>');
           return new_value;
         }
         return attributeObj.value;
       }
     }
-    return "";
+    return '';
   };
 
   return (
@@ -90,8 +90,8 @@ function Ingredients() {
               dangerouslySetInnerHTML={{
                 __html:
                   _.find(productData?.product?.customAttributes || {}, {
-                    attribute_code: "cft_title",
-                  })?.value || "",
+                    attribute_code: 'cft_title',
+                  })?.value || '',
               }}
               className={classes.title}
             />
@@ -99,8 +99,8 @@ function Ingredients() {
               dangerouslySetInnerHTML={{
                 __html:
                   _.find(productData?.product?.customAttributes || {}, {
-                    attribute_code: "cft_description",
-                  })?.value || "",
+                    attribute_code: 'cft_description',
+                  })?.value || '',
               }}
               className={classes.description}
             />
@@ -108,8 +108,8 @@ function Ingredients() {
               dangerouslySetInnerHTML={{
                 __html:
                   _.find(productData?.product?.customAttributes || {}, {
-                    attribute_code: "cft_title_1",
-                  })?.value || "",
+                    attribute_code: 'cft_title_1',
+                  })?.value || '',
               }}
               className={classes.title}
             />
@@ -117,8 +117,8 @@ function Ingredients() {
               dangerouslySetInnerHTML={{
                 __html:
                   _.find(productData?.product?.customAttributes || {}, {
-                    attribute_code: "cft_description_1",
-                  })?.value || "",
+                    attribute_code: 'cft_description_1',
+                  })?.value || '',
               }}
               className={classes.description}
             />
@@ -126,8 +126,8 @@ function Ingredients() {
               dangerouslySetInnerHTML={{
                 __html:
                   _.find(productData?.product?.customAttributes || {}, {
-                    attribute_code: "cft_title_2",
-                  })?.value || "",
+                    attribute_code: 'cft_title_2',
+                  })?.value || '',
               }}
               className={classes.title}
             />
@@ -135,34 +135,36 @@ function Ingredients() {
               dangerouslySetInnerHTML={{
                 __html:
                   _.find(productData?.product?.customAttributes || {}, {
-                    attribute_code: "cft_description_2",
-                  })?.value || "",
+                    attribute_code: 'cft_description_2',
+                  })?.value || '',
               }}
               className={classes.description}
             />
 
-            {ReactHtmlParser(getAttributeValue("ingredients"))?.length > 0 && (
+            {/* {ReactHtmlParser(getAttributeValue('ingredients'))?.length > 0 && ( */}
               <Typography
                 className={clsx(
                   classes.ingredients,
                   _.find(productData?.product?.customAttributes || {}, {
-                    attribute_code: "cft_title",
+                    attribute_code: 'cft_title',
                   })?.value
                     ? classes.marginTop
-                    : ""
+                    : ''
                 )}
                 onClick={() => setIngredientModal(true)}
               >
                 View full list of ingredients
               </Typography>
-            )}
-
+            {/* )} */}
 
             <IngredientsModal
-              title={productData?.product?.name || ""}
-              ingridientsDescription={ReactHtmlParser(
-                getAttributeValue("ingredients")
-              )}
+              title={productData?.product?.name || ''}
+              ingridientsDescription={
+                'Himanshu'
+                //   ReactHtmlParser(
+                //   getAttributeValue("ingredients")
+                // )
+              }
               open={ingredientModal}
               handleClose={() => setIngredientModal(false)}
             />

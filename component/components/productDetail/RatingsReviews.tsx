@@ -1,26 +1,28 @@
-import { useState } from "react";
-import Rating from "@material-ui/lab/Rating";
-import { makeStyles, Typography, Divider } from "@material-ui/core";
-import LinearProgressReviews from "../../components/linearProgressReviews";
-import Skeleton from "@mui/material/Skeleton";
-import { useSelector } from "react-redux";
-import { ReducersModal } from "../../models";
-import RatingModal from "../rating&review/rating";
-import { isAuthenticated } from "../../utils/session";
-import Utils from "../../utils";
-import { useNavigate } from "react-router-dom";
-import MessageDialogue from "../../components/common/product/messageDialogue";
-import { EDIT_ICON } from "utils/constantImages";
+import { useState } from 'react';
+// import LinearProgressReviews from "../../components/linearProgressReviews";
+import { useSelector } from 'react-redux';
+import { ReducersModal } from '../../models';
+// import RatingModal from "../rating&review/rating";
+import { isAuthenticated } from '../../utils/session';
+import Utils from '../../utils';
+// import { useNavigate } from 'react-router-dom';
+// import MessageDialogue from "../../components/common/product/messageDialogue";
+// import { EDIT_ICON } from "utils/constantImages";
+import { Theme, Rating, Typography, Divider, Skeleton } from '@mui/material';
+import { makeStyles } from '@mui/styles';
+import MessageDialogue from '../../common/product/messageDialogue';
+import LinearProgressReviews from '../../common/linearProgressReviews';
+import { useRouter } from 'next/router';
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles((theme: Theme) => ({
   heading: {
     font: `normal ${theme.typography.fontWeightBold} ${theme.spacing(
       1.8
     )}px Recoleta Alt`,
-    lineHeight: "24px",
-    letterSpacing: "0.02em",
-    color: "var(--secondary-black)",
-    [theme.breakpoints.down("xs")]: {
+    lineHeight: '24px',
+    letterSpacing: '0.02em',
+    color: 'var(--secondary-black)',
+    [theme.breakpoints.down('xs')]: {
       font: `normal ${theme.spacing(1.6)}px Recoleta Alt Bold`,
     },
   },
@@ -29,44 +31,44 @@ const useStyles = makeStyles((theme) => ({
     font: `normal ${theme.typography.fontWeightBold} ${theme.spacing(
       1.4
     )}px Recoleta Alt`,
-    lineHeight: "16px",
-    color: "var(--main-opacity)",
-    [theme.breakpoints.down("xs")]: {
+    lineHeight: '16px',
+    color: 'var(--main-opacity)',
+    [theme.breakpoints.down('xs')]: {
       font: `normal ${theme.spacing(1.4)}px Work Sans SemiBold`,
     },
   },
   headContainer: {
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "space-between",
-    [theme.breakpoints.down("xs")]: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    [theme.breakpoints.down('xs')]: {
       marginBottom: theme.spacing(2),
     },
   },
   ratingContainer1: {
-    flexBasis: "40%",
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "flex-start",
-    flexDirection: "column",
-    "& .MuiRating-root": {
-      color: "var(--main-opacity)",
+    flexBasis: '40%',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'flex-start',
+    flexDirection: 'column',
+    '& .MuiRating-root': {
+      color: 'var(--main-opacity)',
     },
   },
   ratingContainer: {
-    display: "flex",
-    justifyContent: "center",
+    display: 'flex',
+    justifyContent: 'center',
     margin: theme.spacing(0, 0, 0.6, 0),
-    "& .MuiRating-root": {
-      color: "var(--main-opacity)",
+    '& .MuiRating-root': {
+      color: 'var(--main-opacity)',
     },
   },
   rating: {
     font: `normal ${theme.typography.fontWeightBold} ${theme.spacing(
       3.2
     )}px Work Sans`,
-    lineHeight: "38px",
-    color: "var(--black)",
+    lineHeight: '38px',
+    color: 'var(--black)',
     margin: theme.spacing(0.6, 0),
   },
   precision: {
@@ -78,36 +80,36 @@ const useStyles = makeStyles((theme) => ({
     font: `normal ${theme.typography.fontWeightMedium} ${theme.spacing(
       1.2
     )}px Work Sans`,
-    lineHeight: "14px",
-    color: "var(--light-gray)",
+    lineHeight: '14px',
+    color: 'var(--light-gray)',
     margin: theme.spacing(0.6, 0, 0, 0),
   },
   feedbackContainer: {
-    display: "flex",
+    display: 'flex',
     // justifyContent: "space-evenly"
   },
   progressBar: {
-    flexBasis: "40%",
-    margin: "0px 70px",
-    [theme.breakpoints.down("sm")]: {
-      margin: "0px 30px",
+    flexBasis: '40%',
+    margin: '0px 70px',
+    [theme.breakpoints.down('sm')]: {
+      margin: '0px 30px',
     },
-    [theme.breakpoints.down("xs")]: {
-      margin: "0px 0px 0px 15px",
-      flexBasis: "65%",
+    [theme.breakpoints.down('xs')]: {
+      margin: '0px 0px 0px 15px',
+      flexBasis: '65%',
     },
   },
   progressContainer: {
     margin: theme.spacing(1, 0, 0, 0),
-    "& .MuiLinearProgress-colorPrimary": {
-      borderRadius: "2px",
+    '& .MuiLinearProgress-colorPrimary': {
+      borderRadius: '2px',
     },
-    [theme.breakpoints.down("xs")]: {
-      "& .MuiBox-root": {
-        minWidth: "auto",
+    [theme.breakpoints.down('xs')]: {
+      '& .MuiBox-root': {
+        minWidth: 'auto',
       },
-      "& .MuiLinearProgress-root": {
-        height: "5px",
+      '& .MuiLinearProgress-root': {
+        height: '5px',
       },
     },
   },
@@ -116,41 +118,42 @@ const useStyles = makeStyles((theme) => ({
     font: `normal ${theme.typography.fontWeightMedium} ${theme.spacing(
       1.4
     )}px Work Sans`,
-    lineHeight: "16px",
+    lineHeight: '16px',
   },
   divider: {
     margin: theme.spacing(3, 0, 2, 0),
   },
   skeleton: {
-    margin: "10px 10px",
+    margin: '10px 10px',
   },
   cursor: {
-    cursor: "pointer",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
+    cursor: 'pointer',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   noReview: {
-    color: "var(--light-gray)",
+    color: 'var(--light-gray)',
     font: `normal 600 ${theme.spacing(1.4)}px Work Sans`,
-    marginTop: "5px",
+    marginTop: '5px',
   },
   messageHeading: {
     font: `normal 700 ${theme.spacing(2.0)}px Work Sans`,
-    color: "var(--black300)",
-    lineHeight: "28px",
-    marginBottom: "9px",
+    color: 'var(--black300)',
+    lineHeight: '28px',
+    marginBottom: '9px',
 
     // margin: theme.spacing(0.8, 0),
   },
 }));
 const RatingsReviews = (props: any) => {
+  const router = useRouter();
   const classes = useStyles();
   // const dispatch = useDispatch()
   // const [value, setValue] = React.useState(4.5);
   const [ratingModalVisibility, setRatingModalVisibility] = useState(false);
   const [loginAlert, showLoginAlert] = useState(false);
-  const history = useNavigate();
+  // const history = useNavigate();
   const skeletonLoader = useSelector((state: ReducersModal) => {
     return state.loadingReducer.skeletonLoader;
   });
@@ -164,30 +167,34 @@ const RatingsReviews = (props: any) => {
   );
   // const ratingData = reviewData?.data?.[0] || {};
   return (
-    <div id={"reviewsAndReviews"}>
+    <div id={'reviewsAndReviews'}>
       <MessageDialogue
-        cancelText={"Cancel"}
-        okText={"Okay"}
+        cancelText={'Cancel'}
+        okText={'Okay'}
         open={loginAlert}
         handleClose={() => showLoginAlert(!loginAlert)}
         onOk={() => {
-          const redirectTo = `?redirectTo=${location.pathname}`
-          history({
+          const redirectTo = `?redirectTo=${location.pathname}`;
+          // history.push({
+          //   pathname: `${Utils.routes.LOGIN_OTP}`,
+          //   search: redirectTo,
+          // });
+          router.push({
             pathname: `${Utils.routes.LOGIN_OTP}`,
-            search:redirectTo
+            query: { search: 'redirectTo' },
           });
           showLoginAlert(false);
         }}
-        message={"Please login to proceed"}
-        heading={"The Body Shop"}
+        message={'Please login to proceed'}
+        heading={'The Body Shop'}
         headingClass={classes.messageHeading}
       />
       <div className={classes.headContainer}>
         {!reviewData?.isReviewAllowed && reviewData?.data?.length === 0 ? (
-          ""
+          ''
         ) : (
           <Typography className={classes.heading}>
-            {skeletonLoader ? <Skeleton width={120} /> : "Rating & Reviews"}
+            {skeletonLoader ? <Skeleton width={120} /> : 'Rating & Reviews'}
           </Typography>
         )}
         <div
@@ -202,7 +209,7 @@ const RatingsReviews = (props: any) => {
           ) : (
             reviewData?.isReviewAllowed && (
               <>
-                <EDIT_ICON />
+                {/* <EDIT_ICON /> */}
                 <Typography className={classes.button}>
                   Review product
                 </Typography>
@@ -221,7 +228,7 @@ const RatingsReviews = (props: any) => {
                     <Skeleton
                       className={classes.skeleton}
                       variant="rectangular"
-                      width={"50%"}
+                      width={'50%'}
                       height={10}
                       key={index}
                     />
@@ -254,8 +261,8 @@ const RatingsReviews = (props: any) => {
 
                     <div className={classes.ratingContainer}>
                       <Typography className={classes.caption}>
-                        {reviewData?.totalCount || 0} verified{" "}
-                        {reviewData?.totalCount <= 1 ? "user" : "users"}
+                        {reviewData?.totalCount || 0} verified{' '}
+                        {reviewData?.totalCount <= 1 ? 'user' : 'users'}
                       </Typography>
                     </div>
                   </div>
@@ -275,7 +282,7 @@ const RatingsReviews = (props: any) => {
                       <Skeleton
                         className={classes.skeleton}
                         variant="rectangular"
-                        width={"50%"}
+                        width={'50%'}
                         height={10}
                       />
                     </div>
@@ -320,11 +327,11 @@ const RatingsReviews = (props: any) => {
             <Divider light className={classes.divider} />
           </>
         ) : (
-          ""
+          ''
         )
         // <Typography className={classes.noReview}>No Reviews Yet</Typography>
       }
-      {ratingModalVisibility && (
+      {/* {ratingModalVisibility && (
         <RatingModal
           product={product}
           // sku={sku}
@@ -334,7 +341,7 @@ const RatingsReviews = (props: any) => {
             setRatingModalVisibility(false);
           }}
         />
-      )}
+      )} */}
     </div>
   );
 };
