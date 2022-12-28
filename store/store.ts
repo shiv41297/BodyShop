@@ -10,7 +10,7 @@ import {
   loadingReducer,
 } from "../component/components/pagesComponents/home/reducer";
 import aboutReducer from "./about/aboutReducer";
-import { productDetailReducer } from "./productDetail/reducer";
+import { productDetailReducer } from "../component/components/productDetail/reducer";
 
 const combinedReducer = combineReducers({
   counter,

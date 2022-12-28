@@ -13,8 +13,8 @@ import clsx from "clsx";
 import MessageDialogue from "./messageDialogue";
 import { useRouter } from "next/router";
 import { ReducersModal } from "../../models";
-import { hideLoader, hideSkeleton, showLoader } from "../../state/actions/homeActions";
 import { isAuthenticated } from "../../utils/session";
+import { hideLoader, hideSkeleton, showLoader } from "../../components/pagesComponents/home/actions";
 // import { FAVORITE_ICON, HEART, PRODUCT_PLACEHOLDER } from "utils/constantImages";
 
 const useStyles = makeStyles((theme) => ({
