@@ -6,7 +6,7 @@ dev_build:
   image: node:14.19
   stage: dev_build
   script:
-    - cp $ENV_DEV .env
+    - cp $DEV_ENV .env
     - cp .env env
     - npm cache clean --force
     - npm cache verify
