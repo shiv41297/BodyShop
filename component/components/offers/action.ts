@@ -1,7 +1,6 @@
+import { hideSkeleton } from "../../../store/home/action";
 import Utils from "../../utils";
 import request from "../../utils/request";
-import { hideSkeleton } from "../pagesComponents/home/actions";
-// import { hideSkeleton } from "../home/actions";
 
 
 export function getProductOffers(params = `?page=1&limit=2`, callback?: Function) {

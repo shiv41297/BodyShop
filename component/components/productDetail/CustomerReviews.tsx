@@ -1,12 +1,19 @@
-import React, { useState } from "react";
-import { Typography, Divider, Theme } from "@mui/material";
-import { makeStyles } from "@mui/styles"
-import { useRouter } from 'next/router'
+import React, { useState } from 'react';
+import { Typography, Divider, Theme } from '@mui/material';
+import { makeStyles } from '@mui/styles';
+import { useRouter } from 'next/router';
 // import LinearProgressReviews from "../../components/linearProgressReviews";
 // import ContainedButton from "../../components/containedButton";
-import Skeleton from "@mui/material/Skeleton";
-import { useDispatch, useSelector } from "react-redux";
-import { submitReviewPoll, submitReviewReport } from "./action";
+import Skeleton from '@mui/material/Skeleton';
+import { useDispatch, useSelector } from 'react-redux';
+import { submitReviewPoll, submitReviewReport } from './action';
+import MessageDialogue from '../../common/product/messageDialogue';
+import Utils from '../../utils';
+import CustomButton from '../../common/button';
+import { isAuthenticated } from '../../utils/session';
+import images from '../../utils/images';
+import LinearProgressReviews from '../../common/linearProgressReviews';
+import ContainedButton from '../../common/containedButton';
 // import { ReducersModal } from "../../models";
 // import { useNavigate, useLocation } from "react-router-dom";
 // import { submitReviewPoll, submitReviewReport } from "./action";
@@ -14,17 +21,17 @@ import { submitReviewPoll, submitReviewReport } from "./action";
 // import Utils from "../../utils";
 // import { isAuthenticated } from "../../utils/session";
 // import MessageDialogue from "../../components/common/product/messageDialogue";
-// import { PRODUCT_PLACEHOLDER, STAR_TWO } from "utils/constantImages";
+// import { PRODUCT_PLACEHOLDER, STAR_TWO } from "../../utils/images";
 
 const useStyles = makeStyles((theme: Theme) => ({
   heading: {
     font: `normal ${theme.typography.fontWeightBold} ${theme.spacing(
       1.8
     )}px Recoleta Alt`,
-    lineHeight: "24px",
-    letterSpacing: "0.02em",
-    color: "var(--secondary-black)",
-    [theme.breakpoints.down("xs")]: {
+    lineHeight: '24px',
+    letterSpacing: '0.02em',
+    color: 'var(--secondary-black)',
+    [theme.breakpoints.down('xs')]: {
       font: `normal ${theme.spacing(1.6)}px Recoleta Alt Bold`,
     },
   },
@@ -32,11 +39,11 @@ const useStyles = makeStyles((theme: Theme) => ({
     font: `normal ${theme.typography.fontWeightBold} ${theme.spacing(
       1.4
     )}px Work Sans`,
-    lineHeight: "16px",
-    letterSpacing: "0.02em",
-    color: "var(--secondary-black)",
-    margin: "10px 0px",
-    [theme.breakpoints.down("xs")]: {
+    lineHeight: '16px',
+    letterSpacing: '0.02em',
+    color: 'var(--secondary-black)',
+    margin: '10px 0px',
+    [theme.breakpoints.down('xs')]: {
       font: `normal ${theme.spacing(1.4)}px Work Sans SemiBold`,
     },
   },
@@ -44,10 +51,10 @@ const useStyles = makeStyles((theme: Theme) => ({
     font: `normal ${theme.typography.fontWeightMedium} ${theme.spacing(
       1.4
     )}px Work Sans`,
-    lineHeight: "16px",
-    letterSpacing: "0.02em",
-    color: "var(--secondary-black)",
-    [theme.breakpoints.down("xs")]: {
+    lineHeight: '16px',
+    letterSpacing: '0.02em',
+    color: 'var(--secondary-black)',
+    [theme.breakpoints.down('xs')]: {
       font: `normal ${theme.spacing(1.4)}px Work Sans Medium`,
     },
   },
@@ -55,34 +62,34 @@ const useStyles = makeStyles((theme: Theme) => ({
     font: `normal ${theme.typography.fontWeightMedium} ${theme.spacing(
       1.4
     )}px Work Sans`,
-    lineHeight: "19px",
-    color: "var(--secondary-black)",
+    lineHeight: '19px',
+    color: 'var(--secondary-black)',
     margin: theme.spacing(1, 0),
-    inlineSize: "100%",
-    overflowWrap: "break-word",
-    [theme.breakpoints.down("xs")]: {
+    inlineSize: '100%',
+    overflowWrap: 'break-word',
+    [theme.breakpoints.down('xs')]: {
       font: `normal ${theme.spacing(1.4)}px Work Sans Regular`,
     },
   },
   headContainer: {
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "space-between",
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'space-between',
   },
   button: {
     font: `normal ${theme.typography.fontWeightBold} ${theme.spacing(
       1.4
     )}px Work Sans`,
-    lineHeight: "16px",
-    color: "var(--main-opacity)",
-    cursor: "pointer",
-    [theme.breakpoints.down("xs")]: {
+    lineHeight: '16px',
+    color: 'var(--main-opacity)',
+    cursor: 'pointer',
+    [theme.breakpoints.down('xs')]: {
       font: `normal ${theme.spacing(1.4)}px Work Sans SemiBold`,
     },
   },
   reviewNameContainer: {
-    display: "flex",
-    alignItems: "center",
+    display: 'flex',
+    alignItems: 'center',
   },
   star: {
     margin: theme.spacing(0, 0.5, 0.3, 1.5),
@@ -94,28 +101,28 @@ const useStyles = makeStyles((theme: Theme) => ({
     margin: theme.spacing(2, 0, 1, 0),
   },
   listContainer: {
-    width: "100%",
+    width: '100%',
     maxWidth: 380,
-    display: "flex",
+    display: 'flex',
   },
   list: {
     margin: theme.spacing(1, 0, 0, 0),
     font: `normal ${theme.typography.fontWeightMedium} ${theme.spacing(
       1.4
     )}px Work Sans`,
-    lineHeight: "16px",
-    [theme.breakpoints.down("xs")]: {
+    lineHeight: '16px',
+    [theme.breakpoints.down('xs')]: {
       margin: theme.spacing(1.5, 0, 0, 0),
       font: `normal ${theme.spacing(1.4)}px Work Sans Regular`,
     },
   },
   starContainer: {
-    flexBasis: "30%",
+    flexBasis: '30%',
   },
   progress: {
     margin: theme.spacing(0.8, 0),
-    "& .MuiLinearProgress-colorPrimary": {
-      borderRadius: "2px",
+    '& .MuiLinearProgress-colorPrimary': {
+      borderRadius: '2px',
     },
   },
   wasHelpful: {
@@ -123,9 +130,9 @@ const useStyles = makeStyles((theme: Theme) => ({
     font: `normal ${theme.typography.fontWeightBold} ${theme.spacing(
       1.6
     )}px Work Sans`,
-    lineHeight: "19px",
-    color: "var(--secondary-black)",
-    [theme.breakpoints.down("xs")]: {
+    lineHeight: '19px',
+    color: 'var(--secondary-black)',
+    [theme.breakpoints.down('xs')]: {
       font: `normal ${theme.spacing(1.4)}px Work Sans Medium`,
     },
   },
@@ -133,57 +140,57 @@ const useStyles = makeStyles((theme: Theme) => ({
     font: `normal ${theme.typography.fontWeightMedium} ${theme.spacing(
       1.3
     )}px Work Sans`,
-    lineHeight: "15px",
-    color: "var(--light-gray)",
-    [theme.breakpoints.down("xs")]: {
+    lineHeight: '15px',
+    color: 'var(--light-gray)',
+    [theme.breakpoints.down('xs')]: {
       font: `normal ${theme.spacing(1.2)}px Work Sans Regular`,
     },
   },
   yesNoButtonContainer: {
-    display: "flex",
+    display: 'flex',
     margin: theme.spacing(1, 0, 0, 0),
   },
   outDiv: {
     margin: theme.spacing(0, 1, 0, 0),
   },
   skeleton: {
-    margin: "10px 0px",
+    margin: '10px 0px',
   },
   skeletonContent: {
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-    width: "100%",
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    width: '100%',
   },
   skeletonContentColumn: {
-    display: "flex",
-    justifyContent: "space-between",
-    width: "100%",
+    display: 'flex',
+    justifyContent: 'space-between',
+    width: '100%',
   },
   columnContent: {
-    width: "35%",
+    width: '35%',
   },
 
   skeletonSpacing: {
-    margin: "20px",
+    margin: '20px',
   },
   flagIcon: {
     // padding: theme.spacing(1.2),
   },
   reportText: {
-    borderRadius: "4px",
+    borderRadius: '4px',
     font: `normal 600 ${theme.spacing(1.2)}px Work Sans !important`,
-    cursor: "pointer",
-    color: "var(--main-opacity)",
-    lineHeight: "16px",
-    padding: "6px 10px !important",
+    cursor: 'pointer',
+    color: 'var(--main-opacity)',
+    lineHeight: '16px',
+    padding: '6px 10px !important',
   },
   // reviewImagesContainer:{
   //   width: "100",
 
   // },
   reviewImages: {
-    marginTop: "20px",
+    marginTop: '20px',
     // display: "flex",
     // width: "100vw",
     // overflowX: "auto",
@@ -194,24 +201,24 @@ const useStyles = makeStyles((theme: Theme) => ({
     // "&::-webkit-scrollbar": {
     //   display: "none",
     // },
-    display: "flex",
-    width: "100%",
-    overflowX: "auto",
-    overflowY: "hidden",
-    "&::-webkit-scrollbar": {
+    display: 'flex',
+    width: '100%',
+    overflowX: 'auto',
+    overflowY: 'hidden',
+    '&::-webkit-scrollbar': {
       // display: "none",
-      width: "0 !important",
-      background: "rgba(0,66,54,.3)",
-      height: "7px",
-      borderRadius: "7px",
+      width: '0 !important',
+      background: 'rgba(0,66,54,.3)',
+      height: '7px',
+      borderRadius: '7px',
     },
-    "&::-webkit-scrollbar-thumb": {
-      backgroundColor: "var(--primary)!important",
-      borderRadius: "7px",
+    '&::-webkit-scrollbar-thumb': {
+      backgroundColor: 'var(--primary)!important',
+      borderRadius: '7px',
     },
-    [theme.breakpoints.down("xs")]: {
-      "&::-webkit-scrollbar": {
-        display: "none",
+    [theme.breakpoints.down('xs')]: {
+      '&::-webkit-scrollbar': {
+        display: 'none',
       },
     },
   },
@@ -222,39 +229,39 @@ const useStyles = makeStyles((theme: Theme) => ({
     // cursor: "pointer",
     width: theme.spacing(13),
     height: theme.spacing(13),
-    [theme.breakpoints.down("xs")]: {
-      height: "120px",
-      width: "120px",
+    [theme.breakpoints.down('xs')]: {
+      height: '120px',
+      width: '120px',
     },
   },
   reviewImg: {
-    borderRadius: "12px",
+    borderRadius: '12px',
     // height: "160px",
     // width: "160px",
     // objectFit: "cover",
 
     width: theme.spacing(13),
     height: theme.spacing(13),
-    objectFit: "cover",
-    [theme.breakpoints.down("xs")]: {
-      height: "120px",
-      width: "120px",
+    objectFit: 'cover',
+    [theme.breakpoints.down('xs')]: {
+      height: '120px',
+      width: '120px',
     },
   },
   flexInnerDiv: {
-    flexBasis: "45%",
+    flexBasis: '45%',
   },
   innerDiv: {
     margin: theme.spacing(0, 0, 1, 1),
     width: theme.spacing(14),
-    height: "auto",
+    height: 'auto',
     // cursor: "pointer",
   },
   messageHeading: {
     font: `normal 700 ${theme.spacing(2.0)}px Work Sans`,
-    color: "var(--black300)",
-    lineHeight: "28px",
-    marginBottom: "9px",
+    color: 'var(--black300)',
+    lineHeight: '28px',
+    marginBottom: '9px',
 
     // margin: theme.spacing(0.8, 0),
   },
@@ -283,9 +290,8 @@ const CustomerReviews: React.FC<Props> = (props: Props) => {
   );
   // const reviewData = review?.review || {};
   const profileData =
-    useSelector((state: any) => state.userDetailReducer?.userInfo) ||
-    {};
-  const urlkey = location.pathname.split("/p/")?.[0]?.split("/").pop();
+    useSelector((state: any) => state.userDetailReducer?.userInfo) || {};
+  const urlkey = location.pathname.split('/p/')?.[0]?.split('/').pop();
   // console.log({profileData, urlkey})
 
   const onClickHelpful = (value: string, reviewData: any) => {
@@ -320,18 +326,18 @@ const CustomerReviews: React.FC<Props> = (props: Props) => {
     <>
       <div className={classes.headContainer}>
         <MessageDialogue
-          cancelText={"Cancel"}
-          okText={"Okay"}
+          cancelText={'Cancel'}
+          okText={'Okay'}
           open={loginAlert}
           handleClose={() => showLoginAlert(!loginAlert)}
           onOk={() => {
-            history(
+            router.push(
               `${Utils.routes.LOGIN_OTP}?redirectTo=${location.pathname}`
             );
             showLoginAlert(false);
           }}
-          message={"Please login to proceed"}
-          heading={"The Body Shop"}
+          message={'Please login to proceed'}
+          heading={'The Body Shop'}
           headingClass={classes.messageHeading}
         />
         {skeletonLoader ? (
@@ -358,14 +364,15 @@ const CustomerReviews: React.FC<Props> = (props: Props) => {
         ) : data?.totalCount > 1 ? (
           <div
             onClick={() =>
-              history("/review-list", {
-                state: {
+              router.push({
+                pathname: '/review-list',
+                query: {
                   id: productData?.magentoId,
-                  subcategoryId: location?.state?.categoryId
-                    ? location?.state?.categoryId
-                    : "0",
-                  urlKey: location?.state?.urlKey ?? urlkey,
-                  pageName: "All Reviews",
+                  subcategoryId: 'location?.state?.categoryId'
+                    ? 'location?.state?.categoryId'
+                    : '0',
+                  urlKey: 'location?.state?.urlKey' ?? urlkey,
+                  pageName: 'All Reviews',
                 },
               })
             }
@@ -373,7 +380,7 @@ const CustomerReviews: React.FC<Props> = (props: Props) => {
             <Typography className={classes.button}>View More</Typography>
           </div>
         ) : (
-          ""
+          ''
         )}
       </div>
       {data?.data?.length > 0 || skeletonLoader
@@ -390,7 +397,7 @@ const CustomerReviews: React.FC<Props> = (props: Props) => {
                     />
                   ) : (
                     <Typography className={classes.subHeading}>
-                      {reviewData?.Title || ""}
+                      {reviewData?.Title || ''}
                     </Typography>
                   )}
                   {skeletonLoader ? (
@@ -408,7 +415,7 @@ const CustomerReviews: React.FC<Props> = (props: Props) => {
                         color="primary"
                         fullWidth={false}
                         variant="outlined"
-                        text={"Report This"}
+                        text={'Report This'}
                         onClick={() => {
                           if (!isAuthenticated()) showLoginAlert(true);
                           else sendReviewReport(reviewDat);
@@ -435,11 +442,11 @@ const CustomerReviews: React.FC<Props> = (props: Props) => {
                   ) : (
                     <>
                       <Typography className={classes.cardName}>
-                        {reviewData?.UserNickname || ""}
+                        {reviewData?.UserNickname || ''}
                       </Typography>
 
                       <div className={classes.star}>
-                        <STAR_TWO />
+                        <img src={images.STAR_TWO} alt="notFound" />
                       </div>
                       <Typography>{reviewData?.Rating || 0}</Typography>
                     </>
@@ -449,25 +456,25 @@ const CustomerReviews: React.FC<Props> = (props: Props) => {
                   <Skeleton variant="rectangular" height={60} />
                 ) : (
                   <Typography className={classes.reviews}>
-                    {reviewData?.ReviewText || ""}
+                    {reviewData?.ReviewText || ''}
                   </Typography>
                 )}
                 {skeletonLoader
                   ? Array.of(4, 5, 6).map((index: any) => (
                       <div
                         className={classes.skeletonContent}
-                        key={index + "customer_review"}
+                        key={index + 'customer_review'}
                       >
                         <Skeleton
                           className={classes.skeletonSpacing}
                           variant="rectangular"
-                          width={"50%"}
+                          width={'50%'}
                         />
                         :
                         <Skeleton
                           className={classes.skeletonSpacing}
                           variant="rectangular"
-                          width={"50%"}
+                          width={'50%'}
                         />
                       </div>
                     ))
@@ -485,10 +492,10 @@ const CustomerReviews: React.FC<Props> = (props: Props) => {
                                   key={item?.key || index}
                                   className={classes.list}
                                 >
-                                  {item?.data?.DimensionLabel || ""}
+                                  {item?.data?.DimensionLabel || ''}
                                 </Typography>
                               </div>
-                              <div style={{ margin: "0 20px" }}>
+                              <div style={{ margin: '0 20px' }}>
                                 <Typography key={item} className={classes.list}>
                                   :
                                 </Typography>
@@ -498,7 +505,7 @@ const CustomerReviews: React.FC<Props> = (props: Props) => {
                                   key={item?.data?.Value || index}
                                   className={classes.list}
                                 >
-                                  {item?.data?.ValueLabel || ""}
+                                  {item?.data?.ValueLabel || ''}
                                 </Typography>
                               </div>
                             </div>
@@ -514,25 +521,25 @@ const CustomerReviews: React.FC<Props> = (props: Props) => {
                     {Array.of(1, 2, 3).map((index: any) => (
                       <div
                         className={classes.columnContent}
-                        key={index + "customer_review"}
+                        key={index + 'customer_review'}
                       >
                         <Skeleton
                           className={classes.skeleton}
                           variant="rectangular"
                           height={10}
-                          width={"30%"}
+                          width={'30%'}
                         />
                         <Skeleton
                           className={classes.skeleton}
                           variant="rectangular"
                           height={10}
-                          width={"95%"}
+                          width={'95%'}
                         />
                         <Skeleton
                           className={classes.skeleton}
                           variant="rectangular"
                           height={10}
-                          width={"70%"}
+                          width={'70%'}
                         />
                       </div>
                     ))}
@@ -546,7 +553,7 @@ const CustomerReviews: React.FC<Props> = (props: Props) => {
                           <div key={item.key} className={classes.starContainer}>
                             <div className={classes.reviewNameContainer}>
                               <div className={classes.star1}>
-                                <STAR_TWO />
+                                <img src={images.STAR_TWO} alt="notFound" />
                               </div>
                               <Typography>{item?.data?.Value || 0}</Typography>
                             </div>
@@ -582,7 +589,10 @@ const CustomerReviews: React.FC<Props> = (props: Props) => {
                                   />
                                 ) : (
                                   <div className={classes.reviewImg}>
-                                    <PRODUCT_PLACEHOLDER />
+                                    <img
+                                      src={images.PRODUCT_PLACEHOLDER}
+                                      alt="notFound"
+                                    />
                                   </div>
                                 )}
                               </div>
@@ -598,13 +608,13 @@ const CustomerReviews: React.FC<Props> = (props: Props) => {
                       className={classes.skeleton}
                       variant="rectangular"
                       height={20}
-                      width={"50%"}
+                      width={'50%'}
                     />
                     <Skeleton
                       className={classes.skeleton}
                       variant="rectangular"
                       height={20}
-                      width={"50%"}
+                      width={'50%'}
                     />
                   </>
                 ) : (
@@ -628,7 +638,7 @@ const CustomerReviews: React.FC<Props> = (props: Props) => {
                               text="No"
                               onClick={() => {
                                 if (!isAuthenticated()) showLoginAlert(true);
-                                else onClickHelpful("No", reviewDat);
+                                else onClickHelpful('No', reviewDat);
                               }}
                             />
                           </div>
@@ -637,7 +647,7 @@ const CustomerReviews: React.FC<Props> = (props: Props) => {
                             text="Yes"
                             onClick={() => {
                               if (!isAuthenticated()) showLoginAlert(true);
-                              else onClickHelpful("Yes", reviewDat);
+                              else onClickHelpful('Yes', reviewDat);
                             }}
                           />
                         </div>

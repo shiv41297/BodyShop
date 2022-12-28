@@ -1,11 +1,8 @@
 import Utils from '../../utils';
 import request from '../../utils/request';
 import { getShoppingBagList } from '../../common/addToCart/action';
-import {
-  hideLoader,
-  hideSkeleton,
-  showLoader,
-} from '../pagesComponents/home/actions';
+import { hideLoader, hideSkeleton, showLoader } from '../../../store/home/action';
+
 // import { hideLoader, hideSkeleton, showLoader } from "../../component/components/pagesComponents/home/actions";
 
 export function getProductData(params: any, callback?: Function) {

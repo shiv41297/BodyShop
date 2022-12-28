@@ -33,12 +33,12 @@ import SmallMighty from './SmallMighty';
 import _ from 'lodash';
 import events from '../../utils/event/constant';
 import { customGa4Event } from '../../utils/gtag';
-import { hideSkeleton, showSkeleton } from '../pagesComponents/home/actions';
 import images from '../../utils/images';
 import Link from 'next/link';
 import Router, { useRouter } from 'next/router';
 import { PageMeta } from '../../page-meta/PageMeta';
 import { getProductData, getReviews } from './action';
+import { hideSkeleton, showSkeleton } from '../../../store/home/action';
 
 declare global {
   interface Window {
