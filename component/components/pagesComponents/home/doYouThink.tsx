@@ -1,10 +1,10 @@
 import {
-  makeStyles,
-  createStyles,
+ 
   Theme,
   Grid,
   Typography,
-} from "@material-ui/core";
+} from "@mui/material";
+import { makeStyles } from "@mui/styles";
 import { useRouter } from "next/router";
 import { useState } from "react";
 import CustomButton from "../../../common/button";
@@ -16,7 +16,7 @@ import Utils from "../../../utils";
 // import { useHistory } from "react-router";
 
 const useStyles = makeStyles((theme: Theme) =>
-  createStyles({
+  ({
     doYouThink: {
       padding: theme.spacing(2.5, 2),
       margin: theme.spacing(2, 0),

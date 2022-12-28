@@ -1,18 +1,13 @@
-import {
-  createStyles,
-  Grid,
-  makeStyles,
-  Theme,
-  Typography,
-} from "@material-ui/core";
+import { Grid, Theme, Typography } from "@mui/material";
+import { makeStyles } from "@mui/styles";
 import clsx from "clsx";
 import format from "date-fns/format";
 import { useSelector } from "react-redux";
 import { ReducersModal } from "../../models";
 import Utils from "../../utils";
 
-const useStyles = makeStyles((theme: Theme) =>
-  createStyles({
+const useStyles : any = makeStyles((theme: Theme) =>
+ ({
     pointBox: {
       background: "var(--white)",
       border: "2px solid #3A857E",

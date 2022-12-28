@@ -1,6 +1,6 @@
 import request from "../../utils/request"
 import Utils from "../../utils";
-import { hideLoader, hideSkeleton, showLoader } from "../../state/actions/homeActions";
+import { hideLoader, hideSkeleton, showLoader } from "../../../store/home/action";
 
 export const getShoppingBagList = (params?: any, callback?: Function) => {
     return (dispatch: any, _getState: any) => {

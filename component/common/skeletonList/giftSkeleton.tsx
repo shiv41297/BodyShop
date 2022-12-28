@@ -1,13 +1,13 @@
 
 
 
-
-import { makeStyles, createStyles, Theme, Grid } from "@material-ui/core";
+import {  Grid, Theme } from "@mui/material";
 import Skeleton from "@mui/material/Skeleton";
 import { useEffect } from "react";
+import { makeStyles } from "@mui/styles";
 
 const useStyles = makeStyles((theme: Theme) =>
-  createStyles({
+  ({
     skeletonContainer: {
       display: "flex",
       flexDirection: "column"

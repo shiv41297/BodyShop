@@ -1,14 +1,11 @@
 
-import {
-    createStyles,
-    makeStyles,
-    Theme
-} from "@material-ui/core";
+import { makeStyles } from "@mui/styles";
 import Skeleton from "@mui/material/Skeleton";
 import { useEffect } from "react";
+import { Theme } from "@mui/material";
 
 const useStyles = makeStyles((theme: Theme) =>
-    createStyles({
+    ({
         paymentDiv: {
             padding: theme.spacing(2.5, 0),
             marginLeft: theme.spacing(1.5),

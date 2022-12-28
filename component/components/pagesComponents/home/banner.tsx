@@ -1,18 +1,14 @@
-import {
-  makeStyles,
-  createStyles,
-  Theme,
-  
-} from "@material-ui/core";
+import { makeStyles } from "@mui/styles";
 // import Utils from "../../../utils";
 import Slider from "react-slick";
 import Content1 from "./bannerContent/content1";
 import Content3 from "./bannerContent/content3";
 import Content4 from "./bannerContent/content4";
 import Content2 from "./bannerContent/content2";
+import { Theme } from "@mui/material";
 
 const useStyles = makeStyles((theme: Theme) =>
-  createStyles({
+ ({
     bannerRoot: {
       // background: `linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url(${Utils.images.BANNER_HOME}) center center  no-repeat`,
       backgroundSize: "cover !important",

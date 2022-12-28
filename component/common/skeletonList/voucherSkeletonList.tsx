@@ -1,8 +1,9 @@
-import { makeStyles, createStyles, Theme, Grid } from "@material-ui/core";
+import { makeStyles } from "@mui/styles";
 import Skeleton from "@mui/material/Skeleton";
+import { Grid, Theme } from "@mui/material";
 
 const useStyles = makeStyles((theme: Theme) =>
-    createStyles({
+   ({
         gridRoot: {
             margin: theme.spacing(1, 0),
             [theme.breakpoints.down("xs")]: {

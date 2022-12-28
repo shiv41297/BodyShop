@@ -1,17 +1,17 @@
 import {
-  makeStyles,
-  createStyles,
+  
   Theme,
   Grid,
   Typography,
-} from "@material-ui/core";
+} from "@mui/material";
+import { makeStyles } from "@mui/styles";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from "react-responsive-carousel";
 import Utils from "../../../utils";
 import _ from "lodash";
 
 const useStyles = makeStyles((theme: Theme) =>
-  createStyles({
+ ({
     testimonial: {
       padding: theme.spacing(4, 2),
       margin: theme.spacing(3, 0),

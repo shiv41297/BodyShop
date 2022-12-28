@@ -6,19 +6,15 @@ import AddToCart from '../addToCart';
 import _ from 'lodash';
 
 // import { getWishList } from "../../../pages/wishlist/action";
-import { makeStyles } from '@mui/styles';
+import { makeStyles } from "@mui/styles";
 
-import clsx from 'clsx';
-import MessageDialogue from './messageDialogue';
-import { useRouter } from 'next/router';
-import { ReducersModal } from '../../models';
-import { isAuthenticated } from '../../utils/session';
-import { IconButton, Rating, Theme, Typography } from '@mui/material';
-import {
-  hideLoader,
-  hideSkeleton,
-  showLoader,
-} from '../../../store/home/action';
+import clsx from "clsx";
+import MessageDialogue from "./messageDialogue";
+import { useRouter } from "next/router";
+import { ReducersModal } from "../../models";
+import { isAuthenticated } from "../../utils/session";
+import { IconButton, Rating, Theme, Typography } from "@mui/material";
+import { hideLoader, hideSkeleton, showLoader } from "../../../store/home/action";
 // import { FAVORITE_ICON, HEART, PRODUCT_PLACEHOLDER } from "utils/constantImages";
 
 const useStyles = makeStyles((theme: Theme) => ({
