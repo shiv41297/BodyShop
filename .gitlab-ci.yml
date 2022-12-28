@@ -9,7 +9,7 @@ dev_build:
     - cp .env env
     - npm cache clean --force
     - npm cache verify
-    - npm install
+    - npm i
     #- npm i --force
     - ls -la
     - cat env
