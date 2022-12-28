@@ -1,10 +1,8 @@
 import {
-  makeStyles,
-  createStyles,
   Theme,
   Typography,
-} from "@material-ui/core";
-
+} from "@mui/material";
+import { makeStyles } from "@mui/styles";
 import Utils from "../../../utils";
 import clsx from "clsx";
 import _ from "lodash";
@@ -12,7 +10,7 @@ import MultiCarousel from "../../multiCarousel";
 
 
 const useStyles = makeStyles((theme: Theme) =>
-  createStyles({
+  ({
     haveYouSeenRoot: {
       backgroundColor: theme.palette.primary.main,
       marginTop: theme.spacing(5),

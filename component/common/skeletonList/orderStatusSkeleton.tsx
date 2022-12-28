@@ -1,13 +1,8 @@
-
-import {
-    makeStyles,
-    createStyles,
-    Theme,
-
-} from "@material-ui/core";
+import { makeStyles } from "@mui/styles";
 import Skeleton from "@mui/material/Skeleton";
+import { Theme } from "@mui/material";
 const useStyles = makeStyles((theme: Theme) =>
-    createStyles({
+    ({
 
         skeleton: {
             margin: theme.spacing(1, 0.5),

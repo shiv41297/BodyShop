@@ -1,16 +1,15 @@
 import {
-    makeStyles,
     Theme,
-    createStyles,
     Typography,
     Button,
-} from "@material-ui/core";
+} from "@mui/material";
+import { makeStyles } from "@mui/styles";
 import Utils from "../../../../utils";
 import _ from "lodash";
 import clsx from 'clsx';
 
 const useStyles = makeStyles((theme: Theme) =>
-    createStyles({
+    ({
         heading: {
             font: `normal ${theme.spacing(
                 2.7

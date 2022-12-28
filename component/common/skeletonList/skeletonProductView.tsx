@@ -1,10 +1,11 @@
-import { makeStyles, createStyles,  Grid, Box } from "@material-ui/core";
+import { makeStyles } from "@mui/styles";
 import Skeleton from "@mui/material/Skeleton";
 import { useEffect } from "react";
 import clsx from 'clsx';
+import { Grid, Box } from "@mui/material";
 
 const useStyles = makeStyles(() =>
-    createStyles({
+   ({
         skeletonContainer: {
             margin: "20px 0px",
             width: "100%"

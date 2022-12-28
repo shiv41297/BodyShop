@@ -1,7 +1,8 @@
-import { makeStyles, createStyles, Input } from '@material-ui/core'
+import { Input, Theme } from "@mui/material";
+import { makeStyles } from "@mui/styles";
 
-const useStyles = makeStyles((theme) =>
-    createStyles({
+const useStyles: any = makeStyles((theme: Theme) =>
+    ({
         searchDiv: {
             display: "flex",
             flexBasis: "100%",

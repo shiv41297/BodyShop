@@ -1,10 +1,4 @@
-import {
-  Typography,
-  Grid,
-  makeStyles,
-  createStyles,
-  Theme,
-} from "@material-ui/core";
+
 import Utils from "../../utils";
 import React, { useEffect, useState } from "react";
 // import MobileHeader from "./mobileHeader";
@@ -16,10 +10,9 @@ import { useRouter } from "next/router";
 
 import { useSelector, useDispatch } from "react-redux";
 
-import { Badge, Box } from "@mui/material";
+import { Badge, Box, createStyles, Grid, Theme, Typography } from "@mui/material";
 import { ROUTE_CONSTANTS } from "../../constants/routeConstants";
 import MessageDialogue from "../../common/product/messageDialogue";
-import { showSkeleton, getHomeData, hideSkeleton } from "../../state/actions/homeActions";
 import { isAuthenticated } from "../../utils/session";
 import SearchIndex from "../searchModal";
 import Image from "next/image";
@@ -32,12 +25,14 @@ import Image from "next/image";
 //   SEARCH,
 //   LOCATION,
 // } from "utils/constantImages";
+import { makeStyles } from "@mui/styles";
+import { showSkeleton, getHomeData, hideSkeleton } from "../../../store/home/action";
 
 // import { getUserProfile } from "../../pages/account/profile/action";
 // import { getDashboardData } from "../../pages/account/lybc/action";
 
-const useStyles = makeStyles((theme: Theme) =>
-  createStyles({
+const useStyles: any = makeStyles((theme: Theme) =>
+  ({
     stickyHeader: {
       position: "fixed",
       width: "100%",
@@ -247,7 +242,7 @@ const Headers = () => {
                     className={classes.locationImg}
                     onClick={() => history.push(Utils.routes.STORE)}
                   >
-                    <Image src={Utils.images.LOCATION} alt="location" width={35} height={35} />
+                    <Image src={Utils.images.LOCATION} alt="location" width={20} height={20} />
                   </div>
 
                   <Typography
@@ -263,7 +258,7 @@ const Headers = () => {
                 <div className={classes.centerLogo}>
                   <div className={classes.Img} onClick={redirectToHome}>
                     {/* <LOGO /> */}
-                    {/* <Image src={Utils.images.LOGO} width="50px" height="51px" /> */}
+                    <Image src={Utils.images.LOGO} alt="logo" width={51} height={51} />
                   </div>
                 </div>
               </Grid>
@@ -271,7 +266,7 @@ const Headers = () => {
                 <div className={classes.rightIcon}>
                   <div className={classes.Img} onClick={() => setOpen(true)}>
                     {/* <SEARCH /> */}
-                    {/* <Image src={Utils.images.SEARCH} width="21px" height="21px" /> */}
+                    <Image src={Utils.images.SEARCH} alt="search" width={21} height={21} />
                   </div>
 
                   <div>
@@ -285,7 +280,7 @@ const Headers = () => {
                         }}
                       >
                         {/* <HEART_FILLED /> */}
-                        {/* <Image src={Utils.images.HEART_FILLED} width="21px" height="21px" /> */}
+                        <Image src={Utils.images.HEART_FILLED} alt="HEART_FILLED" width={21} height={21} />
                       </span>
                     </Badge>
                   </div>
@@ -308,7 +303,7 @@ const Headers = () => {
                     // }}
                   >
                     {/* <PROFILE /> */}
-                    {/* <Image src={Utils.images.PROFILE} width="21px" height="21px" /> */}
+                    <Image src={Utils.images.PROFILE} alt="profile" width={21} height={21}/>
                   </div>
                   <div>
                     <Badge badgeContent={totalItems} className={classes.badge}>
@@ -317,7 +312,7 @@ const Headers = () => {
                         onClick={() => history.push("/shopping-bag")}
                       >
                         {/* <CART /> */}
-                        {/* <Image src={Utils.images.CART} width="21px" height="21px" /> */}
+                        <Image src={Utils.images.CART} alt="cart" width={21} height={21}/>
                       </span>
                     </Badge>
                   </div>

@@ -2,10 +2,9 @@ import axios from "axios"
 import { isAuthenticated, getAuthToken,  isGuestUser } from "./session"
 import Utils from ".";
 import { v4 as uuidv4 } from 'uuid';
-import { hideLoader } from "../state/actions/homeActions";
-import { store } from "../state/store/store";
+import { initStore } from "../../store/store";
 
-const initstore = store;
+const initstore = initStore;
 
 const instance = axios.create({
     baseURL: `${process.env.REACT_APP_API_BASE_URL}`
@@ -63,12 +62,12 @@ instance.interceptors.response.use(
         return success;
     },
     (err) => {
-        if (err.response.status === 503) { //under maintainance
-            initstore.dispatch({ type: "undermaintainance", payload: { undermaintainance: 1 } })
-            initstore.dispatch(hideLoader())
-        }
-        else {
-            initstore.dispatch({ type: "undermaintainance", payload: { undermaintainance: 0 } })
+        // if (err.response.status === 503) { //under maintainance
+        //     initstore.dispatch({ type: "undermaintainance", payload: { undermaintainance: 1 } })
+        //     initstore.dispatch(hideLoader())
+        // }
+        // else {
+        //     initstore.dispatch({ type: "undermaintainance", payload: { undermaintainance: 0 } })
             
             // if (!window.navigator.onLine) {
             //     initstore.dispatch(hideLoader())
@@ -84,10 +83,11 @@ instance.interceptors.response.use(
             //     removeSession();
                
             // }
+            return err;
 
         }
-        return Promise.reject(err);
-    }
+        // return Promise.reject(err);
+    // }
 );
 
 

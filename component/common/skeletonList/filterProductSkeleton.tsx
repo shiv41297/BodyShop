@@ -1,12 +1,13 @@
-import { Divider, Grid } from "@material-ui/core"
-import { makeStyles, createStyles, Theme } from "@material-ui/core";
+
 import Skeleton from "@mui/material/Skeleton";
 import { useEffect } from "react";
 import FilterListSkeleton from "./filterListSkeleton";
 import SkeletonProductView from "./skeletonProductView";
+import { makeStyles } from "@mui/styles";
+import { Divider, Grid, Theme } from "@mui/material";
 
 const useStyles = makeStyles((theme: Theme) =>
-    createStyles({
+    ({
         select: {
             display: "flex",
             flexDirection: "row",

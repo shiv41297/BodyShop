@@ -1,11 +1,12 @@
 
+import { makeStyles } from "@mui/styles";
 
-import { makeStyles, createStyles, Theme, Box } from "@material-ui/core";
 import Skeleton from "@mui/material/Skeleton";
 import { useEffect } from "react";
 import SkeletonProductView from './skeletonProductView';
+import { Box, Theme } from "@mui/material";
 const useStyles = makeStyles((theme: Theme) =>
-    createStyles({
+    ({
         bannerRoot: {
             background: "var(--white)",
             position: "relative",

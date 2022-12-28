@@ -1,4 +1,3 @@
-import { makeStyles, createStyles, Theme, Button } from "@material-ui/core";
 import { useDispatch } from "react-redux";
 // import { useState } from "react";
 // import ShoppingBagModal from "../miniCart/shoppingBag";
@@ -8,6 +7,8 @@ import { useDispatch } from "react-redux";
 // import Utils from "../../utils";
 import React from "react";
 import { notifyMe } from "../product/action";
+import theme from "../../../config/theme";
+import { Box, Button, Theme } from "@mui/material";
 // import { addToBag as eventAddToBag } from "../../utils/event/action";
 // import { customGa4Event } from "../../utils/gtag";
 // import { getWishList } from "../../../pages/wishlist/action";
@@ -18,8 +19,8 @@ declare global {
   }
 }
 
-const useStyles = makeStyles((theme: Theme) =>
-  createStyles({
+const makeStyles = (theme: Theme) => {
+  return {
     btn: {
       font: `normal ${theme.spacing(
         1.3
@@ -42,8 +43,7 @@ const useStyles = makeStyles((theme: Theme) =>
         textAlign: "center",
       },
     },
-  })
-);
+  }};
 
 interface Props {
   product: any;
@@ -56,7 +56,7 @@ interface Props {
 }
 
 const AddToCart: React.FC<any> = (props: Props) => {
-  const classes = useStyles();
+  const classes = makeStyles(theme);
   const item = props?.product;
   const { disabled } = props;
 
@@ -231,24 +231,24 @@ const AddToCart: React.FC<any> = (props: Props) => {
       {
         // !item?.isInStock && item.type !== "configurable" ? (
         !props?.isInStock ? (
-          <div className={classes.btnWidth}>
+          <Box sx={classes.btnWidth}>
             <Button
               color="primary"
               variant="outlined"
-              className={classes.btn}
+              sx={classes.btn}
               onClick={() => onNotify(item)}
             // disabled
             >
               {/* {item.type === "configurable" ? `Select ${item?.configurableProductOptions?.[0]?.label}` : "Notify Me"} */}
               {"Notify Me"}
             </Button>
-          </div>
+          </Box>
         ) : (
-          <div className={classes.btnWidth}>
+          <Box sx={classes.btnWidth}>
             <Button
               color="primary"
               variant="contained"
-              className={classes.btn}
+              sx={classes.btn}
               // onClick={() => enableShoppingBag(item)}
               disabled={disabled}
             >
@@ -257,7 +257,7 @@ const AddToCart: React.FC<any> = (props: Props) => {
                 : "Add to Bag"}
               {/* {item.type === "configurable" ? `Select Color` : "Add to Bag"} */}
             </Button>
-          </div>
+          </Box>
         )
       }
       {/* {shoppingBag && (

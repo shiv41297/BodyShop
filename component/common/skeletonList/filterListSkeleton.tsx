@@ -1,9 +1,9 @@
-import { makeStyles, createStyles } from "@material-ui/core";
+import { makeStyles } from "@mui/styles";
 import Skeleton from "@mui/material/Skeleton";
 import { useEffect } from "react";
 
 const useStyles = makeStyles(() =>
-  createStyles({
+  ({
     skeletonContainer: {
       display: "flex",
       width: "100%",
