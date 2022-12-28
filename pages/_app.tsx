@@ -33,10 +33,10 @@ function MyApp({
       <Provider store={store}>
         <ThemeProvider theme={theme}>
           <CssBaseline />
-          {/* <Headers /> */}
+          <Headers />
           {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
           <Component {...props.pageProps} />
-          {/* <Footer /> */}
+          <Footer />
         </ThemeProvider>
       </Provider>
     </CacheProvider>
