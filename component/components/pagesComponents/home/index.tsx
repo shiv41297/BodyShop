@@ -21,14 +21,13 @@ import { useRouter } from "next/router";
 import { saveLocationHistory } from "../../../common/breadCrumb/action";
 import { HomeSkeletonList } from "../../../common/skeletonList/homeSkeletonList";
 import DoubleCard from "../../../common/doubleCard";
-import { createStyles  } from "@mui/styles";
 import { Theme } from "@mui/material";
 import { makeStyles } from "@mui/styles";
 
 
 
 const useStyles: any = makeStyles((theme: Theme) =>
-  createStyles({
+  ({
     homeRoot: {
 
       maxWidth: "1920px",

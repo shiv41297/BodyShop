@@ -1,6 +1,7 @@
 // import React from "react";
-import { Typography } from "@material-ui/core";
 // import { SUB_MENU_PIC, SHOP_NOW_ARROW } from "utils/constantImages";
+
+import { Typography } from "@mui/material";
 
 // const useStyles = makeStyles((theme) => ({
 //   dropdownContent: {

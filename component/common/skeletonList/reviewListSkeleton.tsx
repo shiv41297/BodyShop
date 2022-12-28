@@ -1,13 +1,9 @@
-import {
-    createStyles,
-    Divider,
-    makeStyles,
-    Theme
-} from "@material-ui/core";
+import { makeStyles } from "@mui/styles";
 import Skeleton from "@mui/material/Skeleton";
 import clsx from 'clsx';
+import { Divider, Theme } from "@mui/material";
 const useStyles = makeStyles((theme: Theme) =>
-    createStyles({
+    ({
         divider: {
             border: "1px solid var(--text-color)",
             margin: theme.spacing(2, 0),

@@ -2,7 +2,6 @@ import axios from "axios"
 import { isAuthenticated, getAuthToken,  isGuestUser } from "./session"
 import Utils from ".";
 import { v4 as uuidv4 } from 'uuid';
-import { hideLoader } from "../components/pagesComponents/home/actions";
 import { initStore } from "../../store/store";
 
 const initstore = initStore;

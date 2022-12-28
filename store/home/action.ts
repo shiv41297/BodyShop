@@ -49,23 +49,6 @@ export const getLatestReviews = (query: string) => {
 }
 
 
-// const convertObjToArray = (data: any) => {
-//   const arr: any = [];
-
-//   if (Object.keys(data)?.length > 0) {
-//     const keysArr = Object.keys(data)
-//     const sortedKeys = keysArr?.sort((a: string, b: string) => {
-//       const no1 = a.split('_')?.length > 1 && a.split('_')[1] ? Number(a.split('_')[1]) : 0;
-//       const no2 = b.split('_')?.length > 1 && b.split('_')[1] ? Number(b.split('_')[1]) : 0
-//       return no1 - no2
-//     })
-//     sortedKeys.forEach((key: string) => {
-//       arr.push(data[key])
-//     })
-
-//   }
-//   return arr;
-// }
 const filterDataForWeb = (data: any) => {
   const webData = data.filter((obj: any) => obj.ui_type === 'web' || obj.ui_type === 'both')
   return webData;
