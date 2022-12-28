@@ -1,9 +1,9 @@
-import Utils from "../../utils";
-import { useState, useEffect } from "react";
-import { addToWishList, removeFromWishList } from "./action";
-import { useDispatch, useSelector } from "react-redux";
-import AddToCart from "../addToCart";
-import _ from "lodash";
+import Utils from '../../utils';
+import { useState, useEffect } from 'react';
+import { addToWishList, removeFromWishList } from './action';
+import { useDispatch, useSelector } from 'react-redux';
+import AddToCart from '../addToCart';
+import _ from 'lodash';
 
 // import { getWishList } from "../../../pages/wishlist/action";
 import { makeStyles } from "@mui/styles";
@@ -20,39 +20,39 @@ import { hideLoader, hideSkeleton, showLoader } from "../../../store/home/action
 const useStyles = makeStyles((theme: Theme) => ({
   productCard1: {
     padding: theme.spacing(3, 1),
-    [theme.breakpoints.down("sm")]: {
-      padding: "10px 0px 10px 10px",
+    [theme.breakpoints.down('sm')]: {
+      padding: '10px 0px 10px 10px',
     },
   },
   productcard3: {
     padding: theme.spacing(3, 1),
-    [theme.breakpoints.down("sm")]: {
-      padding: "10px",
+    [theme.breakpoints.down('sm')]: {
+      padding: '10px',
     },
   },
   productCard4: {
     padding: theme.spacing(3, 1),
-    [theme.breakpoints.down("sm")]: {
-      padding: "10px 0px",
+    [theme.breakpoints.down('sm')]: {
+      padding: '10px 0px',
     },
   },
   productcard2: {
     padding: theme.spacing(3, 1),
 
-    [theme.breakpoints.down("sm")]: {
+    [theme.breakpoints.down('sm')]: {
       padding: theme.spacing(0, 1, 0, 0),
     },
   },
   imageContainer: {
-    position: "relative",
-    cursor: "pointer",
+    position: 'relative',
+    cursor: 'pointer',
   },
   freeSampleImgDiv: {
-    position: "relative",
+    position: 'relative',
   },
   imgDiv1: {
     borderRadius: 4,
-    height: "400px",
+    height: '400px',
     // display: "flex",
     // justifyContent: "center",
     // height: "300px",
@@ -66,22 +66,22 @@ const useStyles = makeStyles((theme: Theme) => ({
     // },
 
     [theme.breakpoints.down(1930)]: {
-      height: "370px",
+      height: '370px',
     },
     [theme.breakpoints.down(1540)]: {
-      height: "300px",
+      height: '300px',
     },
     [theme.breakpoints.down(1360)]: {
-      height: "280px",
+      height: '280px',
     },
 
-    [theme.breakpoints.down("md")]: {
-      height: "250px",
+    [theme.breakpoints.down('md')]: {
+      height: '250px',
     },
-    [theme.breakpoints.down("xs")]: {
+    [theme.breakpoints.down('xs')]: {
       // maxWidth: "150px",
       // maxHeight: "160px",
-      height: "210px",
+      height: '210px',
     },
     // backgroundColor: "var(--light-creame-color)",
     // position: "relative",
@@ -95,23 +95,23 @@ const useStyles = makeStyles((theme: Theme) => ({
   productPlaceholder: {
     // margin: "15%",
     // width: "70%",
-    width: "300px",
-    height: "300px",
+    width: '300px',
+    height: '300px',
     // objectFit: "contain",
-    padding: "20px",
-    [theme.breakpoints.down("xs")]: {
-      width: "230px",
-      height: "200px",
+    padding: '20px',
+    [theme.breakpoints.down('xs')]: {
+      width: '230px',
+      height: '200px',
     },
   },
   imgSecondPlaceHolder: {
-    width: "300px",
-    height: "350px",
+    width: '300px',
+    height: '350px',
     // objectFit: "contain",
-    padding: "20px",
-    [theme.breakpoints.down("xs")]: {
-      width: "230px",
-      height: "230px",
+    padding: '20px',
+    [theme.breakpoints.down('xs')]: {
+      width: '230px',
+      height: '230px',
     },
   },
   imgSecond: {
@@ -123,29 +123,29 @@ const useStyles = makeStyles((theme: Theme) => ({
     // maxWidth: "290px",
     // maxHeight: "350px",
     // width: "280px",
-    height: "280px",
+    height: '280px',
     // width: "100%",
-    [theme.breakpoints.down("xs")]: {
+    [theme.breakpoints.down('xs')]: {
       // maxWidth: "180px",
       // maxHeight: "230px",
-      height: "210px",
+      height: '210px',
     },
   },
 
   freeSampleImg: {
     // width: "150px",
-    height: "200px",
-    [theme.breakpoints.down("xs")]: {
-      height: "160px",
+    height: '200px',
+    [theme.breakpoints.down('xs')]: {
+      height: '160px',
     },
   },
   productImage: {
-    height: "100%",
-    aspectRatio: "2/3",
+    height: '100%',
+    aspectRatio: '2/3',
     // height: "100%",
     // objectFit: "contain",
-    objectFit: "cover",
-    width: "100%",
+    objectFit: 'cover',
+    width: '100%',
     // width: "100%",
     // height: "100%",
     // objectFit: "contain",
@@ -156,127 +156,127 @@ const useStyles = makeStyles((theme: Theme) => ({
     // },
   },
   productSecond: {
-    height: "100%",
-    aspectRatio: "2/3",
+    height: '100%',
+    aspectRatio: '2/3',
     // height: "100%",
     // objectFit: "contain",
-    objectFit: "cover",
-    width: "100%",
+    objectFit: 'cover',
+    width: '100%',
     // [theme.breakpoints.down("xs")]: {
     //   width: "180px",
     //   height: "230px",
     // },
   },
   heartImg: {
-    position: "absolute",
-    right: "2%",
-    top: "3%",
+    position: 'absolute',
+    right: '2%',
+    top: '3%',
   },
   heartImg2: {
-    position: "absolute",
-    right: "3%",
-    top: "4%",
-    "& > img": {
-      maxWidth: "100%",
-      maxHeight: "100%",
+    position: 'absolute',
+    right: '3%',
+    top: '4%',
+    '& > img': {
+      maxWidth: '100%',
+      maxHeight: '100%',
     },
   },
 
   contentDiv: {
     margin: theme.spacing(1, 0),
-    cursor: "pointer",
+    cursor: 'pointer',
   },
   freeSampleContentDiv: {
     margin: theme.spacing(1, 0),
   },
   name1: {
     font: `normal ${theme.spacing(2)}px Work Sans Bold`,
-    color: "var(--secondary-black)",
-    lineHeight: "25px",
+    color: 'var(--secondary-black)',
+    lineHeight: '25px',
     height: 50,
     // height: '60px',
-    [theme.breakpoints.down("xs")]: {
+    [theme.breakpoints.down('xs')]: {
       //   height: '80px',
-      font: "normal 15px Work Sans Bold",
-      lineHeight: "24px",
+      font: 'normal 15px Work Sans Bold',
+      lineHeight: '24px',
     },
     // textOverflow: "ellipsis",
-    overflow: "hidden",
+    overflow: 'hidden',
     // whiteSpace: "nowrap",
   },
   starDiv: {
     margin: theme.spacing(0.5, 0),
-    display: "flex",
-    alignItems: "center",
-    flexWrap: "wrap",
-    [theme.breakpoints.down("xs")]: {
-      fontSize: "17px",
-      marginBottom: "0px",
-      alignItems: "inherit",
+    display: 'flex',
+    alignItems: 'center',
+    flexWrap: 'wrap',
+    [theme.breakpoints.down('xs')]: {
+      fontSize: '17px',
+      marginBottom: '0px',
+      alignItems: 'inherit',
     },
   },
   count: {
     font: `normal ${theme.spacing(1.4)}px Work Sans Regular`,
-    color: "var(--light-gray)",
+    color: 'var(--light-gray)',
     marginTop: theme.spacing(0.3),
-    [theme.breakpoints.down("xs")]: {
+    [theme.breakpoints.down('xs')]: {
       marginTop: theme.spacing(0),
       marginLeft: theme.spacing(0.5),
     },
   },
   discription: {
     font: `normal ${theme.spacing(1.2)}px Work Sans Regular`,
-    color: "var(--light-gray)",
+    color: 'var(--light-gray)',
     height: 30,
-    [theme.breakpoints.down("sm")]: {
+    [theme.breakpoints.down('sm')]: {
       // height: 50,
-      overflow: "hidden",
-      textOverflow: "ellipsis",
-      display: "-webkit-box",
-      "-webkit-line-clamp": 2,
-      "-webkit-box-orient": "vertical",
+      overflow: 'hidden',
+      textOverflow: 'ellipsis',
+      display: '-webkit-box',
+      '-webkit-line-clamp': 2,
+      '-webkit-box-orient': 'vertical',
     },
-    [theme.breakpoints.down("xs")]: {
+    [theme.breakpoints.down('xs')]: {
       height: 30,
     },
   },
   discription1: {
     font: `normal ${theme.spacing(1.6)}px Work Sans Regular`,
     lineHeight: 1.6,
-    color: "var(--light-gray)",
+    color: 'var(--light-gray)',
   },
   secondDescription: {
     font: `normal ${theme.spacing(1.2)}px Work Sans Regular`,
-    color: "var(--light-gray)",
+    color: 'var(--light-gray)',
     height: 30,
-    [theme.breakpoints.down("sm")]: {
+    [theme.breakpoints.down('sm')]: {
       // height: 50,
     },
   },
   quantity: {
     font: `normal ${theme.spacing(1.4)}px Work Sans Regular`,
     lineHeight: 1.6,
-    height: "16px",
+    height: '16px',
     margin: theme.spacing(1, 0, 0, 0),
     color: theme.palette.primary.main,
-    textTransform: "lowercase",
-    [theme.breakpoints.down("xs")]: {
+    textTransform: 'lowercase',
+    [theme.breakpoints.down('xs')]: {
       margin: theme.spacing(0),
-      color: "var(--light-gray)",
+      color: 'var(--light-gray)',
       font: `normal ${theme.spacing(1.1)}px Work Sans Regular`,
     },
   },
   amountDiv: {
-    display: "flex",
-    alignItems: "center",
+    display: 'flex',
+    alignItems: 'center',
     margin: theme.spacing(0.5, 0),
-    height: "16px",
+    height: '16px',
   },
   amount: {
     font: `normal ${theme.spacing(1.5)}px Work Sans BOld`,
-    color: "var(--secondary-black)",
+    color: 'var(--secondary-black)',
     marginRight: theme.spacing(0.5),
-    [theme.breakpoints.down("xs")]: {
+    [theme.breakpoints.down('xs')]: {
       font: `normal ${theme.spacing(1.4)}px Work Sans Bold`,
     },
   },
@@ -284,66 +284,66 @@ const useStyles = makeStyles((theme: Theme) => ({
     font: `normal ${theme.spacing(1.8)}px Work Sans Bold`,
     color: theme.palette.primary.main,
     lineHeight: 2,
-    [theme.breakpoints.down("xs")]: {
-      color: "black",
+    [theme.breakpoints.down('xs')]: {
+      color: 'black',
       font: `normal ${theme.spacing(1.4)}px Work Sans Bold`,
     },
   },
   mrp: {
-    marginRight: "10px",
+    marginRight: '10px',
     font: `normal ${theme.spacing(1.5)}px Work Sans Medium`,
-    color: "var(--light-gray)",
-    textDecorationLine: "line-through",
-    [theme.breakpoints.down("xs")]: {
-      fontSize: "14px",
+    color: 'var(--light-gray)',
+    textDecorationLine: 'line-through',
+    [theme.breakpoints.down('xs')]: {
+      fontSize: '14px',
     },
   },
   btn: {
     font: `normal ${theme.spacing(1.5)}px Work Sans Medium`,
-    color: "var(--white)",
+    color: 'var(--white)',
     borderRadius: 2,
-    textTransform: "capitalize",
+    textTransform: 'capitalize',
     padding: theme.spacing(1, 2),
   },
   rating: {
     color: theme.palette.secondary.light,
-    [theme.breakpoints.down("xs")]: {
-      fontSize: "17px",
-      marginBottom: "9px",
+    [theme.breakpoints.down('xs')]: {
+      fontSize: '17px',
+      marginBottom: '9px',
     },
   },
   cursor: {
-    cursor: "inherit",
+    cursor: 'inherit',
   },
   secondStarDiv: {
-    display: "none",
+    display: 'none',
   },
   multiLineEllipsis: {
-    overflow: "hidden",
-    textOverflow: "ellipsis",
-    display: "-webkit-box",
-    "-webkit-line-clamp": 2,
-    "-webkit-box-orient": "vertical",
+    overflow: 'hidden',
+    textOverflow: 'ellipsis',
+    display: '-webkit-box',
+    '-webkit-line-clamp': 2,
+    '-webkit-box-orient': 'vertical',
   },
   messageHeading: {
     font: `normal 700 ${theme.spacing(2.0)}px Work Sans`,
-    color: "var(--black300)",
-    lineHeight: "28px",
-    marginBottom: "9px",
+    color: 'var(--black300)',
+    lineHeight: '28px',
+    marginBottom: '9px',
 
     // margin: theme.spacing(0.8, 0),
   },
   productOuterDIV: {
     padding: theme.spacing(1, 1),
 
-    [theme.breakpoints.down("sm")]: {
+    [theme.breakpoints.down('sm')]: {
       padding: theme.spacing(1),
     },
   },
 }));
 
 interface Props {
-  section: "wishlist" | "plp" | "recommend" | "tips" | "cart";
+  section: 'wishlist' | 'plp' | 'recommend' | 'tips' | 'cart';
   img: string;
   detail: string;
   rate: string;
@@ -392,7 +392,7 @@ const Product = (props: Props) => {
   }, [productData?.isWishlisted]);
 
   let freeSamples = cartData?.items?.filter(
-    (item: any) => item.type === "sample"
+    (item: any) => item.type === 'sample'
   ).length;
 
   const IMAGE_URL = `${process.env.REACT_APP_MEDIA_URL}`;
@@ -429,7 +429,7 @@ const Product = (props: Props) => {
         .then((resp) => {
           setLike(true);
           let categoryAttributesIndex = product?.customAttributes.findIndex(
-            (item: any) => item.attribute_code === "category_ids"
+            (item: any) => item.attribute_code === 'category_ids'
           );
           let categoryAttributesData =
             product?.customAttributes[categoryAttributesIndex];
@@ -443,7 +443,7 @@ const Product = (props: Props) => {
             },
             []
           );
-          console.log(categoryAttributesData,categoryArray)
+          console.log(categoryAttributesData, categoryArray);
           if (resp) {
             // eventAddToWishlist({
             //   ProductId: `${product?.magentoId}`,
@@ -461,18 +461,18 @@ const Product = (props: Props) => {
             //   payload: { totalCount: totalCount + 1 },
             // });
 
-            if (section === "wishlist" || section === "plp") {
+            if (section === 'wishlist' || section === 'plp') {
               // dispatch(getWishList({ limit: 10, page: 1 }));
-              dispatch({ type: "recommend.update", payload: product });
+              dispatch({ type: 'recommend.update', payload: product });
             } else {
               // dispatch(getWishList({ limit: 10, page: 1 }));
-              dispatch({ type: "product.update", payload: product });
-              dispatch({ type: "recommend.update", payload: product });
+              dispatch({ type: 'product.update', payload: product });
+              dispatch({ type: 'recommend.update', payload: product });
               dispatch({
-                type: "show-alert",
+                type: 'show-alert',
                 payload: {
-                  type: "success",
-                  message: "Product added to wishlist",
+                  type: 'success',
+                  message: 'Product added to wishlist',
                 },
               });
             }
@@ -487,16 +487,16 @@ const Product = (props: Props) => {
 
           if (err?.response?.data?.message)
             dispatch({
-              type: "show-alert",
+              type: 'show-alert',
               payload: {
-                type: "error",
+                type: 'error',
                 message: err?.response?.data?.message,
               },
             });
         });
     } else {
       if (product.wishlists ? product.wishlists?._id : product._id) {
-        if (section === "wishlist") {
+        if (section === 'wishlist') {
           dispatch(showLoader());
         }
         removeFromWishList(
@@ -506,7 +506,7 @@ const Product = (props: Props) => {
             if (resp) {
               setLike(false);
               let categoryAttributesIndex = product?.customAttributes.findIndex(
-                (i: any) => i.attribute_code === "category_ids"
+                (i: any) => i.attribute_code === 'category_ids'
               );
               let categoryAttributesData =
                 product?.customAttributes[categoryAttributesIndex];
@@ -520,7 +520,7 @@ const Product = (props: Props) => {
                 },
                 []
               );
-              console.log(categoryArray)
+              console.log(categoryArray);
               // eventRemoveFromWishlist({
               //   ProductId: `${product.magentoId}`,
               //   ProductName: `${product.name}`,
@@ -538,31 +538,30 @@ const Product = (props: Props) => {
               // }
 
               if (
-                section === "wishlist" ||
-                section === "plp" ||
-                section === "recommend" ||
-                section === "cart"
+                section === 'wishlist' ||
+                section === 'plp' ||
+                section === 'recommend' ||
+                section === 'cart'
               ) {
-               
                 // dispatch(
                 //   getWishList({ limit: 10, page: 1 }, () => {
                 //     dispatch(hideLoader());
                 //   })
                 // );
-                dispatch({ type: "recommend.update", payload: product });
+                dispatch({ type: 'recommend.update', payload: product });
               } else {
-                dispatch({ type: "product.update", payload: product });
-                dispatch({ type: "recommend.update", payload: product });
+                dispatch({ type: 'product.update', payload: product });
+                dispatch({ type: 'recommend.update', payload: product });
                 // dispatch(
                 //   getWishList({ limit: 10, page: 1 }, () => {
                 //     dispatch(hideLoader());
                 //   })
                 // );
                 dispatch({
-                  type: "show-alert",
+                  type: 'show-alert',
                   payload: {
-                    type: "success",
-                    message: "Product removed from wishlist",
+                    type: 'success',
+                    message: 'Product removed from wishlist',
                   },
                 });
               }
@@ -576,9 +575,9 @@ const Product = (props: Props) => {
 
             if (err?.response?.data?.message)
               dispatch({
-                type: "show-alert",
+                type: 'show-alert',
                 payload: {
-                  type: "error",
+                  type: 'error',
                   message: err?.response?.data?.message,
                 },
               });
@@ -588,29 +587,29 @@ const Product = (props: Props) => {
   };
 
   const navigateTo = () => {
-    if (props.type && props.type === "freeSample")
-      history.push({ pathname: "/shopping-bag" });
+    if (props.type && props.type === 'freeSample')
+      history.push({ pathname: '/shopping-bag' });
     else {
       // let productUrlTitle = productData.customAttributes.find((item: any) => item.attribute_code === "url_key")?.value
       // let productUrlKey = productData.customAttributes.find((item: any) => item.attribute_code === "google_category")?.value
       // let pathname = `/${plpData?.categoryData?.child_category?.urlPath}/${productUrlTitle}/p/${productUrlKey}`
       let pathname = Utils.CommonFunctions.seoUrl(
         { ...productData, plpData },
-        "pdp"
+        'pdp'
       );
       let state: any = {
         urlKey: productData?.urlKey,
-        pageName: "",
+        pageName: '',
         isSearched:
-          type === "mobile-home" ||
-          type === "home" ||
-          type === "wishlist-recommend" ||
-          type === "mybag"
+          type === 'mobile-home' ||
+          type === 'home' ||
+          type === 'wishlist-recommend' ||
+          type === 'mybag'
             ? 1
             : null,
         isSearchOrRecommend:
-          section === "recommend" ||
-          props?.type === "mobile-home" ||
+          section === 'recommend' ||
+          props?.type === 'mobile-home' ||
           isSearchOrRecommend
             ? true
             : false,
@@ -661,31 +660,31 @@ const Product = (props: Props) => {
     ) || productData?.configurableProductLinks?.[0];
 
   const configWeight = _.find(configurableProduct?.customAttributes, {
-    attribute_code: "size",
+    attribute_code: 'size',
   })?.label?.[0]?.label;
   const customWeight =
     _.find(productData.customAttributes, {
-      attribute_code: "size",
+      attribute_code: 'size',
     })?.label?.[0]?.label || null;
 
   let weight =
-    productData?.type === "configurable" ? configWeight : customWeight;
+    productData?.type === 'configurable' ? configWeight : customWeight;
 
   let discPrice =
-    productData?.type === "configurable"
+    productData?.type === 'configurable'
       ? configurableProduct?.customAttributes?.find(
-          (item: any) => item.attribute_code === "special_price"
+          (item: any) => item.attribute_code === 'special_price'
         )?.value
       : productData?.customAttributes?.find(
-          (item: any) => item.attribute_code === "special_price"
+          (item: any) => item.attribute_code === 'special_price'
         )?.value;
   let rate =
-    productData?.type === "configurable"
+    productData?.type === 'configurable'
       ? configurableProduct?.price
       : productData?.price;
 
   const isInStock =
-    productData?.type === "configurable"
+    productData?.type === 'configurable'
       ? configurableProduct?.isInStock || false
       : productData?.isInStock;
 
@@ -693,15 +692,15 @@ const Product = (props: Props) => {
     <>
       <div
         className={
-          props.type === "freeSample"
+          props.type === 'freeSample'
             ? classes.productOuterDIV
-            : props.type === "myOrder"
+            : props.type === 'myOrder'
             ? classes.productcard2
-            : props.flag === "bestSeller" ||
-              flag === "trending" ||
-              flag === "recommended"
+            : props.flag === 'bestSeller' ||
+              flag === 'trending' ||
+              flag === 'recommended'
             ? classes.productCard1
-            : flag === "searchBestSeller"
+            : flag === 'searchBestSeller'
             ? classes.productCard4
             : classes.productcard3
         }
@@ -709,30 +708,30 @@ const Product = (props: Props) => {
         {
           // loginAlert &&
           <MessageDialogue
-            cancelText={"Cancel"}
-            okText={"Okay"}
+            cancelText={'Cancel'}
+            okText={'Okay'}
             open={loginAlert}
             handleClose={() => showLoginAlert(!loginAlert)}
             onOk={() => {
-              history.push("/login-via-otp");
+              history.push('/login-via-otp');
             }}
-            message={"Please login to proceed"}
-            heading={"The Body Shop"}
+            message={'Please login to proceed'}
+            heading={'The Body Shop'}
             headingClass={classes.messageHeading}
           />
         }
         <div
           className={
-            props.type !== "freeSample"
+            props.type !== 'freeSample'
               ? classes.imageContainer
               : classes.freeSampleImgDiv
           }
         >
-          {section !== "cart" ? (
+          {section !== 'cart' ? (
             <>
-              {props.section === "plp" ? (
-                <div className={`${addActive ? "active" : ""}`}>
-                  <div className={"content"} onClick={handleContentClick}>
+              {props.section === 'plp' ? (
+                <div className={`${addActive ? 'active' : ''}`}>
+                  <div className={'content'} onClick={handleContentClick}>
                     <IconButton
                       aria-label="favorite"
                       className={classes.heartImg}
@@ -774,7 +773,7 @@ const Product = (props: Props) => {
           ) : null}
           <div
             className={
-              props.type && props.type === "freeSample" ? classes.cursor : ""
+              props.type && props.type === 'freeSample' ? classes.cursor : ''
             }
 
             // to={
@@ -788,9 +787,9 @@ const Product = (props: Props) => {
           >
             <div
               className={clsx(
-                props.section === "recommend" && props.type !== "freeSample"
+                props.section === 'recommend' && props.type !== 'freeSample'
                   ? classes.imgDiv1
-                  : props.type === "freeSample"
+                  : props.type === 'freeSample'
                   ? classes.freeSampleImg
                   : classes.imgSecond
               )}
@@ -800,22 +799,23 @@ const Product = (props: Props) => {
                 <img
                   src={`${IMAGE_URL}catalog/product${img}`}
                   className={clsx(
-                    props.section === "recommend"
+                    props.section === 'recommend'
                       ? classes.productImage
                       : classes.productSecond
                   )}
                   alt="img one"
                 />
               ) : (
-               
-                <div className={clsx(
-                  props.section === "recommend"
-                    ? classes.productPlaceholder
-                    : classes.imgSecondPlaceHolder
-                )}>
+                <div
+                  className={clsx(
+                    props.section === 'recommend'
+                      ? classes.productPlaceholder
+                      : classes.imgSecondPlaceHolder
+                  )}
+                >
                   {/* <PRODUCT_PLACEHOLDER /> */}
                   "pending"
-                  </div>
+                </div>
               )}
             </div>
           </div>
@@ -823,7 +823,7 @@ const Product = (props: Props) => {
         <div
           onClick={navigateTo}
           className={
-            props.type && props.type === "freeSample" ? classes.cursor : ""
+            props.type && props.type === 'freeSample' ? classes.cursor : ''
           }
           // to={
           //   props.type && props.type === "freeSample"
@@ -836,7 +836,7 @@ const Product = (props: Props) => {
         >
           <div
             className={
-              props.type !== "freeSample"
+              props.type !== 'freeSample'
                 ? classes.contentDiv
                 : classes.freeSampleContentDiv
             }
@@ -852,13 +852,13 @@ const Product = (props: Props) => {
                     Utils.CommonFunctions.replaceHtmlTag(productData?.name),
                     { length: 80 }
                   )
-                : ""}
+                : ''}
             </Typography>
             {/* </Link> */}
             {/* <div className={classes.starDiv}> */}
             <div
               className={
-                props.type && props.type === "freeSample"
+                props.type && props.type === 'freeSample'
                   ? classes.secondStarDiv
                   : classes.starDiv
               }
@@ -880,17 +880,17 @@ const Product = (props: Props) => {
             <div
               // className={classes.discription}
               className={
-                props.type && props.type === "freeSample"
+                props.type && props.type === 'freeSample'
                   ? clsx(classes.secondDescription, classes.multiLineEllipsis)
                   : clsx(classes.discription)
               }
-              dangerouslySetInnerHTML={{ __html: detail ?? "" }}
+              dangerouslySetInnerHTML={{ __html: detail ?? '' }}
             />
             {/* <Typography className={classes.quantity}>{props.quantity}</Typography> */}
             <Typography className={classes.quantity}>{weight}</Typography>
-            {type !== "freeSample" ? (
+            {type !== 'freeSample' ? (
               <>
-                {rate && rate !== "0" ? (
+                {rate && rate !== '0' ? (
                   <div className={classes.amountDiv}>
                     {discPrice ? (
                       <>
@@ -918,7 +918,7 @@ const Product = (props: Props) => {
             ) : null}
           </div>
         </div>
-        {section === "cart" &&
+        {section === 'cart' &&
         (freeSamples >= cartData?.freeSampleCount ||
           cartData.items.findIndex(
             (item: any) => productData.magentoId === item?.productId
@@ -926,7 +926,7 @@ const Product = (props: Props) => {
           <AddToCart
             isInStock={isInStock}
             isSearchOrRecommend={
-              props?.type === "mobile-home" || isSearchOrRecommend
+              props?.type === 'mobile-home' || isSearchOrRecommend
             }
             type={type}
             product={productData}
@@ -937,8 +937,8 @@ const Product = (props: Props) => {
           <AddToCart
             isInStock={isInStock}
             isSearchOrRecommend={
-              section === "recommend" ||
-              props?.type === "mobile-home" ||
+              section === 'recommend' ||
+              props?.type === 'mobile-home' ||
               isSearchOrRecommend
             }
             type={type}

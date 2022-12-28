@@ -1,27 +1,26 @@
-import axios from "axios"
-import { isAuthenticated, getAuthToken,  isGuestUser } from "./session"
-import Utils from ".";
+import axios from 'axios';
+import { isAuthenticated, getAuthToken, isGuestUser } from './session';
+import Utils from '.';
 import { v4 as uuidv4 } from 'uuid';
-import { initStore } from "../../store/store";
+// import { hideLoader } from "../components/pagesComponents/home/actions";
+// import { initStore } from "../../store/store";
 
-const initstore = initStore;
+// const initstore = initStore;
 
 const instance = axios.create({
-    baseURL: `${process.env.REACT_APP_API_BASE_URL}`
+  baseURL: `${process.env.REACT_APP_API_BASE_URL}`,
 });
 
-
 // Set config defaults when creating the instancep
-const check = Utils.CommonFunctions?.getCookie("deviceId") != "" &&
-    Utils.CommonFunctions?.getCookie("deviceId") != undefined &&
-    Utils.CommonFunctions?.getCookie("deviceId") !== null;
-let deviceId = check ?
-    Utils.CommonFunctions?.getCookie("deviceId") :
-    uuidv4();
-console.log("request", Utils.CommonFunctions?.getCookie('deviceId'))
+const check =
+  Utils.CommonFunctions?.getCookie('deviceId') != '' &&
+  Utils.CommonFunctions?.getCookie('deviceId') != undefined &&
+  Utils.CommonFunctions?.getCookie('deviceId') !== null;
+let deviceId = check ? Utils.CommonFunctions?.getCookie('deviceId') : uuidv4();
+console.log('request', Utils.CommonFunctions?.getCookie('deviceId'));
 
 if (!check) {
-    Utils.CommonFunctions?.setCookie('deviceId', deviceId)
+  Utils.CommonFunctions?.setCookie('deviceId', deviceId);
 }
 
 instance.defaults.headers.common['language'] = 'en';
@@ -29,32 +28,30 @@ instance.defaults.headers.common['offset'] = '-330';
 instance.defaults.headers.common['deviceid'] = deviceId;
 instance.defaults.headers.common['platform'] = 'web';
 
-
 // Add a request interceptor
 instance.interceptors.request.use(
-    (success : any) => {
-        if (!success.headers.common['Authorization']) {
-            if (isAuthenticated() || isGuestUser()) {
-                success.headers.common['Authorization'] = `Bearer ${getAuthToken()}`;
-            } else {
-                success.headers.common['Authorization'] = `Basic ${process.env.REACT_APP_API_KEY}`;
-            }
-        }
-        if (!success.headers.common['deviceid']) {
-            let deviceId = uuidv4();
-            success.headers.common['deviceid'] = deviceId
-            Utils.CommonFunctions.setCookie('deviceId', deviceId)
-        }
-
-
-        return success;
-    },
-    (error) => {
-        return Promise.reject(error);
-
+  (success: any) => {
+    if (!success.headers.common['Authorization']) {
+      if (isAuthenticated() || isGuestUser()) {
+        success.headers.common['Authorization'] = `Bearer ${getAuthToken()}`;
+      } else {
+        success.headers.common[
+          'Authorization'
+        ] = `Basic ${process.env.REACT_APP_API_KEY}`;
+      }
     }
-);
+    if (!success.headers.common['deviceid']) {
+      let deviceId = uuidv4();
+      success.headers.common['deviceid'] = deviceId;
+      Utils.CommonFunctions.setCookie('deviceId', deviceId);
+    }
 
+    return success;
+  },
+  (error) => {
+    return Promise.reject(error);
+  }
+);
 
 // Add a request interceptor
 instance.interceptors.response.use(
@@ -90,7 +87,6 @@ instance.interceptors.response.use(
     // }
 );
 
-
 // Alter defaults after instance has been created
 
-export default instance
+export default instance;
