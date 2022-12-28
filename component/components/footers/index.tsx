@@ -1,13 +1,4 @@
-import {
-  makeStyles,
-  createStyles,
-  Theme,
-  Grid,
-  Typography,
-  Box,
-  Select,
-  MenuItem,
-} from "@material-ui/core";
+
 import { useEffect } from "react";
 
 import Utils from "../../utils";
@@ -17,10 +8,13 @@ import {  useDispatch, useSelector } from "react-redux";
 import countries from "./countries.json";
 import Link from "next/link";
 import { ReducersModal } from "../../models";
+import { Theme, Box, Typography, Grid, Select, MenuItem } from "@mui/material";
 // import { getAuthToken } from "../../utils/session";
+import { makeStyles } from "@mui/styles";
 
-const useStyles = makeStyles((theme: Theme) =>
-  createStyles({
+
+const useStyles : any = makeStyles((theme: Theme) =>
+  ({
     footerRoot: {
       backgroundColor: "var(--primary)",
       padding: theme.spacing(0, 10),

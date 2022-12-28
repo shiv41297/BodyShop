@@ -1,10 +1,4 @@
-import {
-  Typography,
-  Grid,
-  makeStyles,
-  createStyles,
-  Theme,
-} from "@material-ui/core";
+
 import Utils from "../../utils";
 import React, { useEffect, useState } from "react";
 // import MobileHeader from "./mobileHeader";
@@ -16,13 +10,12 @@ import { useRouter } from "next/router";
 
 import { useSelector, useDispatch } from "react-redux";
 
-import { Badge, Box } from "@mui/material";
+import { Badge, Box, createStyles, Grid, Theme, Typography } from "@mui/material";
 import { ROUTE_CONSTANTS } from "../../constants/routeConstants";
 import MessageDialogue from "../../common/product/messageDialogue";
 import { isAuthenticated } from "../../utils/session";
 import SearchIndex from "../searchModal";
 import Image from "next/image";
-import { showSkeleton, getHomeData, hideSkeleton } from "../pagesComponents/home/actions";
 
 // import {
 //   CART,
@@ -32,12 +25,14 @@ import { showSkeleton, getHomeData, hideSkeleton } from "../pagesComponents/home
 //   SEARCH,
 //   LOCATION,
 // } from "utils/constantImages";
+import { makeStyles } from "@mui/styles";
+import { showSkeleton, getHomeData, hideSkeleton } from "../../../store/home/action";
 
 // import { getUserProfile } from "../../pages/account/profile/action";
 // import { getDashboardData } from "../../pages/account/lybc/action";
 
-const useStyles = makeStyles((theme: Theme) =>
-  createStyles({
+const useStyles: any = makeStyles((theme: Theme) =>
+  ({
     stickyHeader: {
       position: "fixed",
       width: "100%",

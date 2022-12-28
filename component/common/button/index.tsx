@@ -1,15 +1,10 @@
-import {
-    makeStyles,
-    Theme,
-    createStyles,
-    Button,
-    PropTypes
 
-} from "@material-ui/core";
+import { Button,  PropTypes,  Theme } from '@mui/material';
 import clsx from 'clsx';
+import theme from '../../../config/theme';
 
-const useStyles = makeStyles((theme: Theme) =>
-    createStyles({
+const makeStyles = (theme: Theme) => {
+    return {
         btnProceed: {
             "&.MuiButton-root": {
                 // backgroundColor: "#B0C1B7",
@@ -30,13 +25,12 @@ const useStyles = makeStyles((theme: Theme) =>
             },
         },
 
-    })
-);
+    }}
 
 interface Props {
     type: "button" | "reset" | "submit";
     fullWidth: boolean;
-    color?: PropTypes.Color;
+    color?: "inherit" | "primary" | "secondary" | "success" | "error" | "info" | "warning";
     variant?: "text" | "contained" | "outlined";
     onClick?: Function;
     disabled?: boolean;
@@ -45,7 +39,7 @@ interface Props {
 }
 
 const CustomButton = ({ type, color = "primary", fullWidth, variant = "contained", disabled = false, onClick = () => { }, text, className }: Props) => {
-    const classes = useStyles();
+    const classes = makeStyles(theme);
 
     return (
         <Button

@@ -1,18 +1,13 @@
-import {
-  Grid,
-  makeStyles,
-  createStyles,
-  Theme,
-  Typography,
 
-} from "@material-ui/core";
+import { Grid, Theme, Typography } from "@mui/material";
+import { makeStyles } from "@mui/styles";
 
 import { useSelector } from "react-redux";
 import { ReducersModal } from "../../models";
 // import { FACEBOOK, INSTAGRAM, TWITTER, YOUTUBE } from "utils/constantImages";
 
 const useStyles = makeStyles((theme: Theme) =>
-  createStyles({
+  ({
     mediaFooter: {
       backgroundColor: "var(--creame-color)",
       padding: theme.spacing(0, 2),

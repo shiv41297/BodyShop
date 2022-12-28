@@ -1,11 +1,13 @@
-import { makeStyles, createStyles, Theme, Typography } from "@material-ui/core";
+import { Box, Theme, Typography } from "@mui/material";
 import Skeleton from "@mui/material/Skeleton";
 import { useRouter } from "next/router";
 import { useSelector } from "react-redux";
+import theme from "../../../config/theme";
 import { ReducersModal } from "../../models";
 
-const useStyles = makeStyles((theme: Theme) =>
-  createStyles({
+
+const makeStyles = (theme: Theme) => {
+  return {
     routeName: {
       display: "flex",
       flexBasis: "100%",
@@ -45,8 +47,53 @@ const useStyles = makeStyles((theme: Theme) =>
       cursor: "pointer",
       font: "normal 14px Work Sans",
     },
-  })
-);
+  
+  };
+};
+
+// const useStyles = makeStyles((theme: Theme) =>
+//   createStyles({
+  //   routeName: {
+  //     display: "flex",
+  //     flexBasis: "100%",
+  //     // alignItems: "baseline",
+  //     // padding: theme.spacing(2, 0, 0, 0),
+
+  //     width: "100%",
+  //     "& > *": {
+  //       font: `normal ${theme.spacing(1.4)}px Work Sans`,
+  //       fontWeight: 600,
+  //       lineHeight: "16px",
+  //       // color: "var(--light-gray)",
+  //       // margin: theme.spacing(0, 0.4),
+  //       marginLeft: "4px",
+  //       display: "flex",
+  //       alignItems: "baseline",
+  //     },
+  //     "&> a+a:before": {
+  //       content: "'/'",
+  //       // marginRight: "6px",
+  //       marginLeft: "0px",
+  //     },
+  //     "& a:last-child": {
+  //       fontWeight: 500,
+  //       // color: "var(--black)"
+  //     },
+  //   },
+  //   skeleton: {
+  //     marginBottom: "10px",
+  //   },
+  //   bread: {
+  //     cursor: "pointer",
+  //     // color: "var(--primary)",
+  //     font: "normal 14px Work Sans SemiBold",
+  //   },
+  //   breadCurrent: {
+  //     cursor: "pointer",
+  //     font: "normal 14px Work Sans",
+  //   },
+  // })
+// );
 interface Props {
   breadcrumb: Array<{
     title: any;
@@ -57,8 +104,8 @@ interface Props {
 }
 
 const BreadCrumb = ({ breadcrumb, type = "default", state }: Props) => {
-  const classes = useStyles();
-  const history = useRouter();
+  const classes = makeStyles(theme);
+    const history = useRouter();
   const skeletonLoader = useSelector((state: ReducersModal) => {
     return state.loadingReducer.skeletonLoader;
   });
@@ -66,13 +113,13 @@ const BreadCrumb = ({ breadcrumb, type = "default", state }: Props) => {
     <>
       {/* to be changed
         <Hidden xsDown> */}
-      <Typography component="span" className={classes.routeName}>
+      <Typography component="span" sx={classes.routeName}>
         {skeletonLoader
           ? breadcrumb.map((_val: any, i: any) => {
               if (i === 0)
                 return (
                   <Skeleton
-                    className={classes.skeleton}
+                    sx={classes.skeleton}
                     variant="rectangular"
                     width={60}
                     key={i}
@@ -84,7 +131,7 @@ const BreadCrumb = ({ breadcrumb, type = "default", state }: Props) => {
                     <div key={i}>
                       /{" "}
                       <Skeleton
-                        className={classes.skeleton}
+                        sx={classes.skeleton}
                         variant="rectangular"
                         width={60}
                       />
@@ -94,8 +141,8 @@ const BreadCrumb = ({ breadcrumb, type = "default", state }: Props) => {
             })
           : breadcrumb.map((val: any, i: any) => (
               <div key={i+ Math.random()}>
-                <div
-                  className={
+                <Box
+                  sx={
                     i === breadcrumb.length - 1
                       ? classes.breadCurrent
                       : classes.bread
@@ -111,7 +158,7 @@ const BreadCrumb = ({ breadcrumb, type = "default", state }: Props) => {
                 >
                   {i !== 0 ? "/ " : ""}
                   {`${val.title}`}
-                </div>
+                </Box>
               </div>
             ))}
       </Typography>
