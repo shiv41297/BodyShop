@@ -395,7 +395,8 @@ const Product = (props: Props) => {
     (item: any) => item.type === 'sample'
   ).length;
 
-  const IMAGE_URL = `${process.env.REACT_APP_MEDIA_URL}`;
+  // const IMAGE_URL = `${process.env.REACT_APP_MEDIA_URL}`;
+  const IMAGE_URL ="https://bodyshop-magento-staging.s3.amazonaws.com/media/";
 
   const handleLike = (status: boolean, product: any) => {
     if (status) {

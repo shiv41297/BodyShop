@@ -1,12 +1,10 @@
 import Head from "next/head";
-import { useSelector } from "react-redux";
 import Home from "../component/components/pagesComponents/home";
 import { getHomeData } from "../store/home/action";
 import { wrapper } from "../store/store";
 
 export default function Index() {
-  const state = useSelector((state: any) => state.homeReducer);
-
+ 
   return (
     <>
       <Head>
@@ -16,7 +14,7 @@ export default function Index() {
         <link rel="icon" href="/favicon.svg" />
       </Head>
 
-      <Home />
+      <Home  />
     </>
   );
 }
@@ -25,6 +23,8 @@ export const getServerSideProps = wrapper.getServerSideProps((store) =>
   //@ts-ignore-
   async ({ req, res }) => {
     await store.dispatch(getHomeData());
-    return { props: {} };
+    return { props: {
+      
+    } };
   }
 );

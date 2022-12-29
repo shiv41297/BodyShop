@@ -16,7 +16,6 @@ import MessageDialogue from "../../common/product/messageDialogue";
 import { isAuthenticated } from "../../utils/session";
 import SearchIndex from "../searchModal";
 import Image from "next/image";
-import { showSkeleton, getHomeData, hideSkeleton } from "../pagesComponents/home/actions";
 
 // import {
 //   CART,

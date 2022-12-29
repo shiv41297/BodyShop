@@ -84,8 +84,8 @@ interface Props {
 
 export default function Content1({ item, navigateTo }: Props) {
     const classes = useStyles()
-    const IMAGE_URL = `${process.env.REACT_APP_MEDIA_URL}`;
-
+    // const IMAGE_URL = `${process.env.REACT_APP_MEDIA_URL}`;
+    const IMAGE_URL ="https://bodyshop-magento-staging.s3.amazonaws.com/media/";
     return (
         <div key={item?.key} onClick={() => {
             if (!item?.button_text) navigateTo(item)
