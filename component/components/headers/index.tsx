@@ -203,9 +203,11 @@ const Headers = () => {
   const redirectToHome = () => {
     dispatch(showSkeleton());
     dispatch(
-      getHomeData(() => {
-        dispatch(hideSkeleton());
-      })
+      getHomeData(),
+      dispatch(hideSkeleton())
+      // getHomeData(() => {
+      //   dispatch(hideSkeleton());
+      // })
     );
     history.push("/");
   };

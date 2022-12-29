@@ -120,7 +120,7 @@ interface Props {
 
 function Offers({ navigateTo, offersData }: Props) {
   const classes = useStyles();
-  const IMAGE_URL = `${process.env.REACT_APP_MEDIA_URL}`;
+  const IMAGE_URL = `${process.env.NEXT_PUBLIC_MEDIA_URL}`;
 
   const [state, setState] = useState({
     openShopNow: false,

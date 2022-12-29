@@ -1,8 +1,8 @@
 // DRY RULE
-const BASE_URL_S1 = `user-service/api/${process.env.REACT_APP_VERSION}`;
-const BASE_URL_S2 = `product-service/api/${process.env.REACT_APP_VERSION}`;
-const BASE_URL_S3 = `order-service/api/${process.env.REACT_APP_VERSION}`;
-const BASE_URL_S4 = `promotion-service/api/${process.env.REACT_APP_VERSION}`;
+const BASE_URL_S1 = `user-service/api/${process.env.NEXT_PUBLIC_VERSION}`;
+const BASE_URL_S2 = `product-service/api/${process.env.NEXT_PUBLIC_VERSION}`;
+const BASE_URL_S3 = `order-service/api/${process.env.NEXT_PUBLIC_VERSION}`;
+const BASE_URL_S4 = `promotion-service/api/${process.env.NEXT_PUBLIC_VERSION}`;
 
 export const endpoints = {
   /**
@@ -133,4 +133,4 @@ export const endpoints = {
 
 
 }
-export default endpoints
+export default endpoints;

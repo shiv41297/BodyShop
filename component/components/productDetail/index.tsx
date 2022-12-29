@@ -396,8 +396,8 @@ const ProductDetail = (props: any) => {
           };
           customGa4Event('view_item', gtagPayload);
           if (
-            process.env.REACT_APP_ENV !== 'development' &&
-            process.env.REACT_APP_ENV !== 'staging'
+            process.env.NEXT_PUBLIC_ENV !== 'development' &&
+            process.env.NEXT_PUBLIC_ENV !== 'staging'
           ) {
             window.gtag('event', 'view_item', gtagPayload);
           }
@@ -518,7 +518,7 @@ const ProductDetail = (props: any) => {
       attribute_code: 'meta_description',
     });
 
-  const URL = `${process.env.REACT_APP_API_BASE_URL}`;
+  const URL = `${process.env.NEXT_PUBLIC_API_BASE_URL}`;
 
   return (
     <>

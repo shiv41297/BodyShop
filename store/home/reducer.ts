@@ -50,10 +50,8 @@ export const homeReducer = (
   },
   action: any
 ) => {
-  console.log("test", action.payload);
   switch (action.type) {
     case "getHomeData":
-
       return { ...state, homeData: action.payload   };
     case Utils.ActionName.MENU_DATA:
       return { ...state, ...action.payload };

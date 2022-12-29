@@ -171,7 +171,7 @@ const DoYouThink: React.FC<Props> = (props: Props) => {
   const { data } = props;
   const history = useRouter();
   const classes = useStyles();
-  const IMAGE_URL = `${process.env.REACT_APP_MEDIA_URL}`;
+  const IMAGE_URL = `${process.env.NEXT_PUBLIC_MEDIA_URL}`;
 
   // const [ratingModalVisibility, setRatingModalVisibility] = useState(false);
   //@ts-ignore

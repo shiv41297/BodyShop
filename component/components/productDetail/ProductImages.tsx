@@ -215,7 +215,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const ProductImages = (props: any) => {
-  const IMAGE_URL = `${process.env.REACT_APP_MEDIA_URL}`;
+  const IMAGE_URL = `${process.env.NEXT_PUBLIC_MEDIA_URL}`;
 
   var productData1 = props && props?.details;
   const dispatch : any= useDispatch();

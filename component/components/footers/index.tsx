@@ -165,6 +165,8 @@ const Footer = () => {
         request
           .get(Utils.endPoints.FOOTER)
           .then((resp: any) => {
+
+            console.log("footerData",resp, "footer data");
             setFooterNavigation(resp.data.data);
             dispatch({
               type: Utils.ActionName.FOOTER_MENU,
@@ -183,7 +185,7 @@ const Footer = () => {
           });
       }
     }
-  }, [authToken]);
+  }, []);
 
   // const sideLink = (heading: string) => (
   //   <Box my={1}>

@@ -109,7 +109,7 @@ interface Props {
 
 const MultiCarousel: React.FC<Props> = ({ data }: Props) => {
   const classes = useStyles();
-  const IMAGE_URL = `${process.env.REACT_APP_MEDIA_URL}`;
+  const IMAGE_URL = `${process.env.NEXT_PUBLIC_MEDIA_URL}`;
   const history = useRouter();
   const responsive = {
     superLargeDesktop: {
