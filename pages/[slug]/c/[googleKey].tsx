@@ -1,9 +1,8 @@
-import React from 'react'
+import React from "react";
+import ProductListing from "../../../modules/productListing";
 
-function ProductListing() {
-  return (
-    <div>[googleKey]</div>
-  )
+function ProductListingWrapper() {
+  return <ProductListing />;
 }
 
-export default ProductListing
+export default ProductListingWrapper;

@@ -1,11 +1,12 @@
 
 
 
-import { makeStyles, createStyles, Theme } from "@material-ui/core";
+import { makeStyles } from "@mui/styles";
 import Skeleton from "@mui/material/Skeleton";
+import { Theme } from "@mui/material";
 
 const useStyles = makeStyles((theme: Theme) =>
-    createStyles({
+    ({
         rootDiv: {
             border: "2px solid var(--border-color)",
         },

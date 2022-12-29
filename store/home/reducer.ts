@@ -1,5 +1,4 @@
-import { LoadingModal, HomeModal, ConfigModal } from "../../../models";
-import Utils from "../../../utils";
+import Utils from "../../component/utils";
 
 /**
  * Global Loading reducer

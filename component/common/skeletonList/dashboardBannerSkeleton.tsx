@@ -1,11 +1,11 @@
 
 
 
-import { makeStyles, createStyles} from "@material-ui/core";
+import { makeStyles } from "@mui/styles";
 import Skeleton from "@mui/material/Skeleton";
 
 const useStyles = makeStyles(() =>
-    createStyles({
+    ({
         skeletonRoot: {
             // padding:"20px",
             width: "100%"

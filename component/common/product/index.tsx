@@ -1,23 +1,27 @@
 import Utils from "../../utils";
 import { useState, useEffect } from "react";
-import { makeStyles, Typography, IconButton } from "@material-ui/core";
-import Rating from "@material-ui/lab/Rating";
 import { addToWishList, removeFromWishList } from "./action";
 import { useDispatch, useSelector } from "react-redux";
 import AddToCart from "../addToCart";
 import _ from "lodash";
 
 // import { getWishList } from "../../../pages/wishlist/action";
+import { makeStyles } from "@mui/styles";
 
 import clsx from "clsx";
 import MessageDialogue from "./messageDialogue";
 import { useRouter } from "next/router";
 import { ReducersModal } from "../../models";
-import { hideLoader, hideSkeleton, showLoader } from "../../state/actions/homeActions";
 import { isAuthenticated } from "../../utils/session";
+import {
+  hideLoader,
+  hideSkeleton,
+  showLoader,
+} from "../../components/pagesComponents/home/actions";
+import { IconButton, Rating, Theme, Typography } from "@mui/material";
 // import { FAVORITE_ICON, HEART, PRODUCT_PLACEHOLDER } from "utils/constantImages";
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles((theme: Theme) => ({
   productCard1: {
     padding: theme.spacing(3, 1),
     [theme.breakpoints.down("sm")]: {
@@ -443,7 +447,7 @@ const Product = (props: Props) => {
             },
             []
           );
-          console.log(categoryAttributesData,categoryArray)
+          console.log(categoryAttributesData, categoryArray);
           if (resp) {
             // eventAddToWishlist({
             //   ProductId: `${product?.magentoId}`,
@@ -520,7 +524,7 @@ const Product = (props: Props) => {
                 },
                 []
               );
-              console.log(categoryArray)
+              console.log(categoryArray);
               // eventRemoveFromWishlist({
               //   ProductId: `${product.magentoId}`,
               //   ProductName: `${product.name}`,
@@ -543,7 +547,6 @@ const Product = (props: Props) => {
                 section === "recommend" ||
                 section === "cart"
               ) {
-               
                 // dispatch(
                 //   getWishList({ limit: 10, page: 1 }, () => {
                 //     dispatch(hideLoader());
@@ -807,15 +810,16 @@ const Product = (props: Props) => {
                   alt="img one"
                 />
               ) : (
-               
-                <div className={clsx(
-                  props.section === "recommend"
-                    ? classes.productPlaceholder
-                    : classes.imgSecondPlaceHolder
-                )}>
+                <div
+                  className={clsx(
+                    props.section === "recommend"
+                      ? classes.productPlaceholder
+                      : classes.imgSecondPlaceHolder
+                  )}
+                >
                   {/* <PRODUCT_PLACEHOLDER /> */}
                   "pending"
-                  </div>
+                </div>
               )}
             </div>
           </div>
@@ -962,24 +966,3 @@ const Product = (props: Props) => {
 };
 
 export default Product;
-
-{
-  /*<div>
-                   <IconButton
-                    aria-label="favorite"
-                    className={classes.heartImg}
-                    onClick={() => {
-                      if (isAuthenticated())
-                        handleLike(like ? false : true, productData);
-                      else showLoginAlert(true);
-                    }}
-                  >
-                    {like ? (
-                      <img src={Utils.images.FAVORITE_ICON} alt="heart" />
-                    ) : (
-                      <img src={Utils.images.HEART} alt="heart" />
-                    )}
-                  </IconButton> 
-                 
-               </div> */
-}

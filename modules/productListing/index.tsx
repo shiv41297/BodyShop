@@ -1,4 +1,3 @@
-import { Hidden } from "@material-ui/core";
 import { useEffect } from "react";
 import { screenViewed } from "../../component/utils/event/action";
 import events from "../../component/utils/event/constant";
@@ -46,18 +45,14 @@ const ProductListing = () => {
 
   return (
     <div id={"banner-id"}>
-      {!keyword && (
-        <Hidden smUp>
-          <MobileMenu />
-        </Hidden>
-      )}
-      <Banner />
-      <Hidden xsDown>
-        <FilterProducts />
-      </Hidden>
-      <Hidden smUp>
-        <MobileFilterProducts />
-      </Hidden>
+      {theme.breakpoints.up("sm") ? !keyword && <MobileMenu /> : null}
+      {/* {!keyword && <Hidden smUp></Hidden>} */}
+      {/* <Banner /> */}
+      {theme.breakpoints.down("xs") ? <FilterProducts /> : null}
+
+      {/* <Hidden xsDown></Hidden> */}
+
+      {theme.breakpoints.up("sm") ? <MobileFilterProducts /> : null}
 
       {/* <ListProducts /> */}
     </div>

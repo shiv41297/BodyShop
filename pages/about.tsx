@@ -4,15 +4,19 @@ import React from "react";
 import { wrapper } from "../store/store";
 import { getAboutData } from "../store/about/aboutAction";
 import { useSelector } from "react-redux";
+import { useTheme } from "@mui/material";
+import { useRouter } from "next/router";
 
 const NewPlayer: React.FC = (props: any) => {
   const state = useSelector((state: any) => state.aboutReducer);
+
   return (
     <>
-      <h1>testing</h1>
       <Head>
         <title>{state?.data?.data?.content?.metaDesc}</title>
       </Head>
+      <h1>testing</h1>
+
       <div
         dangerouslySetInnerHTML={{
           __html: state?.data?.data?.content?.content || "",

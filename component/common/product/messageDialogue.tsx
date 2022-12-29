@@ -1,91 +1,82 @@
-import {
-  Theme,
-  makeStyles,
-  createStyles,
-  Dialog,
-  Typography,
-  // Grid,
-  Divider,
-} from "@material-ui/core";
-import { Box } from "@mui/material";
+import { Box, Dialog, Divider, Theme, Typography } from "@mui/material";
 import React from "react";
+import { makeStyles } from "@mui/styles";
+
 // import { CROSS } from "utils/constantImages";
 // import CustomButton from "../button";
 
-const useStyles = makeStyles((theme: Theme) =>
-  createStyles({
-    root: {
-      "&:first-child": {
-        paddingTop: 0,
-      },
-      "& .MuiDialog-paperWidthSm": {
-        width: 438,
-      },
+const useStyles: any = makeStyles((theme: Theme) => ({
+  root: {
+    "&:first-child": {
+      paddingTop: 0,
     },
-    mainContainer: {
-      display: "flex",
-      textAlign: "center",
-      justifyContent: "space-between",
-      flexDirection: "column",
-      padding: theme.spacing(3.5, 2, 2, 2),
+    "& .MuiDialog-paperWidthSm": {
+      width: 438,
     },
-    heading: {
-      fontFamily: "Work Sans",
-      fontSize: "26px",
-      lineHeight: "30px",
-      color: "var(--black)",
-    },
-    textContent: {
-      alignSelf: "center",
-      display: "flex",
-      flexDirection: "column",
-      alignItems: "center",
-      width: "85%",
-    },
-    description: {
-      marginTop: "13px",
-      font: "normal 500 18px Work Sans",
-      color: "#333333",
-      lineHeight: "26px",
-    },
-    divider: {
-      margin: "35px 0px 8px 0px",
-      color: "#F2F2F2",
-    },
-    image: {
-      marginBottom: "21px",
-      width: "71px",
-      height: "71px",
-      display: "flex",
-      justifySelf: "center",
-      alignSelf: "center",
-    },
-    closeIcon: {
-      float: "right",
-      cursor: "pointer",
-      padding: "20px",
-    },
-    closeIconContainer: {
-      width: "100%",
-    },
-    mobileHeaderContainer: {
-      display: "flex",
-      alignItems: "center",
-      width: "100%",
-      height: "35px",
-      padding: theme.spacing(3, 1.6),
-      backgroundColor: "var(--medium-creame-color)",
-      position: "sticky",
-      top: 0,
-      zIndex: 9999,
-    },
+  },
+  mainContainer: {
+    display: "flex",
+    textAlign: "center",
+    justifyContent: "space-between",
+    flexDirection: "column",
+    padding: theme.spacing(3.5, 2, 2, 2),
+  },
+  heading: {
+    fontFamily: "Work Sans",
+    fontSize: "26px",
+    lineHeight: "30px",
+    color: "var(--black)",
+  },
+  textContent: {
+    alignSelf: "center",
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    width: "85%",
+  },
+  description: {
+    marginTop: "13px",
+    font: "normal 500 18px Work Sans",
+    color: "#333333",
+    lineHeight: "26px",
+  },
+  divider: {
+    margin: "35px 0px 8px 0px",
+    color: "#F2F2F2",
+  },
+  image: {
+    marginBottom: "21px",
+    width: "71px",
+    height: "71px",
+    display: "flex",
+    justifySelf: "center",
+    alignSelf: "center",
+  },
+  closeIcon: {
+    float: "right",
+    cursor: "pointer",
+    padding: "20px",
+  },
+  closeIconContainer: {
+    width: "100%",
+  },
+  mobileHeaderContainer: {
+    display: "flex",
+    alignItems: "center",
+    width: "100%",
+    height: "35px",
+    padding: theme.spacing(3, 1.6),
+    backgroundColor: "var(--medium-creame-color)",
+    position: "sticky",
+    top: 0,
+    zIndex: 9999,
+  },
 
-    backArrow: {
-      width: theme.spacing(2.5),
-      height: "auto",
-    },
-  })
-);
+  backArrow: {
+    width: theme.spacing(2.5),
+    height: "auto",
+  },
+}));
 
 interface Props {
   open: boolean;

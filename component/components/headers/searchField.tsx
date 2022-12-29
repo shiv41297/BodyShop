@@ -1,13 +1,13 @@
 import React from "react";
-import { makeStyles } from "@material-ui/core/styles";
-import InputBase from "@material-ui/core/InputBase";
+import { makeStyles } from "@mui/styles";
 import Utils from "../../utils";
 import { useDispatch } from "react-redux";
 import { useRouter } from "next/router";
 import { ROUTE_CONSTANTS } from "../../constants/routeConstants";
+import { InputBase, Theme } from "@mui/material";
 // import { FILTER_CROSS_2, SEARCHICON } from "utils/constantImages";
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles((theme: Theme) => ({
   search: {
     position: "relative",
     borderRadius: theme.shape.borderRadius,

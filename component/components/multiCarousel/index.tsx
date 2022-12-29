@@ -1,15 +1,17 @@
-import { makeStyles, createStyles, Theme, Typography } from "@material-ui/core";
 import _ from "lodash";
 import Carousel from "react-multi-carousel";
 import Utils from "../../utils";
 import clsx from "clsx";
+import { makeStyles } from "@mui/styles";
+
 // import { useNavigate } from "react-router-dom";
 // import Recommended from "../../assets/images/recommendedArrow.png";
 import { useRouter } from "next/router";
+import { Typography, Theme } from "@mui/material";
 // import { PRODUCT_PLACEHOLDER } from "utils/constantImages";
 
 const useStyles = makeStyles((theme: Theme) =>
-  createStyles({
+  ({
     multiCarousel: {},
     itemDiv: {
       marginRight: theme.spacing(1),

@@ -1,4 +1,4 @@
-import { hideSkeleton } from "../../state/actions/homeActions";
+import { hideSkeleton } from "../../components/pagesComponents/home/actions";
 import Utils from "../../utils";
 import request from "../../utils/request";
 

@@ -1,11 +1,11 @@
 
 
-import { makeStyles, createStyles } from "@material-ui/core";
 import Skeleton from "@mui/material/Skeleton";
 import { useEffect } from "react";
+import { makeStyles } from "@mui/styles";
 
 const useStyles = makeStyles(() =>
-    createStyles({
+   ({
         skeleton: {
             marginTop: "5px !important"
         },

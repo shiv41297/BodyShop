@@ -1,13 +1,5 @@
 import { useEffect, useState } from "react";
-import {
-  makeStyles,
-  Divider,
-  Button,
-  Modal,
-  Fade,
-  Typography,
-  Chip,
-} from "@material-ui/core";
+
 import Utils from "../../utils";
 import request from "../../utils/request";
 import _ from "lodash";
@@ -16,7 +8,7 @@ import _ from "lodash";
 import SearchBox from "../../components/searchBox";
 import SearchProducts from "./searchProducts";
 import TrendingProducts from "./trendingProducts";
-import { Skeleton } from "@mui/material";
+import { Button, Chip, Divider, Fade,  Modal, Skeleton, Theme, Typography } from "@mui/material";
 // import { getTopSearch } from "../../pages/home/actions";
 // import { useNavigate } from "react-router-dom";
 // import { userSearch } from "../../pages/home/actions";
@@ -25,10 +17,12 @@ import { getAuthToken } from "../../utils/session";
 import { useDispatch } from "react-redux";
 import { useRouter } from "next/router";
 import { ROUTE_CONSTANTS } from "../../constants/routeConstants";
-import { getTopSearch, userSearch } from "../../state/actions/homeActions";
 // import { SEARCHICON } from "utils/constantImages";
+import { makeStyles } from "@mui/styles";
+import { getTopSearch , userSearch} from "../../../store/home/action";
 
-const useStyles = makeStyles((theme) => ({
+
+const useStyles : any = makeStyles((theme: Theme) => ({
   modal: {
     display: "flex",
     alignItems: "center",

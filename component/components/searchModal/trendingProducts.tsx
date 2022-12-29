@@ -1,8 +1,11 @@
-import { makeStyles, Divider, Typography } from '@material-ui/core';
+import {  Typography, Divider, Theme } from '@mui/material';
 import _ from 'lodash';
+import { makeStyles } from "@mui/styles";
+
 // import { PRODUCT_PLACEHOLDER } from 'utils/constantImages';
 
-const useStyles = makeStyles((theme) => (
+
+const useStyles : any= makeStyles((theme: Theme) => (
     {
         innerContainer: {
             display: "flex",

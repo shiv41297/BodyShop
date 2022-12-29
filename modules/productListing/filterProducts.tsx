@@ -1,41 +1,41 @@
+//@ts-nocheck
 import {
-  makeStyles,
-  createStyles,
   Theme,
   Typography,
   Grid,
   MenuItem,
   Hidden,
-} from "@material-ui/core";
-import { useHistory, useLocation, useParams } from "react-router-dom";
-import { Helmet } from 'react-helmet';
-import clsx from "clsx"
+  IconButton,
+  Menu,
+} from "@mui/material";
+import { makeStyles } from "@mui/styles";
+// import { useHistory, useLocation, useParams } from "react-router-dom";
+// import { Helmet } from "react-helmet";
+import clsx from "clsx";
 import React, { useEffect, useState } from "react";
-import Utils from "../../utils";
+import Utils from "../../component/utils";
 import Filters from "./filters";
 import Products from "./listProducts";
 import { useDispatch, useSelector } from "react-redux";
 import { getProductList } from "./action";
-import { ReducersModal } from "../../models";
-import RecommendationCarousel from "../../components/common/recommendationCarousel";
+import { ReducersModal } from "../../component/models";
+import RecommendationCarousel from "../../component/common/recommendationCarousel";
 // import Skeleton from "@mui/material/Skeleton";
-import IconButton from "@material-ui/core/IconButton";
-import Menu from "@material-ui/core/Menu";
 import {
   hideLoader,
   hideSkeleton,
   showLoader,
   showSkeleton,
-} from "../home/actions";
+} from "../../store/home/action";
 import { Skeleton } from "@mui/material";
-import { FilterProductSkeleton } from "../../components/common/skeletonList/filterProductSkeleton";
-import { getOthersRecommendations } from "../../components/common/recommendationCarousel/action";
-import SkeletonProductView from "../../components/common/skeletonList/skeletonProductView";
+import { FilterProductSkeleton } from "../../component/common/skeletonList/filterProductSkeleton";
+import { getOthersRecommendations } from "../../component/common/recommendationCarousel/action";
+import SkeletonProductView from "../../component/common/skeletonList/skeletonProductView";
 import ProductNotFound from "./productNotFound";
 import { debug } from "util";
 
-
-import { customGa4Event } from "../../utils/gtag";
+import { customGa4Event } from "../../component/utils/gtag";
+import Head from "next/head";
 
 declare global {
   interface Window {
@@ -43,155 +43,154 @@ declare global {
   }
 }
 
-const useStyles = makeStyles((theme: Theme) =>
-  createStyles({
-    bannerRoot: {
-      background: "var(--white)",
-      backdropFilter: "blur(2px)",
-      position: "relative",
-      // top: "-10vh",
+const useStyles = makeStyles((theme: Theme) => ({
+  bannerRoot: {
+    background: "var(--white)",
+    backdropFilter: "blur(2px)",
+    position: "relative",
+    // top: "-10vh",
+  },
+  bannerRoot2: {
+    [theme.breakpoints.up("sm")]: {
+      top: "-8vh",
     },
-    bannerRoot2: {
-      [theme.breakpoints.up("sm")]: {
-        top: "-8vh",
-      },
-    },
-    productContainer: {
-      background: "var(--white)",
-    },
-    findContainer: {
-      width: "1170px",
-      margin: "0 auto",
-      maxWidth: "100%",
-    },
-    filterHead: {
-      padding: "60px 20px 15px",
-    },
-    filterProductText: {
-      letterSpacing: "2px",
-    },
-    leftFilter: {
-      display: "flex",
-      alignItems: "center",
-      "& .MuiTypography-body1": {
-        font: `normal ${theme.typography.fontWeightBold} ${theme.spacing(
-          2
-        )}px Druk`,
-        marginLeft: theme.spacing(2),
-        lineHeight: "23px",
-      },
-    },
-    filterImg: {
-      width: 20,
-    },
-    filters: {
-      fontSize: "16px",
+  },
+  productContainer: {
+    background: "var(--white)",
+  },
+  findContainer: {
+    width: "1170px",
+    margin: "0 auto",
+    maxWidth: "100%",
+  },
+  filterHead: {
+    padding: "60px 20px 15px",
+  },
+  filterProductText: {
+    letterSpacing: "2px",
+  },
+  leftFilter: {
+    display: "flex",
+    alignItems: "center",
+    "& .MuiTypography-body1": {
+      font: `normal ${theme.typography.fontWeightBold} ${theme.spacing(
+        2
+      )}px Druk`,
       marginLeft: theme.spacing(2),
-      [theme.breakpoints.down("xs")]: {
-        fontSize: "13px",
-        marginTop: theme.spacing(1.5),
-        marginLeft: theme.spacing(0),
-      },
-      // width:"20px"
+      lineHeight: "23px",
+    },
+  },
+  filterImg: {
+    width: 20,
+  },
+  filters: {
+    fontSize: "16px",
+    marginLeft: theme.spacing(2),
+    [theme.breakpoints.down("xs")]: {
+      fontSize: "13px",
+      marginTop: theme.spacing(1.5),
+      marginLeft: theme.spacing(0),
+    },
+    // width:"20px"
+  },
+
+  select: {
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "flex-end",
+    font: `normal ${theme.typography.fontWeightBold} ${theme.spacing(
+      1.5
+    )}px Wrok Sans`,
+    "& .MuiInput-underline:after": {
+      border: "none",
+    },
+    "& .MuiInput-underline:before": {
+      display: "none",
     },
 
-    select: {
-      display: "flex",
-      flexDirection: "row",
-      justifyContent: "flex-end",
+    "& .MuiInput-input": {
       font: `normal ${theme.typography.fontWeightBold} ${theme.spacing(
-        1.5
-      )}px Wrok Sans`,
-      "& .MuiInput-underline:after": {
-        border: "none",
-      },
-      "& .MuiInput-underline:before": {
-        display: "none",
-      },
-
-      "& .MuiInput-input": {
-        font: `normal ${theme.typography.fontWeightBold} ${theme.spacing(
-          2
-        )}px Druk`,
-        marginLeft: theme.spacing(2),
-        lineHeight: "23px",
-      },
+        2
+      )}px Druk`,
+      marginLeft: theme.spacing(2),
+      lineHeight: "23px",
     },
-    filterBody: {
-      // height: 1400
-      // maxHeight: 1000,
+  },
+  filterBody: {
+    // height: 1400
+    // maxHeight: 1000,
+  },
+  filterFooter: {
+    marginTop: theme.spacing(10),
+    width: "100%",
+  },
+  carouselHeading: {
+    font: `normal ${theme.typography.fontWeightBold} ${theme.spacing(
+      2.4
+    )}px  Recoleta Alt`,
+    color: "#084236",
+    lineHeight: 1.5,
+    marginBottom: theme.spacing(0.5),
+    maxWidth: "500px",
+    [theme.breakpoints.down("xs")]: {
+      maxWidth: "none",
+      fontSize: "16px",
+      marginTop: theme.spacing(14.5),
     },
-    filterFooter: {
-      marginTop: theme.spacing(10),
-      width: "100%",
-    },
-    carouselHeading: {
+    marginLeft: "10px",
+  },
+  arrow: {
+    padding: theme.spacing(0, 1),
+  },
+  button: {
+    "& .MuiTypography-body1": {
       font: `normal ${theme.typography.fontWeightBold} ${theme.spacing(
-        2.4
-      )}px  Recoleta Alt`,
-      color: "#084236",
-      lineHeight: 1.5,
-      marginBottom: theme.spacing(0.5),
-      maxWidth: "500px",
-      [theme.breakpoints.down("xs")]: {
-        maxWidth: "none",
-        fontSize: "16px",
-        marginTop: theme.spacing(14.5),
-      },
-      marginLeft: "10px",
-    },
-    arrow: {
-      padding: theme.spacing(0, 1),
-    },
-    button: {
-      "& .MuiTypography-body1": {
-        font: `normal ${theme.typography.fontWeightBold} ${theme.spacing(
-          2
-        )}px  Druk`,
+        2
+      )}px  Druk`,
 
-        lineHeight: "23px",
-        letterSpacing: "0.04em",
-        textTransform: "uppercase",
+      lineHeight: "23px",
+      letterSpacing: "0.04em",
+      textTransform: "uppercase",
 
-        color: "var(--black300)",
-      },
-      "& .MuiIconButton-root": {
-        padding: 0,
-        borderRadius: "0%"
-      },
-      "& .MuiIconButton-root:hover": {
-        background: "none",
-      },
+      color: "var(--black300)",
     },
-    link: {
-      color: "lightblue",
-      font: `normal 400 ${theme.spacing(2)}px  Work Sans`,
-      cursor: "pointer",
+    "& .MuiIconButton-root": {
+      padding: 0,
+      borderRadius: "0%",
     },
-    productData: {
-      // margin: theme.spacing(1, "0"),
-      padding: theme.spacing(0, 1),
-      [theme.breakpoints.down("xs")]: {
-        padding: theme.spacing(0, 0),
-      },
+    "& .MuiIconButton-root:hover": {
+      background: "none",
     },
-  })
-);
-
+  },
+  link: {
+    color: "lightblue",
+    font: `normal 400 ${theme.spacing(2)}px  Work Sans`,
+    cursor: "pointer",
+  },
+  productData: {
+    // margin: theme.spacing(1, "0"),
+    padding: theme.spacing(0, 1),
+    [theme.breakpoints.down("xs")]: {
+      padding: theme.spacing(0, 0),
+    },
+  },
+}));
 
 function FilterProducts() {
   const dispatch = useDispatch();
   const classes = useStyles();
-  const history = useHistory();
-  const location: any = useLocation();
-  const params: any = useParams();
+  // const history = useHistory();
+  // const location: any = useLocation();
+  // const params: any = useParams();
   const sortingData = Utils.constants.sortingData;
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
   const query = Utils.CommonFunctions.useQuery();
 
   let queryFilters = query.get("filters") ?? "{}";
-  queryFilters = JSON.parse(decodeURIComponent(decodeURIComponent(queryFilters)))
+  queryFilters = JSON.parse(
+    decodeURIComponent(decodeURIComponent(queryFilters))
+  );
 
   const findSortingData = (id: string) => {
     let sortingObj = sortingData[0];
@@ -214,17 +213,21 @@ function FilterProducts() {
   );
 
   const [page, setPage] = useState(queryFilters?.page ?? 1);
-  const [sorting, setSorting] = React.useState(sortingData[0])
+  const [sorting, setSorting] = React.useState(sortingData[0]);
   const products = productData?.products || {};
 
+  // let keyword = params?.keyword ?? "";
+  let keyword = "";
 
-  let keyword = params?.keyword ?? "";
+  // const fromPath = location?.state?.fromPath || "";
+  const fromPath = "";
 
-
-  const fromPath = location?.state?.fromPath || "";
-
-  const urlKey = location.pathname.includes("/c/") ? location.pathname.split("/c/")?.[0]?.split('/')?.pop() : location.pathname.includes("/h/") ? location.pathname.split("/h/")?.[0]?.split('/')?.pop() : ""
-
+  // const urlKey = location.pathname.includes("/c/")
+  //   ? location.pathname.split("/c/")?.[0]?.split("/")?.pop()
+  //   : location.pathname.includes("/h/")
+  //   ? location.pathname.split("/h/")?.[0]?.split("/")?.pop()
+  //   : "";
+  const urlKey = "";
 
   let obj: any = {
     query: keyword,
@@ -232,9 +235,8 @@ function FilterProducts() {
     sortBy: sorting?.id?.toString(),
     urlKey,
     otherFilters: [],
-    customAttributes: []
+    customAttributes: [],
   };
-
 
   const [apiParams, setApiParams] = useState(obj);
 
@@ -246,54 +248,50 @@ function FilterProducts() {
     window.scrollTo(0, 400);
     dispatch(showSkeleton());
 
-    let sort = findSortingData(queryFilters?.sortBy)
-    setSorting(sort)
+    let sort = findSortingData(queryFilters?.sortBy);
+    setSorting(sort);
     let newQueryFilters = queryFilters;
-    let newPage = queryFilters?.otherFilters?.length !== 0 ? 1 : queryFilters?.page;
-      newQueryFilters =  {...queryFilters, page:newPage};
+    let newPage =
+      queryFilters?.otherFilters?.length !== 0 ? 1 : queryFilters?.page;
+    newQueryFilters = { ...queryFilters, page: newPage };
 
     setPage(newQueryFilters?.page);
-    const payload = { ...obj, ...newQueryFilters, urlKey, query: keyword }
+    const payload = { ...obj, ...newQueryFilters, urlKey, query: keyword };
 
-    setApiParams(payload)
+    setApiParams(payload);
 
     dispatch(
       getProductList(
         payload,
         true,
-        (resp: any) => {
+        (_resp: any) => {
           dispatch(hideSkeleton());
         },
         null,
         fromPath === "home"
           ? () => {
-            history.push(
-              `${Utils.routes.PRODUCT_LIST}?categoryId=${menuData?.[0]?.magentoId}`
-            );
-          }
+              history.push(
+                `${Utils.routes.PRODUCT_LIST}?categoryId=${menuData?.[0]?.magentoId}`
+              );
+            }
           : null
       )
     );
-
   }, [keyword, urlKey]);
 
-  const getFilteredProductsList = (recall?:boolean) => {
-
-    
-  }
+  const getFilteredProductsList = (_recall?: boolean) => {};
 
   useEffect(() => {
     window.scrollTo(0, 0);
-    let params: any = { page, limit: 10, type: "history" }
+    let params: any = { page, limit: 10, type: "history" };
     if (authToken) {
-      dispatch(showSkeleton())
+      dispatch(showSkeleton());
       dispatch(
         getOthersRecommendations(params, () => {
-          dispatch(hideSkeleton())
+          dispatch(hideSkeleton());
         })
       );
     }
-
   }, [authToken]);
 
   useEffect(() => {
@@ -303,38 +301,39 @@ function FilterProducts() {
         productData?.products?.data &&
         productData?.products?.data.reduce((i: any, j: any, index: number) => {
           i.push({
-            "id": j.sku,
-            "item_id": j.sku,
-            "name": j.name,
-            "item_name": j.name,
-            "currency": "INR",
-            "index": index + 1,
-            "brand": "The Body Shop",
-            "item_brand": "The Body Shop",
-            "category": j.category?.name,
-            "item_category": j.category?.name,
-            "list_id": j.sku,
-            "item_list_id": j.sku,
-            "list_name": j.name,
-            "item_list_name": j.name,
-            "price": j.price,
+            id: j.sku,
+            item_id: j.sku,
+            name: j.name,
+            item_name: j.name,
+            currency: "INR",
+            index: index + 1,
+            brand: "The Body Shop",
+            item_brand: "The Body Shop",
+            category: j.category?.name,
+            item_category: j.category?.name,
+            list_id: j.sku,
+            item_list_id: j.sku,
+            list_name: j.name,
+            item_list_name: j.name,
+            price: j.price,
             // "quantity":j.sku1
           });
           return i;
         }, []);
-      if (typeof window && window.gtag !== 'undefined') {
+      if (typeof window && window.gtag !== "undefined") {
         const gaPayload = {
-          "items": ProductsArray
-        }
+          items: ProductsArray,
+        };
         customGa4Event("view_item_list", gaPayload);
-        if (process.env.REACT_APP_ENV !== 'development' && process.env.REACT_APP_ENV !== 'staging') {
-          window.gtag('event', 'view_item_list', gaPayload);
+        if (
+          process.env.REACT_APP_ENV !== "development" &&
+          process.env.REACT_APP_ENV !== "staging"
+        ) {
+          window.gtag("event", "view_item_list", gaPayload);
         }
       }
     }
-
-  }, [productData?.products?.data])
-
+  }, [productData?.products?.data]);
 
   const handleProductSort = (item: any) => {
     const payload = {
@@ -353,7 +352,12 @@ function FilterProducts() {
       dispatch(
         getProductList(payload, false, () => {
           dispatch(hideLoader());
-          history.push({ pathname: history.location.pathname, search: `?filters=${encodeURI(encodeURIComponent(JSON.stringify(payload)))}` })
+          history.push({
+            pathname: history.location.pathname,
+            search: `?filters=${encodeURI(
+              encodeURIComponent(JSON.stringify(payload))
+            )}`,
+          });
         })
       );
     }
@@ -367,7 +371,7 @@ function FilterProducts() {
     setAnchorEl(null);
   };
 
-  const handleChange = (e: any, page: number) => {
+  const handleChange = (_e: any, page: number) => {
     window.scrollTo(0, 400);
     setPage(page);
 
@@ -381,29 +385,37 @@ function FilterProducts() {
     dispatch(
       getProductList(payload, false, () => {
         dispatch(hideLoader());
-        history.push({ pathname: history.location.pathname, search: `?filters=${encodeURI(encodeURIComponent(JSON.stringify(payload)))}` })
-
+        history.push({
+          pathname: history.location.pathname,
+          search: `?filters=${encodeURI(
+            encodeURIComponent(JSON.stringify(payload))
+          )}`,
+        });
       })
     );
   };
 
   return (
     <div className={classes.productContainer}>
-      <Helmet>
+      <Head>
         <title>
-          {productData?.categoryData && productData?.categoryData?.metaTitle ?
-            productData?.categoryData?.metaTitle
-            : productData?.categoryData?.name ?
-              `${productData?.categoryData?.name} | The Body Shop` : 'The Body Shop'}
+          {productData?.categoryData && productData?.categoryData?.metaTitle
+            ? productData?.categoryData?.metaTitle
+            : productData?.categoryData?.name
+            ? `${productData?.categoryData?.name} | The Body Shop`
+            : "The Body Shop"}
         </title>
         <meta
           name="description"
-          content={productData?.categoryData && productData?.categoryData?.metaDescription ?
+          content={
+            productData?.categoryData &&
             productData?.categoryData?.metaDescription
-            : 'The Body Shop'}
+              ? productData?.categoryData?.metaDescription
+              : "The Body Shop"
+          }
         />
         <link rel="canonical" href={window.location.href} />
-      </Helmet>
+      </Head>
       <div className={classes.findContainer}>
         <div
           className={clsx({
@@ -419,7 +431,6 @@ function FilterProducts() {
             <FilterProductSkeleton />
           ) : (
             <>
-
               <Hidden xsDown>
                 <div className={classes.filterHead}>
                   <Grid container>
@@ -444,60 +455,64 @@ function FilterProducts() {
                       {productData?.products?.data ? (
                         <Typography className={classes.filters} variant="body1">
                           <strong> Showing </strong>
-                          {`${productData?.products?.data?.length ?? "0"} of ${productData?.products?.totalCount ?? "0"
-                            } ${productData?.products?.data?.length === 1
+                          {`${productData?.products?.data?.length ?? "0"} of ${
+                            productData?.products?.totalCount ?? "0"
+                          } ${
+                            productData?.products?.data?.length === 1
                               ? "product"
                               : "products"
-                            }`}
+                          }`}
                         </Typography>
                       ) : null}
                     </Grid>
-                    {filters && products?.data && products?.data?.length > 0 && (
-                      <Grid item xs={6} sm={3} className={classes.select}>
-                        <div className={classes.button}>
-                          <IconButton
-                            aria-label="account of current user"
-                            aria-controls="menu-appbar"
-                            aria-haspopup="true"
-                            onClick={handleMenu}
-                            value={sorting.id}
-                            color="inherit"
-                          >
-                            <Typography>{sorting.name}</Typography>
-                            <img
-                              src={Utils.images.DOWN_ARROW}
-                              className={classes.arrow}
-                              alt="downArrow"
-                            />
-                          </IconButton>
-                          <Menu
-                            id="menu-appbar"
-                            anchorEl={anchorEl}
-                            anchorOrigin={{
-                              vertical: "top",
-                              horizontal: "right",
-                            }}
-                            keepMounted
-                            transformOrigin={{
-                              vertical: "top",
-                              horizontal: "right",
-                            }}
-                            open={open}
-                            onClose={handleClose}
-                          >
-                            {sortingData?.map((val: any, i: any) => (
-                              <MenuItem
-                                key={i}
-                                value={val.id}
-                                onClick={() => handleProductSort(val)}
-                              >
-                                {val.name}
-                              </MenuItem>
-                            ))}
-                          </Menu>
-                        </div>
-                      </Grid>
-                    )}
+                    {filters &&
+                      products?.data &&
+                      products?.data?.length > 0 && (
+                        <Grid item xs={6} sm={3} className={classes.select}>
+                          <div className={classes.button}>
+                            <IconButton
+                              aria-label="account of current user"
+                              aria-controls="menu-appbar"
+                              aria-haspopup="true"
+                              onClick={handleMenu}
+                              value={sorting.id}
+                              color="inherit"
+                            >
+                              <Typography>{sorting.name}</Typography>
+                              <img
+                                src={Utils.images.DOWN_ARROW}
+                                className={classes.arrow}
+                                alt="downArrow"
+                              />
+                            </IconButton>
+                            <Menu
+                              id="menu-appbar"
+                              anchorEl={anchorEl}
+                              anchorOrigin={{
+                                vertical: "top",
+                                horizontal: "right",
+                              }}
+                              keepMounted
+                              transformOrigin={{
+                                vertical: "top",
+                                horizontal: "right",
+                              }}
+                              open={open}
+                              onClose={handleClose}
+                            >
+                              {sortingData?.map((val: any, i: any) => (
+                                <MenuItem
+                                  key={i}
+                                  value={val.id}
+                                  onClick={() => handleProductSort(val)}
+                                >
+                                  {val.name}
+                                </MenuItem>
+                              ))}
+                            </Menu>
+                          </div>
+                        </Grid>
+                      )}
                   </Grid>
                 </div>
               </Hidden>
@@ -516,11 +531,12 @@ function FilterProducts() {
                     />
                   </Grid>
                 </Grid>
-                {!filters && (!products?.data || products?.data?.length === 0) && (
-                  <Grid item xs={12} className={classes.productData}>
-                    <ProductNotFound setParams={setApiParams} />
-                  </Grid>
-                )}
+                {!filters &&
+                  (!products?.data || products?.data?.length === 0) && (
+                    <Grid item xs={12} className={classes.productData}>
+                      <ProductNotFound setParams={setApiParams} />
+                    </Grid>
+                  )}
               </div>
             </>
           )}
