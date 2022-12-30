@@ -1,15 +1,15 @@
 import {
-  makeStyles,
-  createStyles,
+  
   Theme,
   Typography,
   Grid,
-} from "@material-ui/core";
-import CustomButton from "../../components/common/button";
+} from "@mui/material";
+import { makeStyles } from "@mui/styles";
+import CustomButton from "../../common/button";
 import Utils from "../../utils";
 
 const useStyles = makeStyles((theme: Theme) =>
-  createStyles({
+ ({
     productContainer: {
       // background: "var(--white)",
       // padding: theme.spacing(3, 5),

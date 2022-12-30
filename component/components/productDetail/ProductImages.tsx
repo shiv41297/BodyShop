@@ -1,27 +1,26 @@
-import { makeStyles, IconButton } from "@material-ui/core";
+import { IconButton , Theme} from "@mui/material";
 import React, { useEffect, useState } from "react";
 import Utils from "../../utils";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  addToWishList,
-  removeFromWishList,
-} from "./../../components/common/product/action";
+import { makeStyles } from "@mui/styles";
 import { ProductDetailModal, ReducersModal } from "../../models";
+import Image from "next/image";
 // import ImageMagnifier from "./imageMagnifier";
-import { hideLoader } from "../home/actions";
 import {
   addToWishlist as eventAddToWishlist,
   removeFromWishlist as eventRemoveFromWishlist,
 } from "../../utils/event/action";
-import ReactImageMagnify from "react-image-magnify";
+// import ReactImageMagnify from "react-image-magnify";
 import { isAuthenticated } from "../../utils/session";
-import { useNavigate } from "react-router-dom";
-import MessageDialogue from "../../components/common/product/messageDialogue";
-import { getWishList } from "../wishlist/action";
-import { Box } from "@mui/material";
-import { FAVORITE_ICON, HEART, PRODUCT_PLACEHOLDER } from "utils/constantImages";
 
-const useStyles = makeStyles((theme) => ({
+import { Box } from "@mui/material";
+import { hideLoader } from "../../../store/home/action";
+import { addToWishList, removeFromWishList } from "../../common/product/action";
+import MessageDialogue from "../../common/product/messageDialogue";
+import { useRouter } from "next/router";
+// import { FAVORITE_ICON, HEART, PRODUCT_PLACEHOLDER } from "utils/constantImages";
+
+const useStyles = makeStyles((theme: Theme) => ({
   productImageContainer: {
     margin: theme.spacing(2, 2, 2, 0),
     height: "inherit",
@@ -219,7 +218,7 @@ const ProductImages = (props: any) => {
 
   var productData1 = props && props?.details;
   const dispatch : any= useDispatch();
-  const history = useNavigate()
+  const history = useRouter()
   const classes = useStyles();
   // const [state, setState] = React.useState({
   //     displayImage: '',
@@ -339,7 +338,7 @@ const ProductImages = (props: any) => {
             },
             []
           );
-          dispatch(getWishList({ limit: 10, page: 1 }));
+          // dispatch(getWishList({ limit: 10, page: 1 }));
 
           dispatch({
             type: "show-alert",
@@ -405,7 +404,7 @@ const ProductImages = (props: any) => {
               },
               []
             );
-            dispatch(getWishList({ limit: 10, page: 1 }));
+            // dispatch(getWishList({ limit: 10, page: 1 }));
             dispatch({
               type: "show-alert",
               payload: {
@@ -506,7 +505,7 @@ const ProductImages = (props: any) => {
         open={loginAlert}
         handleClose={() => showLoginAlert(!loginAlert)}
         onOk={() => {
-          history(
+          history.push(
             `${Utils.routes.LOGIN_OTP}?redirectTo=${location.pathname}`
           );
           showLoginAlert(false)
@@ -534,7 +533,7 @@ const ProductImages = (props: any) => {
                         else
                           showLoginAlert(true);
                     }}>
-                    <FAVORITE_ICON />
+                    <Image src={Utils.images.FAVORITE_ICON} alt="FAVORITE" width={30} height={30} />
                   </div>
                 </IconButton>
               ) : (
@@ -549,7 +548,7 @@ const ProductImages = (props: any) => {
                         showLoginAlert(true);
                   }}
                 >
-                  <HEART />
+                  <Image src={Utils.images.HEART} alt="heart" width={30} height={30} />
                 </IconButton>
               )}
             </div>
@@ -559,7 +558,7 @@ const ProductImages = (props: any) => {
             {images?.[mainImageIndex]?.file ? (
               <>
                 <Box sx={{ display: { sm: "block", xs: "none" } }}>
-                  <div style={{ width: "500px", height: "750px" }}>
+                  {/* <div style={{ width: "500px", height: "750px" }}>
                     <ReactImageMagnify
                       {...{
                         smallImage: {
@@ -589,7 +588,7 @@ const ProductImages = (props: any) => {
                         },
                       }}
                     />
-                  </div>
+                  </div> */}
                 </Box>
                 <Box sx={{ display: { xs: "block", sm: "none" } }}>
                   <div className={classes.productImage}>
@@ -607,7 +606,7 @@ const ProductImages = (props: any) => {
               <div className={classes.placeholderDiv}>
                
                 <span className={classes.productPlaceholder}>
-                  <PRODUCT_PLACEHOLDER />
+                  <Image src={Utils.images.PRODUCT_PLACEHOLDER} alt="placeHolder" width={30} height={30} />
                 </span>
               </div>
             )}

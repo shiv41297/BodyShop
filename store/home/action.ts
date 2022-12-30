@@ -68,12 +68,9 @@ const filterDataForMobile = (data: any) => {
 
 export const getHomeData = () => async (dispatch: any) => {
 
-  let url =
-    "https://bodyshopstgapi.appskeeper.in/user-service/api/v1/users/page/home";
-  console.log("urlhome", Utils.endPoints.HOME,"urlhome")
+ 
   let resp = await request.get(Utils.endPoints.HOME);
   if (resp) {
-    console.log(resp, "resp");
     const data = [...resp?.data?.data];
     // web home data
     // const arr = convertObjToArray(data)

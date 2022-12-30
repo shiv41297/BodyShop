@@ -1,5 +1,5 @@
 // import ContainedButton from "../../components/containedButton";
-import { makeStyles, Typography } from '@material-ui/core';
+import {  Typography , Theme} from '@mui/material';
 import { useRouter } from 'next/router';
 // import ReactHtmlParser from "react-html-parser";
 // import CustomAccordion from "../../components/customAccordion";
@@ -7,10 +7,11 @@ import { useSelector } from 'react-redux';
 import ContainedButton from '../../common/containedButton';
 import CustomAccordion from '../../customAccordion';
 import { ReducersModal } from '../../models';
+import { makeStyles } from '@mui/styles';
 
 const IMAGE_URL = `${process.env.NEXT_PUBLIC_MEDIA_URL}`;
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles((theme: Theme) => ({
   smallButMighty: {
     '& .MuiButton-root': {
       padding: '16px 16px',

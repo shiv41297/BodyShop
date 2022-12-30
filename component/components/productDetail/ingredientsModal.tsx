@@ -1,12 +1,15 @@
 // import ContainedButton from "../../../../../components/containedButton";
 import {
-    makeStyles,
     Modal,
     Fade,
     Backdrop,
     Typography,
-} from "@material-ui/core";
-import { CROSS } from "utils/constantImages";
+    Theme,
+} from "@mui/material";
+import { makeStyles } from "@mui/styles";
+import Image from "next/image";
+import Utils from "../../utils";
+// import { CROSS } from "utils/constantImages";
 // import { Link } from "react-router-dom";
 
 interface Props {
@@ -18,7 +21,7 @@ interface Props {
     // handleSubmit: Function;
 }
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles((theme: Theme) => ({
     modal: {
         display: "flex",
         alignItems: "center",
@@ -124,7 +127,7 @@ const IngredientsModal = (props: Props) => {
                         <div className={classes.heading}>Ingredients</div>
                       
                     <div className={classes.closeIcon} onClick={props.handleClose}>
-                    <img src={CROSS} alt="cross" />
+                    <Image src={Utils.images.CROSS} alt="cross"  width={20} height={20} />
                     </div>
                     </div>
                     <div className={classes.title}>{title}</div>

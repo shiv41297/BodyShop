@@ -1,38 +1,36 @@
 import React, { useEffect } from "react";
 import {
-  makeStyles,
+ 
   Typography,
   MenuItem,
   Menu,
- 
-} from "@material-ui/core";
+ Theme,
+ IconButton
+} from "@mui/material";
+import { makeStyles } from "@mui/styles";
 import Utils from "../../utils";
-import { ReducersModal } from "../../models";
-import ContainedButton from "../../components/containedButton";
-import IconButton from "@material-ui/core/IconButton";
 import { useDispatch, useSelector } from "react-redux";
 import SuccessModal from "./successModal";
+
 import {
-  addToWishList,
-  notifyMe,
-  removeFromWishList,
-} from "./../../components/common/product/action";
-import {
+  addToBag,
   addToWishlist as eventAddToWishlist,
   removeFromWishlist as eventRemoveFromWishlist,
 } from "../../utils/event/action";
 
-import { addToBag } from "../../components/common/addToCart/action";
 import clsx from "clsx";
 import { addToBag as eventAddToBag } from "../../utils/event/action";
-import { hideLoader } from "../home/actions";
+
 import { HideBetween, HideOn } from "react-hide-on-scroll";
-import { getWishList } from "../wishlist/action";
+// import { getWishList } from "../wishlist/action";
 import { customGa4Event } from "../../utils/gtag";
 import { Box, Icon } from "@mui/material";
-import { DOWN_ARROW, FAVORITE_ICON, HEART, UPARROW, UP_ARROW } from "utils/constantImages";
+import { hideLoader } from "../../../store/home/action";
+import ContainedButton from "../../common/containedButton";
+import { addToWishList, removeFromWishList, notifyMe } from "../../common/product/action";
+import { ReducersModal } from "../../models";
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles((theme : Theme) => ({
   staticBottomContainer: {
     background: "#f9f6ed",
     width: "100%",
@@ -357,201 +355,201 @@ const FixedBottomPanel = (props: any) => {
 
   // };
 
-  const handleLike = (status: boolean, product: any) => {
-    setLike(!like);
-    if (status) {
-      let data: any = {
-        productId: product.magentoId,
-        type: product.type || "simple",
-        attributeData: product.configurableProductOptions?.length
-          ? [
-            {
-              id: product.configurableProductOptions?.[0]?.attribute_id,
-              value:
-                product.configurableProductOptions?.[0]?.values?.[0]
-                  ?.value_index,
-            },
-          ]
-          : [],
-      };
-      addToWishList(data).then((resp) => {
-        if (resp) {
-          // dispatch({
-          //   type: Utils.ActionName.WISHLIST,
-          //   payload: { totalCount: totalCount + 1 },
-          // });
-          dispatch(getWishList({ limit: 10, page: 1 }));
-          let categoryAttributesIndex = product?.customAttributes.findIndex(
-            (item: any) => item.attribute_code === "category_ids"
-          );
-          let categoryAttributesData =
-            product?.customAttributes[categoryAttributesIndex];
-          let categoryArray = categoryAttributesData?.label.reduce(
-            (i: any, j: any) => {
-              i.push({
-                CategoryName: j.label,
-                CategoryId: j.value,
-              });
-              return i;
-            },
-            []
-          );
-          dispatch({
-            type: "show-alert",
-            payload: {
-              type: "success",
-              message: "Product added to wishlist",
-            },
-          });
+  // const handleLike = (status: boolean, product: any) => {
+  //   setLike(!like);
+  //   if (status) {
+  //     let data: any = {
+  //       productId: product.magentoId,
+  //       type: product.type || "simple",
+  //       attributeData: product.configurableProductOptions?.length
+  //         ? [
+  //           {
+  //             id: product.configurableProductOptions?.[0]?.attribute_id,
+  //             value:
+  //               product.configurableProductOptions?.[0]?.values?.[0]
+  //                 ?.value_index,
+  //           },
+  //         ]
+  //         : [],
+  //     };
+  //     // addToWishList(data).then((resp) => {
+  //     //   if (resp) {
+  //     //     // dispatch({
+  //     //     //   type: Utils.ActionName.WISHLIST,
+  //     //     //   payload: { totalCount: totalCount + 1 },
+  //     //     // });
+  //     //     dispatch(getWishList({ limit: 10, page: 1 }));
+  //     //     let categoryAttributesIndex = product?.customAttributes.findIndex(
+  //     //       (item: any) => item.attribute_code === "category_ids"
+  //     //     );
+  //     //     let categoryAttributesData =
+  //     //       product?.customAttributes[categoryAttributesIndex];
+  //     //     let categoryArray = categoryAttributesData?.label.reduce(
+  //     //       (i: any, j: any) => {
+  //     //         i.push({
+  //     //           CategoryName: j.label,
+  //     //           CategoryId: j.value,
+  //     //         });
+  //     //         return i;
+  //     //       },
+  //     //       []
+  //     //     );
+  //     //     dispatch({
+  //     //       type: "show-alert",
+  //     //       payload: {
+  //     //         type: "success",
+  //     //         message: "Product added to wishlist",
+  //     //       },
+  //     //     });
 
-          eventAddToWishlist({
-            ProductId: `${product?.magentoId}`,
-            ProductName: `${product?.name}`,
-            Price: `${product?.price}`,
-            Category: JSON.stringify(categoryArray),
-            FromScreen: `pdp`,
-          });
+  //     //     eventAddToWishlist({
+  //     //       ProductId: `${product?.magentoId}`,
+  //     //       ProductName: `${product?.name}`,
+  //     //       Price: `${product?.price}`,
+  //     //       Category: JSON.stringify(categoryArray),
+  //     //       FromScreen: `pdp`,
+  //     //     });
 
-          // if (callback) {
-          //     callback()
-          //     dispatch(hideLoader())
-          // }
-        } else {
-          dispatch(hideLoader());
-        }
+  //     //     // if (callback) {
+  //     //     //     callback()
+  //     //     //     dispatch(hideLoader())
+  //     //     // }
+  //     //   } else {
+  //     //     dispatch(hideLoader());
+  //     //   }
 
-      });
-    } else {
-      removeFromWishList(
-        product.wishlists ? product.wishlists?._id : product._id
-      )
-        .then((resp) => {
-          if (resp) {
-            // dispatch({
-            //   type: Utils.ActionName.WISHLIST,
-            //   payload: { totalCount: totalCount - 1 },
-            // });
-            dispatch(getWishList({ limit: 10, page: 1 }));
-            let categoryAttributesIndex = product?.customAttributes.findIndex(
-              (i: any) => i.attribute_code === "category_ids"
-            );
-            let categoryAttributesData =
-              product?.customAttributes[categoryAttributesIndex];
-            let categoryArray = categoryAttributesData?.label.reduce(
-              (i: any, j: any) => {
-                i.push({
-                  CategoryName: j.label,
-                  CategoryId: j.value,
-                });
-                return i;
-              },
-              []
-            );
-            dispatch({
-              type: "show-alert",
-              payload: {
-                type: "success",
-                message: "Product removed from wishlist",
-              },
-            });
-            eventRemoveFromWishlist({
-              ProductId: `${product.magentoId}`,
-              ProductName: `${product.name}`,
-              Price: `${product.price}`,
-              Category: JSON.stringify(categoryArray),
-              FromScreen: `pdpI`,
-            });
+  //     // });
+  //   } else {
+  //     // removeFromWishList(
+  //     //   product.wishlists ? product.wishlists?._id : product._id
+  //     // )
+  //       // .then((resp) => {
+  //       //   if (resp) {
+  //       //     // dispatch({
+  //       //     //   type: Utils.ActionName.WISHLIST,
+  //       //     //   payload: { totalCount: totalCount - 1 },
+  //       //     // });
+  //       //     dispatch(getWishList({ limit: 10, page: 1 }));
+  //       //     let categoryAttributesIndex = product?.customAttributes.findIndex(
+  //       //       (i: any) => i.attribute_code === "category_ids"
+  //       //     );
+  //       //     let categoryAttributesData =
+  //       //       product?.customAttributes[categoryAttributesIndex];
+  //       //     let categoryArray = categoryAttributesData?.label.reduce(
+  //       //       (i: any, j: any) => {
+  //       //         i.push({
+  //       //           CategoryName: j.label,
+  //       //           CategoryId: j.value,
+  //       //         });
+  //       //         return i;
+  //       //       },
+  //       //       []
+  //       //     );
+  //       //     dispatch({
+  //       //       type: "show-alert",
+  //       //       payload: {
+  //       //         type: "success",
+  //       //         message: "Product removed from wishlist",
+  //       //       },
+  //       //     });
+  //       //     eventRemoveFromWishlist({
+  //       //       ProductId: `${product.magentoId}`,
+  //       //       ProductName: `${product.name}`,
+  //       //       Price: `${product.price}`,
+  //       //       Category: JSON.stringify(categoryArray),
+  //       //       FromScreen: `pdpI`,
+  //       //     });
 
-            // if (callback) {
-            //     callback()
-            //     dispatch(hideLoader())
-            // }
-          } else {
-            dispatch(hideLoader());
-          }
-        })
-        .catch((err) => {
-          if (err?.response?.data?.message)
-            dispatch({
-              type: "show-alert",
-              payload: {
-                type: "error",
-                message: err?.response?.data?.message,
-              },
-            });
-        });
-    }
-  };
+  //       //     // if (callback) {
+  //       //     //     callback()
+  //       //     //     dispatch(hideLoader())
+  //       //     // }
+  //       //   } else {
+  //       //     dispatch(hideLoader());
+  //       //   }
+  //       // })
+  //       // .catch((err) => {
+  //       //   if (err?.response?.data?.message)
+  //       //     dispatch({
+  //       //       type: "show-alert",
+  //       //       payload: {
+  //       //         type: "error",
+  //       //         message: err?.response?.data?.message,
+  //       //       },
+  //       //     });
+  //       // });
+  //   }
+  // };
 
-  const handleCart = () => {
-    let data: any = {
-      productId: item.magentoId,
-      attributeData:
-        item.type !== "simple"
-          ? [
-            {
-              id: item.configurableProductOptions?.[0]?.attribute_id,
-              value: selectedVariant?.value_index,
-            },
-          ]
-          : [],
-      type: item.type,
-      quantity: 1,
-      isSearchOrRecommend: props?.isSearched ? true : false,
-    };
+  // const handleCart = () => {
+  //   let data: any = {
+  //     productId: item.magentoId,
+  //     attributeData:
+  //       item.type !== "simple"
+  //         ? [
+  //           {
+  //             id: item.configurableProductOptions?.[0]?.attribute_id,
+  //             value: selectedVariant?.value_index,
+  //           },
+  //         ]
+  //         : [],
+  //     type: item.type,
+  //     quantity: 1,
+  //     isSearchOrRecommend: props?.isSearched ? true : false,
+  //   };
 
-    dispatch(
-      addToBag(data, () => {
-        let categoryAttributesIndex = item?.customAttributes.findIndex(
-          (i: any) => i.attribute_code === "category_ids"
-        );
-        let categoryAttributesData =
-          item?.customAttributes[categoryAttributesIndex];
-        let categoryArray = categoryAttributesData?.label.reduce(
-          (i: any, j: any) => {
-            i.push({
-              CategoryName: j.label,
-              CategoryId: j.value,
-            });
-            return i;
-          },
-          []
-        );
-        eventAddToBag({
-          ProductId: `${item.magentoId}`,
-          ProductName: `${item.name}`,
-          Price: `${item.price}`,
-          Category: JSON.stringify(categoryArray),
-          FromScreen: `pdp`,
-        });
-        if (typeof window && window.gtag !== 'undefined') {
-          const gtagPayload = {
-            currency: "INR",
-            "items": [
-              {
-                "id": `${item.sku}`,
-                "item_id": `${item.sku}`,
-                "item_name": `${item.name}`,
-                "name": `${item.name}`,
-                "brand": "The Body Shop",
-                "item_brand": "The Body Shop",
-                "quantity": `${item.productOrder}`,
-                "price": `${item.price}`
-              }
-            ],
-            category: item?.categoryData?.name
+  //   dispatch(
+  //     addToBag(data, () => {
+  //       let categoryAttributesIndex = item?.customAttributes.findIndex(
+  //         (i: any) => i.attribute_code === "category_ids"
+  //       );
+  //       let categoryAttributesData =
+  //         item?.customAttributes[categoryAttributesIndex];
+  //       let categoryArray = categoryAttributesData?.label.reduce(
+  //         (i: any, j: any) => {
+  //           i.push({
+  //             CategoryName: j.label,
+  //             CategoryId: j.value,
+  //           });
+  //           return i;
+  //         },
+  //         []
+  //       );
+  //       eventAddToBag({
+  //         ProductId: `${item.magentoId}`,
+  //         ProductName: `${item.name}`,
+  //         Price: `${item.price}`,
+  //         Category: JSON.stringify(categoryArray),
+  //         FromScreen: `pdp`,
+  //       });
+  //       if (typeof window && window.gtag !== 'undefined') {
+  //         const gtagPayload = {
+  //           currency: "INR",
+  //           "items": [
+  //             {
+  //               "id": `${item.sku}`,
+  //               "item_id": `${item.sku}`,
+  //               "item_name": `${item.name}`,
+  //               "name": `${item.name}`,
+  //               "brand": "The Body Shop",
+  //               "item_brand": "The Body Shop",
+  //               "quantity": `${item.productOrder}`,
+  //               "price": `${item.price}`
+  //             }
+  //           ],
+  //           category: item?.categoryData?.name
 
-          }
-          customGa4Event("add_to_cart", gtagPayload);
-          if(process.env.NEXT_PUBLIC_ENV !== 'development' && process.env.NEXT_PUBLIC_ENV !== 'staging'){
-            window.gtag('event', 'add_to_cart', gtagPayload);
-          }
+  //         }
+  //         customGa4Event("add_to_cart", gtagPayload);
+  //         if(process.env.NEXT_PUBLIC_ENV !== 'development' && process.env.NEXT_PUBLIC_ENV !== 'staging'){
+  //           window.gtag('event', 'add_to_cart', gtagPayload);
+  //         }
 
-        }
-        setState({ ...state, open: true });
-      })
-    );
-  };
+  //       }
+  //       setState({ ...state, open: true });
+  //     })
+  //   );
+  // };
   const handleClose = () => {
     setAnchorEl(null);
 
@@ -719,7 +717,7 @@ const FixedBottomPanel = (props: any) => {
                         {/* {priceData?.priceData?.details?.label} */}
                       </Typography>
                      
-                      <DOWN_ARROW />
+                      {/* <DOWN_ARROW /> */}
                     </IconButton>
                     <div className={classes.dropDownItems}>
                       <Menu
@@ -783,7 +781,7 @@ const FixedBottomPanel = (props: any) => {
                       className={classes.addtoBag}
                       text="Add to Bag"
                       type="button"
-                      onClick={() => handleCart()}
+                      // onClick={() => handleCart()}
                     />
                   ) : (
                     <ContainedButton
@@ -797,10 +795,10 @@ const FixedBottomPanel = (props: any) => {
                     />
                   )}
                  
-                  <Icon style={{ cursor: "pointer" }}
+                  {/* <Icon style={{ cursor: "pointer" }}
                     onClick={handleGoToHeader}>
                     <UPARROW />
-                  </Icon>
+                  </Icon> */}
                 </div>
               </div>
             </div>
@@ -824,7 +822,7 @@ const FixedBottomPanel = (props: any) => {
                 )}
               >
                 <div className={classes.wishlistMyBag}>
-                  <div>
+                  {/* <div>
                     {like ? (
                       <IconButton
                         aria-label="favorite"
@@ -847,7 +845,7 @@ const FixedBottomPanel = (props: any) => {
                         </div>
                       </IconButton>
                     )}
-                  </div>
+                  </div> */}
                   <div className={classes.addToBag}>
                     {selectedVariantData && selectedVariantData?.isInStock ? (
                       <ContainedButton
@@ -855,7 +853,7 @@ const FixedBottomPanel = (props: any) => {
                         className={classes.addtoBag}
                         text="Add to Bag"
                         type="button"
-                        onClick={() => handleCart()}
+                        // onClick={() => handleCart()}
                       />
                     ) : (
                       <ContainedButton
@@ -869,10 +867,10 @@ const FixedBottomPanel = (props: any) => {
                       />
                     )}
                   
-                    <span style={{ cursor: "pointer" }}
+                    {/* <span style={{ cursor: "pointer" }}
                       onClick={handleGoToHeader}>
                       <UP_ARROW />
-                    </span>
+                    </span> */}
                   </div>
                 </div>
               </div>
@@ -963,20 +961,20 @@ const FixedBottomPanel = (props: any) => {
                         className={classes.heartImg}
                       >
                        
-                        <div  className={classes.heartIcon} onClick={() => handleLike(false, selectedVariantData)}>
+                        {/* <div  className={classes.heartIcon} onClick={() => handleLike(false, selectedVariantData)}>
                           <FAVORITE_ICON />
-                        </div>
+                        </div> */}
                       </IconButton>
                     ) : (
                       <IconButton
                         aria-label="favorite"
                         className={classes.heartImg}
-                        onClick={() => handleLike(true, selectedVariantData)}
+                        // onClick={() => handleLike(true, selectedVariantData)}
                       >
                         
-                        <div  className={classes.heartIcon}> 
+                        {/* <div  className={classes.heartIcon}> 
                           <HEART />
-                        </div>
+                        </div> */}
                       </IconButton>
                     )}
                   </div>
@@ -987,7 +985,7 @@ const FixedBottomPanel = (props: any) => {
                         className={classes.addtoBag}
                         text="Add to Bag"
                         type="button"
-                        onClick={() => handleCart()}
+                        // onClick={() => handleCart()}
                       />
                     ) : (
                       <ContainedButton
@@ -1001,10 +999,10 @@ const FixedBottomPanel = (props: any) => {
                       />
                     )}
                    
-                    <span style={{ cursor: "pointer" }}
+                    {/* <span style={{ cursor: "pointer" }}
                       onClick={handleGoToHeader}>
                       <UP_ARROW />
-                    </span>
+                    </span> */}
                   </div>
                 </div>
               </div>

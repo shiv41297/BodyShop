@@ -1,13 +1,15 @@
 import {
-  makeStyles,
   Modal,
   Fade,
   Backdrop,
   Typography,
   Divider,
   Grid,
-} from "@material-ui/core";
-import { CROSS } from "utils/constantImages";
+} from "@mui/material";
+import { Theme } from "@mui/material";
+import { makeStyles } from "@mui/styles";
+import Image from "next/image";
+// import { CROSS } from "utils/constantImages";
 import Utils from "../../utils";
 
 interface Props {
@@ -15,7 +17,7 @@ interface Props {
   handleClose: () => void;
 }
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles((theme: Theme) => ({
   modal: {
     display: "flex",
     alignItems: "center",
@@ -106,7 +108,7 @@ const ShopNow = (props: Props) => {
         <Fade in={props.open}>
           <div className={classes.paper}>
             <div className={classes.img} onClick={props.handleClose}>
-              <img src={CROSS} alt="crossIcon" />
+              <Image src={Utils.images.CROSS} alt="crossIcon" width={20} height={20}/>
             </div>
             <div>
               <Grid container spacing={2}>

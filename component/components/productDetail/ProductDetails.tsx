@@ -1,11 +1,12 @@
-import { makeStyles, Typography } from "@material-ui/core";
+import { Typography , Theme} from "@mui/material";
 import Utils from "./../../utils";
 import _ from "lodash";
+import { makeStyles } from "@mui/styles";
 import { useSelector } from "react-redux";
 import { ReducersModal } from "../../models";
 import Skeleton from "@mui/material/Skeleton";
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles((theme: Theme) => ({
   headContainer: {
     display: "flex",
     justifyContent: "space-between",

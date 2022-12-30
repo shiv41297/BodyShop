@@ -239,16 +239,16 @@ const ProductDetail = (props: any) => {
   const [breadCrumData, setBreadCrumb] = React.useState<any>([]);
 
   const productData: any = useSelector(
-    (state: ReducersModal) => state.productDetailReducer
+    (state: ReducersModal) => state?.productDetailReducer
   );
   const totalItems = useSelector(
-    (state: ReducersModal) => state.shoppingBagReducer.totalItems
+    (state: ReducersModal) => state?.shoppingBagReducer?.totalItems
   );
   const userInfo = useSelector(
-    (state: ReducersModal) => state.userDetailReducer.userInfo
+    (state: ReducersModal) => state?.userDetailReducer?.userInfo
   );
   const skeletonLoader = useSelector((state: ReducersModal) => {
-    return state.loadingReducer.skeletonLoader;
+    return state?.loadingReducer?.skeletonLoader;
   });
 
   useEffect(() => {
@@ -280,11 +280,11 @@ const ProductDetail = (props: any) => {
   }, []);
 
   const recommendedData = useSelector(
-    (state: ReducersModal) => state.recommendReducer.recommendedData?.data
+    (state: ReducersModal) => state?.recommendReducer?.recommendedData?.data
   );
 
   const configs: any = useSelector(
-    (state: ReducersModal) => state.configReducer.generalConfigs
+    (state: ReducersModal) => state?.configReducer?.generalConfigs
   );
 
   const urlkey = location.pathname.split('/p/')?.[0]?.split('/').pop();

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Divider, Theme, Typography } from '@mui/material';
+import { Divider, Rating, Theme, Typography } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 // import images from "../../utils/images";
 // import ContainedButton from "../../components/containedButton";
@@ -9,12 +9,12 @@ import Utils from '../../utils';
 // import { Link } from "react-router-dom";
 import { ReducersModal } from '../../models';
 import _ from 'lodash';
-import Rating from '@material-ui/lab/Rating';
 import clsx from 'clsx';
 import { addCompleteYourRoutine } from './action';
 import images from '../../utils/images';
 import Link from 'next/link';
 import ContainedButton from '../../common/containedButton';
+
 const IMAGE_URL = `${process.env.NEXT_PUBLIC_MEDIA_URL}`;
 
 const useStyles = makeStyles((theme: Theme) => ({
