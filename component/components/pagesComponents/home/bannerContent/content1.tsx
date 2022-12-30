@@ -84,8 +84,7 @@ interface Props {
 
 export default function Content1({ item, navigateTo }: Props) {
     const classes = useStyles()
-    const IMAGE_URL = `${process.env.REACT_APP_MEDIA_URL}`;
-
+    const IMAGE_URL = `${process.env.NEXT_PUBLIC_MEDIA_URL}`;
     return (
         <div key={item?.key} onClick={() => {
             if (!item?.button_text) navigateTo(item)

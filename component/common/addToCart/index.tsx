@@ -174,7 +174,7 @@ const AddToCart: React.FC<any> = (props: Props) => {
 
   //         }
   //         customGa4Event("add_to_cart", gtagPayload);
-  //         if(process.env.REACT_APP_ENV !== 'development' && process.env.REACT_APP_ENV !== 'staging'){ 
+  //         if(process.env.NEXT_PUBLIC_ENV !== 'development' && process.env.NEXT_PUBLIC_ENV !== 'staging'){ 
   //             window.gtag('event', 'add_to_cart', gtagPayload);
   //           }
   //       }

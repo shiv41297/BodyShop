@@ -1,10 +1,10 @@
 import ActionName from "./actionName";
-// import CommonFunctions from "./commonFunctions";
-// import endPoints from "./endPoints";
+import CommonFunctions from "./commonFunctions";
+import endPoints from "./endPoints";
 import images from "./images";
 // import regex from "./regex";
 // import statusCode from "./statusCodes";
-// import constants from "./constants";
+import constants from "./constants";
 import routes from "./routerName";
 // import { isServer } from "./helpers";
 
@@ -14,12 +14,12 @@ const Utils: any = {
   // Validators: Validators,
   ActionName,
   // isServer,
-  // CommonFunctions,
-  // endPoints,
+  CommonFunctions,
+  endPoints,
   images,
   // regex,
   // statusCode,
-  // constants,
+  constants,
   routes,
 };
 

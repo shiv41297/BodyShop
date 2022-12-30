@@ -38,7 +38,7 @@ const Recommended: React.FC<Props> = ({ }: Props) => {
     return state.loadingReducer.skeletonLoader
   });
   const recommendedData = useSelector(
-    (state: ReducersModal) => state.recommendReducer.recommendedData?.data
+    (state: ReducersModal) => state?.recommendReducer?.recommendedData?.data
   )||[];
 
 

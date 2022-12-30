@@ -68,7 +68,7 @@ export default function TrendingProducts(props: any) {
                                     <div className={classes.imgContainer}>
                                         {
                                             item.image?.length ?
-                                                <img src={`${process.env.REACT_APP_MEDIA_URL}catalog/product${item.image[0].file}`} alt="product" /> :
+                                                <img src={`${process.env.NEXT_PUBLIC_MEDIA_URL}catalog/product${item.image[0].file}`} alt="product" /> :
                                     //   <PRODUCT_PLACEHOLDER />
                                     "check later"
                                       }

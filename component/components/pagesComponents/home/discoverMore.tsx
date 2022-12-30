@@ -126,7 +126,8 @@ interface Props {
   navigateTo: Function;
 }
 const DiscoverMore: React.FC<Props> = ({ data, navigateTo }: Props) => {
-  const IMAGE_URL = `${process.env.REACT_APP_MEDIA_URL}`;
+  const IMAGE_URL = `${process.env.NEXT_PUBLIC_MEDIA_URL}`;
+
   const content = data?.content?.[0] || {};
   const classes = useStyles();
 

@@ -110,7 +110,6 @@ export default function SearchIndex(props: any) {
       handleChange(keyword);
     }
     else {
-      console.log('else')
       setProductData({});
       setSuggestion({});
     }

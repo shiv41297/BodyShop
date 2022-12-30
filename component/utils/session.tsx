@@ -76,7 +76,7 @@ export const getAuthToken = () => {
   }
 };
 
-
+console.log(`getAuthToken`,getAuthToken());
 
 export const isAuthenticated = () => {
   if (typeof window !== 'undefined') {

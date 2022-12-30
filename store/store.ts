@@ -6,6 +6,7 @@ import counter from "./counter/reducer";
 import users from "./user/reducer";
 
 import aboutReducer from "./about/aboutReducer";
+import { productDetailReducer } from "../component/components/productDetail/reducer";
 import { configReducer, homeReducer, loadingReducer } from "./home/reducer";
 
 const combinedReducer = combineReducers({
@@ -15,6 +16,7 @@ const combinedReducer = combineReducers({
   configReducer: configReducer,
   loadingReducer: loadingReducer,
   aboutReducer: aboutReducer,
+  productDetailReducer: productDetailReducer,
 });
 
 // @ts-ignore
