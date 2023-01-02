@@ -4,6 +4,8 @@ import { makeStyles } from '@mui/styles';
 import React, { useEffect, useState } from 'react';
 import Utils from '../../utils';
 import { useDispatch, useSelector } from 'react-redux';
+import { useRouter } from 'next/router'
+
 // import {
 //   addToWishList,
 //   removeFromWishList,
@@ -220,8 +222,10 @@ const ProductImages = (props: any) => {
 
   var productData1 = props && props?.details;
   const dispatch: any = useDispatch();
-  const history = useNavigate();
+  // const history = useNavigate();
+
   const classes = useStyles();
+  const router = useRouter();
   // const [state, setState] = React.useState({
   //     displayImage: '',
   //     sliderImages: [],
@@ -507,7 +511,7 @@ const ProductImages = (props: any) => {
         open={loginAlert}
         handleClose={() => showLoginAlert(!loginAlert)}
         onOk={() => {
-          history(`${Utils.routes.LOGIN_OTP}?redirectTo=${location.pathname}`);
+          router.push(`${Utils.routes.LOGIN_OTP}?redirectTo=${location.pathname}`);
           showLoginAlert(false);
         }}
         message={'Please login to proceed'}
@@ -601,7 +605,7 @@ const ProductImages = (props: any) => {
               // />
               <div className={classes.placeholderDiv}>
                 <span className={classes.productPlaceholder}>
-                  <PRODUCT_PLACEHOLDER />
+                  {/* <PRODUCT_PLACEHOLDER /> */}
                 </span>
               </div>
             )}

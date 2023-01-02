@@ -39,6 +39,7 @@ import Router, { useRouter } from 'next/router';
 import { PageMeta } from '../../page-meta/PageMeta';
 import { getProductData, getReviews } from './action';
 import { hideSkeleton, showSkeleton } from '../../../store/home/action';
+import { wrapper } from '../../../store/store';
 
 declare global {
   interface Window {
@@ -218,17 +219,17 @@ const useStyles = makeStyles((theme: Theme) => ({
 }));
 
 const ProductDetail = (props: any) => {
-  let query = Utils.CommonFunctions.useQuery();
+  // let query = Utils.CommonFunctions.useQuery();
   const router = useRouter();
   // const location: any = useLocation();
-  let isSearched = query.get('isSearched');
+  // let isSearched = query.get('isSearched');
   const classes = useStyles();
 
   let productDetail: any = {};
   let linkedProducts: any = {};
-  const id = props?.match?.params?.id || null;
+  const id = router.query.id || null;
   // const searched = location?.state?.isSearched || null;
-  const searched = 'location?.state?.isSearched' || null;
+  const searched = true;
   // const isSearchOrRecommend = location?.state?.isSearchOrRecommend || null;
   const isSearchOrRecommend = 'location?.state?.isSearchOrRecommend' || null;
   const dispatch: any = useDispatch();
@@ -239,81 +240,84 @@ const ProductDetail = (props: any) => {
   const [breadCrumData, setBreadCrumb] = React.useState<any>([]);
 
   const productData: any = useSelector(
-    (state: ReducersModal) => state.productDetailReducer
+    (state: any) => state?.productDetailReducer
   );
   const totalItems = useSelector(
-    (state: ReducersModal) => state.shoppingBagReducer.totalItems
+    (state: any) => state?.shoppingBagReducer?.totalItems
   );
   const userInfo = useSelector(
-    (state: ReducersModal) => state.userDetailReducer.userInfo
+    (state: any) => state?.userDetailReducer?.userInfo
   );
-  const skeletonLoader = useSelector((state: ReducersModal) => {
-    return state.loadingReducer.skeletonLoader;
+  const skeletonLoader = useSelector((state: any) => {
+    return state?.loadingReducer?.skeletonLoader;
   });
 
-  useEffect(() => {
-    dispatch({
-      type: Utils.ActionName.FROM_PATH,
-      payload: { fromPath: 'pdp' },
-    });
+  // useEffect(() => {
+  //   dispatch({
+  //     type: Utils.ActionName.FROM_PATH,
+  //     payload: { fromPath: 'pdp' },
+  //   });
 
-    //@ts-ignore
-    zE('webWidget', 'updateSettings', {
-      webWidget: {
-        offset: {
-          horizontal: '0px',
-          vertical: '70px',
-        },
-      },
-    });
-    return () => {
-      //@ts-ignore
-      zE('webWidget', 'updateSettings', {
-        webWidget: {
-          offset: {
-            horizontal: '0px',
-            vertical: '0px',
-          },
-        },
-      });
-    };
-  }, []);
+  //   //@ts-ignore
+  //   zE('webWidget', 'updateSettings', {
+  //     webWidget: {
+  //       offset: {
+  //         horizontal: '0px',
+  //         vertical: '70px',
+  //       },
+  //     },
+  //   });
+  //   return () => {
+  //     //@ts-ignore
+  //     zE('webWidget', 'updateSettings', {
+  //       webWidget: {
+  //         offset: {
+  //           horizontal: '0px',
+  //           vertical: '0px',
+  //         },
+  //       },
+  //     });
+  //   };
+  // }, []);
 
   const recommendedData = useSelector(
-    (state: ReducersModal) => state.recommendReducer.recommendedData?.data
+    (state: any) => state?.recommendReducer?.recommendedData?.data
   );
 
   const configs: any = useSelector(
-    (state: ReducersModal) => state.configReducer.generalConfigs
+    (state: any) => state?.configReducer?.generalConfigs
   );
 
-  const urlkey = location.pathname.split('/p/')?.[0]?.split('/').pop();
+  // const urlkey = location.pathname.split('/p/')?.[0]?.split('/').pop();
+  const urlkey = "aloe-calming-toner-config";
 
   const getData = (callback?: any) => {
     let params: any = {
       id: id,
-      subcategoryId: 'location?.state?.categoryId'
-        ? 'location?.state?.categoryId'
-        : '0',
-      urlKey: 'location?.state?.urlKey' ?? urlkey,
+      // subcategoryId: 'location?.state?.categoryId'
+      //   ? 'location?.state?.categoryId'
+      //   : '0',
+        subcategoryId: "38",
+      // urlKey: 'location?.state?.urlKey' ?? urlkey,
+      urlKey: urlkey,
     };
-    if (isSearched || searched) {
-      params.isSearched = 1;
-    }
-    dispatch(
-      getProductData(params, (resp: any) => {
-        dispatch(hideSkeleton());
+    // if (isSearched || searched) {
+    //   params.isSearched = 1;
+    // }
+    // dispatch(
+    //   getProductData(params, (resp: any) => {
+    //     dispatch(hideSkeleton());
 
-        // const productSku = "BS-91942001"
-        const productSku = resp?.product?.sku || '';
-        dispatch(
-          getReviews(`?sku=${productSku}&page=1&limit=3`, (_resp: any) => {
-            // setRatingData(resp?.data?.[0] || {})
-            if (callback) callback();
-          })
-        );
-      })
-    );
+    //     // const productSku = "BS-91942001"
+    //     const productSku = resp?.product?.sku || '';
+    //     dispatch(
+    //       getReviews(`?sku=${productSku}&page=1&limit=3`, (_resp: any) => {
+    //         // setRatingData(resp?.data?.[0] || {})
+    //         if (callback) callback();
+    //       })
+    //     );
+    //   })
+    // );
   };
 
   useEffect(() => {
@@ -324,7 +328,7 @@ const ProductDetail = (props: any) => {
       ScreenName: events.SCREEN_PDP,
       CTGenerated: 'WEB',
     });
-  }, [id, location]);
+  }, [id]);
 
   const listenToScroll = () => {
     //@ts-ignore
@@ -343,127 +347,127 @@ const ProductDetail = (props: any) => {
     window.addEventListener('scroll', listenToScroll);
   }, []);
 
-  useEffect(() => {
-    if (productData) {
-      if (productData?.redirect === 'Not Found') {
-        productData.redirect = '';
-        router.push('/not-found');
-      }
-      if (productData?.product) {
-        let categoryAttributesIndex =
-          productData?.product?.customAttributes.findIndex(
-            (item: any) => item.attribute_code === 'category_ids'
-          );
-        let categoryAttributesData =
-          productData?.product?.customAttributes[categoryAttributesIndex];
-        let categoryArray = categoryAttributesData?.label.reduce(
-          (i: any, j: any) => {
-            i.push({
-              CategoryName: j.label,
-              CategoryId: j.value,
-            });
-            return i;
-          },
-          []
-        );
-        productViewed({
-          ProductId: `${productData?.product.magentoId}`,
-          Category: JSON.stringify(categoryArray),
-          ProductName: `${productData?.product?.name}`,
-          ProductSKU: `${productData?.product?.sku}`,
-          FromScreen: `plp`, //not available
-        });
-        if (typeof window && window.gtag !== 'undefined') {
-          const gtagPayload = {
-            currency: 'INR',
-            category: productData?.product?.categoryData?.name,
-            items: [
-              {
-                id: productData?.product?.sku,
-                item_id: productData?.product?.sku,
-                name: productData?.product?.name,
-                item_name: productData?.product?.name,
-                brand: 'The Body Shop',
-                item_brand: 'The Body Shop',
-                category: productData?.product?.categoryData?.name,
-                item_category: productData?.product?.categoryData?.name,
-                variant: productData?.selectedVariant?.label,
-                item_variant: productData?.selectedVariant?.label,
-                price: productData?.selectedVariantData?.price,
-                quantity: 1,
-              },
-            ],
-          };
-          customGa4Event('view_item', gtagPayload);
-          if (
-            process.env.REACT_APP_ENV !== 'development' &&
-            process.env.REACT_APP_ENV !== 'staging'
-          ) {
-            window.gtag('event', 'view_item', gtagPayload);
-          }
-        }
-        let size = productData?.selectedVariantData?.customAttributes.find(
-          (val: any) => val.attribute_code === 'size'
-        );
-        if (productData.product?.configurableProductLinks.length > 0) {
-          updateProfile(
-            'recent_viewed_product_parent_id',
-            `${productData?.product?.sku}`
-          ); // outer
-          updateProfile(
-            'recent_viewed_product_id',
-            `${productData?.selectedVariantData?.magentoId}`
-          ); //child sku
-        } else {
-          updateProfile(
-            'recent_viewed_product_id',
-            `${productData?.product?.magentoId}`
-          );
-        }
-        updateProfile(
-          'recent_viewed_product_name',
-          `${productData?.product?.name}`
-        );
-        updateProfile('recent_viewed_product_size', size?.label[0]?.label);
+  // useEffect(() => {
+  //   if (productData) {
+  //     if (productData?.redirect === 'Not Found') {
+  //       productData.redirect = '';
+  //       router.push('/not-found');
+  //     }
+  //     if (productData?.product) {
+  //       let categoryAttributesIndex =
+  //         productData?.product?.customAttributes.findIndex(
+  //           (item: any) => item.attribute_code === 'category_ids'
+  //         );
+  //       let categoryAttributesData =
+  //         productData?.product?.customAttributes[categoryAttributesIndex];
+  //       let categoryArray = categoryAttributesData?.label.reduce(
+  //         (i: any, j: any) => {
+  //           i.push({
+  //             CategoryName: j.label,
+  //             CategoryId: j.value,
+  //           });
+  //           return i;
+  //         },
+  //         []
+  //       );
+  //       productViewed({
+  //         ProductId: `${productData?.product.magentoId}`,
+  //         Category: JSON.stringify(categoryArray),
+  //         ProductName: `${productData?.product?.name}`,
+  //         ProductSKU: `${productData?.product?.sku}`,
+  //         FromScreen: `plp`, //not available
+  //       });
+  //       if (typeof window && window.gtag !== 'undefined') {
+  //         const gtagPayload = {
+  //           currency: 'INR',
+  //           category: productData?.product?.categoryData?.name,
+  //           items: [
+  //             {
+  //               id: productData?.product?.sku,
+  //               item_id: productData?.product?.sku,
+  //               name: productData?.product?.name,
+  //               item_name: productData?.product?.name,
+  //               brand: 'The Body Shop',
+  //               item_brand: 'The Body Shop',
+  //               category: productData?.product?.categoryData?.name,
+  //               item_category: productData?.product?.categoryData?.name,
+  //               variant: productData?.selectedVariant?.label,
+  //               item_variant: productData?.selectedVariant?.label,
+  //               price: productData?.selectedVariantData?.price,
+  //               quantity: 1,
+  //             },
+  //           ],
+  //         };
+  //         customGa4Event('view_item', gtagPayload);
+  //         if (
+  //           process.env.REACT_APP_ENV !== 'development' &&
+  //           process.env.REACT_APP_ENV !== 'staging'
+  //         ) {
+  //           window.gtag('event', 'view_item', gtagPayload);
+  //         }
+  //       }
+  //       let size = productData?.selectedVariantData?.customAttributes.find(
+  //         (val: any) => val.attribute_code === 'size'
+  //       );
+  //       if (productData.product?.configurableProductLinks.length > 0) {
+  //         updateProfile(
+  //           'recent_viewed_product_parent_id',
+  //           `${productData?.product?.sku}`
+  //         ); // outer
+  //         updateProfile(
+  //           'recent_viewed_product_id',
+  //           `${productData?.selectedVariantData?.magentoId}`
+  //         ); //child sku
+  //       } else {
+  //         updateProfile(
+  //           'recent_viewed_product_id',
+  //           `${productData?.product?.magentoId}`
+  //         );
+  //       }
+  //       updateProfile(
+  //         'recent_viewed_product_name',
+  //         `${productData?.product?.name}`
+  //       );
+  //       updateProfile('recent_viewed_product_size', size?.label[0]?.label);
 
-        //breadcrumb data
-        let breadcrumb = [
-          {
-            title: 'Home',
-            action: '/',
-          },
-          {
-            action: {
-              pathname: `${Utils.CommonFunctions.seoUrl(
-                { ...productData?.product?.categoryData, is_root: 1 },
-                'plp'
-              )}`,
-              state: { categoryId: productData?.product?.categoryData?.id },
-            },
-            title: `${productData?.product?.categoryData?.name}`,
-          },
-        ];
-        if (productData?.product?.categoryData?.child_category?.name) {
-          breadcrumb.push({
-            action: {
-              pathname: `${Utils.CommonFunctions.seoUrl(
-                productData?.product?.categoryData?.child_category,
-                'plp'
-              )}`,
-              state: { categoryId: productData?.product?.categoryData?.id },
-            },
-            title: `${productData?.product?.categoryData?.child_category?.name}`,
-          });
-        }
-        breadcrumb.push({
-          title: productData?.product?.name,
-          action: props?.location?.pathname,
-        });
-        setBreadCrumb(breadcrumb);
-      }
-    }
-    setVideoUrl(getAttributeValue('how_to_video_url'));
-  }, [productData]);
+  //       //breadcrumb data
+  //       let breadcrumb = [
+  //         {
+  //           title: 'Home',
+  //           action: '/',
+  //         },
+  //         {
+  //           action: {
+  //             pathname: `${Utils.CommonFunctions.seoUrl(
+  //               { ...productData?.product?.categoryData, is_root: 1 },
+  //               'plp'
+  //             )}`,
+  //             state: { categoryId: productData?.product?.categoryData?.id },
+  //           },
+  //           title: `${productData?.product?.categoryData?.name}`,
+  //         },
+  //       ];
+  //       if (productData?.product?.categoryData?.child_category?.name) {
+  //         breadcrumb.push({
+  //           action: {
+  //             pathname: `${Utils.CommonFunctions.seoUrl(
+  //               productData?.product?.categoryData?.child_category,
+  //               'plp'
+  //             )}`,
+  //             state: { categoryId: productData?.product?.categoryData?.id },
+  //           },
+  //           title: `${productData?.product?.categoryData?.child_category?.name}`,
+  //         });
+  //       }
+  //       breadcrumb.push({
+  //         title: productData?.product?.name,
+  //         action: props?.location?.pathname,
+  //       });
+  //       setBreadCrumb(breadcrumb);
+  //     }
+  //   }
+  //   setVideoUrl(getAttributeValue('how_to_video_url'));
+  // }, [productData]);
 
   if (productData) {
     productDetail = productData.product;
@@ -596,7 +600,7 @@ const ProductDetail = (props: any) => {
         <Grid container id="container">
           <Box sx={{ display: { xs: 'block', sm: 'none' } }}>
             <Grid item xs={12}>
-              <ProductDetails details={productDetail} />
+              {/* <ProductDetails details={productDetail} /> */}
             </Grid>
           </Box>
 
@@ -620,7 +624,7 @@ const ProductDetail = (props: any) => {
           <Grid item xs={12} sm={6}>
             <div className={classes.productDetails}>
               <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
-                <ProductDetails details={productDetail} />
+                {/* <ProductDetails details={productDetail} /> */}
               </Box>
 
               <Rate />
@@ -685,7 +689,7 @@ const ProductDetail = (props: any) => {
                 </>
               )}
               <RatingsReviews getData={getData} />
-              <CustomerReviews getData={getData} />
+              {/* <CustomerReviews getData={getData} /> */}
               {linkedProducts && linkedProducts.length > 0 ? (
                 <CompleteRoutine
                   details={linkedProducts}
@@ -695,18 +699,20 @@ const ProductDetail = (props: any) => {
             </div>
 
             <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
-              <FixedBottomPanel
-                isSearched={isSearched || searched || isSearchOrRecommend}
+              {/* <FixedBottomPanel
+                // isSearched={isSearched || searched || isSearchOrRecommend}
+                isSearched={true}
                 rectHeight={rectHeight}
                 data={productDetail}
-              />
+              /> */}
             </Box>
             <Box sx={{ display: { xs: 'block', sm: 'none' } }}>
-              <FixedBottomPanel
-                isSearched={isSearched || searched || isSearchOrRecommend}
+              {/* <FixedBottomPanel
+                isSearched={true}
+                // isSearched={isSearched || searched || isSearchOrRecommend}
                 rectHeight={rectHeight}
                 data={productDetail}
-              />
+              /> */}
             </Box>
           </Grid>
         </Grid>
@@ -720,10 +726,30 @@ const ProductDetail = (props: any) => {
               Recommended For You
             </Typography>
           ) : null}
-          <RecommendationCarousel type="pdp" />
+          {/* <RecommendationCarousel type="pdp" /> */}
         </div>
       </div>
     </>
   );
 };
+
 export default ProductDetail;
+
+const urlkey = "aloe-calming-toner-config";
+
+// export const getServerSideProps = wrapper.getServerSideProps((store) =>
+//     //@ts-ignore-
+//      ({ req, res }) => {
+//       store.dispatch(getProductData({
+//         id: id,
+//         // subcategoryId: 'location?.state?.categoryId'
+//         //   ? 'location?.state?.categoryId'
+//         //   : '0',
+//         subcategoryId: "38",
+//         // urlKey: 'location?.state?.urlKey' ?? urlkey,
+//         urlKey: urlkey,
+//       }));
+//       return { props: {} };
+//     }
+//   );
+

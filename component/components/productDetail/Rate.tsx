@@ -532,27 +532,7 @@ const Rate = (_props: any) => {
                 )}
               </Typography>
             </div> */}
-            {Utils.CommonFunctions.getAttributeValue(
-              productData?.customAttributes,
-              'description'
-            ) ? (
-              <CustomAccordion
-                id={'description'}
-                className={classes.accordionHeading}
-                heading="What does it do for you ?"
-                details={
-                  <Typography className={classes.details1}>
-                    {/* {ReactHtmlParser(
-                      Utils.CommonFunctions.getAttributeValue(
-                        productData?.customAttributes,
-                        'description'
-                      )
-                    )} */}
-                  </Typography>
-                }
-                openByDefault={true}
-              />
-            ) : null}
+         
           </>
         )}
       </div>
