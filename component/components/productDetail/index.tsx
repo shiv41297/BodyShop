@@ -600,7 +600,7 @@ const ProductDetail = (props: any) => {
         <Grid container id="container">
           <Box sx={{ display: { xs: 'block', sm: 'none' } }}>
             <Grid item xs={12}>
-              {/* <ProductDetails details={productDetail} /> */}
+              <ProductDetails details={productDetail} />
             </Grid>
           </Box>
 
@@ -734,22 +734,4 @@ const ProductDetail = (props: any) => {
 };
 
 export default ProductDetail;
-
-const urlkey = "aloe-calming-toner-config";
-
-// export const getServerSideProps = wrapper.getServerSideProps((store) =>
-//     //@ts-ignore-
-//      ({ req, res }) => {
-//       store.dispatch(getProductData({
-//         id: id,
-//         // subcategoryId: 'location?.state?.categoryId'
-//         //   ? 'location?.state?.categoryId'
-//         //   : '0',
-//         subcategoryId: "38",
-//         // urlKey: 'location?.state?.urlKey' ?? urlkey,
-//         urlKey: urlkey,
-//       }));
-//       return { props: {} };
-//     }
-//   );
 

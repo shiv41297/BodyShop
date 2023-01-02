@@ -16,7 +16,7 @@ const combinedReducer = combineReducers({
   configReducer: configReducer,
   loadingReducer: loadingReducer,
   aboutReducer: aboutReducer,
-  productDetailReducer: productDetailReducer,
+  productDetailReducer,
 });
 
 // @ts-ignore
