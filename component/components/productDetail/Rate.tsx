@@ -1,9 +1,7 @@
 import React from "react";
-import Rating from "@material-ui/lab/Rating";
 import clsx from 'clsx';
-import ToggleButton from "@material-ui/lab/ToggleButton";
-import ToggleButtonGroup from "@material-ui/lab/ToggleButtonGroup";
-import { makeStyles, Typography, Divider } from "@material-ui/core";
+import { makeStyles } from "@mui/styles";
+import { Typography, Divider, Theme, Rating, ToggleButton, ToggleButtonGroup } from "@mui/material";
 import ReactHtmlParser from "react-html-parser";
 import { useDispatch } from "react-redux";
 import { useEffect } from "react";
@@ -11,12 +9,11 @@ import Utils from "../../utils";
 import { ProductDetailModal, ReducersModal } from "../../models";
 import { useSelector } from "react-redux";
 import Skeleton from "@mui/material/Skeleton";
-import CustomRadio from "../../components/common/miniCart/CustomRadio";
-import CustomAccordion from "../../components/customAccordion";
 import Ingredients from "./ingredients";
 import { Box } from "@mui/material";
+import CustomAccordion from "../../customAccordion";
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles((theme: Theme) => ({
   ratingContainer: {
     display: "flex",
     alignItems: "center",
@@ -623,7 +620,7 @@ const Rate = (_props: any) => {
                         return (
                           configProduct &&
                           <React.Fragment key={i}>
-                            <CustomRadio
+                            {/* <CustomRadio
                               style={{ backgroundColor: shadeColor }}
                               isInStock={configProduct?.isInStock}
                               checked={
@@ -633,7 +630,7 @@ const Rate = (_props: any) => {
                               value={val?.value_index}
                               name="shade"
                               onChange={() => selectVariant(val)}
-                            />
+                            /> */}
                             {/* {/ <StyledCheckbox style={{ backgroundColor: shadeColor, borderRadius: '50%', marginBottom: '3px' }} checked={val?.value_index === selectedVariant?.value_index} value={val?.value_index} name="shade" onClick={() => selectVariant(val)} /> /} */}
                           </React.Fragment>
                         );

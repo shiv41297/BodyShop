@@ -1,7 +1,9 @@
 import { useEffect, useRef, useState } from "react";
-import { makeStyles, Typography, Divider, Grid } from "@material-ui/core";
+import {  Typography, Divider, Grid } from "@mui/material";
+import { Theme } from "@mui/material";
+import { makeStyles } from "@mui/styles";
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles((theme: Theme) => ({
   heading: {
     font: `normal ${theme.typography.fontWeightBold} ${theme.spacing(
       1.8

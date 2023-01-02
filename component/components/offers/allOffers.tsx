@@ -1,16 +1,15 @@
 import {
-  makeStyles,
-  createStyles,
+  
   Theme,
   Typography,
   Box,
   Tab,
-} from "@material-ui/core";
+} from "@mui/material";
+import { makeStyles } from "@mui/styles";
 import Tabs from "@mui/material/Tabs";
 import PropTypes from "prop-types";
 import { useState } from "react";
 import Offers from "./offers";
-import ProductNotFound from "../productListing/productNotFound";
 import Banner from "./banner";
 import Utils from "../../utils";
 
@@ -48,7 +47,7 @@ function a11yProps(index: any) {
 }
 
 const useStyles = makeStyles((theme: Theme) =>
-  createStyles({
+ ({
     bannerRoot: {
       background: "var(--white)",
       position: "relative",
@@ -244,7 +243,7 @@ function AllOffers({ navigateTo, data, promotionalProduct }: Props) {
               )} */}
 
           </Box>
-          {newData.length === 0 && <ProductNotFound title="Offers Not Found" />}
+          {/* {newData.length === 0 && <ProductNotFound title="Offers Not Found" />} */}
 
         </div>
       </div>

@@ -1,19 +1,20 @@
-import { makeStyles, Typography } from "@material-ui/core";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 // import { isTemplateExpression } from "typescript";
-import CustomButton from "../../components/common/button";
 import { ReducersModal } from "../../models";
 import Utils from "../../utils";
 import { getRewardRate } from "./action";
 import clsx from "clsx";
 import { isAuthenticated } from "../../utils/session";
-import { useNavigate } from "react-router-dom";
-import { showLoader, hideLoader } from "../home/actions";
 import _ from "lodash";
-import { LYBC_FIVE, SEARCH_BACKGROUND } from "utils/constantImages";
+import { makeStyles } from "@mui/styles";
+import { Theme, Typography } from "@mui/material";
+import { showLoader, hideLoader } from "../../../store/home/action";
+import CustomButton from "../../common/button";
+import { useRouter } from "next/router";
+import Image from "next/image";
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles((theme : Theme) => ({
   container: {
     width: "100%",
     display: "flex",
@@ -35,7 +36,7 @@ const useStyles = makeStyles((theme) => ({
   imgBackground: {
     padding: theme.spacing(0.5),
     background:
-      `url(${SEARCH_BACKGROUND}) top left no-repeat`,
+      `url(${Utils.images.SEARCH_BACKGROUND}) top left no-repeat`,
     alignItems: "center",
     borderRadius: "5px",
     backgroundSize: "cover",
@@ -145,7 +146,7 @@ interface tierData {
 const Rewards: React.FC<any> = ({ details }: Props) => {
   const classes = useStyles();
   const dispatch : any = useDispatch();
-  const history = useNavigate();
+  const history = useRouter();
   const [rewardData, setRewardData] = useState<any>({});
 
   const userInfoTierType: any = useSelector(
@@ -194,9 +195,9 @@ const Rewards: React.FC<any> = ({ details }: Props) => {
   };
 
   const redirect = (type: number) => {
-    history(Utils.routes.UPGRADE_MEMBERSHIP,{
+    history.push(Utils.routes.UPGRADE_MEMBERSHIP,{
       
-      state: { type },
+      query: { type },
     });
   };
 
@@ -212,7 +213,7 @@ const Rewards: React.FC<any> = ({ details }: Props) => {
         {!isAuthenticated() ? (
           <Typography
             className={classes.link}
-            onClick={() => history(Utils.routes.LOGIN_OTP)}
+            onClick={() => history.push(Utils.routes.LOGIN_OTP)}
           >
             Login To Know More
           </Typography>
@@ -237,7 +238,7 @@ const Rewards: React.FC<any> = ({ details }: Props) => {
                       <div className={classes.imgBackground}>
                        
                         <div className={classes.img}>
-                          <LYBC_FIVE />
+                          <Image src={Utils.images.LYBC_5} alt="lybc" width={40} height={40} />
                         </div>
                       </div>
                       <div className={classes.textContent}>
@@ -265,7 +266,8 @@ const Rewards: React.FC<any> = ({ details }: Props) => {
                       <div className={classes.imgBackground}>
                        
                         <div className={classes.img}>
-                          <LYBC_FIVE />
+                          <Image src={Utils.images.LYBC_5} alt="lybc" width={40} height={40} />
+
                         </div>
                       </div>
                       <div className={classes.textContent}>

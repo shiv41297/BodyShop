@@ -1,18 +1,19 @@
 import { useState } from "react";
-import Rating from "@material-ui/lab/Rating";
-import { makeStyles, Typography, Divider } from "@material-ui/core";
-import LinearProgressReviews from "../../components/linearProgressReviews";
+import { makeStyles } from "@mui/styles";
+// import LinearProgressReviews from "../../components/linearProgressReviews";
 import Skeleton from "@mui/material/Skeleton";
 import { useSelector } from "react-redux";
-import { ReducersModal } from "../../models";
-import RatingModal from "../rating&review/rating";
+import { RatingModal, ReducersModal } from "../../models";
+// import RatingModal from "../rating&review/rating";
 import { isAuthenticated } from "../../utils/session";
 import Utils from "../../utils";
-import { useNavigate } from "react-router-dom";
-import MessageDialogue from "../../components/common/product/messageDialogue";
-import { EDIT_ICON } from "utils/constantImages";
+import { Divider, Rating, Theme, Typography } from "@mui/material";
+import { useRouter } from "next/router";
+import MessageDialogue from "../../common/product/messageDialogue";
+import LinearProgressReviews from "../../common/linearProgressReviews";
+import Image from "next/image";
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles((theme: Theme) => ({
   heading: {
     font: `normal ${theme.typography.fontWeightBold} ${theme.spacing(
       1.8
@@ -150,7 +151,7 @@ const RatingsReviews = (props: any) => {
   // const [value, setValue] = React.useState(4.5);
   const [ratingModalVisibility, setRatingModalVisibility] = useState(false);
   const [loginAlert, showLoginAlert] = useState(false);
-  const history = useNavigate();
+  const history = useRouter();
   const skeletonLoader = useSelector((state: ReducersModal) => {
     return state.loadingReducer.skeletonLoader;
   });
@@ -172,7 +173,7 @@ const RatingsReviews = (props: any) => {
         handleClose={() => showLoginAlert(!loginAlert)}
         onOk={() => {
           const redirectTo = `?redirectTo=${location.pathname}`
-          history({
+          history.push({
             pathname: `${Utils.routes.LOGIN_OTP}`,
             search:redirectTo
           });
@@ -202,7 +203,7 @@ const RatingsReviews = (props: any) => {
           ) : (
             reviewData?.isReviewAllowed && (
               <>
-                <EDIT_ICON />
+                <Image src={Utils.images.EDIT_ICON} alt="edit icon" width={30} height={30} />
                 <Typography className={classes.button}>
                   Review product
                 </Typography>
@@ -324,7 +325,7 @@ const RatingsReviews = (props: any) => {
         )
         // <Typography className={classes.noReview}>No Reviews Yet</Typography>
       }
-      {ratingModalVisibility && (
+      {/* {ratingModalVisibility && (
         <RatingModal
           product={product}
           // sku={sku}
@@ -334,7 +335,7 @@ const RatingsReviews = (props: any) => {
             setRatingModalVisibility(false);
           }}
         />
-      )}
+      )} */}
     </div>
   );
 };

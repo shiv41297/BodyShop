@@ -1,11 +1,15 @@
-import { Divider,  makeStyles, Typography } from "@material-ui/core";
+import { Divider, Typography } from "@mui/material";
+import { makeStyles } from "@mui/styles";
 import React from "react";
 import { useSelector } from "react-redux";
 import { ReducersModal } from "../../models";
 import Skeleton from "@mui/material/Skeleton";
-import { CRUELTY_ICON, RETURN_ICON, VEGAN_ICON } from "utils/constantImages";
+// import { CRUELTY_ICON, RETURN_ICON, VEGAN_ICON } from "utils/constantImages";
+import { Theme } from "@mui/material";
+import Utils from "../../utils";
+import Image from "next/image";
 
-const useStyles : any= makeStyles((theme) => ({
+const useStyles : any= makeStyles((theme: Theme) => ({
   divider: {
     margin: theme.spacing(3.5, 0),
     [theme.breakpoints.down("xs")]: {
@@ -44,17 +48,17 @@ const useStyles : any= makeStyles((theme) => ({
 const options = [
   {
     id: 1,
-    img: <VEGAN_ICON />,
+    img:  `${Utils.images.VEGAN_ICON}`,
     text: "100% Vegetarian",
   },
   {
     id: 2,
-    img: <CRUELTY_ICON />,
+    img: `${Utils.images.CRUELTY_ICON}`,
     text: "Cruelty Free",
   },
   {
     id: 3,
-    img: <RETURN_ICON />,
+    img:`${Utils.images.RETURN_ICON}`,
     text: "Easy Return",
   },
 ];
@@ -77,7 +81,7 @@ const Return = () => {
             <React.Fragment key={items.id}>
               <div>
                 <div className={classes.iconsContainer}>
-                 {items.img}
+                 <Image src={items.img} alt="images" width={40} height={40} />
                 </div>
                 <Typography className={classes.text}>{items.text}</Typography>
               </div>

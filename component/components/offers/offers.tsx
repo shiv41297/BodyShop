@@ -1,21 +1,22 @@
 import {
-  makeStyles,
-  createStyles,
+  
   Theme,
   Typography,
   Grid,
-} from "@material-ui/core";
-import CustomButton from "../../components/common/button";
+} from "@mui/material";
+import { makeStyles } from "@mui/styles";
 import Utils from "../../utils";
 import { useState } from "react";
 import ShopNow from "./shopNow";
 import clsx from "clsx";
 import _ from "lodash";
 import { Box } from "@mui/material";
-import { PRODUCT_PLACEHOLDER } from "utils/constantImages";
+import Image from "next/image";
+import CustomButton from "../../common/button";
+
 
 const useStyles = makeStyles((theme: Theme) =>
-  createStyles({
+  ({
     productContainer: {},
 
     heading: {
@@ -120,7 +121,7 @@ interface Props {
 
 function Offers({ navigateTo, offersData }: Props) {
   const classes = useStyles();
-  const IMAGE_URL = `${process.env.REACT_APP_MEDIA_URL}`;
+  const IMAGE_URL = `${process.env.NEXT_PUBLIC_MEDIA_URL}`;
 
   const [state, setState] = useState({
     openShopNow: false,
@@ -168,7 +169,7 @@ function Offers({ navigateTo, offersData }: Props) {
                       }
                     >
                       {" "}
-                      <PRODUCT_PLACEHOLDER />
+                      <Image src={Utils.images.PRODUCT_PLACEHOLDER} alt="Product" width={40} height={40} />
                     </div>
                   )}
                   <div>

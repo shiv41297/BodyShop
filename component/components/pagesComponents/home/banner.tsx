@@ -134,7 +134,7 @@ interface Props {
 const Banner = (props: Props) => {
   const classes = useStyles();
   const { data, navigateTo } = props;
-  // const IMAGE_URL = `${process.env.REACT_APP_MEDIA_URL}`;
+  // const IMAGE_URL = `${process.env.NEXT_PUBLIC_MEDIA_URL}`;
 
   const settings = {
     dots: true,

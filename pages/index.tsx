@@ -4,6 +4,7 @@ import { getHomeData } from "../store/home/action";
 import { wrapper } from "../store/store";
 import { Button } from "@mui/material";
 import { useRouter } from "next/router";
+import { getProductList } from "../modules/productListing/action";
 
 export default function Index() {
   const Router = useRouter();
@@ -28,7 +29,6 @@ export default function Index() {
 export const getServerSideProps = wrapper.getServerSideProps((store) =>
   //@ts-ignore-
   async ({ req, res }) => {
-    await store.dispatch(getHomeData());
     return { props: {} };
   }
 );

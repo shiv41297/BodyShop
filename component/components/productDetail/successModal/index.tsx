@@ -18,7 +18,7 @@ import { makeStyles } from '@mui/styles';
 import ContainedButton from '../../../common/containedButton';
 
 // import { FAILURE, SUCCESS } from "utils/constantImages";
-const IMAGE_URL = `${process.env.REACT_APP_MEDIA_URL}`;
+const IMAGE_URL = `${process.env.NEXT_PUBLIC_MEDIA_URL}`;
 
 interface Props {
   open: boolean;

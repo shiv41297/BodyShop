@@ -109,7 +109,7 @@ interface Props {
 const CardCarousel: React.FC<Props> = ({ data }: Props) => {
   const classes = useStyles();
   const history = useRouter();
-  // const IMAGE_URL = `${process.env.REACT_APP_MEDIA_URL}`;
+  // const IMAGE_URL = `${process.env.NEXT_PUBLIC_MEDIA_URL}`;
   const IMAGE_URL ="https://bodyshop-magento-staging.s3.amazonaws.com/media/";
 
   const navigateTo = (item: any) => {

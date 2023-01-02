@@ -1,7 +1,8 @@
-import images from '../../utils/images'
-import { makeStyles, Typography, Divider } from '@material-ui/core'
+import images from '../../utils/images';
+import { makeStyles } from '@mui/styles';
+import { Typography, Divider , Theme} from '@mui/material'
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles((theme : Theme) => ({
     heading: {
         font: `normal ${theme.typography.fontWeightBold} ${theme.spacing(1.8)}px Recoleta Alt`,
         lineHeight: "24px",

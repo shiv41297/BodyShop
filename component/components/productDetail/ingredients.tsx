@@ -1,14 +1,15 @@
-import { makeStyles, Typography } from "@material-ui/core";
+import { Theme, Typography } from "@mui/material";
 import { useState } from "react";
 import { useSelector } from "react-redux";
-import CustomAccordion from "../../components/customAccordion";
-import { ReducersModal } from "../../models";
 import ReactHtmlParser from "react-html-parser";
 import clsx from "clsx";
 import _ from "lodash";
+import { makeStyles } from "@mui/styles";
 import IngredientsModal from "./ingredientsModal";
+import { ReducersModal } from "../../models";
+import CustomAccordion from "../../customAccordion";
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles((theme: Theme) => ({
   minusMarginTop: {
     "& .MuiAccordionSummary-content.Mui-expanded": {
       marginTop: "-10px !important",
