@@ -1,16 +1,16 @@
 import {
-  makeStyles,
-  createStyles,
+ 
   Theme,
   Typography,
-} from "@material-ui/core";
+} from "@mui/material";
 import Utils from "../../../utils";
 import clsx from "clsx";
 import _ from "lodash";
+import { makeStyles } from "@mui/styles";
 import CardCarousel from "../../../common/cardCarousel";
 
 const useStyles = makeStyles((theme: Theme) =>
-  createStyles({
+  ({
     haveYouSeenRoot: {
       backgroundColor: theme.palette.primary.main,
       marginTop: theme.spacing(5),

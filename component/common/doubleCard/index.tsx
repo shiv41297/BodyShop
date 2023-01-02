@@ -224,7 +224,8 @@ type AppProps = {
 
 function DoubleCard({ data, rightImg, navigateTo }: AppProps) {
   const classes = useStyles();
-  const IMAGE_URL = `${process.env.REACT_APP_MEDIA_URL}`;
+  // const IMAGE_URL = `${process.env.REACT_APP_MEDIA_URL}`;
+  const IMAGE_URL ="https://bodyshop-magento-staging.s3.amazonaws.com/media/";
 
   return (
     <>

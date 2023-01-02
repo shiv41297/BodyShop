@@ -12,6 +12,7 @@ import { Provider } from "react-redux";
 import Headers from "../component/components/headers";
 import Footer from "../component/components/footers";
 import "../styles/globals.css";
+import { Box } from "@mui/material";
 // Client-side cache, shared for the whole session of the user in the browser.
 const clientSideEmotionCache = createEmotionCache();
 
@@ -29,19 +30,29 @@ function MyApp({
     <CacheProvider value={emotionCache}>
       <Head>
         <meta name="viewport" content="initial-scale=1, width=device-width" />
+        <link
+          rel="stylesheet"
+          type="text/css"
+          charSet="UTF-8"
+          href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css"
+        />
+        <link
+          rel="stylesheet"
+          type="text/css"
+          href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css"
+        />
       </Head>
       <Provider store={store}>
         <ThemeProvider theme={theme}>
           <CssBaseline />
           <Headers />
-          {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
-          <Component {...props.pageProps} />
+          <Box sx={{ marginTop: "90px" }}>
+            <Component {...props.pageProps} />
+          </Box>
           <Footer />
         </ThemeProvider>
       </Provider>
     </CacheProvider>
-    
-    
   );
 }
 export default MyApp;

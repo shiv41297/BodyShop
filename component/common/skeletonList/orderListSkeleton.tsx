@@ -1,14 +1,9 @@
-
-import {
-    createStyles,
-    Divider,
-    makeStyles,
-    Theme
-} from "@material-ui/core";
+import { makeStyles } from "@mui/styles";
 import Skeleton from "@mui/material/Skeleton";
 import clsx from 'clsx';
+import { Divider, Theme } from "@mui/material";
 const useStyles = makeStyles((theme: Theme) =>
-    createStyles({
+    ({
         maxWidthDiv: {
             margin: theme.spacing(0, "auto"),
             maxWidth: "var(--max-width)",

@@ -1,16 +1,10 @@
-import {
-  makeStyles,
-  createStyles,
-  Theme,
-  Grid,
-  Typography,
-  Button,
-} from "@material-ui/core";
+import { Button, Grid, Theme, Typography } from "@mui/material";
+import { makeStyles } from "@mui/styles";
 import clsx from "clsx";
 import Utils from "../../../utils";
 
 const useStyles = makeStyles((theme: Theme) =>
-  createStyles({
+  ({
     discoverMoreRoot: {},
     gridContainer: {
       position: "relative",
@@ -132,7 +126,9 @@ interface Props {
   navigateTo: Function;
 }
 const DiscoverMore: React.FC<Props> = ({ data, navigateTo }: Props) => {
-  const IMAGE_URL = `${process.env.REACT_APP_MEDIA_URL}`;
+  // const IMAGE_URL = `${process.env.REACT_APP_MEDIA_URL}`;
+  const IMAGE_URL ="https://bodyshop-magento-staging.s3.amazonaws.com/media/";
+
   const content = data?.content?.[0] || {};
   const classes = useStyles();
 

@@ -1,11 +1,11 @@
-import { makeStyles, createStyles, Theme, Typography } from "@material-ui/core";
+import {  Theme, Typography } from "@mui/material";
 import Skeleton from "@mui/material/Skeleton";
 import { useSelector } from "react-redux";
 import RecommendationCarousel from "../../../common/recommendationCarousel";
 import { ReducersModal } from "../../../models";
-
+import { makeStyles } from "@mui/styles";
 const useStyles = makeStyles((theme: Theme) =>
-  createStyles({
+  ({
     recommendedRoot: {
       marginTop: "45px",
     },
@@ -38,7 +38,7 @@ const Recommended: React.FC<Props> = ({ }: Props) => {
     return state.loadingReducer.skeletonLoader
   });
   const recommendedData = useSelector(
-    (state: ReducersModal) => state.recommendReducer.recommendedData?.data
+    (state: ReducersModal) => state?.recommendReducer?.recommendedData?.data
   )||[];
 
 

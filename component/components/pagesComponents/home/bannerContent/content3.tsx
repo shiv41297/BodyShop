@@ -1,8 +1,8 @@
-import { makeStyles, Theme, createStyles } from "@material-ui/core";
+import {  Theme } from "@mui/material";
 import Utils from "../../../../utils";
-
+import { makeStyles } from "@mui/styles";
 const useStyles = makeStyles((theme: Theme) =>
-    createStyles({
+    ({
         container: {
             width: "100vw",
             height: "80vh"
@@ -34,7 +34,8 @@ interface Props {
 
 export default function Content3({ item, navigateTo }: Props) {
     const classes = useStyles();
-    const IMAGE_URL = `${process.env.REACT_APP_MEDIA_URL}`;
+    // const IMAGE_URL = `${process.env.REACT_APP_MEDIA_URL}`;
+    const IMAGE_URL ="https://bodyshop-magento-staging.s3.amazonaws.com/media/";
 
     return (
         <div key={item.id} className={classes.container}

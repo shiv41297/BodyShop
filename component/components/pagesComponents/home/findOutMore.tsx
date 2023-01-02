@@ -1,16 +1,16 @@
 import {
-  makeStyles,
-  createStyles,
+ 
   Theme,
   Grid,
   Typography,
   Button,
-} from "@material-ui/core";
+} from "@mui/material";
+import { makeStyles } from "@mui/styles";
 import clsx from "clsx";
 import Utils from "../../../utils";
 
 const useStyles = makeStyles((theme: Theme) =>
-  createStyles({
+  ({
     rootFindOutMore: {
       padding: theme.spacing(0, 2),
       margin: theme.spacing(5, 0, 2),
@@ -140,7 +140,7 @@ interface Props {
 
 const FindOutMore: React.FC<Props> = ({ data, navigateTo }: Props) => {
   const classes = useStyles();
-  const IMAGE_URL = `${process.env.REACT_APP_MEDIA_URL}`;
+  const IMAGE_URL = `${process.env.NEXT_PUBLIC_MEDIA_URL}`;
   const content = data?.content?.[0] || {};
  
 

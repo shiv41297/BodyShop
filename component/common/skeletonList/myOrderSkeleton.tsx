@@ -1,8 +1,9 @@
-import { createStyles, makeStyles, Theme } from "@material-ui/core";
+import { makeStyles } from "@mui/styles";
 import Skeleton from "@mui/material/Skeleton";
 import clsx from "clsx";
+import { Theme } from "@mui/material";
 const useStyles = makeStyles((theme: Theme) =>
-  createStyles({
+  ({
     skeletonContainer: {
       width: "100%",
       display: "flex",

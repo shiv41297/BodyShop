@@ -1,10 +1,10 @@
-import { Skeleton } from "@mui/material";
+import { Grid, Skeleton, Theme } from "@mui/material";
 import ShoppingListSkeleton from "./shoppingListSkeleton";
-import { makeStyles, createStyles, Theme, Grid } from "@material-ui/core";
+import { makeStyles } from "@mui/styles";
 import { useEffect } from "react";
 
 const useStyles = makeStyles((theme: Theme) =>
-    createStyles({
+   ({
         headingDiv: {
             display: "flex",
             alignItems: "center",

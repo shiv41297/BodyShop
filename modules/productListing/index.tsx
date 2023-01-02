@@ -45,14 +45,14 @@ const ProductListing = () => {
 
   return (
     <div id={"banner-id"}>
-      {theme.breakpoints.up("sm") ? !keyword && <MobileMenu /> : null}
+      {/* {theme.breakpoints.up("sm") ? !keyword && <MobileMenu /> : null} */}
       {/* {!keyword && <Hidden smUp></Hidden>} */}
       {/* <Banner /> */}
-      {theme.breakpoints.down("xs") ? <FilterProducts /> : null}
+      {/* {theme.breakpoints.down("xs") ? <FilterProducts /> : null} */}
 
       {/* <Hidden xsDown></Hidden> */}
 
-      {theme.breakpoints.up("sm") ? <MobileFilterProducts /> : null}
+      {/* {theme.breakpoints.up("sm") ? <MobileFilterProducts /> : null} */}
 
       {/* <ListProducts /> */}
     </div>

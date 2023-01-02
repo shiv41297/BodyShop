@@ -1,17 +1,11 @@
-import {
-  makeStyles,
-  createStyles,
-  Theme,
-  Grid,
-  Typography,
-  Button,
-} from "@material-ui/core";
+import { Button, Grid, Theme, Typography } from "@mui/material";
+import { makeStyles } from "@mui/styles";
 import clsx from "clsx";
 
 import Utils from "../../../utils";
 
 const useStyles = makeStyles((theme: Theme) =>
-  createStyles({
+  ({
     doubleCardRoot: {
       padding: theme.spacing(1, 2),
       position: "relative",

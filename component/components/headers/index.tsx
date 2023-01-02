@@ -242,7 +242,7 @@ const Headers = () => {
                     className={classes.locationImg}
                     onClick={() => history.push(Utils.routes.STORE)}
                   >
-                    <Image src={Utils.images.LOCATION} alt="location" width={35} height={35} />
+                    <Image src={Utils.images.LOCATION} alt="location" width={20} height={20} />
                   </div>
 
                   <Typography
@@ -258,7 +258,7 @@ const Headers = () => {
                 <div className={classes.centerLogo}>
                   <div className={classes.Img} onClick={redirectToHome}>
                     {/* <LOGO /> */}
-                    {/* <Image src={Utils.images.LOGO} width="50px" height="51px" /> */}
+                    <Image src={Utils.images.LOGO} alt="logo" width={51} height={51} />
                   </div>
                 </div>
               </Grid>
@@ -266,7 +266,7 @@ const Headers = () => {
                 <div className={classes.rightIcon}>
                   <div className={classes.Img} onClick={() => setOpen(true)}>
                     {/* <SEARCH /> */}
-                    {/* <Image src={Utils.images.SEARCH} width="21px" height="21px" /> */}
+                    <Image src={Utils.images.SEARCH} alt="search" width={21} height={21} />
                   </div>
 
                   <div>
@@ -280,7 +280,7 @@ const Headers = () => {
                         }}
                       >
                         {/* <HEART_FILLED /> */}
-                        {/* <Image src={Utils.images.HEART_FILLED} width="21px" height="21px" /> */}
+                        <Image src={Utils.images.HEART_FILLED} alt="HEART_FILLED" width={21} height={21} />
                       </span>
                     </Badge>
                   </div>
@@ -303,7 +303,7 @@ const Headers = () => {
                     // }}
                   >
                     {/* <PROFILE /> */}
-                    {/* <Image src={Utils.images.PROFILE} width="21px" height="21px" /> */}
+                    <Image src={Utils.images.PROFILE} alt="profile" width={21} height={21}/>
                   </div>
                   <div>
                     <Badge badgeContent={totalItems} className={classes.badge}>
@@ -312,7 +312,7 @@ const Headers = () => {
                         onClick={() => history.push("/shopping-bag")}
                       >
                         {/* <CART /> */}
-                        {/* <Image src={Utils.images.CART} width="21px" height="21px" /> */}
+                        <Image src={Utils.images.CART} alt="cart" width={21} height={21}/>
                       </span>
                     </Badge>
                   </div>

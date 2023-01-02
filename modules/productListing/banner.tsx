@@ -5,7 +5,7 @@ import {
   Collapse,
   Button,
   Hidden,
-} from "@material-ui/core";
+} from "@mui/material";
 import { useSelector } from "react-redux";
 import { ReducersModal } from "../../models";
 import Utils from "../../utils";

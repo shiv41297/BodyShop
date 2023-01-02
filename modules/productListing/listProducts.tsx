@@ -1,47 +1,46 @@
-import { makeStyles, createStyles, Theme, Grid } from "@material-ui/core";
+import { createStyles, Theme, Grid } from "@mui/material";
+import { makeStyles } from "@mui/styles";
 import _ from "lodash";
 import { useSelector } from "react-redux";
-import Utils from "../../utils";
-import { ReducersModal } from "../../models";
+import Utils from "../../component/utils";
+import { ReducersModal } from "../../component/models";
 // import Skeleton from "@mui/material/Skeleton";
 
 /**
  * Components
  */
-import Pagination from "../../components/common/pagination/pagination";
-import Product from "../../components/common/product";
+import Pagination from "../../component/common/pagination/pagination";
+import Product from "../../component/common/product";
 import ProductNotFound from "./productNotFound";
-import SkeletonProductView from "../../components/common/skeletonList/skeletonProductView";
-import { useParams } from "react-router-dom";
+import SkeletonProductView from "../../component/common/skeletonList/skeletonProductView";
+// import { useParams } from "react-router-dom";
 
-const useStyles = makeStyles((theme: Theme) =>
-  createStyles({
-    productsBody: {
-      // padding: theme.spacing(0, 2),
-      height: "100%",
+const useStyles = makeStyles((theme: Theme) => ({
+  productsBody: {
+    // padding: theme.spacing(0, 2),
+    height: "100%",
+  },
+  productData: {
+    // margin: theme.spacing(1, "0"),
+    padding: theme.spacing(0, 1),
+    [theme.breakpoints.down("xs")]: {
+      padding: theme.spacing(0, 0),
     },
-    productData: {
-      // margin: theme.spacing(1, "0"),
-      padding: theme.spacing(0, 1),
-      [theme.breakpoints.down("xs")]: {
-        padding: theme.spacing(0, 0),
-      },
-    },
-    skeletonContainer: {
-      display: "flex",
-      // justifyContent: "space-around",
-      width: "100%",
-      flexWrap: "wrap",
-    },
-    skeletonContent: {
-      marginTop: "20px",
+  },
+  skeletonContainer: {
+    display: "flex",
+    // justifyContent: "space-around",
+    width: "100%",
+    flexWrap: "wrap",
+  },
+  skeletonContent: {
+    marginTop: "20px",
 
-      display: "flex",
-      flexDirection: "column",
-      marginLeft: "20px",
-    },
-  })
-);
+    display: "flex",
+    flexDirection: "column",
+    marginLeft: "20px",
+  },
+}));
 
 interface Props {
   handleChange: Function;
@@ -58,8 +57,9 @@ const Products: React.FC<any> = (props: Props) => {
     (state: ReducersModal) => state.productFilterReducer?.filters
   );
 
-  const params: any = useParams();
-  let keyword = params?.keyword ?? "";
+  // const params: any = useParams();
+  // let keyword = params?.keyword ?? "";
+  let keyword = "";
 
   return (
     <>

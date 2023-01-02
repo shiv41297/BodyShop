@@ -1,9 +1,10 @@
-import { makeStyles, createStyles, Theme } from "@material-ui/core";
+import { Theme } from "@mui/material";
 import Skeleton from "@mui/material/Skeleton";
+import { makeStyles } from "@mui/styles";
 // import { useEffect } from "react";
 
 const useStyles = makeStyles((theme: Theme) =>
-    createStyles({
+   ({
         outerDiv: {
             display: "flex",
             flexDirection: "column",
