@@ -1,6 +1,7 @@
-import { useEffect, useRef, useState } from 'react';
-import { Typography, Divider, Grid, Theme } from '@mui/material';
-import { makeStyles } from '@mui/styles';
+import { useEffect, useRef, useState } from "react";
+import {  Typography, Divider, Grid } from "@mui/material";
+import { Theme } from "@mui/material";
+import { makeStyles } from "@mui/styles";
 
 const useStyles = makeStyles((theme: Theme) => ({
   heading: {

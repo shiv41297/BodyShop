@@ -522,7 +522,7 @@ const ProductDetail = (props: any) => {
       attribute_code: 'meta_description',
     });
 
-  const URL = `${process.env.REACT_APP_API_BASE_URL}`;
+  const URL = `${process.env.NEXT_PUBLIC_API_BASE_URL}`;
 
   return (
     <>

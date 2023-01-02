@@ -8,8 +8,9 @@ import { useSelector } from 'react-redux';
 import ContainedButton from '../../common/containedButton';
 import CustomAccordion from '../../customAccordion';
 import { ReducersModal } from '../../models';
+import { makeStyles } from '@mui/styles';
 
-const IMAGE_URL = `${process.env.REACT_APP_MEDIA_URL}`;
+const IMAGE_URL = `${process.env.NEXT_PUBLIC_MEDIA_URL}`;
 
 const useStyles = makeStyles((theme: Theme) => ({
   smallButMighty: {

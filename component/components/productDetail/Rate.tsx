@@ -608,22 +608,21 @@ const Rate = (_props: any) => {
 
                         let shadeColor = Utils.CommonFunctions.getColor(val);
                         return (
-                          configProduct && (
-                            <React.Fragment key={i}>
-                              <CustomRadio
-                                style={{ backgroundColor: shadeColor }}
-                                isInStock={configProduct?.isInStock}
-                                checked={
-                                  selectedVariant?.value_index ===
-                                  val?.value_index
-                                }
-                                value={val?.value_index}
-                                name="shade"
-                                onChange={() => selectVariant(val)}
-                              />
-                              {/* {/ <StyledCheckbox style={{ backgroundColor: shadeColor, borderRadius: '50%', marginBottom: '3px' }} checked={val?.value_index === selectedVariant?.value_index} value={val?.value_index} name="shade" onClick={() => selectVariant(val)} /> /} */}
-                            </React.Fragment>
-                          )
+                          configProduct &&
+                          <React.Fragment key={i}>
+                            {/* <CustomRadio
+                              style={{ backgroundColor: shadeColor }}
+                              isInStock={configProduct?.isInStock}
+                              checked={
+                                selectedVariant?.value_index ===
+                                val?.value_index
+                              }
+                              value={val?.value_index}
+                              name="shade"
+                              onChange={() => selectVariant(val)}
+                            /> */}
+                            {/* {/ <StyledCheckbox style={{ backgroundColor: shadeColor, borderRadius: '50%', marginBottom: '3px' }} checked={val?.value_index === selectedVariant?.value_index} value={val?.value_index} name="shade" onClick={() => selectVariant(val)} /> /} */}
+                          </React.Fragment>
                         );
                       })}
                     </div>

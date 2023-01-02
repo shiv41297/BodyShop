@@ -1,20 +1,22 @@
 import {
-  makeStyles,
-  createStyles,
+ 
   Theme,
   Typography,
   Box,
-} from "@material-ui/core";
-import { ROUTE_CONSTANTS } from "constants/routeConstants";
+} from "@mui/material";
+import { makeStyles } from "@mui/styles";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { MOBILE_OFFER_ICON } from "utils/constantImages";
-import BreadCrumb from "../../components/breadCrumb";
-import { saveLocationHistory } from "../../components/breadCrumb/action";
-import BANNER_HOME from "../../assets/images/bannerHome.png";
+import BreadCrumb from "../../common/breadCrumb";
+import { saveLocationHistory } from "../../common/breadCrumb/action";
+import { ROUTE_CONSTANTS } from "../../constants/routeConstants";
+import Utils from "../../utils";
+import Image from "next/image";
+// import { MOBILE_OFFER_ICON } from "utils/constantImages";
+// import BANNER_HOME from "/images/bannerHome.png";
 
 const useStyles = makeStyles((theme: Theme) =>
-  createStyles({
+  ({
     root: {
       [theme.breakpoints.down("xs")]: {
         height: "180px",
@@ -157,7 +159,7 @@ interface Props {
 
 function Banner({ promotionalProduct }: Props) {
   const classes = useStyles();
-  const IMAGE_URL = `${process.env.REACT_APP_MEDIA_URL}`;
+  const IMAGE_URL = `${process.env.NEXT_PUBLIC_MEDIA_URL}`;
   const dispatch : any = useDispatch();
   useEffect(() => {
     let breadCrumbData = [
@@ -178,7 +180,7 @@ function Banner({ promotionalProduct }: Props) {
           background: `linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url(${
             promotionalProduct?.web_img
               ? `${IMAGE_URL}${promotionalProduct.web_img}`
-              : {BANNER_HOME}
+              : `${Utils.images.BANNER_HOME}`
           }) center center  no-repeat`,
         }}
         // onClick={() => navigateTo(promotionalProduct)}
@@ -197,7 +199,7 @@ function Banner({ promotionalProduct }: Props) {
         <div className={classes.findContainer}>
           <div className={classes.innerFindContainer}>
             <div className={classes.img}>
-              <MOBILE_OFFER_ICON />
+              <Image src={Utils.images.MOBILE_OFFER_ICON} alt="mobileOffer" width={40} height={40} />
             </div>
             <div className={classes.content}>
               <Typography variant="h2" className={classes.heading}>

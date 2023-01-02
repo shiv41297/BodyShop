@@ -2,7 +2,6 @@ import * as React from "react";
 import Head from "next/head";
 import { AppProps } from "next/app";
 import { ThemeProvider } from "@mui/material/styles";
-// import { CssBaseline, ThemeProvider } from "@material-ui/core";
 import CssBaseline from "@mui/material/CssBaseline";
 import { CacheProvider, EmotionCache } from "@emotion/react";
 import createEmotionCache from "../config/createEmotionCache";
@@ -13,6 +12,7 @@ import Headers from "../component/components/headers";
 import Footer from "../component/components/footers";
 import "../styles/globals.css";
 import { Box } from "@mui/material";
+import MediaFooter from "../component/components/footers/mediaFooter";
 // Client-side cache, shared for the whole session of the user in the browser.
 const clientSideEmotionCache = createEmotionCache();
 
@@ -30,6 +30,17 @@ function MyApp({
     <CacheProvider value={emotionCache}>
       <Head>
         <meta name="viewport" content="initial-scale=1, width=device-width" />
+        <link
+          rel="stylesheet"
+          type="text/css"
+          charSet="UTF-8"
+          href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css"
+        />
+        <link
+          rel="stylesheet"
+          type="text/css"
+          href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css"
+        />
       </Head>
       <Provider store={store}>
         <ThemeProvider theme={theme}>
@@ -38,6 +49,7 @@ function MyApp({
           <Box sx={{ marginTop: "90px" }}>
             <Component {...props.pageProps} />
           </Box>
+          <MediaFooter />
           <Footer />
         </ThemeProvider>
       </Provider>

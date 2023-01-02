@@ -218,7 +218,7 @@ const useStyles = makeStyles((theme: Theme) => ({
 }));
 
 const ProductImages = (props: any) => {
-  const IMAGE_URL = `${process.env.REACT_APP_MEDIA_URL}`;
+  const IMAGE_URL = `${process.env.NEXT_PUBLIC_MEDIA_URL}`;
 
   var productData1 = props && props?.details;
   const dispatch: any = useDispatch();
@@ -588,7 +588,7 @@ const ProductImages = (props: any) => {
                         },
                       }}
                     />
-                  </div>
+                  </div> 
                 </Box>
                 <Box sx={{ display: { xs: 'block', sm: 'none' } }}>
                   <div className={classes.productImage}>

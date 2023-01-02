@@ -1,7 +1,10 @@
 
-import { OfferModal } from "../../models"
 
-export const offerReducer = (state = new OfferModal(), action: any) => {
+
+export const offerReducer = (state = {
+  offers: "",
+  data: ""
+}, action: any) => {
   switch (action.type) {    
     case "getProductOffers":
       return { ...state, ...action.payload };

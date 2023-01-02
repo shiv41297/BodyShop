@@ -12,7 +12,7 @@ import ReactGA from 'react-ga4'
 // custom event with label being an optional parameter
 export const customGa4Event = (action:string,payload: any) => {
     //   return ReactGA.send({hitType: 'pageview', page: "/"})
-    if(process.env.REACT_APP_ENV !== 'development' && process.env.REACT_APP_ENV !== 'staging'){
+    if(process.env.NEXT_PUBLIC_ENV !== 'development' && process.env.NEXT_PUBLIC_ENV !== 'staging'){
 
     return ReactGA.event(action,{
         ...payload

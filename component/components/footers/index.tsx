@@ -160,30 +160,31 @@ const Footer = () => {
   );
   const [footerNavigation, setFooterNavigation] = useState(footerMenu);
   useEffect(() => {
-    if (authToken) {
-      if (!footerNavigation.length) {
+    // if (authToken) {
+    //   if (!footerNavigation.length) {
         request
           .get(Utils.endPoints.FOOTER)
           .then((resp: any) => {
+
             setFooterNavigation(resp.data.data);
             dispatch({
               type: Utils.ActionName.FOOTER_MENU,
               payload: { footerMenu: resp.data.data },
             });
           })
-          .catch((err: any) => {
-            if (err?.response?.data?.message)
-              dispatch({
-                type: "show-alert",
-                payload: {
-                  type: "error",
-                  message: err.response.data.message,
-                },
-              });
-          });
-      }
-    }
-  }, [authToken]);
+          // .catch((err: any) => {
+          //   if (err?.response?.data?.message)
+          //     dispatch({
+          //       type: "show-alert",
+          //       payload: {
+          //         type: "error",
+          //         message: err.response.data.message,
+          //       },
+          //     });
+          // });
+      // }
+    // }
+  }, []);
 
   // const sideLink = (heading: string) => (
   //   <Box my={1}>
