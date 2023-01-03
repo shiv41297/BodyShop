@@ -1,4 +1,3 @@
-
 import { Theme } from "@mui/material";
 import { makeStyles } from "@mui/styles";
 import Head from "next/head";
@@ -21,6 +20,7 @@ import { getHomeData } from "../store/home/action";
 import { wrapper } from "../store/store";
 import { Button } from "@mui/material";
 import { getProductList } from "../modules/productListing/action";
+import { PageMeta } from "../component/page-meta/PageMeta";
 
 const useStyles: any = makeStyles((theme: Theme) => ({
   homeRoot: {
@@ -186,105 +186,105 @@ const Index = () => {
     <HomeSkeletonList />
   ) : (
     <>
-      <Head>
-        <title>Cruelty-Free & Beauty Products | The Body Shop</title>
-        <meta
-          name="description"
-          content="Buy Cruelty Free Beauty product from The Body Shop India."
-        />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/favicon.svg" />
-      </Head>
+     
+
+      <PageMeta
+        title={"Cruelty-Free & Beauty Products | The Body Shop"}
+        description={
+          "Buy Cruelty Free Beauty product from The Body Shop India."
+        }
+      />
 
       <div className={classes.homeRoot}>
-          {sortedHomedata.map((section: any) => {
-            // if (
-            //   section?.status === "1" &&
-            //   section?.block_key == "recommended_products"
-            // )
-            //   return (
-            //     <Recommended
-            //       key={"recommended_products" + Math.random()}
-            //       data={section}
-            //     />
-            //   );
-            if (
-              section?.status === "1" &&
-              section?.block_key == "promotional_products"
-            )
-              return (
-                <Banner
-                  navigateTo={navigateTo}
-                  key={"promotional_products" + Math.random()}
-                  data={section}
-                />
-              );
-            // if (
-            //   section?.status === "1" &&
-            //   section?.block_key == "product_reviews" &&
-            //   ratingData.length > 0
-            // )
-            //   return (
-            //     <DoYouThink
-            //       getRateOrdersData={getRateOrdersData}
-            //       key={"product_reviews" + Math.random()}
-            //       data={ratingData}
-            //     />
-            //   );
-            if (section?.status === "1" && section?.block_key == "gift_block")
-              return (
-                <FindOutMore
-                  key={"gift_block" + Math.random()}
-                  navigateTo={navigateTo}
-                  data={section}
-                />
-              );
-            if (section?.status === "1" && section?.block_key == "have_seen")
-              return (
-                <HaveYouSeen key={"have_seen" + Math.random()} data={section} />
-              );
-            if (section?.status === "1" && section?.block_key == "share_love")
-              return (
-                <DiscoverMore
-                  navigateTo={navigateTo}
-                  key={"share_love" + Math.random()}
-                  data={section}
-                />
-              );
+        {sortedHomedata.map((section: any) => {
+          // if (
+          //   section?.status === "1" &&
+          //   section?.block_key == "recommended_products"
+          // )
+          //   return (
+          //     <Recommended
+          //       key={"recommended_products" + Math.random()}
+          //       data={section}
+          //     />
+          //   );
+          if (
+            section?.status === "1" &&
+            section?.block_key == "promotional_products"
+          )
+            return (
+              <Banner
+                navigateTo={navigateTo}
+                key={"promotional_products" + Math.random()}
+                data={section}
+              />
+            );
+          // if (
+          //   section?.status === "1" &&
+          //   section?.block_key == "product_reviews" &&
+          //   ratingData.length > 0
+          // )
+          //   return (
+          //     <DoYouThink
+          //       getRateOrdersData={getRateOrdersData}
+          //       key={"product_reviews" + Math.random()}
+          //       data={ratingData}
+          //     />
+          //   );
+          if (section?.status === "1" && section?.block_key == "gift_block")
+            return (
+              <FindOutMore
+                key={"gift_block" + Math.random()}
+                navigateTo={navigateTo}
+                data={section}
+              />
+            );
+          if (section?.status === "1" && section?.block_key == "have_seen")
+            return (
+              <HaveYouSeen key={"have_seen" + Math.random()} data={section} />
+            );
+          if (section?.status === "1" && section?.block_key == "share_love")
+            return (
+              <DiscoverMore
+                navigateTo={navigateTo}
+                key={"share_love" + Math.random()}
+                data={section}
+              />
+            );
             if (section?.status === "1" && section?.block_key == "tips_block")
-              return (
-                <>
+            return (
+              <>
+                <DoubleCard
+                  navigateTo={navigateTo}
+                  data={section?.content?.[0] || {}}
+                  key={"tips_block" + Math.random()}
+                />
+                {section?.content?.[1] && (
                   <DoubleCard
                     navigateTo={navigateTo}
-                    data={section?.content?.[0] || {}}
                     key={"tips_block" + Math.random()}
+                    data={section?.content?.[1] || {}}
+                    rightImg
                   />
-                  {section?.content?.[1] && (
-                    <DoubleCard
-                      navigateTo={navigateTo}
-                      key={"tips_block" + Math.random()}
-                      data={section?.content?.[1] || {}}
-                      rightImg
-                    />
-                  )}
-                </>
-              );
-            if (section?.status === "1" && section?.block_key == "more_shop")
-              return (
-                <MoreToShop data={section} key={"more_shop" + Math.random()} />
-              );
-            if (
-              section?.status === "1" &&
-              section?.block_key == "testimonial_block"
-            )
-              return (
-                <Testimonial
-                  key={"testimonial_block" + Math.random()}
-                  data={section}
-                />
-              );
-          })}
-        </div>
+                )}
+              </>
+            );
+                
+          if (section?.status === "1" && section?.block_key == "more_shop")
+            return (
+              <MoreToShop data={section} key={"more_shop" + Math.random()} />
+            );
+          if (
+            section?.status === "1" &&
+            section?.block_key == "testimonial_block"
+          )
+            return (
+              <Testimonial
+                key={"testimonial_block" + Math.random()}
+                data={section}
+              />
+            );
+        })}
+      </div>
       {/* <Hidden smUp>
           <HomeMobileView />
         </Hidden> */}

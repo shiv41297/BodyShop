@@ -37,8 +37,9 @@ function MyApp({
     <CacheProvider value={emotionCache}>
       <Head>
         <meta name="viewport" content="initial-scale=1, width=device-width" />
-        
+        <link rel="icon" href="/favicon.svg" />
       </Head>
+     
       <Provider store={store}>
         <ThemeProvider theme={theme}>
           <CssBaseline />
