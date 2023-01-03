@@ -169,8 +169,8 @@ const Headers = () => {
   };
   React.useEffect(() => {
     window.scrollTo(0, 0);
-    if (authToken) {
-      if (!menuData.length) {
+    // if (authToken) {
+    //   if (!menuData.length) {
         let url = Utils.CommonFunctions.replaceUrlParams(
           Utils.endPoints.MENU_LIST,
           obj
@@ -181,23 +181,20 @@ const Headers = () => {
             let menuRespData = resp.data.data.filter(
               (value: any, _index: number) => value.id !== null
             );
+            console.log("menudata", menuRespData);
             setMenusData(menuRespData);
+            console.log(menuData);
             dispatch({
               type: Utils.ActionName.MENU_DATA,
               payload: { menuData: menuRespData },
             });
           })
-          .catch((_err) => {});
-      }
-      // getPLPCategories()
-      //   .then((resp) => {
 
-      //     setMobileMenus(resp?.data?.data?.data);
-      //   })
-      //   .catch((err) => {
-      //   });
-    }
-  }, [authToken]);
+          // .catch((_err) => {});
+    //   }
+     
+    // }
+  }, []);
 
   
 

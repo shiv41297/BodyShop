@@ -13,12 +13,14 @@ import DiscoverMore from "../component/components/pagesComponents/home/discoverM
 import FindOutMore from "../component/components/pagesComponents/home/findOutMore";
 import HaveYouSeen from "../component/components/pagesComponents/home/haveYouSeen";
 import MoreToShop from "../component/components/pagesComponents/home/moreToShop";
-import Recommended from "../component/components/pagesComponents/home/recommended";
+// import Recommended from "../component/components/pagesComponents/home/recommended";
 import Testimonial from "../component/components/pagesComponents/home/testimonial";
 import { ReducersModal } from "../component/models";
 import Utils from "../component/utils";
 import { getHomeData } from "../store/home/action";
 import { wrapper } from "../store/store";
+import { Button } from "@mui/material";
+import { getProductList } from "../modules/productListing/action";
 
 const useStyles: any = makeStyles((theme: Theme) => ({
   homeRoot: {

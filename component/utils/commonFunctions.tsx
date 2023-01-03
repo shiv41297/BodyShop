@@ -105,7 +105,7 @@ const axiosCancelTokenConfig = (
       // "Accept-Language": localStorage.getItem("i18nextLng"),
 
     },
-    baseURL: `${process.env.REACT_APP_DOMAIN}${process.env.REACT_APP_VERSION}`,
+    baseURL: `${process.env.NEXT_PUBLIC_DOMAIN}${process.env.NEXT_PUBLIC_VERSION}`,
   };
 };
 
@@ -150,7 +150,7 @@ function addCommaToAmount(amount: number | string) {
 function getApiAuthHeader() {
   return {
     headers: {
-      'Authorization': `Basic ${process.env.REACT_APP_API_KEY}`
+      'Authorization': `Basic ${process.env.NEXT_PUBLIC_API_KEY}`
 
     }
   }
