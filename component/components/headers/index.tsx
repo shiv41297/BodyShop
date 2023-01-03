@@ -10,12 +10,13 @@ import { useRouter } from "next/router";
 
 import { useSelector, useDispatch } from "react-redux";
 
-import { Badge, Box, createStyles, Grid, Theme, Typography } from "@mui/material";
+import { Badge, Box, Grid, Theme, Typography } from "@mui/material";
 import { ROUTE_CONSTANTS } from "../../constants/routeConstants";
 import MessageDialogue from "../../common/product/messageDialogue";
 import { isAuthenticated } from "../../utils/session";
 import SearchIndex from "../searchModal";
 import Image from "next/image";
+// import { showSkeleton, getHomeData, hideSkeleton } from "../pagesComponents/home/actions";
 
 // import {
 //   CART,

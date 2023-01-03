@@ -1,5 +1,5 @@
 // import ContainedButton from "../../components/containedButton";
-import {  Typography , Theme} from '@mui/material';
+import { Theme, Typography } from '@mui/material';
 import { useRouter } from 'next/router';
 // import ReactHtmlParser from "react-html-parser";
 // import CustomAccordion from "../../components/customAccordion";

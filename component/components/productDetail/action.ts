@@ -5,21 +5,13 @@ import { hideLoader, hideSkeleton, showLoader } from '../../../store/home/action
 
 // import { hideLoader, hideSkeleton, showLoader } from "../../component/components/pagesComponents/home/actions";
 
-export function getProductData(params: any, callback?: Function) {
-  return async (dispatch: any) => {
-    let url = Utils.endPoints.PRODUCT_DATA;
-    request
-      .get(url, { params })
-      .then((resp: any) => {
-        var product = resp.data.data?.product;
+
+export const getProductData = () => async (dispatch: any) =>{
+    let resp = await request.get(`https://bodyshopstgapi.appskeeper.in/product-service/api/v1/products?subcategoryId=0&urlKey=aloe-soothing-day-cream-config`)
+      if (resp) {
+        var product = resp.data.data;
         var selectedVariant = null;
         var selectedVariantData: any = null;
-        // if (selectedVariantData?.type === "configurable") {
-        //   let defaultVariantIndex = selectedVariantData?.configurableProductLinks?.findIndex((item: any) => item.isInStock)
-        //   defaultVariantIndex = defaultVariantIndex > -1 ? defaultVariantIndex : 0
-        //   selectedVariant = selectedVariantData?.configurableProductOptions?.[0].values[defaultVariantIndex]
-        //   selectedVariantData = selectedVariantData?.configurableProductLinks?.[defaultVariantIndex]
-        // }
         if (product?.type === 'configurable') {
           const links = product?.configurableProductLinks?.sort(
             (a: any, b: any) => a?.price - b?.price
@@ -37,6 +29,10 @@ export function getProductData(params: any, callback?: Function) {
           selectedVariantData = product;
           // selectedVariant = product?.configurableProductOptions?.[0].values.find((item: any) => item?.label?.toLowerCase() === selectedVariantData?.value?.toLowerCase())
         }
+        // dispatch({
+        //   type: "getProductData",
+        //   payload: product,
+        // });
         dispatch({
           type: 'getProductData',
           payload: {
@@ -45,30 +41,68 @@ export function getProductData(params: any, callback?: Function) {
             selectedVariantData,
           },
         });
-        if (callback) callback(resp?.data?.data);
+      }
+      // .then((resp: any) => {
+      //   console.log( resp.data.data);
+      //   var product = resp.data.data?.product;
+      //   var selectedVariant = null;
+      //   var selectedVariantData: any = null;
 
-        // dispatch({
-        //   type: 'getProductData',
-        //   payload: { ...resp.data.data }
-        // });
-        // dispatch(hideLoader())
-      })
-      .catch((_err) => {
-        dispatch(hideLoader());
-        dispatch(hideSkeleton());
-        dispatch({
-          type: 'show-alert',
-          payload: {
-            type: 'error',
-            message: 'Product not found',
-          },
-        });
-        dispatch({
-          type: 'productNotFound',
-        });
-      });
+        
+      //   // if (selectedVariantData?.type === "configurable") {
+      //   //   let defaultVariantIndex = selectedVariantData?.configurableProductLinks?.findIndex((item: any) => item.isInStock)
+      //   //   defaultVariantIndex = defaultVariantIndex > -1 ? defaultVariantIndex : 0
+      //   //   selectedVariant = selectedVariantData?.configurableProductOptions?.[0].values[defaultVariantIndex]
+      //   //   selectedVariantData = selectedVariantData?.configurableProductLinks?.[defaultVariantIndex]
+      //   // }
+      //   // if (product?.type === 'configurable') {
+      //   //   const links = product?.configurableProductLinks?.sort(
+      //   //     (a: any, b: any) => a?.price - b?.price
+      //   //   );
+      //   //   selectedVariantData =
+      //   //     links?.find((item: any) => item.isInStock) ||
+      //   //     product?.configurableProductLinks[0];
+      //   //   const values = product?.configurableProductOptions?.[0]?.values;
+      //   //   selectedVariant = values.find(
+      //   //     (item: any) =>
+      //   //       item?.label?.toLowerCase() ===
+      //   //       selectedVariantData?.value?.toLowerCase()
+      //   //   );
+      //   // } else {
+      //   //   selectedVariantData = product;
+      //   //   // selectedVariant = product?.configurableProductOptions?.[0].values.find((item: any) => item?.label?.toLowerCase() === selectedVariantData?.value?.toLowerCase())
+      //   // }
+      //   // dispatch({
+      //   //   type: 'getProductData',
+      //   //   payload: {
+      //   //     ...resp.data.data,
+      //   //     selectedVariant,
+      //   //     selectedVariantData,
+      //   //   },
+      //   // });
+      //   // if (callback) callback(resp?.data?.data);
+
+      //   // dispatch({
+      //   //   type: 'getProductData',
+      //   //   payload: { ...resp.data.data }
+      //   // });
+      //   // dispatch(hideLoader())
+      // })
+      // .catch((_err) => {
+      //   // dispatch(hideLoader());
+      //   // dispatch(hideSkeleton());
+      //   // dispatch({
+      //   //   type: 'show-alert',
+      //   //   payload: {
+      //   //     type: 'error',
+      //   //     message: 'Product not found',
+      //   //   },
+      //   // });
+      //   // dispatch({
+      //   //   type: 'productNotFound',
+      //   // });
+      // });
   };
-}
 
 export const addToBag = (payload: any) => {
   return (dispatch: any, _getState: any) => {

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Divider, Rating, Theme, Typography } from '@mui/material';
+import { Divider, Theme, Typography, Rating } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 // import images from "../../utils/images";
 // import ContainedButton from "../../components/containedButton";
