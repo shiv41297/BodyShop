@@ -13,7 +13,7 @@ import DiscoverMore from "../component/components/pagesComponents/home/discoverM
 import FindOutMore from "../component/components/pagesComponents/home/findOutMore";
 import HaveYouSeen from "../component/components/pagesComponents/home/haveYouSeen";
 import MoreToShop from "../component/components/pagesComponents/home/moreToShop";
-import Recommended from "../component/components/pagesComponents/home/recommended";
+// import Recommended from "../component/components/pagesComponents/home/recommended";
 import Testimonial from "../component/components/pagesComponents/home/testimonial";
 import { ReducersModal } from "../component/models";
 import Utils from "../component/utils";
