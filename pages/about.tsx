@@ -5,7 +5,7 @@ import { wrapper } from "../store/store";
 import { getAboutData } from "../store/about/aboutAction";
 import { useSelector } from "react-redux";
 
-const NewPlayer: React.FC = (props: any) => {
+const About: React.FC = (props: any) => {
   const state = useSelector((state: any) => state.aboutReducer);
   return (
     <>
@@ -22,7 +22,7 @@ const NewPlayer: React.FC = (props: any) => {
   );
 };
 
-export default NewPlayer;
+export default About;
 
 // export async function getServerSideProps() {
 //   const config = {
