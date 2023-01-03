@@ -49,7 +49,7 @@ declare global {
 
 const useStyles = makeStyles((theme: Theme) => ({
   mainContainer: {
-    padding: theme.spacing(3, 4),
+    padding: theme.spacing(5, 4),
     display: 'flex',
     flexWrap: 'wrap',
     position: 'relative',
@@ -690,7 +690,7 @@ const ProductDetail = (props: any) => {
                   <AdditionalInformation />
                 </>
               )}
-              <RatingsReviews getData={getData} />
+              {/* <RatingsReviews getData={getData} /> */}
               {/* <CustomerReviews getData={getData} /> */}
               {linkedProducts && linkedProducts.length > 0 ? (
                 <CompleteRoutine

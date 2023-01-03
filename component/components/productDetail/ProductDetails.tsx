@@ -31,13 +31,13 @@ const useStyles = makeStyles((theme: Theme) => ({
     },
   },
   heading: {
-    font: `normal ${theme.spacing(2.2)}px Work Sans semiBold`,
+    font: `normal ${theme.spacing(2.2)} Work Sans semiBold`,
     textTransform: 'capitalize',
     lineHeight: '38px',
     paddingRight: '28px',
     [theme.breakpoints.down('xs')]: {
       lineHeight: '25px',
-      font: `normal ${theme.spacing(2)}px Recoleta Alt Bold`,
+      font: `normal ${theme.spacing(2)} Recoleta Alt Bold`,
       letterSpacing: '0.04em',
       paddingRight: '0px',
     },
@@ -45,25 +45,25 @@ const useStyles = makeStyles((theme: Theme) => ({
   caption: {
     font: `normal ${theme.typography.fontWeightBold} ${theme.spacing(
       1.3
-    )}px Work Sans`,
+    )} Work Sans`,
     lineHeight: '15px',
     color: 'var(--light-gray)',
     margin: '8px 0',
     [theme.breakpoints.down('xs')]: {
-      font: `normal ${theme.spacing(1.2)}px Work Sans Regular`,
+      font: `normal ${theme.spacing(1.2)} Work Sans Regular`,
     },
   },
   taxCaption: {
     font: `normal ${theme.typography.fontWeightBold} ${theme.spacing(
       1.3
-    )}px Work Sans`,
+    )} Work Sans`,
     lineHeight: '15px',
     color: 'var(--light-gray)',
   },
   amount: {
     font: `normal ${theme.typography.fontWeightBold} ${theme.spacing(
       1.5
-    )}px Work Sans`,
+    )} Work Sans`,
     color: 'var(--secondary-black)',
     marginRight: theme.spacing(0.5),
   },
@@ -71,21 +71,21 @@ const useStyles = makeStyles((theme: Theme) => ({
     marginLeft: theme.spacing(1),
     font: `normal ${theme.typography.fontWeightMedium} ${theme.spacing(
       1.5
-    )}px Work Sans`,
+    )} Work Sans`,
     color: 'var(--light-gray)',
     textDecorationLine: 'line-through',
   },
   specialPrice: {
     font: `normal ${theme.typography.fontWeightBold} ${theme.spacing(
       1.8
-    )}px Work Sans`,
+    )} Work Sans`,
     // color: theme.palette.primary.main,
     lineHeight: 2,
   },
   discountPrice: {
     font: `normal ${theme.typography.fontWeightMedium} ${theme.spacing(
       2.4
-    )}px Work Sans`,
+    )} Work Sans`,
     color: 'var(--grey-color)',
     lineHeight: '28px',
     textDecoration: 'line-through',
@@ -94,13 +94,13 @@ const useStyles = makeStyles((theme: Theme) => ({
   originalPrice: {
     font: `normal ${theme.typography.fontWeightBold} ${theme.spacing(
       2.4
-    )}px Work Sans`,
+    )} Work Sans`,
     color: 'var(--secondary-black)',
     lineHeight: '28px',
     [theme.breakpoints.down('xs')]: {
       font: `normal ${theme.typography.fontWeightBold} ${theme.spacing(
         2.2
-      )}px Work Sans Bold`,
+      )} Work Sans Bold`,
     },
   },
   skeletonContent: {

@@ -93,13 +93,13 @@ const SmallMighty = () => {
 
               {/* {ReactHtmlParser(getAttributeValue("small_but_mighty_link"))
                   ?.length > 0 ? ( */}
-              <ContainedButton
+              {/* <ContainedButton
                 // text={ReactHtmlParser(
                 //   getAttributeValue("small_but_mighty_link")
                 // ).toString()}
                 text="Himanshu Rai"
                 type="button"
-              />
+              /> */}
               {/* ) : null} */}
             </Typography>
           }
