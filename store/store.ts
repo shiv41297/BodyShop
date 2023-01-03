@@ -1,3 +1,4 @@
+import { productDetailReducer } from "./../component/components/productDetail/reducer";
 import { productFilterReducer } from "./../modules/productListing/reducer";
 import { createStore, applyMiddleware, combineReducers } from "redux";
 import { HYDRATE, createWrapper } from "next-redux-wrapper";
@@ -19,6 +20,8 @@ const combinedReducer = combineReducers({
   aboutReducer,
   productReducer,
   productFilterReducer,
+  // aboutReducer: aboutReducer,
+  productDetailReducer,
 });
 
 // @ts-ignore

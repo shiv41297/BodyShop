@@ -1,152 +1,158 @@
-import { IconButton , Theme} from "@mui/material";
-import React, { useEffect, useState } from "react";
-import Utils from "../../utils";
-import { useDispatch, useSelector } from "react-redux";
-import { makeStyles } from "@mui/styles";
-import { ProductDetailModal, ReducersModal } from "../../models";
-import Image from "next/image";
+// @ts-nocheck
+import { IconButton, Theme } from '@mui/material';
+import { makeStyles } from '@mui/styles';
+import React, { useEffect, useState } from 'react';
+import Utils from '../../utils';
+import { useDispatch, useSelector } from 'react-redux';
+import { useRouter } from 'next/router'
+
+// import {
+//   addToWishList,
+//   removeFromWishList,
+// } from "./../../components/common/product/action";
+import { ProductDetailModal, ReducersModal } from '../../models';
 // import ImageMagnifier from "./imageMagnifier";
+// import { hideLoader } from "../home/actions";
 import {
   addToWishlist as eventAddToWishlist,
   removeFromWishlist as eventRemoveFromWishlist,
-} from "../../utils/event/action";
-// import ReactImageMagnify from "react-image-magnify";
-import { isAuthenticated } from "../../utils/session";
-
-import { Box } from "@mui/material";
-import { hideLoader } from "../../../store/home/action";
-import { addToWishList, removeFromWishList } from "../../common/product/action";
-import MessageDialogue from "../../common/product/messageDialogue";
-import { useRouter } from "next/router";
+} from '../../utils/event/action';
+import ReactImageMagnify from 'react-image-magnify';
+import { isAuthenticated } from '../../utils/session';
+// import { useNavigate } from "react-router-dom";
+// import MessageDialogue from "../../components/common/product/messageDialogue";
+// import { getWishList } from "../wishlist/action";
+import { Box } from '@mui/material';
+import MessageDialogue from '../../common/product/messageDialogue';
 // import { FAVORITE_ICON, HEART, PRODUCT_PLACEHOLDER } from "utils/constantImages";
 
 const useStyles = makeStyles((theme: Theme) => ({
   productImageContainer: {
     margin: theme.spacing(2, 2, 2, 0),
-    height: "inherit",
-    display: "flex",
-    flexDirection: "row",
-    position: "relative",
-    maxWidth: "600px",
-    maxHeight: "750px",
-    width: "100%",
+    height: 'inherit',
+    display: 'flex',
+    flexDirection: 'row',
+    position: 'relative',
+    maxWidth: '600px',
+    maxHeight: '750px',
+    width: '100%',
 
-    [theme.breakpoints.down("xs")]: {
-      flexDirection: "column",
+    [theme.breakpoints.down('xs')]: {
+      flexDirection: 'column',
       margin: theme.spacing(0),
     },
   },
   productImage: {
-    width: "100%",
-    backgroundColor: "var(--white)",
+    width: '100%',
+    backgroundColor: 'var(--white)',
     borderRadius: 8,
-    height: "inherit",
+    height: 'inherit',
     // maxWidth: "600px",
     // maxHeight: "750px",
 
     // height: '280px',
-    "& img": {
-      display: "block",
+    '& img': {
+      display: 'block',
       // margin: "20px auto",
-      width: "100%",
-      height: "580px",
+      width: '100%',
+      height: '580px',
       // maxWidth: "600px",
       // maxHeight: "750px",
 
-      objectFit: "cover",
-      [theme.breakpoints.down("xs")]: {
-        height: "100%",
-        aspectRatio: "2/3",
+      objectFit: 'cover',
+      [theme.breakpoints.down('xs')]: {
+        height: '100%',
+        aspectRatio: '2/3',
         // height: "100%",
         // objectFit: "contain",
-        objectFit: "cover",
-        width: "100%",
+        objectFit: 'cover',
+        width: '100%',
       },
       //   objectFit: "contain",
     },
-    [theme.breakpoints.down("xs")]: {
+    [theme.breakpoints.down('xs')]: {
       marginBottom: theme.spacing(2),
-      height: "420px",
+      height: '420px',
     },
   },
   productThumbContainer: {
-    display: "flex",
-    flexDirection: "column",
+    display: 'flex',
+    flexDirection: 'column',
     width: 100,
     // margin: "20px auto",
-    "& div": {
-      width: "80px",
-      height: "100px",
+    '& div': {
+      width: '80px',
+      height: '100px',
       margin: theme.spacing(0, 1, 1, 1),
       borderRadius: 4,
-      display: "block",
-      "& img": {
-        width: "100%",
-        height: "100%",
-        margin: "0px auto",
-        cursor: "pointer",
-        objectFit: "cover",
+      display: 'block',
+      '& img': {
+        width: '100%',
+        height: '100%',
+        margin: '0px auto',
+        cursor: 'pointer',
+        objectFit: 'cover',
 
-        [theme.breakpoints.down("xs")]: {},
+        [theme.breakpoints.down('xs')]: {},
       },
-      [theme.breakpoints.down("xs")]: {
+      [theme.breakpoints.down('xs')]: {
         margin: theme.spacing(0, 0, 0, 1),
       },
     },
-    [theme.breakpoints.down("xs")]: {
-      width: "auto",
-      flexDirection: "row",
+    [theme.breakpoints.down('xs')]: {
+      width: 'auto',
+      flexDirection: 'row',
     },
   },
   innerContainer: {
-    height: "400px",
+    height: '400px',
 
-    "& .image-gallery-thumbnail.active, .image-gallery-thumbnail:focus": {
-      border: "1px solid var(--main-opacity)",
+    '& .image-gallery-thumbnail.active, .image-gallery-thumbnail:focus': {
+      border: '1px solid var(--main-opacity)',
     },
-    "& .image-gallery-thumbnail:hover": {
-      border: "1px solid var(--main-opacity)",
+    '& .image-gallery-thumbnail:hover': {
+      border: '1px solid var(--main-opacity)',
     },
-    "& .image-gallery-icon:hover": {
-      color: "var(--main-opacity)",
+    '& .image-gallery-icon:hover': {
+      color: 'var(--main-opacity)',
     },
-    [theme.breakpoints.down("sm")]: {
-      flexDirection: "column",
+    [theme.breakpoints.down('sm')]: {
+      flexDirection: 'column',
       padding: theme.spacing(0),
       margin: theme.spacing(2, 0, 1, 0),
     },
   },
 
   bottomIcons: {
-    display: "flex",
-    justifyContent: "space-between",
-    marginTop: "40px",
-    [theme.breakpoints.down("sm")]: {
-      display: "flex",
-      position: "fixed",
-      backgroundColor: "white",
+    display: 'flex',
+    justifyContent: 'space-between',
+    marginTop: '40px',
+    [theme.breakpoints.down('sm')]: {
+      display: 'flex',
+      position: 'fixed',
+      backgroundColor: 'white',
       bottom: 0,
       padding: theme.spacing(0, 0, 0, 2),
-      zIndex: "1",
-      width: "100%",
+      zIndex: '1',
+      width: '100%',
       left: 0,
     },
   },
   addToBagContainer: {
-    display: "flex",
-    alignItems: "center",
+    display: 'flex',
+    alignItems: 'center',
     padding: theme.spacing(0, 2, 0, 0),
-    "& .MuiIconButton-root:hover": {
-      background: "none",
+    '& .MuiIconButton-root:hover': {
+      background: 'none',
     },
   },
 
   incButton: {
     margin: theme.spacing(0, 2),
-    "& .MuiIconButton-root:hover": {
-      background: "none",
+    '& .MuiIconButton-root:hover': {
+      background: 'none',
     },
-    [theme.breakpoints.down("sm")]: {
+    [theme.breakpoints.down('sm')]: {
       margin: theme.spacing(0, 0),
     },
   },
@@ -155,59 +161,57 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
   wishImg: {
     margin: theme.spacing(0, 0),
-    "&.MuiIconButton-root:hover": {
-      background: "none",
-      backgroundColor: "transparent",
+    '&.MuiIconButton-root:hover': {
+      background: 'none',
+      backgroundColor: 'transparent',
     },
   },
   productPlaceholder: {
-    padding: "20px",
-    width: "100%",
+    padding: '20px',
+    width: '100%',
   },
   bottomIconsMobile: {
-    display: "none",
+    display: 'none',
 
-    [theme.breakpoints.down("sm")]: {
-      display: "flex",
-      position: "fixed",
-      backgroundColor: "white",
+    [theme.breakpoints.down('sm')]: {
+      display: 'flex',
+      position: 'fixed',
+      backgroundColor: 'white',
       bottom: 0,
       padding: theme.spacing(0, 0, 0, 2),
-      zIndex: "1",
-      width: "100%",
+      zIndex: '1',
+      width: '100%',
       left: 0,
-      justifyContent: "space-between",
+      justifyContent: 'space-between',
     },
   },
   heartImg: {
-    position: "absolute",
-    top: "0%",
-    right: "17%",
+    position: 'absolute',
+    top: '0%',
+    right: '17%',
     zIndex: 1,
-    [theme.breakpoints.down("md")]: {
-      top: "0%",
-      right: "30%",
+    [theme.breakpoints.down('md')]: {
+      top: '0%',
+      right: '30%',
     },
-    [theme.breakpoints.down("xs")]: {
-      top: "0%",
-      right: "0%",
+    [theme.breakpoints.down('xs')]: {
+      top: '0%',
+      right: '0%',
     },
   },
   placeholderDiv: {
-    width: "500px",
-    height: "750px",
-    [theme.breakpoints.down("xs")]: {
-      width: "100%",
-      height: "400px",
+    width: '500px',
+    height: '750px',
+    [theme.breakpoints.down('xs')]: {
+      width: '100%',
+      height: '400px',
     },
   },
   messageHeading: {
-    font: `normal 700 ${theme.spacing(
-      2.0
-    )}px Work Sans`,
-    color: "var(--black300)",
-    lineHeight: "28px",
-    marginBottom: "9px"
+    font: `normal 700 ${theme.spacing(2.0)}px Work Sans`,
+    color: 'var(--black300)',
+    lineHeight: '28px',
+    marginBottom: '9px',
 
     // margin: theme.spacing(0.8, 0),
   },
@@ -217,9 +221,11 @@ const ProductImages = (props: any) => {
   const IMAGE_URL = `${process.env.NEXT_PUBLIC_MEDIA_URL}`;
 
   var productData1 = props && props?.details;
-  const dispatch : any= useDispatch();
-  const history = useRouter()
+  const dispatch: any = useDispatch();
+  // const history = useNavigate();
+
   const classes = useStyles();
+  const router = useRouter();
   // const [state, setState] = React.useState({
   //     displayImage: '',
   //     sliderImages: [],
@@ -229,13 +235,15 @@ const ProductImages = (props: any) => {
   //     imageSaved: false,
   //     wishlistAdded: false,
   // });
-  const [loginAlert, showLoginAlert] = useState(false)
-  const [like, setLike] = React.useState(productData1?.wishlists?._id ? true : false);
+  const [loginAlert, showLoginAlert] = useState(false);
+  const [like, setLike] = React.useState(
+    productData1?.wishlists?._id ? true : false
+  );
   const { callback } = props;
   const [images, setImages] = React.useState<any>([]);
   const [mainImageIndex, setMainImageIndex] = React.useState(0);
   const [loader, setLoader] = useState(false);
-  const [wishlistId,setWishlistId] = useState(null)
+  const [wishlistId, setWishlistId] = useState(null);
   const productData: ProductDetailModal = useSelector(
     (state: ReducersModal) => state.productDetailReducer
   );
@@ -299,151 +307,149 @@ const ProductImages = (props: any) => {
 
   const handleLike = (status: boolean, product: any) => {
     // setLike(!like);
-    setLoader(true)
+    setLoader(true);
     if (status) {
       let data: any = {
         productId: product?.magentoId,
-        type: product?.type || "simple",
+        type: product?.type || 'simple',
         attributeData: product?.configurableProductOptions?.length
           ? [
-            {
-              id: product?.configurableProductOptions?.[0]?.attribute_id,
-              value:
-                product?.configurableProductOptions?.[0]?.values?.[0]
-                  ?.value_index,
-            },
-          ]
+              {
+                id: product?.configurableProductOptions?.[0]?.attribute_id,
+                value:
+                  product?.configurableProductOptions?.[0]?.values?.[0]
+                    ?.value_index,
+              },
+            ]
           : [],
       };
-      addToWishList(data).then((resp) => {
-        if (resp) {
-          setLike(true);
-          setWishlistId(resp?.data?.data?._id)
-          // dispatch({
-          //   type: Utils.ActionName.WISHLIST,
-          //   payload: { totalCount: totalCount + 1 },
-          // });
-          let categoryAttributesIndex = product?.customAttributes.findIndex(
-            (i: any) => i.attribute_code === "category_ids"
-          );
-          let categoryAttributesData =
-            product?.customAttributes[categoryAttributesIndex];
-          let categoryArray = categoryAttributesData?.label.reduce(
-            (i: any, j: any) => {
-              i.push({
-                CategoryName: j.label,
-                CategoryId: j.value,
-              });
-              return i;
-            },
-            []
-          );
-          // dispatch(getWishList({ limit: 10, page: 1 }));
+      // addToWishList(data)
+      //   .then((resp) => {
+      //     if (resp) {
+      //       setLike(true);
+      //       setWishlistId(resp?.data?.data?._id);
+      //       // dispatch({
+      //       //   type: Utils.ActionName.WISHLIST,
+      //       //   payload: { totalCount: totalCount + 1 },
+      //       // });
+      //       let categoryAttributesIndex = product?.customAttributes.findIndex(
+      //         (i: any) => i.attribute_code === 'category_ids'
+      //       );
+      //       let categoryAttributesData =
+      //         product?.customAttributes[categoryAttributesIndex];
+      //       let categoryArray = categoryAttributesData?.label.reduce(
+      //         (i: any, j: any) => {
+      //           i.push({
+      //             CategoryName: j.label,
+      //             CategoryId: j.value,
+      //           });
+      //           return i;
+      //         },
+      //         []
+      //       );
+      //       dispatch(getWishList({ limit: 10, page: 1 }));
 
-          dispatch({
-            type: "show-alert",
-            payload: {
-              type: "success",
-              message: "Product added to wishlist",
-            },
-          });
-          eventAddToWishlist({
-            ProductId: `${product?.magentoId}`,
-            ProductName: `${product?.name}`,
-            Price: `${product?.price}`,
-            Category: JSON.stringify(categoryArray),
-            FromScreen: `pdp`,
-          });
+      //       dispatch({
+      //         type: 'show-alert',
+      //         payload: {
+      //           type: 'success',
+      //           message: 'Product added to wishlist',
+      //         },
+      //       });
+      //       eventAddToWishlist({
+      //         ProductId: `${product?.magentoId}`,
+      //         ProductName: `${product?.name}`,
+      //         Price: `${product?.price}`,
+      //         Category: JSON.stringify(categoryArray),
+      //         FromScreen: `pdp`,
+      //       });
 
-          if (callback) {
-            callback();
-            dispatch(hideLoader());
-          }
+      //       if (callback) {
+      //         callback();
+      //         dispatch(hideLoader());
+      //       }
+      //     } else {
+      //       dispatch(hideLoader());
+      //     }
+      //     setLoader(false);
+      //   })
+      //   .catch((err) => {
+      //     setLoader(false);
 
-        } else {
-          dispatch(hideLoader());
-        }
-        setLoader(false)
-
-      }).catch((err) => {
-        setLoader(false)
-
-        if (err?.response?.data?.message)
-          dispatch({
-            type: "show-alert",
-            payload: {
-              type: "error",
-              message: err?.response?.data?.message,
-            },
-          });
-      });
+      //     if (err?.response?.data?.message)
+      //       dispatch({
+      //         type: 'show-alert',
+      //         payload: {
+      //           type: 'error',
+      //           message: err?.response?.data?.message,
+      //         },
+      //       });
+      //   });
     } else {
-      removeFromWishList(
-        wishlistId?wishlistId:product.wishlists && product.wishlists?._id ? product.wishlists?._id : product._id
-      )
-        .then((resp) => {
-          if (resp) {
-            setLike(false)
-
-            // dispatch({
-            //   type: Utils.ActionName.WISHLIST,
-            //   payload: { totalCount: totalCount - 1 },
-            // });
-            let categoryAttributesIndex = product?.customAttributes.findIndex(
-              (i: any) => i.attribute_code === "category_ids"
-            );
-            let categoryAttributesData =
-              product?.customAttributes[categoryAttributesIndex];
-            let categoryArray = categoryAttributesData?.label.reduce(
-              (i: any, j: any) => {
-                i.push({
-                  CategoryName: j.label,
-                  CategoryId: j.value,
-                });
-                return i;
-              },
-              []
-            );
-            // dispatch(getWishList({ limit: 10, page: 1 }));
-            dispatch({
-              type: "show-alert",
-              payload: {
-                type: "success",
-                message: "Product removed from wishlist",
-              },
-            });
-            eventRemoveFromWishlist({
-              ProductId: `${product.magentoId}`,
-              ProductName: `${product.name}`,
-              Price: `${product.price}`,
-              Category: JSON.stringify(categoryArray),
-              FromScreen: `pdpI`,
-            });
-
-            if (callback) {
-              callback();
-              dispatch(hideLoader());
-            }
-
-          } else {
-            dispatch(hideLoader());
-          }
-
-          setLoader(false)
-
-        })
-        .catch((err) => {
-          setLoader(false)
-
-          if (err?.response?.data?.message)
-            dispatch({
-              type: "show-alert",
-              payload: {
-                type: "error",
-                message: err?.response?.data?.message,
-              },
-            });
-        });
+      // removeFromWishList(
+      //   wishlistId
+      //     ? wishlistId
+      //     : product.wishlists && product.wishlists?._id
+      //     ? product.wishlists?._id
+      //     : product._id
+      // )
+      //   .then((resp) => {
+      //     if (resp) {
+      //       setLike(false);
+      //       // dispatch({
+      //       //   type: Utils.ActionName.WISHLIST,
+      //       //   payload: { totalCount: totalCount - 1 },
+      //       // });
+      //       let categoryAttributesIndex = product?.customAttributes.findIndex(
+      //         (i: any) => i.attribute_code === 'category_ids'
+      //       );
+      //       let categoryAttributesData =
+      //         product?.customAttributes[categoryAttributesIndex];
+      //       let categoryArray = categoryAttributesData?.label.reduce(
+      //         (i: any, j: any) => {
+      //           i.push({
+      //             CategoryName: j.label,
+      //             CategoryId: j.value,
+      //           });
+      //           return i;
+      //         },
+      //         []
+      //       );
+      //       dispatch(getWishList({ limit: 10, page: 1 }));
+      //       dispatch({
+      //         type: 'show-alert',
+      //         payload: {
+      //           type: 'success',
+      //           message: 'Product removed from wishlist',
+      //         },
+      //       });
+      //       eventRemoveFromWishlist({
+      //         ProductId: `${product.magentoId}`,
+      //         ProductName: `${product.name}`,
+      //         Price: `${product.price}`,
+      //         Category: JSON.stringify(categoryArray),
+      //         FromScreen: `pdpI`,
+      //       });
+      //       if (callback) {
+      //         callback();
+      //         dispatch(hideLoader());
+      //       }
+      //     } else {
+      //       dispatch(hideLoader());
+      //     }
+      //     setLoader(false);
+      //   })
+      //   .catch((err) => {
+      //     setLoader(false);
+      //     if (err?.response?.data?.message)
+      //       dispatch({
+      //         type: 'show-alert',
+      //         payload: {
+      //           type: 'error',
+      //           message: err?.response?.data?.message,
+      //         },
+      //       });
+      //   });
     }
   };
 
@@ -505,35 +511,31 @@ const ProductImages = (props: any) => {
         open={loginAlert}
         handleClose={() => showLoginAlert(!loginAlert)}
         onOk={() => {
-          history.push(
-            `${Utils.routes.LOGIN_OTP}?redirectTo=${location.pathname}`
-          );
-          showLoginAlert(false)
+          router.push(`${Utils.routes.LOGIN_OTP}?redirectTo=${location.pathname}`);
+          showLoginAlert(false);
         }}
         message={'Please login to proceed'}
         heading={'The Body Shop'}
         headingClass={classes.messageHeading}
-
       />
       <div className={classes.innerContainer}>
         <div className={classes.productImageContainer}>
-         <Box sx={{ display: { xs: "none", sm: "block" } }}>
+          <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
             <div>
               {like ? (
                 <IconButton
                   aria-label="favorite"
                   className={classes.heartImg}
-                // onClick={() => handleLike(false, productData)}
+                  // onClick={() => handleLike(false, productData)}
                 >
-                 
-                  <div onClick={() => {
+                  <div
+                    onClick={() => {
                       if (!loader)
-                        if (isAuthenticated())
-                          handleLike(false, productData1)
-                        else
-                          showLoginAlert(true);
-                    }}>
-                    <Image src={Utils.images.FAVORITE_ICON} alt="FAVORITE" width={30} height={30} />
+                        if (isAuthenticated()) handleLike(false, productData1);
+                        else showLoginAlert(true);
+                    }}
+                  >
+                    {/* <FAVORITE_ICON /> */}
                   </div>
                 </IconButton>
               ) : (
@@ -542,13 +544,11 @@ const ProductImages = (props: any) => {
                   className={classes.heartImg}
                   onClick={() => {
                     if (!loader)
-                      if (isAuthenticated())
-                        handleLike(true, productData1);
-                      else
-                        showLoginAlert(true);
+                      if (isAuthenticated()) handleLike(true, productData1);
+                      else showLoginAlert(true);
                   }}
                 >
-                  <Image src={Utils.images.HEART} alt="heart" width={30} height={30} />
+                  {/* <HEART /> */}
                 </IconButton>
               )}
             </div>
@@ -557,12 +557,12 @@ const ProductImages = (props: any) => {
           <div>
             {images?.[mainImageIndex]?.file ? (
               <>
-                <Box sx={{ display: { sm: "block", xs: "none" } }}>
-                  {/* <div style={{ width: "500px", height: "750px" }}>
+                <Box sx={{ display: { sm: 'block', xs: 'none' } }}>
+                  <div style={{ width: '500px', height: '750px' }}>
                     <ReactImageMagnify
                       {...{
                         smallImage: {
-                          alt: "Product Image",
+                          alt: 'Product Image',
                           isFluidWidth: false,
                           src: `${IMAGE_URL}catalog/product${images?.[mainImageIndex]?.file}`,
                           width: 500,
@@ -572,25 +572,25 @@ const ProductImages = (props: any) => {
                           src: `${IMAGE_URL}catalog/product${images?.[mainImageIndex]?.file}`,
                           width: 1200,
                           // height: 3000,
-                          height: 1800
+                          height: 1800,
                         },
                         enlargedImageContainerDimensions: {
-                          width: "100%",
-                          height: "100%",
+                          width: '100%',
+                          height: '100%',
                           zIndex: 9999,
-                          position: "absolute",
+                          position: 'absolute',
                         },
-                        enlargedImagePosition: "beside",
+                        enlargedImagePosition: 'beside',
                         enlargedImageStyle: {
-                          minWidth: "1200px",
+                          minWidth: '1200px',
                           // height: "100px",
                           zIndex: 100000,
                         },
                       }}
                     />
-                  </div> */}
+                  </div> 
                 </Box>
-                <Box sx={{ display: { xs: "block", sm: "none" } }}>
+                <Box sx={{ display: { xs: 'block', sm: 'none' } }}>
                   <div className={classes.productImage}>
                     <img
                       src={`${IMAGE_URL}catalog/product${images?.[mainImageIndex]?.file}`}
@@ -604,9 +604,8 @@ const ProductImages = (props: any) => {
               //   src={`${IMAGE_URL}catalog/product${images?.[mainImageIndex]?.file}`}
               // />
               <div className={classes.placeholderDiv}>
-               
                 <span className={classes.productPlaceholder}>
-                  <Image src={Utils.images.PRODUCT_PLACEHOLDER} alt="placeHolder" width={30} height={30} />
+                  {/* <PRODUCT_PLACEHOLDER /> */}
                 </span>
               </div>
             )}
