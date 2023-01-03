@@ -47,7 +47,7 @@ const ProductListing = () => {
     <div id={"banner-id"}>
       {/* {theme.breakpoints.up("sm") ? !keyword && <MobileMenu /> : null} */}
       {/* {!keyword && <Hidden smUp></Hidden>} */}
-      {/* <Banner /> */}
+      <Banner />
       {/* {theme.breakpoints.down("xs") ? <FilterProducts /> : null} */}
 
       {/* <Hidden xsDown></Hidden> */}
@@ -55,6 +55,7 @@ const ProductListing = () => {
       {/* {theme.breakpoints.up("sm") ? <MobileFilterProducts /> : null} */}
 
       {/* <ListProducts /> */}
+      <h1>Product Listing</h1>
     </div>
   );
 };
