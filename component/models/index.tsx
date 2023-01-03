@@ -7,62 +7,57 @@ class LoadingModal {
 }
 
 class LoginModal {
-  type: string = '';
-  email: string = '';
-  mobileNo: string = '';
-  countryCode: string = '';
-  socialType: string = '';
-  socialId: string = '';
+  type: string = "";
+  email: string = "";
+  mobileNo: string = "";
+  countryCode: string = "";
+  socialType: string = "";
+  socialId: string = "";
   responseCode: number = Utils.statusCode.USER_EXIST_IN_DB;
   fullName: string = "";
-  imageUrl: string = ""
+  imageUrl: string = "";
   gender: string = "";
   dob: any = null;
 }
 
 class OtpModal {
   show: boolean = false;
-  email: string = '';
-  mobileNo: string = '';
-  countryCode: string = '';
-  otpVia: string = '';
-  type: string = '';
-  OTP: string = ''
+  email: string = "";
+  mobileNo: string = "";
+  countryCode: string = "";
+  otpVia: string = "";
+  type: string = "";
+  OTP: string = "";
   currentDate: number = 0;
 }
 class AlertModal {
   show: boolean = false;
   message: string = "";
   type: "success" | "error" | "warning" | "info" = "success";
-  position?: "right" | "left" | "center"
-
+  position?: "right" | "left" | "center";
 }
 
-
-
 class UserModal {
-  fullName: string = '';
-  OTP: string = '';
-  appleId: string = '';
-  authToken: string = '';
-  countryCode: string = '';
-  createdAt: string = '';
-  email: string = '';
-  googleId: string = '';
+  fullName: string = "";
+  OTP: string = "";
+  appleId: string = "";
+  authToken: string = "";
+  countryCode: string = "";
+  createdAt: string = "";
+  email: string = "";
+  googleId: string = "";
   isEmailVerified: boolean = false;
   isMobileVerified: boolean = false;
   isPasswordGenerated: boolean = false;
-  mobileNo: string = '';
-  status: string = '';
-  userId: string = '';
-  gender: string = '';
-  dob: string = '';
-  tierType: string = '';
-  membershipNumber: string = '';
-  undermaintainance:number=0;
-  
+  mobileNo: string = "";
+  status: string = "";
+  userId: string = "";
+  gender: string = "";
+  dob: string = "";
+  tierType: string = "";
+  membershipNumber: string = "";
+  undermaintainance: number = 0;
 }
-
 
 class HomeModal {
   homeData: any;
@@ -70,14 +65,14 @@ class HomeModal {
   memberShipData: any = [];
   mobileHomeData: any = [];
   footerMenu: any = [];
-  mobileMenusData: any = []
+  mobileMenusData: any = [];
   fromPath: any = "";
   authToken: string = "";
 }
 class ConfigModal {
   generalConfigs: any;
   paymentConfigs: any;
-  metaData:any;
+  metaData: any;
 }
 class StoreModal {
   data: Array<any> = [];
@@ -88,7 +83,7 @@ class StoreModal {
   totalCount?: number = 0;
 }
 class ProductModal {
-  data: any = {}
+  data: any = {};
   // filters: any = {};
   // products: any = {};
   // articles: any = {};
@@ -96,7 +91,7 @@ class ProductModal {
 }
 class ProductFilterModal {
   filters: any = [];
-  mobileAppliedFilters: any = {}
+  mobileAppliedFilters: any = {};
 }
 
 class RecommendModal {
@@ -109,15 +104,15 @@ class ProductDetailModal {
   redirect: any;
   selectedVariant: any;
   selectedVariantData: any;
-  productReviews: any
-  rewardData: any
+  productReviews: any;
+  rewardData: any;
 }
 class ShoppingBagModal {
   items: any = [];
   _id: any;
   donation: any = {
     donationType: "checkout_section",
-    donationAmount: 0
+    donationAmount: 0,
   };
   freeProductCount: number = 0;
   freeSampleCount: number = 0;
@@ -133,27 +128,26 @@ class WishistModal {
 
 class OfferModal {
   offers: any;
-  data: any
+  data: any;
 }
 
 class UserDetailModal {
   userInfo: any;
   lybcInfo: any;
   dashboard: any;
-  walletBalance?: any
-  verifyModal:boolean= false;
+  walletBalance?: any;
+  verifyModal: boolean = false;
   resetStore: any;
 }
 
 class AddressModal {
   address: any;
   checkoutAddressId: string | null = null;
-  addressFlag: string | null = null
+  addressFlag: string | null = null;
 }
 class BreadcrumModal {
-  data: any
+  data: any;
 }
-
 
 class GiftModal {
   eGiftCard: any = {};
@@ -163,14 +157,14 @@ class GiftModal {
     donationAmount: {},
     enterDetails: {},
     deliveryDetails: {},
-  }
+  };
 }
 class OrderHistoryModal {
   orderList: any = [];
   orderListData: any = {};
   selectedOrder: any = {};
-  selectedOrderForReturn: any = {}
-  selectedOrderDetails:any={}
+  selectedOrderForReturn: any = {};
+  selectedOrderDetails: any = {};
 }
 
 class CouponListModal {
@@ -230,7 +224,6 @@ class ReducersModal {
   paymentReducer: PaymentModal = new PaymentModal();
   ratingReducer: RatingModal = new RatingModal();
 }
-
 
 export {
   OlderQueryModal,

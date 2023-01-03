@@ -1,3 +1,5 @@
+import { productDetailReducer } from "./../component/components/productDetail/reducer";
+import { productFilterReducer } from "./../modules/productListing/reducer";
 import { createStore, applyMiddleware, combineReducers } from "redux";
 import { HYDRATE, createWrapper } from "next-redux-wrapper";
 import { composeWithDevTools } from "redux-devtools-extension";
@@ -6,7 +8,7 @@ import counter from "./counter/reducer";
 import users from "./user/reducer";
 
 import aboutReducer from "./about/aboutReducer";
-import { productDetailReducer } from "../component/components/productDetail/reducer";
+import { productReducer } from "../modules/productListing/reducer";
 import { configReducer, homeReducer, loadingReducer } from "./home/reducer";
 
 const combinedReducer = combineReducers({
@@ -15,7 +17,10 @@ const combinedReducer = combineReducers({
   homeReducer: homeReducer,
   configReducer: configReducer,
   loadingReducer: loadingReducer,
-  aboutReducer: aboutReducer,
+  aboutReducer,
+  productReducer,
+  productFilterReducer,
+  // aboutReducer: aboutReducer,
   productDetailReducer,
 });
 

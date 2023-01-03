@@ -1,8 +1,21 @@
-import React from 'react';
+import React from "react";
+import ProductListing from "../../../modules/productListing";
+import { wrapper } from "../../../store/store";
+import {
+  getProductList,
+  getPLPCategories,
+} from "../../../modules/productListing/action";
 
-
-function ProductListing() {
-  return <div>[googleKey]</div>;
+function ProductListingWrapper() {
+  return <ProductListing />;
 }
 
-export default ProductListing;
+export default ProductListingWrapper;
+
+export const getServerSideProps = wrapper.getServerSideProps((store) =>
+  //@ts-ignore-
+  async ({ req, res }) => {
+    await store.dispatch(getProductList());
+    return { props: {} };
+  }
+);

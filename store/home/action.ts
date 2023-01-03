@@ -67,8 +67,6 @@ const filterDataForMobile = (data: any) => {
 };
 
 export const getHomeData = () => async (dispatch: any) => {
-
- 
   let resp = await request.get(Utils.endPoints.HOME);
   if (resp) {
     const data = [...resp?.data?.data];
@@ -76,15 +74,14 @@ export const getHomeData = () => async (dispatch: any) => {
     // const arr = convertObjToArray(data)
     const webData = filterDataForWeb(data);
     const sortedData = webData.sort((a: any, b: any) => {
-      return Number(a.position) - Number(b.position)
-    })
+      return Number(a.position) - Number(b.position);
+    });
     dispatch({
       type: "getHomeData",
       payload: sortedData,
     });
   }
 };
-
 
 export const getRatingData = (query: string, callback: Function) => {
   return (dispatch: any, _getState: any) => {
