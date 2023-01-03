@@ -150,18 +150,18 @@ const Banner = (props: Props) => {
   return (
     <>
       <div className={classes.maxWidthDiv1}>
-        <Slider {...settings} className={classes.slider}>
+      <Slider {...settings} className={classes.slider}>
           {data?.content &&
             Array.isArray(data?.content) &&
             data.content.map((item: any, _index: any) => {
               if (item?.content_type === "content_1")
-                return <Content1 item={item} navigateTo={navigateTo} />
+                return <Content1 item={item} key={item.id} navigateTo={navigateTo} />
                else if (item?.content_type === "content_2")
-                return <Content2 item={item} navigateTo={navigateTo} />
+                return <Content2 item={item} key={item.id} navigateTo={navigateTo} />
                else if (item?.content_type === "content_3")
-                return <Content3 item={item} navigateTo={navigateTo} />
+                return <Content3 item={item} key={item.id} navigateTo={navigateTo} />
               else if (item?.content_type === "content_4")
-                return <Content4 item={item} navigateTo={navigateTo} />
+                return <Content4 item={item}  key={item.id}navigateTo={navigateTo} />
 
 
             })}

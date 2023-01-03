@@ -7,7 +7,7 @@ import { useSelector } from "react-redux";
 import { useTheme } from "@mui/material";
 import { useRouter } from "next/router";
 
-const NewPlayer: React.FC = (props: any) => {
+const About: React.FC = (props: any) => {
   const state = useSelector((state: any) => state.aboutReducer);
 
   return (
@@ -26,7 +26,7 @@ const NewPlayer: React.FC = (props: any) => {
   );
 };
 
-export default NewPlayer;
+export default About;
 
 // export async function getServerSideProps() {
 //   const config = {
