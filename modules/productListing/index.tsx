@@ -45,7 +45,6 @@ const ProductListing = () => {
 
   return (
     <div id={"banner-id"}>
-      <h1>Product Listing</h1>
       {/* {theme.breakpoints.up("sm") ? !keyword && <MobileMenu /> : null} */}
       {/* {!keyword && <Hidden smUp></Hidden>} */}
       {/* <Banner /> */}

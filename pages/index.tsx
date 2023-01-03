@@ -21,7 +21,7 @@ export default function Index() {
         <link rel="icon" href="/favicon.svg" />
       </Head>
 
-      <Home />
+      {/* <Home /> */}
     </>
   );
 }
