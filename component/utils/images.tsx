@@ -11,6 +11,7 @@ const YOUTUBE = "/images/5.svg";
 const GOOGLE = "/images/google.svg";
 const PICKER = "/images/picker.svg";
 const HEART_FILLED = "/images/heartFilled.svg";
+const FAVICON = "/images/favicon.svg";
 
 // **********Store Locator************
 const STORE_LOCATOR_BG = "/images/image2.png";

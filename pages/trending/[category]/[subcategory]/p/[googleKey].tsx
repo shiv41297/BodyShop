@@ -2,7 +2,6 @@ import React from 'react';
 import { getProductData } from '../../../../../component/components/productDetail/action';
 import ProductDetails from '../../../../../component/components/productDetail/index';
 import { wrapper } from '../../../../../store/store';
-import { useSelector } from 'react-redux';
 
 function ProductDetail() {
   return (

@@ -12,9 +12,9 @@ const constant: any = {
     "shade",
   ],
 
-  productImage: `${process.env.REACT_APP_MEDIA_URL}catalog/product`,
-  categoryImage: `${process.env.REACT_APP_MEDIA_URL}catalog/category`,
-  menuImage: `${process.env.REACT_APP_MEDIA_URL}`,
+  productImage: `${process.env.NEXT_PUBLIC_MEDIA_URL}catalog/product`,
+  categoryImage: `${process.env.NEXT_PUBLIC_MEDIA_URL}catalog/category`,
+  menuImage: `${process.env.NEXT_PUBLIC_MEDIA_URL}`,
 
   sortingData: [
     {

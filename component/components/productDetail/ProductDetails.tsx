@@ -164,26 +164,6 @@ const ProductDetails = (props: any) => {
               <Typography variant="h1" className={classes.heading}>
                 {productData?.name}
               </Typography>
-              {/* <Typography variant="h1" className={classes.caption}>
-                  {_.find(productData?.customAttributes, {
-                    attribute_code: "short_description",
-                  })
-                    ?
-                    _.truncate(
-                    Utils.CommonFunctions.replaceHtmlTag(
-                      _.find(productData?.customAttributes, {
-                        attribute_code: "short_description",
-                      }).value
-                    ),
-                    { length: 50 }
-                    )
-                    : null}
-                </Typography> */}
-              {/* <div dangerouslySetInnerHTML={{
-                _html: .find(productData?.customAttributes, {
-                  attribute_code: "short_description",
-                })?.value || ""
-              }} className={classes.caption} /> */}
             </div>
             <div>
               <Typography variant="h2" className={classes.originalPrice}>

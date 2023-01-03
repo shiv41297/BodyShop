@@ -25,6 +25,8 @@ export const getHomeRecommendations =
       ...params,
     });
     if (resp) {
+      console.log("resp", resp.data.data)
+      
       dispatch({ type: "recommend-data", payload: resp.data.data });
     if (callback) callback(resp?.data?.data);
 
