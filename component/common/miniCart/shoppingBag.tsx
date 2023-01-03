@@ -543,7 +543,7 @@ console.log(itemNotInStock)
             ]
           }
           customGa4Event("remove_from_cart", gtagPayload);
-          if(process.env.REACT_APP_ENV !== 'development' && process.env.REACT_APP_ENV !== 'staging'){
+          if(process.env.NEXT_PUBLIC_ENV !== 'development' && process.env.NEXT_PUBLIC_ENV !== 'staging'){
             window.gtag('event', 'remove_from_cart', gtagPayload);
           }
 
