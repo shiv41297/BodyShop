@@ -7,7 +7,7 @@ import {
 } from "../../../modules/productListing/action";
 
 function ProductListingWrapper() {
-  return <h1>Product Listing</h1>;
+  return <ProductListing />;
 }
 
 export default ProductListingWrapper;
