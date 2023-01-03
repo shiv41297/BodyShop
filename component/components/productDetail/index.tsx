@@ -252,6 +252,129 @@ const ProductDetail = (props: any) => {
     return state?.loadingReducer?.skeletonLoader;
   });
 
+  useEffect(() => {
+    console.log({ productData });
+    if (productData) {
+      if (productData?.redirect === 'Not Found') {
+        productData.redirect = '';
+        props.history.push('/not-found');
+      }
+      if (productData?.product) {
+        let categoryAttributesIndex =
+          productData?.product?.customAttributes.findIndex(
+            (item: any) => item.attribute_code === 'category_ids'
+          );
+        let categoryAttributesData =
+          productData?.product?.customAttributes[categoryAttributesIndex];
+        let categoryArray = categoryAttributesData?.label.reduce(
+          (i: any, j: any) => {
+            i.push({
+              CategoryName: j.label,
+              CategoryId: j.value,
+            });
+            return i;
+          },
+          []
+        );
+        productViewed({
+          ProductId: `${productData?.product.magentoId}`,
+          Category: JSON.stringify(categoryArray),
+          ProductName: `${productData?.product?.name}`,
+          ProductSKU: `${productData?.product?.sku}`,
+          FromScreen: `plp`, //not available
+        });
+        if (typeof window && window.gtag !== 'undefined') {
+          const gtagPayload = {
+            currency: 'INR',
+            category: productData?.product?.categoryData?.name,
+            items: [
+              {
+                id: productData?.product?.sku,
+                item_id: productData?.product?.sku,
+                name: productData?.product?.name,
+                item_name: productData?.product?.name,
+                brand: 'The Body Shop',
+                item_brand: 'The Body Shop',
+                category: productData?.product?.categoryData?.name,
+                item_category: productData?.product?.categoryData?.name,
+                variant: productData?.selectedVariant?.label,
+                item_variant: productData?.selectedVariant?.label,
+                price: productData?.selectedVariantData?.price,
+                quantity: 1,
+              },
+            ],
+          };
+          customGa4Event('view_item', gtagPayload);
+          if (
+            process.env.REACT_APP_ENV !== 'development' &&
+            process.env.REACT_APP_ENV !== 'staging'
+          ) {
+            window.gtag('event', 'view_item', gtagPayload);
+          }
+        }
+        let size = productData?.selectedVariantData?.customAttributes?.find(
+          (val: any) => val.attribute_code === 'size'
+        );
+        if (productData.product?.configurableProductLinks.length > 0) {
+          updateProfile(
+            'recent_viewed_product_parent_id',
+            `${productData?.product?.sku}`
+          ); // outer
+          updateProfile(
+            'recent_viewed_product_id',
+            `${productData?.selectedVariantData?.magentoId}`
+          ); //child sku
+        } else {
+          updateProfile(
+            'recent_viewed_product_id',
+            `${productData?.product?.magentoId}`
+          );
+        }
+        updateProfile(
+          'recent_viewed_product_name',
+          `${productData?.product?.name}`
+        );
+        updateProfile('recent_viewed_product_size', size?.label[0]?.label);
+
+        //breadcrumb data
+        let breadcrumb = [
+          {
+            title: 'Home',
+            action: '/',
+          },
+          {
+            action: {
+              pathname: `${Utils.CommonFunctions.seoUrl(
+                { ...productData?.product?.categoryData, is_root: 1 },
+                'plp'
+              )}`,
+              state: { categoryId: productData?.product?.categoryData?.id },
+            },
+            title: `${productData?.product?.categoryData?.name}`,
+          },
+        ];
+        if (productData?.product?.categoryData?.child_category?.name) {
+          breadcrumb.push({
+            action: {
+              pathname: `${Utils.CommonFunctions.seoUrl(
+                productData?.product?.categoryData?.child_category,
+                'plp'
+              )}`,
+              state: { categoryId: productData?.product?.categoryData?.id },
+            },
+            title: `${productData?.product?.categoryData?.child_category?.name}`,
+          });
+        }
+        breadcrumb.push({
+          title: productData?.product?.name,
+          action: props?.location?.pathname,
+        });
+        setBreadCrumb(breadcrumb);
+      }
+    }
+    // setVideoUrl(getAttributeValue("how_to_video_url"));
+  }, [productData]);
+
   // useEffect(() => {
   //   dispatch({
   //     type: Utils.ActionName.FROM_PATH,
@@ -289,7 +412,7 @@ const ProductDetail = (props: any) => {
   );
 
   // const urlkey = location.pathname.split('/p/')?.[0]?.split('/').pop();
-  const urlkey = "aloe-calming-toner-config";
+  const urlkey = 'aloe-calming-toner-config';
 
   const getData = (callback?: any) => {
     let params: any = {
@@ -297,7 +420,7 @@ const ProductDetail = (props: any) => {
       // subcategoryId: 'location?.state?.categoryId'
       //   ? 'location?.state?.categoryId'
       //   : '0',
-        subcategoryId: "38",
+      subcategoryId: '38',
       // urlKey: 'location?.state?.urlKey' ?? urlkey,
       urlKey: urlkey,
     };
@@ -346,128 +469,6 @@ const ProductDetail = (props: any) => {
   useEffect(() => {
     window.addEventListener('scroll', listenToScroll);
   }, []);
-
-  // useEffect(() => {
-  //   if (productData) {
-  //     if (productData?.redirect === 'Not Found') {
-  //       productData.redirect = '';
-  //       router.push('/not-found');
-  //     }
-  //     if (productData?.product) {
-  //       let categoryAttributesIndex =
-  //         productData?.product?.customAttributes.findIndex(
-  //           (item: any) => item.attribute_code === 'category_ids'
-  //         );
-  //       let categoryAttributesData =
-  //         productData?.product?.customAttributes[categoryAttributesIndex];
-  //       let categoryArray = categoryAttributesData?.label.reduce(
-  //         (i: any, j: any) => {
-  //           i.push({
-  //             CategoryName: j.label,
-  //             CategoryId: j.value,
-  //           });
-  //           return i;
-  //         },
-  //         []
-  //       );
-  //       productViewed({
-  //         ProductId: `${productData?.product.magentoId}`,
-  //         Category: JSON.stringify(categoryArray),
-  //         ProductName: `${productData?.product?.name}`,
-  //         ProductSKU: `${productData?.product?.sku}`,
-  //         FromScreen: `plp`, //not available
-  //       });
-  //       if (typeof window && window.gtag !== 'undefined') {
-  //         const gtagPayload = {
-  //           currency: 'INR',
-  //           category: productData?.product?.categoryData?.name,
-  //           items: [
-  //             {
-  //               id: productData?.product?.sku,
-  //               item_id: productData?.product?.sku,
-  //               name: productData?.product?.name,
-  //               item_name: productData?.product?.name,
-  //               brand: 'The Body Shop',
-  //               item_brand: 'The Body Shop',
-  //               category: productData?.product?.categoryData?.name,
-  //               item_category: productData?.product?.categoryData?.name,
-  //               variant: productData?.selectedVariant?.label,
-  //               item_variant: productData?.selectedVariant?.label,
-  //               price: productData?.selectedVariantData?.price,
-  //               quantity: 1,
-  //             },
-  //           ],
-  //         };
-  //         customGa4Event('view_item', gtagPayload);
-  //         if (
-  //           process.env.REACT_APP_ENV !== 'development' &&
-  //           process.env.REACT_APP_ENV !== 'staging'
-  //         ) {
-  //           window.gtag('event', 'view_item', gtagPayload);
-  //         }
-  //       }
-  //       let size = productData?.selectedVariantData?.customAttributes.find(
-  //         (val: any) => val.attribute_code === 'size'
-  //       );
-  //       if (productData.product?.configurableProductLinks.length > 0) {
-  //         updateProfile(
-  //           'recent_viewed_product_parent_id',
-  //           `${productData?.product?.sku}`
-  //         ); // outer
-  //         updateProfile(
-  //           'recent_viewed_product_id',
-  //           `${productData?.selectedVariantData?.magentoId}`
-  //         ); //child sku
-  //       } else {
-  //         updateProfile(
-  //           'recent_viewed_product_id',
-  //           `${productData?.product?.magentoId}`
-  //         );
-  //       }
-  //       updateProfile(
-  //         'recent_viewed_product_name',
-  //         `${productData?.product?.name}`
-  //       );
-  //       updateProfile('recent_viewed_product_size', size?.label[0]?.label);
-
-  //       //breadcrumb data
-  //       let breadcrumb = [
-  //         {
-  //           title: 'Home',
-  //           action: '/',
-  //         },
-  //         {
-  //           action: {
-  //             pathname: `${Utils.CommonFunctions.seoUrl(
-  //               { ...productData?.product?.categoryData, is_root: 1 },
-  //               'plp'
-  //             )}`,
-  //             state: { categoryId: productData?.product?.categoryData?.id },
-  //           },
-  //           title: `${productData?.product?.categoryData?.name}`,
-  //         },
-  //       ];
-  //       if (productData?.product?.categoryData?.child_category?.name) {
-  //         breadcrumb.push({
-  //           action: {
-  //             pathname: `${Utils.CommonFunctions.seoUrl(
-  //               productData?.product?.categoryData?.child_category,
-  //               'plp'
-  //             )}`,
-  //             state: { categoryId: productData?.product?.categoryData?.id },
-  //           },
-  //           title: `${productData?.product?.categoryData?.child_category?.name}`,
-  //         });
-  //       }
-  //       breadcrumb.push({
-  //         title: productData?.product?.name,
-  //         action: props?.location?.pathname,
-  //       });
-  //       setBreadCrumb(breadcrumb);
-  //     }
-  //   }
-  //   setVideoUrl(getAttributeValue('how_to_video_url'));
-  // }, [productData]);
 
   if (productData) {
     productDetail = productData.product;
@@ -545,6 +546,7 @@ const ProductDetail = (props: any) => {
           `face/face-masks/hemp-overnight-nourishing-rescue-mask-config/p/undefined`
         }
       />
+
       <Box sx={{ display: { xs: 'block', sm: 'none' } }}>
         <div className={classes.btnDiv}>
           <div className={classes.fixedIcon}>
@@ -624,7 +626,7 @@ const ProductDetail = (props: any) => {
           <Grid item xs={12} sm={6}>
             <div className={classes.productDetails}>
               <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
-                {/* <ProductDetails details={productDetail} /> */}
+                <ProductDetails details={productDetail} />
               </Box>
 
               <Rate />
@@ -734,4 +736,3 @@ const ProductDetail = (props: any) => {
 };
 
 export default ProductDetail;
-
