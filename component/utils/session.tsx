@@ -1,18 +1,19 @@
 import { onUserLoginEvent } from "./event/action";
+import Cookies from "js-cookie";
 /**
  * get current language from locale
  */
 export const getCurrentLanguage = () => {
-  if (typeof window !== 'undefined') {
-  return localStorage.getItem("i18nextLng");
+  if (typeof window !== "undefined") {
+    return localStorage.getItem("i18nextLng");
   }
 };
 
 export const isGuestUser = () => {
-  if (typeof window !== 'undefined') {
-  return localStorage.getItem("guestUser")
+  if (typeof window !== "undefined") {
+    return localStorage.getItem("guestUser");
   }
-}
+};
 
 /**
  * set access token in axios instance header
@@ -22,7 +23,6 @@ export const setAuthorizationToken = (token: string) => {
     // request.defaults.headers.common[
     //   "accesstoken"
     // ] = `bearer ${token}`;
-
     // request.defaults.headers.common["Authorization"] = `${token}`;
   } else {
     // delete request.defaults.headers.common["accesstoken"];
@@ -36,20 +36,23 @@ export const setSession = (payload: any) => {
   /**
    * remove guest user token
    */
-   if (typeof window !== 'undefined') {
-  localStorage.removeItem("guestUser");
-  localStorage.removeItem("authToken");
-   }
+  if (typeof window !== "undefined") {
+    localStorage.removeItem("guestUser");
+    localStorage.removeItem("authToken");
+  }
   for (var k in payload) {
     var isCurrentValObject = typeof payload[k] === "object";
     if (isCurrentValObject && payload[k] !== null) {
       //if property is object then save it as string
-      if (typeof window !== 'undefined') {
-      localStorage.setItem(k, JSON.stringify((payload as any)[k]));
+      Cookies.set(k, JSON.stringify((payload as any)[k]));
+
+      if (typeof window !== "undefined") {
+        localStorage.setItem(k, JSON.stringify((payload as any)[k]));
       }
     } else {
-      if (typeof window !== 'undefined') {
-      localStorage.setItem(k, (payload as any)[k]);
+      Cookies.set(k, (payload as any)[k]);
+      if (typeof window !== "undefined") {
+        localStorage.setItem(k, (payload as any)[k]);
       }
     }
   }
@@ -57,33 +60,41 @@ export const setSession = (payload: any) => {
 };
 
 export const onUserLogin = (payload: any) => {
-  onUserLoginEvent(payload)
+  onUserLoginEvent(payload);
 };
 
 export const removeSession = () => {
-  if (typeof window !== 'undefined') {
-  localStorage.clear();
-  sessionStorage.clear()
+  if (typeof window !== "undefined") {
+    localStorage.clear();
+    sessionStorage.clear();
   }
   // window.location.href = '/'
 };
 /**
  * get user access token form loclastorage
  */
+
+
 export const getAuthToken = () => {
-  if (typeof window !== 'undefined') {
-  return localStorage.getItem("authToken");
-  }
+  return Cookies.get("authToken");
+  // if (typeof window !== "undefined") {
+  //   // return localStorage.getItem("authToken");
+  //   return Cookies.get("authToken");
+  // } else {
+  //   return "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzZXNzaW9uSWQiOiI2M2EzZWQyYTQ2YWRlMzM4OGRlNjQ4YTkiLCJpc0xvZ2luIjp0cnVlLCJpc0d1ZXN0TG9naW4iOnRydWUsImlhdCI6MTY3MTY4NzQ2NiwiZXhwIjoxNjg3MjM5NDY2fQ.4Eg19HCDEGFUiw562m2nxA7T5WPHZb6bt0yZwfx6Xo0";
+  // }
 };
 
-console.log(`getAuthToken`,getAuthToken());
 
 export const isAuthenticated = () => {
-  if (typeof window !== 'undefined') {
-  if (localStorage.getItem("authToken") != null && localStorage.getItem("guestUser") === null) {
-    return true
-  } else {
-    return false;
+  if (typeof window !== "undefined") {
+    if (
+      localStorage.getItem("authToken") != null &&
+      localStorage.getItem("guestUser") === null
+    ) {
+      return true;
+    } else {
+      return false;
+    }
   }
-}
 };

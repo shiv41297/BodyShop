@@ -19,7 +19,6 @@ if (typeof window !== "undefined") {
 }
 
 const firebaseEventLogger = (eventName: any, payload: any) => {
-  console.log("firebaseEventLogger", { analytics, eventName, payload });
   logEvent(analytics, eventName, payload);
 };
 
