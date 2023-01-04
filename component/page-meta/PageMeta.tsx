@@ -28,7 +28,6 @@ const prepareData = ({ title, description, image, canonicalUrl }: Props) => ({
 
 const PageMeta: FC<Props> = (props: Props) => {
   const { title, description, image, canonicalUrl } = prepareData(props);
-  console.log('this is title====', title, description, canonicalUrl);
   return (
     <Head>
       {title ? (

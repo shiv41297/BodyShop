@@ -13,11 +13,16 @@ export const getProductData =
     let { category, subcategory, googleKey } = params;
     // googleKey = googleKey ? googleKey : 64;
     // console.log( category, subcategory, googleKey,"<===googleKey",params);
+
+    // https://bodyshopstgapi.appskeeper.in/product-service/api/v1/products?subcategoryId=8&urlKey=aloe-soothing-day-cream-config
     let resp = await request.get(
-      `https://bodyshopstgapi.appskeeper.in/${Utils.endPoints.PRODUCT_DATA}?subcategoryId=0&urlKey=${subcategory}`
-    );
+      // 'https://bodyshopstgapi.appskeeper.in/product-service/api/v1/products?subcategoryId=8&urlKey=aloe-soothing-day-cream-config'
+      `https://bodyshopstgapi.appskeeper.in/${Utils.endPoints.PRODUCT_DATA}?subcategoryId=8&urlKey=${subcategory}`
+      );
+     
+      
     if (resp) {
-      var product = resp.data.data;
+      var product = resp?.data?.data;
       var selectedVariant = null;
       var selectedVariantData: any = null;
       if (product?.type === 'configurable') {
@@ -39,7 +44,7 @@ export const getProductData =
       dispatch({
         type: 'getProductData',
         payload: {
-          ...resp.data.data,
+          ...product,
           selectedVariant,
           selectedVariantData,
         },

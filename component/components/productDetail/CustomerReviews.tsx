@@ -383,7 +383,7 @@ const CustomerReviews: React.FC<Props> = (props: Props) => {
           ''
         )}
       </div>
-      {data?.data?.length > 0 || skeletonLoader
+      {/* {data?.data?.length > 0 || skeletonLoader
         ? data?.data.map((reviewDat: any) => {
             const reviewData = reviewDat?.review;
             return (
@@ -659,7 +659,7 @@ const CustomerReviews: React.FC<Props> = (props: Props) => {
               </div>
             );
           })
-        : null}
+        : null} */}
     </>
   );
 };
