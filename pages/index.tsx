@@ -36,7 +36,6 @@ const Index = () => {
   const classes = useStyles();
   const { query } = useRouter();
 
-  console.log({ query });
   // const homeData = useSelector((state: ReducersModal) => {
   //   return state.homeReducer.homeData})
 
@@ -186,8 +185,6 @@ const Index = () => {
     <HomeSkeletonList />
   ) : (
     <>
-     
-
       <PageMeta
         title={"Cruelty-Free & Beauty Products | The Body Shop"}
         description={
@@ -250,7 +247,7 @@ const Index = () => {
                 data={section}
               />
             );
-            if (section?.status === "1" && section?.block_key == "tips_block")
+          if (section?.status === "1" && section?.block_key == "tips_block")
             return (
               <>
                 <DoubleCard
@@ -268,7 +265,7 @@ const Index = () => {
                 )}
               </>
             );
-                
+
           if (section?.status === "1" && section?.block_key == "more_shop")
             return (
               <MoreToShop data={section} key={"more_shop" + Math.random()} />
@@ -297,7 +294,7 @@ export default Index;
 export const getServerSideProps = wrapper.getServerSideProps((store) =>
   //@ts-ignore-
   async ({ req, res }) => {
-    await store.dispatch(getHomeData());
+    await store.dispatch(getHomeData(req.cookies.authToken));
     return { props: {} };
   }
 );

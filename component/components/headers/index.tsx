@@ -178,7 +178,7 @@ const Headers = () => {
         request
           .get(url)
           .then((resp) => {
-            let menuRespData = resp.data.data.filter(
+            let menuRespData = resp?.data?.data.filter(
               (value: any, _index: number) => value.id !== null
             );
             console.log("menudata", menuRespData);
@@ -320,7 +320,7 @@ const Headers = () => {
               </Grid>
             </Grid>
           </div>
-          {menusData.length ? <MiniHeader menuData={menusData} /> : null}
+          {menusData?.length ? <MiniHeader menuData={menusData} /> : null}
         </div>
       </Box>
 

@@ -38,7 +38,6 @@ const Home = () => {
   const classes = useStyles();
   const { query } = useRouter();
 
-  console.log({ query });
   // const homeData = useSelector((state: ReducersModal) => {
   //   return state.homeReducer.homeData})
 
