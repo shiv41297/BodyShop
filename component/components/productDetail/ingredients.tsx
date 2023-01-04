@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { useSelector } from 'react-redux';
 // import CustomAccordion from "../../components/customAccordion";
 import { ReducersModal } from '../../models';
-// import ReactHtmlParser from "react-html-parser";
+import ReactHtmlParser from 'react-html-parser';
 import clsx from 'clsx';
 import _ from 'lodash';
 import IngredientsModal from './ingredientsModal';
@@ -141,7 +141,7 @@ function Ingredients() {
               className={classes.description}
             />
 
-            {/* {ReactHtmlParser(getAttributeValue('ingredients'))?.length > 0 && ( */}
+            {ReactHtmlParser(getAttributeValue('ingredients'))?.length > 0 && (
               <Typography
                 className={clsx(
                   classes.ingredients,
@@ -155,16 +155,13 @@ function Ingredients() {
               >
                 View full list of ingredients
               </Typography>
-            {/* )} */}
+            )}
 
             <IngredientsModal
               title={productData?.product?.name || ''}
-              ingridientsDescription={
-                'Himanshu'
-                //   ReactHtmlParser(
-                //   getAttributeValue("ingredients")
-                // )
-              }
+              ingridientsDescription={ReactHtmlParser(
+                getAttributeValue('ingredients')
+              )}
               open={ingredientModal}
               handleClose={() => setIngredientModal(false)}
             />

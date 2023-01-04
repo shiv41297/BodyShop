@@ -686,7 +686,7 @@ const ProductDetail = (props: any) => {
                     ) : null}
                   </Box>
 
-                  <SmallMighty />
+                  {/* <SmallMighty /> */}
 
                   <AdditionalInformation />
                 </>

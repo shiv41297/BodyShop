@@ -7,6 +7,7 @@ import {
   showLoader,
 } from '../../../store/home/action';
 
+
 export const getProductData =
   (req: any, params: any) => async (dispatch: any) => {
     let url = Utils.endPoints.PRODUCT_DATA;
