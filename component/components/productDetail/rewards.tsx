@@ -180,7 +180,6 @@ const Rewards: React.FC<any> = ({ details }: Props) => {
   }, [userInfoTierType]);
 
   const getCurrentTierPoints = (tierType: number) => {
-    // console.log('tierInfo',details)
     const price = discPrice?.value
       ? Number(discPrice.value)
       : priceData?.selectedVariantData?.price || 0;

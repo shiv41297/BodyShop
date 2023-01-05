@@ -1,10 +1,14 @@
-import { Typography, makeStyles, createStyles, Theme } from "@material-ui/core";
+//@ts-nocheck
+import { Typography, createStyles, Theme } from "@mui/material";
+import { makeStyles } from "@mui/styles";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory } from "react-router-dom";
-import CustomButton from "../../components/common/button";
-import { ReducersModal } from "../../models";
-import Utils from "../../utils";
+import CustomButton from "../../component/common/button";
+import Utils from "../../component/utils";
+// import { useHistory } from "react-router-dom";
+// import CustomButton from "../../components/common/button";
+// import { ReducersModal } from "../../models";
+// import Utils from "../../utils";
 // import { hideSkeleton } from "../home/actions";
 // import { getProductList } from "./action";
 
@@ -61,12 +65,12 @@ const useStyles = makeStyles((theme: Theme) =>
 function ProductNotFound(props: any) {
     const classes = useStyles();
     const title = props?.title ?? "Product Not Found";
-    const history = useHistory();
+    // const history = useHistory();
     // const sortingData = Utils.constants.sortingData;
     // const dispatch = useDispatch();
     const menuDataId =
         useSelector(
-            (state: ReducersModal) => state.homeReducer.menuData?.[0]
+            (state: any) => state.homeReducer.menuData?.[0]
         ) || null;
 
     useEffect(() => {
@@ -74,7 +78,7 @@ function ProductNotFound(props: any) {
     }, [])
     return (
         <div className={classes.root}>
-            <img src={Utils.images.PRODUCT_NOT_FOUND} alt="notFound" />
+            {/* <img src={Utils.images.PRODUCT_NOT_FOUND} alt="notFound" /> */}
             <Typography color="primary" variant="h3" className={classes.heading}>{title}</Typography>
             <Typography color="primary" variant="h3" className={classes.description}>
                 We were unable to find the product you were looking for, but there’s a lot more in here.
@@ -114,7 +118,7 @@ function ProductNotFound(props: any) {
                     //     //     //   } : null
                     //     //     ));
                     // }
-                    history.push('/');
+                    // history.push('/');
                 }}
             />
         </div>

@@ -15,6 +15,8 @@ import CompleteRoutine from './CompleteRoutine';
 import { useDispatch, useSelector } from 'react-redux';
 // import { getProductData, getReviews } from './action';
 import { ReducersModal } from '../../models';
+import ReactHtmlParser from 'react-html-parser';
+
 // import ReactHtmlParser from "react-html-parser";
 import RecommendationCarousel from './../../common/recommendationCarousel';
 import Utils from '../../utils';
@@ -49,7 +51,7 @@ declare global {
 
 const useStyles = makeStyles((theme: Theme) => ({
   mainContainer: {
-    padding: theme.spacing(3, 4),
+    padding: theme.spacing(5, 4),
     display: 'flex',
     flexWrap: 'wrap',
     position: 'relative',
@@ -253,7 +255,6 @@ const ProductDetail = (props: any) => {
   });
 
   useEffect(() => {
-    console.log({ productData });
     if (productData) {
       if (productData?.redirect === 'Not Found') {
         productData.redirect = '';
@@ -640,7 +641,7 @@ const ProductDetail = (props: any) => {
                 <Skeleton variant="rectangular" height={200} />
               ) : (
                 <>
-                  {/* <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
+                  <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
                     {ReactHtmlParser(getAttributeValue('how_to_use'))?.length >
                     0 ? (
                       <HowToUse
@@ -680,14 +681,14 @@ const ProductDetail = (props: any) => {
                         }
                       />
                     ) : null}
-                  </Box> */}
+                  </Box>
 
-                  <SmallMighty />
+                  {/* <SmallMighty /> */}
 
                   <AdditionalInformation />
                 </>
               )}
-              <RatingsReviews getData={getData} />
+              {/* <RatingsReviews getData={getData} /> */}
               {/* <CustomerReviews getData={getData} /> */}
               {linkedProducts && linkedProducts.length > 0 ? (
                 <CompleteRoutine
@@ -698,20 +699,20 @@ const ProductDetail = (props: any) => {
             </div>
 
             <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
-              {/* <FixedBottomPanel
+              <FixedBottomPanel
                 // isSearched={isSearched || searched || isSearchOrRecommend}
                 isSearched={true}
                 rectHeight={rectHeight}
                 data={productDetail}
-              /> */}
+              />
             </Box>
             <Box sx={{ display: { xs: 'block', sm: 'none' } }}>
-              {/* <FixedBottomPanel
+              <FixedBottomPanel
                 isSearched={true}
                 // isSearched={isSearched || searched || isSearchOrRecommend}
                 rectHeight={rectHeight}
                 data={productDetail}
-              /> */}
+              />
             </Box>
           </Grid>
         </Grid>
@@ -725,7 +726,7 @@ const ProductDetail = (props: any) => {
               Recommended For You
             </Typography>
           ) : null}
-          {/* <RecommendationCarousel type="pdp" /> */}
+          <RecommendationCarousel type="pdp" />
         </div>
       </div>
     </>

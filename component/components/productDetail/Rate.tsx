@@ -11,7 +11,7 @@ import {
 } from '@mui/material';
 import clsx from 'clsx';
 import { makeStyles } from '@mui/styles';
-// import ReactHtmlParser from "react-html-parser";
+import ReactHtmlParser from 'react-html-parser';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import Utils from '../../utils';
@@ -21,6 +21,7 @@ import CustomAccordion from '../../customAccordion';
 // import CustomAccordion from "../../components/customAccordion";
 import IngredientsModal from './ingredientsModal';
 import CustomRadio from '../../common/miniCart/CustomRadio';
+import Ingredients from "./ingredients";
 
 const useStyles = makeStyles((theme: Theme) => ({
   ratingContainer: {
@@ -390,8 +391,8 @@ const Rate = (_props: any) => {
   const classes = useStyles();
   const dispatch = useDispatch();
 
-  const productDetail: ProductDetailModal = useSelector(
-    (state: ReducersModal) => state.productDetailReducer
+  const productDetail: any = useSelector(
+    (state: any) => state.productDetailReducer
   );
 
   const productData = productDetail.product;
@@ -510,29 +511,27 @@ const Rate = (_props: any) => {
           <Skeleton variant="rectangular" height={150} />
         ) : (
           <>
-            {/* <Typography className={classes.subHeading}>
-              {Utils.CommonFunctions.getAttributeValue(
-                productData?.customAttributes,
-                "meta_title"
-              )}
-            </Typography>
-
-            <div
-              style={
-                isRead ? { display: "inline-block" } : { display: "block" }
-              }
-            >
-
-              <Typography className={classes.details1}>
-                {ReactHtmlParser(
-                  Utils.CommonFunctions.getAttributeValue(
-                    productData?.customAttributes,
-                    "description"
-                  )
-                )}
-              </Typography>
-            </div> */}
-         
+            {Utils.CommonFunctions.getAttributeValue(
+              productData?.customAttributes,
+              'description'
+            ) ? (
+              <CustomAccordion
+                id={'description'}
+                className={classes.accordionHeading}
+                heading="What does it do for you ?"
+                details={
+                  <Typography className={classes.details1}>
+                    {ReactHtmlParser(
+                      Utils.CommonFunctions.getAttributeValue(
+                        productData?.customAttributes,
+                        'description'
+                      )
+                    )}
+                  </Typography>
+                }
+                openByDefault={true}
+              />
+            ) : null}
           </>
         )}
       </div>
@@ -540,7 +539,7 @@ const Rate = (_props: any) => {
         <Divider light className={classes.divider3} />
       ) : null}
 
-      {/* <IngredientsModal /> */}
+      <Ingredients />
 
       {skeletonLoader ? (
         <Skeleton variant="rectangular" height={150} />
@@ -608,9 +607,9 @@ const Rate = (_props: any) => {
 
                         let shadeColor = Utils.CommonFunctions.getColor(val);
                         return (
-                          configProduct &&
-                          <React.Fragment key={i}>
-                            {/* <CustomRadio
+                          configProduct && (
+                            <React.Fragment key={i}>
+                              {/* <CustomRadio
                               style={{ backgroundColor: shadeColor }}
                               isInStock={configProduct?.isInStock}
                               checked={
@@ -621,8 +620,9 @@ const Rate = (_props: any) => {
                               name="shade"
                               onChange={() => selectVariant(val)}
                             /> */}
-                            {/* {/ <StyledCheckbox style={{ backgroundColor: shadeColor, borderRadius: '50%', marginBottom: '3px' }} checked={val?.value_index === selectedVariant?.value_index} value={val?.value_index} name="shade" onClick={() => selectVariant(val)} /> /} */}
-                          </React.Fragment>
+                              {/* {/ <StyledCheckbox style={{ backgroundColor: shadeColor, borderRadius: '50%', marginBottom: '3px' }} checked={val?.value_index === selectedVariant?.value_index} value={val?.value_index} name="shade" onClick={() => selectVariant(val)} /> /} */}
+                            </React.Fragment>
+                          )
                         );
                       })}
                     </div>
@@ -652,71 +652,70 @@ const Rate = (_props: any) => {
                           (item: any) => item.size === val.label
                         );
                         let discPrice = product?.customAttributes?.find(
-                          (item: any) => item.attribute_code === 'special_price'
+                          (item: any) => item.attribute_code === "special_price"
                         );
                         let price = product?.price;
                         return (
-                          product && (
-                            <div onClick={() => selectVariant(val)} key={i}>
-                              <ToggleButton
-                                selected={
-                                  // selectedVariant?.isInstock&&
-                                  val?.value_index ===
-                                  selectedVariant?.value_index
-                                }
-                                value={val.value_index}
-                                aria-label="left aligned"
-                              >
-                                <div>
-                                  {val.label}
-                                  {!product?.isInStock && (
-                                    <div className={classes.line}></div>
-                                  )}
-                                </div>
-                              </ToggleButton>
-                              <div className={classes.amountDiv}>
-                                {discPrice?.value ? (
-                                  <>
-                                    <Typography className={classes.fontLabel}>
-                                      ₹
-                                      {Utils.CommonFunctions.decimalFlat(
-                                        discPrice?.value,
-                                        0
-                                      )}
-                                    </Typography>
-                                    {
-                                      <Typography className={classes.mrp}>
-                                        ₹
-                                        {Utils.CommonFunctions.decimalFlat(
-                                          price,
-                                          0
-                                        )}
-                                      </Typography>
-                                    }
-                                  </>
-                                ) : (
-                                  <>
-                                    <Typography className={classes.fontLabel}>
+                          product &&
+                          <div onClick={() => selectVariant(val)} key={i}>
+                            <ToggleButton
+                              selected={
+                                // selectedVariant?.isInstock&&
+                                val?.value_index ===
+                                selectedVariant?.value_index
+                              }
+                              value={val.value_index}
+                              aria-label="left aligned"
+                            >
+                              <div>
+                                {val.label}
+                                {!product?.isInStock && (
+                                  <div className={classes.line}></div>
+                                )}
+                              </div>
+                            </ToggleButton>
+                            <div className={classes.amountDiv}>
+                              {discPrice?.value ? (
+                                <>
+                                  <Typography className={classes.fontLabel}>
+                                    ₹
+                                    {Utils.CommonFunctions.decimalFlat(
+                                      discPrice?.value,
+                                      0
+                                    )}
+                                  </Typography>
+                                  {
+                                    <Typography className={classes.mrp}>
                                       ₹
                                       {Utils.CommonFunctions.decimalFlat(
                                         price,
                                         0
                                       )}
                                     </Typography>
-                                  </>
-                                )}
-                              </div>
-                              {/* {/ <Typography className={classes.fontLabel}>₹{`${Math.round(price)}`}</Typography> /} */}
-                              {!product?.isInStock ? (
-                                <Typography
-                                  className={classes.fontError}
-                                  style={{ color: '#FF0707' }}
-                                >
-                                  Out of Stock
-                                </Typography>
-                              ) : null}
+                                  }
+                                </>
+                              ) : (
+                                <>
+                                  <Typography className={classes.fontLabel}>
+                                    ₹
+                                    {Utils.CommonFunctions.decimalFlat(
+                                      price,
+                                      0
+                                    )}
+                                  </Typography>
+                                </>
+                              )}
                             </div>
-                          )
+                            {/* {/ <Typography className={classes.fontLabel}>₹{`${Math.round(price)}`}</Typography> /} */}
+                            {!product?.isInStock ? (
+                              <Typography
+                                className={classes.fontError}
+                                style={{ color: "#FF0707" }}
+                              >
+                                Out of Stock
+                              </Typography>
+                            ) : null}
+                          </div>
                         );
                       })}
                     </ToggleButtonGroup>

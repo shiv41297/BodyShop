@@ -1,232 +1,225 @@
-import {
-  makeStyles,
-  createStyles,
-  Theme,
-  Collapse,
-  Button,
-  Hidden,
-} from "@mui/material";
+import { Theme, Collapse, Button, Hidden } from "@mui/material";
+import { makeStyles } from "@mui/styles";
 import { useSelector } from "react-redux";
-import { ReducersModal } from "../../models";
-import Utils from "../../utils";
-import BreadCrumb from "../../components/breadCrumb";
+// import { ReducersModal } from "../../models";
+import Utils from "../../component/utils";
+import BreadCrumb from "../../component/common/breadCrumb";
 import _ from "lodash";
 import Skeleton from "@mui/material/Skeleton";
 import { useEffect, useState } from "react";
 import clsx from "clsx";
-import { useLocation } from "react-router-dom";
+// import { useLocation } from "react-router-dom";
 import { debug } from "util";
+import { useRouter } from "next/router";
 
-const useStyles = makeStyles((theme: Theme) =>
-  createStyles({
-    bannerRoot: {
-      // background: `linear-gradient(rgba(51, 51, 51, 0.1), rgba(51, 51, 51, 0.1)), url(${Utils.images.PLPIMG}) center center  no-repeat`,
-      // backgroundSize: "cover !important",
-      maxWidth: "100%",
-      height: "auto",
-      display: "flex",
-      backgroundColor: "var(--gray)",
-      // backdropFilter: "blur(2px)",
-      flexDirection: "row",
-      [theme.breakpoints.down("sm")]: {
-        // height: "400px",
-        // marginBottom: "20%",
-      },
-      [theme.breakpoints.down("xs")]: {
-        // height: "auto",
-        background: "var(--primary)",
-        marginTop: theme.spacing(1.5),
-      },
+const useStyles = makeStyles((theme: Theme) => ({
+  bannerRoot: {
+    // background: `linear-gradient(rgba(51, 51, 51, 0.1), rgba(51, 51, 51, 0.1)), url(${Utils.images.PLPIMG}) center center  no-repeat`,
+    // backgroundSize: "cover !important",
+    maxWidth: "100%",
+    height: "auto",
+    display: "flex",
+    backgroundColor: "var(--gray)",
+    // backdropFilter: "blur(2px)",
+    flexDirection: "row",
+    [theme.breakpoints.down("sm")]: {
+      // height: "400px",
+      // marginBottom: "20%",
     },
-    routeName: {
-      padding: theme.spacing(2, 0, 0, 1.5),
-      font: `normal ${theme.spacing(1.3)}px Work Sans`,
-      fontWeight: 600,
-      lineHeight: "15px",
-      zIndex: 1,
-      position: "absolute",
-      color: "#FFFFFF",
+    [theme.breakpoints.down("xs")]: {
+      // height: "auto",
+      background: "var(--primary)",
+      marginTop: theme.spacing(1.5),
     },
-    findContainer: {
-      // position: "relative",
-      display: "flex",
-      height: "500px",
-      flexDirection: "column",
-      // alignItems: "center",
-      justifyContent: "center",
-      backgroundColor: "#F8F3E9",
-      flexBasis: "50%",
-      [theme.breakpoints.down("xs")]: {
-        height: "220px",
-        backgroundColor: "var(--primary)",
-        justifyContent: "flex-start",
-        flexBasis: "60%",
-        padding: theme.spacing(2),
-      },
+  },
+  routeName: {
+    padding: theme.spacing(2, 0, 0, 1.5),
+    font: `normal ${theme.spacing(1.3)}px Work Sans`,
+    fontWeight: 600,
+    lineHeight: "15px",
+    zIndex: 1,
+    position: "absolute",
+    color: "#FFFFFF",
+  },
+  findContainer: {
+    // position: "relative",
+    display: "flex",
+    height: "500px",
+    flexDirection: "column",
+    // alignItems: "center",
+    justifyContent: "center",
+    backgroundColor: "#F8F3E9",
+    flexBasis: "50%",
+    [theme.breakpoints.down("xs")]: {
+      height: "220px",
+      backgroundColor: "var(--primary)",
+      justifyContent: "flex-start",
+      flexBasis: "60%",
+      padding: theme.spacing(2),
     },
-    innerFindContainer: {
-      textAlign: "center",
-      overflow: "hidden",
-      color: theme.palette.primary.main,
-      // padding: theme.spacing(2),
-      padding: "4rem 4rem 4rem 0",
-      "& p": {
-        font: `normal  ${theme.spacing(1.6)}px Work Sans Regular`,
-        maxWidth: "none",
-        textAlign: "left ",
-        lineHeight: "19px",
-        margin: theme.spacing(1.5, 5),
-        [theme.breakpoints.down("sm")]: {
-          fontSize: theme.spacing(1.4),
-        },
-        [theme.breakpoints.down("xs")]: {
-          fontSize: "12px",
-          textAlign: "left",
-          margin: theme.spacing(0, 0.5),
-          lineHeight: "20px",
-        },
-      },
-      "& h2": {
-        font: `normal ${theme.spacing(4)}px Recoleta Medium`,
-        textAlign: "center",
-        lineHeight: "70px",
-        textTransform: "none",
-        marginTop: "5px",
-        [theme.breakpoints.down("xs")]: {
-          fontSize: theme.spacing(2),
-          textAlign: "left",
-          marginTop: 0,
-        },
-      },
-      "& h1": {
-        textAlign: "center",
-        letterSpacing: "0.04em",
-        textTransform: "none",
-        font: `normal ${theme.spacing(4)}px Recoleta Bold`,
-        marginTop: "5px",
-        [theme.breakpoints.down("sm")]: {
-          fontSize: theme.spacing(1.7),
-          marginTop: 0,
-        },
-        [theme.breakpoints.down("xs")]: {
-          fontSize: theme.spacing(2),
-          textAlign: "left",
-        },
-      },
-      [theme.breakpoints.down("xs")]: {
-        // height: "130px",
-        color: "var(--white)",
-        padding: theme.spacing(0),
-        marginBottom: "19px",
-      },
-    },
-    imageContainer: {
-      display: "flex",
-      height: "500px",
-      justifyContent: "center",
-      flexBasis: "50%",
-      [theme.breakpoints.down("xs")]: {
-        height: "220px",
-        justifyContent: "flex-start",
-        flexBasis: "40%",
-      },
-    },
-    readMoreBtn: {
-      // position: "absolute",
-      // bottom: 10,
-      width: "45%",
-      borderRadius: "4px",
-      padding: theme.spacing(0.5),
-      "& .MuiButton-label": {
-        fontSize: 12,
-        fontFamily: "Work Sans",
-        textTransform: "capitalize",
-      },
-      [theme.breakpoints.down(350)]: {
-        // margin: theme.spacing(0, 1.5),
-        fontSize: "11px",
-        width: "50%",
-      },
-    },
-    expandBannerRoot: {
-      height: "auto",
-      marginBottom: 0,
-    },
-    imageContainer2: {
-      position: "absolute",
+  },
+  innerFindContainer: {
+    textAlign: "center",
+    overflow: "hidden",
+    color: theme.palette.primary.main,
+    // padding: theme.spacing(2),
+    padding: "4rem 4rem 4rem 0",
+    "& p": {
+      font: `normal  ${theme.spacing(1.6)}px Work Sans Regular`,
       maxWidth: "none",
-      maxHeight: "500px",
-      width: "50%",
-      height: "auto",
-      display: "block",
-
-      // margin: theme.spacing(3, 0, 0, 1.5),
-      "& img": {
-        height: "500px",
-        width: "100%",
-        // borderRadius: "8px",
+      textAlign: "left ",
+      lineHeight: "19px",
+      margin: theme.spacing(1.5, 5),
+      [theme.breakpoints.down("sm")]: {
+        fontSize: theme.spacing(1.4),
       },
       [theme.breakpoints.down("xs")]: {
-        maxWidth: "150px",
-        maxHeight: "160px",
-        margin: theme.spacing(3, 0, 0, 1.5),
-        width: "auto",
-        "& img": {
-          height: "145px",
-          width: "160px",
-          borderRadius: "8px",
-        },
+        fontSize: "12px",
+        textAlign: "left",
+        margin: theme.spacing(0, 0.5),
+        lineHeight: "20px",
       },
     },
-    backgroundImage: {
-      display: "flex",
-      alignItems: "end",
-      justifyContent: "end",
-      marginBottom: "30px",
-      "& img": {
-        height: "130px",
-      },
-    },
-    readLessbtn: {
-      // position: "absolute",
-      // bottom: 10,
-      borderRadius: "4px",
-      padding: theme.spacing(0, 0.5),
-      "& .MuiButton-label": {
-        fontSize: 12,
-      },
-      [theme.breakpoints.down("xs")]: {
-        margin: theme.spacing(0, 1.5),
-        fontSize: "11px",
-        // bottom: 90,
-      },
-    },
-    readBtnOuterDiv: {
+    "& h2": {
+      font: `normal ${theme.spacing(4)}px Recoleta Medium`,
       textAlign: "center",
+      lineHeight: "70px",
+      textTransform: "none",
+      marginTop: "5px",
+      [theme.breakpoints.down("xs")]: {
+        fontSize: theme.spacing(2),
+        textAlign: "left",
+        marginTop: 0,
+      },
     },
-  })
-);
+    "& h1": {
+      textAlign: "center",
+      letterSpacing: "0.04em",
+      textTransform: "none",
+      font: `normal ${theme.spacing(4)}px Recoleta Bold`,
+      marginTop: "5px",
+      [theme.breakpoints.down("sm")]: {
+        fontSize: theme.spacing(1.7),
+        marginTop: 0,
+      },
+      [theme.breakpoints.down("xs")]: {
+        fontSize: theme.spacing(2),
+        textAlign: "left",
+      },
+    },
+    [theme.breakpoints.down("xs")]: {
+      // height: "130px",
+      color: "var(--white)",
+      padding: theme.spacing(0),
+      marginBottom: "19px",
+    },
+  },
+  imageContainer: {
+    display: "flex",
+    height: "500px",
+    justifyContent: "center",
+    flexBasis: "50%",
+    [theme.breakpoints.down("xs")]: {
+      height: "220px",
+      justifyContent: "flex-start",
+      flexBasis: "40%",
+    },
+  },
+  readMoreBtn: {
+    // position: "absolute",
+    // bottom: 10,
+    width: "45%",
+    borderRadius: "4px",
+    padding: theme.spacing(0.5),
+    "& .MuiButton-label": {
+      fontSize: 12,
+      fontFamily: "Work Sans",
+      textTransform: "capitalize",
+    },
+    [theme.breakpoints.down(350)]: {
+      // margin: theme.spacing(0, 1.5),
+      fontSize: "11px",
+      width: "50%",
+    },
+  },
+  expandBannerRoot: {
+    height: "auto",
+    marginBottom: 0,
+  },
+  imageContainer2: {
+    position: "absolute",
+    maxWidth: "none",
+    maxHeight: "500px",
+    width: "50%",
+    height: "auto",
+    display: "block",
+
+    // margin: theme.spacing(3, 0, 0, 1.5),
+    "& img": {
+      height: "500px",
+      width: "100%",
+      // borderRadius: "8px",
+    },
+    [theme.breakpoints.down("xs")]: {
+      maxWidth: "150px",
+      maxHeight: "160px",
+      margin: theme.spacing(3, 0, 0, 1.5),
+      width: "auto",
+      "& img": {
+        height: "145px",
+        width: "160px",
+        borderRadius: "8px",
+      },
+    },
+  },
+  backgroundImage: {
+    display: "flex",
+    alignItems: "end",
+    justifyContent: "end",
+    marginBottom: "30px",
+    "& img": {
+      height: "130px",
+    },
+  },
+  readLessbtn: {
+    // position: "absolute",
+    // bottom: 10,
+    borderRadius: "4px",
+    padding: theme.spacing(0, 0.5),
+    "& .MuiButton-label": {
+      fontSize: 12,
+    },
+    [theme.breakpoints.down("xs")]: {
+      margin: theme.spacing(0, 1.5),
+      fontSize: "11px",
+      // bottom: 90,
+    },
+  },
+  readBtnOuterDiv: {
+    textAlign: "center",
+  },
+}));
 
 function Banner() {
   const classes = useStyles();
   const [collapse, setCollapse] = useState(false);
-  const IMAGE_URL = `${process.env.REACT_APP_MEDIA_URL}`;
-  const location: any = useLocation();
+  const IMAGE_URL = `${process.env.NEXT_PUBLIC_MEDIA_URL}`;
+  // const location: any = useLocation();
 
-  const productData = useSelector(
-    (state: ReducersModal) => state.productReducer?.data
-  );
-  const { menuData } = useSelector((state: ReducersModal) => state.homeReducer);
-  const skeletonLoader = useSelector((state: ReducersModal) => {
+  const location = useRouter();
+
+  const productData = useSelector((state: any) => state.productReducer?.data);
+  const { menuData } = useSelector((state: any) => state.homeReducer);
+  const skeletonLoader = useSelector((state: any) => {
     return state.loadingReducer.skeletonLoader;
   });
 
-  const urlKey = location.pathname.includes("/c/")
-    ? location.pathname.split("/c/")?.[0]?.split("/")?.pop()
-    : location.pathname.includes("/h/")
-    ? location.pathname.split("/h/")?.[0]?.split("/")?.pop()
+  const urlKey = location.asPath.includes("/c/")
+    ? location.asPath.split("/c/")?.[0]?.split("/")?.pop()
+    : location.asPath.includes("/h/")
+    ? location.asPath.split("/h/")?.[0]?.split("/")?.pop()
     : "";
-  const mainCat = location.pathname.split("/")?.[1];
+  const mainCat = location.asPath.split("/")?.[1];
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -238,15 +231,32 @@ function Banner() {
     // return item.id == (location?.state?.categoryId ? location?.state?.categoryId : localStorage.getItem("categoryId"))
     return item.url == mainCat;
   });
+  // const category = menuData.find((item: any) => {
+  //   return (
+  //     item.id ==
+  //     (location?.state?.categoryId
+  //       ? location?.state?.categoryId
+  //       : localStorage.getItem("categoryId"))
+  //   );
+  //   return item.url == mainCat;
+  // });
 
+  console.log({
+    location,
+    menuData,
+    category,
+    categoryData,
+    urlKey,
+    mainCat,
+  });
   useEffect(() => {
     localStorage.removeItem("categoryId");
-    if (
-      location?.state?.categoryId &&
-      categoryData?.id != localStorage.getItem("categoryId")
-    ) {
-      localStorage.setItem("categoryId", location?.state?.categoryId);
-    }
+    // if (
+    //   location?.state?.categoryId &&
+    //   categoryData?.id != localStorage.getItem("categoryId")
+    // ) {
+    //   localStorage.setItem("categoryId", location?.state?.categoryId);
+    // }
   }, [urlKey]);
 
   let breadCrumb: any = [{ title: "Home", action: "/" }];
@@ -266,10 +276,10 @@ function Banner() {
 
   breadCrumb.push({
     title: categoryData.name,
-    // action: `/product-listing?categoryId=${categoryData.id}`,
-    action: {
-      pathname: Utils.CommonFunctions.seoUrl(categoryData, "plp"),
-    },
+    action: `/product-listing?categoryId=${categoryData.id}`,
+    // action: {
+    //   pathname: Utils.CommonFunctions.seoUrl(categoryData, "plp"),
+    // },
   });
 
   return (

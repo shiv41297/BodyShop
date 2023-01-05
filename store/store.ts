@@ -10,6 +10,7 @@ import users from "./user/reducer";
 import aboutReducer from "./about/aboutReducer";
 import { productReducer } from "../modules/productListing/reducer";
 import { configReducer, homeReducer, loadingReducer } from "./home/reducer";
+import { recommendReducer } from "../component/common/recommendationCarousel/reducer";
 
 const combinedReducer = combineReducers({
   counter,
@@ -22,6 +23,7 @@ const combinedReducer = combineReducers({
   productFilterReducer,
   // aboutReducer: aboutReducer,
   productDetailReducer,
+  recommendReducer,
 });
 
 // @ts-ignore

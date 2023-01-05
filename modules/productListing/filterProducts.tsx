@@ -14,8 +14,8 @@ import { makeStyles } from "@mui/styles";
 import clsx from "clsx";
 import React, { useEffect, useState } from "react";
 import Utils from "../../component/utils";
-import Filters from "./filters";
-import Products from "./listProducts";
+// import Filters from "./filters";
+// import Products from "./listProducts";
 import { useDispatch, useSelector } from "react-redux";
 import { getProductList } from "./action";
 import { ReducersModal } from "../../component/models";
@@ -31,7 +31,7 @@ import { Skeleton } from "@mui/material";
 import { FilterProductSkeleton } from "../../component/common/skeletonList/filterProductSkeleton";
 import { getOthersRecommendations } from "../../component/common/recommendationCarousel/action";
 import SkeletonProductView from "../../component/common/skeletonList/skeletonProductView";
-import ProductNotFound from "./productNotFound";
+// import ProductNotFound from "./productNotFound";
 import { debug } from "util";
 
 import { customGa4Event } from "../../component/utils/gtag";
@@ -531,12 +531,12 @@ function FilterProducts() {
                     />
                   </Grid>
                 </Grid>
-                {!filters &&
+                {/* {!filters &&
                   (!products?.data || products?.data?.length === 0) && (
                     <Grid item xs={12} className={classes.productData}>
-                      <ProductNotFound setParams={setApiParams} />
+                      {/* <ProductNotFound setParams={setApiParams} /> */}
                     </Grid>
-                  )}
+                  )} */}
               </div>
             </>
           )}

@@ -5,7 +5,6 @@ import { useSelector } from "react-redux";
 import theme from "../../../config/theme";
 import { ReducersModal } from "../../models";
 
-
 const makeStyles = (theme: Theme) => {
   return {
     routeName: {
@@ -47,52 +46,51 @@ const makeStyles = (theme: Theme) => {
       cursor: "pointer",
       font: "normal 14px Work Sans",
     },
-  
   };
 };
 
 // const useStyles = makeStyles((theme: Theme) =>
 //   createStyles({
-  //   routeName: {
-  //     display: "flex",
-  //     flexBasis: "100%",
-  //     // alignItems: "baseline",
-  //     // padding: theme.spacing(2, 0, 0, 0),
+//   routeName: {
+//     display: "flex",
+//     flexBasis: "100%",
+//     // alignItems: "baseline",
+//     // padding: theme.spacing(2, 0, 0, 0),
 
-  //     width: "100%",
-  //     "& > *": {
-  //       font: `normal ${theme.spacing(1.4)}px Work Sans`,
-  //       fontWeight: 600,
-  //       lineHeight: "16px",
-  //       // color: "var(--light-gray)",
-  //       // margin: theme.spacing(0, 0.4),
-  //       marginLeft: "4px",
-  //       display: "flex",
-  //       alignItems: "baseline",
-  //     },
-  //     "&> a+a:before": {
-  //       content: "'/'",
-  //       // marginRight: "6px",
-  //       marginLeft: "0px",
-  //     },
-  //     "& a:last-child": {
-  //       fontWeight: 500,
-  //       // color: "var(--black)"
-  //     },
-  //   },
-  //   skeleton: {
-  //     marginBottom: "10px",
-  //   },
-  //   bread: {
-  //     cursor: "pointer",
-  //     // color: "var(--primary)",
-  //     font: "normal 14px Work Sans SemiBold",
-  //   },
-  //   breadCurrent: {
-  //     cursor: "pointer",
-  //     font: "normal 14px Work Sans",
-  //   },
-  // })
+//     width: "100%",
+//     "& > *": {
+//       font: `normal ${theme.spacing(1.4)}px Work Sans`,
+//       fontWeight: 600,
+//       lineHeight: "16px",
+//       // color: "var(--light-gray)",
+//       // margin: theme.spacing(0, 0.4),
+//       marginLeft: "4px",
+//       display: "flex",
+//       alignItems: "baseline",
+//     },
+//     "&> a+a:before": {
+//       content: "'/'",
+//       // marginRight: "6px",
+//       marginLeft: "0px",
+//     },
+//     "& a:last-child": {
+//       fontWeight: 500,
+//       // color: "var(--black)"
+//     },
+//   },
+//   skeleton: {
+//     marginBottom: "10px",
+//   },
+//   bread: {
+//     cursor: "pointer",
+//     // color: "var(--primary)",
+//     font: "normal 14px Work Sans SemiBold",
+//   },
+//   breadCurrent: {
+//     cursor: "pointer",
+//     font: "normal 14px Work Sans",
+//   },
+// })
 // );
 interface Props {
   breadcrumb: Array<{
@@ -105,7 +103,7 @@ interface Props {
 
 const BreadCrumb = ({ breadcrumb, type = "default", state }: Props) => {
   const classes = makeStyles(theme);
-    const history = useRouter();
+  const history = useRouter();
   const skeletonLoader = useSelector((state: ReducersModal) => {
     return state.loadingReducer.skeletonLoader;
   });
@@ -140,7 +138,7 @@ const BreadCrumb = ({ breadcrumb, type = "default", state }: Props) => {
                 );
             })
           : breadcrumb.map((val: any, i: any) => (
-              <div key={i+ Math.random()}>
+              <div key={i + Math.random()}>
                 <Box
                   sx={
                     i === breadcrumb.length - 1

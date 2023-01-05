@@ -294,7 +294,8 @@ export default Index;
 export const getServerSideProps = wrapper.getServerSideProps((store) =>
   //@ts-ignore-
   async ({ req, res }) => {
-    await store.dispatch(getHomeData(req.cookies.authToken));
+    // await store.dispatch(getHomeData(req.cookies.authToken));
+    await store.dispatch(getHomeData());
     return { props: {} };
   }
 );

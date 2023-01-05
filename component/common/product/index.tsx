@@ -444,7 +444,6 @@ const Product = (props: Props) => {
             },
             []
           );
-          console.log(categoryAttributesData, categoryArray);
           if (resp) {
             // eventAddToWishlist({
             //   ProductId: `${product?.magentoId}`,
@@ -521,7 +520,6 @@ const Product = (props: Props) => {
                 },
                 []
               );
-              console.log(categoryArray);
               // eventRemoveFromWishlist({
               //   ProductId: `${product.magentoId}`,
               //   ProductName: `${product.name}`,

@@ -1,5 +1,5 @@
+//@ts-nocheck
 import {
-  makeStyles,
   createStyles,
   Theme,
   Typography,
@@ -14,20 +14,23 @@ import {
   Tabs,
   Tab,
   Box,
-} from "@material-ui/core";
+} from "@mui/material";
+import { makeStyles } from "@mui/styles";
 import clsx from "clsx";
 import { useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
-import Utils from "../../utils";
-import GreenRadio from "../../components/common/customRadio";
-import { hideLoader, showLoader } from "../home/actions";
-import { getProductList } from "./action";
-import CustomCheckbox from "../../components/common/customCheckbox";
-import { useSelector } from "react-redux";
-import { ReducersModal } from "../../models";
+// import Utils from "../../utils";
+// import GreenRadio from "../../components/common/customRadio";
+// import { hideLoader, showLoader } from "../home/actions";
+// import { getProductList } from "./action";
+// import CustomCheckbox from "../../components/common/customCheckbox";
+// import { useSelector } from "react-redux";
+// import { ReducersModal } from "../../models";
 import _ from "lodash";
-import { useHistory, useLocation, useParams } from "react-router-dom";
+// import { useHistory, useLocation, useParams } from "react-router-dom";
 import { debug } from "util";
+import GreenRadio from "../../component/common/customRadio";
+import CustomCheckbox from "../../component/common/customCheckbox";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
