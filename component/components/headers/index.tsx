@@ -30,6 +30,7 @@ import {
   showSkeleton,
   getHomeData,
   hideSkeleton,
+  getConfig,
 } from "../../../store/home/action";
 
 // import { getUserProfile } from "../../pages/account/profile/action";
@@ -107,6 +108,11 @@ const Headers = () => {
   const [loginAlert, showLoginAlert] = useState(false);
   const dispatch: any = useDispatch();
 
+
+  useEffect(()=>{
+    dispatch(getConfig({ configCode: "general" })); 
+    dispatch(getConfig({ configCode: "payment" }));  
+  },[])
   const pathname = history?.pathname || "";
   useEffect(() => {
     if (
@@ -139,6 +145,8 @@ const Headers = () => {
   const menuData = useSelector(
     (state: ReducersModal) => state.homeReducer.menuData
   );
+
+
 
   const handleSuggestionClick = (item: any) => {
     dispatch({ type: "mobile-applied-filters", payload: null });
@@ -195,10 +203,13 @@ const Headers = () => {
     // }
   }, []);
 
+
+ 
+
   const redirectToHome = () => {
     dispatch(showSkeleton());
     dispatch(
-      getHomeData(),
+      getHomeData(""),
       dispatch(hideSkeleton())
       // getHomeData(() => {
       //   dispatch(hideSkeleton());

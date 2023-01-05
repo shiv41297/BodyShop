@@ -85,10 +85,10 @@ const DeliveryOptions = () => {
     }
   }, [pincode]);
 
-  useEffect(()=>{
-    dispatch(getConfig({ configCode: "general" })); 
-    dispatch(getConfig({ configCode: "payment" }));  
-  },[])
+  // useEffect(()=>{
+  //   dispatch(getConfig({ configCode: "general" })); 
+  //   dispatch(getConfig({ configCode: "payment" }));  
+  // },[])
 
   const handleChange = () => {
     dispatch(showLoader());

@@ -65,11 +65,30 @@ export const getHomeData = (token: any) => async (dispatch: any) => {
 };
 
 
+// export const getConfig = (payload: any) => {
+//   async (dispatch: any, _setState: any) => {
+//    let resp = await request.get(Utils.endPoints.CONFIG, { params: payload })
+//    if(resp){
+//     console.log(resp,"reponse");
+//       if (payload.configCode === "general") {
+//         // localStorage.setItem("underMaintenance", resp.data.data.underMaintenance)
+//         dispatch({
+//           type: "setConfig",
+//           payload: { generalConfigs: resp.data.data },
+//         });
+//       } else {
+//         dispatch({
+//           type: "setConfig",
+//           payload: { paymentConfigs: resp.data.data },
+//         });
+//       }
+//     };
+//   };
+// };
+
 export const getConfig = (payload: any) => {
-  async (dispatch: any, _setState: any) => {
-   let resp = await request.get(Utils.endPoints.CONFIG, { params: payload })
-   if(resp){
-    console.log(resp,"reponse");
+  return (dispatch: any, _setState: any) => {
+    request.get(Utils.endPoints.CONFIG, { params: payload }).then((resp) => {
       if (payload.configCode === "general") {
         // localStorage.setItem("underMaintenance", resp.data.data.underMaintenance)
         dispatch({
@@ -82,7 +101,7 @@ export const getConfig = (payload: any) => {
           payload: { paymentConfigs: resp.data.data },
         });
       }
-    };
+    });
   };
 };
 
