@@ -3,8 +3,6 @@ import { isAuthenticated, getAuthToken, isGuestUser } from "./session";
 import Utils from ".";
 import { v4 as uuidv4 } from "uuid";
 
-
-
 const instance = axios.create({
   baseURL: `${process.env.NEXT_PUBLIC_API_BASE_URL}`,
 });
@@ -24,8 +22,8 @@ instance.defaults.headers.common["language"] = "en";
 instance.defaults.headers.common["offset"] = "-330";
 instance.defaults.headers.common["deviceid"] = deviceId;
 instance.defaults.headers.common["platform"] = "web";
-// instance.defaults.headers.common["Authorization"] =
-  // "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzZXNzaW9uSWQiOiI2M2EzZWQyYTQ2YWRlMzM4OGRlNjQ4YTkiLCJpc0xvZ2luIjp0cnVlLCJpc0d1ZXN0TG9naW4iOnRydWUsImlhdCI6MTY3MTY4NzQ2NiwiZXhwIjoxNjg3MjM5NDY2fQ.4Eg19HCDEGFUiw562m2nxA7T5WPHZb6bt0yZwfx6Xo0";
+instance.defaults.headers.common["Authorization"] =
+  "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzZXNzaW9uSWQiOiI2M2EzZWQyYTQ2YWRlMzM4OGRlNjQ4YTkiLCJpc0xvZ2luIjp0cnVlLCJpc0d1ZXN0TG9naW4iOnRydWUsImlhdCI6MTY3MTY4NzQ2NiwiZXhwIjoxNjg3MjM5NDY2fQ.4Eg19HCDEGFUiw562m2nxA7T5WPHZb6bt0yZwfx6Xo0";
 
 // Add a request interceptor
 
@@ -33,16 +31,13 @@ instance.interceptors.request.use(
   (success: any) => {
     if (!success.headers.Authorization) {
       if (isAuthenticated() || isGuestUser()) {
-        success.headers.Authorization = `Bearer ${getAuthToken()}`;
-       
-        } 
-      else {
+        success.headers.Authorization = `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzZXNzaW9uSWQiOiI2M2EzZWQyYTQ2YWRlMzM4OGRlNjQ4YTkiLCJpc0xvZ2luIjp0cnVlLCJpc0d1ZXN0TG9naW4iOnRydWUsImlhdCI6MTY3MTY4NzQ2NiwiZXhwIjoxNjg3MjM5NDY2fQ.4Eg19HCDEGFUiw562m2nxA7T5WPHZb6bt0yZwfx6Xo0`;
+      } else {
         // success.headers[
         //   "Authorization"
         // ] = `Basic ${process.env.NEXT_PUBLIC_API_KEY}`;
-        success.headers.Authorization = `Bearer ${getAuthToken()}`;
-
-        }
+        success.headers.Authorization = `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzZXNzaW9uSWQiOiI2M2EzZWQyYTQ2YWRlMzM4OGRlNjQ4YTkiLCJpc0xvZ2luIjp0cnVlLCJpc0d1ZXN0TG9naW4iOnRydWUsImlhdCI6MTY3MTY4NzQ2NiwiZXhwIjoxNjg3MjM5NDY2fQ.4Eg19HCDEGFUiw562m2nxA7T5WPHZb6bt0yZwfx6Xo0`;
+      }
     }
 
     if (!success.headers["deviceid"]) {
@@ -62,39 +57,37 @@ instance.interceptors.request.use(
 
 instance.interceptors.response.use(
   (success) => {
-      return success;
+    return success;
   },
   (err) => {
-      // if (err.response.status === 503) { //under maintainance
-      //     initstore.dispatch({ type: "undermaintainance", payload: { undermaintainance: 1 } })
-      //     initstore.dispatch(hideLoader())
-      // }
-      // else {
-      //     console.log({initStore})
-      //     initstore.dispatch({ type: "undermaintainance", payload: { undermaintainance: 0 } })
-          
-      //     if (!window.navigator.onLine) {
-      //         initstore.dispatch(hideLoader())
-      //         initstore.dispatch({
-      //             type: "show-alert",
-      //             payload: {
-      //                 type: "error",
-      //                 message: "You are offline. Please check internet connection",
-      //             },
-      //         })
-      //         return;
-      //     } else if (err.response.status === Utils.statusCode.UNAUTHENTICATED) {
-      //         removeSession();
-              
-      //     }
+    // if (err.response.status === 503) { //under maintainance
+    //     initstore.dispatch({ type: "undermaintainance", payload: { undermaintainance: 1 } })
+    //     initstore.dispatch(hideLoader())
+    // }
+    // else {
+    //     console.log({initStore})
+    //     initstore.dispatch({ type: "undermaintainance", payload: { undermaintainance: 0 } })
 
-      // }
-      return Promise.reject(err);
+    //     if (!window.navigator.onLine) {
+    //         initstore.dispatch(hideLoader())
+    //         initstore.dispatch({
+    //             type: "show-alert",
+    //             payload: {
+    //                 type: "error",
+    //                 message: "You are offline. Please check internet connection",
+    //             },
+    //         })
+    //         return;
+    //     } else if (err.response.status === Utils.statusCode.UNAUTHENTICATED) {
+    //         removeSession();
+
+    //     }
+
+    // }
+    return Promise.reject(err);
   }
 );
 
 // Alter defaults after instance has been created
 
 export default instance;
-
-
