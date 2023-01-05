@@ -134,7 +134,8 @@ const ProductDetails = (props: any) => {
   let configurableProduct =
     productData?.configurableProductLinks?.find(
       (item: any) => item?.isInStock
-    ) || productData?.configurableProductLinks[0];
+    ) 
+    // || productData?.configurableProductLinks[0];
   const skeletonLoader = useSelector((state: ReducersModal) => {
     return state.loadingReducer.skeletonLoader;
   });

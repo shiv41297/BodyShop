@@ -260,12 +260,18 @@ const ProductDetail = (props: any) => {
         productData.redirect = '';
         props.history.push('/not-found');
       }
-      if (productData?.product) {
+      if (productData && productData.product) {
         let categoryAttributesIndex =
-          productData?.product?.customAttributes.findIndex(
+          productData &&
+          productData.product &&
+          productData.product.customAttributes &&
+          productData.product.customAttributes.findIndex(
             (item: any) => item.attribute_code === 'category_ids'
           );
         let categoryAttributesData =
+          productData &&
+          productData.product &&
+          productData.product.customAttributes &&
           productData?.product?.customAttributes[categoryAttributesIndex];
         let categoryArray = categoryAttributesData?.label.reduce(
           (i: any, j: any) => {
@@ -316,7 +322,12 @@ const ProductDetail = (props: any) => {
         let size = productData?.selectedVariantData?.customAttributes?.find(
           (val: any) => val.attribute_code === 'size'
         );
-        if (productData.product?.configurableProductLinks.length > 0) {
+        if (
+          productData &&
+          productData.product &&
+          productData.product.configurableProductLinks &&
+          productData.product.configurableProductLinks.length > 0
+        ) {
           updateProfile(
             'recent_viewed_product_parent_id',
             `${productData?.product?.sku}`
@@ -646,21 +657,20 @@ const ProductDetail = (props: any) => {
               ) : (
                 <>
                   <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
-                    {ReactHtmlParser(getAttributeValue('how_to_use'))?.length >
-                    0 ? (
+                    {getAttributeValue('how_to_use')?.length > 0 ? (
                       <HowToUse
                         video_url={videoUrl}
                         howToUse={
-                          <Typography>
+                          <Box>
                             {ReactHtmlParser(
                               getAttributeValue('how_to_use_video')
                             )}
-                          </Typography>
+                          </Box>
                         }
                         textDescription={
-                          <Typography>
+                          <Box>
                             {ReactHtmlParser(getAttributeValue('how_to_use'))}
-                          </Typography>
+                          </Box>
                         }
                       />
                     ) : null}
@@ -672,16 +682,10 @@ const ProductDetail = (props: any) => {
                       <HowToUse
                         video_url={videoUrl}
                         howToUse={
-                          <Typography>
-                            {ReactHtmlParser(
-                              getAttributeValue('how_to_use_video')
-                            )}
-                          </Typography>
+                          <Box>{ReactHtmlParser('how_to_use_video')}</Box>
                         }
                         textDescription={
-                          <Typography>
-                            {ReactHtmlParser(getAttributeValue('how_to_use'))}
-                          </Typography>
+                          <Box>{ReactHtmlParser('how_to_use')}</Box>
                         }
                       />
                     ) : null}

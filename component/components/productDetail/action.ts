@@ -12,7 +12,7 @@ export const getProductData =
   (req: any, params: any) => async (dispatch: any) => {
     let url = Utils.endPoints.PRODUCT_DATA;
     let { category, subcategory, googleKey } = params;
-    console.log({params})
+    // console.log({params})
     // googleKey = googleKey ? googleKey : 64;
     // console.log( category, subcategory, googleKey,"<===googleKey",params);
 
