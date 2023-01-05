@@ -125,11 +125,11 @@ const Filters: React.FC<any> = (props: Props) => {
   const query = Utils.CommonFunctions.useQuery();
   let queryFilter = query?.get("filters") ?? "{}";
 
-  const urlKey = history?.location.pathname.includes("/c/")
-    ? history?.location.pathname.split("/c/")?.[0]?.split("/")?.pop()
-    : history?.location.pathname.includes("/h/")
-    ? history?.location.pathname.split("/h/")?.[0]?.split("/")?.pop()
-    : "";
+  // const urlKey = history?.location.pathname.includes("/c/")
+  //   ? history?.location.pathname.split("/c/")?.[0]?.split("/")?.pop()
+  //   : history?.location.pathname.includes("/h/")
+  //   ? history?.location.pathname.split("/h/")?.[0]?.split("/")?.pop()
+  //   : "";
 
   useEffect(() => {
     if (queryFilter) {
@@ -180,7 +180,7 @@ const Filters: React.FC<any> = (props: Props) => {
       //   dispatch(hideLoader())
       // }));
     }
-  }, [urlKey, props.obj.query]);
+  }, [ props.obj.query]);
 
   const dispatch = useDispatch();
 

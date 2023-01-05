@@ -52,7 +52,7 @@ const ProductListing = () => {
       )}
       <Banner />
       <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
-        {/* <FilterProducts /> */}
+        <FilterProducts />
       </Box>
       <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
         {/* <MobileFilterProducts /> */}
