@@ -72,7 +72,7 @@ const useStyles = makeStyles((theme: Theme) =>
     },
 
     subheading: {
-      font: `normal ${theme.spacing(1.6)}px  Work Sans`,
+      font: `normal ${theme.spacing(1.6)}  Work Sans`,
       lineHeight: "19px",
       padding: theme.spacing(1, 3),
     },
@@ -85,7 +85,7 @@ const useStyles = makeStyles((theme: Theme) =>
       // "& .MuiTab-wrapper": {
       // font: `normal ${theme.typography.fontWeightBold} ${theme.spacing(
       //   1.5
-      // )}px  Work Sans`,
+      // )}  Work Sans`,
       // lineheight: "18px",
       // textTransform: "uppercase",
       // color: "var(--green-color)",
@@ -93,7 +93,7 @@ const useStyles = makeStyles((theme: Theme) =>
       "& .MuiTab-textColorPrimary": {
         font: `normal ${theme.typography.fontWeightBold} ${theme.spacing(
           1.5
-        )}px  Work Sans Bold`,
+        )}  Work Sans Bold`,
         lineheight: "18px",
         textTransform: "uppercase",
         color: "var(--secondary-black)",
@@ -128,7 +128,7 @@ const useStyles = makeStyles((theme: Theme) =>
     heading: {
       font: `normal ${theme.typography.fontWeightBold} ${theme.spacing(
         6
-      )}px Druk`,
+      )} Druk`,
       color: "var(--white)",
       textAlign: "center",
       lineHeight: "70px",
@@ -139,7 +139,7 @@ const useStyles = makeStyles((theme: Theme) =>
       },
     },
     subHeading: {
-      font: `normal  ${theme.spacing(1.6)}px Work Sans`,
+      font: `normal  ${theme.spacing(1.6)} Work Sans`,
       width: "678px",
       color: "var(--white)",
       textAlign: "center",

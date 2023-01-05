@@ -36,7 +36,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     },
   },
   title: {
-    font: `normal 700 ${theme.spacing(1.6)}px Work Sans`,
+    font: `normal 700 ${theme.spacing(1.6)} Work Sans`,
     lineHeight: '26px',
     margin: theme.spacing(1, 0),
     [theme.breakpoints.down('xs')]: {
@@ -44,7 +44,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     },
   },
   heading: {
-    font: `normal 500 ${theme.spacing(1.8)}px Work Sans`,
+    font: `normal 500 ${theme.spacing(1.8)} Work Sans`,
     lineHeight: '26px',
     margin: theme.spacing(1, 0),
     [theme.breakpoints.down('xs')]: {
@@ -60,7 +60,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     '& h3': {
       padding: theme.spacing(0, 0, 1.2, 0),
     },
-    font: `normal 400 ${theme.spacing(1.4)}px Work Sans`,
+    font: `normal 400 ${theme.spacing(1.4)} Work Sans`,
     color: 'rgba(102, 102, 102, 0.99)',
     lineHeight: '26px',
     overflowY: 'auto',
@@ -68,7 +68,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     paddingBottom: '10px',
     [theme.breakpoints.down('xs')]: {
       paddingBottom: '30px',
-      font: `normal 400 ${theme.spacing(1.4)}px Work Sans`,
+      font: `normal 400 ${theme.spacing(1.4)} Work Sans`,
       '& h3': {
         padding: theme.spacing(0, 0, 1.2, 0),
       },

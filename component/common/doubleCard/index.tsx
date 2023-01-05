@@ -158,7 +158,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     },
   },
   subheading: {
-    font: `normal ${theme.spacing(2)}px Druk Bold`,
+    font: `normal ${theme.spacing(2)} Druk Bold`,
     letterSpacing: "1px",
     color: "var(--primary)",
     [theme.breakpoints.down("sm")]: {
@@ -167,7 +167,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     textTransform: "uppercase",
   },
   heading: {
-    font: `normal ${theme.spacing(4)}px Druk Bold`,
+    font: `normal ${theme.spacing(4)} Druk Bold`,
     letterSpacing: "1px",
     color: "var(--primary)",
     [theme.breakpoints.down("sm")]: {
@@ -176,7 +176,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     textTransform: "uppercase",
   },
   paragraph: {
-    font: `normal ${theme.spacing(1.6)}px Work Sans Regular`,
+    font: `normal ${theme.spacing(1.6)} Work Sans Regular`,
     color: "var(--primary)",
     lineHeight: "19px",
     maxWidth: "400px",
@@ -187,7 +187,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     },
   },
   btn: {
-    font: `normal 600 ${theme.spacing(1.6)}px Work Sans`,
+    font: `normal 600 ${theme.spacing(1.6)} Work Sans`,
     borderRadius: 4,
     padding: theme.spacing(1.5, 3),
     [theme.breakpoints.down("sm")]: {

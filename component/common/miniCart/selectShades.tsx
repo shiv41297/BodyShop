@@ -23,7 +23,7 @@ const useStyles = makeStyles((theme: Theme) =>
       alignItems: "center",
     },
     header: {
-      font: `normal ${theme.spacing(2.4)}px Recoleta`,
+      font: `normal ${theme.spacing(2.4)} Recoleta`,
       color: "var(--green-color)",
       fontWeight: 600,
       textTransform: "uppercase",
@@ -45,7 +45,7 @@ const useStyles = makeStyles((theme: Theme) =>
       "& .MuiButton-label": {
         font: `normal ${theme.typography.fontWeightBold} ${theme.spacing(
           1.6
-        )}px Work Sans`,
+        )} Work Sans`,
       },
     },
    
@@ -63,7 +63,7 @@ const useStyles = makeStyles((theme: Theme) =>
     shade: {
       font: `normal ${theme.typography.fontWeightBold} ${theme.spacing(
         2.4
-      )}px Recoleta`,
+      )} Recoleta`,
       lineHeight: "33px",
       color: theme.palette.primary.main,
     },
@@ -74,14 +74,14 @@ const useStyles = makeStyles((theme: Theme) =>
     title: {
       font: `normal ${theme.typography.fontWeightBold} ${theme.spacing(
         1.6
-      )}px Work Sans`,
+      )} Work Sans`,
       lineHeight: "24px",
       color: "var(--secondary-black)",
     },
     details: {
       font: `normal ${theme.typography.fontWeightRegular} ${theme.spacing(
         1.3
-      )}px Work Sans`,
+      )} Work Sans`,
       lineHeight: "15px",
       padding: theme.spacing(1, 0),
       color: "var(--light-gray)",
@@ -89,7 +89,7 @@ const useStyles = makeStyles((theme: Theme) =>
     shadeNumber: {
       font: `normal ${theme.typography.fontWeightRegular} ${theme.spacing(
         1.4
-      )}px Work Sans`,
+      )} Work Sans`,
       lineHeight: "16px",
       padding: theme.spacing(2, 0, 1.5),
       color: theme.palette.primary.main,
@@ -102,7 +102,7 @@ const useStyles = makeStyles((theme: Theme) =>
     name: {
       font: `normal ${theme.typography.fontWeightBold} ${theme.spacing(
         1.4
-      )}px Work Sans`,
+      )} Work Sans`,
       lineHeight: "24px",
       color: "var(--secondary-black)",
       textAlign: "center",
@@ -110,7 +110,7 @@ const useStyles = makeStyles((theme: Theme) =>
     name1: {
       font: `normal ${theme.typography.fontWeightBold} ${theme.spacing(
         1.4
-      )}px Work Sans`,
+      )} Work Sans`,
       lineHeight: "24px",
       color: "var(--secondary-black)",
       textAlign: "center",
@@ -119,7 +119,7 @@ const useStyles = makeStyles((theme: Theme) =>
     productNumber: {
       font: `normal ${theme.typography.fontWeightBold} ${theme.spacing(
         1.3
-      )}px Work Sans`,
+      )} Work Sans`,
       lineHeight: "24px",
       color: "var(--light-gray)",
       textAlign: "center",

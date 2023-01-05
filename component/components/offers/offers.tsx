@@ -22,7 +22,7 @@ const useStyles = makeStyles((theme: Theme) =>
     heading: {
       font: `normal ${theme.typography.fontWeightBold} ${theme.spacing(
         3.6
-      )}px  Work Sans`,
+      )}  Work Sans`,
       fontWeight: 600,
       lineHeight: "42px",
     },
@@ -54,7 +54,7 @@ const useStyles = makeStyles((theme: Theme) =>
       padding: "10px",
     },
     cardHeading: {
-      font: `normal ${theme.spacing(1.8)}px  Recoleta Alt Bold`,
+      font: `normal ${theme.spacing(1.8)}  Recoleta Alt Bold`,
       lineHeight: "24px",
       color: "var(--black)",
       margin: theme.spacing(0.8, 0),
@@ -63,12 +63,12 @@ const useStyles = makeStyles((theme: Theme) =>
       textOverflow: "ellipsis",
       whiteSpace: "nowrap",
       [theme.breakpoints.down("xs")]: {
-        font: `normal ${theme.spacing(1.6)}px  Recoleta Alt Bold`,
+        font: `normal ${theme.spacing(1.6)}  Recoleta Alt Bold`,
         letterSpacing: "0.06em",
       },
     },
     cardSubHeading: {
-      font: `normal ${theme.spacing(1.4)}px  Work Sans`,
+      font: `normal ${theme.spacing(1.4)}  Work Sans`,
       lineHeight: "24px",
       color: "var(--secondary-black)",
       height: "70px",
@@ -83,7 +83,7 @@ const useStyles = makeStyles((theme: Theme) =>
       // },
       [theme.breakpoints.down("xs")]: {
         height: "auto",
-        font: `normal ${theme.spacing(1.4)}px  Work Sans Medium`,
+        font: `normal ${theme.spacing(1.4)}  Work Sans Medium`,
         lineHeight: "22.4px",
         letterSpacing: "0.02em",
       },
@@ -95,7 +95,7 @@ const useStyles = makeStyles((theme: Theme) =>
       [theme.breakpoints.down("xs")]: {
         width: "45%",
         "& .MuiButton-label": {
-          font: `normal ${theme.spacing(1.4)}px  Work Sans Medium`,
+          font: `normal ${theme.spacing(1.4)}  Work Sans Medium`,
         },
       },
       "& .MuiButton-root": {

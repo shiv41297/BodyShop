@@ -41,13 +41,13 @@ const useStyles = makeStyles((theme: Theme) =>
         right: "-25px",
         width: 0,
         height: 0,
-        borderBottom: `${theme.spacing(2.5)}px solid var(--dark-creame-color)`,
-        borderRight: `${theme.spacing(2.5)}px solid transparent `,
+        borderBottom: `${theme.spacing(2.5)} solid var(--dark-creame-color)`,
+        borderRight: `${theme.spacing(2.5)} solid transparent `,
       },
 
       font: `normal ${theme.typography.fontWeightRegular} ${theme.spacing(
         1.6
-      )}px Work Sans`,
+      )} Work Sans`,
       color: theme.palette.primary.main,
       [theme.breakpoints.down("xs")]: {
         fontSize: theme.spacing(1.4),
@@ -55,7 +55,7 @@ const useStyles = makeStyles((theme: Theme) =>
       // '& p': {
       //   font: `normal ${theme.typography.fontWeightRegular} ${theme.spacing(
       //     1.6
-      //   )}px Work Sans`,
+      //   )} Work Sans`,
       //   color: theme.palette.primary.main,
       //   lineHeight: '19px',
       //   [theme.breakpoints.down("xs")]: {
@@ -69,7 +69,7 @@ const useStyles = makeStyles((theme: Theme) =>
     heading: {
       font: `normal ${theme.spacing(
         2.8
-      )}px Druk Bold`,
+      )} Druk Bold`,
       letterSpacing: "0.04em",
       textTransform: "uppercase",
       marginBottom: theme.spacing(1.9),
@@ -82,7 +82,7 @@ const useStyles = makeStyles((theme: Theme) =>
     // paragraph: {
     //   font: `normal ${theme.spacing(
     //     1.6
-    //   )}px Work Sans Regular`,
+    //   )} Work Sans Regular`,
     //   color: theme.palette.primary.main,
     //   lineHeight: '19px',
     //   [theme.breakpoints.down("xs")]: {
@@ -95,7 +95,7 @@ const useStyles = makeStyles((theme: Theme) =>
     btn: {
       "&.MuiButton-root": {
         borderRadius: 4,
-        font: `normal 600 ${theme.spacing(1.6)}px Work Sans`,
+        font: `normal 600 ${theme.spacing(1.6)} Work Sans`,
         textTransform: "capitalize",
         padding: theme.spacing(1.5, 3),
         border: `1px solid ${theme.palette.primary.main}`,

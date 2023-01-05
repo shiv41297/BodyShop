@@ -15,7 +15,7 @@ const makeStyles = (theme: Theme) => {
 
       width: "100%",
       "& > *": {
-        font: `normal ${theme.spacing(1.4)}px Work Sans`,
+        font: `normal ${theme.spacing(1.4)} Work Sans`,
         fontWeight: 600,
         lineHeight: "16px",
         // color: "var(--light-gray)",
@@ -59,7 +59,7 @@ const makeStyles = (theme: Theme) => {
 
 //     width: "100%",
 //     "& > *": {
-//       font: `normal ${theme.spacing(1.4)}px Work Sans`,
+//       font: `normal ${theme.spacing(1.4)} Work Sans`,
 //       fontWeight: 600,
 //       lineHeight: "16px",
 //       // color: "var(--light-gray)",

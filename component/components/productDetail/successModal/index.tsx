@@ -56,7 +56,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   heading: {
     font: `normal ${theme.typography.fontWeightBold} ${theme.spacing(
       1.8
-    )}px Work Sans`,
+    )} Work Sans`,
     lineHeight: '21px',
   },
   detailsContainer: {
@@ -73,14 +73,14 @@ const useStyles = makeStyles((theme: Theme) => ({
   title: {
     font: `normal ${theme.typography.fontWeightBold} ${theme.spacing(
       1.6
-    )}px Work Sans`,
+    )} Work Sans`,
     lineHeight: '26px',
     // marginTop: theme.spacing(3),
   },
   quantity: {
     font: `normal ${theme.typography.fontWeightRegular} ${theme.spacing(
       1.2
-    )}px Work Sans`,
+    )} Work Sans`,
     lineHeight: '14px',
     color: 'var(--light-gray)',
   },

@@ -18,7 +18,7 @@ import { Typography } from "@mui/material";
 //   listTitle: {
 //     font: `normal ${theme.typography.fontWeightBold} ${theme.spacing(
 //       2
-//     )}px Recoleta`,
+//     )} Recoleta`,
 //     lineHeight: "27px",
 //     letterSpacing: "0.06em",
 //     color: "var(--primary)",
@@ -26,7 +26,7 @@ import { Typography } from "@mui/material";
 //   links: {
 //     font: `normal ${theme.typography.fontWeightRegular} ${theme.spacing(
 //       1.5
-//     )}px Work Sans`,
+//     )} Work Sans`,
 //     lineHeight: "18px",
 //     color: "var(--primary)",
 //     margin: theme.spacing(1.5, 0),
@@ -41,7 +41,7 @@ import { Typography } from "@mui/material";
 //   picTitle: {
 //     font: `normal ${theme.typography.fontWeightBold} ${theme.spacing(
 //       3
-//     )}px Druk`,
+//     )} Druk`,
 //     lineHeight: "35px",
 //     letterSpacing: "0.02em",
 //     textTransform: "uppercase",
@@ -58,7 +58,7 @@ import { Typography } from "@mui/material";
 //   shopNow: {
 //     font: `normal ${theme.typography.fontWeightBold} ${theme.spacing(
 //       1.6
-//     )}px Work Sans`,
+//     )} Work Sans`,
 //     lineHeight: "19px",
 //     letterSpacing: "0.02em",
 //     textShadow: "0px 4px 16px rgba(0, 0, 0, 0.25)",

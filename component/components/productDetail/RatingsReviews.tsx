@@ -18,23 +18,23 @@ const useStyles = makeStyles((theme: Theme) => ({
   heading: {
     font: `normal ${theme.typography.fontWeightBold} ${theme.spacing(
       1.8
-    )}px Recoleta Alt`,
+    )} Recoleta Alt`,
     lineHeight: '24px',
     letterSpacing: '0.02em',
     color: 'var(--secondary-black)',
     [theme.breakpoints.down('xs')]: {
-      font: `normal ${theme.spacing(1.6)}px Recoleta Alt Bold`,
+      font: `normal ${theme.spacing(1.6)} Recoleta Alt Bold`,
     },
   },
 
   button: {
     font: `normal ${theme.typography.fontWeightBold} ${theme.spacing(
       1.4
-    )}px Recoleta Alt`,
+    )} Recoleta Alt`,
     lineHeight: '16px',
     color: 'var(--main-opacity)',
     [theme.breakpoints.down('xs')]: {
-      font: `normal ${theme.spacing(1.4)}px Work Sans SemiBold`,
+      font: `normal ${theme.spacing(1.4)} Work Sans SemiBold`,
     },
   },
   headContainer: {
@@ -66,7 +66,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   rating: {
     font: `normal ${theme.typography.fontWeightBold} ${theme.spacing(
       3.2
-    )}px Work Sans`,
+    )} Work Sans`,
     lineHeight: '38px',
     color: 'var(--black)',
     margin: theme.spacing(0.6, 0),
@@ -74,12 +74,12 @@ const useStyles = makeStyles((theme: Theme) => ({
   precision: {
     font: `normal ${theme.typography.fontWeightBold} ${theme.spacing(
       2
-    )}px Work Sans`,
+    )} Work Sans`,
   },
   caption: {
     font: `normal ${theme.typography.fontWeightMedium} ${theme.spacing(
       1.2
-    )}px Work Sans`,
+    )} Work Sans`,
     lineHeight: '14px',
     color: 'var(--light-gray)',
     margin: theme.spacing(0.6, 0, 0, 0),
@@ -117,7 +117,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   label: {
     font: `normal ${theme.typography.fontWeightMedium} ${theme.spacing(
       1.4
-    )}px Work Sans`,
+    )} Work Sans`,
     lineHeight: '16px',
   },
   divider: {
@@ -134,11 +134,11 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
   noReview: {
     color: 'var(--light-gray)',
-    font: `normal 600 ${theme.spacing(1.4)}px Work Sans`,
+    font: `normal 600 ${theme.spacing(1.4)} Work Sans`,
     marginTop: '5px',
   },
   messageHeading: {
-    font: `normal 700 ${theme.spacing(2.0)}px Work Sans`,
+    font: `normal 700 ${theme.spacing(2.0)} Work Sans`,
     color: 'var(--black300)',
     lineHeight: '28px',
     marginBottom: '9px',

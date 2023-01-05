@@ -15,14 +15,14 @@ const useStyles = makeStyles((theme: Theme) => ({
   content: {
     paddingLeft: '0px',
     [theme.breakpoints.down('xs')]: {
-      font: `normal ${theme.spacing(1.3)}px  Work Sans Regular`,
+      font: `normal ${theme.spacing(1.3)}  Work Sans Regular`,
       flexBasis: '50%',
       margin: theme.spacing(0.5, 0),
     },
   },
   contentHeading: {
     [theme.breakpoints.down('xs')]: {
-      font: `normal ${theme.spacing(1.3)}px  Work Sans SemiBold`,
+      font: `normal ${theme.spacing(1.3)}  Work Sans SemiBold`,
       color: 'black',
       margin: theme.spacing(0.5, 0),
     },

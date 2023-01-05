@@ -70,7 +70,7 @@ const useStyles = makeStyles((theme: Theme) =>
     heading: {
       font: `normal ${theme.typography.fontWeightBold} ${theme.spacing(
         2.4
-      )}px  Recoleta Alt`,
+      )}  Recoleta Alt`,
       color: "var(--white)",
       lineHeight: "40px",
       marginBottom: theme.spacing(0.5),
@@ -93,7 +93,7 @@ const useStyles = makeStyles((theme: Theme) =>
     paragraph: {
       font: `normal ${theme.typography.fontWeightRegular} ${theme.spacing(
         1.6
-      )}px  Recoleta Alt`,
+      )}  Recoleta Alt`,
       color: "var(--text-color)",
       letterSpacing: "-0.3333px",
       textTransform: "lowercase",
@@ -108,7 +108,7 @@ const useStyles = makeStyles((theme: Theme) =>
     },
 
     imgDetails: {
-      font: `normal 400 ${theme.spacing(1.4)}px  Work Sans`,
+      font: `normal 400 ${theme.spacing(1.4)}  Work Sans`,
       color: "var(--text-color)",
       maxWidth: "225px",
       lineHeight: "22.4px",
@@ -130,7 +130,7 @@ const useStyles = makeStyles((theme: Theme) =>
         borderRadius: 4,
         font: `normal ${theme.typography.fontWeightMedium} ${theme.spacing(
           1.4
-        )}px Work Sans`,
+        )} Work Sans`,
         textTransform: "capitalize",
         padding: theme.spacing(1.5, 3),
         color: "var(--white)",

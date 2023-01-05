@@ -208,7 +208,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     },
   },
   messageHeading: {
-    font: `normal 700 ${theme.spacing(2.0)}px Work Sans`,
+    font: `normal 700 ${theme.spacing(2.0)} Work Sans`,
     color: 'var(--black300)',
     lineHeight: '28px',
     marginBottom: '9px',
@@ -521,22 +521,24 @@ const ProductImages = (props: any) => {
       <div className={classes.innerContainer}>
         <div className={classes.productImageContainer}>
           <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
-            <div>
-              {like ? (
+          <div>
+          {like ? (
                 <IconButton
                   aria-label="favorite"
                   className={classes.heartImg}
-                  // onClick={() => handleLike(false, productData)}
+                // onClick={() => handleLike(false, productData)}
                 >
-                  <div
+                  <img
+                    src={Utils.images.FAVORITE_ICON}
+                    alt="heart"
                     onClick={() => {
                       if (!loader)
-                        if (isAuthenticated()) handleLike(false, productData1);
-                        else showLoginAlert(true);
+                        if (isAuthenticated())
+                          handleLike(false, productData1)
+                        else
+                          showLoginAlert(true);
                     }}
-                  >
-                    {/* <FAVORITE_ICON /> */}
-                  </div>
+                  />
                 </IconButton>
               ) : (
                 <IconButton
@@ -544,11 +546,13 @@ const ProductImages = (props: any) => {
                   className={classes.heartImg}
                   onClick={() => {
                     if (!loader)
-                      if (isAuthenticated()) handleLike(true, productData1);
-                      else showLoginAlert(true);
+                      if (isAuthenticated())
+                        handleLike(true, productData1);
+                      else
+                        showLoginAlert(true);
                   }}
                 >
-                  {/* <HEART /> */}
+                  <img src={Utils.images.HEART} alt="heart" />
                 </IconButton>
               )}
             </div>

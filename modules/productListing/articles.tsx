@@ -66,7 +66,7 @@ const useStyles = makeStyles((theme: Theme) =>
     btn: {
       font: `normal ${theme.typography.fontWeightMedium} ${theme.spacing(
         1.5
-      )}px Work Sans`,
+      )} Work Sans`,
       color: "var(--white)",
       borderRadius: 4,
       textTransform: "capitalize",

@@ -21,18 +21,18 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
   description: {
     marginTop: '10px',
-    font: `normal 400 ${theme.spacing(1.5)}px Work Sans`,
+    font: `normal 400 ${theme.spacing(1.5)} Work Sans`,
     lineHeight: '27px',
     [theme.breakpoints.down('xs')]: {
-      font: `normal ${theme.spacing(1.5)}px Work Sans Regular`,
+      font: `normal ${theme.spacing(1.5)} Work Sans Regular`,
     },
   },
   title: {
     marginTop: '10px',
-    font: `normal 700 ${theme.spacing(1.4)}px  Recoleta Alt`,
+    font: `normal 700 ${theme.spacing(1.4)}  Recoleta Alt`,
     color: 'black',
     [theme.breakpoints.down('xs')]: {
-      font: `normal ${theme.spacing(1.4)}px Work Sans SemiBold`,
+      font: `normal ${theme.spacing(1.4)} Work Sans SemiBold`,
     },
   },
   ingredients: {

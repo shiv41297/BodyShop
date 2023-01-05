@@ -25,7 +25,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   heading: {
     font: `normal ${theme.typography.fontWeightBold} ${theme.spacing(
       7.2
-    )}px Druk`,
+    )} Druk`,
     color: "var(--white)",
     textAlign: "center",
     letterSpacing: "1px",
@@ -36,7 +36,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     textTransform: "uppercase",
   },
   subheading: {
-    font: `normal 600 ${theme.spacing(1.8)}px Work Sans`,
+    font: `normal 600 ${theme.spacing(1.8)} Work Sans`,
     color: "var(--white)",
     textAlign: "center",
     letterSpacing: "1px",
@@ -51,7 +51,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   btn: {
     "&.MuiButton-root": {
       borderRadius: 4,
-      font: `normal 600 ${theme.spacing(1.6)}px Work Sans`,
+      font: `normal 600 ${theme.spacing(1.6)} Work Sans`,
       textTransform: "capitalize",
       padding: theme.spacing(2, 4),
       color: "var(--white)",

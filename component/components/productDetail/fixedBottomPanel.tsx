@@ -103,11 +103,11 @@ const useStyles = makeStyles((theme : Theme) => ({
   productName: {
     font: `normal ${theme.typography.fontWeightMedium} ${theme.spacing(
       1.6
-    )}px  Work Sans`,
+    )}  Work Sans`,
     lineHeight: "18.77px",
     color: "#004236",
     [theme.breakpoints.down("xs")]: {
-      font: `normal 700 ${theme.spacing(1.8)}px  Recoleta Alt`,
+      font: `normal 700 ${theme.spacing(1.8)}  Recoleta Alt`,
       whiteSpace: "nowrap",
       overflow: "hidden",
       width: "63%",
@@ -122,27 +122,27 @@ const useStyles = makeStyles((theme : Theme) => ({
   productPrice: {
     font: `normal ${theme.typography.fontWeightBold} ${theme.spacing(
       1.8
-    )}px  Work Sans`,
+    )}  Work Sans`,
     lineHeight: "21.11px",
     color: "#004236",
     marginLeft: theme.spacing(1),
     [theme.breakpoints.down("xs")]: {
       margin: theme.spacing(0.5, 1),
-      font: `normal 700 ${theme.spacing(1.8)}px  Work Sans`,
+      font: `normal 700 ${theme.spacing(1.8)}  Work Sans`,
     },
   },
   price: {
     marginLeft: theme.spacing(1),
     font: `normal ${theme.typography.fontWeightMedium} ${theme.spacing(
       1.5
-    )}px Work Sans`,
+    )} Work Sans`,
     color: "var(--light-gray)",
     textDecorationLine: "line-through",
   },
   fontError: {
     font: `normal ${theme.typography.fontWeightBold} ${theme.spacing(
       1.8
-    )}px  Work Sans`,
+    )}  Work Sans`,
     lineHeight: "21.11px",
   },
   dropDown: {
@@ -152,7 +152,7 @@ const useStyles = makeStyles((theme : Theme) => ({
     "& .MuiTypography-body1": {
       font: `normal ${theme.typography.fontWeightBold} ${theme.spacing(
         1.4
-      )}px  Work Sans`,
+      )}  Work Sans`,
 
       lineHeight: "16.42px",
       letterSpacing: "0.04em",

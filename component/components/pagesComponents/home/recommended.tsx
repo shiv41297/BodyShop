@@ -15,7 +15,7 @@ const useStyles = makeStyles((theme: Theme) =>
     heading: {
       font: `normal ${theme.spacing(
         2.4
-      )}px Recoleta Alt Bold`,
+      )} Recoleta Alt Bold`,
       letterSpacing: "0.02em",
       lineHeight: "33px",
       margin: theme.spacing(0, 8),

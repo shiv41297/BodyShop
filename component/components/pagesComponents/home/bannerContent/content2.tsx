@@ -13,7 +13,7 @@ const useStyles = makeStyles((theme: Theme) =>
         heading: {
             font: `normal ${theme.spacing(
                 2.7
-            )}px  Recoleta Alt Bold`,
+            )}  Recoleta Alt Bold`,
             color: "var(--white)",
             lineHeight: "34px",
             letterSpacing: "2px",
@@ -21,7 +21,7 @@ const useStyles = makeStyles((theme: Theme) =>
 
         },
         subheading: {
-            font: `normal ${theme.spacing(1.5)}px Work Sans SemiBold`,
+            font: `normal ${theme.spacing(1.5)} Work Sans SemiBold`,
             color: "var(--white)",
             letterSpacing: "1px",
             margin: theme.spacing(1.2, 0, 1.6, 0),
@@ -31,7 +31,7 @@ const useStyles = makeStyles((theme: Theme) =>
         btn: {
             "&.MuiButton-root": {
                 borderRadius: 6,
-                font: `normal ${theme.spacing(1.4)}px Work Sans SemiBold`,
+                font: `normal ${theme.spacing(1.4)} Work Sans SemiBold`,
                 textTransform: "capitalize",
                 background: "var(--light-green)",
                 color: "#363F3C",

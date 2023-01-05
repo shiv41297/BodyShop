@@ -45,7 +45,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   heading: {
     font: `normal ${theme.typography.fontWeightBold} ${theme.spacing(
       2
-    )}px Recoleta Alt`,
+    )} Recoleta Alt`,
     lineHeight: "27px",
     marginBottom: "20px",
     letterSpacing: "0.02em",
@@ -68,14 +68,14 @@ const useStyles = makeStyles((theme: Theme) => ({
   para: {
     font: `normal ${theme.typography.fontWeightRegular} ${theme.spacing(
       1.5
-    )}px Work Sans`,
+    )} Work Sans`,
     lineHeight: "25px",
     color: "var(--secondary-black)",
   },
   subHeading: {
     font: `normal ${theme.typography.fontWeightBold} ${theme.spacing(
       1.6
-    )}px Work Sans`,
+    )} Work Sans`,
     lineHeight: "19px",
     color: "var(--secondary-black)",
     marginLeft: theme.spacing(1),

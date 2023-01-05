@@ -15,12 +15,12 @@ const useStyles = makeStyles((theme: Theme) => ({
   heading: {
     font: `normal ${theme.typography.fontWeightBold} ${theme.spacing(
       1.8
-    )}px Recoleta Alt`,
+    )} Recoleta Alt`,
     lineHeight: '24px',
     letterSpacing: '0.02em',
     color: 'var(--secondary-black)',
     [theme.breakpoints.down('xs')]: {
-      font: `normal ${theme.spacing(1.6)}px Recoleta Alt Bold`,
+      font: `normal ${theme.spacing(1.6)} Recoleta Alt Bold`,
     },
   },
   input: {
@@ -33,7 +33,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     color: 'var(--black)',
     font: `normal ${theme.typography.fontWeightMedium} ${theme.spacing(
       1.4
-    )}px Recoleta Alt`,
+    )} Recoleta Alt`,
   },
   inputContainer: {
     backgroundColor: 'rgba(61, 133, 126, 0.1)',
@@ -48,14 +48,14 @@ const useStyles = makeStyles((theme: Theme) => ({
     '& img': {
       marginRight: theme.spacing(1),
     },
-    font: `normal 400 ${theme.spacing(1.4)}px Work Sans`,
+    font: `normal 400 ${theme.spacing(1.4)} Work Sans`,
     lineHeight: '22px',
     letterSpacing: '0.33px',
     color: 'var(--light-gray)',
     display: 'flex',
     alignItems: 'center',
     [theme.breakpoints.down('xs')]: {
-      font: `normal ${theme.spacing(1.3)}px Work Sans Regular`,
+      font: `normal ${theme.spacing(1.3)} Work Sans Regular`,
     },
   },
   divider: {

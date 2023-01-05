@@ -69,7 +69,7 @@ const useStyles = makeStyles((theme: Theme) =>
       },
     },
     header: {
-      font: `normal ${theme.spacing(2.4)}px Recoleta`,
+      font: `normal ${theme.spacing(2.4)} Recoleta`,
       color: theme.palette.primary.main,
       fontWeight: 600,
       [theme.breakpoints.down("xs")]: {
@@ -93,7 +93,7 @@ const useStyles = makeStyles((theme: Theme) =>
       // margin: theme.spacing(0, 1),
       font: `normal ${theme.typography.fontWeightMedium} ${theme.spacing(
         1.5
-      )}px Work Sans`,
+      )} Work Sans`,
       color: "var(--light-gray)",
       textDecorationLine: "line-through",
       [theme.breakpoints.down("xs")]: {
@@ -107,7 +107,7 @@ const useStyles = makeStyles((theme: Theme) =>
       // width: "100%"
     },
     textBrand: {
-      font: `normal ${theme.spacing(1.6)}px Work Sans`,
+      font: `normal ${theme.spacing(1.6)} Work Sans`,
       fontWeight: 600,
       color: "var(--secondary-black)",
       marginBottom: theme.spacing(1),
@@ -117,7 +117,7 @@ const useStyles = makeStyles((theme: Theme) =>
       },
     },
     textQty: {
-      font: `normal ${theme.spacing(1.4)}px Work Sans`,
+      font: `normal ${theme.spacing(1.4)} Work Sans`,
       // color: "#044236",
       marginBottom: theme.spacing(0.5),
       textTransform: "capitalize",
@@ -128,13 +128,13 @@ const useStyles = makeStyles((theme: Theme) =>
     textPrice: {
       font: `normal ${theme.typography.fontWeightBold} ${theme.spacing(
         1.8
-      )}px Work Sans`,
+      )} Work Sans`,
       [theme.breakpoints.down("xs")]: {
         fontSize: "14px",
       },
     },
     button: {
-      font: `normal ${theme.spacing(1.4)}px Work Sans`,
+      font: `normal ${theme.spacing(1.4)} Work Sans`,
       fontWeight: 500,
       color: " #F44336",
       "&:hover": {
@@ -274,7 +274,7 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     rewardPointContainer: {
       padding: "0px 0px 30px 21px",
-      font: `normal 500 ${theme.spacing(1.3)}px Work Sans`,
+      font: `normal 500 ${theme.spacing(1.3)} Work Sans`,
       [theme.breakpoints.down("xs")]: {
         padding: "0px 0px 20px 15px",
       },
@@ -283,13 +283,13 @@ const useStyles = makeStyles((theme: Theme) =>
       color: "#3D857E",
     },
     productOutOfStock: {
-      font: `normal 600 ${theme.spacing(1.4)}px Work Sans`,
+      font: `normal 600 ${theme.spacing(1.4)} Work Sans`,
       color: "var(--delet-color)",
       margin: "6px 0px 0px 0px",
       lineHeight: 1.5,
     },
     productOutOfStockDescription: {
-      font: `normal 600 ${theme.spacing(1.4)}px Work Sans`,
+      font: `normal 600 ${theme.spacing(1.4)} Work Sans`,
       color: "var(--light-gray)",
       margin: "0px 0px 4px 0px",
       lineHeight: 1.5,
@@ -349,7 +349,7 @@ const useStyles = makeStyles((theme: Theme) =>
       },
     },
     messageHeading: {
-      font: `normal 700 ${theme.spacing(2.0)}px Work Sans`,
+      font: `normal 700 ${theme.spacing(2.0)} Work Sans`,
       color: "var(--black300)",
       lineHeight: "28px",
       marginBottom: "9px",
@@ -395,7 +395,7 @@ const useStyles = makeStyles((theme: Theme) =>
       },
     },
     autoDiscount: {
-      font: `normal 600 ${theme.spacing(1.4)}px Work Sans`,
+      font: `normal 600 ${theme.spacing(1.4)} Work Sans`,
       color: "#32B97C",
       margin: "6px 0px 0px 0px",
       lineHeight: 1.5,

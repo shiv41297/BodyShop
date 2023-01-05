@@ -7,12 +7,12 @@ const useStyles = makeStyles((theme: Theme) => ({
   heading: {
     font: `normal ${theme.typography.fontWeightBold} ${theme.spacing(
       1.8
-    )}px Recoleta Alt`,
+    )} Recoleta Alt`,
     lineHeight: '24px',
     letterSpacing: '0.02em',
     color: 'var(--secondary-black)',
     [theme.breakpoints.down('xs')]: {
-      font: `normal ${theme.spacing(1.6)}px Recoleta Alt Bold`,
+      font: `normal ${theme.spacing(1.6)} Recoleta Alt Bold`,
     },
   },
   videoPlayer: {
@@ -35,7 +35,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     [theme.breakpoints.down('xs')]: {
       paddingLeft: '20px',
       '& .MuiTypography-body1': {
-        font: `normal ${theme.spacing(1.4)}px Work Sans Regular`,
+        font: `normal ${theme.spacing(1.4)} Work Sans Regular`,
         lineHeight: '1.5',
       },
     },

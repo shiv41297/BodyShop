@@ -55,12 +55,12 @@ const useStyles = makeStyles((theme : Theme) => ({
     display: 'flex',
   },
   points: {
-    font: `normal 700 ${theme.spacing(1.6)}px Work Sans`,
+    font: `normal 700 ${theme.spacing(1.6)} Work Sans`,
     lineHeight: '18.7px',
     color: '#333333',
   },
   label: {
-    font: `normal 500 ${theme.spacing(1.2)}px Work Sans`,
+    font: `normal 500 ${theme.spacing(1.2)} Work Sans`,
     lineHeight: '24px',
     color: '#666666',
   },
@@ -70,33 +70,33 @@ const useStyles = makeStyles((theme : Theme) => ({
     height: '40px',
     // padding:"10px 10px",
     marginTop: '0px !important',
-    font: `normal 500 ${theme.spacing(1.5)}px Work Sans !important`,
+    font: `normal 500 ${theme.spacing(1.5)} Work Sans !important`,
     lineHeight: '16.42px !important',
   },
   title: {
-    font: `normal 700 ${theme.spacing(1.6)}px Recoleta Alt `,
+    font: `normal 700 ${theme.spacing(1.6)} Recoleta Alt `,
     lineHeight: '21.7px',
     color: '#333333',
     letterSpacing: '0.5px',
     paddingTop: '15px',
     [theme.breakpoints.down('xs')]: {
-      font: `normal ${theme.spacing(1.6)}px Recoleta Alt Bold`,
+      font: `normal ${theme.spacing(1.6)} Recoleta Alt Bold`,
     },
   },
   link: {
     // font: `normal 500 ${theme.spacing(
     //     1.3
-    // )}px  Work Sans`,
+    // )}  Work Sans`,
     // lineHeight: "21.7px",
     // color: "#333333",
     // letterSpacing: "0.5px"
     color: '#044236',
-    font: `normal 500 ${theme.spacing(1.3)}px Work Sans`,
+    font: `normal 500 ${theme.spacing(1.3)} Work Sans`,
     lineHeight: '16px',
     cursor: 'pointer',
   },
   description: {
-    font: `normal 500 ${theme.spacing(1.3)}px Work Sans Medium`,
+    font: `normal 500 ${theme.spacing(1.3)} Work Sans Medium`,
     lineHeight: '15.25px',
     color: '#333333',
     letterSpacing: '2%',
@@ -104,7 +104,7 @@ const useStyles = makeStyles((theme : Theme) => ({
     // alignItems: "center",
     marginTop: '5px',
     [theme.breakpoints.down('xs')]: {
-      font: `normal ${theme.spacing(1.2)}px Work Sans Regular`,
+      font: `normal ${theme.spacing(1.2)} Work Sans Regular`,
     },
   },
   pointValue: {
@@ -116,7 +116,7 @@ const useStyles = makeStyles((theme : Theme) => ({
     // background:"rgba(35, 30, 30, 0.06)"
   },
   bold: {
-    font: `normal 600 ${theme.spacing(1.3)}px Work Sans SemiBold`,
+    font: `normal 600 ${theme.spacing(1.3)} Work Sans SemiBold`,
     // margin: "0px 5px 0px 0px"
   },
   bottom: {

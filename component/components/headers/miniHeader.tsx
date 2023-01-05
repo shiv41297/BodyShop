@@ -68,7 +68,7 @@ const useStyles : any = makeStyles((theme: Theme) =>
       justifyContent: 'center'
     },
     menuHeader: {
-      font: `normal ${theme.typography.fontWeightBold} ${theme.spacing(1.8)}px Recoleta Alt`,
+      font: `normal ${theme.typography.fontWeightBold} ${theme.spacing(1.8)} Recoleta Alt`,
       lineHeight: "24px",
       letterSpacing: "0.02em",
       color: "#004236",
@@ -118,7 +118,7 @@ const useStyles : any = makeStyles((theme: Theme) =>
       objectFit: 'cover',
     },
     shopNow: {
-      font: `normal ${theme.typography.fontWeightBold} ${theme.spacing(1.6)}px Work Sans`,
+      font: `normal ${theme.typography.fontWeightBold} ${theme.spacing(1.6)} Work Sans`,
       lineHeight: '18.77px',
       position: 'absolute',
       bottom: '12px',

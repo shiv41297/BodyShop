@@ -26,7 +26,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     '& li': {
       [theme.breakpoints.down('xs')]: {
         // "& .MuiTypography-body1": {
-        font: `normal ${theme.spacing(1.4)}px Work Sans Regular`,
+        font: `normal ${theme.spacing(1.4)} Work Sans Regular`,
         lineHeight: '22.4px',
         // },
       },

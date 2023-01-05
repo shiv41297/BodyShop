@@ -41,7 +41,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   rating: {
     font: `normal ${theme.typography.fontWeightBold} ${theme.spacing(
       1.5
-    )}px Work Sans`,
+    )} Work Sans`,
     lineHeight: '16px',
     margin: '0px 5px 0px 0px',
     letterSpacing: '1px',
@@ -49,7 +49,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   rating1: {
     font: `normal ${theme.typography.fontWeightBold} ${theme.spacing(
       1.5
-    )}px Work Sans`,
+    )} Work Sans`,
     lineHeight: '16px',
     margin: '0px 3px',
     letterSpacing: '1px',
@@ -58,7 +58,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   subHeading: {
     font: `normal ${theme.typography.fontWeightBold} ${theme.spacing(
       1.4
-    )}px Work Sans`,
+    )} Work Sans`,
     textTransform: 'capitalize',
     lineHeight: '38px',
     letterSpacing: '0.333px',
@@ -66,7 +66,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   details: {
     font: `normal ${theme.typography.fontWeightMedium} ${theme.spacing(
       1.4
-    )}px Work Sans`,
+    )} Work Sans`,
     lineHeight: '22px',
     letterSpacing: '0.333px',
     display: 'inline-block',
@@ -82,7 +82,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   details1: {
     font: `normal ${theme.typography.fontWeightMedium} ${theme.spacing(
       1.4
-    )}px Work Sans`,
+    )} Work Sans`,
     lineHeight: '22px',
     letterSpacing: '0.333px',
     display: 'inline-block',
@@ -91,7 +91,7 @@ const useStyles = makeStyles((theme: Theme) => ({
       marginLeft: theme.spacing(1.5),
     },
     [theme.breakpoints.down('xs')]: {
-      font: `normal ${theme.spacing(1.4)}px Work Sans Regular`,
+      font: `normal ${theme.spacing(1.4)} Work Sans Regular`,
       lineHeight: '22.4px',
     },
   },
@@ -111,7 +111,7 @@ const useStyles = makeStyles((theme: Theme) => ({
       borderRadius: '2px',
       font: `normal ${theme.typography.fontWeightMedium} ${theme.spacing(
         1.3
-      )}px Work Sans`,
+      )} Work Sans`,
       lineHeight: '15px',
       color: 'var(--light-gray)',
       position: 'relative',
@@ -133,7 +133,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     margin: '10px 0',
     font: `normal ${theme.typography.fontWeightMedium} ${theme.spacing(
       1.4
-    )}px Work Sans`,
+    )} Work Sans`,
     lineHeight: '16px',
   },
   readMore: {
@@ -150,7 +150,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     cursor: 'pointer',
     font: `normal ${theme.typography.fontWeightBold} ${theme.spacing(
       1.4
-    )}px Work Sans`,
+    )} Work Sans`,
     [theme.breakpoints.down('md')]: {
       display: 'none',
     },
@@ -165,7 +165,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   fontLabel: {
     font: `normal ${theme.typography.fontWeightBold} ${theme.spacing(
       1.6
-    )}px Work Sans`,
+    )} Work Sans`,
     color: 'var(--secondary-black)',
     margin: theme.spacing(1.0),
     textAlign: 'center',
@@ -177,7 +177,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   fontError: {
     font: `normal ${theme.typography.fontWeightBold} ${theme.spacing(
       1.2
-    )}px Work Sans`,
+    )} Work Sans`,
     color: '#FF0707',
     lineHeight: '14.08px',
     margin: theme.spacing(0),
@@ -190,7 +190,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   fontErrorShade: {
     font: `normal ${theme.typography.fontWeightBold} ${theme.spacing(
       1.2
-    )}px Work Sans`,
+    )} Work Sans`,
     color: '#FF0707',
     lineHeight: '14.08px',
     margin: theme.spacing(0.2),
@@ -203,7 +203,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   colorSubheading: {
     font: `normal ${theme.typography.fontWeightBold} ${theme.spacing(
       1.2
-    )}px Work Sans`,
+    )} Work Sans`,
     color: '#FF0707',
     lineHeight: '14.08px',
     margin: theme.spacing(0.2),
@@ -230,33 +230,33 @@ const useStyles = makeStyles((theme: Theme) => ({
     margin: '10px 0px',
   },
   selectSize: {
-    font: `normal ${theme.spacing(1.8)}px Recoleta Alt Bold`,
+    font: `normal ${theme.spacing(1.8)} Recoleta Alt Bold`,
     lineHeight: '24px',
     letterSpacing: '0.02em',
     color: 'var(--secondary-black)',
     margin: theme.spacing(3, 0, 1.5, 0),
     [theme.breakpoints.down('sm')]: {
       margin: theme.spacing(3, 0, 1, 0),
-      font: `normal ${theme.spacing(1.6)}px Recoleta Alt Bold`,
+      font: `normal ${theme.spacing(1.6)} Recoleta Alt Bold`,
     },
   },
   leftCaption: {
     font: `normal ${theme.typography.fontWeightBold} ${theme.spacing(
       1.6
-    )}px Recoleta Alt`,
+    )} Recoleta Alt`,
     lineHeight: '15px',
     letterSpacing: '0.02em',
     color: 'var(--secondary-black)',
     margin: theme.spacing(2, 0, 1.5, 0),
     [theme.breakpoints.down('sm')]: {
       margin: theme.spacing(1, 0, 1, 0),
-      font: `normal ${theme.spacing(1.6)}px Recoleta Alt Bold`,
+      font: `normal ${theme.spacing(1.6)} Recoleta Alt Bold`,
     },
   },
   rightCaption: {
     font: `normal ${theme.typography.fontWeightBold} ${theme.spacing(
       1.3
-    )}px Work Sans`,
+    )} Work Sans`,
     lineHeight: '15px',
     margin: theme.spacing(2, 0, 1.5, 0),
     color: 'var(--main-opacity)',
@@ -303,7 +303,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   selectedLabel: {
     font: `normal ${theme.typography.fontWeightLight} ${theme.spacing(
       1.3
-    )}px Work Sans`,
+    )}p Work Sans`,
     lineHeight: '15.25px',
     letterSpacing: '1px',
     marginBottom: '5px',
@@ -316,12 +316,12 @@ const useStyles = makeStyles((theme: Theme) => ({
     flexDirection: 'column',
   },
   amount: {
-    font: `normal ${theme.spacing(1.5)}px Work Sans SemiBold`,
+    font: `normal ${theme.spacing(1.5)} Work Sans SemiBold`,
     color: 'var(--secondary-black)',
     marginRight: theme.spacing(0.5),
   },
   ratingSection: {
-    font: `normal ${theme.spacing(1.5)}px Work Sans Bold`,
+    font: `normal ${theme.spacing(1.5)} Work Sans Bold`,
     color: 'black',
     padding: '0px 3px',
     // marginRight: theme.spacing(0.5),
@@ -329,7 +329,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   amount1: {
     font: `normal ${theme.typography.fontWeightBold} ${theme.spacing(
       1.8
-    )}px Work Sans`,
+    )} Work Sans`,
     color: theme.palette.primary.main,
     lineHeight: 2,
   },
@@ -337,14 +337,14 @@ const useStyles = makeStyles((theme: Theme) => ({
     marginLeft: theme.spacing(1),
     font: `normal ${theme.typography.fontWeightMedium} ${theme.spacing(
       1.5
-    )}px Work Sans`,
+    )} Work Sans`,
     color: 'var(--light-gray)',
     textDecorationLine: 'line-through',
   },
   discountPrice: {
     font: `normal ${theme.typography.fontWeightMedium} ${theme.spacing(
       2.4
-    )}px Work Sans`,
+    )} Work Sans`,
     color: 'var(--grey-color)',
     lineHeight: '28px',
     textDecoration: 'line-through',
@@ -353,7 +353,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   originalPrice: {
     font: `normal ${theme.typography.fontWeightBold} ${theme.spacing(
       2.4
-    )}px Work Sans`,
+    )} Work Sans`,
     color: 'var(--secondary-black)',
     lineHeight: '28px',
   },

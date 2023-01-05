@@ -41,7 +41,7 @@ const useStyles = makeStyles((theme: Theme) =>
       textAlign: "center",
       font: `normal ${theme.typography.fontWeightRegular} ${theme.spacing(
         1.6
-      )}px Work Sans`,
+      )} Work Sans`,
       color: theme.palette.primary.main,
       [theme.breakpoints.down("sm")]: {
         fontSize: theme.spacing(1.4),
@@ -49,7 +49,7 @@ const useStyles = makeStyles((theme: Theme) =>
       // '& p': {
       //   font: `normal ${theme.typography.fontWeightRegular} ${theme.spacing(
       //     1.6
-      //   )}px Work Sans`,
+      //   )} Work Sans`,
       //   color: theme.palette.primary.main,
       //   textAlign: "center",
       //   marginBottom: "21px",
@@ -62,7 +62,7 @@ const useStyles = makeStyles((theme: Theme) =>
     heading: {
       font: `normal ${theme.spacing(
         4
-      )}px Druk Bold`,
+      )} Druk Bold`,
       color: theme.palette.primary.main,
       textAlign: "center",
       [theme.breakpoints.down("xs")]: {
@@ -79,7 +79,7 @@ const useStyles = makeStyles((theme: Theme) =>
     // paragraph: {
     //   font: `normal ${theme.typography.fontWeightRegular} ${theme.spacing(
     //     1.6
-    //   )}px Work Sans`,
+    //   )} Work Sans`,
     //   color: theme.palette.primary.main,
     //   textAlign: "center",
     //   // margin: theme.spacing(0.5, 0),
@@ -92,7 +92,7 @@ const useStyles = makeStyles((theme: Theme) =>
     btn: {
       font: `normal ${theme.typography.fontWeightBold} ${theme.spacing(
         1.6
-      )}px Work Sans`,
+      )} Work Sans`,
       borderRadius: 4,
       textTransform: "capitalize",
       padding: theme.spacing(1.5, 3),

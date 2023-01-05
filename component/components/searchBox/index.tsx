@@ -13,7 +13,7 @@ const useStyles: any = makeStyles((theme: Theme) =>
             padding: theme.spacing(0.5, 1),
             font: `normal ${theme.typography.fontWeightRegular} ${theme.spacing(
                 1.4
-            )}px Work Sans`,
+            )} Work Sans`,
             height: "54px",
             // flexBasis: "70%",
             width: "100%",
@@ -29,7 +29,7 @@ const useStyles: any = makeStyles((theme: Theme) =>
         sendButton: {
             font: `normal ${theme.typography.fontWeightBold} ${theme.spacing(
                 1.5
-            )}px Work Sans`,
+            )} Work Sans`,
             borderRadius: "0",
             color: theme.palette.primary.main,
             padding: theme.spacing(1, 3.5),

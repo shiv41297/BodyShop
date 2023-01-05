@@ -22,7 +22,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     margin: theme.spacing(2.5, 0, 2, 0),
     font: `normal ${theme.typography.fontWeightBold} ${theme.spacing(
       1.8
-    )}px Recoleta Alt`,
+    )} Recoleta Alt`,
     lineHeight: '24px',
     letterSpacing: '0.02em',
     color: 'var(--secondary-black)',
@@ -46,7 +46,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   proName: {
     font: `normal ${theme.typography.fontWeightBold} ${theme.spacing(
       1.3
-    )}px Recoleta Alt`,
+    )} Recoleta Alt`,
     lineHeight: '21px',
     width: '100px',
     whiteSpace: 'normal',
@@ -80,7 +80,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   rating: {
     font: `normal ${theme.typography.fontWeightBold} ${theme.spacing(
       1.3
-    )}px Work Sans`,
+    )} Work Sans`,
     lineHeight: '15.25px',
     margin: theme.spacing(0, 0, 0, 0),
     color: 'var(--primary)',
@@ -88,14 +88,14 @@ const useStyles = makeStyles((theme: Theme) => ({
   rating1: {
     font: `normal ${theme.typography.fontWeightBold} ${theme.spacing(
       1.3
-    )}px Work Sans`,
+    )} Work Sans`,
     lineHeight: '15px',
     color: 'var(--light-gray)',
   },
   total: {
     font: `normal ${theme.typography.fontWeightMedium} ${theme.spacing(
       1.2
-    )}px Work Sans`,
+    )} Work Sans`,
     lineHeight: '14px',
     margin: theme.spacing(0, 0.5),
     color: 'var(--light-gray)',
@@ -118,21 +118,21 @@ const useStyles = makeStyles((theme: Theme) => ({
   rate: {
     font: `normal ${theme.typography.fontWeightBold} ${theme.spacing(
       1.3
-    )}px Work Sans`,
+    )} Work Sans`,
     lineHeight: '15px',
     color: 'var(----secondary-black)',
   },
   totalRate: {
     font: `normal ${theme.typography.fontWeightBold} ${theme.spacing(
       2
-    )}px Work Sans`,
+    )} Work Sans`,
     lineHeight: '23px',
     color: 'var(----secondary-black)',
   },
   rateDetail: {
     font: `normal ${theme.typography.fontWeightMedium} ${theme.spacing(
       1.3
-    )}px Work Sans`,
+    )} Work Sans`,
     lineHeight: '15px',
     margin: theme.spacing(1, 0),
     color: '#666666 !important',
@@ -145,10 +145,10 @@ const useStyles = makeStyles((theme: Theme) => ({
   discountPrice: {
     // font: `normal ${theme.typography.fontWeightMedium} ${theme.spacing(
     //     2.4
-    // )}px Work Sans`,
+    // )} Work Sans`,
     font: `normal ${theme.typography.fontWeightBold} ${theme.spacing(
       1.3
-    )}px Work Sans`,
+    )} Work Sans`,
 
     color: 'var(--grey-color)',
     lineHeight: '28px',

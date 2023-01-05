@@ -18,8 +18,10 @@ import { ReducersModal } from "../component/models";
 import Utils from "../component/utils";
 import { getHomeData} from "../store/home/action";
 import { wrapper } from "../store/store";
-
+import events from "../component/utils/event/constant";
 import { PageMeta } from "../component/page-meta/PageMeta";
+import { screenViewed } from "../component/utils/event/action";
+import "../styles/Home.module.css";
 
 const useStyles: any = makeStyles((theme: Theme) => ({
   homeRoot: {
@@ -66,10 +68,10 @@ const Index = () => {
     /**
      * Event logger
      */
-    // screenViewed({
-    //   ScreenName: events.SCREEN_HOME,
-    //   CTGenerated: "WEB"
-    // })
+    screenViewed({
+      ScreenName: events.SCREEN_HOME,
+      CTGenerated: "WEB"
+    })
     // if(isAuthenticated())
     // dispatch(
     //   getDashboardData(() => {

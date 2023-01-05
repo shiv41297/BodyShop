@@ -44,7 +44,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     },
   },
   description: {
-    font: `normal 400 ${theme.spacing(1.3)}px Work Sans`,
+    font: `normal 400 ${theme.spacing(1.3)} Work Sans`,
   },
 }));
 

@@ -57,7 +57,7 @@ const useStyles : any = makeStyles((theme: Theme) =>
     point: {
       font: `normal ${theme.typography.fontWeightBold} ${theme.spacing(
         1.4
-      )}px Work Sans`,
+      )} Work Sans`,
       lineHeight: "20.8px",
       // textTransform: "uppercase",
       color: "var(--white)",
@@ -66,7 +66,7 @@ const useStyles : any = makeStyles((theme: Theme) =>
     pointName: {
       font: `normal ${theme.typography.fontWeightMedium} ${theme.spacing(
         1.2
-      )}px Work Sans`,
+      )} Work Sans`,
       color: "var(--white)",
       textAlign: "center",
       lineHeight: "15px",

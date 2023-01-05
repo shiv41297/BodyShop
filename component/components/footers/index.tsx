@@ -33,7 +33,7 @@ const useStyles : any = makeStyles((theme: Theme) =>
       backgroundColor: "var(--white)",
       font: `normal ${theme.typography.fontWeightBold} ${theme.spacing(
         1.5
-      )}px Wrok Sans`,
+      )} Wrok Sans`,
       width: "50%",
       "& .MuiSelect-icon": {
         color: "var(--black)",
@@ -97,7 +97,7 @@ const useStyles : any = makeStyles((theme: Theme) =>
       margin: 0,
       font: `normal ${theme.typography.fontWeightBold} ${theme.spacing(
         2.6
-      )}px Druk`,
+      )} Druk`,
       letterSpacing: "0.06em",
       [theme.breakpoints.down("xs")]: {
         fontSize: theme.spacing(1.8),
@@ -132,7 +132,7 @@ const useStyles : any = makeStyles((theme: Theme) =>
       padding: theme.spacing(0.5, 1),
       font: `normal ${theme.typography.fontWeightRegular} ${theme.spacing(
         1.4
-      )}px Work Sans`,
+      )} Work Sans`,
       height: "54px",
       // flexBasis: "70%",
       width: "30%",

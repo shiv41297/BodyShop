@@ -11,7 +11,7 @@ const makeStyles = (theme: Theme) => {
                 borderRadius: "4px",
                 font: `normal ${theme.typography.fontWeightBold} ${theme.spacing(
                     1.6
-                )}px Work Sans`,
+                )} Work Sans`,
                 textTransform: "capitalize",
                 padding: theme.spacing(1.5, 0),
                 marginTop: theme.spacing(1.5),

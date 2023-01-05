@@ -36,6 +36,8 @@ import { debug } from "util";
 
 import { customGa4Event } from "../../component/utils/gtag";
 import Head from "next/head";
+import Products from "./listProducts";
+import Filters from "./filters";
 
 declare global {
   interface Window {
@@ -75,7 +77,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     "& .MuiTypography-body1": {
       font: `normal ${theme.typography.fontWeightBold} ${theme.spacing(
         2
-      )}px Druk`,
+      )} Druk`,
       marginLeft: theme.spacing(2),
       lineHeight: "23px",
     },
@@ -100,7 +102,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     justifyContent: "flex-end",
     font: `normal ${theme.typography.fontWeightBold} ${theme.spacing(
       1.5
-    )}px Wrok Sans`,
+    )} Wrok Sans`,
     "& .MuiInput-underline:after": {
       border: "none",
     },
@@ -111,7 +113,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     "& .MuiInput-input": {
       font: `normal ${theme.typography.fontWeightBold} ${theme.spacing(
         2
-      )}px Druk`,
+      )} Druk`,
       marginLeft: theme.spacing(2),
       lineHeight: "23px",
     },
@@ -127,7 +129,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   carouselHeading: {
     font: `normal ${theme.typography.fontWeightBold} ${theme.spacing(
       2.4
-    )}px  Recoleta Alt`,
+    )}  Recoleta Alt`,
     color: "#084236",
     lineHeight: 1.5,
     marginBottom: theme.spacing(0.5),
@@ -146,7 +148,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     "& .MuiTypography-body1": {
       font: `normal ${theme.typography.fontWeightBold} ${theme.spacing(
         2
-      )}px  Druk`,
+      )}  Druk`,
 
       lineHeight: "23px",
       letterSpacing: "0.04em",
@@ -164,7 +166,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
   link: {
     color: "lightblue",
-    font: `normal 400 ${theme.spacing(2)}px  Work Sans`,
+    font: `normal 400 ${theme.spacing(2)}  Work Sans`,
     cursor: "pointer",
   },
   productData: {
@@ -246,7 +248,7 @@ function FilterProducts() {
 
   useEffect(() => {
     window.scrollTo(0, 400);
-    dispatch(showSkeleton());
+    // dispatch(showSkeleton());
 
     let sort = findSortingData(queryFilters?.sortBy);
     setSorting(sort);
@@ -260,23 +262,23 @@ function FilterProducts() {
 
     setApiParams(payload);
 
-    dispatch(
-      getProductList(
-        payload,
-        true,
-        (_resp: any) => {
-          dispatch(hideSkeleton());
-        },
-        null,
-        fromPath === "home"
-          ? () => {
-              history.push(
-                `${Utils.routes.PRODUCT_LIST}?categoryId=${menuData?.[0]?.magentoId}`
-              );
-            }
-          : null
-      )
-    );
+    // dispatch(
+    //   getProductList(
+    //     payload,
+    //     true,
+    //     (_resp: any) => {
+    //       dispatch(hideSkeleton());
+    //     },
+    //     null,
+    //     fromPath === "home"
+    //       ? () => {
+    //           history.push(
+    //             `${Utils.routes.PRODUCT_LIST}?categoryId=${menuData?.[0]?.magentoId}`
+    //           );
+    //         }
+    //       : null
+    //   )
+    // );
   }, [keyword, urlKey]);
 
   const getFilteredProductsList = (_recall?: boolean) => {};
@@ -285,7 +287,7 @@ function FilterProducts() {
     window.scrollTo(0, 0);
     let params: any = { page, limit: 10, type: "history" };
     if (authToken) {
-      dispatch(showSkeleton());
+      // dispatch(showSkeleton());
       dispatch(
         getOthersRecommendations(params, () => {
           dispatch(hideSkeleton());
@@ -348,7 +350,7 @@ function FilterProducts() {
 
     if (item) {
       window.scrollTo(0, 400);
-      dispatch(showLoader());
+      // dispatch(showLoader());
       dispatch(
         getProductList(payload, false, () => {
           dispatch(hideLoader());
@@ -381,7 +383,7 @@ function FilterProducts() {
       urlKey,
     };
     setApiParams(payload);
-    dispatch(showLoader());
+    // dispatch(showLoader());
     dispatch(
       getProductList(payload, false, () => {
         dispatch(hideLoader());
@@ -414,7 +416,7 @@ function FilterProducts() {
               : "The Body Shop"
           }
         />
-        <link rel="canonical" href={window.location.href} />
+        {/* <link rel="canonical" href={window.location.href} /> */}
       </Head>
       <div className={classes.findContainer}>
         <div
@@ -531,16 +533,10 @@ function FilterProducts() {
                     />
                   </Grid>
                 </Grid>
-                {/* {!filters &&
-                  (!products?.data || products?.data?.length === 0) && (
-                    <Grid item xs={12} className={classes.productData}>
-                      {/* <ProductNotFound setParams={setApiParams} /> */}
-                    </Grid>
-                  )} */}
               </div>
             </>
           )}
-          <div className={classes.filterFooter}>
+          {/* <div className={classes.filterFooter}>
             {skeletonLoader || Object.keys(recommendedData).length === 0 ? (
               <>
                 <Skeleton height={20} width={"40%"} />
@@ -557,7 +553,7 @@ function FilterProducts() {
                 <RecommendationCarousel type="plp" />
               </>
             ) : null}
-          </div>
+          </div> */}
         </div>
         {/* )} */}
       </div>

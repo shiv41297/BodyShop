@@ -21,7 +21,7 @@ const useStyles = makeStyles((theme: Theme) =>
     heading: {
       font: `normal ${theme.typography.fontWeightBold} ${theme.spacing(
         3.6
-      )}px  Work Sans`,
+      )}  Work Sans`,
       fontWeight: 600,
       lineHeight: "42px",
     },
@@ -45,13 +45,13 @@ const useStyles = makeStyles((theme: Theme) =>
     cardHeading: {
       font: `normal ${theme.typography.fontWeightBold} ${theme.spacing(
         1.8
-      )}px  Recoleta Alt`,
+      )}  Recoleta Alt`,
       lineHeight: "24px",
       color: "var(--black)",
       margin: theme.spacing(0.8, 0),
     },
     cardSubHeading: {
-      font: `normal ${theme.spacing(1.4)}px  Work Sans`,
+      font: `normal ${theme.spacing(1.4)}  Work Sans`,
       lineHeight: "24px",
       color: "var(--secondary-black)",
     },

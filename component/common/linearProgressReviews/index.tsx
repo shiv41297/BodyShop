@@ -9,7 +9,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
   label: {
     [theme.breakpoints.down('xs')]: {
-      font: `normal ${theme.spacing(1.4)}px Work Sans SemiBold`,
+      font: `normal ${theme.spacing(1.4)} Work Sans SemiBold`,
       color: 'black',
     },
   },

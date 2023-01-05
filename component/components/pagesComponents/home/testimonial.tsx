@@ -10,6 +10,7 @@ import { Carousel } from "react-responsive-carousel";
 import Utils from "../../../utils";
 import _ from "lodash";
 
+
 const useStyles = makeStyles((theme: Theme) =>
  ({
     testimonial: {
@@ -46,14 +47,14 @@ const useStyles = makeStyles((theme: Theme) =>
       },
     },
     sliderText: {
-      font: `italic 400 ${theme.spacing(1.4)}px  Work Sans`,
+      font: `italic 400 ${theme.spacing(1.4)}  Work Sans`,
       textAlign: "start",
       lineHeight: "22px",
       letterSpacing: "-0.333333px",
       color: "var(--text-color)",
     },
     sliderSubText: {
-      font: `normal ${theme.spacing(1.3)}px  Work Sans SemiBold`,
+      font: `normal ${theme.spacing(1.3)}  Work Sans SemiBold`,
       textAlign: "start",
       lineHeight: "50px",
       letterSpacing: "0.1px",
@@ -90,7 +91,7 @@ const useStyles = makeStyles((theme: Theme) =>
     heading: {
       font: `normal ${theme.spacing(
         2.4
-      )}px Recoleta Alt Bold     `,
+      )} Recoleta Alt Bold     `,
       color: "var(--white)",
       lineHeight: "40px",
       letterSpacing: "1px",
@@ -178,7 +179,7 @@ const useStyles = makeStyles((theme: Theme) =>
     paragraph: {
       font: `normal ${theme.spacing(
         1.6
-      )}px  Work Sans Regular`,
+      )}  Work Sans Regular`,
       color: "var(--text-color)",
       lineHeight: 1.9,
       letterSpacing: "0.04em",

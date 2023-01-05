@@ -70,7 +70,7 @@ const useStyles = makeStyles((theme: Theme) =>
     heading: {
       font: `normal ${theme.typography.fontWeightBold} ${theme.spacing(
         2.8
-      )}px Recoleta `,
+      )} Recoleta `,
       letterSpacing: "1px",
       textTransform: "uppercase",
       // "&::first-letter": {
@@ -84,7 +84,7 @@ const useStyles = makeStyles((theme: Theme) =>
     paragraph: {
       font: `normal ${theme.typography.fontWeightRegular} ${theme.spacing(
         1.6
-      )}px Work Sans`,
+      )} Work Sans`,
       color: "var(--white)",
       margin: theme.spacing(1, 0),
       lineHeight: 1.5,
@@ -97,7 +97,7 @@ const useStyles = makeStyles((theme: Theme) =>
         borderRadius: 4,
         font: `normal ${theme.typography.fontWeightBold} ${theme.spacing(
           1.6
-        )}px Work Sans`,
+        )} Work Sans`,
         textTransform: "capitalize",
         marginTop: "22px",
         padding: theme.spacing(1.5, 3),

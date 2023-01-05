@@ -34,7 +34,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
   routeName: {
     padding: theme.spacing(2, 0, 0, 1.5),
-    font: `normal ${theme.spacing(1.3)}px Work Sans`,
+    font: `normal ${theme.spacing(1.3)} Work Sans`,
     fontWeight: 600,
     lineHeight: "15px",
     zIndex: 1,
@@ -65,7 +65,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     // padding: theme.spacing(2),
     padding: "4rem 4rem 4rem 0",
     "& p": {
-      font: `normal  ${theme.spacing(1.6)}px Work Sans Regular`,
+      font: `normal  ${theme.spacing(1.6)} Work Sans Regular`,
       maxWidth: "none",
       textAlign: "left ",
       lineHeight: "19px",
@@ -81,7 +81,7 @@ const useStyles = makeStyles((theme: Theme) => ({
       },
     },
     "& h2": {
-      font: `normal ${theme.spacing(4)}px Recoleta Medium`,
+      font: `normal ${theme.spacing(4)} Recoleta Medium`,
       textAlign: "center",
       lineHeight: "70px",
       textTransform: "none",
@@ -96,7 +96,7 @@ const useStyles = makeStyles((theme: Theme) => ({
       textAlign: "center",
       letterSpacing: "0.04em",
       textTransform: "none",
-      font: `normal ${theme.spacing(4)}px Recoleta Bold`,
+      font: `normal ${theme.spacing(4)} Recoleta Bold`,
       marginTop: "5px",
       [theme.breakpoints.down("sm")]: {
         fontSize: theme.spacing(1.7),

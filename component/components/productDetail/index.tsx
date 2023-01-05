@@ -110,7 +110,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   heading: {
     font: `normal ${theme.typography.fontWeightBold} ${theme.spacing(
       1.8
-    )}px Work Sans`,
+    )} Work Sans`,
     lineHeight: '18px',
     letterSpacing: '0.02em',
     color: 'var(--black)',
@@ -131,7 +131,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   carouselHeading: {
     font: `normal ${theme.typography.fontWeightBold} ${theme.spacing(
       2.4
-    )}px  Recoleta Alt`,
+    )}  Recoleta Alt`,
     color: '#084236',
     lineHeight: 1.5,
     margin: theme.spacing(0, 0, 0.5, 2),
@@ -140,7 +140,7 @@ const useStyles = makeStyles((theme: Theme) => ({
       maxWidth: 'none',
       font: `normal ${theme.typography.fontWeightBold} ${theme.spacing(
         1.6
-      )}px  Recoleta Alt Bold`,
+      )}  Recoleta Alt Bold`,
       margin: theme.spacing(0, 0, 0.5, 0),
       color: 'var(--black)',
     },
@@ -162,12 +162,12 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
   description: {
     marginTop: '10px',
-    font: `normal 400 ${theme.spacing(1.5)}px Work Sans`,
+    font: `normal 400 ${theme.spacing(1.5)} Work Sans`,
     lineHeight: '27px',
   },
   title: {
     marginTop: '10px',
-    font: `normal 700 ${theme.spacing(1.4)}px  Recoleta Alt`,
+    font: `normal 700 ${theme.spacing(1.4)}  Recoleta Alt`,
     color: 'black',
   },
 

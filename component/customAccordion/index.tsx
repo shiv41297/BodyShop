@@ -30,18 +30,18 @@ const useStyles = makeStyles((theme: Theme) => ({
   heading: {
     font: `normal ${theme.typography.fontWeightBold} ${theme.spacing(
       1.8
-    )}px Recoleta Alt`,
+    )} Recoleta Alt`,
     lineHeight: '24px',
     letterSpacing: '0.02em',
     color: 'var(--secondary-black)',
     [theme.breakpoints.down('xs')]: {
-      font: `normal ${theme.spacing(1.6)}px Recoleta Alt Bold`,
+      font: `normal ${theme.spacing(1.6)} Recoleta Alt Bold`,
     },
   },
   details: {
     font: `normal ${theme.typography.fontWeightMedium} ${theme.spacing(
       1.4
-    )}px Work Sans`,
+    )} Work Sans`,
     lineHeight: '22px',
     letterSpacing: '0.33px',
     color: 'rgba(102, 102, 102, 0.99)',

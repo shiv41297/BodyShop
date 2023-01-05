@@ -27,48 +27,48 @@ const useStyles = makeStyles((theme: Theme) => ({
   heading: {
     font: `normal ${theme.typography.fontWeightBold} ${theme.spacing(
       1.8
-    )}px Recoleta Alt`,
+    )} Recoleta Alt`,
     lineHeight: '24px',
     letterSpacing: '0.02em',
     color: 'var(--secondary-black)',
     [theme.breakpoints.down('xs')]: {
-      font: `normal ${theme.spacing(1.6)}px Recoleta Alt Bold`,
+      font: `normal ${theme.spacing(1.6)} Recoleta Alt Bold`,
     },
   },
   subHeading: {
     font: `normal ${theme.typography.fontWeightBold} ${theme.spacing(
       1.4
-    )}px Work Sans`,
+    )} Work Sans`,
     lineHeight: '16px',
     letterSpacing: '0.02em',
     color: 'var(--secondary-black)',
     margin: '10px 0px',
     [theme.breakpoints.down('xs')]: {
-      font: `normal ${theme.spacing(1.4)}px Work Sans SemiBold`,
+      font: `normal ${theme.spacing(1.4)} Work Sans SemiBold`,
     },
   },
   cardName: {
     font: `normal ${theme.typography.fontWeightMedium} ${theme.spacing(
       1.4
-    )}px Work Sans`,
+    )} Work Sans`,
     lineHeight: '16px',
     letterSpacing: '0.02em',
     color: 'var(--secondary-black)',
     [theme.breakpoints.down('xs')]: {
-      font: `normal ${theme.spacing(1.4)}px Work Sans Medium`,
+      font: `normal ${theme.spacing(1.4)} Work Sans Medium`,
     },
   },
   reviews: {
     font: `normal ${theme.typography.fontWeightMedium} ${theme.spacing(
       1.4
-    )}px Work Sans`,
+    )} Work Sans`,
     lineHeight: '19px',
     color: 'var(--secondary-black)',
     margin: theme.spacing(1, 0),
     inlineSize: '100%',
     overflowWrap: 'break-word',
     [theme.breakpoints.down('xs')]: {
-      font: `normal ${theme.spacing(1.4)}px Work Sans Regular`,
+      font: `normal ${theme.spacing(1.4)} Work Sans Regular`,
     },
   },
   headContainer: {
@@ -79,12 +79,12 @@ const useStyles = makeStyles((theme: Theme) => ({
   button: {
     font: `normal ${theme.typography.fontWeightBold} ${theme.spacing(
       1.4
-    )}px Work Sans`,
+    )} Work Sans`,
     lineHeight: '16px',
     color: 'var(--main-opacity)',
     cursor: 'pointer',
     [theme.breakpoints.down('xs')]: {
-      font: `normal ${theme.spacing(1.4)}px Work Sans SemiBold`,
+      font: `normal ${theme.spacing(1.4)} Work Sans SemiBold`,
     },
   },
   reviewNameContainer: {
@@ -109,11 +109,11 @@ const useStyles = makeStyles((theme: Theme) => ({
     margin: theme.spacing(1, 0, 0, 0),
     font: `normal ${theme.typography.fontWeightMedium} ${theme.spacing(
       1.4
-    )}px Work Sans`,
+    )} Work Sans`,
     lineHeight: '16px',
     [theme.breakpoints.down('xs')]: {
       margin: theme.spacing(1.5, 0, 0, 0),
-      font: `normal ${theme.spacing(1.4)}px Work Sans Regular`,
+      font: `normal ${theme.spacing(1.4)} Work Sans Regular`,
     },
   },
   starContainer: {
@@ -129,21 +129,21 @@ const useStyles = makeStyles((theme: Theme) => ({
     margin: theme.spacing(1, 0),
     font: `normal ${theme.typography.fontWeightBold} ${theme.spacing(
       1.6
-    )}px Work Sans`,
+    )} Work Sans`,
     lineHeight: '19px',
     color: 'var(--secondary-black)',
     [theme.breakpoints.down('xs')]: {
-      font: `normal ${theme.spacing(1.4)}px Work Sans Medium`,
+      font: `normal ${theme.spacing(1.4)} Work Sans Medium`,
     },
   },
   detail: {
     font: `normal ${theme.typography.fontWeightMedium} ${theme.spacing(
       1.3
-    )}px Work Sans`,
+    )} Work Sans`,
     lineHeight: '15px',
     color: 'var(--light-gray)',
     [theme.breakpoints.down('xs')]: {
-      font: `normal ${theme.spacing(1.2)}px Work Sans Regular`,
+      font: `normal ${theme.spacing(1.2)} Work Sans Regular`,
     },
   },
   yesNoButtonContainer: {
@@ -179,7 +179,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
   reportText: {
     borderRadius: '4px',
-    font: `normal 600 ${theme.spacing(1.2)}px Work Sans !important`,
+    font: `normal 600 ${theme.spacing(1.2)} Work Sans !important`,
     cursor: 'pointer',
     color: 'var(--main-opacity)',
     lineHeight: '16px',
@@ -258,7 +258,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     // cursor: "pointer",
   },
   messageHeading: {
-    font: `normal 700 ${theme.spacing(2.0)}px Work Sans`,
+    font: `normal 700 ${theme.spacing(2.0)} Work Sans`,
     color: 'var(--black300)',
     lineHeight: '28px',
     marginBottom: '9px',

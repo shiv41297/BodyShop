@@ -14,7 +14,7 @@ const useStyles = makeStyles((theme: Theme) =>
             justifyContent: "flex-end",
             font: `normal ${theme.typography.fontWeightBold} ${theme.spacing(
                 1.5
-            )}px Wrok Sans`,
+            )} Wrok Sans`,
             "& .MuiInput-underline:after": {
                 border: "none",
             },
@@ -25,7 +25,7 @@ const useStyles = makeStyles((theme: Theme) =>
             "& .MuiInput-input": {
                 font: `normal ${theme.typography.fontWeightBold} ${theme.spacing(
                     2
-                )}px Druk`,
+                )} Druk`,
                 marginLeft: theme.spacing(2),
                 lineHeight: "23px",
             },

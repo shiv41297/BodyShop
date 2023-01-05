@@ -14,9 +14,22 @@ export default ProductListingWrapper;
 
 export const getServerSideProps = wrapper.getServerSideProps((store) =>
   //@ts-ignore-
-  async ({ req, res }) => {
-    console.log(req, "request");
-    await store.dispatch(getProductList());
+  async ({ req, res, query, params }) => {
+
+    console.log(query, params);
+    const actionparams = {
+      // customAttributes: [],
+      // otherFilters: [],
+      page: 1,
+      query: "",
+      // sortBy: "2",
+      urlKey: query?.slug,
+      authToken: req.cookies.authToken
+    };
+    console.log(actionparams.authToken, "authentication")
+
+    console.log("actionParams", actionparams);
+    await store.dispatch(getProductList(actionparams));
     return { props: {} };
   }
 );

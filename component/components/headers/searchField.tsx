@@ -40,7 +40,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   inputInput: {
     padding: theme.spacing(1.2, 1, 1.2, 0),
     // vertical padding + font size from searchIcon
-    paddingLeft: `calc(1em + ${theme.spacing(4)}px)`,
+    paddingLeft: `calc(1em + ${theme.spacing(4)})`,
     transition: theme.transitions.create("width"),
     [theme.breakpoints.up("md")]: {
       width: "20ch",

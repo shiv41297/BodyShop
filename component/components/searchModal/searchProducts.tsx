@@ -34,7 +34,7 @@ const useStyles : any = makeStyles((theme: Theme) => ({
     "& .MuiTypography-root": {
       font: `normal ${theme.typography.fontWeightBold} ${theme.spacing(
         1.5
-      )}px  Work Sans`,
+      )}  Work Sans`,
     },
   },
   divider: {
@@ -49,7 +49,7 @@ const useStyles : any = makeStyles((theme: Theme) => ({
   suggestions: {
     color: theme.palette.secondary.light,
     margin: theme.spacing(1.5, 0),
-    font: `normal 700 ${theme.spacing(1.5)}px Work Sans`,
+    font: `normal 700 ${theme.spacing(1.5)} Work Sans`,
     cursor: "pointer",
   },
 }));

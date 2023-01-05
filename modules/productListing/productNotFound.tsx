@@ -33,13 +33,13 @@ const useStyles = makeStyles((theme: Theme) =>
                 textAlign: "center",
                 font: `normal  ${theme.spacing(
                     2.0
-                )}px Recoleta Alt Bold `,
+                )} Recoleta Alt Bold `,
             }
         },
         description: {
             font: `normal  ${theme.spacing(
                 1.6
-            )}px Work Sans`,
+            )} Work Sans`,
             lineHeight: "25px",
             color: "#000000",
             textAlign: 'center',
@@ -49,7 +49,7 @@ const useStyles = makeStyles((theme: Theme) =>
                 width: '100%',
                 font: `normal  ${theme.spacing(
                     1.6
-                )}px Work Sans Medium `,
+                )} Work Sans Medium `,
             }
         },
         button: {
@@ -57,7 +57,7 @@ const useStyles = makeStyles((theme: Theme) =>
             [theme.breakpoints.down('xs')]: {
                 font: `normal  ${theme.spacing(
                     1.6
-                )}px Work Sans SemiBold !important`,
+                )} Work Sans SemiBold !important`,
             }
         }
     })

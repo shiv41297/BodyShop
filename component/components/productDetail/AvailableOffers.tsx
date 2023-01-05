@@ -16,24 +16,24 @@ const useStyles = makeStyles((theme: Theme) => ({
   heading: {
     font: `normal ${theme.typography.fontWeightBold} ${theme.spacing(
       1.8
-    )}px Recoleta Alt`,
+    )} Recoleta Alt`,
     lineHeight: '24px',
     letterSpacing: '0.02em',
     color: 'var(--secondary-black)',
     [theme.breakpoints.down('xs')]: {
-      font: `normal 700 ${theme.spacing(1.6)}px Recoleta Alt Bold`,
+      font: `normal 700 ${theme.spacing(1.6)} Recoleta Alt Bold`,
     },
   },
   title: {
     font: `normal ${theme.typography.fontWeightBold} ${theme.spacing(
       1.4
-    )}px Work Sans`,
+    )} Work Sans`,
     lineHeight: '16px',
     letterSpacing: '0.02em',
     color: 'var(--main-opacity)',
     margin: theme.spacing(0, 0.5),
     [theme.breakpoints.down('xs')]: {
-      font: `normal ${theme.spacing(1.4)}px Work Sans SemiBold`,
+      font: `normal ${theme.spacing(1.4)} Work Sans SemiBold`,
     },
   },
   mainContainer: {
@@ -70,21 +70,21 @@ const useStyles = makeStyles((theme: Theme) => ({
   details: {
     font: `normal ${theme.typography.fontWeightMedium} ${theme.spacing(
       1.4
-    )}px Work Sans`,
+    )} Work Sans`,
     lineHeight: '19px',
     margin: theme.spacing(1, 0),
     [theme.breakpoints.down('xs')]: {
-      font: `normal ${theme.spacing(1.4)}px Work Sans Medium`,
+      font: `normal ${theme.spacing(1.4)} Work Sans Medium`,
     },
   },
   valid: {
     font: `normal ${theme.typography.fontWeightMedium} ${theme.spacing(
       1.2
-    )}px Work Sans`,
+    )} Work Sans`,
     lineHeight: '19px',
     color: 'var(--light-gray)',
     [theme.breakpoints.down('xs')]: {
-      font: `normal ${theme.spacing(1.2)}px Work Sans Regular`,
+      font: `normal ${theme.spacing(1.2)} Work Sans Regular`,
     },
   },
   divider: {
@@ -107,7 +107,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     },
   },
   addNewCard: {
-    font: `normal ${theme.spacing(1.4)}px Work Sans`,
+    font: `normal ${theme.spacing(1.4)} Work Sans`,
     fontWeight: 600,
     lineHeight: '16px',
     textTransform: 'uppercase',

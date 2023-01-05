@@ -63,7 +63,7 @@ const useStyles = makeStyles((theme: Theme) =>
     heading: {
       font: `normal ${theme.spacing(
         2.8
-      )}px Recoleta Alt Bold`,
+      )} Recoleta Alt Bold`,
       color: "var(--white)",
       [theme.breakpoints.down("xs")]: {
         fontSize: theme.spacing(2.4),
@@ -76,7 +76,7 @@ const useStyles = makeStyles((theme: Theme) =>
     paragraph: {
       font: `normal ${theme.spacing(
         1.6
-      )}px Work Sans Regular`,
+      )} Work Sans Regular`,
       color: "var(--white)",
       margin: theme.spacing(1, 0),
       lineHeight: 1.5,
@@ -89,7 +89,7 @@ const useStyles = makeStyles((theme: Theme) =>
         borderRadius: 4,
         font: `normal ${theme.typography.fontWeightBold} ${theme.spacing(
           1.6
-        )}px Work Sans`,
+        )} Work Sans`,
         textTransform: "capitalize",
         padding: theme.spacing(1.5, 3),
         color: "var(--white)",

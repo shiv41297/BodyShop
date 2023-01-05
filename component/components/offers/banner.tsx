@@ -50,7 +50,7 @@ const useStyles = makeStyles((theme: Theme) =>
     heading: {
       font: `normal ${theme.typography.fontWeightBold} ${theme.spacing(
         6
-      )}px Druk`,
+      )} Druk`,
       color: "var(--white)",
       textAlign: "center",
       lineHeight: "70px",
@@ -59,7 +59,7 @@ const useStyles = makeStyles((theme: Theme) =>
       [theme.breakpoints.down("xs")]: {
         font: `normal ${theme.spacing(
           1.7
-        )}px Recoleta Alt Bold`,
+        )} Recoleta Alt Bold`,
         color: "#D6CD56",
         lineHeight: "32px",
         letterSpacing: "0.05em",
@@ -67,14 +67,14 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     routeName: {
       padding: theme.spacing(2, 0, 0, 1.5),
-      font: `normal ${theme.spacing(1.3)}px Work Sans`,
+      font: `normal ${theme.spacing(1.3)} Work Sans`,
       fontWeight: 600,
       lineHeight: "15px",
 
       color: "#FFFFFF",
     },
     subHeading: {
-      font: `normal  ${theme.spacing(1.6)}px Work Sans`,
+      font: `normal  ${theme.spacing(1.6)} Work Sans`,
       width: "678px",
       color: "var(--white)",
       textAlign: "center",
@@ -83,7 +83,7 @@ const useStyles = makeStyles((theme: Theme) =>
       [theme.breakpoints.down("xs")]: {
         width: "auto",
         marginLeft: "0px",
-        font: `normal  ${theme.spacing(1.1)}px Work Sans Medium`,
+        font: `normal  ${theme.spacing(1.1)} Work Sans Medium`,
         textAlign: "initial",
         letterSpacing: "0.02em",
         lineHeight: "12px"
@@ -94,7 +94,7 @@ const useStyles = makeStyles((theme: Theme) =>
         borderRadius: 2,
         font: `normal ${theme.typography.fontWeightBold} ${theme.spacing(
           1.6
-        )}px Work Sans`,
+        )} Work Sans`,
         textTransform: "capitalize",
         padding: theme.spacing(2, 4),
         color: "var(--white)",
@@ -133,7 +133,7 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     breadcrumb: {
       padding: theme.spacing(2, 0, 0, 1.5),
-      font: `normal ${theme.spacing(1.3)}px Work Sans`,
+      font: `normal ${theme.spacing(1.3)} Work Sans`,
       fontWeight: 600,
       lineHeight: "15px",
       color: "#FFFFFF",

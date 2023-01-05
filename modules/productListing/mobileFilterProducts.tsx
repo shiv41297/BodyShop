@@ -62,7 +62,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     "& .MuiTypography-body1": {
       font: `normal ${theme.typography.fontWeightBold} ${theme.spacing(
         2
-      )}px Druk`,
+      )} Druk`,
       marginLeft: theme.spacing(2),
       lineHeight: "23px",
     },
@@ -87,7 +87,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     justifyContent: "flex-end",
     font: `normal ${theme.typography.fontWeightBold} ${theme.spacing(
       1.5
-    )}px Wrok Sans`,
+    )} Wrok Sans`,
     "& .MuiInput-underline:after": {
       border: "none",
     },
@@ -98,7 +98,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     "& .MuiInput-input": {
       font: `normal ${theme.typography.fontWeightBold} ${theme.spacing(
         2
-      )}px Druk`,
+      )} Druk`,
       marginLeft: theme.spacing(2),
       lineHeight: "23px",
     },
@@ -114,7 +114,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   carouselHeading: {
     font: `normal ${theme.typography.fontWeightBold} ${theme.spacing(
       2.4
-    )}px  Recoleta Alt`,
+    )}  Recoleta Alt`,
     color: "#084236",
     lineHeight: 1.5,
     marginBottom: theme.spacing(0.5),
@@ -133,7 +133,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     "& .MuiTypography-body1": {
       font: `normal ${theme.typography.fontWeightBold} ${theme.spacing(
         2
-      )}px  Druk`,
+      )}  Druk`,
 
       lineHeight: "23px",
       letterSpacing: "0.04em",
@@ -150,7 +150,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
   link: {
     color: "lightblue",
-    font: `normal 400 ${theme.spacing(2)}px  Work Sans`,
+    font: `normal 400 ${theme.spacing(2)}  Work Sans`,
     cursor: "pointer",
   },
   searchDivComponent: {
@@ -258,17 +258,17 @@ function MobileFilterProducts() {
       getOffset(document.querySelector("#mobile-prod-container")) - 100;
   };
 
-  const urlKey = location.pathname.includes("/c/")
-    ? location.pathname.split("/c/")?.[0]?.split("/")?.pop()
-    : location.pathname.includes("/h/")
-    ? location.pathname.split("/h/")?.[0]?.split("/")?.pop()
-    : "";
+  // const urlKey = location.pathname.includes("/c/")
+  //   ? location.pathname.split("/c/")?.[0]?.split("/")?.pop()
+  //   : location.pathname.includes("/h/")
+  //   ? location.pathname.split("/h/")?.[0]?.split("/")?.pop()
+  //   : "";
 
   let obj: any = {
     query: keyword,
     page,
     sortBy: sortingData[0]?.id?.toString(),
-    urlKey,
+    // urlKey,
     limit: 18,
     otherFilters: [],
     customAttributes: [],
@@ -301,7 +301,11 @@ function MobileFilterProducts() {
     //       : null
     //   )
     // );
-  }, [keyword, urlKey]);
+  }, [
+    keyword,
+
+    // urlKey
+  ]);
 
   useEffect(() => {
     if (queryFilters) {

@@ -35,7 +35,7 @@ const useStyles : any= makeStyles((theme: Theme) => (
             flexDirection: "column",
             justifyContent: "center",
             "& .MuiTypography-root": {
-                font: `normal ${theme.typography.fontWeightBold} ${theme.spacing(1.5)}px  Work Sans`,
+                font: `normal ${theme.typography.fontWeightBold} ${theme.spacing(1.5)}  Work Sans`,
             },
         },
         divider: {
