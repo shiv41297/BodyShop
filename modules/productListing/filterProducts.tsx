@@ -248,7 +248,7 @@ function FilterProducts() {
 
   useEffect(() => {
     window.scrollTo(0, 400);
-    dispatch(showSkeleton());
+    // dispatch(showSkeleton());
 
     let sort = findSortingData(queryFilters?.sortBy);
     setSorting(sort);
@@ -287,7 +287,7 @@ function FilterProducts() {
     window.scrollTo(0, 0);
     let params: any = { page, limit: 10, type: "history" };
     if (authToken) {
-      dispatch(showSkeleton());
+      // dispatch(showSkeleton());
       dispatch(
         getOthersRecommendations(params, () => {
           dispatch(hideSkeleton());
@@ -350,7 +350,7 @@ function FilterProducts() {
 
     if (item) {
       window.scrollTo(0, 400);
-      dispatch(showLoader());
+      // dispatch(showLoader());
       dispatch(
         getProductList(payload, false, () => {
           dispatch(hideLoader());
@@ -383,7 +383,7 @@ function FilterProducts() {
       urlKey,
     };
     setApiParams(payload);
-    dispatch(showLoader());
+    // dispatch(showLoader());
     dispatch(
       getProductList(payload, false, () => {
         dispatch(hideLoader());

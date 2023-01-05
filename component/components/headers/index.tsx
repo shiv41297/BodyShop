@@ -1,4 +1,3 @@
-
 import Utils from "../../utils";
 import React, { useEffect, useState } from "react";
 // import MobileHeader from "./mobileHeader";
@@ -27,75 +26,77 @@ import Image from "next/image";
 //   LOCATION,
 // } from "utils/constantImages";
 import { makeStyles } from "@mui/styles";
-import { showSkeleton, getHomeData, hideSkeleton } from "../../../store/home/action";
+import {
+  showSkeleton,
+  getHomeData,
+  hideSkeleton,
+} from "../../../store/home/action";
 
 // import { getUserProfile } from "../../pages/account/profile/action";
 // import { getDashboardData } from "../../pages/account/lybc/action";
 
-const useStyles: any = makeStyles((theme: Theme) =>
-  ({
-    stickyHeader: {
-      position: "fixed",
-      width: "100%",
-      top: 0,
-      zIndex: theme.zIndex.appBar,
-    },
-    headerRoot: {
-      backgroundColor: "var(--primary)",
-      padding: theme.spacing(1, 2),
-      // zIndex: theme.zIndex.appBar,
-    },
-    gridContainer: {
-      margin: theme.spacing(0, "auto"),
-      maxWidth: "var(--max-width)",
-    },
+const useStyles: any = makeStyles((theme: Theme) => ({
+  stickyHeader: {
+    position: "fixed",
+    width: "100%",
+    top: 0,
+    zIndex: theme.zIndex.appBar,
+  },
+  headerRoot: {
+    backgroundColor: "var(--primary)",
+    padding: theme.spacing(1, 2),
+    // zIndex: theme.zIndex.appBar,
+  },
+  gridContainer: {
+    margin: theme.spacing(0, "auto"),
+    maxWidth: "var(--max-width)",
+  },
 
-    leftStores: {
-      display: "flex",
-      alignItems: "center",
+  leftStores: {
+    display: "flex",
+    alignItems: "center",
+  },
+  locationImg: {
+    width: 15,
+    cursor: "pointer",
+  },
+  stores: {
+    color: "var(--white)",
+    marginLeft: theme.spacing(1),
+    cursor: "pointer",
+  },
+  centerLogo: {
+    textAlign: "center",
+  },
+  rightIcon: {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "space-evenly",
+  },
+  Img: {
+    cursor: "pointer",
+    display: "inline-block",
+  },
+  badge: {
+    color: "var(--white)",
+    "& .MuiBadge-badge": {
+      fontSize: 15,
+      top: -5,
+      right: -2,
     },
-    locationImg: {
-      width: 15,
-      cursor: "pointer",
-    },
-    stores: {
-      color: "var(--white)",
-      marginLeft: theme.spacing(1),
-      cursor: "pointer",
-    },
-    centerLogo: {
-      textAlign: "center",
-    },
-    rightIcon: {
-      display: "flex",
-      alignItems: "center",
-      justifyContent: "space-evenly",
-    },
-    Img: {
-      cursor: "pointer",
-      display: "inline-block",
-    },
-    badge: {
-      color: "var(--white)",
-      "& .MuiBadge-badge": {
-        fontSize: 15,
-        top: -5,
-        right: -2,
-      },
-    },
-    messageHeading: {
-      font: `normal 700 ${theme.spacing(2.0)}px Work Sans`,
-      color: "var(--black300)",
-      lineHeight: "28px",
-      marginBottom: "9px",
+  },
+  messageHeading: {
+    font: `normal 700 ${theme.spacing(2.0)}px Work Sans`,
+    color: "var(--black300)",
+    lineHeight: "28px",
+    marginBottom: "9px",
 
-      // margin: theme.spacing(0.8, 0),
-    },
-    cursor: {
-      cursor: "pointer",
-    },
-  })
-);
+    // margin: theme.spacing(0.8, 0),
+  },
+  cursor: {
+    cursor: "pointer",
+  },
+}));
 
 const Headers = () => {
   const classes = useStyles();
@@ -171,32 +172,28 @@ const Headers = () => {
     window.scrollTo(0, 0);
     // if (authToken) {
     //   if (!menuData.length) {
-        let url = Utils.CommonFunctions.replaceUrlParams(
-          Utils.endPoints.MENU_LIST,
-          obj
-        );
-        request
-          .get(url)
-          .then((resp) => {
-            let menuRespData = resp?.data?.data.filter(
-              (value: any, _index: number) => value.id !== null
-            );
-            console.log("menudata", menuRespData);
-            setMenusData(menuRespData);
-            console.log(menuData);
-            dispatch({
-              type: Utils.ActionName.MENU_DATA,
-              payload: { menuData: menuRespData },
-            });
-          })
+    let url = Utils.CommonFunctions.replaceUrlParams(
+      Utils.endPoints.MENU_LIST,
+      obj
+    );
+    request.get(url).then((resp) => {
+      let menuRespData = resp?.data?.data.filter(
+        (value: any, _index: number) => value.id !== null
+      );
+      console.log("menudata", menuRespData);
+      setMenusData(menuRespData);
+      console.log(menuData);
+      dispatch({
+        type: Utils.ActionName.MENU_DATA,
+        payload: { menuData: menuRespData },
+      });
+    });
 
-          // .catch((_err) => {});
+    // .catch((_err) => {});
     //   }
-     
+
     // }
   }, []);
-
-  
 
   const redirectToHome = () => {
     dispatch(showSkeleton());
@@ -209,7 +206,6 @@ const Headers = () => {
     );
     history.push("/");
   };
- 
 
   return (
     <>
@@ -242,7 +238,12 @@ const Headers = () => {
                     className={classes.locationImg}
                     onClick={() => history.push(Utils.routes.STORE)}
                   >
-                    <Image src={Utils.images.LOCATION} alt="location" width={20} height={20} />
+                    <Image
+                      src={Utils.images.LOCATION}
+                      alt="location"
+                      width={20}
+                      height={20}
+                    />
                   </div>
 
                   <Typography
@@ -258,7 +259,12 @@ const Headers = () => {
                 <div className={classes.centerLogo}>
                   <div className={classes.Img} onClick={redirectToHome}>
                     {/* <LOGO /> */}
-                    <Image src={Utils.images.LOGO} alt="logo" width={51} height={51} />
+                    <Image
+                      src={Utils.images.LOGO}
+                      alt="logo"
+                      width={51}
+                      height={51}
+                    />
                   </div>
                 </div>
               </Grid>
@@ -266,7 +272,12 @@ const Headers = () => {
                 <div className={classes.rightIcon}>
                   <div className={classes.Img} onClick={() => setOpen(true)}>
                     {/* <SEARCH /> */}
-                    <Image src={Utils.images.SEARCH} alt="search" width={21} height={21} />
+                    <Image
+                      src={Utils.images.SEARCH}
+                      alt="search"
+                      width={21}
+                      height={21}
+                    />
                   </div>
 
                   <div>
@@ -280,7 +291,12 @@ const Headers = () => {
                         }}
                       >
                         {/* <HEART_FILLED /> */}
-                        <Image src={Utils.images.HEART_FILLED} alt="HEART_FILLED" width={21} height={21} />
+                        <Image
+                          src={Utils.images.HEART_FILLED}
+                          alt="HEART_FILLED"
+                          width={21}
+                          height={21}
+                        />
                       </span>
                     </Badge>
                   </div>
@@ -303,7 +319,12 @@ const Headers = () => {
                     // }}
                   >
                     {/* <PROFILE /> */}
-                    <Image src={Utils.images.PROFILE} alt="profile" width={21} height={21}/>
+                    <Image
+                      src={Utils.images.PROFILE}
+                      alt="profile"
+                      width={21}
+                      height={21}
+                    />
                   </div>
                   <div>
                     <Badge badgeContent={totalItems} className={classes.badge}>
@@ -312,7 +333,12 @@ const Headers = () => {
                         onClick={() => history.push("/shopping-bag")}
                       >
                         {/* <CART /> */}
-                        <Image src={Utils.images.CART} alt="cart" width={21} height={21}/>
+                        <Image
+                          src={Utils.images.CART}
+                          alt="cart"
+                          width={21}
+                          height={21}
+                        />
                       </span>
                     </Badge>
                   </div>

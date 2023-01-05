@@ -13,7 +13,7 @@ import Footer from "../component/components/footers";
 import "../styles/globals.css";
 import "react-multi-carousel/lib/styles.css";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
-import { StylesProvider, createGenerateClassName } from '@mui/styles';
+import { StylesProvider, createGenerateClassName } from "@mui/styles";
 import { Box } from "@mui/material";
 import MediaFooter from "../component/components/footers/mediaFooter";
 // Client-side cache, shared for the whole session of the user in the browser.
@@ -24,7 +24,7 @@ interface MyAppProps extends AppProps {
 }
 
 const generateClassName = createGenerateClassName({
-  productionPrefix: 'c',
+  productionPrefix: "c",
 });
 
 function MyApp({
@@ -39,20 +39,18 @@ function MyApp({
         <meta name="viewport" content="initial-scale=1, width=device-width" />
         <link rel="icon" href="/favicon.svg" />
       </Head>
-     
+
       <Provider store={store}>
         <ThemeProvider theme={theme}>
           <CssBaseline />
           <StylesProvider generateClassName={generateClassName}>
-
-          <Headers />
-          <Box sx={{ marginTop: "90px" }}>
-            <Component {...props.pageProps} />
-          </Box>
-          <MediaFooter />
-          <Footer />
+            <Headers />
+            <Box sx={{ marginTop: "90px" }}>
+              <Component {...props.pageProps} />
+            </Box>
+            <MediaFooter />
+            <Footer />
           </StylesProvider>
-
         </ThemeProvider>
       </Provider>
     </CacheProvider>
