@@ -2,8 +2,8 @@
 import { Tabs, Tab } from '@mui/material';
 import { useEffect, useState } from 'react';
 // import { useHistory, useParams } from 'react-router-dom';
-import { createStyles, Theme } from '@mui/material';
-import { makeStyles } from '@mui/styles';
+import { Theme } from '@mui/material';
+import { makeStyles, createStyles } from '@mui/styles';
 // import Utils from '../../utils';
 // import { useLocation } from 'react-router-dom';
 // import { ReducersModal } from '../../models';

@@ -16,10 +16,9 @@ import MoreToShop from "../component/components/pagesComponents/home/moreToShop"
 import Testimonial from "../component/components/pagesComponents/home/testimonial";
 import { ReducersModal } from "../component/models";
 import Utils from "../component/utils";
-import { getHomeData } from "../store/home/action";
+import { getHomeData} from "../store/home/action";
 import { wrapper } from "../store/store";
-import { Button } from "@mui/material";
-import { getProductList } from "../modules/productListing/action";
+
 import { PageMeta } from "../component/page-meta/PageMeta";
 
 const useStyles: any = makeStyles((theme: Theme) => ({
@@ -43,6 +42,9 @@ const Index = () => {
   const homeData = stateData;
   const dispatch: any = useDispatch();
   const history = useRouter();
+
+ 
+
 
   const [sortedHomedata, setSortedHomedata] = useState<any>([]);
   // const getRateOrdersData = () => {
@@ -295,7 +297,7 @@ export const getServerSideProps = wrapper.getServerSideProps((store) =>
   //@ts-ignore-
   async ({ req, res }) => {
     // await store.dispatch(getHomeData(req.cookies.authToken));
-    await store.dispatch(getHomeData());
+    await store.dispatch(getHomeData(req.cookies.authToken));
     return { props: {} };
   }
 );

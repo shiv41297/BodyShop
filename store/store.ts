@@ -6,7 +6,6 @@ import { composeWithDevTools } from "redux-devtools-extension";
 import thunk from "redux-thunk";
 import counter from "./counter/reducer";
 import users from "./user/reducer";
-
 import aboutReducer from "./about/aboutReducer";
 import { productReducer } from "../modules/productListing/reducer";
 import { configReducer, homeReducer, loadingReducer } from "./home/reducer";
@@ -46,4 +45,11 @@ export const initStore = () => {
   );
 };
 
+
+export const store = initStore();
+
+
+
 export const wrapper = createWrapper(initStore);
+
+

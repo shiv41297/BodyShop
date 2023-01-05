@@ -46,7 +46,7 @@ const ProductListing = () => {
   return (
     <div id={'banner-id'}>
       {!keyword && (
-        <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
+        <Box sx={{ display: { md: 'none', sm: 'block' } }}>
           <MobileMenu />
         </Box>
       )}

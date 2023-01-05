@@ -47,8 +47,8 @@ const filterDataForMobile = (data: any) => {
   return mobileData;
 };
 
-export const getHomeData = () => async (dispatch: any) => {
-  let resp = await request.get(Utils.endPoints.HOME);
+export const getHomeData = (token: any) => async (dispatch: any) => {
+  let resp = await request.get(Utils.endPoints.HOME, { headers : {"Authorization" : "Bearer " + token}});
   if (resp) {
     const data = [...resp?.data?.data];
     // web home data
