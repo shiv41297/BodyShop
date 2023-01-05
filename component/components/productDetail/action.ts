@@ -1,107 +1,56 @@
 import Utils from '../../utils';
 import request from '../../utils/request';
 import { getShoppingBagList } from '../../common/addToCart/action';
-import { hideLoader, hideSkeleton, showLoader } from '../../../store/home/action';
+import {
+  hideLoader,
+  hideSkeleton,
+  showLoader,
+} from '../../../store/home/action';
 
-// import { hideLoader, hideSkeleton, showLoader } from "../../component/components/pagesComponents/home/actions";
 
+export const getProductData =
+  (req: any, params: any) => async (dispatch: any) => {
+    let url = Utils.endPoints.PRODUCT_DATA;
+    let { category, subcategory, googleKey } = params;
+    // googleKey = googleKey ? googleKey : 64;
+    // console.log( category, subcategory, googleKey,"<===googleKey",params);
 
-export const getProductData = () => async (dispatch: any) =>{
-    let resp = await request.get(`https://bodyshopstgapi.appskeeper.in/product-service/api/v1/products?subcategoryId=0&urlKey=aloe-soothing-day-cream-config`)
-      if (resp) {
-        var product = resp.data.data;
-        var selectedVariant = null;
-        var selectedVariantData: any = null;
-        if (product?.type === 'configurable') {
-          const links = product?.configurableProductLinks?.sort(
-            (a: any, b: any) => a?.price - b?.price
-          );
-          selectedVariantData =
-            links?.find((item: any) => item.isInStock) ||
-            product?.configurableProductLinks[0];
-          const values = product?.configurableProductOptions?.[0]?.values;
-          selectedVariant = values.find(
-            (item: any) =>
-              item?.label?.toLowerCase() ===
-              selectedVariantData?.value?.toLowerCase()
-          );
-        } else {
-          selectedVariantData = product;
-          // selectedVariant = product?.configurableProductOptions?.[0].values.find((item: any) => item?.label?.toLowerCase() === selectedVariantData?.value?.toLowerCase())
-        }
-        // dispatch({
-        //   type: "getProductData",
-        //   payload: product,
-        // });
-        dispatch({
-          type: 'getProductData',
-          payload: {
-            ...resp.data.data,
-            selectedVariant,
-            selectedVariantData,
-          },
-        });
+    // https://bodyshopstgapi.appskeeper.in/product-service/api/v1/products?subcategoryId=8&urlKey=aloe-soothing-day-cream-config
+    let resp = await request.get(
+      // 'https://bodyshopstgapi.appskeeper.in/product-service/api/v1/products?subcategoryId=8&urlKey=aloe-soothing-day-cream-config'
+      `https://bodyshopstgapi.appskeeper.in/${Utils.endPoints.PRODUCT_DATA}?subcategoryId=8&urlKey=${subcategory}`
+      );
+     
+      
+    if (resp) {
+      var product = resp?.data?.data;
+      var selectedVariant = null;
+      var selectedVariantData: any = null;
+      if (product?.type === 'configurable') {
+        const links = product?.configurableProductLinks?.sort(
+          (a: any, b: any) => a?.price - b?.price
+        );
+        selectedVariantData =
+          links?.find((item: any) => item.isInStock) ||
+          product?.configurableProductLinks[0];
+        const values = product?.configurableProductOptions?.[0]?.values;
+        selectedVariant = values.find(
+          (item: any) =>
+            item?.label?.toLowerCase() ===
+            selectedVariantData?.value?.toLowerCase()
+        );
+      } else {
+        selectedVariantData = product;
       }
-      // .then((resp: any) => {
-      //   console.log( resp.data.data);
-      //   var product = resp.data.data?.product;
-      //   var selectedVariant = null;
-      //   var selectedVariantData: any = null;
-
-        
-      //   // if (selectedVariantData?.type === "configurable") {
-      //   //   let defaultVariantIndex = selectedVariantData?.configurableProductLinks?.findIndex((item: any) => item.isInStock)
-      //   //   defaultVariantIndex = defaultVariantIndex > -1 ? defaultVariantIndex : 0
-      //   //   selectedVariant = selectedVariantData?.configurableProductOptions?.[0].values[defaultVariantIndex]
-      //   //   selectedVariantData = selectedVariantData?.configurableProductLinks?.[defaultVariantIndex]
-      //   // }
-      //   // if (product?.type === 'configurable') {
-      //   //   const links = product?.configurableProductLinks?.sort(
-      //   //     (a: any, b: any) => a?.price - b?.price
-      //   //   );
-      //   //   selectedVariantData =
-      //   //     links?.find((item: any) => item.isInStock) ||
-      //   //     product?.configurableProductLinks[0];
-      //   //   const values = product?.configurableProductOptions?.[0]?.values;
-      //   //   selectedVariant = values.find(
-      //   //     (item: any) =>
-      //   //       item?.label?.toLowerCase() ===
-      //   //       selectedVariantData?.value?.toLowerCase()
-      //   //   );
-      //   // } else {
-      //   //   selectedVariantData = product;
-      //   //   // selectedVariant = product?.configurableProductOptions?.[0].values.find((item: any) => item?.label?.toLowerCase() === selectedVariantData?.value?.toLowerCase())
-      //   // }
-      //   // dispatch({
-      //   //   type: 'getProductData',
-      //   //   payload: {
-      //   //     ...resp.data.data,
-      //   //     selectedVariant,
-      //   //     selectedVariantData,
-      //   //   },
-      //   // });
-      //   // if (callback) callback(resp?.data?.data);
-
-      //   // dispatch({
-      //   //   type: 'getProductData',
-      //   //   payload: { ...resp.data.data }
-      //   // });
-      //   // dispatch(hideLoader())
-      // })
-      // .catch((_err) => {
-      //   // dispatch(hideLoader());
-      //   // dispatch(hideSkeleton());
-      //   // dispatch({
-      //   //   type: 'show-alert',
-      //   //   payload: {
-      //   //     type: 'error',
-      //   //     message: 'Product not found',
-      //   //   },
-      //   // });
-      //   // dispatch({
-      //   //   type: 'productNotFound',
-      //   // });
-      // });
+      dispatch({
+        type: 'getProductData',
+        payload: {
+          ...product,
+          selectedVariant,
+          selectedVariantData,
+        },
+      });
+    }
   };
 
 export const addToBag = (payload: any) => {

@@ -1,7 +1,6 @@
+import { FC } from 'react';
 
-import { FC } from "react";
-
-import Head from "next/head";
+import Head from 'next/head';
 
 export type Props = {
   title?: string;
@@ -10,7 +9,7 @@ export type Props = {
   keywords?: string;
 };
 
-const cutTags = (text = "") => text.replace(/<\/?.+?>/gi, "");
+const cutTags = (text = '') => text.replace(/<\/?.+?>/gi, '');
 
 const prepareData = ({ title, description, image, keywords }: Props) => ({
   title: cutTags(title),
@@ -25,7 +24,6 @@ const PageMeta: FC<Props> = (props: Props) => {
     <Head>
       {title ? <title>{title}</title> : <title>The BodyShop</title>}
 
-    
       <meta property="og:title" content={title} />
       <meta property="twitter:title" content={title} />
       {/* <meta name="robots" content="index, follow"/>  */}
@@ -34,7 +32,7 @@ const PageMeta: FC<Props> = (props: Props) => {
       {description && <meta name="og:description" content={description} />}
       {description && <meta name="twitter:description" content={description} />}
       {image && <meta property="og:image" content={image} />}
-      {keywords && <meta property="keywords" content={keywords} /> }
+      {keywords && <meta property="keywords" content={keywords} />}
     </Head>
   );
 };

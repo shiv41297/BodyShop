@@ -444,7 +444,6 @@ const ShoppingBagModal = (props: Props) => {
   );
 
   // let configs = configReducer?.generalConfigs
-console.log(itemNotInStock)
   const shoppingBagList: any = data?.items || [];
   const { toggleDrawer, visible, section } = props;
 
