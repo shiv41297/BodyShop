@@ -1,12 +1,13 @@
+// @ts-nocheck
 import React, { useEffect, useState } from "react";
 import {
-  makeStyles,
   Theme,
   Typography,
   Divider,
   Chip,
   Link,
 } from "@mui/material";
+import { makeStyles } from "@mui/styles";
 
 import { useDispatch, useSelector } from "react-redux";
 import { getProductList } from "./action";
@@ -96,7 +97,7 @@ const chipStyles = makeStyles((theme: Theme) => ({
 }));
 
 const StyledChip = (props: any) => {
-  const classes = chipStyles();
+  const classes = useStyles();
   return (
     <Chip
       deleteIcon={
@@ -115,7 +116,7 @@ interface Props {
 }
 
 const Filters: React.FC<any> = (props: Props) => {
-  const history = useHistory();
+  // const history = useHistory();
   const filters = useSelector(
     (state: ReducersModal) => state.productFilterReducer?.filters
   );
@@ -124,11 +125,11 @@ const Filters: React.FC<any> = (props: Props) => {
   const query = Utils.CommonFunctions.useQuery();
   let queryFilter = query?.get("filters") ?? "{}";
 
-  const urlKey = history?.location.pathname.includes("/c/")
-    ? history?.location.pathname.split("/c/")?.[0]?.split("/")?.pop()
-    : history?.location.pathname.includes("/h/")
-    ? history?.location.pathname.split("/h/")?.[0]?.split("/")?.pop()
-    : "";
+  // const urlKey = history?.location.pathname.includes("/c/")
+  //   ? history?.location.pathname.split("/c/")?.[0]?.split("/")?.pop()
+  //   : history?.location.pathname.includes("/h/")
+  //   ? history?.location.pathname.split("/h/")?.[0]?.split("/")?.pop()
+  //   : "";
 
   useEffect(() => {
     if (queryFilter) {
@@ -179,7 +180,7 @@ const Filters: React.FC<any> = (props: Props) => {
       //   dispatch(hideLoader())
       // }));
     }
-  }, [urlKey, props.obj.query]);
+  }, [ props.obj.query]);
 
   const dispatch = useDispatch();
 

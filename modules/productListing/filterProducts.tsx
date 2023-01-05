@@ -36,6 +36,8 @@ import { debug } from "util";
 
 import { customGa4Event } from "../../component/utils/gtag";
 import Head from "next/head";
+import Products from "./listProducts";
+import Filters from "./filters";
 
 declare global {
   interface Window {
@@ -414,7 +416,7 @@ function FilterProducts() {
               : "The Body Shop"
           }
         />
-        <link rel="canonical" href={window.location.href} />
+        {/* <link rel="canonical" href={window.location.href} /> */}
       </Head>
       <div className={classes.findContainer}>
         <div
@@ -531,16 +533,11 @@ function FilterProducts() {
                     />
                   </Grid>
                 </Grid>
-                {/* {!filters &&
-                  (!products?.data || products?.data?.length === 0) && (
-                    <Grid item xs={12} className={classes.productData}>
-                      {/* <ProductNotFound setParams={setApiParams} /> */}
-                    </Grid>
-                  )} */}
+                
               </div>
             </>
           )}
-          <div className={classes.filterFooter}>
+          {/* <div className={classes.filterFooter}>
             {skeletonLoader || Object.keys(recommendedData).length === 0 ? (
               <>
                 <Skeleton height={20} width={"40%"} />
@@ -557,7 +554,7 @@ function FilterProducts() {
                 <RecommendationCarousel type="plp" />
               </>
             ) : null}
-          </div>
+          </div> */}
         </div>
         {/* )} */}
       </div>

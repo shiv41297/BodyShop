@@ -542,6 +542,7 @@ const ProductDetail = (props: any) => {
             : 'The Body Shop'
         }
         // canonicalUrl={URL + props.location.pathname}
+        //@ts-ignore
         canonicalUrl={
           URL +
           `face/face-masks/hemp-overnight-nourishing-rescue-mask-config/p/undefined`
