@@ -2,6 +2,8 @@ import React from 'react';
 import { makeStyles } from '@mui/styles';
 import { useSelector } from 'react-redux';
 import { Divider, Theme, Typography, Skeleton } from '@mui/material';
+import Image from 'next/image';
+import Utils from '../../utils';
 // import { ReducersModal } from "../../models";
 // import { CRUELTY_ICON, RETURN_ICON, VEGAN_ICON } from "../../utils/images";
 
@@ -40,17 +42,17 @@ const useStyles: any = makeStyles((theme: Theme) => ({
 const options = [
   {
     id: 1,
-    // img: <VEGAN_ICON />,
+    img: `${Utils.images.VEGAN_ICON}`,
     text: '100% Vegetarian',
   },
   {
     id: 2,
-    // img: <CRUELTY_ICON />,
+    img: `${Utils.images.CRUELTY_ICON}`,
     text: 'Cruelty Free',
   },
   {
     id: 3,
-    // img: <RETURN_ICON />,
+    img: `${Utils.images.RETURN_ICON}`,
     text: 'Easy Return',
   },
 ];
@@ -72,7 +74,9 @@ const Return = () => {
           {options.map((items: any) => (
             <React.Fragment key={items.id}>
               <div>
-                <div className={classes.iconsContainer}>{items.img}</div>
+                <div className={classes.iconsContainer}>
+                  <Image src={items.img} alt="vegan" height={25} width={25} />
+                </div>
                 <Typography className={classes.text}>{items.text}</Typography>
               </div>
               <Divider

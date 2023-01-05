@@ -726,11 +726,13 @@ const Product = (props: Props) => {
               : classes.freeSampleImgDiv
           }
         >
-          {section !== 'cart' ? (
+          {section !== "cart" ? (
             <>
-              {props.section === 'plp' ? (
-                <div className={`${addActive ? 'active' : ''}`}>
-                  <div className={'content'} onClick={handleContentClick}>
+              {props.section === "plp" ? (
+                <div
+                  className={`${addActive ? "active" : ""}`}
+                >
+                  <div className={"content"} onClick={handleContentClick}>
                     <IconButton
                       aria-label="favorite"
                       className={classes.heartImg}
@@ -741,32 +743,33 @@ const Product = (props: Props) => {
                           else showLoginAlert(true);
                       }}
                     >
-                      {/* {like ? (
-                        <FAVORITE_ICON />
+                      {like ? (
+                        <img src={Utils.images.FAVORITE_ICON} alt="heart" />
                       ) : (
-                        <HEART />
-                      )} */}
-                      "pending"
+                        <img src={Utils.images.HEART} alt="heart" />
+                      )}
                     </IconButton>
                     <span className="perticles-circle"></span>
                   </div>
                 </div>
               ) : (
-                <div
-                  className={classes.heartImg2}
+
+                <div className={classes.heartImg2}
                   onClick={() => {
                     if (isAuthenticated())
                       handleLike(like ? false : true, productData);
                     else showLoginAlert(true);
-                  }}
-                >
-                  {/* {like ? (
-                    <FAVORITE_ICON />
+                  }}>
+
+
+                  {like ? (
+                    <img src={Utils.images.FAVORITE_ICON} alt="heart" />
                   ) : (
-                    <HEART />
-                  )} */}
-                  "pending"
+                    <img src={Utils.images.HEART} alt="heart" />
+                  )}
                 </div>
+
+
               )}
             </>
           ) : null}
