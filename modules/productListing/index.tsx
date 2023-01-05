@@ -1,16 +1,16 @@
-import { useEffect } from "react";
-import { screenViewed } from "../../component/utils/event/action";
-import events from "../../component/utils/event/constant";
+import { useEffect } from 'react';
+import { screenViewed } from '../../component/utils/event/action';
+import events from '../../component/utils/event/constant';
 /**
  * Components
  */
-import Banner from "./banner";
-import FilterProducts from "./filterProducts";
-import MobileMenu from "./mobileMenu";
-import MobileFilterProducts from "./mobileFilterProducts";
+import Banner from './banner';
+import FilterProducts from './filterProducts';
+import MobileMenu from './mobileMenu';
+import MobileFilterProducts from './mobileFilterProducts';
 // import { useParams } from "react-router-dom";
-import { useSelector } from "react-redux";
-import { useTheme } from "@mui/material";
+import { useSelector } from 'react-redux';
+import { Box, useTheme } from '@mui/material';
 // import { ReducersModal } from "../../models";
 
 const ProductListing = () => {
@@ -20,7 +20,7 @@ const ProductListing = () => {
   const URLPath = useSelector(
     (state: any) => state.productReducer?.data?.categoryData?.urlPath
   );
-  let keyword = params?.keyword ?? "";
+  let keyword = params?.keyword ?? '';
 
   const theme = useTheme();
 
@@ -28,34 +28,35 @@ const ProductListing = () => {
     /**
      * Event logger
      */
-    const URLPathArray = URLPath && URLPath.split("/");
+    const URLPathArray = URLPath && URLPath.split('/');
 
     if (URLPathArray && URLPathArray.length > 1) {
       screenViewed({
         ScreenName: events.SCREEN_SUB_CATEGORY_PLP,
-        CTGenerated: "WEB",
+        CTGenerated: 'WEB',
       });
     } else {
       screenViewed({
         ScreenName: keyword ? events.SCREEN_PLP_SEARCH : events.SCREEN_PLP,
-        CTGenerated: "WEB",
+        CTGenerated: 'WEB',
       });
     }
   }, [URLPath]);
 
   return (
-    <div id={"banner-id"}>
-      {/* {theme.breakpoints.up("sm") ? !keyword && <MobileMenu /> : null} */}
-      {/* {!keyword && <Hidden smUp></Hidden>} */}
+    <div id={'banner-id'}>
+      {!keyword && (
+        <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
+          <MobileMenu />
+        </Box>
+      )}
       <Banner />
-      {/* {theme.breakpoints.down("xs") ? <FilterProducts /> : null} */}
-
-      {/* <Hidden xsDown></Hidden> */}
-
-      {/* {theme.breakpoints.up("sm") ? <MobileFilterProducts /> : null} */}
-
-      {/* <ListProducts /> */}
-      <h1>Product Listing</h1>
+      <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
+        {/* <FilterProducts /> */}
+      </Box>
+      <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
+        {/* <MobileFilterProducts /> */}
+      </Box>
     </div>
   );
 };

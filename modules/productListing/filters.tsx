@@ -1,12 +1,13 @@
+// @ts-nocheck
 import React, { useEffect, useState } from "react";
 import {
-  makeStyles,
   Theme,
   Typography,
   Divider,
   Chip,
   Link,
 } from "@mui/material";
+import { makeStyles } from "@mui/styles";
 
 import { useDispatch, useSelector } from "react-redux";
 import { getProductList } from "./action";
@@ -96,7 +97,7 @@ const chipStyles = makeStyles((theme: Theme) => ({
 }));
 
 const StyledChip = (props: any) => {
-  const classes = chipStyles();
+  const classes = useStyles();
   return (
     <Chip
       deleteIcon={
@@ -115,7 +116,7 @@ interface Props {
 }
 
 const Filters: React.FC<any> = (props: Props) => {
-  const history = useHistory();
+  // const history = useHistory();
   const filters = useSelector(
     (state: ReducersModal) => state.productFilterReducer?.filters
   );

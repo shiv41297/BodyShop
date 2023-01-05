@@ -1,6 +1,10 @@
-import { makeStyles, createStyles, Theme, Button } from "@material-ui/core";
-import Utils from "../../utils";
-import { Link } from "react-router-dom";
+// @ts-nocheck
+import { createStyles, Theme, Button } from "@mui/material";
+import { makeStyles } from '@mui/styles';
+import Link from "next/link";
+import Utils from "../../component/utils";
+// import Utils from "../../utils";
+// import { Link } from "react-router-dom";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -84,7 +88,7 @@ export default function Article() {
                         null
 
                 ))} */}
-        <img src={Utils.images.PRODUCT_ONE} alt="img one" />
+        {/* <img src={Utils.images.PRODUCT_ONE} alt="img one" /> */}
         <div className={classes.productHover}>
           <div className={classes.imgBox}>
             {/* {Object(item && item?.customAttributes).map((key: any) => (

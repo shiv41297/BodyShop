@@ -1,22 +1,27 @@
-import { makeStyles, createStyles, Theme, Grid } from "@material-ui/core";
+//@ts-nocheck
+import { createStyles, Theme, Grid } from "@mui/material";
+import { makeStyles } from "@mui/styles";
 import _ from "lodash";
+import { useEffect } from "react";
 import { useSelector } from "react-redux";
-import Utils from "../../utils";
-import { ReducersModal } from "../../models";
+import Product from "../../component/common/product";
+import ProductNotFound from "./productNotFound";
+// import Utils from "../../utils";
+// import { ReducersModal } from "../../models";
 // import Skeleton from "@mui/material/Skeleton";
 
 /**
  * Components
  */
-import Pagination from "../../components/common/pagination/pagination";
-import Product from "../../components/common/product";
-import ProductNotFound from "./productNotFound";
-import SkeletonProductView from "../../components/common/skeletonList/skeletonProductView";
-import { useEffect, useState } from "react";
-import { showSkeleton } from "../home/actions";
-import { handleScrollHeight } from "../../utils/scroll";
-import { useHistory, useLocation } from "react-router";
-import { useParams } from "react-router-dom";
+// import Pagination from "../../components/common/pagination/pagination";
+// import Product from "../../components/common/product";
+// import ProductNotFound from "./productNotFound";
+// import SkeletonProductView from "../../components/common/skeletonList/skeletonProductView";
+// import { useEffect, useState } from "react";
+// import { showSkeleton } from "../home/actions";
+// import { handleScrollHeight } from "../../utils/scroll";
+// import { useHistory, useLocation } from "react-router";
+// import { useParams } from "react-router-dom";
 
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
@@ -56,27 +61,27 @@ interface Props {
 const MobileProducts: React.FC<any> = (props: Props) => {
     const classes = useStyles();
     const products = useSelector(
-        (state: ReducersModal) => state.productReducer?.data?.products
+        (state: any) => state.productReducer?.data?.products
     ) || {};
-    const params: any = useParams()
-    let keyword = params?.keyword ?? "";
+    // const params: any = useParams()
+    // let keyword = params?.keyword ?? "";
     // const [searchTerm, setSearchTerm] = useState<any>([])
     const recentSearch: any = localStorage.getItem('recentSearch');
     const IMAGE_URL = `${process.env.REACT_APP_MEDIA_URL}`;
     useEffect(() => {
         let parsedData: any = [];
         let data = JSON.parse(recentSearch)||[];
-        const isExisting =data && data.length > 0 ? data.find((p: any) => { if (p.name === keyword) return true }) : false;
+        // const isExisting =data && data.length > 0 ? data.find((p: any) => { if (p.name === keyword) return true }) : false;
         
         // setSearchTerm(JSON.parse(recentSearch))
-        if (!isExisting) {
-            if (keyword && products?.data?.length) {
-                let img:string = products?.data[0]?.image[0]?.file;
-                parsedData = [...data, { name: keyword, img: `${IMAGE_URL}catalog/product${img}` }];
+        // if (!isExisting) {
+        //     if (keyword && products?.data?.length) {
+        //         let img:string = products?.data[0]?.image[0]?.file;
+        //         parsedData = [...data, { name: keyword, img: `${IMAGE_URL}catalog/product${img}` }];
 
-                localStorage.setItem('recentSearch', JSON.stringify(parsedData));
-            }
-        }
+        //         localStorage.setItem('recentSearch', JSON.stringify(parsedData));
+        //     }
+        // }
     }, [products])
 
     // useEffect(() => {
