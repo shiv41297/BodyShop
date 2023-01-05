@@ -533,7 +533,6 @@ function FilterProducts() {
                     />
                   </Grid>
                 </Grid>
-                
               </div>
             </>
           )}

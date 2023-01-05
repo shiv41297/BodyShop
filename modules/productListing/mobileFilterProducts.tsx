@@ -258,17 +258,17 @@ function MobileFilterProducts() {
       getOffset(document.querySelector("#mobile-prod-container")) - 100;
   };
 
-  const urlKey = location.pathname.includes("/c/")
-    ? location.pathname.split("/c/")?.[0]?.split("/")?.pop()
-    : location.pathname.includes("/h/")
-    ? location.pathname.split("/h/")?.[0]?.split("/")?.pop()
-    : "";
+  // const urlKey = location.pathname.includes("/c/")
+  //   ? location.pathname.split("/c/")?.[0]?.split("/")?.pop()
+  //   : location.pathname.includes("/h/")
+  //   ? location.pathname.split("/h/")?.[0]?.split("/")?.pop()
+  //   : "";
 
   let obj: any = {
     query: keyword,
     page,
     sortBy: sortingData[0]?.id?.toString(),
-    urlKey,
+    // urlKey,
     limit: 18,
     otherFilters: [],
     customAttributes: [],
@@ -301,7 +301,11 @@ function MobileFilterProducts() {
     //       : null
     //   )
     // );
-  }, [keyword, urlKey]);
+  }, [
+    keyword,
+
+    // urlKey
+  ]);
 
   useEffect(() => {
     if (queryFilters) {

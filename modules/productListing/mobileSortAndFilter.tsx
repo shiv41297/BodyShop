@@ -42,7 +42,7 @@ const useStyles = makeStyles((theme: Theme) =>
       display: "flex",
       justifyContent: "space-between",
       alignItems: "center",
-      padding: "5px 0px"
+      padding: "5px 0px",
     },
     sortingContainer2: {
       position: "sticky",
@@ -59,7 +59,6 @@ const useStyles = makeStyles((theme: Theme) =>
       background: "white",
       zIndex: 1,
     },
-
 
     sortContainer: {
       display: "flex",
@@ -241,34 +240,29 @@ const useStyles = makeStyles((theme: Theme) =>
     },
   })
 );
-const MobileSortAndFilter = ({
-  obj,
-  setParams,
-  setPage,
-  productData,
-}: any) => {
+const MobileSortAndFilter = ({ obj, setParams, setPage, productData }: any) => {
   const classes = useStyles();
   const dispatch = useDispatch();
-  let query = Utils.CommonFunctions.useQuery();
+  // let query = Utils.CommonFunctions.useQuery();
   const params: any = useParams();
   const history = useHistory();
   let isMobileSearched = query.get("isSearched");
 
   const sortingData = Utils.constants.sortingData;
 
-  let queryFilters = query?.get("filters") ?? "{}";
-  queryFilters = JSON.parse(decodeURIComponent(decodeURIComponent(queryFilters)));
+  // let queryFilters = query?.get("filters") ?? "{}";
+  queryFilters = JSON.parse(
+    decodeURIComponent(decodeURIComponent(queryFilters))
+  );
 
   const [sortBy, setSortBy] = useState(
     queryFilters?.sortBy || sortingData[0]?.id?.toString()
   );
 
-
   const [navbar, setNavbar] = useState(false);
 
   let keyword = params?.keyword ?? "";
   let categoryId = params?.id ?? "";
-
 
   const [apply, setApply] = useState(
     queryFilters?.customAttributes?.length > 0 ||
@@ -286,8 +280,6 @@ const MobileSortAndFilter = ({
       : [],
   });
 
-
-
   const [open, setOpen] = useState({
     sort: false,
     filter: false,
@@ -295,17 +287,17 @@ const MobileSortAndFilter = ({
 
   const toggleDrawer =
     (section: "sort" | "filter", show: boolean) =>
-      (event: React.KeyboardEvent | React.MouseEvent) => {
-        if (
-          event.type === "keydown" &&
-          ((event as React.KeyboardEvent).key === "Tab" ||
-            (event as React.KeyboardEvent).key === "Shift")
-        ) {
-          return;
-        }
+    (event: React.KeyboardEvent | React.MouseEvent) => {
+      if (
+        event.type === "keydown" &&
+        ((event as React.KeyboardEvent).key === "Tab" ||
+          (event as React.KeyboardEvent).key === "Shift")
+      ) {
+        return;
+      }
 
-        setOpen({ ...open, [section]: show });
-      };
+      setOpen({ ...open, [section]: show });
+    };
 
   const handleChange = () => {
     dispatch(showLoader());
@@ -326,7 +318,6 @@ const MobileSortAndFilter = ({
         dispatch(hideLoader());
       })
     );
-
 
     history.push({
       pathname: history.location.pathname,
@@ -356,32 +347,31 @@ const MobileSortAndFilter = ({
     return () => window.removeEventListener("scroll", changeBackground);
   }, []);
 
-
   const handleOpenFilter = () => {
-    let { customAttributes, otherFilters } = queryFilters
+    let { customAttributes, otherFilters } = queryFilters;
     if (customAttributes || otherFilters) {
       setPayloadFilters({
         customAttributes,
-        otherFilters
-      })
+        otherFilters,
+      });
     } else {
       setPayloadFilters({
         customAttributes: [],
-        otherFilters: []
-      })
+        otherFilters: [],
+      });
     }
-    setOpen({ ...open, filter: true })
-  }
+    setOpen({ ...open, filter: true });
+  };
 
   const handleOpenSort = () => {
-    let { sortBy } = queryFilters
+    let { sortBy } = queryFilters;
     if (sortBy) {
-      setSortBy(sortBy)
+      setSortBy(sortBy);
     } else {
-      setSortBy(sortingData[0]?.id?.toString())
+      setSortBy(sortingData[0]?.id?.toString());
     }
-    setOpen({ ...open, sort: true })
-  }
+    setOpen({ ...open, sort: true });
+  };
 
   return (
     <>
@@ -420,8 +410,9 @@ const MobileSortAndFilter = ({
                 <>
                   <p className={classes.description}>
                     <span>Showing</span>{" "}
-                    {`${products?.data?.length} of ${products?.totalCount} ${products?.totalCount > 1 ? "products" : "product"
-                      }`}
+                    {`${products?.data?.length} of ${products?.totalCount} ${
+                      products?.totalCount > 1 ? "products" : "product"
+                    }`}
                   </p>
                   {navbar ? (
                     <div className={classes.sortingDivImage}>
@@ -450,11 +441,7 @@ const MobileSortAndFilter = ({
             </div>
           </>
         ) : (
-          <div
-            className={
-              classes.sortingContainer3
-            }
-          >
+          <div className={classes.sortingContainer3}>
             <div className={classes.sortContainer}>
               <div onClick={handleOpenSort}>
                 <img src={Utils.images.SORT_ICON} />
@@ -477,8 +464,9 @@ const MobileSortAndFilter = ({
             {products?.data && products?.data?.length !== 0 && (
               <p className={classes.description}>
                 <span>Showing</span>{" "}
-                {`${products?.data?.length} of ${products?.totalCount} ${products?.totalCount > 1 ? "products" : "product"
-                  }`}
+                {`${products?.data?.length} of ${products?.totalCount} ${
+                  products?.totalCount > 1 ? "products" : "product"
+                }`}
               </p>
             )}
           </div>
@@ -532,7 +520,7 @@ const Sorting = ({
   obj,
   setParams,
   setPage,
-  queryFilters
+  queryFilters,
 }: any) => {
   const classes = useStyles();
   const sortingData = Utils.constants.sortingData;
@@ -655,7 +643,7 @@ const Filter = ({
   categoryId,
   sortBy,
   keyword,
-  queryFilters
+  queryFilters,
 }: any) => {
   const classes = useStyles();
   const { filters } = useSelector(
@@ -863,7 +851,7 @@ const Filter = ({
                     value={value._id}
                     {...a11yProps(value._id)}
                   />
-                )
+                );
             })}
           {filters?.customAttributes?.length &&
             filters?.customAttributes?.map((value: any, i: any) => {
@@ -875,7 +863,7 @@ const Filter = ({
                     value={value._id}
                     {...a11yProps(value._id)}
                   />
-                )
+                );
             })}
         </Tabs>
         {filters?.otherFilters?.length &&
@@ -890,11 +878,11 @@ const Filter = ({
                       priceVal.length === 2
                         ? `₹${priceVal[0] || 0} - ₹${priceVal[1] || 0}`
                         : priceVal.length === 1
-                          ? priceVal[0]?.toLowerCase().includes("above")
-                            ? priceVal[0]?.split(" ")[0] +
+                        ? priceVal[0]?.toLowerCase().includes("above")
+                          ? priceVal[0]?.split(" ")[0] +
                             ` ₹${priceVal[0]?.split(" ")[1]}`
-                            : `₹${priceVal[0] || 0}`
-                          : null;
+                          : `₹${priceVal[0] || 0}`
+                        : null;
 
                     return (
                       <div className={classes.tabsDiv} key={val.name}>
@@ -928,7 +916,10 @@ const Filter = ({
                 <TabPanel value={value} index={item._id} key={i}>
                   {item?.options?.map((val: any, key: any) => (
                     <div className={classes.tabsDiv} key={val.name}>
-                      <Typography variant="body2" className={classes.filterText}>
+                      <Typography
+                        variant="body2"
+                        className={classes.filterText}
+                      >
                         {val.name}
                         {/* //val.name */}
                       </Typography>
@@ -967,7 +958,7 @@ const Filter = ({
           type="button"
           disabled={
             filters?.customAttributes?.length === 0 &&
-              filters?.otherFilters?.length === 0
+            filters?.otherFilters?.length === 0
               ? true
               : false
           }
@@ -977,7 +968,7 @@ const Filter = ({
         </Button>
       </div>
     </Drawer>
-  ) : null
+  ) : null;
 };
 
 export default MobileSortAndFilter;
