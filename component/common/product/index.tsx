@@ -745,7 +745,9 @@ const Product = (props: Props) => {
           {section !== "cart" ? (
             <>
               {props.section === "plp" ? (
-                <div className={`${addActive ? "active" : ""}`}>
+                <div
+                  className={`${addActive ? "active" : ""}`}
+                >
                   <div className={"content"} onClick={handleContentClick}>
                     <IconButton
                       aria-label="favorite"
@@ -757,32 +759,33 @@ const Product = (props: Props) => {
                           else showLoginAlert(true);
                       }}
                     >
-                      {/* {like ? (
-                        <FAVORITE_ICON />
+                      {like ? (
+                        <img src={Utils.images.FAVORITE_ICON} alt="heart" />
                       ) : (
-                        <HEART />
-                      )} */}
-                      "pending"
+                        <img src={Utils.images.HEART} alt="heart" />
+                      )}
                     </IconButton>
                     <span className="perticles-circle"></span>
                   </div>
                 </div>
               ) : (
-                <div
-                  className={classes.heartImg2}
+
+                <div className={classes.heartImg2}
                   onClick={() => {
                     if (isAuthenticated())
                       handleLike(like ? false : true, productData);
                     else showLoginAlert(true);
-                  }}
-                >
-                  {/* {like ? (
-                    <FAVORITE_ICON />
+                  }}>
+
+
+                  {like ? (
+                    <img src={Utils.images.FAVORITE_ICON} alt="heart" />
                   ) : (
-                    <HEART />
-                  )} */}
-                  "pending"
+                    <img src={Utils.images.HEART} alt="heart" />
+                  )}
                 </div>
+
+
               )}
             </>
           ) : null}

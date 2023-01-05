@@ -12,16 +12,19 @@ export const getProductData =
   (req: any, params: any) => async (dispatch: any) => {
     let url = Utils.endPoints.PRODUCT_DATA;
     let { category, subcategory, googleKey } = params;
+    console.log({params})
     // googleKey = googleKey ? googleKey : 64;
     // console.log( category, subcategory, googleKey,"<===googleKey",params);
 
     // https://bodyshopstgapi.appskeeper.in/product-service/api/v1/products?subcategoryId=8&urlKey=aloe-soothing-day-cream-config
-    let resp = await request.get(
-      // 'https://bodyshopstgapi.appskeeper.in/product-service/api/v1/products?subcategoryId=8&urlKey=aloe-soothing-day-cream-config'
-      `https://bodyshopstgapi.appskeeper.in/${Utils.endPoints.PRODUCT_DATA}?subcategoryId=8&urlKey=${subcategory}`
-      );
+    // let resp = await request.get(
+    //   // 'https://bodyshopstgapi.appskeeper.in/product-service/api/v1/products?subcategoryId=8&urlKey=aloe-soothing-day-cream-config'
+    //   `https://bodyshopstgapi.appskeeper.in/${Utils.endPoints.PRODUCT_DATA}?subcategoryId=${categoryId}&urlKey=${urlKey}`
+    //   );
      
-      
+    let resp = await request.get(
+      `https://bodyshopstgapi.appskeeper.in/${Utils.endPoints.PRODUCT_DATA}?subcategoryId=${googleKey}&urlKey=${subcategory}`
+      );
     if (resp) {
       var product = resp?.data?.data;
       var selectedVariant = null;
