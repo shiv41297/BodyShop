@@ -1,9 +1,11 @@
 
 import { Grid, Theme, Typography } from "@mui/material";
 import { makeStyles } from "@mui/styles";
+import Image from "next/image";
 
 import { useSelector } from "react-redux";
 import { ReducersModal } from "../../models";
+import Utils from "../../utils";
 // import { FACEBOOK, INSTAGRAM, TWITTER, YOUTUBE } from "utils/constantImages";
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -146,9 +148,12 @@ const useStyles = makeStyles((theme: Theme) =>
 
 const MediaFooter = () => {
   const classes = useStyles();
+  
+ 
+
   // const [country, setCountry] = useState("India");
   const configData = useSelector(
-    (state: ReducersModal) => state.configReducer.generalConfigs
+    (state: any) => state.configReducer.generalConfigs
   );
 
   return (
@@ -173,18 +178,18 @@ const MediaFooter = () => {
             <Typography className={classes.subheading} variant="body2">
               Be first to know new arrivals & exclusive offers.
             </Typography>
-            {/* <div className={classes.socialIconDiv}>
+            <div className={classes.socialIconDiv}>
               <div className={classes.imgDiv}>
                 <a
                   target="_blank"
                   href="https://www.facebook.com/TheBodyShopIndia/"
                 >
-                  <img src={FACEBOOK} alt="facebook" />
+                  <Image src={Utils.images.FACEBOOK} alt="facebook" width={11} height={21}/>
                 </a>
               </div>
               <div className={classes.imgDiv}>
                 <a target="_blank" href="https://twitter.com/TheBodyShopIND">
-                  <img src={TWITTER} alt="twitter" />
+                  <Image src={Utils.images.TWITTER} alt="twitter" width={22} height={17}/>
                 </a>
               </div>
               <div className={classes.imgDiv}>
@@ -192,7 +197,7 @@ const MediaFooter = () => {
                   target="_blank"
                   href="https://www.instagram.com/thebodyshopindia/"
                 >
-                  <img src={INSTAGRAM} alt="instgram" />
+                  <Image src={Utils.images.INSTAGRAM} alt="instgram" width={20} height={21}/>
                 </a>
               </div>
               
@@ -201,11 +206,11 @@ const MediaFooter = () => {
                   target="_blank"
                   href="https://www.youtube.com/channel/UChdVYSGTX-mQTx-h5630wSA"
                 >
-                  <img src={YOUTUBE} alt="youtube" />
+                  <img src={Utils.images.YOUTUBE} alt="youtube" width={36} height={36}/>
                 </a>
               </div>
               
-            </div> */}
+            </div>
           </Grid>
           {/* <Grid item xs={12} sm={6} md={4} className={classes.gridItem}>
            

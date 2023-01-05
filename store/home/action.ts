@@ -1,7 +1,6 @@
 import Utils from "../../component/utils";
 import request from "../../component/utils/request";
 import ActionName from "../../component/utils/actionName";
-import axios from "axios";
 
 export function showSkeleton() {
   return {
@@ -30,24 +29,6 @@ export function hidePaytmCallbackLoader() {
   return { type: ActionName.LOADING, payload: { paytmLoader: false } };
 }
 
-export const getConfig = (payload: any) => {
-  return (dispatch: any, _setState: any) => {
-    request.get(Utils.endPoints.CONFIG, { params: payload }).then((resp) => {
-      if (payload.configCode === "general") {
-        // localStorage.setItem("underMaintenance", resp.data.data.underMaintenance)
-        dispatch({
-          type: "setConfig",
-          payload: { generalConfigs: resp.data.data },
-        });
-      } else {
-        dispatch({
-          type: "setConfig",
-          payload: { paymentConfigs: resp.data.data },
-        });
-      }
-    });
-  };
-};
 
 export const getLatestReviews = (query: string) => {
   return request.get(Utils.endPoints.LATEST_REVIEWS + query);
@@ -81,6 +62,28 @@ export const getHomeData = (token: any) => async (dispatch: any) => {
       payload: sortedData,
     });
   }
+};
+
+
+export const getConfig = (payload: any) => {
+  async (dispatch: any, _setState: any) => {
+   let resp = await request.get(Utils.endPoints.CONFIG, { params: payload })
+   if(resp){
+    console.log(resp,"reponse");
+      if (payload.configCode === "general") {
+        // localStorage.setItem("underMaintenance", resp.data.data.underMaintenance)
+        dispatch({
+          type: "setConfig",
+          payload: { generalConfigs: resp.data.data },
+        });
+      } else {
+        dispatch({
+          type: "setConfig",
+          payload: { paymentConfigs: resp.data.data },
+        });
+      }
+    };
+  };
 };
 
 export const getRatingData = (query: string, callback: Function) => {

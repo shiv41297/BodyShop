@@ -541,10 +541,7 @@ const ProductDetail = (props: any) => {
             : 'The Body Shop'
         }
         // canonicalUrl={URL + props.location.pathname}
-        canonicalUrl={
-          URL +
-          `face/face-masks/hemp-overnight-nourishing-rescue-mask-config/p/undefined`
-        }
+       
       />
 
       <Box sx={{ display: { xs: 'block', sm: 'none' } }}>
