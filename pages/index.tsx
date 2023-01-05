@@ -36,7 +36,6 @@ const Index = () => {
   const classes = useStyles();
   const { query } = useRouter();
 
-  console.log({ query });
   // const homeData = useSelector((state: ReducersModal) => {
   //   return state.homeReducer.homeData})
 
@@ -295,7 +294,7 @@ export default Index;
 export const getServerSideProps = wrapper.getServerSideProps((store) =>
   //@ts-ignore-
   async ({ req, res }) => {
-    await store.dispatch(getHomeData());
+    await store.dispatch(getHomeData(req.cookies.authToken));
     return { props: {} };
   }
 );

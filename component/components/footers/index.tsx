@@ -166,10 +166,10 @@ const Footer = () => {
           .get(Utils.endPoints.FOOTER)
           .then((resp: any) => {
 
-            setFooterNavigation(resp.data.data);
+            setFooterNavigation(resp?.data?.data);
             dispatch({
               type: Utils.ActionName.FOOTER_MENU,
-              payload: { footerMenu: resp.data.data },
+              payload: { footerMenu: resp?.data?.data },
             });
           })
           // .catch((err: any) => {
@@ -253,7 +253,7 @@ const Footer = () => {
       <div className={classes.footerRoot}>
         <div className={classes.maxWidthDiv}>
           <Grid container>
-            {footerNavigation.map((nav: any, index: any) => {
+            {footerNavigation?.map((nav: any, index: any) => {
               return (
                 <Grid item xs={12} sm={6} md={4} key={index}>
                   {navigationLink(nav)}

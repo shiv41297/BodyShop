@@ -42,7 +42,6 @@ function setCookie(cname: any, cvalue: any, exdays: any = 0) {
   }
   if (typeof window !== 'undefined') {
   document.cookie = `${cname}=${cvalue};${expires};path=/`;
-  console.log('cookie',document.cookie)
   }
 }
 
