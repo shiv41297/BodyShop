@@ -54,9 +54,9 @@ const ProductListing = () => {
       <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
         <FilterProducts />
       </Box>
-      <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
+      {/* <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
         <MobileFilterProducts />
-      </Box>
+      </Box> */}
     </div>
   );
 };
