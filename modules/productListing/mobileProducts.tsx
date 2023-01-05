@@ -5,6 +5,7 @@ import _ from "lodash";
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
 import Product from "../../component/common/product";
+import Utils from "../../component/utils";
 import ProductNotFound from "./productNotFound";
 // import Utils from "../../utils";
 // import { ReducersModal } from "../../models";
@@ -112,9 +113,10 @@ const MobileProducts: React.FC<any> = (props: Props) => {
                                     return (
                                         <Grid item xs={6} sm={6} md={4} className={classes.productData} key={item.magentoId}>
                                             <Product
-                                                isSearchOrRecommend={keyword ? true : false}
+                                                isSearchOrRecommend={true}
                                                 key={item._id}
                                                 section="plp"
+                                                // detail={_.truncate(Utils.CommonFunctions.replaceHtmlTag(desc?.value), { length: 80 })}
                                                 detail={_.truncate(Utils.CommonFunctions.replaceHtmlTag(desc?.value), { length: 80 })}
                                                 rate={item.price}
                                                 img={image}

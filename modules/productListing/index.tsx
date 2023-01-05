@@ -55,7 +55,7 @@ const ProductListing = () => {
         <FilterProducts />
       </Box>
       <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
-        {/* <MobileFilterProducts /> */}
+        <MobileFilterProducts />
       </Box>
     </div>
   );
