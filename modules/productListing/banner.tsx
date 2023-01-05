@@ -3,13 +3,14 @@ import { makeStyles } from "@mui/styles";
 import { useSelector } from "react-redux";
 // import { ReducersModal } from "../../models";
 import Utils from "../../component/utils";
-import BreadCrumb from "../../component/components/breadCrumb";
+import BreadCrumb from "../../component/common/breadCrumb";
 import _ from "lodash";
 import Skeleton from "@mui/material/Skeleton";
 import { useEffect, useState } from "react";
 import clsx from "clsx";
 // import { useLocation } from "react-router-dom";
 import { debug } from "util";
+import { useRouter } from "next/router";
 
 const useStyles = makeStyles((theme: Theme) => ({
   bannerRoot: {
@@ -205,18 +206,20 @@ function Banner() {
   const IMAGE_URL = `${process.env.NEXT_PUBLIC_MEDIA_URL}`;
   // const location: any = useLocation();
 
+  const location = useRouter();
+
   const productData = useSelector((state: any) => state.productReducer?.data);
   const { menuData } = useSelector((state: any) => state.homeReducer);
   const skeletonLoader = useSelector((state: any) => {
     return state.loadingReducer.skeletonLoader;
   });
 
-  const urlKey = location.pathname.includes("/c/")
-    ? location.pathname.split("/c/")?.[0]?.split("/")?.pop()
-    : location.pathname.includes("/h/")
-    ? location.pathname.split("/h/")?.[0]?.split("/")?.pop()
+  const urlKey = location.asPath.includes("/c/")
+    ? location.asPath.split("/c/")?.[0]?.split("/")?.pop()
+    : location.asPath.includes("/h/")
+    ? location.asPath.split("/h/")?.[0]?.split("/")?.pop()
     : "";
-  const mainCat = location.pathname.split("/")?.[1];
+  const mainCat = location.asPath.split("/")?.[1];
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -228,17 +231,32 @@ function Banner() {
     // return item.id == (location?.state?.categoryId ? location?.state?.categoryId : localStorage.getItem("categoryId"))
     return item.url == mainCat;
   });
+  // const category = menuData.find((item: any) => {
+  //   return (
+  //     item.id ==
+  //     (location?.state?.categoryId
+  //       ? location?.state?.categoryId
+  //       : localStorage.getItem("categoryId"))
+  //   );
+  //   return item.url == mainCat;
+  // });
 
-  console.log(location, "store location");
-
+  console.log({
+    location,
+    menuData,
+    category,
+    categoryData,
+    urlKey,
+    mainCat,
+  });
   useEffect(() => {
     localStorage.removeItem("categoryId");
-    if (
-      location?.state?.categoryId &&
-      categoryData?.id != localStorage.getItem("categoryId")
-    ) {
-      localStorage.setItem("categoryId", location?.state?.categoryId);
-    }
+    // if (
+    //   location?.state?.categoryId &&
+    //   categoryData?.id != localStorage.getItem("categoryId")
+    // ) {
+    //   localStorage.setItem("categoryId", location?.state?.categoryId);
+    // }
   }, [urlKey]);
 
   let breadCrumb: any = [{ title: "Home", action: "/" }];
@@ -258,10 +276,10 @@ function Banner() {
 
   breadCrumb.push({
     title: categoryData.name,
-    // action: `/product-listing?categoryId=${categoryData.id}`,
-    action: {
-      pathname: Utils.CommonFunctions.seoUrl(categoryData, "plp"),
-    },
+    action: `/product-listing?categoryId=${categoryData.id}`,
+    // action: {
+    //   pathname: Utils.CommonFunctions.seoUrl(categoryData, "plp"),
+    // },
   });
 
   return (
