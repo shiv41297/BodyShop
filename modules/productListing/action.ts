@@ -3,7 +3,7 @@ import { searchProducts } from "../../component/utils/event/action";
 import request from "../../component/utils/request";
 // import { hideLoader, hideSkeleton } from "../home/actions";
 
-export function getProductList() {
+export function getProductList(params: any) {
   // params: any,
   // filter: boolean
   // callback?: Function,
@@ -11,7 +11,7 @@ export function getProductList() {
   // callBack1?: any
   return async (dispatch: any, getState: any) => {
     //static
-    let params = { page: 1, limit: 18, urlKey: "new-in", query: "" };
+    // let params = { page: 1, limit: 18, urlKey: "new-in", query: "" };
     let data = { ...params };
     let searchQuery = params.query;
     let url =
@@ -22,7 +22,9 @@ export function getProductList() {
 
     console.log("product listing called", str, params);
 
-    const resp = await request.get(str);
+    const resp = await request.get(str).catch((err) => {
+      console.log(err, "error");
+    });
 
     let respdata: any = resp?.data?.data ? { ...resp?.data?.data } : {};
     // if (mobile?.data && data?.products?.data?.length > 0)

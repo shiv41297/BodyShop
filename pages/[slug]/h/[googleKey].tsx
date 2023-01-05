@@ -16,7 +16,17 @@ export const getServerSideProps = wrapper.getServerSideProps((store) =>
   //@ts-ignore-
   async ({ req, res, query, params }) => {
     console.log(query, params);
-    await store.dispatch(getProductList());
+    const actionparams = {
+      // customAttributes: [],
+      // otherFilters: [],
+      page: 1,
+      query: "",
+      // sortBy: "2",
+      urlKey: query?.slug,
+    };
+
+    console.log("actionParams", actionparams);
+    await store.dispatch(getProductList(actionparams));
     return { props: {} };
   }
 );
