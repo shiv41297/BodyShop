@@ -832,7 +832,6 @@ const Product = (props: Props) => {
                   )}
                 >
                   {/* <PRODUCT_PLACEHOLDER /> */}
-                  "pending"
                 </div>
               )}
             </div>
