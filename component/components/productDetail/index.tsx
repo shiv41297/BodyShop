@@ -387,33 +387,28 @@ const ProductDetail = (props: any) => {
     // setVideoUrl(getAttributeValue("how_to_video_url"));
   }, [productData]);
 
-  // useEffect(() => {
-  //   dispatch({
-  //     type: Utils.ActionName.FROM_PATH,
-  //     payload: { fromPath: 'pdp' },
-  //   });
+  useEffect(() => {
+    dispatch({
+      type: Utils.ActionName.FROM_PATH,
+      payload: { fromPath: 'pdp' },
+    });
 
-  //   //@ts-ignore
-  //   zE('webWidget', 'updateSettings', {
-  //     webWidget: {
-  //       offset: {
-  //         horizontal: '0px',
-  //         vertical: '70px',
-  //       },
-  //     },
-  //   });
-  //   return () => {
-  //     //@ts-ignore
-  //     zE('webWidget', 'updateSettings', {
-  //       webWidget: {
-  //         offset: {
-  //           horizontal: '0px',
-  //           vertical: '0px',
-  //         },
-  //       },
-  //     });
-  //   };
-  // }, []);
+    //@ts-ignore
+   
+    
+
+    // return () => {
+    //   //@ts-ignore
+    //   zE('webWidget', 'updateSettings', {
+    //     webWidget: {
+    //       offset: {
+    //         horizontal: '0px',
+    //         vertical: '0px',
+    //       },
+    //     },
+    //   });
+    // };
+  }, []);
 
   const recommendedData = useSelector(
     (state: any) => state?.recommendReducer?.recommendedData?.data
