@@ -10,7 +10,8 @@ import {
 
 export const getProductData =
   (req: any, params: any) => async (dispatch: any) => {
-    let authToken = req.cookies.authToken
+    // let authToken = req.cookies.authToken;
+    let authToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzZXNzaW9uSWQiOiI2M2EzZWQyYTQ2YWRlMzM4OGRlNjQ4YTkiLCJpc0xvZ2luIjp0cnVlLCJpc0d1ZXN0TG9naW4iOnRydWUsImlhdCI6MTY3MTY4NzQ2NiwiZXhwIjoxNjg3MjM5NDY2fQ.4Eg19HCDEGFUiw562m2nxA7T5WPHZb6bt0yZwfx6Xo0"
     let url = Utils.endPoints.PRODUCT_DATA;
     let { category, subcategory, googleKey } = params;
     let urlNew;
@@ -22,6 +23,7 @@ export const getProductData =
     }
 
     let resp = await request.get(urlNew,{ headers : {"Authorization" : "Bearer " + authToken}});
+    
     if (resp) {
       var product = resp?.data?.data;
       var selectedVariant = null;
