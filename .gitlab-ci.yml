@@ -17,7 +17,7 @@ dev_build:
   #  - CI=false npm run build
     - npm run build
    # - npm run start 
-    - tar -czf react-ssr-nextjs_artifact.tar.gz * .next
+    - tar -czf react-ssr-nextjs_artifact.tar.gz * .next 
   artifacts:
     paths:
       - react-ssr-nextjs_artifact.tar.gz
