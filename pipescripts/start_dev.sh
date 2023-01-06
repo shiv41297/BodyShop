@@ -8,5 +8,5 @@ cp env .env
 pwd
 ls -la
 pm2 reload bodyShop_SSR_React
-#pm2 start npm --name bodyShop_SSR_React -- run start
+#pm2 start npm --name bodyShop_SSR_Next -- run start
 pm2 status
