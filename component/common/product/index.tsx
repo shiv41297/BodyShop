@@ -363,6 +363,8 @@ const Product = (props: Props) => {
   const classes = useStyles();
   const dispatch: any = useDispatch();
   const history = useRouter();
+
+  console.log({history},history.query.slug)
   // const params: any = useParams();
   const {
     section,
@@ -637,9 +639,10 @@ const Product = (props: Props) => {
       const { urlKey, categoryId } = state;
       // history.push(`trending/new-in/${urlKey}/p/${categoryId}`);
       history.push({
-        pathname: "/trending/[category]/[subcategory]/p/[googleKey]",
+        pathname: "/[type]/[category]/[subcategory]/p/[googleKey]",
         query: {
-          category: "new-in",
+          type: `${history.query.slug}`,
+          category: `${history.query.category}`,
           subcategory: `${urlKey}`,
           googleKey: `${categoryId}`,
         },

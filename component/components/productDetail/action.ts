@@ -10,6 +10,7 @@ import {
 
 export const getProductData =
   (req: any, params: any) => async (dispatch: any) => {
+    let authToken = req.cookies.authToken
     let url = Utils.endPoints.PRODUCT_DATA;
     let { category, subcategory, googleKey } = params;
     let urlNew;
@@ -20,7 +21,7 @@ export const getProductData =
        urlNew = `${Utils.endPoints.PRODUCT_DATA}?subcategoryId=${googleKey}&urlKey=${subcategory}`
     }
 
-    let resp = await request.get(urlNew);
+    let resp = await request.get(urlNew,{ headers : {"Authorization" : "Bearer " + authToken}});
     if (resp) {
       var product = resp?.data?.data;
       var selectedVariant = null;
