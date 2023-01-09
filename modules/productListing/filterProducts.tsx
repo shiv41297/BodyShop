@@ -399,7 +399,7 @@ function FilterProducts() {
 
   return (
     <div className={classes.productContainer}>
-      <Head>
+      {/* <Head>
         <title>
           {productData?.categoryData && productData?.categoryData?.metaTitle
             ? productData?.categoryData?.metaTitle
@@ -416,8 +416,7 @@ function FilterProducts() {
               : "The Body Shop"
           }
         />
-        {/* <link rel="canonical" href={window.location.href} /> */}
-      </Head>
+      </Head> */}
       <div className={classes.findContainer}>
         <div
           className={clsx({
