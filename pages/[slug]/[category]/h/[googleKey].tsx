@@ -1,10 +1,8 @@
 import React from "react";
-import ProductListing from "../../../modules/productListing";
-import { wrapper } from "../../../store/store";
-import {
-  getProductList,
-  getPLPCategories,
-} from "../../../modules/productListing/action";
+import ProductListing from "../../../../modules/productListing";
+import { getProductList } from "../../../../modules/productListing/action";
+import { wrapper } from "../../../../store/store";
+
 
 function ProductListingWrapper() {
   return <ProductListing />;
