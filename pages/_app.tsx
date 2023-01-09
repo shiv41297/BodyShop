@@ -16,8 +16,8 @@ import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { StylesProvider, createGenerateClassName } from "@mui/styles";
 import { Box } from "@mui/material";
 import MediaFooter from "../component/components/footers/mediaFooter";
-import { usePageLoading } from "../component/common/usePageLoading";
-import Loader from "../component/loader";
+import { getAuthToken } from "../store/home/action";
+
 // Client-side cache, shared for the whole session of the user in the browser.
 const clientSideEmotionCache = createEmotionCache();
 
@@ -35,7 +35,6 @@ function MyApp({
   ...rest
 }: MyAppProps) {
   const { store, props } = wrapper.useWrappedStore(rest);
-  const { isPageLoading } = usePageLoading();
   return (
     <CacheProvider value={emotionCache}>
       <Head>
@@ -47,21 +46,14 @@ function MyApp({
         <ThemeProvider theme={theme}>
           <CssBaseline />
           <StylesProvider generateClassName={generateClassName}>
-          {isPageLoading ? (
-             <Loader  />
-            ) : (
-              <>
-               <Headers />
-           
-           <Box sx={{ marginTop: "90px" }}>
-             <Component {...props.pageProps} />
-           </Box>
-         
-         <MediaFooter />
-         <Footer />
-              </>
-           
-            )}
+            <Headers />
+
+            <Box sx={{ marginTop: "90px" }}>
+              <Component {...props.pageProps} />
+            </Box>
+
+            <MediaFooter />
+            <Footer />
           </StylesProvider>
         </ThemeProvider>
       </Provider>
@@ -69,3 +61,15 @@ function MyApp({
   );
 }
 export default MyApp;
+
+// MyApp.getInitialProps = wrapper.getInitialAppProps((store) =>
+//   //@ts-ignore-
+//   async ({ req, res }) => {
+
+    // await store.dispatch(getAuthToken());
+
+//     return {
+//       props: {},
+//     };
+//   }
+// );

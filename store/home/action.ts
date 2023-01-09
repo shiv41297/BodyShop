@@ -1,6 +1,7 @@
 import Utils from "../../component/utils";
 import request from "../../component/utils/request";
 import ActionName from "../../component/utils/actionName";
+import Cookies from "js-cookie";
 
 export function showSkeleton() {
   return {
@@ -29,7 +30,6 @@ export function hidePaytmCallbackLoader() {
   return { type: ActionName.LOADING, payload: { paytmLoader: false } };
 }
 
-
 export const getLatestReviews = (query: string) => {
   return request.get(Utils.endPoints.LATEST_REVIEWS + query);
 };
@@ -48,7 +48,9 @@ const filterDataForMobile = (data: any) => {
 };
 
 export const getHomeData = (token: any) => async (dispatch: any) => {
-  let resp = await request.get(Utils.endPoints.HOME, { headers : {"Authorization" : "Bearer " + token}});
+  let resp = await request.get(Utils.endPoints.HOME, {
+    headers: { Authorization: "Bearer " + token },
+  });
   if (resp) {
     const data = [...resp?.data?.data];
     // web home data
@@ -64,27 +66,21 @@ export const getHomeData = (token: any) => async (dispatch: any) => {
   }
 };
 
+export const getAuthToken = () => async (dispatch: any) => {
+  let resp = await request.post(Utils.endPoints.GUEST_SIGNUP);
 
-// export const getConfig = (payload: any) => {
-//   async (dispatch: any, _setState: any) => {
-//    let resp = await request.get(Utils.endPoints.CONFIG, { params: payload })
-//    if(resp){
-//     console.log(resp,"reponse");
-//       if (payload.configCode === "general") {
-//         // localStorage.setItem("underMaintenance", resp.data.data.underMaintenance)
-//         dispatch({
-//           type: "setConfig",
-//           payload: { generalConfigs: resp.data.data },
-//         });
-//       } else {
-//         dispatch({
-//           type: "setConfig",
-//           payload: { paymentConfigs: resp.data.data },
-//         });
-//       }
-//     };
-//   };
-// };
+  console.log("authToken response", resp?.data);
+  if (resp) {
+    dispatch({
+      type: "auth-token",
+      payload: resp?.data?.data?.authToken,
+    });
+    Cookies.set("authToken", resp.data.data?.authToken);
+    Cookies.set("guestUser", "true");
+    console.log("authToken response", resp?.data?.data?.authToken);
+  }
+};
+
 
 export const getConfig = (payload: any) => {
   return (dispatch: any, _setState: any) => {
