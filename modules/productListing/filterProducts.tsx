@@ -399,29 +399,6 @@ function FilterProducts() {
 
   return (
     <div className={classes.productContainer}>
-      <Head>
-        <title>
-          {productData?.categoryData && productData?.categoryData?.metaTitle
-            ? productData?.categoryData?.metaTitle
-            : productData?.categoryData?.name
-            ? `${productData?.categoryData?.name} | The Body Shop`
-            : "The Body Shop"}
-        </title>
-        <meta
-          name="description"
-          content={
-            productData?.categoryData &&
-            productData?.categoryData?.metaDescription
-              ? productData?.categoryData?.metaDescription
-              : "The Body Shop"
-          }
-        />
-        <meta name="keywords" content={ productData?.categoryData &&
-            productData?.categoryData?.metaKeywords
-              ? productData?.categoryData?.metaKeywords
-              : "The Body Shop"} />
-        {/* <link rel="canonical" href={window.location.href} /> */}
-      </Head>
       <div className={classes.findContainer}>
         <div
           className={clsx({

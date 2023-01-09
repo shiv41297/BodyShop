@@ -1,13 +1,41 @@
-import React from "react";
-import ProductListing from "../../../modules/productListing";
-import { wrapper } from "../../../store/store";
+import React from 'react';
+import ProductListing from '../../../modules/productListing';
+import { wrapper } from '../../../store/store';
 import {
   getProductList,
   getPLPCategories,
-} from "../../../modules/productListing/action";
+} from '../../../modules/productListing/action';
+import Head from 'next/head';
+import { useSelector } from 'react-redux';
 
 function ProductListingWrapper() {
-  return <ProductListing />;
+  const productData = useSelector((state: any) => state.productReducer?.data);
+  return (
+    <>
+      {productData && (
+        <Head>
+          <title>
+            {productData?.categoryData && productData?.categoryData?.metaTitle
+              ? productData?.categoryData?.metaTitle
+              : productData?.categoryData?.name
+              ? `${productData?.categoryData?.name} | The Body Shop`
+              : 'The Body Shop'}
+          </title>
+          <meta
+            name="description"
+            content={
+              productData?.categoryData &&
+              productData?.categoryData?.metaDescription
+                ? productData?.categoryData?.metaDescription
+                : 'The Body Shop'
+            }
+          />
+          {/* <link rel="canonical" href={window.location.href} /> */}
+        </Head>
+      )}
+      <ProductListing />
+    </>
+  );
 }
 
 export default ProductListingWrapper;
@@ -22,7 +50,7 @@ export const getServerSideProps = wrapper.getServerSideProps((store) =>
       // customAttributes: [],
       // otherFilters: [],
       page: 1,
-      query: "",
+      query: '',
       // sortBy: "2",
       urlKey: query?.slug,
       // authToken: authToken
@@ -30,7 +58,7 @@ export const getServerSideProps = wrapper.getServerSideProps((store) =>
     };
     // console.log(actionparams.authToken, "authentication")
 
-    console.log("actionParams", actionparams);
+    console.log('actionParams', actionparams);
     await store.dispatch(getProductList(actionparams));
     return { props: {} };
   }

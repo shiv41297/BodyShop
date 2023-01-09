@@ -123,6 +123,7 @@ const ProductDetails = (props: any) => {
   const priceData: any = useSelector(
     (state: ReducersModal) => state.productDetailReducer
   );
+  
 
   let discPrice: any;
   if (priceData?.selectedVariantData) {

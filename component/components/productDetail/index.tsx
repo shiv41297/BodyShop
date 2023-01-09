@@ -223,15 +223,17 @@ const useStyles = makeStyles((theme: Theme) => ({
 const ProductDetail = (props: any) => {
   // let query = Utils.CommonFunctions.useQuery();
   const router = useRouter();
+  const query = router.query;
   // const location: any = useLocation();
-  // let isSearched = query.get('isSearched');
+  let isSearched = router.query.isSearched;
+
   const classes = useStyles();
 
   let productDetail: any = {};
   let linkedProducts: any = {};
   const id = router.query.id || null;
-  // const searched = location?.state?.isSearched || null;
-  const searched = true;
+  const searched = router.query.isSearched || null;
+  // const searched = true;
   // const isSearchOrRecommend = location?.state?.isSearchOrRecommend || null;
   const isSearchOrRecommend = 'location?.state?.isSearchOrRecommend' || null;
   const dispatch: any = useDispatch();
@@ -419,24 +421,20 @@ const ProductDetail = (props: any) => {
   );
 
   // const urlkey = location.pathname.split('/p/')?.[0]?.split('/').pop();
-  const urlkey = 'aloe-calming-toner-config';
+  const {subcategory ,googleKey} = query;
 
   const getData = (callback?: any) => {
     let params: any = {
       id: id,
-      // subcategoryId: 'location?.state?.categoryId'
-      //   ? 'location?.state?.categoryId'
-      //   : '0',
-      subcategoryId: '38',
-      // urlKey: 'location?.state?.urlKey' ?? urlkey,
-      urlKey: urlkey,
+      subcategoryId: googleKey ? googleKey : 0,
+      urlKey: subcategory ?? subcategory,
     };
     // if (isSearched || searched) {
     //   params.isSearched = 1;
     // }
     // dispatch(
     //   getProductData(params, (resp: any) => {
-    //     dispatch(hideSkeleton());
+    //     // dispatch(hideSkeleton());
 
     //     // const productSku = "BS-91942001"
     //     const productSku = resp?.product?.sku || '';
@@ -540,7 +538,7 @@ const ProductDetail = (props: any) => {
 
   return (
     <>
-      <PageMeta
+      {/* <PageMeta
         title={`${
           metaTitle && metaTitle.value
             ? metaTitle.value
@@ -558,7 +556,7 @@ const ProductDetail = (props: any) => {
           : 'The Body Shop'}
         // canonicalUrl={URL + props.location.pathname}
        
-      />
+      /> */}
 
       <Box sx={{ display: { xs: 'block', sm: 'none' } }}>
         <div className={classes.btnDiv}>
@@ -641,7 +639,6 @@ const ProductDetail = (props: any) => {
               <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
                 <ProductDetails details={productDetail} />
               </Box>
-
               <Rate />
 
               <Return />
