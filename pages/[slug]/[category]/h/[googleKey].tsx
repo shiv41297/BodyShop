@@ -1,12 +1,10 @@
 import React from 'react';
-import ProductListing from '../../../modules/productListing';
-import { wrapper } from '../../../store/store';
-import {
-  getProductList,
-  getPLPCategories,
-} from '../../../modules/productListing/action';
+
 import Head from 'next/head';
 import { useSelector } from 'react-redux';
+import ProductListing from '../../../../modules/productListing';
+import { wrapper } from '../../../../store/store';
+import { getProductList } from '../../../../modules/productListing/action';
 
 function ProductListingWrapper() {
   const productData = useSelector((state: any) => state.productReducer?.data);
