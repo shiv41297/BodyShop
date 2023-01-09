@@ -7,39 +7,42 @@ import {
 } from '../../../modules/productListing/action';
 import Head from 'next/head';
 import { useSelector } from 'react-redux';
+import { PageMeta } from '../../../component/page-meta/PageMeta';
 
 function ProductListingWrapper() {
   const productData = useSelector((state: any) => state.productReducer?.data);
   return (
     <>
-      {productData && (
-        <Head>
-          <title>
-            {productData?.categoryData && productData?.categoryData?.metaTitle
-              ? productData?.categoryData?.metaTitle
-              : productData?.categoryData?.name
-              ? `${productData?.categoryData?.name} | The Body Shop`
-              : 'The Body Shop'}
-          </title>
-          <meta
-            name="description"
-            content={
-              productData?.categoryData &&
-              productData?.categoryData?.metaDescription
-                ? productData?.categoryData?.metaDescription
-                : 'The Body Shop'
-            }
+      {/* {productData && (
+        // <Head>
+          // <title>
+            // {productData?.categoryData && productData?.categoryData?.metaTitle
+            //   ? productData?.categoryData?.metaTitle
+            //   : productData?.categoryData?.name
+            //   ? `${productData?.categoryData?.name} | The Body Shop`
+            //   : 'The Body Shop'}
+        //   </title>
+        //   <meta
+        //     name="description"
+        //     content={
+        //       productData?.categoryData &&
+        //       productData?.categoryData?.metaDescription
+        //         ? productData?.categoryData?.metaDescription
+        //         : 'The Body Shop'
+        //     }
           
-          />
-            <meta name="keywords" content={ productData?.categoryData &&
-              productData?.categoryData?.metaKeywords
-                ? productData?.categoryData?.metaKeywords
-                : "The Body Shop"} />
+        //   />
+            // <meta name="keywords" content={ productData?.categoryData &&
+            //   productData?.categoryData?.metaKeywords
+            //     ? productData?.categoryData?.metaKeywords
+            //     : "The Body Shop"} />
                 
                 
-          {/* <link rel="canonical" href={window.location.href} /> */}
-        </Head>
-      )}
+        //   {/* <link rel="canonical" href={window.location.href} /> 
+        // </Head>
+
+        
+      )} */}
       <ProductListing />
     </>
   );

@@ -33,7 +33,7 @@ import { getOthersRecommendations } from "../../component/common/recommendationC
 import SkeletonProductView from "../../component/common/skeletonList/skeletonProductView";
 // import ProductNotFound from "./productNotFound";
 import { debug } from "util";
-
+import { PageMeta } from "../../component/page-meta/PageMeta";
 import { customGa4Event } from "../../component/utils/gtag";
 import Head from "next/head";
 import Products from "./listProducts";
@@ -417,6 +417,26 @@ function FilterProducts() {
           }
         />
       </Head> */}
+      <PageMeta
+        title={
+          productData?.categoryData && productData?.categoryData?.metaTitle
+            ? productData?.categoryData?.metaTitle
+            : productData?.categoryData?.name
+            ? `${productData?.categoryData?.name} | The Body Shop`
+            : "The Body Shop"
+        }
+        description={
+          productData?.categoryData &&
+          productData?.categoryData?.metaDescription
+            ? productData?.categoryData?.metaDescription
+            : "The Body Shop"
+        }
+        keywords={
+          productData?.categoryData && productData?.categoryData?.metaKeywords
+            ? productData?.categoryData?.metaKeywords
+            : "The Body Shop"
+        }
+      />
       <div className={classes.findContainer}>
         <div
           className={clsx({
