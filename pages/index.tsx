@@ -1,6 +1,5 @@
 import { Theme } from "@mui/material";
 import { makeStyles } from "@mui/styles";
-import Head from "next/head";
 import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
@@ -16,12 +15,14 @@ import MoreToShop from "../component/components/pagesComponents/home/moreToShop"
 import Testimonial from "../component/components/pagesComponents/home/testimonial";
 import { ReducersModal } from "../component/models";
 import Utils from "../component/utils";
-import { getHomeData} from "../store/home/action";
+import { getAuthToken, getHomeData } from "../store/home/action";
 import { wrapper } from "../store/store";
 import events from "../component/utils/event/constant";
 import { PageMeta } from "../component/page-meta/PageMeta";
 import { screenViewed } from "../component/utils/event/action";
 import "../styles/Home.module.css";
+import request from "../component/utils/request";
+// import Cookies from "js-cookie";
 
 const useStyles: any = makeStyles((theme: Theme) => ({
   homeRoot: {
@@ -45,9 +46,6 @@ const Index = () => {
   const dispatch: any = useDispatch();
   const history = useRouter();
 
- 
-
-
   const [sortedHomedata, setSortedHomedata] = useState<any>([]);
   // const getRateOrdersData = () => {
   //   dispatch(getRatingData('?page=1&limit=10', (resp: any) => {
@@ -70,8 +68,8 @@ const Index = () => {
      */
     screenViewed({
       ScreenName: events.SCREEN_HOME,
-      CTGenerated: "WEB"
-    })
+      CTGenerated: "WEB",
+    });
     // if(isAuthenticated())
     // dispatch(
     //   getDashboardData(() => {
@@ -298,9 +296,13 @@ export default Index;
 export const getServerSideProps = wrapper.getServerSideProps((store) =>
   //@ts-ignore-
   async ({ req, res }) => {
-    let authToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzZXNzaW9uSWQiOiI2M2EzZWQyYTQ2YWRlMzM4OGRlNjQ4YTkiLCJpc0xvZ2luIjp0cnVlLCJpc0d1ZXN0TG9naW4iOnRydWUsImlhdCI6MTY3MTY4NzQ2NiwiZXhwIjoxNjg3MjM5NDY2fQ.4Eg19HCDEGFUiw562m2nxA7T5WPHZb6bt0yZwfx6Xo0"
-    await store.dispatch(getHomeData(authToken));
-    // await store.dispatch(getHomeData(req.cookies.authToken));
+    let resp = await request.post(Utils.endPoints.GUEST_SIGNUP);
+    let authToken: any = "";
+    if (resp) {
+      authToken = resp?.data?.data?.authToken;
+      await store.dispatch(getHomeData(authToken));
+    }
+
     return { props: {} };
   }
 );
