@@ -106,14 +106,11 @@ const Headers = () => {
   const history = useRouter();
   // const location = useLocation();
   const [open, setOpen] = React.useState(false);
+  const [authToken,setAuthToken] = React.useState("");
   // const [mobileMenus, setMobileMenus] = React.useState([]);
   const [loginAlert, showLoginAlert] = useState(false);
   const dispatch: any = useDispatch();
 
-  useEffect(() => {
-    dispatch(getConfig({ configCode: "general" }));
-    dispatch(getConfig({ configCode: "payment" }));
-  }, []);
 
   useEffect(() => {
     const config = {
@@ -121,23 +118,25 @@ const Headers = () => {
         Authorization: `Basic ${process.env.NEXT_PUBLIC_API_KEY}`,
       },
     };
-    request
-      .post(
-        Utils.endPoints.GUEST_SIGNUP,
-        {},
-        config
-      )
-      .then((resp: any) => {
-        dispatch({
-          type: "auth-token",
-          payload: resp?.data?.data?.authToken,
-        });
-
-        console.log("authToken response", resp?.data?.data?.authToken);
-        Cookies.set("authToken", resp.data.data?.authToken);
-        Cookies.set("guestUser", "true");
+    request.post(Utils.endPoints.GUEST_SIGNUP, {}, config).then((resp: any) => {
+      dispatch({
+        type: "auth-token",
+        payload: resp?.data?.data?.authToken,
       });
+
+      setAuthToken(resp?.data?.data?.authToken)
+      Cookies.set("authToken", resp.data.data?.authToken);
+      Cookies.set("guestUser", "true");
+    });
   }, []);
+
+  
+  useEffect(() => {
+    dispatch(getConfig({ configCode: "general" }));
+    dispatch(getConfig({ configCode: "payment" }));
+  }, []);
+
+  
 
   const pathname = history?.pathname || "";
   useEffect(() => {
@@ -165,9 +164,9 @@ const Headers = () => {
   const totalCount = useSelector(
     (state: ReducersModal) => state.wishlistReducer?.totalCount
   );
-  const { authToken } = useSelector(
-    (state: ReducersModal) => state.homeReducer
-  );
+  // const { authToken } = useSelector(
+  //   (state: ReducersModal) => state.homeReducer
+  // );
   const menuData = useSelector(
     (state: ReducersModal) => state.homeReducer.menuData
   );
@@ -230,7 +229,7 @@ const Headers = () => {
   const redirectToHome = () => {
     dispatch(showSkeleton());
     dispatch(
-      getHomeData(""),
+      getHomeData(authToken),
       dispatch(hideSkeleton())
       // getHomeData(() => {
       //   dispatch(hideSkeleton());

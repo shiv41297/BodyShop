@@ -90,14 +90,12 @@ console.log(getAuthToken(),"getAuthToken")
 
 
 export const isAuthenticated = () => {
-  if (typeof window !== "undefined") {
     if (
-      localStorage.getItem("authToken") != null &&
-      localStorage.getItem("guestUser") === null
+      Cookies.get("authToken") != null &&
+      Cookies.get("guestUser") === null
     ) {
       return true;
     } else {
       return false;
     }
-  }
 };
