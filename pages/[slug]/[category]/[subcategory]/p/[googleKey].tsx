@@ -22,6 +22,12 @@ function ProductDetail() {
     _.find(productData.product.customAttributes, {
       attribute_code: 'meta_description',
     });
+
+    const metaKeyword = productData &&
+    productData.product &&
+    _.find(productData.product.customAttributes, {
+      attribute_code: 'meta_keyword',
+    });
   return (
     <div>
       {productData && productData.product && (
@@ -38,6 +44,10 @@ function ProductDetail() {
               ? metaDescription.value
               : 'The Body Shop'
           }
+          keywords={ metaKeyword && metaKeyword.value
+            ? metaKeyword.value
+            : 'The Body Shop'}
+            
           // canonicalUrl={URL + props.location.pathname}
         />
       )}

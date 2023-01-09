@@ -26,6 +26,7 @@ const PageMeta: FC<Props> = (props: Props) => {
 
       <meta property="og:title" content={title} />
       <meta property="twitter:title" content={title} />
+      <meta property='title' content={title} />
       {/* <meta name="robots" content="index, follow"/>  */}
       <meta name="robots" content="noindex, nofollow" />
       {description && <meta name="description" content={description} />}

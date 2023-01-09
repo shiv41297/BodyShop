@@ -29,7 +29,14 @@ function ProductListingWrapper() {
                 ? productData?.categoryData?.metaDescription
                 : 'The Body Shop'
             }
+          
           />
+            <meta name="keywords" content={ productData?.categoryData &&
+              productData?.categoryData?.metaKeywords
+                ? productData?.categoryData?.metaKeywords
+                : "The Body Shop"} />
+                
+                
           {/* <link rel="canonical" href={window.location.href} /> */}
         </Head>
       )}
