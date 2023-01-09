@@ -23,7 +23,7 @@ const PageMeta: FC<Props> = (props: Props) => {
   return (
     <Head>
       {title ? <title>{title}</title> : <title>The BodyShop</title>}
-
+      <meta property='title' content={title} />
       <meta property="og:title" content={title} />
       <meta property="twitter:title" content={title} />
       {/* <meta name="robots" content="index, follow"/>  */}

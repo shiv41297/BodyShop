@@ -528,6 +528,12 @@ const ProductDetail = (props: any) => {
       attribute_code: 'meta_description',
     });
 
+    const metaKeyword = productData &&
+    productData.product &&
+    _.find(productData.product.customAttributes, {
+      attribute_code: 'meta_keyword',
+    });
+
   const URL = `${process.env.NEXT_PUBLIC_API_BASE_URL}`;
 
   return (
@@ -545,6 +551,9 @@ const ProductDetail = (props: any) => {
             ? metaDescription.value
             : 'The Body Shop'
         }
+        keywords={ metaKeyword && metaKeyword.value
+          ? metaKeyword.value
+          : 'The Body Shop'}
         // canonicalUrl={URL + props.location.pathname}
        
       /> */}

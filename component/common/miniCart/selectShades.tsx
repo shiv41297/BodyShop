@@ -1,12 +1,9 @@
 import React from "react";
-import { makeStyles } from "@material-ui/core/styles";
-import Drawer from "@material-ui/core/Drawer";
-import Button from "@material-ui/core/Button";
-import List from "@material-ui/core/List";
-import Divider from "@material-ui/core/Divider";
-import Utils from "../../../utils";
-import { createStyles, Theme, Typography } from "@material-ui/core";
-import { CROSS, HEART } from "utils/constantImages";
+import { makeStyles, createStyles } from "@mui/styles";
+import {Button, Divider, Drawer, List, Theme, Typography} from "@mui/material";
+import Image from "next/image";
+import Utils from "../../utils";
+
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -172,7 +169,7 @@ const SelectShades: React.FC<any> = (props: Props) => {
         <Typography className={classes.header}>Select Shade</Typography>
         <div className={classes.crossBtn}
             onClick={toggleDrawer(position, false)}>
-         <img src={CROSS} alt="cross" />
+         <Image src={Utils.images.CROSS} alt="cross" width={20} height={20} />
          
         </div>
       </div>
@@ -180,15 +177,16 @@ const SelectShades: React.FC<any> = (props: Props) => {
       <List>
         <div className={classes.innerContainer}>
           <div className={classes.imgDiv}>
-            {/* <img
+            <Image
               src={Utils.images.HEART}
               alt="heart"
+              width={20} height={20}
               className={classes.heartImg}
-            /> */}
-            <span className={classes.heartImg}><HEART /></span>
-            <img
+            />
+            <Image
               src={Utils.images.LIPSTICK}
               alt="item"
+              width={20} height={20}
               style={{ width: "100%" }}
             />
           </div>
@@ -216,11 +214,12 @@ const SelectShades: React.FC<any> = (props: Props) => {
         <div className={classes.productContainer}>
           {[1, 2, 3, 4, 5, 6].map((i) => (
             <div key={i} className={classes.itemContainer}>
-              <img
-                src={Utils.images.LIPSTICK}
-                alt="product"
-                style={{ width: "100%" }}
-              />
+               <Image
+              src={Utils.images.LIPSTICK}
+              alt="item"
+              width={20} height={20}
+              style={{ width: "100%" }}
+            />
               <Typography className={classes.name}>910 MILAN PANSY</Typography>
               <Typography className={classes.productNumber}>
                 #1096167
