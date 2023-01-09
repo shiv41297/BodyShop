@@ -13,13 +13,16 @@ export function getProductList(params: any) {
     //static
     // let params = { page: 1, limit: 18, urlKey: "new-in", query: "" };
     let token = params.authToken;
-    console.log(token, "tokenId")
+   
     let data = { ...params };
     let searchQuery = params.query;
     let url =
       Utils.endPoints.PRODUCT_LIST +
       "?data=" +
       encodeURIComponent(JSON.stringify(data));
+      console.log(token, "tokenId",params,Utils.endPoints.PRODUCT_LIST +
+      "?data=" +
+      encodeURIComponent(JSON.stringify(data)))
     let str = encodeURI(url);
 
     console.log("product listing called", str, params);

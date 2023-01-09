@@ -29,7 +29,6 @@ export const getProductData =
     
     if (resp) {
       var product = resp && resp.data && resp.data.data && resp.data.data;
-      // console.log({him:resp.data.data})
       var selectedVariant = null;
       var selectedVariantData: any = null;
 
@@ -64,7 +63,6 @@ export const getProductData =
       } else {
         selectedVariantData = product.product;
       }
-      console.log({product})
 
       dispatch({
         type: 'getProductData',

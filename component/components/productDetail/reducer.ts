@@ -12,7 +12,6 @@ export const productDetailReducer = (
   state = ProductDetailInitialState,
   action: any
 ) => {
-  console.log("payload.payload",action.payload)
   switch (action.type) {
     case 'getProductData':
       const product = { ...action.payload.product };
