@@ -7,42 +7,61 @@ import {
   showLoader,
 } from '../../../store/home/action';
 
-
 export const getProductData =
   (req: any, params: any) => async (dispatch: any) => {
-    // let authToken = req.cookies.authToken;
-    let authToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzZXNzaW9uSWQiOiI2M2EzZWQyYTQ2YWRlMzM4OGRlNjQ4YTkiLCJpc0xvZ2luIjp0cnVlLCJpc0d1ZXN0TG9naW4iOnRydWUsImlhdCI6MTY3MTY4NzQ2NiwiZXhwIjoxNjg3MjM5NDY2fQ.4Eg19HCDEGFUiw562m2nxA7T5WPHZb6bt0yZwfx6Xo0"
+    let authToken =
+      'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzZXNzaW9uSWQiOiI2M2EzZWQyYTQ2YWRlMzM4OGRlNjQ4YTkiLCJpc0xvZ2luIjp0cnVlLCJpc0d1ZXN0TG9naW4iOnRydWUsImlhdCI6MTY3MTY4NzQ2NiwiZXhwIjoxNjg3MjM5NDY2fQ.4Eg19HCDEGFUiw562m2nxA7T5WPHZb6bt0yZwfx6Xo0';
 
     let url = Utils.endPoints.PRODUCT_DATA;
     let { category, subcategory, googleKey } = params;
+
     let urlNew;
-    if(googleKey != undefined) {
-       urlNew = `${Utils.endPoints.PRODUCT_DATA}?subcategoryId=0&urlKey=${subcategory}`
-    }
-    else{
-       urlNew = `${Utils.endPoints.PRODUCT_DATA}?subcategoryId=${googleKey}&urlKey=${subcategory}`
+
+    if (googleKey != undefined) {
+      urlNew = `${Utils.endPoints.PRODUCT_DATA}?subcategoryId=0&urlKey=${subcategory}`;
+    } else {
+      urlNew = `${Utils.endPoints.PRODUCT_DATA}?subcategoryId=${googleKey}&urlKey=${subcategory}`;
     }
 
-    let resp = await request.get(urlNew,{ headers : {"Authorization" : "Bearer " + authToken}});
+    let resp = await request.get(urlNew, {
+      headers: { Authorization: 'Bearer ' + authToken },
+    });
+
     if (resp) {
-      var product = resp?.data?.data;
+      var product = resp && resp.data && resp.data.data && resp.data.data;
       var selectedVariant = null;
       var selectedVariantData: any = null;
-      if (product?.type === 'configurable') {
-        const links = product?.configurableProductLinks?.sort(
-          (a: any, b: any) => a?.price - b?.price
-        );
+
+      if (
+        product &&
+        product.product &&
+        product.product.type === 'configurable'
+      ) {
+        const links =
+          product &&
+          product.product &&
+          product.product.configurableProductLinks?.sort(
+            (a: any, b: any) => a?.price - b?.price
+          );
+
         selectedVariantData =
           links?.find((item: any) => item.isInStock) ||
-          product?.configurableProductLinks[0];
-        const values = product?.configurableProductOptions?.[0]?.values;
+          (product &&
+            product.product &&
+            product.product?.configurableProductLinks[0]);
+
+        const values =
+          product &&
+          product.product &&
+          product.product.configurableProductOptions?.[0]?.values;
+
         selectedVariant = values.find(
           (item: any) =>
             item?.label?.toLowerCase() ===
             selectedVariantData?.value?.toLowerCase()
         );
       } else {
-        selectedVariantData = product;
+        selectedVariantData = product.product;
       }
       dispatch({
         type: 'getProductData',

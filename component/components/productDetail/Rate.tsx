@@ -304,7 +304,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   selectedLabel: {
     font: `normal ${theme.typography.fontWeightLight} ${theme.spacing(
       1.3
-    )}p Work Sans`,
+    )} Work Sans`,
     lineHeight: '15.25px',
     letterSpacing: '1px',
     marginBottom: '5px',
@@ -403,6 +403,7 @@ const Rate = (_props: any) => {
   const [selectedVariant, setSelectedVariant] = React.useState(
     productDetail.selectedVariant
   );
+
   const [state, setState] = React.useState<any>({
     sizeData: [''],
     shadeData: [''],
@@ -490,7 +491,7 @@ const Rate = (_props: any) => {
         <Skeleton variant="rectangular" />
       ) : (
         <div className={classes.ratingContainer}>
-          <Link href="#reviewsAndReviews">
+          <Link href={'#reviewsAndReviews'}>
             <Rating
               className={classes.rating}
               name="read-only"
@@ -610,17 +611,17 @@ const Rate = (_props: any) => {
                         return (
                           configProduct && (
                             <React.Fragment key={i}>
-                              {/* <CustomRadio
-                              style={{ backgroundColor: shadeColor }}
-                              isInStock={configProduct?.isInStock}
-                              checked={
-                                selectedVariant?.value_index ===
-                                val?.value_index
-                              }
-                              value={val?.value_index}
-                              name="shade"
-                              onChange={() => selectVariant(val)}
-                            /> */}
+                              <CustomRadio
+                                style={{ backgroundColor: shadeColor }}
+                                isInStock={configProduct?.isInStock}
+                                checked={
+                                  selectedVariant?.value_index ===
+                                  val?.value_index
+                                }
+                                value={val?.value_index}
+                                name="shade"
+                                onChange={() => selectVariant(val)}
+                              />
                               {/* {/ <StyledCheckbox style={{ backgroundColor: shadeColor, borderRadius: '50%', marginBottom: '3px' }} checked={val?.value_index === selectedVariant?.value_index} value={val?.value_index} name="shade" onClick={() => selectVariant(val)} /> /} */}
                             </React.Fragment>
                           )
@@ -656,6 +657,7 @@ const Rate = (_props: any) => {
                           (item: any) => item.attribute_code === 'special_price'
                         );
                         let price = product?.price;
+
                         return (
                           product && (
                             <div onClick={() => selectVariant(val)} key={i}>
