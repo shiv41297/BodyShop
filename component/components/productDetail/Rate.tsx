@@ -23,6 +23,7 @@ import IngredientsModal from './ingredientsModal';
 import CustomRadio from '../../common/miniCart/CustomRadio';
 import Ingredients from './ingredients';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 
 const useStyles = makeStyles((theme: Theme) => ({
   ratingContainer: {
@@ -391,7 +392,7 @@ const useStyles = makeStyles((theme: Theme) => ({
 const Rate = (_props: any) => {
   const classes = useStyles();
   const dispatch = useDispatch();
-
+  const router = useRouter();
   const productDetail: any = useSelector(
     (state: any) => state.productDetailReducer
   );
@@ -432,30 +433,71 @@ const Rate = (_props: any) => {
     });
   }, [productDetail]);
 
+  useEffect(() => {
+    console.log("router.query",router.query)
+    const { sendVal }: any = router.query;
+    if (sendVal) {
+      const saveSendVal = JSON.parse(sendVal);
+      const { product, selectedProduct } = saveSendVal;
+      dispatch({
+        type: 'getProductData',
+        payload: {
+          selectedVariant: product,
+          selectedVariantData: selectedProduct,
+        },
+      });
+      setState({
+        ...state,
+        selectedVariant: product,
+        selectedVariantData: selectedProduct,
+      });
+
+      setSelectedVariant(product);
+    }
+  }, [router.query.sendVal]);
+
   // const handleRead = () => {
   //     setIsRead(!isRead)
   // }
 
-  const selectVariant = (product: any) => {
+  const selectVariant = (product: any, i: any) => {
     let selectedProduct = configurableLinks?.find((val: any) => {
       return val?.value?.toLowerCase() === product?.label?.toLowerCase();
     });
+    let changeState = { product: product, selectedProduct: selectedProduct };
+    console.log({ changeState }, { product }, { selectedProduct });
 
-    dispatch({
-      type: 'getProductData',
-      payload: {
+    if (configurableLinks[i].urlKey === router.query.subcategory) {
+      dispatch({
+        type: 'getProductData',
+        payload: {
+          selectedVariant: product,
+          selectedVariantData: selectedProduct,
+        },
+      });
+      // console.log({product},{selectedProduct})
+      setState({
+        ...state,
         selectedVariant: product,
         selectedVariantData: selectedProduct,
-      },
-    });
+      });
 
-    setState({
-      ...state,
-      selectedVariant: product,
-      selectedVariantData: selectedProduct,
-    });
-
-    setSelectedVariant(product);
+      setSelectedVariant(product);
+    } else {
+      router.push(
+        {
+          pathname: '/[type]/[category]/[subcategory]/p/[googleKey]',
+          query: {
+            type: router.query.slug,
+            category: router.query.category,
+            subcategory: configurableLinks[i] && configurableLinks[i].urlKey,
+            googleKey: router.query.googleKey,
+            sendVal: JSON.stringify(changeState),
+          },
+        },
+        // `/${router.query.slug}/${router.query.category}/${configurableLinks[i].urlKey}/p/${router.query.googleKey}`
+      );
+    }
   };
 
   // const selectShade = (product: any) => {
@@ -620,7 +662,7 @@ const Rate = (_props: any) => {
                                 }
                                 value={val?.value_index}
                                 name="shade"
-                                onChange={() => selectVariant(val)}
+                                onChange={() => selectVariant(val, i)}
                               />
                               {/* {/ <StyledCheckbox style={{ backgroundColor: shadeColor, borderRadius: '50%', marginBottom: '3px' }} checked={val?.value_index === selectedVariant?.value_index} value={val?.value_index} name="shade" onClick={() => selectVariant(val)} /> /} */}
                             </React.Fragment>
@@ -657,10 +699,10 @@ const Rate = (_props: any) => {
                           (item: any) => item.attribute_code === 'special_price'
                         );
                         let price = product?.price;
-
+                        // console.log("rrrrrrrrr",{i})
                         return (
                           product && (
-                            <div onClick={() => selectVariant(val)} key={i}>
+                            <div onClick={() => selectVariant(val, i)} key={i}>
                               <ToggleButton
                                 selected={
                                   // selectedVariant?.isInstock&&
