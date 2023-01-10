@@ -10,13 +10,13 @@ import { wrapper } from "../store/store";
 import { Provider } from "react-redux";
 import Headers from "../component/components/headers";
 import Footer from "../component/components/footers";
-import "../styles/globals.css";
 import "react-multi-carousel/lib/styles.css";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
+import "../styles/globals.css";
+
 import { StylesProvider, createGenerateClassName } from "@mui/styles";
 import { Box } from "@mui/material";
 import MediaFooter from "../component/components/footers/mediaFooter";
-import { getAuthToken } from "../store/home/action";
 
 // Client-side cache, shared for the whole session of the user in the browser.
 const clientSideEmotionCache = createEmotionCache();
@@ -61,15 +61,3 @@ function MyApp({
   );
 }
 export default MyApp;
-
-// MyApp.getInitialProps = wrapper.getInitialAppProps((store) =>
-//   //@ts-ignore-
-//   async ({ req, res }) => {
-
-    // await store.dispatch(getAuthToken());
-
-//     return {
-//       props: {},
-//     };
-//   }
-// );

@@ -22,6 +22,7 @@ import { PageMeta } from "../component/page-meta/PageMeta";
 import { screenViewed } from "../component/utils/event/action";
 import "../styles/Home.module.css";
 import request from "../component/utils/request";
+import Recommended from "../component/components/pagesComponents/home/recommended";
 // import Cookies from "js-cookie";
 
 const useStyles: any = makeStyles((theme: Theme) => ({
@@ -41,7 +42,7 @@ const Index = () => {
   // const homeData = useSelector((state: ReducersModal) => {
   //   return state.homeReducer.homeData})
 
-  const stateData = useSelector((state: any) => state.homeReducer.homeData);
+  const stateData = useSelector((state: any) => state.homeReducer?.homeData);
   const homeData = stateData;
   const dispatch: any = useDispatch();
   const history = useRouter();
@@ -196,16 +197,16 @@ const Index = () => {
 
       <div className={classes.homeRoot}>
         {sortedHomedata.map((section: any) => {
-          // if (
-          //   section?.status === "1" &&
-          //   section?.block_key == "recommended_products"
-          // )
-          //   return (
-          //     <Recommended
-          //       key={"recommended_products" + Math.random()}
-          //       data={section}
-          //     />
-          //   );
+          if (
+            section?.status === "1" &&
+            section?.block_key == "recommended_products"
+          )
+            return (
+              <Recommended
+                key={"recommended_products" + Math.random()}
+                data={section}
+              />
+            );
           if (
             section?.status === "1" &&
             section?.block_key == "promotional_products"

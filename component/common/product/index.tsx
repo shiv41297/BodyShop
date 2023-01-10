@@ -364,7 +364,6 @@ const Product = (props: Props) => {
   const dispatch: any = useDispatch();
   const history = useRouter();
 
-  console.log({history},history.query.slug)
   // const params: any = useParams();
   const {
     section,
@@ -401,8 +400,7 @@ const Product = (props: Props) => {
     (item: any) => item.type === "sample"
   ).length;
 
-  // const IMAGE_URL = `${process.env.NEXT_PUBLIC_MEDIA_URL}`;
-  const IMAGE_URL = "https://bodyshop-magento-staging.s3.amazonaws.com/media/";
+  const IMAGE_URL = `${process.env.NEXT_PUBLIC_MEDIA_URL}`;
 
   const handleLike = (status: boolean, product: any) => {
     if (status) {
