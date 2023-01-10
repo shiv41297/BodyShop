@@ -606,7 +606,7 @@ const Product = (props: Props) => {
         //     ? productData.urlKey
         //     : productData.configurableProductLinks &&
         //       productData.configurableProductLinks.urlKey,
-              urlKey:productData.urlKey,
+        urlKey:productData.urlKey,
         pageName: '',
         isSearched:
           type === 'mobile-home' ||
