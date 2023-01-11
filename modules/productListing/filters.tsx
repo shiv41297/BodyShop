@@ -129,7 +129,6 @@ const Filters: React.FC<any> = (props: Props) => {
   const router = useRouter();
   const location = useRouter();
 
-  console.log(router,"router");
   const { menuData } = useSelector((state: any) => state.homeReducer);
 
   // const urlKey = history?.location.pathname.includes("/c/")
@@ -186,7 +185,7 @@ const Filters: React.FC<any> = (props: Props) => {
         appliedFilter?.otherFilters?.length !== 0 ? 1 : appliedFilter?.page;
       newAppliedFilter = { ...appliedFilter, page: newPage };
 
-      const data = { ...props.obj, ...newAppliedFilter };
+      const data = { ...props.obj, ...newAppliedFilter, query:"", categoryId:categoryId };
 
       props.setParams(data);
       // dispatch(getProductList(data, false, () => {
@@ -196,6 +195,7 @@ const Filters: React.FC<any> = (props: Props) => {
   }, [ props.obj.query]);
 
   const dispatch = useDispatch();
+  console.log(location,"router");
 
   const classes = useStyles();
 
@@ -217,7 +217,7 @@ const Filters: React.FC<any> = (props: Props) => {
     );
 
     if (_.isEmpty(queryFilter)) {
-      router.push({ pathname: history.location.pathname });
+      router.push({ pathname: location?.pathname})
     } else {
       history.push({
         pathname: history.location.pathname,
