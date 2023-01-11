@@ -1,4 +1,4 @@
-import { createStyles, Theme } from "@mui/material";
+import { createStyles, Pagination, Theme } from "@mui/material";
 // import Pagination from "@material-ui/lab/Pagination";
 import { Skeleton } from "@mui/material";
 import { useSelector } from "react-redux";
@@ -50,6 +50,7 @@ const useStyles = makeStyles((theme: Theme) => ({
 
 function CustomPagination(props: any) {
   let data = props?.data;
+  console.log(data, "pagination");
   const count = Math.ceil(data?.totalCount / data?.limit);
   const currentPageCount = data?.page || undefined;
   const classes = useStyles();
@@ -63,12 +64,50 @@ function CustomPagination(props: any) {
         <Skeleton height={20} width={"30%"} />
       ) : data !== undefined ? (
         <>
+
           <p className={classes.description}>
             <span>Showing</span>{" "}
             {`${data?.data?.length} of ${data?.totalCount} ${
               data?.totalCount > 1 ? "products" : "product"
             }`}
           </p>
+          <Pagination
+            size={"small"}
+            defaultPage={1}
+            siblingCount={0}
+            boundaryCount={1}
+            //  hideFirstButton={true}
+            className={classes.pagination}
+            // boundaryCount={1}
+            count={count}
+            page={currentPageCount}
+            onChange={props.handleChange}
+            variant="outlined"
+            shape="rounded"
+            color="primary"
+          />
+     
+
+
+
+
+
+
+
+
+          {/* <p className={classes.description}>
+            <span>Showing</span>{" "}
+            {`${data?.data?.length} of ${data?.totalCount} ${
+              data?.totalCount > 1 ? "products" : "product"
+            }`}
+          </p> */}
+
+
+
+
+
+
+
           {/* <Pagination
             size={"small"}
             defaultPage={data?.page}
