@@ -626,24 +626,10 @@ const Product = (props: Props) => {
             : false,
       };
 
-      // if (history?.location?.pathname.includes("/c/")) {
-      //   state.categoryId = plpData?.categoryData?.id ?? 0;
-      // } else {
-      //   state.categoryId = productData?.category?.child_category?.magentoId
-      // }
-
       state.categoryId = productData?.category?.child_category?.magentoId;
-      // history.push(
-      //   {
-      //     pathname,
-      //     search: `${location.search}`,
-      //   },
-      //   { query: state }
-      // );
 
-      console.log({ state });
       const { urlKey, categoryId } = state;
-      // history.push(`trending/new-in/${urlKey}/p/${categoryId}`);
+      
       history.push({
         pathname: "/[type]/[category]/[subcategory]/p/[googleKey]",
         query: {
@@ -653,28 +639,6 @@ const Product = (props: Props) => {
           googleKey: `${categoryId}`,
         },
       });
-      // history.push({
-      //   pathname: Utils.CommonFunctions.replaceUrlParams(
-      //     Utils.routes.PRODUCT_DETAIL,
-      //     { ":id": productData?.magentoId }
-      //   ),
-      //   state: {
-      //     pageName: "",
-      //     isSearched:
-      //       type === "mobile-home" ||
-      //       type === "home" ||
-      //       type === "wishlist-recommend" ||
-      //       type === "mybag"
-      //         ? 1
-      //         : null,
-      //     isSearchOrRecommend:
-      //       section === "recommend" ||
-      //       props?.type === "mobile-home" ||
-      //       isSearchOrRecommend
-      //         ? true
-      //         : false,
-      //   },
-      // });
     }
   };
 

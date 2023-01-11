@@ -7,6 +7,17 @@ import {
   showLoader,
 } from '../../../store/home/action';
 
+function multiSearchOr(text:any, searchWords:any){
+
+  for(var i=0; i<searchWords.length; i++)
+  {
+   if(text.indexOf(searchWords[i]) == -1)
+     return false;
+  }
+  return true;
+}
+
+
 export const getProductData =
   (req: any, params: any) => async (dispatch: any) => {
     let authToken = req.cookies.authToken;
@@ -22,6 +33,7 @@ export const getProductData =
     } else {
       urlNew = `${Utils.endPoints.PRODUCT_DATA}?subcategoryId=${googleKey}&urlKey=${subcategory}`;
     }
+
     
     let resp = await request.get(urlNew, {
       headers: { Authorization: 'Bearer ' + authToken },
@@ -43,23 +55,21 @@ export const getProductData =
           product.product.configurableProductLinks?.sort(
             (a: any, b: any) => a?.price - b?.price
           );
-
         selectedVariantData =
-          links?.find((item: any) => item.isInStock) ||
+        links?.find((item: any) => item.isInStock === true) ||
           (product &&
             product.product &&
             product.product?.configurableProductLinks[0]);
+           
+        let searchValue= subcategory.replaceAll('-',' ').split(' ').reverse()[0];
 
-        const values =
+         selectedVariant =
           product &&
           product.product &&
-          product.product.configurableProductOptions?.[0]?.values;
-
-        selectedVariant = values.find(
-          (item: any) =>
-            item?.label?.toLowerCase() ===
-            selectedVariantData?.value?.toLowerCase()
-        );
+          product.product.configurableProductOptions?.[0]?.values && 
+          product?.product?.configurableProductOptions?.[0]?.values.find((val: any) => {
+            return multiSearchOr(val.label.toLowerCase(), searchValue);
+          });
       } else {
         selectedVariantData = product.product;
       }
@@ -83,16 +93,6 @@ export const addToBag = (payload: any) => {
       .post(url, payload)
       .then((resp) => {
         if (resp) dispatch(hideLoader());
-        // dispatch({
-        //   type: 'addToCart',
-        //   payload: resp.data.data
-        // });
-        // dispatch({
-        //   type: "show-alert", payload: {
-        //     type: "success",
-        //     message: "Product added to Bag successfully"
-        //   }
-        // })
       })
       .catch((err) => {
         dispatch(hideLoader());

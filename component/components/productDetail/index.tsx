@@ -380,7 +380,8 @@ const ProductDetail = (props: any) => {
           });
         }
         breadcrumb.push({
-          title: productData?.product?.name,
+          title: productData?.selectedVariantData?.name,
+          // title: productData?.product?.name ? productData?.product?.name  :productData?.selectedVariantData?.name,
           action: props?.location?.pathname,
         });
         setBreadCrumb(breadcrumb);
