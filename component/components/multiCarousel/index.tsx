@@ -11,11 +11,11 @@ import { Typography, Theme } from "@mui/material";
 // import { PRODUCT_PLACEHOLDER } from "utils/constantImages";
 
 const useStyles = makeStyles((theme: Theme) =>
-  ({
+ ({
     multiCarousel: {},
     itemDiv: {
       marginRight: theme.spacing(1),
-      cursor: "pointer",
+      cursor: "pointer"
     },
     // carousel: {
     //   "& .react-multiple-carousel__arrow": {
@@ -43,7 +43,7 @@ const useStyles = makeStyles((theme: Theme) =>
         // borderRadius: "unset",
         borderRadius: "50%",
         "&::before": {
-          // content: `url(${Recommended})`,
+          content: `url(${Utils.images.RECOMMENDED_ARROW})`,
           color: "var(--white)",
           width: "100%",
           height: "100%",
@@ -60,16 +60,16 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     imgDiv: {
       width: "100%",
-      height: "277px",
+      height: "277px"
     },
     noImgBackground: {
-      backgroundColor: "#F8F3E9",
-      padding: "25px",
+      backgroundColor: '#F8F3E9',
+      padding: '25px',
     },
     img: {
       width: "100%",
       height: "100%",
-      objectFit: "cover",
+      objectFit: 'cover'
     },
     contentDiv: {
       backgroundColor: "var(--white)",
@@ -78,28 +78,28 @@ const useStyles = makeStyles((theme: Theme) =>
     heading: {
       font: `normal ${theme.typography.fontWeightBold} ${theme.spacing(
         2.7
-      )} Druk`,
-      color: "var(--primary)",
+      )}px Druk`,
+      color: theme.palette.primary.main,
       textAlign: "center",
       textTransform: "uppercase",
       [theme.breakpoints.down("xs")]: {
         fontSize: theme.spacing(1.8),
       },
-      letterSpacing: "1px",
-      whiteSpace: "nowrap",
-      textOverflow: "ellipsis",
-      overflow: "hidden",
+      letterSpacing: '1px',
+      whiteSpace: 'nowrap',
+      textOverflow: 'ellipsis',
+      overflow: 'hidden',
     },
     paragraph: {
       font: `normal ${theme.typography.fontWeightRegular} ${theme.spacing(
         1.4
-      )} Work Sans`,
-      color: "var(--primary)",
+      )}px Work Sans`,
+      color: theme.palette.primary.main,
       textAlign: "center",
-      marginTop: "6px",
-      marginBottom: "10px",
-      padding: "0 2px 0 2px",
-      height: "50px",
+      marginTop: '6px',
+      marginBottom: '10px',
+      padding: '0 2px 0 2px',
+      height: '50px'
     },
   })
 );

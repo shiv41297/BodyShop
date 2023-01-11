@@ -129,7 +129,6 @@ const Filters: React.FC<any> = (props: Props) => {
   const router = useRouter();
   const location = useRouter();
 
-  console.log(router,"router");
   const { menuData } = useSelector((state: any) => state.homeReducer);
 
   // const urlKey = history?.location.pathname.includes("/c/")
@@ -186,7 +185,7 @@ const Filters: React.FC<any> = (props: Props) => {
         appliedFilter?.otherFilters?.length !== 0 ? 1 : appliedFilter?.page;
       newAppliedFilter = { ...appliedFilter, page: newPage };
 
-      const data = { ...props.obj, ...newAppliedFilter };
+      const data = { ...props.obj, ...newAppliedFilter, query:"", categoryId:categoryId };
 
       props.setParams(data);
       // dispatch(getProductList(data, false, () => {
@@ -196,6 +195,7 @@ const Filters: React.FC<any> = (props: Props) => {
   }, [ props.obj.query]);
 
   const dispatch = useDispatch();
+  console.log(location,"router");
 
   const classes = useStyles();
 
@@ -207,6 +207,8 @@ const Filters: React.FC<any> = (props: Props) => {
     delete queryFilter?.customAttributes;
 
     const data = { ...props.obj, page: 1, authToken: getAuthToken(),query:"", categoryId:categoryId };
+    console.log(data,"data")
+    
     props.setParams(data);
     dispatch(showLoader());
     delete data.selectedFilters;
@@ -217,18 +219,38 @@ const Filters: React.FC<any> = (props: Props) => {
     );
 
     if (_.isEmpty(queryFilter)) {
-      router.push({ pathname: history.location.pathname });
-    } else {
-      history.push({
-        pathname: history.location.pathname,
-        search: `?filters=${encodeURI(
-          encodeURIComponent(JSON.stringify(data))
-        )}`,
+      console.log("line 222")
+      router.push({
+        pathname: "/[slug]/h/[googleKey]",
+        query: {
+         slug: `${router.query.slug}`,
+          
+          googleKey: `${router.query.googleKey}`,
+        },
       });
+      // router.push({ pathname: location?.pathname})
+    } else {
+      console.log("line 233")
+      router.push({
+        pathname: "/[slug]/h/[googleKey]?",
+        query: {
+         slug: `${router.query.slug}`,
+         search: JSON.stringify(data),
+        
+          googleKey: `${router.query.googleKey}`,
+        },
+      });
+      // history.push({
+      //   pathname: history.location.pathname,
+        // search: `?filters=${encodeURI(
+        //   encodeURIComponent(JSON.stringify(data))
+        // )}`,
+      // });
     }
   };
 
   const onCheckboxChange = (e: any, type: string, filter: any, option: any) => {
+
     dispatch(showLoader());
     let appliedFilter = JSON.parse(
       decodeURIComponent(decodeURIComponent(queryFilter))
@@ -284,19 +306,41 @@ const Filters: React.FC<any> = (props: Props) => {
     if (!appliedFilter?.customAttributes?.length) {
       delete appliedFilter?.customAttributes;
     }
+    const data = { ...props.obj, ...appliedFilter, page: 1 ,query:"", categoryId: categoryId, authToken: getAuthToken()};
 
     if (!_.isEmpty(appliedFilter)) {
+      console.log("line 308")
       router.push({
-        pathname: history?.location?.pathname,
-        search: `?filters=${encodeURI(
-          encodeURIComponent(JSON.stringify(appliedFilter))
-        )}`,
+        pathname: "/[slug]/h/[googleKey]",
+        query: {
+          slug: `${router.query.slug}`,
+          googleKey: `${router.query.googleKey}`,
+          search: `${encodeURI(
+            encodeURIComponent(JSON.stringify(data))
+          )}`,
+          // search: JSON.stringify(data),
+        },
       });
-    } else {
-      history.push({ pathname: history.location.pathname });
     }
+     else {
+      console.log("line 317")
+      router.push({
+        pathname: `/[slug]/h/[googleKey]`,
+        query: {
+         slug: `${router.query.slug}`,
+         googleKey: `${router.query.googleKey}`,
+         search: `${encodeURI(
+          encodeURIComponent(JSON.stringify(data))
+        )}`,
+        },
+      });  
+      }
+    
+   
+    // router.push({ pathname: location?.pathname})
 
-    const data = { ...props.obj, ...appliedFilter, page: 1 ,query:"", categoryId: categoryId, authToken: getAuthToken()};
+   
+
     props.setParams(data);
 
     delete data.selectedFilters;
