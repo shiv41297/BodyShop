@@ -17,6 +17,7 @@ import "../styles/globals.css";
 import { StylesProvider, createGenerateClassName } from "@mui/styles";
 import { Box } from "@mui/material";
 import MediaFooter from "../component/components/footers/mediaFooter";
+import Addvertisement from "../component/components/addvertisementCard";
 
 // Client-side cache, shared for the whole session of the user in the browser.
 const clientSideEmotionCache = createEmotionCache();
@@ -47,8 +48,11 @@ function MyApp({
           <CssBaseline />
           <StylesProvider generateClassName={generateClassName}>
             <Headers />
+           {/* <Box sx={{ display: { xs: "none", sm: "block" } }}>
+              <Addvertisement key="promotional_banner" />
+            </Box>  */}
 
-            <Box sx={{ marginTop: "90px" }}>
+            <Box sx={{ marginTop: "130px" }}>
               <Component {...props.pageProps} />
             </Box>
 

@@ -105,10 +105,10 @@ const getStores = (currentLat: any, currentLng: any)=>(dispatch:any) => {
 
 
 export const getAddressFromLatLng = (latLng: string) => {
-    return axios.get(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${latLng}&key=${process.env.REACT_APP_GOOGLE_MAP_KEY}&language=en`)
+    return axios.get(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${latLng}&key=${process.env.NEXT_PUBLIC_GOOGLE_MAP_KEY}&language=en`)
 }
 
 export const getAddressFromPin = (pin: string) => {
-    // return axios.get(`https://maps.googleapis.com/maps/api/geocode/json?address=${pin}&key=${process.env.REACT_APP_GOOGLE_MAP_KEY}&language=en`)
-    return axios.get(`https://maps.googleapis.com/maps/api/geocode/json?components=postal_code:${pin}|country:IN&key=${process.env.REACT_APP_GOOGLE_MAP_KEY}&language=en`)
+    // return axios.get(`https://maps.googleapis.com/maps/api/geocode/json?address=${pin}&key=${process.env.NEXT_PUBLIC_GOOGLE_MAP_KEY}&language=en`)
+    return axios.get(`https://maps.googleapis.com/maps/api/geocode/json?components=postal_code:${pin}|country:IN&key=${process.env.NEXT_PUBLIC_GOOGLE_MAP_KEY}&language=en`)
 }

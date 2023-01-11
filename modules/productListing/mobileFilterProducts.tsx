@@ -227,8 +227,8 @@ function MobileFilterProducts() {
         category: ProductsArray?.[0]?.category,
       };
       if (
-        process.env.REACT_APP_ENV !== "development" &&
-        process.env.REACT_APP_ENV !== "staging"
+        process.env.NEXT_PUBLIC_ENV !== "development" &&
+        process.env.NEXT_PUBLIC_ENV !== "staging"
       ) {
         window.gtag("event", "view_item_list", gtagPayload);
       }

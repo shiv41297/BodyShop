@@ -211,9 +211,7 @@ const Headers = () => {
       let menuRespData = resp?.data?.data.filter(
         (value: any, _index: number) => value.id !== null
       );
-      console.log("menudata", menuRespData);
       setMenusData(menuRespData);
-      console.log(menuData);
       dispatch({
         type: Utils.ActionName.MENU_DATA,
         payload: { menuData: menuRespData },

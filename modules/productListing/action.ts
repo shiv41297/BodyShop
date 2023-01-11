@@ -15,6 +15,7 @@ export function getProductList(params: any) {
     let token = params.authToken;
    
     let data = { ...params };
+    console.log(params,"params");
     let searchQuery = params.query;
     let url =
       Utils.endPoints.PRODUCT_LIST +

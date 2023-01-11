@@ -72,7 +72,7 @@ instance.interceptors.response.use(
     return success;
   },
   (err) => {
-    if (err.response.status === 503) { //under maintainance
+    if (err.response?.status === 503) { //under maintainance
         initstore.dispatch({ type: "undermaintainance", payload: { undermaintainance: 1 } })
         initstore.dispatch(hideLoader())
     }

@@ -47,24 +47,37 @@ const filterDataForMobile = (data: any) => {
   return mobileData;
 };
 
-export const getHomeData = (token: any) => async (dispatch: any) => {
-  let resp = await request.get(Utils.endPoints.HOME, {
-    headers: { Authorization: "Bearer " + token },
-  });
-  if (resp) {
-    const data = [...resp?.data?.data];
-    // web home data
-    // const arr = convertObjToArray(data)
-    const webData = filterDataForWeb(data);
-    const sortedData = webData.sort((a: any, b: any) => {
-      return Number(a.position) - Number(b.position);
+export const getHomeData =
+  (token: any, callback?: Function) => async (dispatch: any) => {
+    let resp = await request.get(Utils.endPoints.HOME, {
+      headers: { Authorization: "Bearer " + token },
     });
-    dispatch({
-      type: "getHomeData",
-      payload: sortedData,
-    });
-  }
-};
+    if (resp) {
+      const data = [...resp?.data?.data];
+     
+      const webData = filterDataForWeb(data);
+      const sortedData = webData.sort((a: any, b: any) => {
+        return Number(a.position) - Number(b.position);
+      });
+      dispatch({
+        type: "getHomeData",
+        payload: sortedData,
+      });
+
+      const mobileData = filterDataForMobile(data);
+      const sortedMobileData = mobileData.sort((a: any, b: any) => {
+        return Number(a?.position) - Number(b?.position);
+      });
+
+      dispatch({
+        type: "getMobileHomeData",
+        payload: sortedMobileData,
+      });
+      if (callback) {
+        callback(resp?.data?.data);
+      }
+    }
+  };
 
 export const getAuthToken = () => async (dispatch: any) => {
   let resp = await request.post(Utils.endPoints.GUEST_SIGNUP);
@@ -77,10 +90,8 @@ export const getAuthToken = () => async (dispatch: any) => {
     });
     Cookies.set("authToken", resp.data.data?.authToken);
     Cookies.set("guestUser", "true");
-    console.log("authToken response", resp?.data?.data?.authToken);
   }
 };
-
 
 export const getConfig = (payload: any) => {
   return (dispatch: any, _setState: any) => {

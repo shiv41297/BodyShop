@@ -57,7 +57,7 @@ export const getServerSideProps = wrapper.getServerSideProps((store) =>
     // console.log(actionparams.authToken, "authentication")
 
     console.log('actionParams', actionparams);
-    await store.dispatch(getProductList(actionparams));
+    await store.dispatch(getProductList(actionparams,params));
     return { props: {} };
   }
 );

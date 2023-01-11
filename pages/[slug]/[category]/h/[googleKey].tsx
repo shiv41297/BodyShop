@@ -51,6 +51,7 @@ export const getServerSideProps = wrapper.getServerSideProps((store) =>
       query: '',
       // sortBy: "2",
       urlKey: query?.slug,
+      search : query?.search,
       // authToken: authToken
       authToken: req.cookies.authToken
     };
