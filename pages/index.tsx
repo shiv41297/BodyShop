@@ -40,7 +40,7 @@ const useStyles: any = makeStyles((theme: Theme) => ({
 const Index = () => {
   const classes = useStyles();
   const { query } = useRouter();
-  const isSmall = useMediaQuery(theme.breakpoints.down("xs"));
+  const isSmall = useMediaQuery(theme.breakpoints.down(600));
 
   // const homeData = useSelector((state: ReducersModal) => {
   //   return state.homeReducer.homeData})
@@ -289,11 +289,11 @@ const Index = () => {
           })}
         </div>
       </Box>
-      {/* {isSmall && ( */}
+      {isSmall && (
       <Box sx={{ display: { xs: "block", sm: "none" } }}>
         <HomeMobileView />
       </Box>
-      {/* )} */}
+       )} 
     </>
   );
 };
