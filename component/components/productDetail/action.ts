@@ -23,11 +23,11 @@ export const getProductData =
 
 
     // category = ~~category ? ~~category : val;
-    console.log(category, "category");
+    console.log(params.val, "category");
     if (googleKey != undefined) {
-      urlNew = `${Utils.endPoints.PRODUCT_DATA}?subcategoryId=124&urlKey=${subcategory}`;
+      urlNew = `${Utils.endPoints.PRODUCT_DATA}?subcategoryId=${Number(val)}&urlKey=${subcategory}`;
     } else {
-      urlNew = `${Utils.endPoints.PRODUCT_DATA}?subcategoryId=${parseInt(category)}&urlKey=${subcategory}`;
+      urlNew = `${Utils.endPoints.PRODUCT_DATA}?subcategoryId=${Number(val)}&urlKey=${subcategory}`;
     }
     
     let resp = await request.get(urlNew, {

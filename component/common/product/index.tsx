@@ -657,13 +657,13 @@ const Product = (props: Props) => {
           pathname: "/[slug]/[category]/[subcategory]/p/[googleKey]",
           query: {
             slug: `${history.query.slug}`,
-            // category: `${
-            //   productData?.categoryData &&
-            //   productData?.categoryData?.child_category
-            //     ? productData?.categoryData?.child_category?.urlPath
-            //     : "trending"
-            // }`,
-            category: `${history.query.category}`,
+            category: `${
+              productData?.categoryData &&
+              productData?.categoryData?.child_category
+                ? productData?.categoryData?.child_category?.urlPath
+                : "trending"
+            }`,
+            // category: `${history.query.category}`,
             subcategory: `${urlKey}`,
             googleKey: `${googleCode ? googleCode : "p000069"}`,
             val: categoryId,
@@ -680,9 +680,11 @@ const Product = (props: Props) => {
                 ? productData?.categoryData?.child_category?.urlPath
                 : "trending"
             }`,
-            val: categoryId,
+            // category: categoryId,
             subcategory: `${urlKey}`,
             googleKey: `${googleCode ? googleCode : "p000069"}`,
+            val: categoryId,
+
           },
         });
       }
