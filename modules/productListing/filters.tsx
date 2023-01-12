@@ -228,7 +228,6 @@ const Filters: React.FC<any> = (props: Props) => {
           googleKey: `${router.query.googleKey}`,
         },
       });
-      // router.push({ pathname: location?.pathname})
     } else {
       console.log("line 233")
       router.push({
@@ -308,46 +307,41 @@ const Filters: React.FC<any> = (props: Props) => {
     }
     const data = { ...props.obj, ...appliedFilter, page: 1 ,query:"", categoryId: categoryId, authToken: getAuthToken()};
 
-    if (!_.isEmpty(appliedFilter)) {
-      console.log("line 308")
-      router.push({
-        pathname: "/[slug]/h/[googleKey]",
-        query: {
-          slug: `${router.query.slug}`,
-          googleKey: `${router.query.googleKey}`,
-          search: `${encodeURI(
-            encodeURIComponent(JSON.stringify(data))
-          )}`,
-          // search: JSON.stringify(data),
-        },
-      });
-    }
-     else {
-      console.log("line 317")
-      router.push({
-        pathname: `/[slug]/h/[googleKey]`,
-        query: {
-         slug: `${router.query.slug}`,
-         googleKey: `${router.query.googleKey}`,
-         search: `${encodeURI(
-          encodeURIComponent(JSON.stringify(data))
-        )}`,
-        },
-      });  
-      }
-    
-   
-    // router.push({ pathname: location?.pathname})
-
+    // if (!_.isEmpty(appliedFilter)) {
+    //   console.log("line 308")
+    //   router.push({
+    //     pathname: "/[slug]/h/[googleKey]",
+    //     query: {
+    //       slug: `${router.query.slug}`,
+    //       googleKey: `${router.query.googleKey}`,
+    //       // search: `${encodeURI(
+    //       //   encodeURIComponent(JSON.stringify(data))
+    //       // )}`,
+    //       search: JSON.stringify(data),
+    //     },
+    //   });
+    // }
+    //  else {
+    //   console.log("line 317")
+    //   router.push({
+    //     pathname: `/[slug]/h/[googleKey]`,
+    //     query: {
+    //      slug: `${router.query.slug}`,
+    //      googleKey: `${router.query.googleKey}`,
+    //      search: `${encodeURI(
+    //       encodeURIComponent(JSON.stringify(data))
+    //     )}`,
+    //     },
+    //   });  
+    //   }
    
 
     props.setParams(data);
 
     delete data.selectedFilters;
-    
-    dispatch(getProductList(data,false, () => {
-      dispatch(hideLoader())
-    }));
+    console.log(data,"data line 343")
+    dispatch(getProductList(data));
+
   };
 
   return (
