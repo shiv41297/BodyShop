@@ -1,47 +1,43 @@
-import React, { useEffect } from "react";
-import {
- 
-  Typography,
-  MenuItem,
-  Menu,
- Theme,
- IconButton
-} from "@mui/material";
-import { makeStyles } from "@mui/styles";
-import Utils from "../../utils";
-import { useDispatch, useSelector } from "react-redux";
-import SuccessModal from "./successModal";
+import React, { useEffect } from 'react';
+import { Typography, MenuItem, Menu, Theme, IconButton } from '@mui/material';
+import { makeStyles } from '@mui/styles';
+import Utils from '../../utils';
+import { useDispatch, useSelector } from 'react-redux';
+import SuccessModal from './successModal';
 
-import {
-  addToBag,
-  addToWishlist as eventAddToWishlist,
-  removeFromWishlist as eventRemoveFromWishlist,
-} from "../../utils/event/action";
+// import {
+//   addToBag,
+//   addToWishlist as eventAddToWishlist,
+//   removeFromWishlist as eventRemoveFromWishlist,
+// } from "../../utils/event/action";
 
-import clsx from "clsx";
-import { addToBag as eventAddToBag } from "../../utils/event/action";
+import clsx from 'clsx';
+// import { addToBag as eventAddToBag } from "../../utils/event/action";
 
-import { HideBetween, HideOn } from "react-hide-on-scroll";
+import { HideBetween, HideOn } from 'react-hide-on-scroll';
 // import { getWishList } from "../wishlist/action";
-import { customGa4Event } from "../../utils/gtag";
-import { Box, Icon } from "@mui/material";
-import { hideLoader } from "../../../store/home/action";
-import ContainedButton from "../../common/containedButton";
-import { addToWishList, removeFromWishList, notifyMe } from "../../common/product/action";
-import { ReducersModal } from "../../models";
+import { customGa4Event } from '../../utils/gtag';
+import { Box, Icon } from '@mui/material';
+import { hideLoader } from '../../../store/home/action';
+import ContainedButton from '../../common/containedButton';
+// import { addToWishList, removeFromWishList, notifyMe } from "../../common/product/action";
+import { ReducersModal } from '../../models';
+import { addToBag } from '../../common/addToCart/action';
+import { addToBag as eventAddToBag } from '../../utils/event/action';
+import { notifyMe } from '../../common/product/action';
 
-const useStyles = makeStyles((theme : Theme) => ({
+const useStyles = makeStyles((theme: Theme) => ({
   staticBottomContainer: {
-    background: "#f9f6ed",
-    width: "100%",
-    position: "fixed",
+    background: '#f9f6ed',
+    width: '100%',
+    position: 'fixed',
     bottom: 0,
     zIndex: 9,
     left: 0,
-    [theme.breakpoints.down("xs")]: {
+    [theme.breakpoints.down('xs')]: {
       // display: 'none'
-      background: "white",
-      borderTop: "1px solid lightgray",
+      background: 'white',
+      borderTop: '1px solid lightgray',
     },
   },
   //   hideHeight: {
@@ -57,76 +53,76 @@ const useStyles = makeStyles((theme : Theme) => ({
   //     minHeight: "10vw",
   //   },
   mainBottomContainer: {
-    padding: "12px 30px",
-    display: "flex",
-    alignItems: "center",
-    [theme.breakpoints.down("sm")]: {
+    padding: '12px 30px',
+    display: 'flex',
+    alignItems: 'center',
+    [theme.breakpoints.down('sm')]: {
       // display: 'none'
       padding: theme.spacing(1),
     },
-    [theme.breakpoints.down("xs")]: {
+    [theme.breakpoints.down('xs')]: {
       // display: 'none'
       padding: theme.spacing(1.2, 1),
-      flexDirection: "column",
+      flexDirection: 'column',
     },
   },
   leftContainer: {
-    flexBasis: "50%",
-    [theme.breakpoints.down("md")]: {
+    flexBasis: '50%',
+    [theme.breakpoints.down('md')]: {
       // display: 'none'
-      flexBasis: "40%",
+      flexBasis: '40%',
     },
-    [theme.breakpoints.down("xs")]: {
-      display: "flex",
-      justifyContent: "space-between",
-      width: "100%",
-      paddingBottom: "10px",
-      alignItems: "center",
+    [theme.breakpoints.down('xs')]: {
+      display: 'flex',
+      justifyContent: 'space-between',
+      width: '100%',
+      paddingBottom: '10px',
+      alignItems: 'center',
     },
   },
   rightContainer: {
     // width: '50%',
-    flexBasis: "50%",
+    flexBasis: '50%',
 
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "space-between",
-    [theme.breakpoints.down("md")]: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    [theme.breakpoints.down('md')]: {
       // display: 'none'
-      flexBasis: "60%",
+      flexBasis: '60%',
     },
-    [theme.breakpoints.down("xs")]: {
+    [theme.breakpoints.down('xs')]: {
       // display: 'none'
-      width: "100%",
+      width: '100%',
     },
   },
   productName: {
     font: `normal ${theme.typography.fontWeightMedium} ${theme.spacing(
       1.6
     )}  Work Sans`,
-    lineHeight: "18.77px",
-    color: "#004236",
-    [theme.breakpoints.down("xs")]: {
+    lineHeight: '18.77px',
+    color: '#004236',
+    [theme.breakpoints.down('xs')]: {
       font: `normal 700 ${theme.spacing(1.8)}  Recoleta Alt`,
-      whiteSpace: "nowrap",
-      overflow: "hidden",
-      width: "63%",
-      color: "var(--black)",
+      whiteSpace: 'nowrap',
+      overflow: 'hidden',
+      width: '63%',
+      color: 'var(--black)',
       // overflow: "hidden",
-      textOverflow: "ellipsis",
+      textOverflow: 'ellipsis',
       // display: "-webkit-box",
-      "-webkit-line-clamp": 2,
-      "-webkit-box-orient": "vertical",
+      '-webkit-line-clamp': 2,
+      '-webkit-box-orient': 'vertical',
     },
   },
   productPrice: {
     font: `normal ${theme.typography.fontWeightBold} ${theme.spacing(
       1.8
     )}  Work Sans`,
-    lineHeight: "21.11px",
-    color: "#004236",
+    lineHeight: '21.11px',
+    color: '#004236',
     marginLeft: theme.spacing(1),
-    [theme.breakpoints.down("xs")]: {
+    [theme.breakpoints.down('xs')]: {
       margin: theme.spacing(0.5, 1),
       font: `normal 700 ${theme.spacing(1.8)}  Work Sans`,
     },
@@ -136,153 +132,153 @@ const useStyles = makeStyles((theme : Theme) => ({
     font: `normal ${theme.typography.fontWeightMedium} ${theme.spacing(
       1.5
     )} Work Sans`,
-    color: "var(--light-gray)",
-    textDecorationLine: "line-through",
+    color: 'var(--light-gray)',
+    textDecorationLine: 'line-through',
   },
   fontError: {
     font: `normal ${theme.typography.fontWeightBold} ${theme.spacing(
       1.8
     )}  Work Sans`,
-    lineHeight: "21.11px",
+    lineHeight: '21.11px',
   },
   dropDown: {
     // position: 'relative',
     // width: '65%',
 
-    "& .MuiTypography-body1": {
+    '& .MuiTypography-body1': {
       font: `normal ${theme.typography.fontWeightBold} ${theme.spacing(
         1.4
       )}  Work Sans`,
 
-      lineHeight: "16.42px",
-      letterSpacing: "0.04em",
-      textTransform: "capitalize",
-      color: "var(--black300)",
-      [theme.breakpoints.down("sm")]: {
-        fontSize: "12px",
+      lineHeight: '16.42px',
+      letterSpacing: '0.04em',
+      textTransform: 'capitalize',
+      color: 'var(--black300)',
+      [theme.breakpoints.down('sm')]: {
+        fontSize: '12px',
       },
     },
-    "& .MuiIconButton-root": {
-      border: "1px solid #044236",
-      borderRadius: "0px",
-      padding: "15px 15px",
+    '& .MuiIconButton-root': {
+      border: '1px solid #044236',
+      borderRadius: '0px',
+      padding: '15px 15px',
       // fontSize: '14px',
-      marginRight: "15px",
-      "& img": {
-        marginLeft: "8px",
+      marginRight: '15px',
+      '& img': {
+        marginLeft: '8px',
       },
-      [theme.breakpoints.down("sm")]: {
+      [theme.breakpoints.down('sm')]: {
         // display: 'none'
         padding: theme.spacing(0.5),
         // fontSize: '10px',
       },
     },
-    "& .MuiIconButton-root:hover": {
-      background: "none",
+    '& .MuiIconButton-root:hover': {
+      background: 'none',
     },
-    [theme.breakpoints.down("md")]: {
-      flexBasis: "60%",
+    [theme.breakpoints.down('md')]: {
+      flexBasis: '60%',
     },
-    [theme.breakpoints.down("sm")]: {
-      flexBasis: "50%",
+    [theme.breakpoints.down('sm')]: {
+      flexBasis: '50%',
     },
   },
   dropDownItems: {
-    position: "absolute",
-    background: "#fff",
+    position: 'absolute',
+    background: '#fff',
     zIndex: 9,
-    boxShadow: "0px 0px 4px rgb(0 0 0 / 20%)",
-    bottom: "62px",
+    boxShadow: '0px 0px 4px rgb(0 0 0 / 20%)',
+    bottom: '62px',
     // width: '100%',
-    maxHeight: "400px",
-    overflowY: "auto",
-    "& li": {
-      whiteSpace: "normal",
-      wordBreak: "break-all",
+    maxHeight: '400px',
+    overflowY: 'auto',
+    '& li': {
+      whiteSpace: 'normal',
+      wordBreak: 'break-all',
     },
   },
 
   discAmount: {
-    display: "flex",
-    alignItems: "center",
+    display: 'flex',
+    alignItems: 'center',
     // justifyContent: "space-between",
-    [theme.breakpoints.down("sm")]: {
+    [theme.breakpoints.down('sm')]: {
       // justifyContent: "space-between"
     },
   },
   secondContainer: {
-    flexDirection: "row",
-    display: "flex",
-    alignItems: "center",
+    flexDirection: 'row',
+    display: 'flex',
+    alignItems: 'center',
     padding: theme.spacing(1.2, 6),
-    [theme.breakpoints.down("sm")]: {
+    [theme.breakpoints.down('sm')]: {
       padding: theme.spacing(1),
     },
-    [theme.breakpoints.down("xs")]: {
+    [theme.breakpoints.down('xs')]: {
       // display: 'none'
       // padding: theme.spacing(1),
-      flexDirection: "column",
+      flexDirection: 'column',
     },
   },
   secondLeftContainer: {
-    flexBasis: "50%",
-    [theme.breakpoints.down("md")]: {
+    flexBasis: '50%',
+    [theme.breakpoints.down('md')]: {
       // display: 'none'
-      flexBasis: "50%",
+      flexBasis: '50%',
     },
-    [theme.breakpoints.down("xs")]: {
-      display: "flex",
-      justifyContent: "space-between",
-      width: "100%",
-      flexBasis: "100%",
-      paddingBottom: "10px",
-      alignItems: "center",
+    [theme.breakpoints.down('xs')]: {
+      display: 'flex',
+      justifyContent: 'space-between',
+      width: '100%',
+      flexBasis: '100%',
+      paddingBottom: '10px',
+      alignItems: 'center',
     },
   },
 
   secondRightContainer: {
-    flexBasis: "50%",
+    flexBasis: '50%',
 
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "end",
-    [theme.breakpoints.down("md")]: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'end',
+    [theme.breakpoints.down('md')]: {
       // display: 'none'
-      flexBasis: "50%",
+      flexBasis: '50%',
     },
-    [theme.breakpoints.down("xs")]: {
+    [theme.breakpoints.down('xs')]: {
       // display: 'none'
-      width: "100%",
+      width: '100%',
     },
   },
   addToBag: {
-    display: "flex",
-    alignItems: "center",
+    display: 'flex',
+    alignItems: 'center',
     // width: '35%',
-    justifyContent: "flex-end",
-    "& .MuiButton-root": {
-      marginRight: "15px",
-      font: "normal 500 15px Work Sans",
+    justifyContent: 'flex-end',
+    '& .MuiButton-root': {
+      marginRight: '15px',
+      font: 'normal 500 15px Work Sans',
       padding: theme.spacing(1, 2),
-      [theme.breakpoints.down("xs")]: {
-        width: "32vh",
+      [theme.breakpoints.down('xs')]: {
+        width: '32vh',
       },
     },
   },
   addtoBag: {
-    marginLeft: "20px",
-    [theme.breakpoints.down("xs")]: {
+    marginLeft: '20px',
+    [theme.breakpoints.down('xs')]: {
       // display: 'none'
       padding: theme.spacing(1),
-      flexDirection: "column",
+      flexDirection: 'column',
     },
   },
   mobileContainer: {},
   wishlistMyBag: {
-    display: "flex",
-    justifyContent: "space-between",
-    width: "100%",
-    alignItems: "center",
+    display: 'flex',
+    justifyContent: 'space-between',
+    width: '100%',
+    alignItems: 'center',
   },
   heartImg: {
     zIndex: 1,
@@ -290,8 +286,8 @@ const useStyles = makeStyles((theme : Theme) => ({
     // width: "25px"
   },
   heartIcon: {
-    height: "25px",
-    width: "25px",
+    height: '25px',
+    width: '25px',
   },
 }));
 
@@ -313,28 +309,28 @@ const FixedBottomPanel = (props: any) => {
   const [like, setLike] = React.useState(false);
 
   useEffect(() => {
-    setLike(product?.wishlists?._id ? true : false)
-  }, [product])
+    setLike(product?.wishlists?._id ? true : false);
+  }, [product]);
 
   // const [pageOffSet, setPageOffSet] = useState(0);
   let configurableOptions = product?.configurableProductOptions?.[0];
   let configurableLinks = product?.configurableProductLinks;
   const classes = useStyles();
-  const dispatch : any = useDispatch();
+  const dispatch: any = useDispatch();
   const [state, setState] = React.useState({
-    sizeData: [""],
-    shadeData: [""],
+    sizeData: [''],
+    shadeData: [''],
     shadeChanged: false,
     sizeChanged: false,
     size_shadeData: false,
     showReadMore: true,
-    selectedShade: "",
-    selectedLabel: "",
+    selectedShade: '',
+    selectedLabel: '',
     selectedPrice: 0,
-    selectedAmount: "0 ml",
+    selectedAmount: '0 ml',
     specialPrice: 0,
     outOfStock: false,
-    selectedSizeShade: "",
+    selectedSizeShade: '',
     selectedIndexValue: -1,
     productPrice: 0,
     open: false,
@@ -350,206 +346,77 @@ const FixedBottomPanel = (props: any) => {
     setAnchorEl(event.currentTarget);
   };
 
-  // const getOffset = (offset: any) => {
-  //   setPageOffSet(offset);
+  const handleCart = () => {
+    let data: any = {
+      productId: item.magentoId,
+      attributeData:
+        item.type !== 'simple'
+          ? [
+              {
+                id: item.configurableProductOptions?.[0]?.attribute_id,
+                value: selectedVariant?.value_index,
+              },
+            ]
+          : [],
+      type: item.type,
+      quantity: 1,
+      isSearchOrRecommend: props?.isSearched ? true : false,
+    };
 
-  // };
+    dispatch(
+      addToBag(data, () => {
+        let categoryAttributesIndex = item?.customAttributes.findIndex(
+          (i: any) => i.attribute_code === 'category_ids'
+        );
+        let categoryAttributesData =
+          item?.customAttributes[categoryAttributesIndex];
+        let categoryArray = categoryAttributesData?.label.reduce(
+          (i: any, j: any) => {
+            i.push({
+              CategoryName: j.label,
+              CategoryId: j.value,
+            });
+            return i;
+          },
+          []
+        );
+        eventAddToBag({
+          ProductId: `${item.magentoId}`,
+          ProductName: `${item.name}`,
+          Price: `${item.price}`,
+          Category: JSON.stringify(categoryArray),
+          FromScreen: `pdp`,
+        });
+        if (typeof window && window.gtag !== 'undefined') {
+          const gtagPayload = {
+            currency: 'INR',
+            items: [
+              {
+                id: `${item.sku}`,
+                item_id: `${item.sku}`,
+                item_name: `${item.name}`,
+                name: `${item.name}`,
+                brand: 'The Body Shop',
+                item_brand: 'The Body Shop',
+                quantity: `${item.productOrder}`,
+                price: `${item.price}`,
+              },
+            ],
+            category: item?.categoryData?.name,
+          };
+          customGa4Event('add_to_cart', gtagPayload);
+          if (
+            process.env.REACT_APP_ENV !== 'development' &&
+            process.env.REACT_APP_ENV !== 'staging'
+          ) {
+            window.gtag('event', 'add_to_cart', gtagPayload);
+          }
+        }
+        setState({ ...state, open: true });
+      })
+    );
+  };
 
-  // const handleLike = (status: boolean, product: any) => {
-  //   setLike(!like);
-  //   if (status) {
-  //     let data: any = {
-  //       productId: product.magentoId,
-  //       type: product.type || "simple",
-  //       attributeData: product.configurableProductOptions?.length
-  //         ? [
-  //           {
-  //             id: product.configurableProductOptions?.[0]?.attribute_id,
-  //             value:
-  //               product.configurableProductOptions?.[0]?.values?.[0]
-  //                 ?.value_index,
-  //           },
-  //         ]
-  //         : [],
-  //     };
-  //     // addToWishList(data).then((resp) => {
-  //     //   if (resp) {
-  //     //     // dispatch({
-  //     //     //   type: Utils.ActionName.WISHLIST,
-  //     //     //   payload: { totalCount: totalCount + 1 },
-  //     //     // });
-  //     //     dispatch(getWishList({ limit: 10, page: 1 }));
-  //     //     let categoryAttributesIndex = product?.customAttributes.findIndex(
-  //     //       (item: any) => item.attribute_code === "category_ids"
-  //     //     );
-  //     //     let categoryAttributesData =
-  //     //       product?.customAttributes[categoryAttributesIndex];
-  //     //     let categoryArray = categoryAttributesData?.label.reduce(
-  //     //       (i: any, j: any) => {
-  //     //         i.push({
-  //     //           CategoryName: j.label,
-  //     //           CategoryId: j.value,
-  //     //         });
-  //     //         return i;
-  //     //       },
-  //     //       []
-  //     //     );
-  //     //     dispatch({
-  //     //       type: "show-alert",
-  //     //       payload: {
-  //     //         type: "success",
-  //     //         message: "Product added to wishlist",
-  //     //       },
-  //     //     });
-
-  //     //     eventAddToWishlist({
-  //     //       ProductId: `${product?.magentoId}`,
-  //     //       ProductName: `${product?.name}`,
-  //     //       Price: `${product?.price}`,
-  //     //       Category: JSON.stringify(categoryArray),
-  //     //       FromScreen: `pdp`,
-  //     //     });
-
-  //     //     // if (callback) {
-  //     //     //     callback()
-  //     //     //     dispatch(hideLoader())
-  //     //     // }
-  //     //   } else {
-  //     //     dispatch(hideLoader());
-  //     //   }
-
-  //     // });
-  //   } else {
-  //     // removeFromWishList(
-  //     //   product.wishlists ? product.wishlists?._id : product._id
-  //     // )
-  //       // .then((resp) => {
-  //       //   if (resp) {
-  //       //     // dispatch({
-  //       //     //   type: Utils.ActionName.WISHLIST,
-  //       //     //   payload: { totalCount: totalCount - 1 },
-  //       //     // });
-  //       //     dispatch(getWishList({ limit: 10, page: 1 }));
-  //       //     let categoryAttributesIndex = product?.customAttributes.findIndex(
-  //       //       (i: any) => i.attribute_code === "category_ids"
-  //       //     );
-  //       //     let categoryAttributesData =
-  //       //       product?.customAttributes[categoryAttributesIndex];
-  //       //     let categoryArray = categoryAttributesData?.label.reduce(
-  //       //       (i: any, j: any) => {
-  //       //         i.push({
-  //       //           CategoryName: j.label,
-  //       //           CategoryId: j.value,
-  //       //         });
-  //       //         return i;
-  //       //       },
-  //       //       []
-  //       //     );
-  //       //     dispatch({
-  //       //       type: "show-alert",
-  //       //       payload: {
-  //       //         type: "success",
-  //       //         message: "Product removed from wishlist",
-  //       //       },
-  //       //     });
-  //       //     eventRemoveFromWishlist({
-  //       //       ProductId: `${product.magentoId}`,
-  //       //       ProductName: `${product.name}`,
-  //       //       Price: `${product.price}`,
-  //       //       Category: JSON.stringify(categoryArray),
-  //       //       FromScreen: `pdpI`,
-  //       //     });
-
-  //       //     // if (callback) {
-  //       //     //     callback()
-  //       //     //     dispatch(hideLoader())
-  //       //     // }
-  //       //   } else {
-  //       //     dispatch(hideLoader());
-  //       //   }
-  //       // })
-  //       // .catch((err) => {
-  //       //   if (err?.response?.data?.message)
-  //       //     dispatch({
-  //       //       type: "show-alert",
-  //       //       payload: {
-  //       //         type: "error",
-  //       //         message: err?.response?.data?.message,
-  //       //       },
-  //       //     });
-  //       // });
-  //   }
-  // };
-
-  // const handleCart = () => {
-  //   let data: any = {
-  //     productId: item.magentoId,
-  //     attributeData:
-  //       item.type !== "simple"
-  //         ? [
-  //           {
-  //             id: item.configurableProductOptions?.[0]?.attribute_id,
-  //             value: selectedVariant?.value_index,
-  //           },
-  //         ]
-  //         : [],
-  //     type: item.type,
-  //     quantity: 1,
-  //     isSearchOrRecommend: props?.isSearched ? true : false,
-  //   };
-
-  //   dispatch(
-  //     addToBag(data, () => {
-  //       let categoryAttributesIndex = item?.customAttributes.findIndex(
-  //         (i: any) => i.attribute_code === "category_ids"
-  //       );
-  //       let categoryAttributesData =
-  //         item?.customAttributes[categoryAttributesIndex];
-  //       let categoryArray = categoryAttributesData?.label.reduce(
-  //         (i: any, j: any) => {
-  //           i.push({
-  //             CategoryName: j.label,
-  //             CategoryId: j.value,
-  //           });
-  //           return i;
-  //         },
-  //         []
-  //       );
-  //       eventAddToBag({
-  //         ProductId: `${item.magentoId}`,
-  //         ProductName: `${item.name}`,
-  //         Price: `${item.price}`,
-  //         Category: JSON.stringify(categoryArray),
-  //         FromScreen: `pdp`,
-  //       });
-  //       if (typeof window && window.gtag !== 'undefined') {
-  //         const gtagPayload = {
-  //           currency: "INR",
-  //           "items": [
-  //             {
-  //               "id": `${item.sku}`,
-  //               "item_id": `${item.sku}`,
-  //               "item_name": `${item.name}`,
-  //               "name": `${item.name}`,
-  //               "brand": "The Body Shop",
-  //               "item_brand": "The Body Shop",
-  //               "quantity": `${item.productOrder}`,
-  //               "price": `${item.price}`
-  //             }
-  //           ],
-  //           category: item?.categoryData?.name
-
-  //         }
-  //         customGa4Event("add_to_cart", gtagPayload);
-  //         if(process.env.NEXT_PUBLIC_ENV !== 'development' && process.env.NEXT_PUBLIC_ENV !== 'staging'){
-  //           window.gtag('event', 'add_to_cart', gtagPayload);
-  //         }
-
-  //       }
-  //       setState({ ...state, open: true });
-  //     })
-  //   );
-  // };
   const handleClose = () => {
     setAnchorEl(null);
 
@@ -561,7 +428,7 @@ const FixedBottomPanel = (props: any) => {
       (val: any) => val?.value?.toLowerCase() === product?.label?.toLowerCase()
     );
     dispatch({
-      type: "getProductData",
+      type: 'getProductData',
       payload: {
         selectedVariant: product,
         selectedVariantData: selectedProduct,
@@ -572,7 +439,7 @@ const FixedBottomPanel = (props: any) => {
 
   const onNotify = (data: any) => {
     let attributeData: any = {};
-    if (data.type !== "simple") {
+    if (data.type !== 'simple') {
       const configurableData = data.configurableProductOptions?.[0];
       attributeData.id = configurableData?.attribute_id;
       attributeData.value = configurableData?.values?.[0]?.value_index;
@@ -581,7 +448,7 @@ const FixedBottomPanel = (props: any) => {
     // const message = `We will notify you over the mail ${email} once the product is back in stock`;
     const params = {
       productId: data.magentoId,
-      attributeData: data.type !== "simple" ? [attributeData] : [],
+      attributeData: data.type !== 'simple' ? [attributeData] : [],
       type: data.type,
       // childId:
     };
@@ -589,15 +456,15 @@ const FixedBottomPanel = (props: any) => {
       .then((resp) => {
         if (resp?.data?.message) {
           dispatch({
-            type: "show-alert",
+            type: 'show-alert',
             payload: {
-              type: "success",
+              type: 'success',
               message: resp?.data?.message,
             },
           });
         }
       })
-      .catch((_error) => { });
+      .catch((_error) => {});
   };
 
   const handleGoToHeader = () => {
@@ -617,7 +484,7 @@ const FixedBottomPanel = (props: any) => {
 
   let discPrice = Utils.CommonFunctions.getAttributeValue(
     selectedVariantData?.customAttributes,
-    "special_price"
+    'special_price'
   );
   // const productName = selectedVariantData?.name ? _.truncate(Utils.CommonFunctions.htmlDecode(selectedVariantData?.name),{ 'length': 26,
   // 'omission': ''}) : ""
@@ -628,22 +495,22 @@ const FixedBottomPanel = (props: any) => {
 
   const rectangleHeight = props?.rectHeight - 250;
   const rectHeight = props?.rectHeight + 550;
- 
+
   return (
     <div>
       <div className={classes.staticBottomContainer}>
-        <Box sx={{ display: { xs: "none", sm: "block" } }}>
+        <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
           <HideOn height={rectHeight}>
             <div
               className={clsx(
-                props?.data?.type !== "simple"
+                props?.data?.type !== 'simple'
                   ? classes.mainBottomContainer
                   : classes.secondContainer
               )}
             >
               <div
                 className={clsx(
-                  props?.data?.type !== "simple"
+                  props?.data?.type !== 'simple'
                     ? classes.leftContainer
                     : classes.secondLeftContainer
                 )}
@@ -686,22 +553,22 @@ const FixedBottomPanel = (props: any) => {
                 ) : (
                   <Typography
                     className={classes.fontError}
-                    style={{ color: "#FF0707" }}
+                    style={{ color: '#FF0707' }}
                   >
-                    {"Out of Stock"}
+                    {'Out of Stock'}
                   </Typography>
                 )}
               </div>
               <div
                 className={clsx(
-                  props?.data?.type !== "simple"
+                  props?.data?.type !== 'simple'
                     ? classes.rightContainer
                     : classes.secondRightContainer
                 )}
               >
                 {/* Dropdown */}
                 {/* <Box sx={{ display: { xs: "none", sm: "block" } }}> */}
-                {props?.data?.type !== "simple" ? (
+                {props?.data?.type !== 'simple' ? (
                   <div className={classes.dropDown}>
                     <IconButton
                       aria-label="account of current user"
@@ -711,12 +578,12 @@ const FixedBottomPanel = (props: any) => {
                       color="inherit"
                     >
                       <Typography>
-                        {" "}
-                        {selectedVariantData?.name}{" "}
+                        {' '}
+                        {selectedVariantData?.name}{' '}
                         {/* {state.selectedLabel} */}
                         {/* {priceData?.priceData?.details?.label} */}
                       </Typography>
-                     
+
                       {/* <DOWN_ARROW /> */}
                     </IconButton>
                     <div className={classes.dropDownItems}>
@@ -727,53 +594,34 @@ const FixedBottomPanel = (props: any) => {
                         open={openBanner}
                         onClose={handleClose}
                         anchorOrigin={{
-                          vertical: "top",
-                          horizontal: "left",
+                          vertical: 'top',
+                          horizontal: 'left',
                         }}
                         transformOrigin={{
-                          vertical: "top",
-                          horizontal: "left",
+                          vertical: 'top',
+                          horizontal: 'left',
                         }}
                       >
                         {configurableOptions
                           ? configurableOptions?.values.map(
-                            (val: any, i: any) => {
-                              return (
-                                <MenuItem
-                                  key={i}
-                                  value={val.value_index}
-                                  onClick={() => selectVariant(val)}
-                                >
-                                  {item?.name} {val.label}
-                                </MenuItem>
-                              );
-                            }
-                          )
+                              (val: any, i: any) => {
+                                return (
+                                  <MenuItem
+                                    key={i}
+                                    value={val.value_index}
+                                    onClick={() => selectVariant(val)}
+                                  >
+                                    {item?.name} {val.label}
+                                  </MenuItem>
+                                );
+                              }
+                            )
                           : null}
                       </Menu>
-                      {/* {configurableOptions ?
-                                            configurableOptions?.values?.map((val: any, i: any) => (
-                                                <MenuItem
-                                                    key={i}
-                                                    value={val.price}
-                                                    onClick={() => selectShade(val)}
-                                                >
-
-                                                    {item?.name}
-                                                    {' '}
-                                                    {val.label}
-                                                </MenuItem>
-
-                                            ))
-                                            :
-                                            null
-                                        } */}
                     </div>
                   </div>
-                ) : // <div className={classes.dropDown}>
-                  // </div>
-                  null}
-                {/* </Box> */}
+                ) : 
+                null}
                 <div className={classes.addToBag}>
                   {selectedVariantData && selectedVariantData?.isInStock ? (
                     <ContainedButton
@@ -781,7 +629,7 @@ const FixedBottomPanel = (props: any) => {
                       className={classes.addtoBag}
                       text="Add to Bag"
                       type="button"
-                      // onClick={() => handleCart()}
+                      onClick={() => handleCart()}
                     />
                   ) : (
                     <ContainedButton
@@ -794,29 +642,24 @@ const FixedBottomPanel = (props: any) => {
                       onClick={() => onNotify(item)}
                     />
                   )}
-                 
-                  {/* <Icon style={{ cursor: "pointer" }}
-                    onClick={handleGoToHeader}>
-                    <UPARROW />
-                  </Icon> */}
                 </div>
               </div>
             </div>
           </HideOn>
         </Box>
 
-        <Box sx={{ display: { xs: "block", sm: "none" } }}>
+        <Box sx={{ display: { xs: 'block', sm: 'none' } }}>
           <HideOn height={10}>
             <div
               className={clsx(
-                props?.data?.type !== "simple"
+                props?.data?.type !== 'simple'
                   ? classes.mainBottomContainer
                   : classes.secondContainer
               )}
             >
               <div
                 className={clsx(
-                  props?.data?.type !== "simple"
+                  props?.data?.type !== 'simple'
                     ? classes.rightContainer
                     : classes.secondRightContainer
                 )}
@@ -853,7 +696,7 @@ const FixedBottomPanel = (props: any) => {
                         className={classes.addtoBag}
                         text="Add to Bag"
                         type="button"
-                        // onClick={() => handleCart()}
+                        onClick={() => handleCart()}
                       />
                     ) : (
                       <ContainedButton
@@ -866,7 +709,7 @@ const FixedBottomPanel = (props: any) => {
                         onClick={() => onNotify(item)}
                       />
                     )}
-                  
+
                     {/* <span style={{ cursor: "pointer" }}
                       onClick={handleGoToHeader}>
                       <UP_ARROW />
@@ -884,7 +727,7 @@ const FixedBottomPanel = (props: any) => {
           >
             <div
               className={clsx(
-                props?.data?.type !== "simple"
+                props?.data?.type !== 'simple'
                   ? classes.mainBottomContainer
                   : classes.secondContainer
               )}
@@ -893,7 +736,7 @@ const FixedBottomPanel = (props: any) => {
                 // pageOffSet !== 0 &&
                 <div
                   className={clsx(
-                    props?.data?.type !== "simple"
+                    props?.data?.type !== 'simple'
                       ? classes.leftContainer
                       : classes.secondLeftContainer
                   )}
@@ -902,9 +745,9 @@ const FixedBottomPanel = (props: any) => {
                   <Typography className={classes.productName}>
                     {selectedVariantData?.name
                       ? Utils.CommonFunctions.htmlDecode(
-                        selectedVariantData?.name
-                      )
-                      : ""}
+                          selectedVariantData?.name
+                        )
+                      : ''}
                   </Typography>
                   {/* </Box> */}
                   <div className={classes.mobileContainer}>
@@ -938,9 +781,9 @@ const FixedBottomPanel = (props: any) => {
                     ) : (
                       <Typography
                         className={classes.fontError}
-                        style={{ color: "#FF0707" }}
+                        style={{ color: '#FF0707' }}
                       >
-                        {"Out of Stock"}
+                        {'Out of Stock'}
                       </Typography>
                     )}
                   </div>
@@ -948,7 +791,7 @@ const FixedBottomPanel = (props: any) => {
               }
               <div
                 className={clsx(
-                  props?.data?.type !== "simple"
+                  props?.data?.type !== 'simple'
                     ? classes.rightContainer
                     : classes.secondRightContainer
                 )}
@@ -960,7 +803,6 @@ const FixedBottomPanel = (props: any) => {
                         aria-label="favorite"
                         className={classes.heartImg}
                       >
-                       
                         {/* <div  className={classes.heartIcon} onClick={() => handleLike(false, selectedVariantData)}>
                           <FAVORITE_ICON />
                         </div> */}
@@ -971,7 +813,6 @@ const FixedBottomPanel = (props: any) => {
                         className={classes.heartImg}
                         // onClick={() => handleLike(true, selectedVariantData)}
                       >
-                        
                         {/* <div  className={classes.heartIcon}> 
                           <HEART />
                         </div> */}
@@ -985,7 +826,7 @@ const FixedBottomPanel = (props: any) => {
                         className={classes.addtoBag}
                         text="Add to Bag"
                         type="button"
-                        // onClick={() => handleCart()}
+                        onClick={() => handleCart()}
                       />
                     ) : (
                       <ContainedButton
@@ -998,7 +839,7 @@ const FixedBottomPanel = (props: any) => {
                         onClick={() => onNotify(item)}
                       />
                     )}
-                   
+
                     {/* <span style={{ cursor: "pointer" }}
                       onClick={handleGoToHeader}>
                       <UP_ARROW />

@@ -7,17 +7,6 @@ import {
   showLoader,
 } from '../../../store/home/action';
 
-function multiSearchOr(text:any, searchWords:any){
-
-  for(var i=0; i<searchWords.length; i++)
-  {
-   if(text.indexOf(searchWords[i]) == -1)
-     return false;
-  }
-  return true;
-}
-
-
 export const getProductData =
   (req: any, params: any) => async (dispatch: any, getState: any) => {
     let authToken = req.cookies.authToken;
@@ -33,14 +22,13 @@ export const getProductData =
     let urlNew;
 
 
-    // category = ~~category ? ~~category : val;
+    // category = ~category ? ~category : val;
     console.log(category, "category");
     if (googleKey != undefined) {
       urlNew = `${Utils.endPoints.PRODUCT_DATA}?subcategoryId=124&urlKey=${subcategory}`;
     } else {
       urlNew = `${Utils.endPoints.PRODUCT_DATA}?subcategoryId=${parseInt(category)}&urlKey=${subcategory}`;
     }
-
     
     let resp = await request.get(urlNew, {
       headers: { Authorization: 'Bearer ' + authToken },
@@ -62,21 +50,23 @@ export const getProductData =
           product.product.configurableProductLinks?.sort(
             (a: any, b: any) => a?.price - b?.price
           );
+
         selectedVariantData =
-        links?.find((item: any) => item.isInStock === true) ||
+          links?.find((item: any) => item.isInStock) ||
           (product &&
             product.product &&
             product.product?.configurableProductLinks[0]);
-           
-        let searchValue= subcategory.replaceAll('-',' ').split(' ').reverse()[0];
 
-         selectedVariant =
+        const values =
           product &&
           product.product &&
-          product.product.configurableProductOptions?.[0]?.values && 
-          product?.product?.configurableProductOptions?.[0]?.values.find((val: any) => {
-            return multiSearchOr(val.label.toLowerCase(), searchValue);
-          });
+          product.product.configurableProductOptions?.[0]?.values;
+
+        selectedVariant = values.find(
+          (item: any) =>
+            item?.label?.toLowerCase() ===
+            selectedVariantData?.value?.toLowerCase()
+        );
       } else {
         selectedVariantData = product.product;
       }
@@ -100,6 +90,16 @@ export const addToBag = (payload: any) => {
       .post(url, payload)
       .then((resp) => {
         if (resp) dispatch(hideLoader());
+        // dispatch({
+        //   type: 'addToCart',
+        //   payload: resp.data.data
+        // });
+        // dispatch({
+        //   type: "show-alert", payload: {
+        //     type: "success",
+        //     message: "Product added to Bag successfully"
+        //   }
+        // })
       })
       .catch((err) => {
         dispatch(hideLoader());
