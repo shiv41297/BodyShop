@@ -10,6 +10,7 @@ import aboutReducer from "./about/aboutReducer";
 import { productReducer } from "../modules/productListing/reducer";
 import { configReducer, homeReducer, loadingReducer } from "./home/reducer";
 import { recommendReducer } from "../component/common/recommendationCarousel/reducer";
+import { shoppingBagReducer } from "../component/common/addToCart/reducer";
 
 const combinedReducer = combineReducers({
   counter,
@@ -21,6 +22,7 @@ const combinedReducer = combineReducers({
   productReducer,
   productFilterReducer,
   // aboutReducer: aboutReducer,
+  shoppingBagReducer:shoppingBagReducer,
   productDetailReducer,
   recommendReducer,
 });
