@@ -72,31 +72,31 @@ instance.interceptors.response.use(
     return success;
   },
   (err) => {
-    if (err.response?.status === 503) { //under maintainance
-        initstore.dispatch({ type: "undermaintainance", payload: { undermaintainance: 1 } })
-        initstore.dispatch(hideLoader())
-    }
-    else {
-        initstore.dispatch({ type: "undermaintainance", payload: { undermaintainance: 0 } })
+    // if (err.response.status === 503) { //under maintainance
+    //     initstore.dispatch({ type: "undermaintainance", payload: { undermaintainance: 1 } })
+    //     initstore.dispatch(hideLoader())
+    // }
+    // else {
+    //     initstore.dispatch({ type: "undermaintainance", payload: { undermaintainance: 0 } })
 
-        console.log("testing");
-        if (typeof window !== "undefined") {
-        if (!window.navigator.onLine) {
-            initstore.dispatch(hideLoader())
-            initstore.dispatch({
-                type: "show-alert",
-                payload: {
-                    type: "error",
-                    message: "You are offline. Please check internet connection",
-                },
-            })
-            return;
-        } else if (err.response?.status === Utils.statusCode.UNAUTHENTICATED) {
-            removeSession();
+    //     console.log("testing");
+    //     // if (typeof window !== "undefined") {
+    //     // if (!window.navigator.onLine) {
+    //     //     initstore.dispatch(hideLoader())
+    //     //     initstore.dispatch({
+    //     //         type: "show-alert",
+    //     //         payload: {
+    //     //             type: "error",
+    //     //             message: "You are offline. Please check internet connection",
+    //     //         },
+    //     //     })
+    //     //     return;
+    //     // } else if (err.response?.status === Utils.statusCode.UNAUTHENTICATED) {
+    //     //     removeSession();
 
-        }}
+    //     // }}
 
-    }
+    // }
     return Promise.reject(err);
   }
 );

@@ -387,6 +387,7 @@ const Product = (props: Props) => {
   const cartData = useSelector(
     (state: ReducersModal) => state.shoppingBagReducer
   );
+
   const [addActive, setAddActive] = useState(false);
   const [loader, setLoader] = useState(false);
 
@@ -589,7 +590,9 @@ const Product = (props: Props) => {
     }
   };
 
+  const categoryId = productData?.category?.child_category?.magentoId;
 
+  console.log(categoryId, typeof categoryId, "state");
 
   const navigateTo = () => {
     if (props.type && props.type === "freeSample")
@@ -632,7 +635,11 @@ const Product = (props: Props) => {
       //   state.categoryId = productData?.category?.child_category?.magentoId
       // }
 
-      state.categoryId = productData?.category?.child_category?.magentoId;
+      const categoryId =
+        productData?.category && productData?.category?.child_category
+          ? productData?.category?.child_category?.magentoId
+          : 124;
+
       // history.push(
       //   {
       //     pathname,
@@ -640,19 +647,47 @@ const Product = (props: Props) => {
       //   },
       //   { query: state }
       // );
+      let googleCode = productData?.customAttributes?.find(
+        (item: any) => item.attribute_code === "google_category"
+      )?.value;
+      const { urlKey } = state;
 
-      console.log({ state });
-      const { urlKey, categoryId } = state;
+      if (history.query.slug) {
+        history.push({
+          pathname: "/[slug]/[category]/[subcategory]/p/[googleKey]",
+          query: {
+            slug: `${history.query.slug}`,
+            // category: `${
+            //   productData?.categoryData &&
+            //   productData?.categoryData?.child_category
+            //     ? productData?.categoryData?.child_category?.urlPath
+            //     : "trending"
+            // }`,
+            category: `${history.query.category}`,
+            subcategory: `${urlKey}`,
+            googleKey: `${googleCode ? googleCode : "p000069"}`,
+            val: categoryId,
+          },
+        });
+      } else {
+        history.push({
+          pathname: "/[slug]/[category]/[subcategory]/p/[googleKey]",
+          query: {
+            slug: `${productData.category.urlKey}`,
+            category: `${
+              productData?.categoryData &&
+              productData?.categoryData?.child_category
+                ? productData?.categoryData?.child_category?.urlPath
+                : "trending"
+            }`,
+            val: categoryId,
+            subcategory: `${urlKey}`,
+            googleKey: `${googleCode ? googleCode : "p000069"}`,
+          },
+        });
+      }
       // history.push(`trending/new-in/${urlKey}/p/${categoryId}`);
-      history.push({
-        pathname: "/[type]/[category]/[subcategory]/p/[googleKey]",
-        query: {
-          type: `${history.query.slug}`,
-          category: `${history.query.category}`,
-          subcategory: `${urlKey}`,
-          googleKey: `${categoryId}`,
-        },
-      });
+
       // history.push({
       //   pathname: Utils.CommonFunctions.replaceUrlParams(
       //     Utils.routes.PRODUCT_DETAIL,
