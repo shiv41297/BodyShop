@@ -404,7 +404,6 @@ const Rate = (_props: any) => {
   const [selectedVariant, setSelectedVariant] = React.useState(
     productDetail.selectedVariant
   );
-
   const [state, setState] = React.useState<any>({
     sizeData: [''],
     shadeData: [''],
@@ -421,68 +420,11 @@ const Rate = (_props: any) => {
     selectedSizeShade: '',
     selectedVariantData: null,
   });
-  // const reviewData = useSelector(
-  //   (state: ReducersModal) => state.productDetailReducer
-  // ).productReviews;
-  // const ratingData = reviewData?.data?.[0]||{};
-  useEffect(() => {
-    setSelectedVariant(productDetail.selectedVariant);
-    setState({
-      ...state,
-      selectedVariantData: productData,
-    });
-  }, [productDetail]);
-
-  useEffect(() => {
-    console.log("router.query",router.query)
-    const { sendVal }: any = router.query;
-    if (sendVal) {
-      const saveSendVal = JSON.parse(sendVal);
-      const { product, selectedProduct } = saveSendVal;
-      dispatch({
-        type: 'getProductData',
-        payload: {
-          selectedVariant: product,
-          selectedVariantData: selectedProduct,
-        },
-      });
-      setState({
-        ...state,
-        selectedVariant: product,
-        selectedVariantData: selectedProduct,
-      });
-
-      setSelectedVariant(product);
-    }
-  }, [router.query.sendVal]);
-
-  // const handleRead = () => {
-  //     setIsRead(!isRead)
-  // }
 
   const selectVariant = (product: any, i: any) => {
-    let selectedProduct = configurableLinks?.find((val: any) => {
-      return val?.value?.toLowerCase() === product?.label?.toLowerCase();
-    });
-    let changeState = { product: product, selectedProduct: selectedProduct };
-    console.log({ changeState }, { product }, { selectedProduct });
 
     if (configurableLinks[i].urlKey === router.query.subcategory) {
-      dispatch({
-        type: 'getProductData',
-        payload: {
-          selectedVariant: product,
-          selectedVariantData: selectedProduct,
-        },
-      });
-      // console.log({product},{selectedProduct})
-      setState({
-        ...state,
-        selectedVariant: product,
-        selectedVariantData: selectedProduct,
-      });
-
-      setSelectedVariant(product);
+  
     } else {
       router.push(
         {
@@ -492,30 +434,12 @@ const Rate = (_props: any) => {
             category: router.query.category,
             subcategory: configurableLinks[i] && configurableLinks[i].urlKey,
             googleKey: router.query.googleKey,
-            sendVal: JSON.stringify(changeState),
           },
-        },
+        }
         // `/${router.query.slug}/${router.query.category}/${configurableLinks[i].urlKey}/p/${router.query.googleKey}`
       );
     }
   };
-
-  // const selectShade = (product: any) => {
-  //     let selectedProduct = configurableLinks?.find((val: any) => val?.value?.toLowerCase() === product?.label?.toLowerCase())
-  //     dispatch({
-  //         type: "getProductData", payload: {
-  //             selectedVariant: product,
-  //             selectedVariantData: selectedProduct
-  //         }
-  //     })
-
-  //     setState({
-  //         ...state,
-  //         selectedVariant: product,
-  //         selectedVariantData: selectedProduct
-  //     });
-  //     setSelectedVariant(product)
-  // }
 
   const skeletonLoader = useSelector((state: ReducersModal) => {
     return state.loadingReducer.skeletonLoader;
@@ -599,9 +523,6 @@ const Rate = (_props: any) => {
                     <Typography variant="h1" className={classes.leftCaption}>
                       Select {configurableOptions?.label}
                     </Typography>
-                    {/* <Typography variant="h1" className={classes.rightCaption}>
-                                            View All
-                                        </Typography> */}
                   </div>
                   <Typography variant="h1" className={classes.selectedLabel}>
                     {state.selectedLabel}

@@ -164,7 +164,7 @@ const ProductDetails = (props: any) => {
           <div className={classes.nameContainer}>
             <div>
               <Typography variant="h1" className={classes.heading}>
-                {productData?.name}
+                {priceData?.selectedVariantData?.name}
               </Typography>
             </div>
             <div>
