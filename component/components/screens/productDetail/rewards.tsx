@@ -162,7 +162,7 @@ const Rewards: React.FC<any> = ({ details }: Props) => {
   }
   useEffect(() => {
     if (isAuthenticated()) {
-      dispatch(showLoader());
+      // dispatch(showLoader());
       dispatch(
         getRewardRate((response: any) => {
           if (response) {

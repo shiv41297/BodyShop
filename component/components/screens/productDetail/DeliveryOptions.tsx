@@ -97,7 +97,7 @@ const DeliveryOptions = () => {
   // },[])
 
   const handleChange = () => {
-    dispatch(showLoader());
+    // dispatch(showLoader());
     checkPincode({ pincode: Number(pincode) })
       .then((resp) => {
         if (resp) {

@@ -85,12 +85,14 @@ export const getProductData =
 
 export const addToBag = (payload: any) => {
   return (dispatch: any, _getState: any) => {
-    dispatch(showLoader());
+    // dispatch(showLoader());
     let url = Utils.endPoints.ADD_TO_BAG;
     request
       .post(url, payload)
       .then((resp) => {
-        if (resp) dispatch(hideLoader());
+        if (resp) {
+          // dispatch(hideLoader());
+        }
         // dispatch({
         //   type: 'addToCart',
         //   payload: resp.data.data
@@ -131,7 +133,7 @@ export function storePriceInformation(params: any, dispatch: any) {
 export function addCompleteYourRoutine(params: any) {
   let data: any = params;
   return (dispatch: any, _getState: any) => {
-    dispatch(showLoader());
+    // dispatch(showLoader());
     let url = Utils.CommonFunctions.replaceUrlParams(
       Utils.endPoints.ADD_ROUTINE,
       data
@@ -210,7 +212,7 @@ export function getReviews(params: any, callback?: Function) {
 
 export function submitQuestionsPoll(params: any, callback?: Function) {
   return (dispatch: any, _getState: any) => {
-    dispatch(showLoader());
+    // dispatch(showLoader());
     let url = Utils.endPoints.QUESTIONS_POLL;
     request
       .post(url, params)
@@ -244,7 +246,7 @@ export function submitQuestionsPoll(params: any, callback?: Function) {
 
 export function submitReviewPoll(params: any, callback?: Function) {
   return (dispatch: any, _getState: any) => {
-    dispatch(showLoader());
+    // dispatch(showLoader());
     let url = Utils.endPoints.REVIEW_POLL;
     request
       .post(url, params)
@@ -278,7 +280,7 @@ export function submitReviewPoll(params: any, callback?: Function) {
 
 export function submitReviewReport(params: any, callback?: Function) {
   return (dispatch: any, _getState: any) => {
-    dispatch(showLoader());
+    // dispatch(showLoader());
     let url = Utils.endPoints.REVIEW_REPORT;
     request
       .post(url, params)

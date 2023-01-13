@@ -448,7 +448,7 @@ const ProductDetail = (props: any) => {
   };
 
   useEffect(() => {
-    dispatch(showSkeleton());
+    // dispatch(showSkeleton());
     getData();
     window.scrollTo(0, 0);
     screenViewed({
