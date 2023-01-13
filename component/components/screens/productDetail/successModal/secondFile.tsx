@@ -1,5 +1,5 @@
 import React from 'react';
-import Utils from '../../../utils';
+import Utils from '../../../../utils';
 // import ContainedButton from '../../../components/containedButton';
 import {
   Modal,
@@ -11,13 +11,13 @@ import {
 } from '@mui/material';
 // import { Link } from "react-router-dom";
 import { useSelector } from 'react-redux';
-import { ReducersModal } from '../../../models';
+import { ReducersModal } from '../../../../models';
 import _ from 'lodash';
 // import { SUCCESS } from 'utils/constantImages';
 import Link from 'next/link';
 import { makeStyles } from '@mui/styles';
-import images from '../../../utils/images';
-import ContainedButton from '../../../common/containedButton';
+import images from '../../../../utils/images';
+import ContainedButton from '../../../../common/containedButton';
 
 const IMAGE_URL = `${process.env.NEXT_PUBLIC_MEDIA_URL}`;
 

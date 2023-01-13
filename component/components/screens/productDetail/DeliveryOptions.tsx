@@ -1,15 +1,22 @@
 // @ts-nocheck
 import { Typography, Divider, Theme } from '@mui/material';
 import { makeStyles } from '@mui/styles';
-import Utils from '../../utils';
+import Utils from '../../../utils';
 import { checkPincode } from './action';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
 import Skeleton from '@mui/material/Skeleton';
-import images from '../../utils/images';
-import { ReducersModal } from '../../models';
-import { showLoader, hideLoader, getConfig } from '../../../store/home/action';
-import { getAddressFromLatLng, getLocation } from '../../../store/storeLocaton/action';
+import images from '../../../utils/images';
+import { ReducersModal } from '../../../models';
+import {
+  showLoader,
+  hideLoader,
+  getConfig,
+} from '../../../../store/home/action';
+import {
+  getAddressFromLatLng,
+  getLocation,
+} from '../../../../store/storeLocaton/action';
 
 const useStyles = makeStyles((theme: Theme) => ({
   heading: {
@@ -73,8 +80,7 @@ const DeliveryOptions = () => {
   const [deliveryOption, setDeliveryOption] = useState<any>();
   const deliveryOptionText: any =
     useSelector(
-      (state: any) =>
-        state.configReducer.generalConfigs?.deliveryOptionText
+      (state: any) => state.configReducer.generalConfigs?.deliveryOptionText
     ) || '';
 
   useEffect(() => {
@@ -86,8 +92,8 @@ const DeliveryOptions = () => {
   }, [pincode]);
 
   // useEffect(()=>{
-  //   dispatch(getConfig({ configCode: "general" })); 
-  //   dispatch(getConfig({ configCode: "payment" }));  
+  //   dispatch(getConfig({ configCode: "general" }));
+  //   dispatch(getConfig({ configCode: "payment" }));
   // },[])
 
   const handleChange = () => {
@@ -140,26 +146,25 @@ const DeliveryOptions = () => {
             value={pincode}
           />
           <div
-          onClick={() => {
-            getLocation()
-              .then((resp: any) => {
-                const lat = resp.latitude;
-                const lng = resp.longitude;
-                getAddressFromLatLng(`${lat},${lng}`).then((resp: any) => {
-                  if (resp) {
-                    let data = resp?.data?.results?.[0];
-                    let pincode = data.address_components.find((item: any) =>
-                      item.types.includes('postal_code')
-                    );
-                    setPincode(pincode.long_name);
-                  }
-                });
-              })
-              .catch((_err) => {});
-          }}
+            onClick={() => {
+              getLocation()
+                .then((resp: any) => {
+                  const lat = resp.latitude;
+                  const lng = resp.longitude;
+                  getAddressFromLatLng(`${lat},${lng}`).then((resp: any) => {
+                    if (resp) {
+                      let data = resp?.data?.results?.[0];
+                      let pincode = data.address_components.find((item: any) =>
+                        item.types.includes('postal_code')
+                      );
+                      setPincode(pincode.long_name);
+                    }
+                  });
+                })
+                .catch((_err) => {});
+            }}
           >
             {/* <img src={Utils.images.SEARCH_LOCATION} alt="search" /> */}
-            
           </div>
         </div>
       )}

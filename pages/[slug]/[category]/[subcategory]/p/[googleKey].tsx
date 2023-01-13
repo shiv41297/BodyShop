@@ -2,9 +2,9 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import _ from 'lodash';
 import { PageMeta } from '../../../../../component/page-meta/PageMeta';
-import ProductDetail from '../../../../../component/components/productDetail/index';
+import ProductDetail from '../../../../../component/components/screens/productDetail/index';
 import { wrapper } from '../../../../../store/store';
-import { getProductData } from '../../../../../component/components/productDetail/action';
+import { getProductData } from '../../../../../component/components/screens/productDetail/action';
 
 function MainProductDetail() {
   const productData: any = useSelector(
@@ -50,7 +50,7 @@ export default MainProductDetail;
 
 export const getServerSideProps = wrapper.getServerSideProps((store) =>
   //@ts-ignore-
-  async ({ req, res, params , query}: any) => {
+  async ({ req, res, params, query }: any) => {
     await store.dispatch(getProductData(req, query));
 
     return { props: {} };

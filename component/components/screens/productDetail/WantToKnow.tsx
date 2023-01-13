@@ -1,4 +1,4 @@
-import images from '../../utils/images';
+import images from '../../../utils/images';
 import { makeStyles } from '@mui/styles';
 import { Theme, Typography, Divider } from '@mui/material';
 

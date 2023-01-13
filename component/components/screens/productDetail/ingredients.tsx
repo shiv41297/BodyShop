@@ -3,12 +3,12 @@ import { makeStyles } from '@mui/styles';
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
 // import CustomAccordion from "../../components/customAccordion";
-import { ReducersModal } from '../../models';
+import { ReducersModal } from '../../../models';
 import ReactHtmlParser from 'react-html-parser';
 import clsx from 'clsx';
 import _ from 'lodash';
 import IngredientsModal from './ingredientsModal';
-import CustomAccordion from '../../customAccordion';
+import CustomAccordion from '../../../customAccordion';
 
 const useStyles = makeStyles((theme: Theme) => ({
   minusMarginTop: {

@@ -1,17 +1,17 @@
 import { useState } from 'react';
 // import LinearProgressReviews from "../../components/linearProgressReviews";
 import { useSelector } from 'react-redux';
-import { ReducersModal } from '../../models';
+import { ReducersModal } from '../../../models';
 // import RatingModal from "../rating&review/rating";
-import { isAuthenticated } from '../../utils/session';
-import Utils from '../../utils';
+import { isAuthenticated } from '../../../utils/session';
+import Utils from '../../../utils';
 // import { useNavigate } from 'react-router-dom';
 // import MessageDialogue from "../../components/common/product/messageDialogue";
 // import { EDIT_ICON } from "utils/constantImages";
 import { Theme, Rating, Typography, Divider, Skeleton } from '@mui/material';
 import { makeStyles } from '@mui/styles';
-import MessageDialogue from '../../common/product/messageDialogue';
-import LinearProgressReviews from '../../common/linearProgressReviews';
+import MessageDialogue from '../../../common/product/messageDialogue';
+import LinearProgressReviews from '../../../common/linearProgressReviews';
 import { useRouter } from 'next/router';
 
 const useStyles = makeStyles((theme: Theme) => ({

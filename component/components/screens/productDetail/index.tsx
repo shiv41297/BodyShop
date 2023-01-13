@@ -14,13 +14,13 @@ import CustomerReviews from './CustomerReviews';
 import CompleteRoutine from './CompleteRoutine';
 import { useDispatch, useSelector } from 'react-redux';
 // import { getProductData, getReviews } from './action';
-import { ReducersModal } from '../../models';
+import { ReducersModal } from '../../../models';
 import ReactHtmlParser from 'react-html-parser';
 
 // import ReactHtmlParser from "react-html-parser";
-import RecommendationCarousel from './../../common/recommendationCarousel';
-import Utils from '../../utils';
-import BreadCrumb from './../../../component/common/breadCrumb';
+import RecommendationCarousel from '../../../common/recommendationCarousel';
+import Utils from '../../../utils';
+import BreadCrumb from '../../../common/breadCrumb';
 import FixedBottomPanel from './fixedBottomPanel';
 import Skeleton from '@mui/material/Skeleton';
 import Rewards from './rewards';
@@ -28,20 +28,20 @@ import {
   productViewed,
   screenViewed,
   updateProfile,
-} from '../../utils/event/action';
+} from '../../../utils/event/action';
 // import { Link, useNavigate, useLocation } from 'react-router-dom';
 import AdditionalInformation from './additionalInformation';
 import SmallMighty from './SmallMighty';
 import _ from 'lodash';
-import events from '../../utils/event/constant';
-import { customGa4Event } from '../../utils/gtag';
-import images from '../../utils/images';
+import events from '../../../utils/event/constant';
+import { customGa4Event } from '../../../utils/gtag';
+import images from '../../../utils/images';
 import Link from 'next/link';
 import Router, { useRouter } from 'next/router';
-import { PageMeta } from '../../page-meta/PageMeta';
+import { PageMeta } from '../../../page-meta/PageMeta';
 import { getProductData, getReviews } from './action';
-import { hideSkeleton, showSkeleton } from '../../../store/home/action';
-import { wrapper } from '../../../store/store';
+import { hideSkeleton, showSkeleton } from '../../../../store/home/action';
+import { wrapper } from '../../../../store/store';
 
 declare global {
   interface Window {
@@ -397,8 +397,6 @@ const ProductDetail = (props: any) => {
     });
 
     //@ts-ignore
-   
-    
 
     // return () => {
     //   //@ts-ignore
@@ -422,7 +420,7 @@ const ProductDetail = (props: any) => {
   );
 
   // const urlkey = location.pathname.split('/p/')?.[0]?.split('/').pop();
-  const {subcategory ,googleKey} = query;
+  const { subcategory, googleKey } = query;
 
   const getData = (callback?: any) => {
     let params: any = {
@@ -529,7 +527,8 @@ const ProductDetail = (props: any) => {
       attribute_code: 'meta_description',
     });
 
-    const metaKeyword = productData &&
+  const metaKeyword =
+    productData &&
     productData.product &&
     _.find(productData.product.customAttributes, {
       attribute_code: 'meta_keyword',

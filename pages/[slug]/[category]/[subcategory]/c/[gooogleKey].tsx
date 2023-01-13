@@ -2,9 +2,9 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import _ from 'lodash';
 import { PageMeta } from '../../../../../component/page-meta/PageMeta';
-import ProductDetail from '../../../../../component/components/productDetail/index';
+import ProductDetail from '../../../../../component/components/screens/productDetail/index';
 import { wrapper } from '../../../../../store/store';
-import { getProductData } from '../../../../../component/components/productDetail/action';
+import { getProductData } from '../../../../../component/components/screens/productDetail/action';
 
 function MainProductDetail() {
   const productData: any = useSelector(

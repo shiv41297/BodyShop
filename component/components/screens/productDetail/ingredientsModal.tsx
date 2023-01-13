@@ -1,7 +1,7 @@
 // import ContainedButton from "../../../../../components/containedButton";
 import { Modal, Fade, Backdrop, Typography, Theme } from '@mui/material';
 import { makeStyles } from '@mui/styles';
-import images from '../../utils/images';
+import images from '../../../utils/images';
 // import { CROSS } from 'utils/constantImages';
 // import { Link } from "react-router-dom";
 

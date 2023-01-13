@@ -14,13 +14,13 @@ import { makeStyles } from '@mui/styles';
 import ReactHtmlParser from 'react-html-parser';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
-import Utils from '../../utils';
-import { ProductDetailModal, ReducersModal } from '../../models';
-import CustomAccordion from '../../customAccordion';
+import Utils from '../../../utils';
+import { ProductDetailModal, ReducersModal } from '../../../models';
+import CustomAccordion from '../../../customAccordion';
 // import CustomRadio from "../../components/common/miniCart/CustomRadio";
 // import CustomAccordion from "../../components/customAccordion";
 import IngredientsModal from './ingredientsModal';
-import CustomRadio from '../../common/miniCart/CustomRadio';
+import CustomRadio from '../../../common/miniCart/CustomRadio';
 import Ingredients from './ingredients';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
@@ -422,9 +422,7 @@ const Rate = (_props: any) => {
   });
 
   const selectVariant = (product: any, i: any) => {
-
     if (configurableLinks[i].urlKey === router.query.subcategory) {
-  
     } else {
       router.push(
         {

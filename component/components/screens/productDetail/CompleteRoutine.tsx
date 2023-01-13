@@ -5,15 +5,15 @@ import { makeStyles } from '@mui/styles';
 // import ContainedButton from "../../components/containedButton";
 // import { addCompleteYourRoutine } from "./action";
 import { useDispatch, useSelector } from 'react-redux';
-import Utils from '../../utils';
+import Utils from '../../../utils';
 // import { Link } from "react-router-dom";
-import { ReducersModal } from '../../models';
+import { ReducersModal } from '../../../models';
 import _ from 'lodash';
 import clsx from 'clsx';
 import { addCompleteYourRoutine } from './action';
-import images from '../../utils/images';
+import images from '../../../utils/images';
 import Link from 'next/link';
-import ContainedButton from '../../common/containedButton';
+import ContainedButton from '../../../common/containedButton';
 
 const IMAGE_URL = `${process.env.NEXT_PUBLIC_MEDIA_URL}`;
 

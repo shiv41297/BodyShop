@@ -2,28 +2,28 @@
 import { IconButton, Theme } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 import React, { useEffect, useState } from 'react';
-import Utils from '../../utils';
+import Utils from '../../../utils';
 import { useDispatch, useSelector } from 'react-redux';
-import { useRouter } from 'next/router'
+import { useRouter } from 'next/router';
 
 // import {
 //   addToWishList,
 //   removeFromWishList,
 // } from "./../../components/common/product/action";
-import { ProductDetailModal, ReducersModal } from '../../models';
+import { ProductDetailModal, ReducersModal } from '../../../models';
 // import ImageMagnifier from "./imageMagnifier";
 // import { hideLoader } from "../home/actions";
 import {
   addToWishlist as eventAddToWishlist,
   removeFromWishlist as eventRemoveFromWishlist,
-} from '../../utils/event/action';
+} from '../../../utils/event/action';
 import ReactImageMagnify from 'react-image-magnify';
-import { isAuthenticated } from '../../utils/session';
+import { isAuthenticated } from '../../../utils/session';
 // import { useNavigate } from "react-router-dom";
 // import MessageDialogue from "../../components/common/product/messageDialogue";
 // import { getWishList } from "../wishlist/action";
 import { Box } from '@mui/material';
-import MessageDialogue from '../../common/product/messageDialogue';
+import MessageDialogue from '../../../common/product/messageDialogue';
 // import { FAVORITE_ICON, HEART, PRODUCT_PLACEHOLDER } from "utils/constantImages";
 
 const useStyles = makeStyles((theme: Theme) => ({
@@ -511,7 +511,9 @@ const ProductImages = (props: any) => {
         open={loginAlert}
         handleClose={() => showLoginAlert(!loginAlert)}
         onOk={() => {
-          router.push(`${Utils.routes.LOGIN_OTP}?redirectTo=${location.pathname}`);
+          router.push(
+            `${Utils.routes.LOGIN_OTP}?redirectTo=${location.pathname}`
+          );
           showLoginAlert(false);
         }}
         message={'Please login to proceed'}
@@ -521,22 +523,20 @@ const ProductImages = (props: any) => {
       <div className={classes.innerContainer}>
         <div className={classes.productImageContainer}>
           <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
-          <div>
-          {like ? (
+            <div>
+              {like ? (
                 <IconButton
                   aria-label="favorite"
                   className={classes.heartImg}
-                // onClick={() => handleLike(false, productData)}
+                  // onClick={() => handleLike(false, productData)}
                 >
                   <img
                     src={Utils.images.FAVORITE_ICON}
                     alt="heart"
                     onClick={() => {
                       if (!loader)
-                        if (isAuthenticated())
-                          handleLike(false, productData1)
-                        else
-                          showLoginAlert(true);
+                        if (isAuthenticated()) handleLike(false, productData1);
+                        else showLoginAlert(true);
                     }}
                   />
                 </IconButton>
@@ -546,10 +546,8 @@ const ProductImages = (props: any) => {
                   className={classes.heartImg}
                   onClick={() => {
                     if (!loader)
-                      if (isAuthenticated())
-                        handleLike(true, productData1);
-                      else
-                        showLoginAlert(true);
+                      if (isAuthenticated()) handleLike(true, productData1);
+                      else showLoginAlert(true);
                   }}
                 >
                   <img src={Utils.images.HEART} alt="heart" />
@@ -592,7 +590,7 @@ const ProductImages = (props: any) => {
                         },
                       }}
                     />
-                  </div> 
+                  </div>
                 </Box>
                 <Box sx={{ display: { xs: 'block', sm: 'none' } }}>
                   <div className={classes.productImage}>

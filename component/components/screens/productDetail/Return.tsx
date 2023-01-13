@@ -3,7 +3,7 @@ import { makeStyles } from '@mui/styles';
 import { useSelector } from 'react-redux';
 import { Divider, Theme, Typography, Skeleton } from '@mui/material';
 import Image from 'next/image';
-import Utils from '../../utils';
+import Utils from '../../../utils';
 // import { ReducersModal } from "../../models";
 // import { CRUELTY_ICON, RETURN_ICON, VEGAN_ICON } from "../../utils/images";
 

@@ -1,5 +1,5 @@
 import { Typography, Divider, Theme } from '@mui/material';
-import { ReducersModal } from '../../models';
+import { ReducersModal } from '../../../models';
 import { useDispatch, useSelector } from 'react-redux';
 import Moment from 'react-moment';
 import React, { useEffect } from 'react';
@@ -8,8 +8,8 @@ import Skeleton from '@mui/material/Skeleton';
 import { makeStyles } from '@mui/styles';
 // import MoreBankOffer from "../shoppingBags/MoreBankOffers";
 import { Box } from '@mui/material';
-import { getProductOffers } from '../offers/action';
-import images from '../../utils/images';
+import { getProductOffers } from '../../offers/action';
+import images from '../../../utils/images';
 // import { TAG_ICON } from "utils/constantImages";
 
 const useStyles = makeStyles((theme: Theme) => ({

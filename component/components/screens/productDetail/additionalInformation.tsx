@@ -1,10 +1,10 @@
 import { Theme, Typography } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 import { useSelector } from 'react-redux';
-import { ReducersModal } from '../../models';
-import ReactHtmlParser from "react-html-parser";
+import { ReducersModal } from '../../../models';
+import ReactHtmlParser from 'react-html-parser';
 import { Box } from '@mui/material';
-import CustomAccordion from '../../customAccordion';
+import CustomAccordion from '../../../customAccordion';
 
 const useStyles = makeStyles((theme: Theme) => ({
   outerAdditionalDiv: {
@@ -70,16 +70,16 @@ export default function AdditionalInformation() {
               <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
                 {getAttributeValue('more_information') && (
                   <Typography className={classes.content}>
-                    {ReactHtmlParser(getAttributeValue("more_information"))}
+                    {ReactHtmlParser(getAttributeValue('more_information'))}
                   </Typography>
                 )}
                 {getAttributeValue('expiry_date') !== '' && (
                   <Typography className={classes.content}>
                     <strong>Best Before :</strong>{' '}
                     {ReactHtmlParser(
-                      getAttributeValue("expiry_date") != ""
-                        ? getAttributeValue("expiry_date")
-                        : "N/A"
+                      getAttributeValue('expiry_date') != ''
+                        ? getAttributeValue('expiry_date')
+                        : 'N/A'
                     )}
                   </Typography>
                 )}
@@ -87,9 +87,9 @@ export default function AdditionalInformation() {
                   <Typography className={classes.content}>
                     <strong>Manufacturer's Name :</strong>{' '}
                     {ReactHtmlParser(
-                      getAttributeValue("manufacturer_name") != ""
-                        ? getAttributeValue("manufacturer_name")
-                        : "N/A"
+                      getAttributeValue('manufacturer_name') != ''
+                        ? getAttributeValue('manufacturer_name')
+                        : 'N/A'
                     )}
                   </Typography>
                 )}
@@ -97,9 +97,9 @@ export default function AdditionalInformation() {
                   <Typography className={classes.content}>
                     <strong>Imported By :</strong>{' '}
                     {ReactHtmlParser(
-                      getAttributeValue("imported_by") != ""
-                        ? getAttributeValue("imported_by")
-                        : "N/A"
+                      getAttributeValue('imported_by') != ''
+                        ? getAttributeValue('imported_by')
+                        : 'N/A'
                     )}
                   </Typography>
                 )}
@@ -107,9 +107,9 @@ export default function AdditionalInformation() {
                   <Typography className={classes.content}>
                     <strong>Manufacturer Address :</strong>{' '}
                     {ReactHtmlParser(
-                      getAttributeValue("manufacturer_address") != ""
-                        ? getAttributeValue("manufacturer_address")
-                        : "N/A"
+                      getAttributeValue('manufacturer_address') != ''
+                        ? getAttributeValue('manufacturer_address')
+                        : 'N/A'
                     )}
                   </Typography>
                 )}
@@ -117,9 +117,9 @@ export default function AdditionalInformation() {
                   <Typography className={classes.content}>
                     <strong>Country of Origin :</strong>{' '}
                     {ReactHtmlParser(
-                      getAttributeValue("country_of_manufacture") != ""
-                        ? getAttributeValue("country_of_manufacture")
-                        : "N/A"
+                      getAttributeValue('country_of_manufacture') != ''
+                        ? getAttributeValue('country_of_manufacture')
+                        : 'N/A'
                     )}
                   </Typography>
                 )}
@@ -129,7 +129,7 @@ export default function AdditionalInformation() {
                   <div className={classes.outerAdditionalDiv}>
                     {getAttributeValue('more_information') && (
                       <Typography className={classes.content}>
-                        {ReactHtmlParser(getAttributeValue("more_information"))}
+                        {ReactHtmlParser(getAttributeValue('more_information'))}
                       </Typography>
                     )}
                   </div>
@@ -142,9 +142,9 @@ export default function AdditionalInformation() {
                         </Typography>
                         <Typography className={classes.content}>
                           {ReactHtmlParser(
-                            getAttributeValue("expiry_date") != ""
-                              ? getAttributeValue("expiry_date")
-                              : "N/A"
+                            getAttributeValue('expiry_date') != ''
+                              ? getAttributeValue('expiry_date')
+                              : 'N/A'
                           )}
                         </Typography>
                       </>
@@ -158,9 +158,9 @@ export default function AdditionalInformation() {
                         </Typography>
                         <Typography className={classes.content}>
                           {ReactHtmlParser(
-                            getAttributeValue("manufacturer_name") != ""
-                              ? getAttributeValue("manufacturer_name")
-                              : "N/A"
+                            getAttributeValue('manufacturer_name') != ''
+                              ? getAttributeValue('manufacturer_name')
+                              : 'N/A'
                           )}
                         </Typography>
                       </>
@@ -174,9 +174,9 @@ export default function AdditionalInformation() {
                         </Typography>
                         <Typography className={classes.content}>
                           {ReactHtmlParser(
-                            getAttributeValue("imported_by") != ""
-                              ? getAttributeValue("imported_by")
-                              : "N/A"
+                            getAttributeValue('imported_by') != ''
+                              ? getAttributeValue('imported_by')
+                              : 'N/A'
                           )}
                         </Typography>
                       </>
@@ -190,9 +190,9 @@ export default function AdditionalInformation() {
                         </Typography>
                         <Typography className={classes.content}>
                           {ReactHtmlParser(
-                            getAttributeValue("manufacturer_address") != ""
-                              ? getAttributeValue("manufacturer_address")
-                              : "N/A"
+                            getAttributeValue('manufacturer_address') != ''
+                              ? getAttributeValue('manufacturer_address')
+                              : 'N/A'
                           )}
                         </Typography>
                       </>
@@ -206,9 +206,9 @@ export default function AdditionalInformation() {
                         </Typography>
                         <Typography className={classes.content}>
                           {ReactHtmlParser(
-                            getAttributeValue("country_of_manufacture") != ""
-                              ? getAttributeValue("country_of_manufacture")
-                              : "N/A"
+                            getAttributeValue('country_of_manufacture') != ''
+                              ? getAttributeValue('country_of_manufacture')
+                              : 'N/A'
                           )}
                         </Typography>
                       </>

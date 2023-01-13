@@ -1,20 +1,20 @@
-import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 // import { isTemplateExpression } from "typescript";
-import { ReducersModal } from "../../models";
-import Utils from "../../utils";
-import { getRewardRate } from "./action";
-import clsx from "clsx";
-import { isAuthenticated } from "../../utils/session";
-import _ from "lodash";
-import { makeStyles } from "@mui/styles";
-import { Theme, Typography } from "@mui/material";
-import { showLoader, hideLoader } from "../../../store/home/action";
-import CustomButton from "../../common/button";
-import { useRouter } from "next/router";
-import Image from "next/image";
+import { ReducersModal } from '../../../models';
+import Utils from '../../../utils';
+import { getRewardRate } from './action';
+import clsx from 'clsx';
+import { isAuthenticated } from '../../../utils/session';
+import _ from 'lodash';
+import { makeStyles } from '@mui/styles';
+import { Theme, Typography } from '@mui/material';
+import { showLoader, hideLoader } from '../../../../store/home/action';
+import CustomButton from '../../../common/button';
+import { useRouter } from 'next/router';
+import Image from 'next/image';
 
-const useStyles = makeStyles((theme : Theme) => ({
+const useStyles = makeStyles((theme: Theme) => ({
   container: {
     width: '100%',
     display: 'flex',
@@ -33,14 +33,13 @@ const useStyles = makeStyles((theme : Theme) => ({
   },
   imgBackground: {
     padding: theme.spacing(0.5),
-    background:
-      `url(${Utils.images.SEARCH_BACKGROUND}) top left no-repeat`,
-    alignItems: "center",
-    borderRadius: "5px",
-    backgroundSize: "cover",
-    backgroundColor: "#044236",
-    width: "45px",
-    height: "45px",
+    background: `url(${Utils.images.SEARCH_BACKGROUND}) top left no-repeat`,
+    alignItems: 'center',
+    borderRadius: '5px',
+    backgroundSize: 'cover',
+    backgroundColor: '#044236',
+    width: '45px',
+    height: '45px',
   },
   img: {
     width: '100%',
@@ -141,7 +140,7 @@ interface tierData {
 }
 const Rewards: React.FC<any> = ({ details }: Props) => {
   const classes = useStyles();
-  const dispatch : any = useDispatch();
+  const dispatch: any = useDispatch();
   const history = useRouter();
   const [rewardData, setRewardData] = useState<any>({});
 
@@ -191,8 +190,7 @@ const Rewards: React.FC<any> = ({ details }: Props) => {
   };
 
   const redirect = (type: number) => {
-    history.push(Utils.routes.UPGRADE_MEMBERSHIP,{
-      
+    history.push(Utils.routes.UPGRADE_MEMBERSHIP, {
       query: { type },
     });
   };
@@ -232,9 +230,13 @@ const Rewards: React.FC<any> = ({ details }: Props) => {
                   <div className={classes.container}>
                     <div className={classes.leftContent}>
                       <div className={classes.imgBackground}>
-                       
                         <div className={classes.img}>
-                          <Image src={Utils.images.LYBC_5} alt="lybc" width={40} height={40} />
+                          <Image
+                            src={Utils.images.LYBC_5}
+                            alt="lybc"
+                            width={40}
+                            height={40}
+                          />
                         </div>
                       </div>
                       <div className={classes.textContent}>
@@ -260,10 +262,13 @@ const Rewards: React.FC<any> = ({ details }: Props) => {
                   <div className={classes.container}>
                     <div className={classes.leftContent}>
                       <div className={classes.imgBackground}>
-                       
                         <div className={classes.img}>
-                          <Image src={Utils.images.LYBC_5} alt="lybc" width={40} height={40} />
-
+                          <Image
+                            src={Utils.images.LYBC_5}
+                            alt="lybc"
+                            width={40}
+                            height={40}
+                          />
                         </div>
                       </div>
                       <div className={classes.textContent}>

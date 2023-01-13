@@ -1,9 +1,9 @@
 import { Theme, Typography } from '@mui/material';
 import { makeStyles } from '@mui/styles';
-import Utils from './../../utils';
+import Utils from '../../../utils';
 import _ from 'lodash';
 import { useSelector } from 'react-redux';
-import { ReducersModal } from '../../models';
+import { ReducersModal } from '../../../models';
 import Skeleton from '@mui/material/Skeleton';
 
 const useStyles = makeStyles((theme: Theme) => ({
@@ -123,7 +123,6 @@ const ProductDetails = (props: any) => {
   const priceData: any = useSelector(
     (state: ReducersModal) => state.productDetailReducer
   );
-  
 
   let discPrice: any;
   if (priceData?.selectedVariantData) {
@@ -132,11 +131,10 @@ const ProductDetails = (props: any) => {
     });
     // let discPrice1 = productData?.customAttributes?.find((item: any) => item.attribute_code == 'special_price')
   }
-  let configurableProduct =
-    productData?.configurableProductLinks?.find(
-      (item: any) => item?.isInStock
-    ) 
-    // || productData?.configurableProductLinks[0];
+  let configurableProduct = productData?.configurableProductLinks?.find(
+    (item: any) => item?.isInStock
+  );
+  // || productData?.configurableProductLinks[0];
   const skeletonLoader = useSelector((state: ReducersModal) => {
     return state.loadingReducer.skeletonLoader;
   });

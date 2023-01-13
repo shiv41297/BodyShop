@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { Typography, MenuItem, Menu, Theme, IconButton } from '@mui/material';
 import { makeStyles } from '@mui/styles';
-import Utils from '../../utils';
+import Utils from '../../../utils';
 import { useDispatch, useSelector } from 'react-redux';
 import SuccessModal from './successModal';
 
@@ -16,15 +16,15 @@ import clsx from 'clsx';
 
 import { HideBetween, HideOn } from 'react-hide-on-scroll';
 // import { getWishList } from "../wishlist/action";
-import { customGa4Event } from '../../utils/gtag';
+import { customGa4Event } from '../../../utils/gtag';
 import { Box, Icon } from '@mui/material';
-import { hideLoader } from '../../../store/home/action';
-import ContainedButton from '../../common/containedButton';
+import { hideLoader } from '../../../../store/home/action';
+import ContainedButton from '../../../common/containedButton';
 // import { addToWishList, removeFromWishList, notifyMe } from "../../common/product/action";
-import { ReducersModal } from '../../models';
-import { addToBag } from '../../common/addToCart/action';
-import { addToBag as eventAddToBag } from '../../utils/event/action';
-import { notifyMe } from '../../common/product/action';
+import { ReducersModal } from '../../../models';
+import { addToBag } from '../../../common/addToCart/action';
+import { addToBag as eventAddToBag } from '../../../utils/event/action';
+import { notifyMe } from '../../../common/product/action';
 
 const useStyles = makeStyles((theme: Theme) => ({
   staticBottomContainer: {
@@ -620,8 +620,7 @@ const FixedBottomPanel = (props: any) => {
                       </Menu>
                     </div>
                   </div>
-                ) : 
-                null}
+                ) : null}
                 <div className={classes.addToBag}>
                   {selectedVariantData && selectedVariantData?.isInStock ? (
                     <ContainedButton
