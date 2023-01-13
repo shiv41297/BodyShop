@@ -618,7 +618,6 @@ const Rate = (_props: any) => {
                           (item: any) => item.attribute_code === 'special_price'
                         );
                         let price = product?.price;
-                        // console.log("rrrrrrrrr",{i})
                         return (
                           product && (
                             <div onClick={() => selectVariant(val, i)} key={i}>

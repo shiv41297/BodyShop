@@ -1,103 +1,103 @@
-import { Theme, Typography, FormControlLabel } from "@mui/material";
-import { useState } from "react";
-import _ from "lodash";
-import Utils from "../../component/utils";
-import { makeStyles } from "@mui/styles";
-import CustomCheckbox from "../../component/common/customCheckbox";
+import { Theme, Typography, FormControlLabel } from '@mui/material';
+import { useState } from 'react';
+import _ from 'lodash';
+import { makeStyles } from '@mui/styles';
+import CustomCheckbox from '../../../common/customCheckbox';
+import Utils from '../../../utils';
 
 const useStyles = makeStyles((theme: Theme) => ({
   filterHeader: {
-    paddingBottom: "5px",
+    paddingBottom: '5px',
   },
   categoryHeading: {
-    display: "flex",
-    justifyContent: "space-between",
-    "& .MuiTypography-body1": {
-      fontSize: "14px",
-      textTransform: "uppercase",
-      fontWeight: "bold",
+    display: 'flex',
+    justifyContent: 'space-between',
+    '& .MuiTypography-body1': {
+      fontSize: '14px',
+      textTransform: 'uppercase',
+      fontWeight: 'bold',
     },
-    "& .MuiTypography-body2": {
-      font: "normal 500 12 Work Sans",
-      color: "var(--light-gray)",
+    '& .MuiTypography-body2': {
+      font: 'normal 500 12 Work Sans',
+      color: 'var(--light-gray)',
     },
-    cursor: "pointer",
-    letterSpacing: "1px",
-    "& $h4": {
-      paddingRight: "25px",
+    cursor: 'pointer',
+    letterSpacing: '1px',
+    '& $h4': {
+      paddingRight: '25px',
     },
   },
   categoryListing: {
     fontWeight: 100,
-    color: "var(--secondary-black)",
-    margin: theme.spacing(0, "auto"),
-    fontSize: "12px",
+    color: 'var(--secondary-black)',
+    margin: theme.spacing(0, 'auto'),
+    fontSize: '12px',
   },
   checkbox: {
-    fontSize: "12px",
-    "& .MuiFormControlLabel-label": {
-      textTransform: "capitalize",
+    fontSize: '12px',
+    '& .MuiFormControlLabel-label': {
+      textTransform: 'capitalize',
     },
-    "& .MuiCheckbox-root": {
+    '& .MuiCheckbox-root': {
       padding: theme.spacing(1),
     },
   },
 
   collapseIcon: {
-    width: "20px",
-    height: "20px",
+    width: '20px',
+    height: '20px',
     // padding: "8px",
-    position: "absolute",
-    top: "0",
-    right: "0",
-    cursor: "pointer",
-    border: "1.5px solid var(--black300)",
-    borderRadius: "4px",
-    "&::before": {
+    position: 'absolute',
+    top: '0',
+    right: '0',
+    cursor: 'pointer',
+    border: '1.5px solid var(--black300)',
+    borderRadius: '4px',
+    '&::before': {
       content: "''",
-      position: "absolute",
-      top: "calc(50% - 5px)",
-      left: "calc(50% - 1px)",
-      width: "2px",
-      height: "10px",
-      opacity: "0",
-      transition: "opacity 0.2s ease-out",
-      background: "var(--black300)",
+      position: 'absolute',
+      top: 'calc(50% - 5px)',
+      left: 'calc(50% - 1px)',
+      width: '2px',
+      height: '10px',
+      opacity: '0',
+      transition: 'opacity 0.2s ease-out',
+      background: 'var(--black300)',
     },
 
-    "&::after": {
+    '&::after': {
       content: "''",
-      height: "2px",
-      width: "10px",
-      position: "absolute",
-      top: "calc(50% - 1px)",
-      left: "calc(50% - 5px)",
-      background: "var(--black300)",
+      height: '2px',
+      width: '10px',
+      position: 'absolute',
+      top: 'calc(50% - 1px)',
+      left: 'calc(50% - 5px)',
+      background: 'var(--black300)',
     },
-    "&.active": {
-      "&::before": {
-        opacity: "1",
+    '&.active': {
+      '&::before': {
+        opacity: '1',
       },
     },
   },
 
   accordionBody: {
     // maxHeight: "300px",
-    transition: "all .3s ease",
+    transition: 'all .3s ease',
     // paddingTop: "10px",
-    "&.hide": {
-      maxHeight: "0px",
-      overflow: "hidden",
+    '&.hide': {
+      maxHeight: '0px',
+      overflow: 'hidden',
     },
   },
   text: {
-    font: "normal 15px Work Sans",
+    font: 'normal 15px Work Sans',
   },
 }));
 
 interface Props {
   onCheckboxChange: Function;
-  type: "otherFilters" | "customAttributes";
+  type: 'otherFilters' | 'customAttributes';
   filter: any;
   obj: any;
   appliedFilter: any;
@@ -159,20 +159,20 @@ const FilterContent = (props: Props) => {
               </span>
             )}
           </div>
-          <div className={`${classes.accordionBody} ${isToggle && "hide"}`}>
+          <div className={`${classes.accordionBody} ${isToggle && 'hide'}`}>
             {filter?.options.map((val: any, i: any) => {
               let checked = appliedFilter?.findIndex(
                 (item: any) => item._id === val._id && item.name === val.name
               );
               let priceVal =
-                filter._id === "price" ? val?.name?.split("-") : [];
+                filter._id === 'price' ? val?.name?.split('-') : [];
               const priceData =
                 priceVal.length === 2
                   ? `₹ ${priceVal[0] || 0} - ₹ ${priceVal[1] || 0}`
                   : priceVal.length === 1
-                  ? priceVal[0]?.toLowerCase().includes("above")
-                    ? priceVal[0]?.split(" ")[0] +
-                      ` ₹ ${priceVal[0]?.split(" ")[1]}`
+                  ? priceVal[0]?.toLowerCase().includes('above')
+                    ? priceVal[0]?.split(' ')[0] +
+                      ` ₹ ${priceVal[0]?.split(' ')[1]}`
                     : `₹${priceVal[0] || 0}`
                   : null;
 
@@ -187,7 +187,7 @@ const FilterContent = (props: Props) => {
                       <CustomCheckbox
                         onChange={(e: any) => onChange(e, val)}
                         checked={checked > -1}
-                        key={`${type === "otherFilters" ? val._id : val.name}_${
+                        key={`${type === 'otherFilters' ? val._id : val.name}_${
                           obj.categoryId
                         }_${obj.query}`}
                       />

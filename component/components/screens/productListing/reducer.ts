@@ -1,6 +1,4 @@
 //@ts-nocheck
-import { ProductModal, ProductFilterModal } from "../../component/models";
-
 export const productReducer = (
   state = {
     data: {},
@@ -12,12 +10,12 @@ export const productReducer = (
   action: any
 ) => {
   switch (action.type) {
-    case "getProductList":
+    case 'getProductList':
       // const payload = Object.assign({}, action.payload)
       // const products = Object.assign({}, action?.payload?.products)
       // products.data = [...action.payload?.products?.data]
       return { ...state, data: action.payload };
-    case "product.update":
+    case 'product.update':
       const index = state.data?.products.data.findIndex(
         (item: any) => item._id === action.payload._id
       ); //finding index of the item
@@ -42,9 +40,9 @@ export const productFilterReducer = (
   action: any
 ) => {
   switch (action.type) {
-    case "product-filter":
+    case 'product-filter':
       return { ...state, filters: action.payload };
-    case "mobile-applied-filters":
+    case 'mobile-applied-filters':
       return { ...state, mobileAppliedFilters: action.payload };
     default:
       return state;

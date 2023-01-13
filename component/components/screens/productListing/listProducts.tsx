@@ -1,44 +1,48 @@
-import { createStyles, Theme, Grid } from "@mui/material";
-import { makeStyles } from "@mui/styles";
-import _ from "lodash";
-import { useSelector } from "react-redux";
-import Utils from "../../component/utils";
-import { ReducersModal } from "../../component/models";
+import { createStyles, Theme, Grid } from '@mui/material';
+import { makeStyles } from '@mui/styles';
+import _ from 'lodash';
+import { useSelector } from 'react-redux';
+import CustomPagination from '../../../common/pagination/pagination';
+import Product from '../../../common/product';
+import Utils from '../../../utils';
+import ProductNotFound from './productNotFound';
+// import Utils from "../../component/utils";
+// import { ReducersModal } from "../../component/models";
 // import Skeleton from "@mui/material/Skeleton";
 
 /**
  * Components
  */
-import Pagination from "../../component/common/pagination/pagination";
-import Product from "../../component/common/product";
-import ProductNotFound from "./productNotFound";
-import SkeletonProductView from "../../component/common/skeletonList/skeletonProductView";
+// import Pagination from "../../component/common/pagination/pagination";
+// import Product from "../../component/common/product";
+// import ProductNotFound from "./productNotFound";
+// import SkeletonProductView from "../../component/common/skeletonList/skeletonProductView";
 // import { useParams } from "react-router-dom";
 
 const useStyles = makeStyles((theme: Theme) => ({
   productsBody: {
     // padding: theme.spacing(0, 2),
-    height: "100%",
+    height: '100%',
   },
   productData: {
     // margin: theme.spacing(1, "0"),
     padding: theme.spacing(0, 1),
-    [theme.breakpoints.down("xs")]: {
+    [theme.breakpoints.down('xs')]: {
       padding: theme.spacing(0, 0),
     },
   },
   skeletonContainer: {
-    display: "flex",
+    display: 'flex',
     // justifyContent: "space-around",
-    width: "100%",
-    flexWrap: "wrap",
+    width: '100%',
+    flexWrap: 'wrap',
   },
   skeletonContent: {
-    marginTop: "20px",
+    marginTop: '20px',
 
-    display: "flex",
-    flexDirection: "column",
-    marginLeft: "20px",
+    display: 'flex',
+    flexDirection: 'column',
+    marginLeft: '20px',
   },
 }));
 
@@ -50,16 +54,14 @@ interface Props {
 const Products: React.FC<any> = (props: Props) => {
   const classes = useStyles();
   const products =
-    useSelector(
-      (state: ReducersModal) => state.productReducer?.data?.products
-    ) || {};
+    useSelector((state: any) => state.productReducer?.data?.products) || {};
   const filters = useSelector(
-    (state: ReducersModal) => state.productFilterReducer?.filters
+    (state: any) => state.productFilterReducer?.filters
   );
 
   // const params: any = useParams();
   // let keyword = params?.keyword ?? "";
-  let keyword = "";
+  let keyword = '';
 
   return (
     <>
@@ -77,12 +79,12 @@ const Products: React.FC<any> = (props: Props) => {
                   (item: any) => item?.isInStock
                 ) || item?.configurableProductLinks[0];
               let desc =
-                item?.type === "configurable"
+                item?.type === 'configurable'
                   ? _.find(configurableProduct?.customAttributes, {
-                      attribute_code: "short_description",
+                      attribute_code: 'short_description',
                     })
                   : _.find(item.customAttributes, {
-                      attribute_code: "short_description",
+                      attribute_code: 'short_description',
                     });
               return (
                 <Grid
@@ -112,7 +114,7 @@ const Products: React.FC<any> = (props: Props) => {
         )}
       </div>
       {products?.page && (
-        <Pagination data={products} handleChange={props.handleChange} />
+        <CustomPagination data={products} handleChange={props.handleChange} />
       )}
     </>
   );

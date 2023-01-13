@@ -292,7 +292,6 @@ const CustomerReviews: React.FC<Props> = (props: Props) => {
   const profileData =
     useSelector((state: any) => state.userDetailReducer?.userInfo) || {};
   const urlkey = location.pathname.split('/p/')?.[0]?.split('/').pop();
-  // console.log({profileData, urlkey})
 
   const onClickHelpful = (value: string, reviewData: any) => {
     const payload = {

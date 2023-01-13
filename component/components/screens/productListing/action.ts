@@ -1,8 +1,7 @@
-import Utils from "../../component/utils";
-import { searchProducts } from "../../component/utils/event/action";
-import request from "../../component/utils/request";
+import Utils from '../../../utils';
+import { searchProducts } from '../../../utils/event/action';
+import request from '../../../utils/request';
 // import { hideLoader, hideSkeleton } from "../home/actions";
-
 
 export function getProductList(params: any) {
   // params: any,
@@ -14,40 +13,39 @@ export function getProductList(params: any) {
     //static
     // let params = { page: 1, limit: 18, urlKey: "new-in", query: "" };
     let token = params.authToken;
-   
-    let data = { ...params, categoryId : params && params.categoryId ? params.categoryId :65, query: "" };
-    console.log(params,"params");
+
+    let data = {
+      ...params,
+      categoryId: params && params.categoryId ? params.categoryId : 65,
+      query: '',
+    };
     let searchQuery = params.query;
     let url =
       Utils.endPoints.PRODUCT_LIST +
-      "?data=" +
+      '?data=' +
       encodeURIComponent(JSON.stringify(data));
-      console.log(token, "tokenId",params,Utils.endPoints.PRODUCT_LIST +
-      "?data=" +
-      encodeURIComponent(JSON.stringify(data)))
     let str = encodeURI(url);
 
-    console.log("product listing called", str, params);
-
-    const resp = await request.get(str,{ headers : {"Authorization" : "Bearer " + token}}).catch((err) => {
-      console.log(err, "error");
-    });
+    const resp = await request
+      .get(str, { headers: { Authorization: 'Bearer ' + token } })
+      .catch((err) => {
+        console.log(err, 'error');
+      });
 
     let respdata: any = resp?.data?.data ? { ...resp?.data?.data } : {};
     // if (mobile?.data && data?.products?.data?.length > 0)
     //   data.products.data = [...mobile.data, ...data?.products?.data];
     respdata = { ...respdata };
-    // console.log(data);
     // if (filter)
     dispatch({
-      type: "product-filter",
+      type: 'product-filter',
       payload: resp?.data?.data?.filters?.data,
     });
     // if (callback) {
     //   callback(resp);
     // }
     dispatch({
-      type: "getProductList",
+      type: 'getProductList',
       payload: { ...respdata },
     });
 
@@ -60,23 +58,22 @@ export function getProductList(params: any) {
       // if (mobile?.data && data?.products?.data?.length > 0)
       //   data.products.data = [...mobile.data, ...data?.products?.data];
       data = { ...data };
-      console.log(data);
       // if (filter)
       dispatch({
-        type: "product-filter",
+        type: 'product-filter',
         payload: resp?.data?.data?.filters?.data,
       });
       // if (callback) {
       //   callback(resp);
       // }
       dispatch({
-        type: "getProductList",
+        type: 'getProductList',
         payload: { ...data },
       });
 
       if (searchQuery) {
         let NoOfOutofStock = data.products.data?.filter((item: any) => {
-          if (item?.type == "configurable") {
+          if (item?.type == 'configurable') {
             return item?.configurableProductLinks?.some(
               (val: any) => !val?.isInStock
             );
@@ -87,8 +84,8 @@ export function getProductList(params: any) {
           SearchKey: searchQuery,
           NoOfSearchResults: data.products.data?.length,
           NoOfOutofStock,
-          FromScreen: "Search",
-          ClickBehaviour: "Search Result",
+          FromScreen: 'Search',
+          ClickBehaviour: 'Search Result',
         };
         searchProducts(eventPayload);
       }
@@ -121,9 +118,6 @@ export function getProductList(params: any) {
   };
 }
 
-
-
-
 // export function getProductList(params: any,authtoken: any) {
 //   // params: any,
 //   // filter: boolean
@@ -144,39 +138,29 @@ export function getProductList(params: any) {
 
 //     };
 
-//     console.log(params,"params filter line 26");
 //     let filter = {categoryId: params && params.search && params.search.categoryId ? params.search.categoryId : "" , query: params && params.search && params.search.query ? params.search.query : ""}
 
 //   //  filterDataToken = {...filterData};
 //     let data = { ...actionparams, ...filter };
-//     console.log(params.search,"params token");
 //     let searchQuery = params.query;
 //     // let url =
 //     //   Utils.endPoints.PRODUCT_LIST +
 //     //   "?data=" +
 //     //  data;
-//     //   console.log(token, "tokenId",params,Utils.endPoints.PRODUCT_LIST +
 //     //   "?data=" +
 //     //   data)
-
 
 //     let url =
 //     Utils.endPoints.PRODUCT_LIST +
 //     "?data=" +
 //     encodeURIComponent(JSON.stringify(data));
-//     console.log(token, "tokenId",params,Utils.endPoints.PRODUCT_LIST +
-//     "?data=" +
-//     encodeURIComponent(JSON.stringify(data)))
 //     let str = encodeURI(url);
 
 //     // let url =
 //     // Utils.endPoints.PRODUCT_LIST +
 //     // "?data=" + data
-   
+
 //     // let str = encodeURI(url);
-
-
-//     console.log("product listing called", str, params);
 
 //     const resp = await request.get(str,{ headers : {"Authorization" : "Bearer " + authtoken}}).catch((err) => {
 //       console.log(err, "error");
@@ -186,7 +170,6 @@ export function getProductList(params: any) {
 //     // if (mobile?.data && data?.products?.data?.length > 0)
 //     //   data.products.data = [...mobile.data, ...data?.products?.data];
 //     respdata = { ...respdata };
-//     // console.log(data);
 //     // if (filter)
 //     dispatch({
 //       type: "product-filter",
@@ -209,7 +192,6 @@ export function getProductList(params: any) {
 //       // if (mobile?.data && data?.products?.data?.length > 0)
 //       //   data.products.data = [...mobile.data, ...data?.products?.data];
 //       data = { ...data };
-//       console.log(data);
 //       // if (filter)
 //       dispatch({
 //         type: "product-filter",

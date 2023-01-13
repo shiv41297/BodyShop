@@ -8,7 +8,8 @@ import { makeStyles, createStyles } from '@mui/styles';
 // import { useLocation } from 'react-router-dom';
 // import { ReducersModal } from '../../models';
 import { useSelector } from 'react-redux';
-import Utils from '../../component/utils';
+import Utils from '../../../utils';
+// import Utils from '../../component/utils';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -40,7 +41,7 @@ const MobileMenu = () => {
   // const location: any = useLocation();
   // const params: any = useParams()
   const menuData = useSelector((state: any) => state.homeReducer.menuData);
-let urlKey;
+  let urlKey;
   // urlKey: any = params?.[0].split("/")?.[0]
 
   // let categoryId = location?.state?.categoryId ?? params?.id ?? "";

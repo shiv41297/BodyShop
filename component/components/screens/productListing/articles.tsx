@@ -1,75 +1,75 @@
 // @ts-nocheck
-import { createStyles, Theme, Button } from "@mui/material";
+import { createStyles, Theme, Button } from '@mui/material';
 import { makeStyles } from '@mui/styles';
-import Link from "next/link";
-import Utils from "../../component/utils";
+import Link from 'next/link';
+import Utils from '../../component/utils';
 // import Utils from "../../utils";
 // import { Link } from "react-router-dom";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     productHover: {
-      position: "absolute",
-      top: "0",
-      left: "0",
-      right: "0",
-      bottom: "0",
+      position: 'absolute',
+      top: '0',
+      left: '0',
+      right: '0',
+      bottom: '0',
       zIndex: 1,
-      backgroundColor: "var(--medium-creame-color)",
+      backgroundColor: 'var(--medium-creame-color)',
       // transform: "translateY(-100%)",
-      opacity: "0",
-      visibility: "hidden",
-      transition: "all .3s ease",
+      opacity: '0',
+      visibility: 'hidden',
+      transition: 'all .3s ease',
     },
 
     imgBox: {
-      height: "250px",
+      height: '250px',
     },
 
     prodImg: {
-      width: "100%",
-      height: "100%",
-      objectFit: "cover",
-      objectPosition: "center center",
+      width: '100%',
+      height: '100%',
+      objectFit: 'cover',
+      objectPosition: 'center center',
     },
 
     footerInfo: {
-      backgroundColor: "var(--medium-creame-color)",
-      padding: "16px 14px 22px",
-      textAlign: "center",
+      backgroundColor: 'var(--medium-creame-color)',
+      padding: '16px 14px 22px',
+      textAlign: 'center',
     },
     title: {
-      fontSize: "15px",
-      fontWeight: "bold",
-      lineHeight: "1",
-      color: "var(--green-color-100)",
-      textAlign: "center",
+      fontSize: '15px',
+      fontWeight: 'bold',
+      lineHeight: '1',
+      color: 'var(--green-color-100)',
+      textAlign: 'center',
     },
     imgDiv: {
       borderRadius: 4,
       // backgroundColor: "var(--light-creame-color)",
       // position: "relative",
       // padding: "10%",
-      "& img": {
+      '& img': {
         // width: "100%"
       },
     },
     prodDescription: {
-      fontSize: "14px",
-      color: "var(--green-color-100)",
-      lineHeight: "1.2",
-      textAlign: "center",
-      margin: "9px 0 12px",
-      height: "65px",
-      overflow: "hidden",
+      fontSize: '14px',
+      color: 'var(--green-color-100)',
+      lineHeight: '1.2',
+      textAlign: 'center',
+      margin: '9px 0 12px',
+      height: '65px',
+      overflow: 'hidden',
     },
     btn: {
       font: `normal ${theme.typography.fontWeightMedium} ${theme.spacing(
         1.5
       )} Work Sans`,
-      color: "var(--white)",
+      color: 'var(--white)',
       borderRadius: 4,
-      textTransform: "capitalize",
+      textTransform: 'capitalize',
       padding: theme.spacing(1, 2),
     },
   })

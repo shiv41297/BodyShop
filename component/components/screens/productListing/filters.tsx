@@ -1,26 +1,21 @@
 // @ts-nocheck
-import React, { useEffect, useState } from "react";
-import {
-  Theme,
-  Typography,
-  Divider,
-  Chip,
-  Link,
-} from "@mui/material";
-import { makeStyles } from "@mui/styles";
+import React, { useEffect, useState } from 'react';
+import { Theme, Typography, Divider, Chip, Link } from '@mui/material';
+import { makeStyles } from '@mui/styles';
 
-import { useDispatch, useSelector } from "react-redux";
-import { getProductList } from "./action";
-import { ReducersModal } from "../../component/models";
-import FilterContent from "./filterContent";
-import Utils from "../../component/utils";
-import { hideLoader, showLoader } from "../../store/home/action";
-import { useRouter } from "next/router";
-import { getAuthToken } from "../../component/utils/session";
+import { useDispatch, useSelector } from 'react-redux';
+import { getProductList } from './action';
+import { ReducersModal } from '../../component/models';
+import FilterContent from './filterContent';
+// import Utils from "../../component/utils";
+// import { hideLoader, showLoader } from "../../store/home/action";
+import { useRouter } from 'next/router';
+// import { getAuthToken } from "../../component/utils/session";
 // import { useHistory } from "react-router-dom";
-import _, { filter } from "lodash";
-import { isTypeNode } from "typescript";
-import { debug } from "util";
+import _, { filter } from 'lodash';
+import { isTypeNode } from 'typescript';
+import { debug } from 'util';
+import Utils from '../../../utils';
 
 const useStyles = makeStyles((theme: Theme) => ({
   filterContainer: {
@@ -36,42 +31,42 @@ const useStyles = makeStyles((theme: Theme) => ({
     padding: theme.spacing(0, 0.7),
   },
   filterBody: {
-    margin: theme.spacing(0, "auto"),
+    margin: theme.spacing(0, 'auto'),
   },
 
   checkbox: {
-    "& .Mui-checked": {
-      color: "var(--main-opacity)",
+    '& .Mui-checked': {
+      color: 'var(--main-opacity)',
     },
-    fontSize: "12px",
-    textTransform: "capitalize",
+    fontSize: '12px',
+    textTransform: 'capitalize',
   },
   appliedFilterContainer: {
-    border: "1px solid var(--border-color)",
+    border: '1px solid var(--border-color)',
     marginBottom: theme.spacing(1.5),
   },
   selectedFilter: {
     padding: theme.spacing(1),
   },
   titleContainer: {
-    display: "flex",
-    justifyContent: "space-between",
+    display: 'flex',
+    justifyContent: 'space-between',
     padding: theme.spacing(1),
-    "& .MuiTypography-body1": {
+    '& .MuiTypography-body1': {
       fontWeight: 600,
     },
-    "& .MuiTypography-body2": {
+    '& .MuiTypography-body2': {
       fontWeight: 600,
       fontSize: 14,
-      cursor: "pointer",
-      "& a": {
-        textDecoration: "none",
+      cursor: 'pointer',
+      '& a': {
+        textDecoration: 'none',
       },
     },
   },
   text: {
-    font: "normal 14px Work Sans SemiBold",
-    letterSpacing: "1px",
+    font: 'normal 14px Work Sans SemiBold',
+    letterSpacing: '1px',
     lineHeight: 1.5,
   },
 }));
@@ -79,19 +74,19 @@ const useStyles = makeStyles((theme: Theme) => ({
 const chipStyles = makeStyles((theme: Theme) => ({
   chip: {
     margin: theme.spacing(0, 1, 1, 0),
-    overflow: "none",
+    overflow: 'none',
     borderRadius: 2,
-    backgroundColor: "var(--white)",
-    border: "1px solid var(--border-color)",
-    "& .MuiChip-label": {
-      font: "normal 10px Work Sans",
-      color: "var(--secondary-black)",
-      lineHeight: "12px",
-      textTransform: "capitalize",
-      paddingLeft: "10px",
-      paddingRight: "10px",
+    backgroundColor: 'var(--white)',
+    border: '1px solid var(--border-color)',
+    '& .MuiChip-label': {
+      font: 'normal 10px Work Sans',
+      color: 'var(--secondary-black)',
+      lineHeight: '12px',
+      textTransform: 'capitalize',
+      paddingLeft: '10px',
+      paddingRight: '10px',
     },
-    "& .MuiChip-deleteIcon": {
+    '& .MuiChip-deleteIcon': {
       height: 14,
       width: 14,
     },
@@ -125,7 +120,7 @@ const Filters: React.FC<any> = (props: Props) => {
 
   const [selectedFilters, setSelectedFilters] = useState<any>([]);
   const query = Utils.CommonFunctions.useQuery();
-  let queryFilter = query?.get("filters") ?? "{}";
+  let queryFilter = query?.get('filters') ?? '{}';
   const router = useRouter();
   const location = useRouter();
 
@@ -136,7 +131,7 @@ const Filters: React.FC<any> = (props: Props) => {
   //   : history?.location.pathname.includes("/h/")
   //   ? history?.location.pathname.split("/h/")?.[0]?.split("/")?.pop()
   //   : "";
-  const mainCat = location.asPath.split("/")?.[1];
+  const mainCat = location.asPath.split('/')?.[1];
   const category = menuData.find((item: any) => {
     // return item.id == (location?.state?.categoryId ? location?.state?.categoryId : localStorage.getItem("categoryId"))
     return item.url == mainCat;
@@ -152,13 +147,12 @@ const Filters: React.FC<any> = (props: Props) => {
 
       filters?.otherFilters?.map((item: any) => {
         return appliedFilter?.otherFilters?.some((value: any) => {
-          // console.log("value appliedFilter", value, "item filters", item);
           if (item._id === value._id) {
             item.options.map((a: any) => {
               if (value.options.some((b: any) => a._id === b._id))
                 selectedFilter.push({
                   ...a,
-                  type: "otherFilters",
+                  type: 'otherFilters',
                   filter: { _id: value._id },
                 });
             });
@@ -171,7 +165,7 @@ const Filters: React.FC<any> = (props: Props) => {
             if (value.options.some((b: any) => a.name == b._id))
               selectedFilter.push({
                 ...a,
-                type: "customAttributes",
+                type: 'customAttributes',
                 filter: { _id: value._id },
               });
           });
@@ -185,17 +179,21 @@ const Filters: React.FC<any> = (props: Props) => {
         appliedFilter?.otherFilters?.length !== 0 ? 1 : appliedFilter?.page;
       newAppliedFilter = { ...appliedFilter, page: newPage };
 
-      const data = { ...props.obj, ...newAppliedFilter, query:"", categoryId:categoryId };
+      const data = {
+        ...props.obj,
+        ...newAppliedFilter,
+        query: '',
+        categoryId: categoryId,
+      };
 
       props.setParams(data);
       // dispatch(getProductList(data, false, () => {
       //   dispatch(hideLoader())
       // }));
     }
-  }, [ props.obj.query]);
+  }, [props.obj.query]);
 
   const dispatch = useDispatch();
-  console.log(location,"router");
 
   const classes = useStyles();
 
@@ -206,9 +204,14 @@ const Filters: React.FC<any> = (props: Props) => {
     delete queryFilter?.otherFilters;
     delete queryFilter?.customAttributes;
 
-    const data = { ...props.obj, page: 1, authToken: getAuthToken(),query:"", categoryId:categoryId };
-    console.log(data,"data")
-    
+    const data = {
+      ...props.obj,
+      page: 1,
+      authToken: getAuthToken(),
+      query: '',
+      categoryId: categoryId,
+    };
+
     props.setParams(data);
     dispatch(showLoader());
     delete data.selectedFilters;
@@ -219,37 +222,34 @@ const Filters: React.FC<any> = (props: Props) => {
     );
 
     if (_.isEmpty(queryFilter)) {
-      console.log("line 222")
       router.push({
-        pathname: "/[slug]/h/[googleKey]",
+        pathname: '/[slug]/h/[googleKey]',
         query: {
-         slug: `${router.query.slug}`,
-          
+          slug: `${router.query.slug}`,
+
           googleKey: `${router.query.googleKey}`,
         },
       });
     } else {
-      console.log("line 233")
       router.push({
-        pathname: "/[slug]/h/[googleKey]?",
+        pathname: '/[slug]/h/[googleKey]?',
         query: {
-         slug: `${router.query.slug}`,
-         search: JSON.stringify(data),
-        
+          slug: `${router.query.slug}`,
+          search: JSON.stringify(data),
+
           googleKey: `${router.query.googleKey}`,
         },
       });
       // history.push({
       //   pathname: history.location.pathname,
-        // search: `?filters=${encodeURI(
-        //   encodeURIComponent(JSON.stringify(data))
-        // )}`,
+      // search: `?filters=${encodeURI(
+      //   encodeURIComponent(JSON.stringify(data))
+      // )}`,
       // });
     }
   };
 
   const onCheckboxChange = (e: any, type: string, filter: any, option: any) => {
-
     dispatch(showLoader());
     let appliedFilter = JSON.parse(
       decodeURIComponent(decodeURIComponent(queryFilter))
@@ -261,7 +261,7 @@ const Filters: React.FC<any> = (props: Props) => {
     if (filterExist) {
       if (checked) {
         filterExist.options.push({
-          _id: type === "otherFilters" ? option._id : option.name,
+          _id: type === 'otherFilters' ? option._id : option.name,
         });
         setSelectedFilters((prev: any) => [
           ...prev,
@@ -275,7 +275,7 @@ const Filters: React.FC<any> = (props: Props) => {
         if (filterExist.options.length > 1) {
           let index = filterExist.options.findIndex(
             (val: any) =>
-              val._id === (type === "otherFilters" ? option._id : option.name)
+              val._id === (type === 'otherFilters' ? option._id : option.name)
           );
           filterExist.options.splice(index, 1);
         } else {
@@ -292,7 +292,7 @@ const Filters: React.FC<any> = (props: Props) => {
 
       appliedFilter[type].push({
         ...filter,
-        options: [{ _id: type === "otherFilters" ? option._id : option.name }],
+        options: [{ _id: type === 'otherFilters' ? option._id : option.name }],
       });
 
       setSelectedFilters((prev: any) => [...prev, { ...option, type, filter }]);
@@ -305,10 +305,16 @@ const Filters: React.FC<any> = (props: Props) => {
     if (!appliedFilter?.customAttributes?.length) {
       delete appliedFilter?.customAttributes;
     }
-    const data = { ...props.obj, ...appliedFilter, page: 1 ,query:"", categoryId: categoryId, authToken: getAuthToken()};
+    const data = {
+      ...props.obj,
+      ...appliedFilter,
+      page: 1,
+      query: '',
+      categoryId: categoryId,
+      authToken: getAuthToken(),
+    };
 
     // if (!_.isEmpty(appliedFilter)) {
-    //   console.log("line 308")
     //   router.push({
     //     pathname: "/[slug]/h/[googleKey]",
     //     query: {
@@ -322,7 +328,6 @@ const Filters: React.FC<any> = (props: Props) => {
     //   });
     // }
     //  else {
-    //   console.log("line 317")
     //   router.push({
     //     pathname: `/[slug]/h/[googleKey]`,
     //     query: {
@@ -332,16 +337,13 @@ const Filters: React.FC<any> = (props: Props) => {
     //       encodeURIComponent(JSON.stringify(data))
     //     )}`,
     //     },
-    //   });  
+    //   });
     //   }
-   
 
     props.setParams(data);
 
     delete data.selectedFilters;
-    console.log(data,"data line 343")
     dispatch(getProductList(data));
-
   };
 
   return (

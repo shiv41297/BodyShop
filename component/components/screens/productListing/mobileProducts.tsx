@@ -1,12 +1,14 @@
 //@ts-nocheck
-import { createStyles, Theme, Grid } from "@mui/material";
-import { makeStyles } from "@mui/styles";
-import _ from "lodash";
-import { useEffect } from "react";
-import { useSelector } from "react-redux";
-import Product from "../../component/common/product";
-import Utils from "../../component/utils";
-import ProductNotFound from "./productNotFound";
+import { createStyles, Theme, Grid } from '@mui/material';
+import { makeStyles } from '@mui/styles';
+import _ from 'lodash';
+import { useEffect } from 'react';
+import { useSelector } from 'react-redux';
+import Product from '../../../common/product';
+import Utils from '../../../utils';
+// import Product from "../../component/common/product";
+// import Utils from "../../component/utils";
+import ProductNotFound from './productNotFound';
 // import Utils from "../../utils";
 // import { ReducersModal } from "../../models";
 // import Skeleton from "@mui/material/Skeleton";
@@ -28,27 +30,27 @@ const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     productsBody: {
       // padding: theme.spacing(0, 2),
-      height: "100%",
+      height: '100%',
     },
     productData: {
       // margin: theme.spacing(1, "0"),
       padding: theme.spacing(0, 1),
-      [theme.breakpoints.down("xs")]: {
+      [theme.breakpoints.down('xs')]: {
         padding: theme.spacing(0, 0),
       },
     },
     skeletonContainer: {
-      display: "flex",
+      display: 'flex',
       // justifyContent: "space-around",
-      width: "100%",
-      flexWrap: "wrap",
+      width: '100%',
+      flexWrap: 'wrap',
     },
     skeletonContent: {
-      marginTop: "20px",
+      marginTop: '20px',
 
-      display: "flex",
-      flexDirection: "column",
-      marginLeft: "20px",
+      display: 'flex',
+      flexDirection: 'column',
+      marginLeft: '20px',
     },
   })
 );
@@ -108,12 +110,12 @@ const MobileProducts: React.FC<any> = (props: Props) => {
                   (item: any) => item?.isInStock
                 ) || item?.configurableProductLinks[0];
               let desc =
-                item?.type === "configurable"
+                item?.type === 'configurable'
                   ? _.find(configurableProduct?.customAttributes, {
-                      attribute_code: "short_description",
+                      attribute_code: 'short_description',
                     })
                   : _.find(item.customAttributes, {
-                      attribute_code: "short_description",
+                      attribute_code: 'short_description',
                     });
               return (
                 <Grid

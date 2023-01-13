@@ -14,11 +14,11 @@ import {
   Tabs,
   Tab,
   Box,
-} from "@mui/material";
-import { makeStyles } from "@mui/styles";
-import clsx from "clsx";
-import { useDispatch } from "react-redux";
-import { useEffect, useState } from "react";
+} from '@mui/material';
+import { makeStyles } from '@mui/styles';
+import clsx from 'clsx';
+import { useDispatch } from 'react-redux';
+import { useEffect, useState } from 'react';
 // import Utils from "../../utils";
 // import GreenRadio from "../../components/common/customRadio";
 // import { hideLoader, showLoader } from "../home/actions";
@@ -26,194 +26,194 @@ import { useEffect, useState } from "react";
 // import CustomCheckbox from "../../components/common/customCheckbox";
 // import { useSelector } from "react-redux";
 // import { ReducersModal } from "../../models";
-import _ from "lodash";
+import _ from 'lodash';
 // import { useHistory, useLocation, useParams } from "react-router-dom";
-import { debug } from "util";
-import GreenRadio from "../../component/common/customRadio";
-import CustomCheckbox from "../../component/common/customCheckbox";
+import { debug } from 'util';
+import GreenRadio from '../../component/common/customRadio';
+import CustomCheckbox from '../../component/common/customCheckbox';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     sortingContainer: {
-      position: "sticky",
-      top: "100px",
-      background: "white",
+      position: 'sticky',
+      top: '100px',
+      background: 'white',
       zIndex: 1,
-      display: "flex",
-      justifyContent: "space-between",
-      alignItems: "center",
-      padding: "5px 0px",
+      display: 'flex',
+      justifyContent: 'space-between',
+      alignItems: 'center',
+      padding: '5px 0px',
     },
     sortingContainer2: {
-      position: "sticky",
-      top: "109px",
-      background: "white",
+      position: 'sticky',
+      top: '109px',
+      background: 'white',
       zIndex: 1,
-      display: "flex",
-      justifyContent: "space-between",
-      alignItems: "center",
+      display: 'flex',
+      justifyContent: 'space-between',
+      alignItems: 'center',
     },
     sortingContainer3: {
-      position: "sticky",
-      top: "100px",
-      background: "white",
+      position: 'sticky',
+      top: '100px',
+      background: 'white',
       zIndex: 1,
     },
 
     sortContainer: {
-      display: "flex",
-      justifyContent: "space-evenly",
-      alignItems: "center",
+      display: 'flex',
+      justifyContent: 'space-evenly',
+      alignItems: 'center',
       height: 64,
-      "& h3": {
+      '& h3': {
         fontSize: 14,
         marginLeft: theme.spacing(2),
-        fontFamily: "work Sans Bold",
+        fontFamily: 'work Sans Bold',
       },
-      "& div": {
-        display: "flex",
+      '& div': {
+        display: 'flex',
       },
-      "& hr": {
+      '& hr': {
         height: 35,
       },
-      background: "white",
+      background: 'white',
       zIndex: 1,
     },
     sortContainer2: {
-      justifyContent: "space-between",
-      marginLeft: "-10px",
+      justifyContent: 'space-between',
+      marginLeft: '-10px',
     },
     modal: {
-      "& .MuiDrawer-paper": {
-        borderRadius: "20px 20px 0px 0px",
-        height: "550px",
-        overflowY: "hidden",
-        justifyContent: "flex-end",
+      '& .MuiDrawer-paper': {
+        borderRadius: '20px 20px 0px 0px',
+        height: '550px',
+        overflowY: 'hidden',
+        justifyContent: 'flex-end',
       },
     },
     filterModalHeading: {
       margin: theme.spacing(1.5, 1.6, 1.5, 1.6),
-      display: "flex",
-      flexDirection: "row",
-      justifyContent: "space-between",
+      display: 'flex',
+      flexDirection: 'row',
+      justifyContent: 'space-between',
     },
     close: {
       font: `normal ${theme.spacing(1.4)} Work Sans Bold`,
-      color: "#018786",
+      color: '#018786',
     },
     heading: {
       font: `normal ${theme.spacing(1.6)} Work Sans Bold !important`,
     },
     filterModalButton: {
       margin: theme.spacing(0, 2.5, 0, 2.5),
-      display: "flex",
-      flexDirection: "row",
-      justifyContent: "space-between",
-      padding: "25px 0px 25px 0px",
+      display: 'flex',
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+      padding: '25px 0px 25px 0px',
     },
     border: {
-      borderTop: "1px solid lightgray",
+      borderTop: '1px solid lightgray',
     },
     leftButton: {
-      color: "#3d857e",
-      padding: "13px",
-      width: "47%",
+      color: '#3d857e',
+      padding: '13px',
+      width: '47%',
       font: `normal 700 ${theme.spacing(1.5)} Work Sans`,
-      textTransform: "capitalize",
-      letterSpacing: "0.8px",
+      textTransform: 'capitalize',
+      letterSpacing: '0.8px',
     },
     button: {
-      padding: "13px",
-      width: "47%",
+      padding: '13px',
+      width: '47%',
       font: `normal 700 ${theme.spacing(1.5)} Work Sans`,
-      textTransform: "capitalize",
-      letterSpacing: "0.8px",
+      textTransform: 'capitalize',
+      letterSpacing: '0.8px',
     },
     radioLabel: {
       margin: theme.spacing(1, 0),
-      "& .MuiButtonBase-root": {
+      '& .MuiButtonBase-root': {
         marginRight: theme.spacing(1.2),
       },
-      paddingLeft: "16px",
-      "& .MuiTypography-body1": {
-        fontSize: "14px !important",
+      paddingLeft: '16px',
+      '& .MuiTypography-body1': {
+        fontSize: '14px !important',
       },
     },
     greenChecked: {
-      width: "30px",
-      height: "30px",
+      width: '30px',
+      height: '30px',
     },
     tabs: {
-      flexBasis: "35%",
-      borderRight: "1px solid var(--text-color)",
-      "& .Mui-selected": {
-        background: "#018786 !important",
-        color: "var(--white)!important",
+      flexBasis: '35%',
+      borderRight: '1px solid var(--text-color)',
+      '& .Mui-selected': {
+        background: '#018786 !important',
+        color: 'var(--white)!important',
         font: `normal ${theme.typography.fontWeightRegular} ${theme.spacing(
           1.3
         )} Work Sans !important`,
       },
-      "& .MuiTab-wrapper": {
-        textTransform: "capitalize",
+      '& .MuiTab-wrapper': {
+        textTransform: 'capitalize',
         font: `normal ${theme.typography.fontWeightRegular} ${theme.spacing(
           1.2
         )} Work Sans !important`,
-        color: "black",
+        color: 'black',
       },
-      "& .MuiTabs-indicator": {
-        background: "#018786",
+      '& .MuiTabs-indicator': {
+        background: '#018786',
       },
-      "& .MuiTab-textColorPrimary": {
-        background: "var(--backgroun-color)",
+      '& .MuiTab-textColorPrimary': {
+        background: 'var(--backgroun-color)',
       },
-      "& button": {
-        borderBottom: "1px solid lightgray",
-        background: "#FAFAFA",
+      '& button': {
+        borderBottom: '1px solid lightgray',
+        background: '#FAFAFA',
         opacity: 1,
       },
     },
     boxContainer: {
-      flexBasis: "65%",
+      flexBasis: '65%',
       padding: theme.spacing(0, 0, 0, 1),
-      overflowY: "auto",
+      overflowY: 'auto',
     },
     tabsDiv: {
-      display: "flex",
-      justifyContent: "space-between",
-      alignItems: "center",
+      display: 'flex',
+      justifyContent: 'space-between',
+      alignItems: 'center',
       margin: theme.spacing(1.2, 0),
       paddingRight: theme.spacing(1.6),
-      "& .MuiTypography-body2": {
-        textTransform: "capitalize",
+      '& .MuiTypography-body2': {
+        textTransform: 'capitalize',
       },
     },
     filterContainer: {
       flexGrow: 1,
-      display: "flex",
-      height: "350px",
+      display: 'flex',
+      height: '350px',
     },
     sortByGroup: {
-      height: "380px",
-      overflowY: "auto",
+      height: '380px',
+      overflowY: 'auto',
     },
     redDot: {
-      color: "red",
-      fontSize: "65px",
-      position: "absolute",
-      right: "-14px",
-      bottom: "-13px",
+      color: 'red',
+      fontSize: '65px',
+      position: 'absolute',
+      right: '-14px',
+      bottom: '-13px',
     },
     redDotFixed: {
-      color: "red",
-      fontSize: "65px",
-      position: "absolute",
-      right: "3px",
-      bottom: "9px",
+      color: 'red',
+      fontSize: '65px',
+      position: 'absolute',
+      right: '3px',
+      bottom: '9px',
     },
     filterTextContent: {
-      display: "flex",
-      alignItems: "center",
-      position: "relative",
+      display: 'flex',
+      alignItems: 'center',
+      position: 'relative',
     },
     filterText: {
       font: `normal ${theme.spacing(1.4)} Work Sans`,
@@ -223,20 +223,20 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     description: {
       font: `normal ${theme.spacing(1.3)} Work Sans Medium`,
-      padding: "20px 0px 10px 20px",
-      color: "black",
+      padding: '20px 0px 10px 20px',
+      color: 'black',
     },
     divider: {
-      height: "3px",
-      opacity: "0.4",
-      background: "lightgray",
+      height: '3px',
+      opacity: '0.4',
+      background: 'lightgray',
     },
     icon: {
-      height: "21px",
-      padding: "0px 10px",
+      height: '21px',
+      padding: '0px 10px',
     },
     sortingDivImage: {
-      display: "flex",
+      display: 'flex',
     },
   })
 );
@@ -246,7 +246,7 @@ const MobileSortAndFilter = ({ obj, setParams, setPage, productData }: any) => {
   // let query = Utils.CommonFunctions.useQuery();
   const params: any = useParams();
   const history = useHistory();
-  let isMobileSearched = query.get("isSearched");
+  let isMobileSearched = query.get('isSearched');
 
   const sortingData = Utils.constants.sortingData;
 
@@ -261,8 +261,8 @@ const MobileSortAndFilter = ({ obj, setParams, setPage, productData }: any) => {
 
   const [navbar, setNavbar] = useState(false);
 
-  let keyword = params?.keyword ?? "";
-  let categoryId = params?.id ?? "";
+  let keyword = params?.keyword ?? '';
+  let categoryId = params?.id ?? '';
 
   const [apply, setApply] = useState(
     queryFilters?.customAttributes?.length > 0 ||
@@ -286,12 +286,12 @@ const MobileSortAndFilter = ({ obj, setParams, setPage, productData }: any) => {
   });
 
   const toggleDrawer =
-    (section: "sort" | "filter", show: boolean) =>
+    (section: 'sort' | 'filter', show: boolean) =>
     (event: React.KeyboardEvent | React.MouseEvent) => {
       if (
-        event.type === "keydown" &&
-        ((event as React.KeyboardEvent).key === "Tab" ||
-          (event as React.KeyboardEvent).key === "Shift")
+        event.type === 'keydown' &&
+        ((event as React.KeyboardEvent).key === 'Tab' ||
+          (event as React.KeyboardEvent).key === 'Shift')
       ) {
         return;
       }
@@ -343,8 +343,8 @@ const MobileSortAndFilter = ({ obj, setParams, setPage, productData }: any) => {
   };
 
   useEffect(() => {
-    window.addEventListener("scroll", changeBackground, true);
-    return () => window.removeEventListener("scroll", changeBackground);
+    window.addEventListener('scroll', changeBackground, true);
+    return () => window.removeEventListener('scroll', changeBackground);
   }, []);
 
   const handleOpenFilter = () => {
@@ -409,9 +409,9 @@ const MobileSortAndFilter = ({ obj, setParams, setPage, productData }: any) => {
               {products?.data && products?.data?.length !== 0 && (
                 <>
                   <p className={classes.description}>
-                    <span>Showing</span>{" "}
+                    <span>Showing</span>{' '}
                     {`${products?.data?.length} of ${products?.totalCount} ${
-                      products?.totalCount > 1 ? "products" : "product"
+                      products?.totalCount > 1 ? 'products' : 'product'
                     }`}
                   </p>
                   {navbar ? (
@@ -463,9 +463,9 @@ const MobileSortAndFilter = ({ obj, setParams, setPage, productData }: any) => {
             <Divider className={classes.divider} />
             {products?.data && products?.data?.length !== 0 && (
               <p className={classes.description}>
-                <span>Showing</span>{" "}
+                <span>Showing</span>{' '}
                 {`${products?.data?.length} of ${products?.totalCount} ${
-                  products?.totalCount > 1 ? "products" : "product"
+                  products?.totalCount > 1 ? 'products' : 'product'
                 }`}
               </p>
             )}
@@ -531,12 +531,12 @@ const Sorting = ({
 
   const handleApply = (e: any) => {
     handleSort();
-    toggleDrawer("sort", false)(e);
+    toggleDrawer('sort', false)(e);
     window.scrollTo(0, 0);
   };
 
   const clearAllSorting = (e: any) => {
-    setSortBy("");
+    setSortBy('');
     setPage(1);
 
     const data = {
@@ -544,7 +544,7 @@ const Sorting = ({
       page: 1,
       categoryId: categoryId,
       query: keyword,
-      sortBy: "",
+      sortBy: '',
       customAttributes: payloadFilters?.customAttributes,
       otherFilters: payloadFilters?.otherFilters,
     };
@@ -565,7 +565,7 @@ const Sorting = ({
     <Drawer
       anchor="bottom"
       open={open}
-      onClose={toggleDrawer("sort", false)}
+      onClose={toggleDrawer('sort', false)}
       className={classes.modal}
     >
       <div className={classes.filterModalHeading}>
@@ -576,7 +576,7 @@ const Sorting = ({
           className={classes.close}
           variant="body1"
           color="primary"
-          onClick={(e) => toggleDrawer("sort", false)(e)}
+          onClick={(e) => toggleDrawer('sort', false)(e)}
         >
           Close
         </Typography>
@@ -620,7 +620,7 @@ const Sorting = ({
           variant="contained"
           color="primary"
           type="button"
-          disabled={sortBy == "" ? true : false}
+          disabled={sortBy == '' ? true : false}
           onClick={handleApply}
         >
           Apply
@@ -649,7 +649,7 @@ const Filter = ({
   const { filters } = useSelector(
     (state: ReducersModal) => state.productFilterReducer
   );
-  const [value, setValue] = useState("");
+  const [value, setValue] = useState('');
   const dispatch = useDispatch();
   const history = useHistory();
 
@@ -667,13 +667,13 @@ const Filter = ({
     if (filterExist) {
       if (checked) {
         filterExist.options.push({
-          _id: type === "otherFilters" ? option._id : option.name,
+          _id: type === 'otherFilters' ? option._id : option.name,
         });
       } else {
         if (filterExist.options?.length > 1) {
           let index = filterExist.options.findIndex(
             (val: any) =>
-              val._id === (type === "otherFilters" ? option._id : option.name)
+              val._id === (type === 'otherFilters' ? option._id : option.name)
           );
           filterExist.options.splice(index, 1);
         } else {
@@ -686,7 +686,7 @@ const Filter = ({
     } else {
       appliedFilter[type].push({
         ...filter,
-        options: [{ _id: type === "otherFilters" ? option._id : option.name }],
+        options: [{ _id: type === 'otherFilters' ? option._id : option.name }],
       });
     }
     const obj = JSON.parse(JSON.stringify(appliedFilter));
@@ -708,7 +708,7 @@ const Filter = ({
 
   const handleApply = (e: any) => {
     handleFilter();
-    toggleDrawer("filter", false)(e);
+    toggleDrawer('filter', false)(e);
     setApply(true);
     window.scrollTo(0, 0);
   };
@@ -716,7 +716,7 @@ const Filter = ({
   function a11yProps(index: any) {
     return {
       id: `vertical-tab-${index}`,
-      "aria-controls": `vertical-tabpanel-${index}`,
+      'aria-controls': `vertical-tabpanel-${index}`,
     };
   }
 
@@ -782,7 +782,7 @@ const Filter = ({
 
   const checkOptionLength = (value: any, label: string) => {
     const obj = params[label]?.find((item: any) => {
-      if (item._id === (label === "otherFilters" ? value._id : value._id))
+      if (item._id === (label === 'otherFilters' ? value._id : value._id))
         return item;
     });
     return obj?.options?.length
@@ -797,7 +797,7 @@ const Filter = ({
         if (attr._id == item?._id)
           result = attr.options?.some(
             (option: any) =>
-              option._id === (type === "otherFilters" ? val._id : val.name)
+              option._id === (type === 'otherFilters' ? val._id : val.name)
           );
       });
       return result;
@@ -811,7 +811,7 @@ const Filter = ({
       open={open}
       onClose={(e) => {
         // const obj = JSON.parse(JSON.stringify(defaultFilters));
-        toggleDrawer("filter", false)(e);
+        toggleDrawer('filter', false)(e);
       }}
       className={classes.modal}
     >
@@ -826,7 +826,7 @@ const Filter = ({
           onClick={(e) => {
             // const obj = JSON.parse(JSON.stringify(defaultFilters));
             // setPayloadFilters({ ...obj });
-            toggleDrawer("filter", false)(e);
+            toggleDrawer('filter', false)(e);
           }}
         >
           Close
@@ -847,7 +847,7 @@ const Filter = ({
                 return (
                   <Tab
                     key={value._id}
-                    label={checkOptionLength(value, "otherFilters")}
+                    label={checkOptionLength(value, 'otherFilters')}
                     value={value._id}
                     {...a11yProps(value._id)}
                   />
@@ -859,7 +859,7 @@ const Filter = ({
                 return (
                   <Tab
                     key={value._id}
-                    label={checkOptionLength(value, "customAttributes")}
+                    label={checkOptionLength(value, 'customAttributes')}
                     value={value._id}
                     {...a11yProps(value._id)}
                   />
@@ -873,14 +873,14 @@ const Filter = ({
                 <TabPanel value={value} index={item._id} key={i}>
                   {item?.options?.map((val: any, key: any) => {
                     let priceVal =
-                      item._id === "price" ? val?.name?.split("-") : [];
+                      item._id === 'price' ? val?.name?.split('-') : [];
                     const priceData =
                       priceVal.length === 2
                         ? `₹${priceVal[0] || 0} - ₹${priceVal[1] || 0}`
                         : priceVal.length === 1
-                        ? priceVal[0]?.toLowerCase().includes("above")
-                          ? priceVal[0]?.split(" ")[0] +
-                            ` ₹${priceVal[0]?.split(" ")[1]}`
+                        ? priceVal[0]?.toLowerCase().includes('above')
+                          ? priceVal[0]?.split(' ')[0] +
+                            ` ₹${priceVal[0]?.split(' ')[1]}`
                           : `₹${priceVal[0] || 0}`
                         : null;
 
@@ -890,17 +890,17 @@ const Filter = ({
                           variant="body2"
                           className={classes.filterText}
                         >
-                          {item._id === "price" ? priceData : val.name}
+                          {item._id === 'price' ? priceData : val.name}
                         </Typography>
                         <CustomCheckbox
                           defaultChecked={checkIfChecked(
                             item,
                             val,
                             params?.otherFilters,
-                            "otherFilters"
+                            'otherFilters'
                           )}
                           onChange={(e: any) =>
-                            onCheckboxChange(e, "otherFilters", item, val)
+                            onCheckboxChange(e, 'otherFilters', item, val)
                           }
                         />
                       </div>
@@ -928,10 +928,10 @@ const Filter = ({
                           item,
                           val,
                           params?.customAttributes,
-                          "customAttributes"
+                          'customAttributes'
                         )}
                         onChange={(e: any) =>
-                          onCheckboxChange(e, "customAttributes", item, val)
+                          onCheckboxChange(e, 'customAttributes', item, val)
                         }
                       />
                     </div>

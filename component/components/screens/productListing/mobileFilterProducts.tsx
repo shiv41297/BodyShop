@@ -1,26 +1,29 @@
-import { Theme, Grid, Hidden } from "@mui/material";
-import { makeStyles } from "@mui/styles";
+import { Theme, Grid, Hidden } from '@mui/material';
+import { makeStyles } from '@mui/styles';
 // import { useHistory, useParams } from "react-router-dom";
-import clsx from "clsx";
-import React, { useEffect, useState } from "react";
-import Utils from "../../component/utils";
-import { useDispatch, useSelector } from "react-redux";
-import { getProductList } from "./action";
-import { ReducersModal } from "../../component/models/index";
+import clsx from 'clsx';
+import React, { useEffect, useState } from 'react';
+// import Utils from "../../component/utils";
+import { useDispatch, useSelector } from 'react-redux';
+import { getProductList } from './action';
+// import { ReducersModal } from "../../component/models/index";
 // import Skeleton from "@mui/material/Skeleton";
-import {
-  hideLoader,
-  hideSkeleton,
-  showLoader,
-  showSkeleton,
-} from "../../store/home/action";
-import { FilterProductSkeleton } from "../../component/common/skeletonList/filterProductSkeleton";
-import MobileSortAndFilter from "./mobileSortAndFilter";
+// import {
+//   hideLoader,
+//   hideSkeleton,
+//   showLoader,
+//   showSkeleton,
+// } from "../../store/home/action";
+// import { FilterProductSkeleton } from "../../component/common/skeletonList/filterProductSkeleton";
+import MobileSortAndFilter from './mobileSortAndFilter';
 // import SearchField from "../../component/headers/searchField";
-import MobileProducts from "./mobileProducts";
+import MobileProducts from './mobileProducts';
+import Utils from '../../../utils';
+import { customGa4Event } from '../../../utils/gtag';
+import { FilterProductSkeleton } from '../../../common/skeletonList/filterProductSkeleton';
 // import { handleScrollHeight } from "../../component/utils/scroll";
 // import { useLocation } from "react-router-dom";
-import { customGa4Event } from "../../component/utils/gtag";
+// import { customGa4Event } from "../../component/utils/gtag";
 
 // import { customEvent } from "../../utils/gtag";
 
@@ -32,49 +35,49 @@ declare global {
 
 const useStyles = makeStyles((theme: Theme) => ({
   bannerRoot: {
-    background: "var(--white)",
-    backdropFilter: "blur(2px)",
-    position: "relative",
+    background: 'var(--white)',
+    backdropFilter: 'blur(2px)',
+    position: 'relative',
     // top: "-10vh",
   },
   bannerRoot2: {
-    [theme.breakpoints.up("sm")]: {
-      top: "-10vh",
+    [theme.breakpoints.up('sm')]: {
+      top: '-10vh',
     },
   },
   productContainer: {
-    background: "var(--white)",
+    background: 'var(--white)',
   },
   findContainer: {
-    width: "1170px",
-    margin: "0 auto",
-    maxWidth: "100%",
+    width: '1170px',
+    margin: '0 auto',
+    maxWidth: '100%',
   },
   filterHead: {
-    padding: "60px 20px 15px",
+    padding: '60px 20px 15px',
   },
   filterProductText: {
-    letterSpacing: "2px",
+    letterSpacing: '2px',
   },
   leftFilter: {
-    display: "flex",
-    alignItems: "center",
-    "& .MuiTypography-body1": {
+    display: 'flex',
+    alignItems: 'center',
+    '& .MuiTypography-body1': {
       font: `normal ${theme.typography.fontWeightBold} ${theme.spacing(
         2
       )} Druk`,
       marginLeft: theme.spacing(2),
-      lineHeight: "23px",
+      lineHeight: '23px',
     },
   },
   filterImg: {
     width: 20,
   },
   filters: {
-    fontSize: "16px",
+    fontSize: '16px',
     marginLeft: theme.spacing(2),
-    [theme.breakpoints.down("xs")]: {
-      fontSize: "13px",
+    [theme.breakpoints.down('xs')]: {
+      fontSize: '13px',
       marginTop: theme.spacing(1.5),
       marginLeft: theme.spacing(0),
     },
@@ -82,25 +85,25 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
 
   select: {
-    display: "flex",
-    flexDirection: "row",
-    justifyContent: "flex-end",
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'flex-end',
     font: `normal ${theme.typography.fontWeightBold} ${theme.spacing(
       1.5
     )} Wrok Sans`,
-    "& .MuiInput-underline:after": {
-      border: "none",
+    '& .MuiInput-underline:after': {
+      border: 'none',
     },
-    "& .MuiInput-underline:before": {
-      display: "none",
+    '& .MuiInput-underline:before': {
+      display: 'none',
     },
 
-    "& .MuiInput-input": {
+    '& .MuiInput-input': {
       font: `normal ${theme.typography.fontWeightBold} ${theme.spacing(
         2
       )} Druk`,
       marginLeft: theme.spacing(2),
-      lineHeight: "23px",
+      lineHeight: '23px',
     },
   },
   filterBody: {
@@ -109,55 +112,55 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
   filterFooter: {
     marginTop: theme.spacing(10),
-    width: "100%",
+    width: '100%',
   },
   carouselHeading: {
     font: `normal ${theme.typography.fontWeightBold} ${theme.spacing(
       2.4
     )}  Recoleta Alt`,
-    color: "#084236",
+    color: '#084236',
     lineHeight: 1.5,
     marginBottom: theme.spacing(0.5),
-    maxWidth: "500px",
-    [theme.breakpoints.down("xs")]: {
-      maxWidth: "none",
-      fontSize: "16px",
+    maxWidth: '500px',
+    [theme.breakpoints.down('xs')]: {
+      maxWidth: 'none',
+      fontSize: '16px',
       marginTop: theme.spacing(14.5),
     },
-    marginLeft: "10px",
+    marginLeft: '10px',
   },
   arrow: {
     padding: theme.spacing(0, 1),
   },
   button: {
-    "& .MuiTypography-body1": {
+    '& .MuiTypography-body1': {
       font: `normal ${theme.typography.fontWeightBold} ${theme.spacing(
         2
       )}  Druk`,
 
-      lineHeight: "23px",
-      letterSpacing: "0.04em",
-      textTransform: "uppercase",
+      lineHeight: '23px',
+      letterSpacing: '0.04em',
+      textTransform: 'uppercase',
 
-      color: "var(--black300)",
+      color: 'var(--black300)',
     },
-    "& .MuiIconButton-root": {
+    '& .MuiIconButton-root': {
       padding: 0,
     },
-    "& .MuiIconButton-root:hover": {
-      background: "none",
+    '& .MuiIconButton-root:hover': {
+      background: 'none',
     },
   },
   link: {
-    color: "lightblue",
+    color: 'lightblue',
     font: `normal 400 ${theme.spacing(2)}  Work Sans`,
-    cursor: "pointer",
+    cursor: 'pointer',
   },
   searchDivComponent: {
-    position: "sticky",
-    width: "100%",
-    top: "50px",
-    background: "var(--white)",
+    position: 'sticky',
+    width: '100%',
+    top: '50px',
+    background: 'var(--white)',
     zIndex: 9,
     padding: theme.spacing(0, 1.6),
   },
@@ -172,7 +175,7 @@ function MobileFilterProducts() {
   const query = Utils.CommonFunctions.useQuery();
   const sortingData = Utils.constants.sortingData;
 
-  let queryFilters = query?.get("filters") ?? "{}";
+  let queryFilters = query?.get('filters') ?? '{}';
   queryFilters = JSON.parse(
     decodeURIComponent(decodeURIComponent(queryFilters))
   );
@@ -182,17 +185,13 @@ function MobileFilterProducts() {
   const [rectHeight, setRectHeight] = useState(0);
 
   const menuData = useSelector(
-    (state: ReducersModal) => state.homeReducer.mobileMenusData
+    (state: any) => state.homeReducer.mobileMenusData
   );
-  const fromRoutePath = useSelector(
-    (state: ReducersModal) => state.homeReducer.fromPath
-  );
-  const skeletonLoader = useSelector((state: ReducersModal) => {
+  const fromRoutePath = useSelector((state: any) => state.homeReducer.fromPath);
+  const skeletonLoader = useSelector((state: any) => {
     return state.loadingReducer.skeletonLoader;
   });
-  const productData = useSelector(
-    (state: ReducersModal) => state.productReducer?.data
-  );
+  const productData = useSelector((state: any) => state.productReducer?.data);
   const products = productData.products;
 
   useEffect(() => {
@@ -205,10 +204,10 @@ function MobileFilterProducts() {
           item_id: j.sku,
           name: j.name,
           item_name: j.name,
-          currency: "INR",
+          currency: 'INR',
           index: index + 1,
-          brand: "The Body Shop",
-          item_brand: "The Body Shop",
+          brand: 'The Body Shop',
+          item_brand: 'The Body Shop',
           category: j?.category?.name,
           item_category: j.category?.name,
           list_id: j.sku,
@@ -221,31 +220,31 @@ function MobileFilterProducts() {
         return i;
       }, []);
 
-    if (typeof window && window.gtag !== "undefined") {
+    if (typeof window && window.gtag !== 'undefined') {
       const gtagPayload = {
         items: ProductsArray,
         category: ProductsArray?.[0]?.category,
       };
       if (
-        process.env.NEXT_PUBLIC_ENV !== "development" &&
-        process.env.NEXT_PUBLIC_ENV !== "staging"
+        process.env.NEXT_PUBLIC_ENV !== 'development' &&
+        process.env.NEXT_PUBLIC_ENV !== 'staging'
       ) {
-        window.gtag("event", "view_item_list", gtagPayload);
+        window.gtag('event', 'view_item_list', gtagPayload);
       }
-      customGa4Event("view_item_list", gtagPayload);
+      customGa4Event('view_item_list', gtagPayload);
     }
   }, [productData?.products?.data]);
 
   // let keyword = location?.pathname.includes("/search/")
   //   ? location?.pathname?.split("/")?.pop() ?? params?.keyword ?? ""
   //   : "";
-  let keyword = "";
+  let keyword = '';
 
   // let categoryId = params?.id ?? "";
-  let categoryId = "";
+  let categoryId = '';
 
   // const fromPath = location?.state?.fromPath || "";
-  const fromPath = "";
+  const fromPath = '';
 
   const getOffset = (element: any) => {
     const rect = element?.getBoundingClientRect();
@@ -255,7 +254,7 @@ function MobileFilterProducts() {
 
   const listenToScroll = () => {
     let heightToHideFrom =
-      getOffset(document.querySelector("#mobile-prod-container")) - 100;
+      getOffset(document.querySelector('#mobile-prod-container')) - 100;
   };
 
   // const urlKey = location.pathname.includes("/c/")
@@ -279,7 +278,7 @@ function MobileFilterProducts() {
   useEffect(() => {
     setParams({ ...productListParams, ...obj, page: 1, categoryId });
     setPage(queryFilters?.page ?? 1);
-    dispatch(showSkeleton());
+    // dispatch(showSkeleton());
     // dispatch(
     //   getProductList(
     //     { ...queryFilters, limit: 18, page: 1, urlKey, query: keyword },
@@ -320,12 +319,12 @@ function MobileFilterProducts() {
   }, []);
 
   const handleChange = (hasMore: boolean, pageNum?: number) => {
-    if (hasMore && fromRoutePath !== "pdp") {
+    if (hasMore && fromRoutePath !== 'pdp') {
       let pageSize = pageNum ? pageNum : hasMore ? page + 1 : page;
       setPage(pageSize);
       const params = { ...obj, ...productListParams, page: pageSize };
       setParams(params);
-      showLoader();
+      // showLoader();
       // dispatch(
       //   getProductList(
       //     params,
@@ -338,15 +337,15 @@ function MobileFilterProducts() {
       //   )
       // );
     } else {
-      dispatch(hideLoader());
+      // dispatch(hideLoader());
     }
   };
 
   useEffect(() => {
     window.scrollTo(0, 0);
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener('scroll', handleScroll);
     return () => {
-      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener('scroll', handleScroll);
     };
   }, []);
 
@@ -359,7 +358,7 @@ function MobileFilterProducts() {
   };
   useEffect(() => {
     if (!isFetching) return;
-    dispatch(showLoader());
+    // dispatch(showLoader());
 
     handleChange(products?.nextPage > 0 ? true : false);
   }, [isFetching]);
