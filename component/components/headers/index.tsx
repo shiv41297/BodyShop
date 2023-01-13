@@ -127,6 +127,7 @@ const Headers = () => {
       setAuthToken(resp?.data?.data?.authToken)
       Cookies.set("authToken", resp.data.data?.authToken);
       Cookies.set("guestUser", "true");
+      Cookies.set("domain", "appskeeper.in");
     });
   }, []);
 
