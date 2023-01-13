@@ -42,10 +42,10 @@ instance.interceptors.request.use(
        
         } 
       else {
-        // success.headers[
-        //   "Authorization"
-        // ] = `Basic ${process.env.NEXT_PUBLIC_API_KEY}`;
-        success.headers.Authorization = "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzZXNzaW9uSWQiOiI2M2EzZWQyYTQ2YWRlMzM4OGRlNjQ4YTkiLCJpc0xvZ2luIjp0cnVlLCJpc0d1ZXN0TG9naW4iOnRydWUsImlhdCI6MTY3MTY4NzQ2NiwiZXhwIjoxNjg3MjM5NDY2fQ.4Eg19HCDEGFUiw562m2nxA7T5WPHZb6bt0yZwfx6Xo0";
+        success.headers[
+          "Authorization"
+        ] = `Basic ${process.env.NEXT_PUBLIC_API_KEY}`;
+        // success.headers.Authorization = "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzZXNzaW9uSWQiOiI2M2EzZWQyYTQ2YWRlMzM4OGRlNjQ4YTkiLCJpc0xvZ2luIjp0cnVlLCJpc0d1ZXN0TG9naW4iOnRydWUsImlhdCI6MTY3MTY4NzQ2NiwiZXhwIjoxNjg3MjM5NDY2fQ.4Eg19HCDEGFUiw562m2nxA7T5WPHZb6bt0yZwfx6Xo0";
   // success.headers.Authorization = `Bearer `;
   // success.headers.Authorization = `Bearer ${getAuthToken()}`;
 
@@ -72,31 +72,31 @@ instance.interceptors.response.use(
     return success;
   },
   (err) => {
-    if (err.response.status === 503) { //under maintainance
-        initstore.dispatch({ type: "undermaintainance", payload: { undermaintainance: 1 } })
-        initstore.dispatch(hideLoader())
-    }
-    else {
-        initstore.dispatch({ type: "undermaintainance", payload: { undermaintainance: 0 } })
+    // if (err.response.status === 503) { //under maintainance
+    //     initstore.dispatch({ type: "undermaintainance", payload: { undermaintainance: 1 } })
+    //     initstore.dispatch(hideLoader())
+    // }
+    // else {
+    //     initstore.dispatch({ type: "undermaintainance", payload: { undermaintainance: 0 } })
 
-        console.log("testing");
-        if (typeof window !== "undefined") {
-        if (!window.navigator.onLine) {
-            initstore.dispatch(hideLoader())
-            initstore.dispatch({
-                type: "show-alert",
-                payload: {
-                    type: "error",
-                    message: "You are offline. Please check internet connection",
-                },
-            })
-            return;
-        } else if (err.response?.status === Utils.statusCode.UNAUTHENTICATED) {
-            removeSession();
+    //     console.log("testing");
+    //     // if (typeof window !== "undefined") {
+    //     // if (!window.navigator.onLine) {
+    //     //     initstore.dispatch(hideLoader())
+    //     //     initstore.dispatch({
+    //     //         type: "show-alert",
+    //     //         payload: {
+    //     //             type: "error",
+    //     //             message: "You are offline. Please check internet connection",
+    //     //         },
+    //     //     })
+    //     //     return;
+    //     // } else if (err.response?.status === Utils.statusCode.UNAUTHENTICATED) {
+    //     //     removeSession();
 
-        }}
+    //     // }}
 
-    }
+    // }
     return Promise.reject(err);
   }
 );

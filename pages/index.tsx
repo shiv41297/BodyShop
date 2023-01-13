@@ -1,6 +1,5 @@
-import { Theme } from "@mui/material";
+import { Box, Theme, useMediaQuery } from "@mui/material";
 import { makeStyles } from "@mui/styles";
-import Head from "next/head";
 import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
@@ -16,12 +15,17 @@ import MoreToShop from "../component/components/pagesComponents/home/moreToShop"
 import Testimonial from "../component/components/pagesComponents/home/testimonial";
 import { ReducersModal } from "../component/models";
 import Utils from "../component/utils";
-import { getHomeData} from "../store/home/action";
+import { getAuthToken, getHomeData } from "../store/home/action";
 import { wrapper } from "../store/store";
 import events from "../component/utils/event/constant";
 import { PageMeta } from "../component/page-meta/PageMeta";
 import { screenViewed } from "../component/utils/event/action";
 import "../styles/Home.module.css";
+import request from "../component/utils/request";
+import Recommended from "../component/components/pagesComponents/home/recommended";
+import HomeMobileView from "../component/components/pagesComponents/home/mobileView";
+import theme from "../config/theme";
+// import Cookies from "js-cookie";
 
 const useStyles: any = makeStyles((theme: Theme) => ({
   homeRoot: {
@@ -36,17 +40,15 @@ const useStyles: any = makeStyles((theme: Theme) => ({
 const Index = () => {
   const classes = useStyles();
   const { query } = useRouter();
+  const isSmall = useMediaQuery(theme.breakpoints.down(600));
 
   // const homeData = useSelector((state: ReducersModal) => {
   //   return state.homeReducer.homeData})
 
-  const stateData = useSelector((state: any) => state.homeReducer.homeData);
+  const stateData = useSelector((state: any) => state.homeReducer?.homeData);
   const homeData = stateData;
   const dispatch: any = useDispatch();
   const history = useRouter();
-
- 
-
 
   const [sortedHomedata, setSortedHomedata] = useState<any>([]);
   // const getRateOrdersData = () => {
@@ -70,8 +72,8 @@ const Index = () => {
      */
     screenViewed({
       ScreenName: events.SCREEN_HOME,
-      CTGenerated: "WEB"
-    })
+      CTGenerated: "WEB",
+    });
     // if(isAuthenticated())
     // dispatch(
     //   getDashboardData(() => {
@@ -195,100 +197,103 @@ const Index = () => {
           "Buy Cruelty Free Beauty product from The Body Shop India."
         }
       />
-
-      <div className={classes.homeRoot}>
-        {sortedHomedata.map((section: any) => {
-          // if (
-          //   section?.status === "1" &&
-          //   section?.block_key == "recommended_products"
-          // )
-          //   return (
-          //     <Recommended
-          //       key={"recommended_products" + Math.random()}
-          //       data={section}
-          //     />
-          //   );
-          if (
-            section?.status === "1" &&
-            section?.block_key == "promotional_products"
-          )
-            return (
-              <Banner
-                navigateTo={navigateTo}
-                key={"promotional_products" + Math.random()}
-                data={section}
-              />
-            );
-          // if (
-          //   section?.status === "1" &&
-          //   section?.block_key == "product_reviews" &&
-          //   ratingData.length > 0
-          // )
-          //   return (
-          //     <DoYouThink
-          //       getRateOrdersData={getRateOrdersData}
-          //       key={"product_reviews" + Math.random()}
-          //       data={ratingData}
-          //     />
-          //   );
-          if (section?.status === "1" && section?.block_key == "gift_block")
-            return (
-              <FindOutMore
-                key={"gift_block" + Math.random()}
-                navigateTo={navigateTo}
-                data={section}
-              />
-            );
-          if (section?.status === "1" && section?.block_key == "have_seen")
-            return (
-              <HaveYouSeen key={"have_seen" + Math.random()} data={section} />
-            );
-          if (section?.status === "1" && section?.block_key == "share_love")
-            return (
-              <DiscoverMore
-                navigateTo={navigateTo}
-                key={"share_love" + Math.random()}
-                data={section}
-              />
-            );
-          if (section?.status === "1" && section?.block_key == "tips_block")
-            return (
-              <>
-                <DoubleCard
-                  navigateTo={navigateTo}
-                  data={section?.content?.[0] || {}}
-                  key={"tips_block" + Math.random()}
+      <Box sx={{ display: { xs: "none", sm: "block" } }}>
+        <div className={classes.homeRoot}>
+          {sortedHomedata.map((section: any) => {
+            if (
+              section?.status === "1" &&
+              section?.block_key == "recommended_products"
+            )
+              return (
+                <Recommended
+                  key={"recommended_products" + Math.random()}
+                  data={section}
                 />
-                {section?.content?.[1] && (
+              );
+            if (
+              section?.status === "1" &&
+              section?.block_key == "promotional_products"
+            )
+              return (
+                <Banner
+                  navigateTo={navigateTo}
+                  key={"promotional_products" + Math.random()}
+                  data={section}
+                />
+              );
+            // if (
+            //   section?.status === "1" &&
+            //   section?.block_key == "product_reviews" &&
+            //   ratingData.length > 0
+            // )
+            //   return (
+            //     <DoYouThink
+            //       getRateOrdersData={getRateOrdersData}
+            //       key={"product_reviews" + Math.random()}
+            //       data={ratingData}
+            //     />
+            //   );
+            if (section?.status === "1" && section?.block_key == "gift_block")
+              return (
+                <FindOutMore
+                  key={"gift_block" + Math.random()}
+                  navigateTo={navigateTo}
+                  data={section}
+                />
+              );
+            if (section?.status === "1" && section?.block_key == "have_seen")
+              return (
+                <HaveYouSeen key={"have_seen" + Math.random()} data={section} />
+              );
+            if (section?.status === "1" && section?.block_key == "share_love")
+              return (
+                <DiscoverMore
+                  navigateTo={navigateTo}
+                  key={"share_love" + Math.random()}
+                  data={section}
+                />
+              );
+            if (section?.status === "1" && section?.block_key == "tips_block")
+              return (
+                <>
                   <DoubleCard
                     navigateTo={navigateTo}
+                    data={section?.content?.[0] || {}}
                     key={"tips_block" + Math.random()}
-                    data={section?.content?.[1] || {}}
-                    rightImg
                   />
-                )}
-              </>
-            );
+                  {section?.content?.[1] && (
+                    <DoubleCard
+                      navigateTo={navigateTo}
+                      key={"tips_block" + Math.random()}
+                      data={section?.content?.[1] || {}}
+                      rightImg
+                    />
+                  )}
+                </>
+              );
 
-          if (section?.status === "1" && section?.block_key == "more_shop")
-            return (
-              <MoreToShop data={section} key={"more_shop" + Math.random()} />
-            );
-          if (
-            section?.status === "1" &&
-            section?.block_key == "testimonial_block"
-          )
-            return (
-              <Testimonial
-                key={"testimonial_block" + Math.random()}
-                data={section}
-              />
-            );
-        })}
-      </div>
-      {/* <Hidden smUp>
-          <HomeMobileView />
-        </Hidden> */}
+            if (section?.status === "1" && section?.block_key == "more_shop")
+              return (
+                <MoreToShop data={section} key={"more_shop" + Math.random()} />
+              );
+            if (
+              section?.status === "1" &&
+              section?.block_key == "testimonial_block"
+            )
+              return (
+                <Testimonial
+                  key={"testimonial_block" + Math.random()}
+                  data={section}
+                />
+              );
+          })}
+        </div>
+      </Box>
+      {isSmall && (
+      <Box sx={{ display: { xs: "block", sm: "none" } }}>
+        <HomeMobileView />
+      </Box>
+       )} 
     </>
   );
 };
@@ -298,9 +303,13 @@ export default Index;
 export const getServerSideProps = wrapper.getServerSideProps((store) =>
   //@ts-ignore-
   async ({ req, res }) => {
-    let authToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzZXNzaW9uSWQiOiI2M2EzZWQyYTQ2YWRlMzM4OGRlNjQ4YTkiLCJpc0xvZ2luIjp0cnVlLCJpc0d1ZXN0TG9naW4iOnRydWUsImlhdCI6MTY3MTY4NzQ2NiwiZXhwIjoxNjg3MjM5NDY2fQ.4Eg19HCDEGFUiw562m2nxA7T5WPHZb6bt0yZwfx6Xo0"
-    // await store.dispatch(getHomeData(req.cookies.authToken));
-    await store.dispatch(getHomeData(authToken));
+    let resp = await request.post(Utils.endPoints.GUEST_SIGNUP);
+    let authToken: any = "";
+    if (resp) {
+      authToken = resp?.data?.data?.authToken;
+      await store.dispatch(getHomeData(authToken));
+    }
+
     return { props: {} };
   }
 );

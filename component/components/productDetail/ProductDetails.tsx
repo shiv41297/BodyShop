@@ -123,6 +123,7 @@ const ProductDetails = (props: any) => {
   const priceData: any = useSelector(
     (state: ReducersModal) => state.productDetailReducer
   );
+  
 
   let discPrice: any;
   if (priceData?.selectedVariantData) {
@@ -163,7 +164,7 @@ const ProductDetails = (props: any) => {
           <div className={classes.nameContainer}>
             <div>
               <Typography variant="h1" className={classes.heading}>
-                {productData?.name}
+                {priceData?.selectedVariantData?.name}
               </Typography>
             </div>
             <div>

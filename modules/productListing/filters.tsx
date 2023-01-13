@@ -15,6 +15,8 @@ import { ReducersModal } from "../../component/models";
 import FilterContent from "./filterContent";
 import Utils from "../../component/utils";
 import { hideLoader, showLoader } from "../../store/home/action";
+import { useRouter } from "next/router";
+import { getAuthToken } from "../../component/utils/session";
 // import { useHistory } from "react-router-dom";
 import _, { filter } from "lodash";
 import { isTypeNode } from "typescript";
@@ -124,13 +126,23 @@ const Filters: React.FC<any> = (props: Props) => {
   const [selectedFilters, setSelectedFilters] = useState<any>([]);
   const query = Utils.CommonFunctions.useQuery();
   let queryFilter = query?.get("filters") ?? "{}";
+  const router = useRouter();
+  const location = useRouter();
+
+  const { menuData } = useSelector((state: any) => state.homeReducer);
 
   // const urlKey = history?.location.pathname.includes("/c/")
   //   ? history?.location.pathname.split("/c/")?.[0]?.split("/")?.pop()
   //   : history?.location.pathname.includes("/h/")
   //   ? history?.location.pathname.split("/h/")?.[0]?.split("/")?.pop()
   //   : "";
+  const mainCat = location.asPath.split("/")?.[1];
+  const category = menuData.find((item: any) => {
+    // return item.id == (location?.state?.categoryId ? location?.state?.categoryId : localStorage.getItem("categoryId"))
+    return item.url == mainCat;
+  });
 
+  const categoryId = category?.id;
   useEffect(() => {
     if (queryFilter) {
       let appliedFilter = JSON.parse(
@@ -173,7 +185,7 @@ const Filters: React.FC<any> = (props: Props) => {
         appliedFilter?.otherFilters?.length !== 0 ? 1 : appliedFilter?.page;
       newAppliedFilter = { ...appliedFilter, page: newPage };
 
-      const data = { ...props.obj, ...newAppliedFilter };
+      const data = { ...props.obj, ...newAppliedFilter, query:"", categoryId:categoryId };
 
       props.setParams(data);
       // dispatch(getProductList(data, false, () => {
@@ -183,6 +195,7 @@ const Filters: React.FC<any> = (props: Props) => {
   }, [ props.obj.query]);
 
   const dispatch = useDispatch();
+  console.log(location,"router");
 
   const classes = useStyles();
 
@@ -193,7 +206,9 @@ const Filters: React.FC<any> = (props: Props) => {
     delete queryFilter?.otherFilters;
     delete queryFilter?.customAttributes;
 
-    const data = { ...props.obj, page: 1 };
+    const data = { ...props.obj, page: 1, authToken: getAuthToken(),query:"", categoryId:categoryId };
+    console.log(data,"data")
+    
     props.setParams(data);
     dispatch(showLoader());
     delete data.selectedFilters;
@@ -204,18 +219,37 @@ const Filters: React.FC<any> = (props: Props) => {
     );
 
     if (_.isEmpty(queryFilter)) {
-      history.push({ pathname: history.location.pathname });
-    } else {
-      history.push({
-        pathname: history.location.pathname,
-        search: `?filters=${encodeURI(
-          encodeURIComponent(JSON.stringify(data))
-        )}`,
+      console.log("line 222")
+      router.push({
+        pathname: "/[slug]/h/[googleKey]",
+        query: {
+         slug: `${router.query.slug}`,
+          
+          googleKey: `${router.query.googleKey}`,
+        },
       });
+    } else {
+      console.log("line 233")
+      router.push({
+        pathname: "/[slug]/h/[googleKey]?",
+        query: {
+         slug: `${router.query.slug}`,
+         search: JSON.stringify(data),
+        
+          googleKey: `${router.query.googleKey}`,
+        },
+      });
+      // history.push({
+      //   pathname: history.location.pathname,
+        // search: `?filters=${encodeURI(
+        //   encodeURIComponent(JSON.stringify(data))
+        // )}`,
+      // });
     }
   };
 
   const onCheckboxChange = (e: any, type: string, filter: any, option: any) => {
+
     dispatch(showLoader());
     let appliedFilter = JSON.parse(
       decodeURIComponent(decodeURIComponent(queryFilter))
@@ -271,27 +305,43 @@ const Filters: React.FC<any> = (props: Props) => {
     if (!appliedFilter?.customAttributes?.length) {
       delete appliedFilter?.customAttributes;
     }
+    const data = { ...props.obj, ...appliedFilter, page: 1 ,query:"", categoryId: categoryId, authToken: getAuthToken()};
 
-    if (!_.isEmpty(appliedFilter)) {
-      history.push({
-        pathname: history.location.pathname,
-        search: `?filters=${encodeURI(
-          encodeURIComponent(JSON.stringify(appliedFilter))
-        )}`,
-      });
-    } else {
-      history.push({ pathname: history.location.pathname });
-    }
+    // if (!_.isEmpty(appliedFilter)) {
+    //   console.log("line 308")
+    //   router.push({
+    //     pathname: "/[slug]/h/[googleKey]",
+    //     query: {
+    //       slug: `${router.query.slug}`,
+    //       googleKey: `${router.query.googleKey}`,
+    //       // search: `${encodeURI(
+    //       //   encodeURIComponent(JSON.stringify(data))
+    //       // )}`,
+    //       search: JSON.stringify(data),
+    //     },
+    //   });
+    // }
+    //  else {
+    //   console.log("line 317")
+    //   router.push({
+    //     pathname: `/[slug]/h/[googleKey]`,
+    //     query: {
+    //      slug: `${router.query.slug}`,
+    //      googleKey: `${router.query.googleKey}`,
+    //      search: `${encodeURI(
+    //       encodeURIComponent(JSON.stringify(data))
+    //     )}`,
+    //     },
+    //   });  
+    //   }
+   
 
-    const data = { ...props.obj, ...appliedFilter, page: 1 };
     props.setParams(data);
 
     delete data.selectedFilters;
-    dispatch(
-      getProductList(data, false, () => {
-        dispatch(hideLoader());
-      })
-    );
+    console.log(data,"data line 343")
+    dispatch(getProductList(data));
+
   };
 
   return (

@@ -315,8 +315,8 @@ const ProductDetail = (props: any) => {
           };
           customGa4Event('view_item', gtagPayload);
           if (
-            process.env.REACT_APP_ENV !== 'development' &&
-            process.env.REACT_APP_ENV !== 'staging'
+            process.env.NEXT_PUBLIC_ENV !== 'development' &&
+            process.env.NEXT_PUBLIC_ENV !== 'staging'
           ) {
             window.gtag('event', 'view_item', gtagPayload);
           }
@@ -380,7 +380,8 @@ const ProductDetail = (props: any) => {
           });
         }
         breadcrumb.push({
-          title: productData?.product?.name,
+          title: productData?.selectedVariantData?.name,
+          // title: productData?.product?.name ? productData?.product?.name  :productData?.selectedVariantData?.name,
           action: props?.location?.pathname,
         });
         setBreadCrumb(breadcrumb);
@@ -528,6 +529,12 @@ const ProductDetail = (props: any) => {
       attribute_code: 'meta_description',
     });
 
+    const metaKeyword = productData &&
+    productData.product &&
+    _.find(productData.product.customAttributes, {
+      attribute_code: 'meta_keyword',
+    });
+
   const URL = `${process.env.NEXT_PUBLIC_API_BASE_URL}`;
 
   return (
@@ -545,6 +552,9 @@ const ProductDetail = (props: any) => {
             ? metaDescription.value
             : 'The Body Shop'
         }
+        keywords={ metaKeyword && metaKeyword.value
+          ? metaKeyword.value
+          : 'The Body Shop'}
         // canonicalUrl={URL + props.location.pathname}
        
       /> */}

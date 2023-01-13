@@ -23,6 +23,7 @@ import IngredientsModal from './ingredientsModal';
 import CustomRadio from '../../common/miniCart/CustomRadio';
 import Ingredients from './ingredients';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 
 const useStyles = makeStyles((theme: Theme) => ({
   ratingContainer: {
@@ -391,7 +392,7 @@ const useStyles = makeStyles((theme: Theme) => ({
 const Rate = (_props: any) => {
   const classes = useStyles();
   const dispatch = useDispatch();
-
+  const router = useRouter();
   const productDetail: any = useSelector(
     (state: any) => state.productDetailReducer
   );
@@ -403,7 +404,6 @@ const Rate = (_props: any) => {
   const [selectedVariant, setSelectedVariant] = React.useState(
     productDetail.selectedVariant
   );
-
   const [state, setState] = React.useState<any>({
     sizeData: [''],
     shadeData: [''],
@@ -420,60 +420,26 @@ const Rate = (_props: any) => {
     selectedSizeShade: '',
     selectedVariantData: null,
   });
-  // const reviewData = useSelector(
-  //   (state: ReducersModal) => state.productDetailReducer
-  // ).productReviews;
-  // const ratingData = reviewData?.data?.[0]||{};
-  useEffect(() => {
-    setSelectedVariant(productDetail.selectedVariant);
-    setState({
-      ...state,
-      selectedVariantData: productData,
-    });
-  }, [productDetail]);
 
-  // const handleRead = () => {
-  //     setIsRead(!isRead)
-  // }
+  const selectVariant = (product: any, i: any) => {
 
-  const selectVariant = (product: any) => {
-    let selectedProduct = configurableLinks?.find((val: any) => {
-      return val?.value?.toLowerCase() === product?.label?.toLowerCase();
-    });
-
-    dispatch({
-      type: 'getProductData',
-      payload: {
-        selectedVariant: product,
-        selectedVariantData: selectedProduct,
-      },
-    });
-
-    setState({
-      ...state,
-      selectedVariant: product,
-      selectedVariantData: selectedProduct,
-    });
-
-    setSelectedVariant(product);
+    if (configurableLinks[i].urlKey === router.query.subcategory) {
+  
+    } else {
+      router.push(
+        {
+          pathname: '/[type]/[category]/[subcategory]/p/[googleKey]',
+          query: {
+            type: router.query.slug,
+            category: router.query.category,
+            subcategory: configurableLinks[i] && configurableLinks[i].urlKey,
+            googleKey: router.query.googleKey,
+          },
+        }
+        // `/${router.query.slug}/${router.query.category}/${configurableLinks[i].urlKey}/p/${router.query.googleKey}`
+      );
+    }
   };
-
-  // const selectShade = (product: any) => {
-  //     let selectedProduct = configurableLinks?.find((val: any) => val?.value?.toLowerCase() === product?.label?.toLowerCase())
-  //     dispatch({
-  //         type: "getProductData", payload: {
-  //             selectedVariant: product,
-  //             selectedVariantData: selectedProduct
-  //         }
-  //     })
-
-  //     setState({
-  //         ...state,
-  //         selectedVariant: product,
-  //         selectedVariantData: selectedProduct
-  //     });
-  //     setSelectedVariant(product)
-  // }
 
   const skeletonLoader = useSelector((state: ReducersModal) => {
     return state.loadingReducer.skeletonLoader;
@@ -557,9 +523,6 @@ const Rate = (_props: any) => {
                     <Typography variant="h1" className={classes.leftCaption}>
                       Select {configurableOptions?.label}
                     </Typography>
-                    {/* <Typography variant="h1" className={classes.rightCaption}>
-                                            View All
-                                        </Typography> */}
                   </div>
                   <Typography variant="h1" className={classes.selectedLabel}>
                     {state.selectedLabel}
@@ -620,7 +583,7 @@ const Rate = (_props: any) => {
                                 }
                                 value={val?.value_index}
                                 name="shade"
-                                onChange={() => selectVariant(val)}
+                                onChange={() => selectVariant(val, i)}
                               />
                               {/* {/ <StyledCheckbox style={{ backgroundColor: shadeColor, borderRadius: '50%', marginBottom: '3px' }} checked={val?.value_index === selectedVariant?.value_index} value={val?.value_index} name="shade" onClick={() => selectVariant(val)} /> /} */}
                             </React.Fragment>
@@ -657,10 +620,10 @@ const Rate = (_props: any) => {
                           (item: any) => item.attribute_code === 'special_price'
                         );
                         let price = product?.price;
-
+                        // console.log("rrrrrrrrr",{i})
                         return (
                           product && (
-                            <div onClick={() => selectVariant(val)} key={i}>
+                            <div onClick={() => selectVariant(val, i)} key={i}>
                               <ToggleButton
                                 selected={
                                   // selectedVariant?.isInstock&&

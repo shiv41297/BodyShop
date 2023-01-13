@@ -32,6 +32,8 @@ import {
   hideSkeleton,
   getConfig,
 } from "../../../store/home/action";
+import Cookies from "js-cookie";
+import axios from "axios";
 
 // import { getUserProfile } from "../../pages/account/profile/action";
 // import { getDashboardData } from "../../pages/account/lybc/action";
@@ -104,15 +106,39 @@ const Headers = () => {
   const history = useRouter();
   // const location = useLocation();
   const [open, setOpen] = React.useState(false);
+  const [authToken,setAuthToken] = React.useState("");
   // const [mobileMenus, setMobileMenus] = React.useState([]);
   const [loginAlert, showLoginAlert] = useState(false);
   const dispatch: any = useDispatch();
 
 
-  useEffect(()=>{
-    dispatch(getConfig({ configCode: "general" })); 
-    dispatch(getConfig({ configCode: "payment" }));  
-  },[])
+  useEffect(() => {
+    const config = {
+      headers: {
+        Authorization: `Basic ${process.env.NEXT_PUBLIC_API_KEY}`,
+      },
+    };
+    request.post(Utils.endPoints.GUEST_SIGNUP, {}, config).then((resp: any) => {
+      dispatch({
+        type: "auth-token",
+        payload: resp?.data?.data?.authToken,
+      });
+
+      setAuthToken(resp?.data?.data?.authToken)
+      Cookies.set("authToken", resp.data.data?.authToken);
+      Cookies.set("guestUser", "true");
+      Cookies.set("domain", "appskeeper.in");
+    });
+  }, []);
+
+  
+  useEffect(() => {
+    dispatch(getConfig({ configCode: "general" }));
+    dispatch(getConfig({ configCode: "payment" }));
+  }, []);
+
+  
+
   const pathname = history?.pathname || "";
   useEffect(() => {
     if (
@@ -139,14 +165,12 @@ const Headers = () => {
   const totalCount = useSelector(
     (state: ReducersModal) => state.wishlistReducer?.totalCount
   );
-  const { authToken } = useSelector(
-    (state: ReducersModal) => state.homeReducer
-  );
+  // const { authToken } = useSelector(
+  //   (state: ReducersModal) => state.homeReducer
+  // );
   const menuData = useSelector(
     (state: ReducersModal) => state.homeReducer.menuData
   );
-
-
 
   const handleSuggestionClick = (item: any) => {
     dispatch({ type: "mobile-applied-filters", payload: null });
@@ -188,9 +212,7 @@ const Headers = () => {
       let menuRespData = resp?.data?.data.filter(
         (value: any, _index: number) => value.id !== null
       );
-      console.log("menudata", menuRespData);
       setMenusData(menuRespData);
-      console.log(menuData);
       dispatch({
         type: Utils.ActionName.MENU_DATA,
         payload: { menuData: menuRespData },
@@ -203,13 +225,10 @@ const Headers = () => {
     // }
   }, []);
 
-
- 
-
   const redirectToHome = () => {
     dispatch(showSkeleton());
     dispatch(
-      getHomeData(""),
+      getHomeData(authToken),
       dispatch(hideSkeleton())
       // getHomeData(() => {
       //   dispatch(hideSkeleton());

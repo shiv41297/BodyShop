@@ -10,9 +10,10 @@ export const getCurrentLanguage = () => {
 };
 
 export const isGuestUser = () => {
-  if (typeof window !== "undefined") {
-    return localStorage.getItem("guestUser");
-  }
+  return Cookies.get("guestUser")
+  // if (typeof window !== "undefined") {
+  //   return localStorage.getItem("guestUser");
+  // }
 };
 
 /**
@@ -85,16 +86,16 @@ export const getAuthToken = () => {
   // }
 };
 
+console.log(getAuthToken(),"getAuthToken")
+
 
 export const isAuthenticated = () => {
-  if (typeof window !== "undefined") {
     if (
-      localStorage.getItem("authToken") != null &&
-      localStorage.getItem("guestUser") === null
+      Cookies.get("authToken") != null &&
+      Cookies.get("guestUser") === null
     ) {
       return true;
     } else {
       return false;
     }
-  }
 };

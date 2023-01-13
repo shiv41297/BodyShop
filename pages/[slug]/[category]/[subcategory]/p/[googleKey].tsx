@@ -1,12 +1,12 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import _ from 'lodash';
-import { getProductData } from '../../../../../component/components/productDetail/action';
-import ProductDetails from '../../../../../component/components/productDetail/index';
-import { wrapper } from '../../../../../store/store';
 import { PageMeta } from '../../../../../component/page-meta/PageMeta';
+import ProductDetail from '../../../../../component/components/productDetail/index';
+import { wrapper } from '../../../../../store/store';
+import { getProductData } from '../../../../../component/components/productDetail/action';
 
-function ProductDetail() {
+function MainProductDetail() {
   const productData: any = useSelector(
     (state: any) => state?.productDetailReducer
   );
@@ -51,17 +51,17 @@ function ProductDetail() {
           // canonicalUrl={URL + props.location.pathname}
         />
       )}
-      <ProductDetails />
+      <ProductDetail />
     </div>
   );
 }
 
-export default ProductDetail;
+export default MainProductDetail;
 
 export const getServerSideProps = wrapper.getServerSideProps((store) =>
   //@ts-ignore-
-  async ({ req, res, params }: any) => {
-    await store.dispatch(getProductData(req, params));
+  async ({ req, res, params , query}: any) => {
+    await store.dispatch(getProductData(req, query));
 
     return { props: {} };
   }

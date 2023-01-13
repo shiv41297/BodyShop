@@ -364,7 +364,6 @@ const Product = (props: Props) => {
   const dispatch: any = useDispatch();
   const history = useRouter();
 
-  console.log({history},history.query.slug)
   // const params: any = useParams();
   const {
     section,
@@ -388,6 +387,7 @@ const Product = (props: Props) => {
   const cartData = useSelector(
     (state: ReducersModal) => state.shoppingBagReducer
   );
+
   const [addActive, setAddActive] = useState(false);
   const [loader, setLoader] = useState(false);
 
@@ -401,8 +401,7 @@ const Product = (props: Props) => {
     (item: any) => item.type === "sample"
   ).length;
 
-  // const IMAGE_URL = `${process.env.NEXT_PUBLIC_MEDIA_URL}`;
-  const IMAGE_URL = "https://bodyshop-magento-staging.s3.amazonaws.com/media/";
+  const IMAGE_URL = `${process.env.NEXT_PUBLIC_MEDIA_URL}`;
 
   const handleLike = (status: boolean, product: any) => {
     if (status) {
@@ -591,6 +590,10 @@ const Product = (props: Props) => {
     }
   };
 
+  const categoryId = productData?.category?.child_category?.magentoId;
+
+  console.log(categoryId, typeof categoryId, "state");
+
   const navigateTo = () => {
     if (props.type && props.type === "freeSample")
       history.push({ pathname: "/shopping-bag" });
@@ -598,12 +601,18 @@ const Product = (props: Props) => {
       // let productUrlTitle = productData.customAttributes.find((item: any) => item.attribute_code === "url_key")?.value
       // let productUrlKey = productData.customAttributes.find((item: any) => item.attribute_code === "google_category")?.value
       // let pathname = `/${plpData?.categoryData?.child_category?.urlPath}/${productUrlTitle}/p/${productUrlKey}`
+
       let pathname = Utils.CommonFunctions.seoUrl(
         { ...productData, plpData },
         "pdp"
       );
       let state: any = {
-        urlKey: productData?.urlKey,
+        urlKey:
+          productData && productData.type == "simple"
+            ? productData.urlKey
+            : productData.configurableProductLinks &&
+              productData?.configurableProductLinks?.[0]?.urlKey,
+        // urlKey:productData.urlKey,
         pageName: "",
         isSearched:
           type === "mobile-home" ||
@@ -626,7 +635,11 @@ const Product = (props: Props) => {
       //   state.categoryId = productData?.category?.child_category?.magentoId
       // }
 
-      state.categoryId = productData?.category?.child_category?.magentoId;
+      const categoryId =
+        productData?.category && productData?.category?.child_category
+          ? productData?.category?.child_category?.magentoId
+          : 124;
+
       // history.push(
       //   {
       //     pathname,
@@ -634,19 +647,49 @@ const Product = (props: Props) => {
       //   },
       //   { query: state }
       // );
+      let googleCode = productData?.customAttributes?.find(
+        (item: any) => item.attribute_code === "google_category"
+      )?.value;
+      const { urlKey } = state;
 
-      console.log({ state });
-      const { urlKey, categoryId } = state;
+      if (history.query.slug) {
+        history.push({
+          pathname: "/[slug]/[category]/[subcategory]/p/[googleKey]",
+          query: {
+            slug: `${history.query.slug}`,
+            category: `${
+              productData?.categoryData &&
+              productData?.categoryData?.child_category
+                ? productData?.categoryData?.child_category?.urlPath
+                : "trending"
+            }`,
+            // category: `${history.query.category}`,
+            subcategory: `${urlKey}`,
+            googleKey: `${googleCode ? googleCode : "p000069"}`,
+            val: categoryId,
+          },
+        });
+      } else {
+        history.push({
+          pathname: "/[slug]/[category]/[subcategory]/p/[googleKey]",
+          query: {
+            slug: `${productData.category.urlKey}`,
+            category: `${
+              productData?.categoryData &&
+              productData?.categoryData?.child_category
+                ? productData?.categoryData?.child_category?.urlPath
+                : "trending"
+            }`,
+            // category: categoryId,
+            subcategory: `${urlKey}`,
+            googleKey: `${googleCode ? googleCode : "p000069"}`,
+            val: categoryId,
+
+          },
+        });
+      }
       // history.push(`trending/new-in/${urlKey}/p/${categoryId}`);
-      history.push({
-        pathname: "/[type]/[category]/[subcategory]/p/[googleKey]",
-        query: {
-          type: `${history.query.slug}`,
-          category: `${history.query.category}`,
-          subcategory: `${urlKey}`,
-          googleKey: `${categoryId}`,
-        },
-      });
+
       // history.push({
       //   pathname: Utils.CommonFunctions.replaceUrlParams(
       //     Utils.routes.PRODUCT_DETAIL,
@@ -748,9 +791,7 @@ const Product = (props: Props) => {
           {section !== "cart" ? (
             <>
               {props.section === "plp" ? (
-                <div
-                  className={`${addActive ? "active" : ""}`}
-                >
+                <div className={`${addActive ? "active" : ""}`}>
                   <div className={"content"} onClick={handleContentClick}>
                     <IconButton
                       aria-label="favorite"
@@ -772,23 +813,20 @@ const Product = (props: Props) => {
                   </div>
                 </div>
               ) : (
-
-                <div className={classes.heartImg2}
+                <div
+                  className={classes.heartImg2}
                   onClick={() => {
                     if (isAuthenticated())
                       handleLike(like ? false : true, productData);
                     else showLoginAlert(true);
-                  }}>
-
-
+                  }}
+                >
                   {like ? (
                     <img src={Utils.images.FAVORITE_ICON} alt="heart" />
                   ) : (
                     <img src={Utils.images.HEART} alt="heart" />
                   )}
                 </div>
-
-
               )}
             </>
           ) : null}
