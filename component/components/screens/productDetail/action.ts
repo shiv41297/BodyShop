@@ -7,6 +7,13 @@ import {
   showLoader,
 } from '../../../../store/home/action';
 
+function multiSearchOr(text: any, searchWords: any) {
+  for (var i = 0; i < searchWords.length; i++) {
+    if (text.indexOf(searchWords[i]) == -1) return false;
+  }
+  return true;
+}
+
 export const getProductData =
   (req: any, params: any) => async (dispatch: any) => {
     let authToken = req.cookies.authToken;
@@ -49,27 +56,40 @@ export const getProductData =
           product.product.configurableProductLinks?.sort(
             (a: any, b: any) => a?.price - b?.price
           );
-
+        // console.log({links},"links") ==== edit this part for display data correct
         selectedVariantData =
           links?.find((item: any) => item.isInStock) ||
           (product &&
             product.product &&
             product.product?.configurableProductLinks[0]);
 
-        const values =
-          product &&
-          product.product &&
-          product.product.configurableProductOptions?.[0]?.values;
+        // const values =
+        //   product &&
+        //   product.product &&
+        //   product.product.configurableProductOptions?.[0]?.values;
 
-        selectedVariant = values.find(
-          (item: any) =>
-            item?.label?.toLowerCase() ===
-            selectedVariantData?.value?.toLowerCase()
-        );
+        // selectedVariant = values.find(
+        //   (item: any) =>
+        //     item?.label?.toLowerCase() ===
+        //     selectedVariantData?.value?.toLowerCase()
+        // );
+
+        // test code
+        let searchValue = subcategory
+          .replaceAll('-', ' ')
+          .split(' ')
+          .reverse()[0];
+
+        selectedVariant =
+          product.product.configurableProductOptions?.[0]?.values &&
+          product?.product?.configurableProductOptions?.[0]?.values.find(
+            (val: any) => {
+              return multiSearchOr(val.label.toLowerCase(), searchValue);
+            }
+          );
       } else {
         selectedVariantData = product.product;
       }
-
       dispatch({
         type: 'getProductData',
         payload: {

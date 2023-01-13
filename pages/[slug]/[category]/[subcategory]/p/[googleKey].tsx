@@ -50,7 +50,7 @@ export default MainProductDetail;
 
 export const getServerSideProps = wrapper.getServerSideProps((store) =>
   //@ts-ignore-
-  async ({ req, res, params, query }: any) => {
+  async ({ req, res, query }: any) => {
     await store.dispatch(getProductData(req, query));
 
     return { props: {} };

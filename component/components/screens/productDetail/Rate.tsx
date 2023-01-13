@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import {
   Rating,
   ToggleButton,
@@ -13,7 +13,6 @@ import clsx from 'clsx';
 import { makeStyles } from '@mui/styles';
 import ReactHtmlParser from 'react-html-parser';
 import { useDispatch, useSelector } from 'react-redux';
-import { useEffect } from 'react';
 import Utils from '../../../utils';
 import { ProductDetailModal, ReducersModal } from '../../../models';
 import CustomAccordion from '../../../customAccordion';
@@ -401,9 +400,10 @@ const Rate = (_props: any) => {
 
   let configurableOptions = productData?.configurableProductOptions?.[0];
   let configurableLinks = productData?.configurableProductLinks;
-  const [selectedVariant, setSelectedVariant] = React.useState(
+  const [selectedVariant, setSelectedVariant] = React.useState<any>(
     productDetail.selectedVariant
   );
+
   const [state, setState] = React.useState<any>({
     sizeData: [''],
     shadeData: [''],
@@ -422,7 +422,9 @@ const Rate = (_props: any) => {
   });
 
   const selectVariant = (product: any, i: any) => {
+    // console.log({value:configurableLinks},configurableLinks[i].urlKey)
     if (configurableLinks[i].urlKey === router.query.subcategory) {
+      return;
     } else {
       router.push(
         {
@@ -432,6 +434,7 @@ const Rate = (_props: any) => {
             category: router.query.category,
             subcategory: configurableLinks[i] && configurableLinks[i].urlKey,
             googleKey: router.query.googleKey,
+            val: router.query.val,
           },
         }
         // `/${router.query.slug}/${router.query.category}/${configurableLinks[i].urlKey}/p/${router.query.googleKey}`
@@ -543,7 +546,7 @@ const Rate = (_props: any) => {
                           >
                             {'Out of Stock'}
                           </Typography>
-                        ) : selectedVariant?.label ? (
+                        ) : selectedVariant && selectedVariant.label ? (
                           <Typography
                             className={clsx(
                               classes.colorSubheading,
@@ -552,7 +555,7 @@ const Rate = (_props: any) => {
                             style={{ color: '#004236' }}
                           >
                             {' '}
-                            {selectedVariant.label}{' '}
+                            {selectedVariant && selectedVariant.label}{' '}
                           </Typography>
                         ) : null}
                       </div>

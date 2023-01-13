@@ -131,6 +131,7 @@ const ProductDetails = (props: any) => {
     });
     // let discPrice1 = productData?.customAttributes?.find((item: any) => item.attribute_code == 'special_price')
   }
+  // console.log("priceData",priceData)
   let configurableProduct = productData?.configurableProductLinks?.find(
     (item: any) => item?.isInStock
   );
