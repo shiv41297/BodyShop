@@ -31,6 +31,7 @@ import { FilterProductSkeleton } from '../../../common/skeletonList/filterProduc
 import Utils from '../../../utils';
 import { customGa4Event } from '../../../utils/gtag';
 import { useRouter } from 'next/router';
+import { PageMeta } from '../../../page-meta/PageMeta';
 declare global {
   interface Window {
     gtag?: any;
