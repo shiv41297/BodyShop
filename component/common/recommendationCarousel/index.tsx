@@ -31,14 +31,16 @@ const useStyles = makeStyles((theme: Theme) => ({
     padding: theme.spacing(0, 7),
     // maxWidth: "var(--max-width)",
     margin: theme.spacing(1.5, 'auto'),
+   
     [theme.breakpoints.down('md')]: {
-      margin: theme.spacing(1.5, 'auto', 0),
-      padding: theme.spacing(0, 4),
-    },
-    [theme.breakpoints.down('xs')]: {
       margin: theme.spacing(1.5, 'auto', 0),
       padding: theme.spacing(0, 0),
     },
+    [theme.breakpoints.down(500)]: {
+      margin: theme.spacing(1.5, 'auto', 0),
+      padding: theme.spacing(0, 0),
+    },
+   
   },
   maxWidthDiv3: {
     padding: theme.spacing(0, 4.5),
@@ -48,7 +50,7 @@ const useStyles = makeStyles((theme: Theme) => ({
       margin: theme.spacing(1.5, 'auto', 0),
       padding: theme.spacing(0, 4),
     },
-    [theme.breakpoints.down('xs')]: {
+    [theme.breakpoints.down(500)]: {
       margin: theme.spacing(1.5, 'auto', 0),
       padding: theme.spacing(0, 0),
     },
@@ -59,7 +61,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     [theme.breakpoints.down('md')]: {
       margin: theme.spacing(1.5, 'auto', 0),
     },
-    [theme.breakpoints.down('xs')]: {
+    [theme.breakpoints.down(500)]: {
       margin: theme.spacing(1.5, 'auto', 0),
       padding: theme.spacing(0, 0),
     },
@@ -97,7 +99,7 @@ const useStyles = makeStyles((theme: Theme) => ({
       },
     },
     '& .slick-next:before': {
-      // content: `url(${RECOMMENDED_LEFT})`,
+      content: `url(${Utils.images.RECOMMENDED_ARROW})`,
       opacity: 1,
       // display: 'none',
     },
@@ -109,8 +111,8 @@ const useStyles = makeStyles((theme: Theme) => ({
       },
     },
     '& .slick-prev:before': {
-      // content: `url(${RECOMMENDED_RIGHT})`,
-      opacity: 1,
+      content: `url(${Utils.images.RECOMMENDED_LEFT})`,
+            opacity: 1,
     },
     '& .slick-prev:hover, .slick-prev:focus, .slick-next:hover, .slick-next:focus':
       {
@@ -232,10 +234,10 @@ function RecommendationCarousel(props: Props) {
       if (section !== 'plp') {
         let params: any = { page: 1, limit: 10 };
 
-        dispatch(showSkeleton());
+        // dispatch(showSkeleton());
         dispatch(
           getOthersRecommendations(params, (data: any) => {
-            dispatch(hideSkeleton());
+            // dispatch(hideSkeleton());
             setData(data?.data);
           })
         );

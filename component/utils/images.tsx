@@ -44,6 +44,7 @@ const NEWSLETTER_BG = "/images/plpImg.png";
 // *******Add to Cart Images***********************
 
 // ********** Wishlist ***********************
+const TESTIMONIAL = "/images/testinmonialArrow.svg";
 
 const USER_ICON = "/images/userIcon.svg";
 const LOCATION_ICON = "/images/locationIcon.svg";
@@ -599,7 +600,7 @@ const images = {
   BANNER_HOME,
   PRODUCT_ONE,
   STAR,
-
+  TESTIMONIAL,
   ARROW1,
   ARROW2,
   PRODUCT1,

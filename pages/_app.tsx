@@ -10,12 +10,15 @@ import { wrapper } from "../store/store";
 import { Provider } from "react-redux";
 import Headers from "../component/components/headers";
 import Footer from "../component/components/footers";
-import "../styles/globals.css";
 import "react-multi-carousel/lib/styles.css";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
+import "../styles/globals.css";
+
 import { StylesProvider, createGenerateClassName } from "@mui/styles";
 import { Box } from "@mui/material";
 import MediaFooter from "../component/components/footers/mediaFooter";
+import Addvertisement from "../component/components/addvertisementCard";
+
 // Client-side cache, shared for the whole session of the user in the browser.
 const clientSideEmotionCache = createEmotionCache();
 
@@ -45,9 +48,14 @@ function MyApp({
           <CssBaseline />
           <StylesProvider generateClassName={generateClassName}>
             <Headers />
-            <Box sx={{ marginTop: "90px" }}>
+           {/* <Box sx={{ display: { xs: "none", sm: "block" } }}>
+              <Addvertisement key="promotional_banner" />
+            </Box>  */}
+
+            <Box sx={{ marginTop: "130px" }}>
               <Component {...props.pageProps} />
             </Box>
+
             <MediaFooter />
             <Footer />
           </StylesProvider>
