@@ -209,6 +209,7 @@ const Filters: React.FC<any> = (props: Props) => {
       query: {
         slug: `${router.query.slug}`,
         googleKey: `${router.query.googleKey}`,
+        categoryId: `${router.query.categoryId}`
       },
     });
 
@@ -333,6 +334,7 @@ const Filters: React.FC<any> = (props: Props) => {
           slug: `${router.query.slug}`,
           googleKey: `${router.query.googleKey}`,
           search: `${encodeURI(encodeURIComponent(JSON.stringify(data)))}`,
+          categoryId: `${router.query.categoryId}`
           // search: data,
         },
       });
@@ -344,6 +346,8 @@ const Filters: React.FC<any> = (props: Props) => {
           slug: `${router.query.slug}`,
           googleKey: `${router.query.googleKey}`,
           search: `${encodeURI(encodeURIComponent(JSON.stringify(data)))}`,
+          categoryId: `${router.query.categoryId}`
+
         },
       });
     }

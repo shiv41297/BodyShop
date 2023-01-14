@@ -6,12 +6,11 @@ export function getProductList(params: any, authtoken: any) {
   
   return async (dispatch: any, getState: any) => {
  
-
+    console.log(params)
     let urldecodeLevel1 = decodeURI(params.search);
     let urldecodeLevel2 = decodeURIComponent(urldecodeLevel1);
 
-
-    let data = { ...params,  query: "", categoryId: 29 };
+    let data = { ...params,  query: "", categoryId: params.categoryId };
 
     let url2 = Utils.endPoints.PRODUCT_LIST + "?data=" + urldecodeLevel2;
 

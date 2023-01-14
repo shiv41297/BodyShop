@@ -2,6 +2,7 @@
 export const productReducer = (
   state = {
     data: {},
+    categoryId: ""
     // filters: {},
     // products: {},
     // articles: {},
@@ -26,7 +27,7 @@ export const productReducer = (
       }
 
       return { ...state };
-
+     
     default:
       return state;
   }
