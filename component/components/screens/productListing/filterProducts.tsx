@@ -30,7 +30,7 @@ import Filters from './filters';
 import { FilterProductSkeleton } from '../../../common/skeletonList/filterProductSkeleton';
 import Utils from '../../../utils';
 import { customGa4Event } from '../../../utils/gtag';
-
+import { useRouter } from 'next/router';
 declare global {
   interface Window {
     gtag?: any;
@@ -176,6 +176,9 @@ function FilterProducts() {
   // const history = useHistory();
   // const location: any = useLocation();
   // const params: any = useParams();
+  const location = useRouter();
+
+  console.log(location, 'location');
   const sortingData = Utils.constants.sortingData;
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
@@ -202,9 +205,11 @@ function FilterProducts() {
   const productData = useSelector(
     (state: ReducersModal) => state.productReducer?.data
   );
-  const filters = useSelector(
-    (state: ReducersModal) => state.productFilterReducer?.filters
-  );
+  // const filters = useSelector(
+  //   (state: any) => state.productFilterReducer?.filters
+  // );
+
+  const { filters } = useSelector((state: any) => state.productFilterReducer);
 
   const [page, setPage] = useState(queryFilters?.page ?? 1);
   const [sorting, setSorting] = React.useState(sortingData[0]);
@@ -216,12 +221,7 @@ function FilterProducts() {
   // const fromPath = location?.state?.fromPath || "";
   const fromPath = '';
 
-  // const urlKey = location.pathname.includes("/c/")
-  //   ? location.pathname.split("/c/")?.[0]?.split("/")?.pop()
-  //   : location.pathname.includes("/h/")
-  //   ? location.pathname.split("/h/")?.[0]?.split("/")?.pop()
-  //   : "";
-  const urlKey = '';
+  const urlKey = location.query.slug;
 
   let obj: any = {
     query: keyword,
@@ -401,7 +401,7 @@ function FilterProducts() {
                 productData?.categoryData?.image),
           })}
         >
-          {/* Filter Header Section */}
+          {/* {/ Filter Header Section /} */}
           {skeletonLoader || Object.keys(productData).length === 0 ? (
             <FilterProductSkeleton />
           ) : (
@@ -491,7 +491,7 @@ function FilterProducts() {
                   </Grid>
                 </div>
               </Hidden>
-              {/* Listing Body Section */}
+              {/* {/ Listing Body Section /} */}
               <div className={classes.filterBody}>
                 <Grid container>
                   <Hidden xsDown>
@@ -528,7 +528,7 @@ function FilterProducts() {
             ) : null}
           </div> */}
         </div>
-        {/* )} */}
+        {/* {/ )} /} */}
       </div>
     </div>
   );

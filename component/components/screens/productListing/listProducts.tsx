@@ -54,14 +54,20 @@ interface Props {
 const Products: React.FC<any> = (props: Props) => {
   const classes = useStyles();
   const products =
-    useSelector((state: any) => state.productReducer?.data?.products) || {};
-  const filters = useSelector(
-    (state: any) => state.productFilterReducer?.filters
+    useSelector(
+      (state: any) => state.productReducer?.data?.products
+    ) || {};
+  // const filters = useSelector(
+  //   (state: any) => state.productFilterReducer?.filters
+  // );
+
+  const { filters } = useSelector(
+    (state: any) => state.productFilterReducer
   );
 
   // const params: any = useParams();
   // let keyword = params?.keyword ?? "";
-  let keyword = '';
+  let keyword = "";
 
   return (
     <>
@@ -79,12 +85,12 @@ const Products: React.FC<any> = (props: Props) => {
                   (item: any) => item?.isInStock
                 ) || item?.configurableProductLinks[0];
               let desc =
-                item?.type === 'configurable'
+                item?.type === "configurable"
                   ? _.find(configurableProduct?.customAttributes, {
-                      attribute_code: 'short_description',
+                      attribute_code: "short_description",
                     })
                   : _.find(item.customAttributes, {
-                      attribute_code: 'short_description',
+                      attribute_code: "short_description",
                     });
               return (
                 <Grid

@@ -403,7 +403,7 @@ const Rate = (_props: any) => {
   const [selectedVariant, setSelectedVariant] = React.useState<any>(
     productDetail.selectedVariant
   );
-
+console.log( productDetail)
   const [state, setState] = React.useState<any>({
     sizeData: [''],
     shadeData: [''],

@@ -56,12 +56,20 @@ export const getProductData =
           product.product.configurableProductLinks?.sort(
             (a: any, b: any) => a?.price - b?.price
           );
-        // console.log({links},"links") ==== edit this part for display data correct
+        console.log({links},"links")
+        //  ==== edit this part for display data correct
         selectedVariantData =
-          links?.find((item: any) => item.isInStock) ||
-          (product &&
-            product.product &&
-            product.product?.configurableProductLinks[0]);
+          links?.filter((item: any) => {
+            if(!item.isInStock){  
+              return  item.urlKey===subcategory
+            }
+            else{
+              return (product &&
+                product.product &&
+                product.product?.configurableProductLinks);
+            }
+          })
+          console.log({selectedVariantData}, Array.isArray(selectedVariantData) )
 
         // const values =
         //   product &&
@@ -95,7 +103,7 @@ export const getProductData =
         payload: {
           ...product,
           selectedVariant,
-          selectedVariantData,
+          selectedVariantData: selectedVariantData[0],
         },
       });
     }

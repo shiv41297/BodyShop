@@ -90,8 +90,8 @@ class ProductModal {
   // categoryData: any = {};
 }
 class ProductFilterModal {
-  filters: any = [];
-  mobileAppliedFilters: any = {};
+  filters: any = "";
+  mobileAppliedFilters: any = "";
 }
 
 class RecommendModal {

@@ -114,9 +114,11 @@ interface Props {
 
 const Filters: React.FC<any> = (props: Props) => {
   // const history = useHistory();
-  const filters = useSelector(
-    (state: ReducersModal) => state.productFilterReducer?.filters
-  );
+  // const filters = useSelector(
+  //   (state: any) => state.productFilterReducer?.filters
+  // );
+
+  const { filters } = useSelector((state: any) => state.productFilterReducer);
 
   const [selectedFilters, setSelectedFilters] = useState<any>([]);
   const query = Utils.CommonFunctions.useQuery();
@@ -147,6 +149,7 @@ const Filters: React.FC<any> = (props: Props) => {
 
       filters?.otherFilters?.map((item: any) => {
         return appliedFilter?.otherFilters?.some((value: any) => {
+          // console.log("value appliedFilter", value, "item filters", item);
           if (item._id === value._id) {
             item.options.map((a: any) => {
               if (value.options.some((b: any) => a._id === b._id))
@@ -194,6 +197,7 @@ const Filters: React.FC<any> = (props: Props) => {
   }, [props.obj.query]);
 
   const dispatch = useDispatch();
+  console.log(location, 'router');
 
   const classes = useStyles();
 
@@ -211,9 +215,10 @@ const Filters: React.FC<any> = (props: Props) => {
       query: '',
       categoryId: categoryId,
     };
+    console.log(data, 'data');
 
     props.setParams(data);
-    dispatch(showLoader());
+    // dispatch(showLoader());
     delete data.selectedFilters;
     dispatch(
       getProductList(data, false, () => {
@@ -222,6 +227,7 @@ const Filters: React.FC<any> = (props: Props) => {
     );
 
     if (_.isEmpty(queryFilter)) {
+      console.log('line 222');
       router.push({
         pathname: '/[slug]/h/[googleKey]',
         query: {
@@ -231,6 +237,7 @@ const Filters: React.FC<any> = (props: Props) => {
         },
       });
     } else {
+      console.log('line 233');
       router.push({
         pathname: '/[slug]/h/[googleKey]?',
         query: {
@@ -250,7 +257,7 @@ const Filters: React.FC<any> = (props: Props) => {
   };
 
   const onCheckboxChange = (e: any, type: string, filter: any, option: any) => {
-    dispatch(showLoader());
+    // dispatch(showLoader());
     let appliedFilter = JSON.parse(
       decodeURIComponent(decodeURIComponent(queryFilter))
     );
@@ -311,39 +318,38 @@ const Filters: React.FC<any> = (props: Props) => {
       page: 1,
       query: '',
       categoryId: categoryId,
-      authToken: getAuthToken(),
     };
 
-    // if (!_.isEmpty(appliedFilter)) {
-    //   router.push({
-    //     pathname: "/[slug]/h/[googleKey]",
-    //     query: {
-    //       slug: `${router.query.slug}`,
-    //       googleKey: `${router.query.googleKey}`,
-    //       // search: `${encodeURI(
-    //       //   encodeURIComponent(JSON.stringify(data))
-    //       // )}`,
-    //       search: JSON.stringify(data),
-    //     },
-    //   });
-    // }
-    //  else {
-    //   router.push({
-    //     pathname: `/[slug]/h/[googleKey]`,
-    //     query: {
-    //      slug: `${router.query.slug}`,
-    //      googleKey: `${router.query.googleKey}`,
-    //      search: `${encodeURI(
-    //       encodeURIComponent(JSON.stringify(data))
-    //     )}`,
-    //     },
-    //   });
-    //   }
+    console.log(data, 'data in filters');
+
+    if (!_.isEmpty(appliedFilter)) {
+      console.log('line 308');
+      router.push({
+        pathname: '/[slug]/h/[googleKey]',
+        query: {
+          slug: `${router.query.slug}`,
+          googleKey: `${router.query.googleKey}`,
+          search: `${encodeURI(encodeURIComponent(JSON.stringify(data)))}`,
+          // search: data,
+        },
+      });
+    } else {
+      console.log('line 317');
+      router.push({
+        pathname: `/[slug]/h/[googleKey]`,
+        query: {
+          slug: `${router.query.slug}`,
+          googleKey: `${router.query.googleKey}`,
+          search: `${encodeURI(encodeURIComponent(JSON.stringify(data)))}`,
+        },
+      });
+    }
 
     props.setParams(data);
 
     delete data.selectedFilters;
-    dispatch(getProductList(data));
+    console.log(data, 'data line 343');
+    // dispatch(getProductList(data));
   };
 
   return (

@@ -246,7 +246,7 @@ const MobileSortAndFilter = ({ obj, setParams, setPage, productData }: any) => {
   // let query = Utils.CommonFunctions.useQuery();
   const params: any = useParams();
   const history = useHistory();
-  let isMobileSearched = query.get('isSearched');
+  let isMobileSearched = query.get("isSearched");
 
   const sortingData = Utils.constants.sortingData;
 
@@ -261,8 +261,8 @@ const MobileSortAndFilter = ({ obj, setParams, setPage, productData }: any) => {
 
   const [navbar, setNavbar] = useState(false);
 
-  let keyword = params?.keyword ?? '';
-  let categoryId = params?.id ?? '';
+  let keyword = params?.keyword ?? "";
+  let categoryId = params?.id ?? "";
 
   const [apply, setApply] = useState(
     queryFilters?.customAttributes?.length > 0 ||
@@ -286,12 +286,12 @@ const MobileSortAndFilter = ({ obj, setParams, setPage, productData }: any) => {
   });
 
   const toggleDrawer =
-    (section: 'sort' | 'filter', show: boolean) =>
+    (section: "sort" | "filter", show: boolean) =>
     (event: React.KeyboardEvent | React.MouseEvent) => {
       if (
-        event.type === 'keydown' &&
-        ((event as React.KeyboardEvent).key === 'Tab' ||
-          (event as React.KeyboardEvent).key === 'Shift')
+        event.type === "keydown" &&
+        ((event as React.KeyboardEvent).key === "Tab" ||
+          (event as React.KeyboardEvent).key === "Shift")
       ) {
         return;
       }
@@ -343,8 +343,8 @@ const MobileSortAndFilter = ({ obj, setParams, setPage, productData }: any) => {
   };
 
   useEffect(() => {
-    window.addEventListener('scroll', changeBackground, true);
-    return () => window.removeEventListener('scroll', changeBackground);
+    window.addEventListener("scroll", changeBackground, true);
+    return () => window.removeEventListener("scroll", changeBackground);
   }, []);
 
   const handleOpenFilter = () => {
@@ -409,9 +409,9 @@ const MobileSortAndFilter = ({ obj, setParams, setPage, productData }: any) => {
               {products?.data && products?.data?.length !== 0 && (
                 <>
                   <p className={classes.description}>
-                    <span>Showing</span>{' '}
+                    <span>Showing</span>{" "}
                     {`${products?.data?.length} of ${products?.totalCount} ${
-                      products?.totalCount > 1 ? 'products' : 'product'
+                      products?.totalCount > 1 ? "products" : "product"
                     }`}
                   </p>
                   {navbar ? (
@@ -463,9 +463,9 @@ const MobileSortAndFilter = ({ obj, setParams, setPage, productData }: any) => {
             <Divider className={classes.divider} />
             {products?.data && products?.data?.length !== 0 && (
               <p className={classes.description}>
-                <span>Showing</span>{' '}
+                <span>Showing</span>{" "}
                 {`${products?.data?.length} of ${products?.totalCount} ${
-                  products?.totalCount > 1 ? 'products' : 'product'
+                  products?.totalCount > 1 ? "products" : "product"
                 }`}
               </p>
             )}
