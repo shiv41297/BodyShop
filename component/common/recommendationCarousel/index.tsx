@@ -234,10 +234,10 @@ function RecommendationCarousel(props: Props) {
       if (section !== 'plp') {
         let params: any = { page: 1, limit: 10 };
 
-        dispatch(showSkeleton());
+        // dispatch(showSkeleton());
         dispatch(
           getOthersRecommendations(params, (data: any) => {
-            dispatch(hideSkeleton());
+            // dispatch(hideSkeleton());
             setData(data?.data);
           })
         );

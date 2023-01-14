@@ -542,3 +542,4 @@ export const storeLocator = (payload: {
   clevertap.event.push(Events.EVENT_STORE_LOCATOR, payload);
   firebaseEventLogger(Events.EVENT_STORE_LOCATOR, payload);
 };
+
