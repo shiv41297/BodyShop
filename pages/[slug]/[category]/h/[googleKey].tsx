@@ -4,6 +4,8 @@ import { useSelector } from 'react-redux';
 import { wrapper } from '../../../../store/store';
 import ProductListing from '../../../../component/components/screens/productListing';
 import { getProductList } from '../../../../component/components/screens/productListing/action';
+import request from '../../../../component/utils/request';
+import Utils from '../../../../component/utils';
 
 function ProductListingWrapper() {
   const productData = useSelector((state: any) => state.productReducer?.data);
@@ -40,8 +42,12 @@ export default ProductListingWrapper;
 export const getServerSideProps = wrapper.getServerSideProps((store) =>
   //@ts-ignore-
   async ({ req, res, query, params }) => {
-
+    let resp = await request.post(Utils.endPoints.GUEST_SIGNUP);
+    let authToken: any = "";
+    if (resp) {
+      authToken = resp?.data?.data?.authToken;
     await store.dispatch(getProductList(query,req.cookies.authToken));
     return { props: {} };
+    }
   }
 );

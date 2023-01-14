@@ -5,6 +5,8 @@ import { PageMeta } from '../../../../../component/page-meta/PageMeta';
 import ProductDetail from '../../../../../component/components/screens/productDetail/index';
 import { wrapper } from '../../../../../store/store';
 import { getProductData } from '../../../../../component/components/screens/productDetail/action';
+import request from '../../../../../component/utils/request';
+import Utils from '../../../../../component/utils';
 
 function MainProductDetail() {
   const productData: any = useSelector(
@@ -51,8 +53,13 @@ export default MainProductDetail;
 export const getServerSideProps = wrapper.getServerSideProps((store) =>
   //@ts-ignore-
   async ({ req, res, params }: any) => {
-    await store.dispatch(getProductData(req, params));
+    let resp = await request.post(Utils.endPoints.GUEST_SIGNUP);
+    let authToken: any = "";
+    if (resp) {
+      authToken = resp?.data?.data?.authToken;
+    await store.dispatch(getProductData(req, params, authToken));
 
     return { props: {} };
   }
+}
 );

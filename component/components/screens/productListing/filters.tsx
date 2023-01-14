@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getProductList } from './action';
 import { ReducersModal } from '../../component/models';
 import FilterContent from './filterContent';
+import { getAuthToken } from '../../../utils/session';
 // import Utils from "../../component/utils";
 // import { hideLoader, showLoader } from "../../store/home/action";
 import { useRouter } from 'next/router';
@@ -203,57 +204,59 @@ const Filters: React.FC<any> = (props: Props) => {
 
   const clearAllFilter = () => {
     setSelectedFilters([]);
+    router.push({
+      pathname: '/[slug]/h/[googleKey]',
+      query: {
+        slug: `${router.query.slug}`,
+        googleKey: `${router.query.googleKey}`,
+      },
+    });
 
-    queryFilter = JSON.parse(decodeURIComponent(queryFilter));
-    delete queryFilter?.otherFilters;
-    delete queryFilter?.customAttributes;
+    // queryFilter = JSON.parse(decodeURIComponent(queryFilter));
+    // delete queryFilter?.otherFilters;
+    // delete queryFilter?.customAttributes;
 
-    const data = {
-      ...props.obj,
-      page: 1,
-      authToken: getAuthToken(),
-      query: '',
-      categoryId: categoryId,
-    };
-    console.log(data, 'data');
+    // const data = {
+    //   ...props.obj,
+    //   page: 1,
+    //   authToken: getAuthToken(),
+    //   query: '',
+    //   categoryId: categoryId,
+    // };
 
-    props.setParams(data);
-    // dispatch(showLoader());
-    delete data.selectedFilters;
-    dispatch(
-      getProductList(data, false, () => {
-        dispatch(hideLoader());
-      })
-    );
+    // props.setParams(data);
+    // // dispatch(showLoader());
+    // delete data.selectedFilters;
+    // dispatch(
+    //   getProductList(data, false, () => {
+    //     dispatch(hideLoader());
+    //   })
+    // );
 
-    if (_.isEmpty(queryFilter)) {
-      console.log('line 222');
-      router.push({
-        pathname: '/[slug]/h/[googleKey]',
-        query: {
-          slug: `${router.query.slug}`,
+    // if (_.isEmpty(queryFilter)) {
+    //   console.log('line 222');
+    //   router.push({
+    //     pathname: '/[slug]/h/[googleKey]',
+    //     query: {
+    //       slug: `${router.query.slug}`,
 
-          googleKey: `${router.query.googleKey}`,
-        },
-      });
-    } else {
-      console.log('line 233');
-      router.push({
-        pathname: '/[slug]/h/[googleKey]?',
-        query: {
-          slug: `${router.query.slug}`,
-          search: JSON.stringify(data),
-
-          googleKey: `${router.query.googleKey}`,
-        },
-      });
-      // history.push({
-      //   pathname: history.location.pathname,
-      // search: `?filters=${encodeURI(
-      //   encodeURIComponent(JSON.stringify(data))
-      // )}`,
-      // });
-    }
+    //       googleKey: `${router.query.googleKey}`,
+    //     },
+    //   });
+    // } else {
+    //   console.log('line 233');
+    //   router.push({
+    //     pathname: '/[slug]/h/[googleKey]?',
+    //     query: {
+    //       slug: `${router.query.slug}`,
+    //       search: `?filters=${encodeURI(
+    //         encodeURIComponent(JSON.stringify(data))
+    //       )}`,
+    //       googleKey: `${router.query.googleKey}`,
+    //     },
+    //   });
+    
+    // }
   };
 
   const onCheckboxChange = (e: any, type: string, filter: any, option: any) => {
