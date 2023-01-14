@@ -53,8 +53,12 @@ const Products: React.FC<any> = (props: Props) => {
     useSelector(
       (state: ReducersModal) => state.productReducer?.data?.products
     ) || {};
-  const filters = useSelector(
-    (state: ReducersModal) => state.productFilterReducer?.filters
+  // const filters = useSelector(
+  //   (state: any) => state.productFilterReducer?.filters
+  // );
+
+  const { filters } = useSelector(
+    (state: any) => state.productFilterReducer
   );
 
   // const params: any = useParams();

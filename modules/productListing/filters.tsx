@@ -119,8 +119,12 @@ interface Props {
 
 const Filters: React.FC<any> = (props: Props) => {
   // const history = useHistory();
-  const filters = useSelector(
-    (state: ReducersModal) => state.productFilterReducer?.filters
+  // const filters = useSelector(
+  //   (state: any) => state.productFilterReducer?.filters
+  // );
+
+  const { filters } = useSelector(
+    (state: any) => state.productFilterReducer
   );
 
   const [selectedFilters, setSelectedFilters] = useState<any>([]);
@@ -305,42 +309,44 @@ const Filters: React.FC<any> = (props: Props) => {
     if (!appliedFilter?.customAttributes?.length) {
       delete appliedFilter?.customAttributes;
     }
-    const data = { ...props.obj, ...appliedFilter, page: 1 ,query:"", categoryId: categoryId, authToken: getAuthToken()};
+    const data = { ...props.obj, ...appliedFilter, page: 1 ,query:"", categoryId: categoryId};
 
-    // if (!_.isEmpty(appliedFilter)) {
-    //   console.log("line 308")
-    //   router.push({
-    //     pathname: "/[slug]/h/[googleKey]",
-    //     query: {
-    //       slug: `${router.query.slug}`,
-    //       googleKey: `${router.query.googleKey}`,
-    //       // search: `${encodeURI(
-    //       //   encodeURIComponent(JSON.stringify(data))
-    //       // )}`,
-    //       search: JSON.stringify(data),
-    //     },
-    //   });
-    // }
-    //  else {
-    //   console.log("line 317")
-    //   router.push({
-    //     pathname: `/[slug]/h/[googleKey]`,
-    //     query: {
-    //      slug: `${router.query.slug}`,
-    //      googleKey: `${router.query.googleKey}`,
-    //      search: `${encodeURI(
-    //       encodeURIComponent(JSON.stringify(data))
-    //     )}`,
-    //     },
-    //   });  
-    //   }
+    console.log(data,"data in filters");
+
+    if (!_.isEmpty(appliedFilter)) {
+      console.log("line 308")
+      router.push({
+        pathname: "/[slug]/h/[googleKey]",
+        query: {
+          slug: `${router.query.slug}`,
+          googleKey: `${router.query.googleKey}`,
+          search: `${encodeURI(
+            encodeURIComponent(JSON.stringify(data))
+          )}`,
+          // search: data,
+        },
+      });
+    }
+     else {
+      console.log("line 317")
+      router.push({
+        pathname: `/[slug]/h/[googleKey]`,
+        query: {
+         slug: `${router.query.slug}`,
+         googleKey: `${router.query.googleKey}`,
+         search: `${encodeURI(
+          encodeURIComponent(JSON.stringify(data))
+        )}`,
+        },
+      });  
+      }
    
 
     props.setParams(data);
 
     delete data.selectedFilters;
     console.log(data,"data line 343")
-    dispatch(getProductList(data));
+    // dispatch(getProductList(data));
 
   };
 

@@ -38,6 +38,7 @@ import { customGa4Event } from "../../component/utils/gtag";
 import Head from "next/head";
 import Products from "./listProducts";
 import Filters from "./filters";
+import { useRouter } from "next/router";
 
 declare global {
   interface Window {
@@ -184,6 +185,9 @@ function FilterProducts() {
   // const history = useHistory();
   // const location: any = useLocation();
   // const params: any = useParams();
+  const location = useRouter();
+
+  console.log(location, "location");
   const sortingData = Utils.constants.sortingData;
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
@@ -210,8 +214,12 @@ function FilterProducts() {
   const productData = useSelector(
     (state: ReducersModal) => state.productReducer?.data
   );
-  const filters = useSelector(
-    (state: ReducersModal) => state.productFilterReducer?.filters
+  // const filters = useSelector(
+  //   (state: any) => state.productFilterReducer?.filters
+  // );
+
+  const { filters } = useSelector(
+    (state: any) => state.productFilterReducer
   );
 
   const [page, setPage] = useState(queryFilters?.page ?? 1);
@@ -224,12 +232,7 @@ function FilterProducts() {
   // const fromPath = location?.state?.fromPath || "";
   const fromPath = "";
 
-  // const urlKey = location.pathname.includes("/c/")
-  //   ? location.pathname.split("/c/")?.[0]?.split("/")?.pop()
-  //   : location.pathname.includes("/h/")
-  //   ? location.pathname.split("/h/")?.[0]?.split("/")?.pop()
-  //   : "";
-  const urlKey = "";
+  const urlKey = location.query.slug;
 
   let obj: any = {
     query: keyword,
