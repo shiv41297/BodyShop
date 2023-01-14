@@ -221,7 +221,6 @@ function MiniHeader(props: any) {
     });
   };
 
-  console.log(state, "stateData")
 
   return (
     <div
