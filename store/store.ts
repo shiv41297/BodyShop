@@ -1,15 +1,16 @@
-import { productDetailReducer } from "./../component/components/productDetail/reducer";
-import { productFilterReducer } from "./../modules/productListing/reducer";
-import { createStore, applyMiddleware, combineReducers } from "redux";
-import { HYDRATE, createWrapper } from "next-redux-wrapper";
-import { composeWithDevTools } from "redux-devtools-extension";
-import thunk from "redux-thunk";
-import counter from "./counter/reducer";
-import users from "./user/reducer";
-import aboutReducer from "./about/aboutReducer";
-import { productReducer } from "../modules/productListing/reducer";
-import { configReducer, homeReducer, loadingReducer } from "./home/reducer";
-import { recommendReducer } from "../component/common/recommendationCarousel/reducer";
+import { productDetailReducer } from '../component/components/screens/productDetail/reducer';
+import { productFilterReducer } from '../component/components/screens//productListing/reducer';
+import { createStore, applyMiddleware, combineReducers } from 'redux';
+import { HYDRATE, createWrapper } from 'next-redux-wrapper';
+import { composeWithDevTools } from 'redux-devtools-extension';
+import thunk from 'redux-thunk';
+import counter from './counter/reducer';
+import users from './user/reducer';
+import aboutReducer from './about/aboutReducer';
+import { productReducer } from '../component/components/screens/productListing/reducer';
+import { configReducer, homeReducer, loadingReducer } from './home/reducer';
+import { recommendReducer } from '../component/common/recommendationCarousel/reducer';
+import { shoppingBagReducer } from '../component/common/addToCart/reducer';
 
 const combinedReducer = combineReducers({
   counter,
@@ -21,6 +22,7 @@ const combinedReducer = combineReducers({
   productReducer,
   productFilterReducer,
   // aboutReducer: aboutReducer,
+  shoppingBagReducer: shoppingBagReducer,
   productDetailReducer,
   recommendReducer,
 });
@@ -45,11 +47,6 @@ export const initStore = () => {
   );
 };
 
-
 export const store = initStore();
 
-
-
 export const wrapper = createWrapper(initStore);
-
-

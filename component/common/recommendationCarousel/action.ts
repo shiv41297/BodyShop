@@ -51,7 +51,7 @@ export const getOthersRecommendations = (params: any, callback?: Function) => {
         if (callback) callback(resp?.data?.data);
       })
       .catch((_err) => {
-        dispatch(hideSkeleton());
+        // dispatch(hideSkeleton());
       });
   };
 };

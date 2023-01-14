@@ -293,7 +293,7 @@ const Index = () => {
       <Box sx={{ display: { xs: "block", sm: "none" } }}>
         <HomeMobileView />
       </Box>
-       )} 
+     )} 
     </>
   );
 };
