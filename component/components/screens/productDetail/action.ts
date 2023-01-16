@@ -91,7 +91,7 @@ export const getProductData =
         type: 'getProductData',
         payload: {
           ...product,
-          selectedVariant,
+          selectedVariant: selectedVariant ? selectedVariant : {},
           selectedVariantData: selectedVariantData[0],
         },
       });
