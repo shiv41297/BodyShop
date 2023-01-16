@@ -36,7 +36,12 @@ export const shoppingBagReducer = (state = initialState, action: any) => {
   }
 };
 
-export const addressReducer = (state = new AddressModal(), action: any) => {
+const initialStateAddress = {
+  address: '',
+  checkoutAddressId: null,
+  addressFlag: null,
+};
+export const addressReducer = (state = initialStateAddress, action: any) => {
   switch (action.type) {
     case 'address':
       return { ...state, address: [...action.payload] };

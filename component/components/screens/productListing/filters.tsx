@@ -150,7 +150,6 @@ const Filters: React.FC<any> = (props: Props) => {
 
       filters?.otherFilters?.map((item: any) => {
         return appliedFilter?.otherFilters?.some((value: any) => {
-          // console.log("value appliedFilter", value, "item filters", item);
           if (item._id === value._id) {
             item.options.map((a: any) => {
               if (value.options.some((b: any) => a._id === b._id))
@@ -198,7 +197,6 @@ const Filters: React.FC<any> = (props: Props) => {
   }, [props.obj.query]);
 
   const dispatch = useDispatch();
-  console.log(location, 'router');
 
   const classes = useStyles();
 
@@ -324,10 +322,8 @@ const Filters: React.FC<any> = (props: Props) => {
       categoryId: categoryId,
     };
 
-    console.log(data, 'data in filters');
 
     if (!_.isEmpty(appliedFilter)) {
-      console.log('line 308');
       router.push({
         pathname: '/[slug]/h/[googleKey]',
         query: {
@@ -339,7 +335,6 @@ const Filters: React.FC<any> = (props: Props) => {
         },
       });
     } else {
-      console.log('line 317');
       router.push({
         pathname: `/[slug]/h/[googleKey]`,
         query: {
@@ -355,7 +350,6 @@ const Filters: React.FC<any> = (props: Props) => {
     props.setParams(data);
 
     delete data.selectedFilters;
-    console.log(data, 'data line 343');
     // dispatch(getProductList(data));
   };
 

@@ -2,8 +2,8 @@ const ProductDetailInitialState = {
   product: [],
   linkedProducts: '',
   redirect: '',
-  selectedVariant: '',
-  selectedVariantData: '',
+  selectedVariant: {},
+  selectedVariantData: {},
   productReviews: '',
   rewardData: '',
 };

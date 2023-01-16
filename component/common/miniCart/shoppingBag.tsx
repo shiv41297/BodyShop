@@ -637,7 +637,7 @@ const ShoppingBagModal = (props: Props) => {
         <Typography className={classes.header}>Shopping Bag</Typography>
         <div className={classes.crossBtn} onClick={(e: any) => close(e)}>
           {/* <img src={CROSS} alt="cross" /> */}
-          <Image src={Utils.images.CROSS} alt="cross" width={8} height={8} />
+          <Image src={Utils.images.CROSS} alt="cross" width={15} height={15} />
         </div>
       </div>
       <Divider />

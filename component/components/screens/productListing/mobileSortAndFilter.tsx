@@ -647,7 +647,7 @@ const Filter = ({
 }: any) => {
   const classes = useStyles();
   const { filters } = useSelector(
-    (state: ReducersModal) => state.productFilterReducer
+    (state: any) => state.productFilterReducer
   );
   const [value, setValue] = useState('');
   const dispatch = useDispatch();

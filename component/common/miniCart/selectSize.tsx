@@ -662,7 +662,7 @@ const SelectSize: React.FC<any> = (props: Props) => {
         <Box sx={{ display: { xs: 'block', sm: 'none' } }}>
           <div style={{ flexBasis: '35%' }}>
             <img
-              src={BACK_ARROW}
+              src={Utils.images.BACK_ARROW}
               className={classes.backArrow}
               onClick={(e) => toggleDrawer(false)(e)}
               alt="back"
@@ -678,7 +678,7 @@ const SelectSize: React.FC<any> = (props: Props) => {
             className={classes.cursor}
             onClick={(e) => toggleDrawer(false)(e)}
           >
-            <img src={CROSS} alt="cross" />
+            <img src={Utils.images.CROSS} alt="cross" />
           </div>
         </Box>
       </div>

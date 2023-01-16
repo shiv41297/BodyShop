@@ -10,7 +10,7 @@ import Banner from "./banner";
 import { Box, Skeleton } from "@mui/material";
 import { ReducersModal } from "../../models";
 import { useRouter } from "next/router";
-import { showSkeleton, hideSkeleton } from "../../../store/home/action";
+// import { showSkeleton, hideSkeleton } from "../../../store/home/action";
 import { AllOffersSkeleton } from "../../common/skeletonList/allOffers";
 import Head from "next/head";
 
@@ -21,11 +21,11 @@ function BankOffer(_props: any) {
   useEffect(() => {
     window.scrollTo(0, 0);
 
-    dispatch(showSkeleton());
+    // dispatch(showSkeleton());
     dispatch(
       getOffers((resp: any) => {
         setData(resp || []);
-        dispatch(hideSkeleton());
+        // dispatch(hideSkeleton());
       })
     );
 

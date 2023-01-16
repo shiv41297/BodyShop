@@ -1,80 +1,81 @@
-import { Box, Dialog, Divider, Theme, Typography } from "@mui/material";
-import React from "react";
-import { makeStyles } from "@mui/styles";
+import { Box, Dialog, Divider, Grid, Theme, Typography } from '@mui/material';
+import React from 'react';
+import { makeStyles } from '@mui/styles';
+import CustomButton from '../button';
 
 // import { CROSS } from "utils/constantImages";
 // import CustomButton from "../button";
 
 const useStyles: any = makeStyles((theme: Theme) => ({
   root: {
-    "&:first-child": {
+    '&:first-child': {
       paddingTop: 0,
     },
-    "& .MuiDialog-paperWidthSm": {
+    '& .MuiDialog-paperWidthSm': {
       width: 438,
     },
   },
   mainContainer: {
-    display: "flex",
-    textAlign: "center",
-    justifyContent: "space-between",
-    flexDirection: "column",
+    display: 'flex',
+    textAlign: 'center',
+    justifyContent: 'space-between',
+    flexDirection: 'column',
     padding: theme.spacing(3.5, 2, 2, 2),
   },
   heading: {
-    fontFamily: "Work Sans",
-    fontSize: "26px",
-    lineHeight: "30px",
-    color: "var(--black)",
+    fontFamily: 'Work Sans',
+    fontSize: '26px',
+    lineHeight: '30px',
+    color: 'var(--black)',
   },
   textContent: {
-    alignSelf: "center",
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-    width: "85%",
+    alignSelf: 'center',
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    width: '85%',
   },
   description: {
-    marginTop: "13px",
-    font: "normal 500 18px Work Sans",
-    color: "#333333",
-    lineHeight: "26px",
+    marginTop: '13px',
+    font: 'normal 500 18px Work Sans',
+    color: '#333333',
+    lineHeight: '26px',
   },
   divider: {
-    margin: "35px 0px 8px 0px",
-    color: "#F2F2F2",
+    margin: '35px 0px 8px 0px',
+    color: '#F2F2F2',
   },
   image: {
-    marginBottom: "21px",
-    width: "71px",
-    height: "71px",
-    display: "flex",
-    justifySelf: "center",
-    alignSelf: "center",
+    marginBottom: '21px',
+    width: '71px',
+    height: '71px',
+    display: 'flex',
+    justifySelf: 'center',
+    alignSelf: 'center',
   },
   closeIcon: {
-    float: "right",
-    cursor: "pointer",
-    padding: "20px",
+    float: 'right',
+    cursor: 'pointer',
+    padding: '20px',
   },
   closeIconContainer: {
-    width: "100%",
+    width: '100%',
   },
   mobileHeaderContainer: {
-    display: "flex",
-    alignItems: "center",
-    width: "100%",
-    height: "35px",
+    display: 'flex',
+    alignItems: 'center',
+    width: '100%',
+    height: '35px',
     padding: theme.spacing(3, 1.6),
-    backgroundColor: "var(--medium-creame-color)",
-    position: "sticky",
+    backgroundColor: 'var(--medium-creame-color)',
+    position: 'sticky',
     top: 0,
     zIndex: 9999,
   },
 
   backArrow: {
     width: theme.spacing(2.5),
-    height: "auto",
+    height: 'auto',
   },
 }));
 
@@ -97,12 +98,12 @@ interface Props {
 
 const MessageDialogue = ({
   open = true,
-  // handleClose,
-  // onOk,
-  heading = "",
+  handleClose,
+  onOk,
+  heading = '',
   message,
-  // cancelText,
-  // okText,
+  cancelText,
+  okText,
 
   icon,
   headingClass,
@@ -112,15 +113,15 @@ const MessageDialogue = ({
 Props) => {
   const classes = useStyles();
 
-  // const onSubmit = (_e: any) => {
-  //   onOk();
-  // };
+  const onSubmit = (_e: any) => {
+    onOk();
+  };
 
   return (
     <React.Fragment>
       <Dialog open={open} className={classes.root}>
         {closePopUp && (
-          <Box sx={{ display: { xs: "none", sm: "block" } }}>
+          <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
             <div
               className={classes.closeIconContainer}
               onClick={() => {
@@ -135,7 +136,7 @@ Props) => {
         )}
 
         <div className={classes.mainContainer}>
-          {icon ? <img className={classes.image} src={icon} alt="icons" /> : ""}
+          {icon ? <img className={classes.image} src={icon} alt="icons" /> : ''}
           <div className={classes.textContent}>
             {heading ? (
               <Typography
@@ -145,7 +146,7 @@ Props) => {
                 {heading}
               </Typography>
             ) : null}
-            {typeof message == "string" ? (
+            {typeof message == 'string' ? (
               <Typography variant="h6" className={classes.description}>
                 {message}
               </Typography>
@@ -154,7 +155,7 @@ Props) => {
             )}
           </div>
           <Divider className={classes.divider} />
-          {/* <Grid container spacing={2} style={{ justifyContent: "center" }}>
+          <Grid container spacing={2} style={{ justifyContent: 'center' }}>
             {cancelText && (
               <Grid item xs={6}>
                 <CustomButton
@@ -177,7 +178,7 @@ Props) => {
                 onClick={onSubmit}
               />
             </Grid>
-          </Grid> */}
+          </Grid>
         </div>
       </Dialog>
     </React.Fragment>

@@ -177,8 +177,6 @@ function FilterProducts() {
   // const location: any = useLocation();
   // const params: any = useParams();
   const location = useRouter();
-
-  console.log(location, "location");
   const sortingData = Utils.constants.sortingData;
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
