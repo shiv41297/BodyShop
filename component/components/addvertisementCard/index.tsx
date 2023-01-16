@@ -5,7 +5,8 @@ import { useDispatch, useSelector } from "react-redux";
 // import { useHistory} from "react-router-dom";
 import { ReducersModal } from "../../models";
 import { getAuthToken } from "../../utils/session";
-import { showSkeleton, getHomeData, hideSkeleton } from "../../../store/home/action";
+import { getHomeData } from "../../../store/home/action";
+// import { showSkeleton, getHomeData, hideSkeleton } from "../../../store/home/action";
 
 type AppProps = {
   heading?: string;
@@ -55,9 +56,9 @@ function Addvertisement({ heading }: AppProps) {
     // if (getAuthToken()) {
 
       if (!advertisementData?.title) {
-        dispatch(showSkeleton())
+        // dispatch(showSkeleton())
         dispatch(getHomeData(getAuthToken(),() => {
-          dispatch(hideSkeleton())
+          // dispatch(hideSkeleton())
         }))
       }
     // }
