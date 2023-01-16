@@ -35,7 +35,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   reuseHeading: {
     font: `normal ${theme.typography.fontWeightMedium} ${theme.spacing(
       1.5
-    )}px Work Sans`,
+    )} Work Sans`,
     color: 'var(--secondary-black)',
     display: 'flex',
     alignItems: 'center',
@@ -79,16 +79,16 @@ const useStyles = makeStyles((theme: Theme) => ({
     textTransform: 'none',
     marginTop: '10px',
     borderRadius: '4px',
-    font: `normal ${theme.spacing(1.4)}px Work Sans Medium`,
+    font: `normal ${theme.spacing(1.4)} Work Sans Medium`,
 
     [theme.breakpoints.down('xs')]: {
       '&.MuiButton-label': {
-        font: `normal ${theme.spacing(1.4)}px Work Sans Medium`,
+        font: `normal ${theme.spacing(1.4)} Work Sans Medium`,
       },
     },
   },
   addressCount: {
-    font: `normal 700 ${theme.spacing(1.5)}px Work Sans`,
+    font: `normal 700 ${theme.spacing(1.5)} Work Sans`,
     color: 'var(--secondary-black)',
     display: 'flex',
     alignItems: 'center',
@@ -135,7 +135,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   heading: {
     font: `normal ${theme.typography.fontWeightBold} ${theme.spacing(
       2.4
-    )}px Recoleta Alt`,
+    )} Recoleta Alt`,
     lineHeight: '33px',
     color: 'var(--secondary-black)',
     letterSpacing: '0.02em',

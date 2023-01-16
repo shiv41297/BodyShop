@@ -54,7 +54,7 @@ const useStyles = makeStyles((theme: Theme) =>
       textAlign: "center"
     },
     heading: {
-      font: `${theme.typography.fontWeightBold} ${theme.spacing(4)}px Druk`,
+      font: `${theme.typography.fontWeightBold} ${theme.spacing(4)} Druk`,
       letterSpacing: "0.08em",
       lineHeight: "47px",
       color: '#D6CD56',
@@ -62,7 +62,7 @@ const useStyles = makeStyles((theme: Theme) =>
       padding: theme.spacing(0.3)
     },
     subHeading: {
-      font: `${theme.typography.fontWeightMedium} ${theme.spacing(1.4)}px Roboto`,
+      font: `${theme.typography.fontWeightMedium} ${theme.spacing(1.4)} Roboto`,
       letterSpacing: "0.333333px",
       lineHeight: "24px",
       margin: theme.spacing('2%', '10%', '2%', '10%')

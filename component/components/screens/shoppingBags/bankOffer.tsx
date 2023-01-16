@@ -52,7 +52,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     },
   },
   yourCard: {
-    font: `normal  ${theme.spacing(1.8)}px Work Sans Bold`,
+    font: `normal  ${theme.spacing(1.8)} Work Sans Bold`,
     lineHeight: '21px',
     textTransform: 'uppercase',
     color: 'var(--green-color)',
@@ -62,19 +62,19 @@ const useStyles = makeStyles((theme: Theme) => ({
       fontSize: '15px',
       color: 'black',
       textTransform: 'capitalize',
-      font: `normal ${theme.spacing(1.4)}px Recoleta Alt Bold`,
+      font: `normal ${theme.spacing(1.4)} Recoleta Alt Bold`,
       letterSpacing: '0.06em',
     },
   },
   addNewCard: {
-    font: `normal ${theme.spacing(1.4)}px Work Sans`,
+    font: `normal ${theme.spacing(1.4)} Work Sans`,
     fontWeight: 600,
     lineHeight: '16px',
     textTransform: 'uppercase',
     color: 'var(--black)',
     cursor: 'pointer',
     [theme.breakpoints.down('xs')]: {
-      font: `normal ${theme.spacing(1.2)}px Work Sans SemiBold`,
+      font: `normal ${theme.spacing(1.2)} Work Sans SemiBold`,
     },
   },
   divider: {
@@ -115,7 +115,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     alignItems: 'center',
   },
   offerName: {
-    font: `normal ${theme.spacing(1.4)}px Work Sans`,
+    font: `normal ${theme.spacing(1.4)} Work Sans`,
     fontWeight: 600,
     lineHeight: '16px',
     textTransform: 'uppercase',
@@ -129,23 +129,23 @@ const useStyles = makeStyles((theme: Theme) => ({
     },
   },
   paymentOffer: {
-    font: `normal ${theme.spacing(1.4)}px Work Sans`,
+    font: `normal ${theme.spacing(1.4)} Work Sans`,
     fontWeight: 600,
     lineHeight: '16px',
     textTransform: 'uppercase',
     color: 'var(--white)',
     marginLeft: theme.spacing(1),
     [theme.breakpoints.down('xs')]: {
-      font: `normal ${theme.spacing(1.3)}px Work Sans SemiBold !important`,
+      font: `normal ${theme.spacing(1.3)} Work Sans SemiBold !important`,
     },
   },
   tca: {
-    font: `normal ${theme.spacing(1.3)}px Work Sans`,
+    font: `normal ${theme.spacing(1.3)} Work Sans`,
     lineHeight: '18px',
     color: 'var(--white)',
     textTransform: 'capitalize',
     [theme.breakpoints.down('xs')]: {
-      font: `normal ${theme.spacing(1.2)}px Work Sans Regular`,
+      font: `normal ${theme.spacing(1.2)} Work Sans Regular`,
       lineHeight: '19px',
       color: 'var(--light-gray)',
     },
@@ -154,19 +154,19 @@ const useStyles = makeStyles((theme: Theme) => ({
     textTransform: 'uppercase',
     textDecoration: 'underline',
     cursor: 'pointer',
-    font: `normal ${theme.spacing(1.4)}px Work Sans SemiBold`,
+    font: `normal ${theme.spacing(1.4)} Work Sans SemiBold`,
     lineHeight: '18px',
     color: 'var(--white)',
     [theme.breakpoints.down('xs')]: {
       font: `normal ${theme.typography.fontWeightMedium} ${theme.spacing(
         1.3
-      )}px Work Sans`,
+      )} Work Sans`,
       lineHeight: '19px',
     },
   },
 
   offerDesc: {
-    font: `normal ${theme.spacing(1.3)}px Work Sans`,
+    font: `normal ${theme.spacing(1.3)} Work Sans`,
     color: 'var(--white)',
     lineHeight: '18px',
     padding: theme.spacing(1, 0, 0.5, 0),
@@ -174,11 +174,11 @@ const useStyles = makeStyles((theme: Theme) => ({
       color: 'var(--black)',
       padding: '10px 0px',
       textTransform: 'capitalize',
-      font: `normal ${theme.spacing(1.0)}px Work Sans Regular`,
+      font: `normal ${theme.spacing(1.0)} Work Sans Regular`,
     },
   },
   date: {
-    font: `normal ${theme.spacing(1.2)}px Work Sans`,
+    font: `normal ${theme.spacing(1.2)} Work Sans`,
     color: 'var(--white)',
     lineHeight: '18px',
     padding: theme.spacing(1, 0, 0.5, 0),
@@ -186,7 +186,7 @@ const useStyles = makeStyles((theme: Theme) => ({
       // color: "var(--light-gray)",
       padding: '10px 0px',
       textTransform: 'capitalize',
-      font: `normal ${theme.spacing(1.0)}px Work Sans Regular`,
+      font: `normal ${theme.spacing(1.0)} Work Sans Regular`,
     },
   },
   bankSecondDiv: {

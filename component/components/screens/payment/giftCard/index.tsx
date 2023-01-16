@@ -32,17 +32,17 @@ const useStyles = makeStyles((theme: Theme) => ({
   yourCard: {
     font: `normal ${theme.typography.fontWeightBold} ${theme.spacing(
       1.8
-    )}px Work Sans`,
+    )} Work Sans`,
     lineHeight: '21px',
     textTransform: 'uppercase',
     color: 'var(--green-color)',
     marginLeft: theme.spacing(1),
     [theme.breakpoints.down('xs')]: {
-      font: `normal ${theme.spacing(1.4)}px Work Sans Bold !important`,
+      font: `normal ${theme.spacing(1.4)} Work Sans Bold !important`,
     },
   },
   addNewCard: {
-    font: `normal ${theme.spacing(1.4)}px Work Sans`,
+    font: `normal ${theme.spacing(1.4)} Work Sans`,
     fontWeight: 600,
     lineHeight: '16px',
     textTransform: 'uppercase',

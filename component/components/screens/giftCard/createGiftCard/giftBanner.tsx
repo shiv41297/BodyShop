@@ -44,12 +44,12 @@ const useStyles = makeStyles((theme: Theme) =>
       }
     },
     heading: {
-      font: `${theme.typography.fontWeightBold} ${theme.spacing(4)}px Druk`,
+      font: `${theme.typography.fontWeightBold} ${theme.spacing(4)} Druk`,
       letterSpacing: "0.08em",
       lineHeight: "47px",
       color: "#D6CD56",
       [theme.breakpoints.down("xs")]:{
-        font: `${theme.spacing(2.8)}px Druk Bold`,
+        font: `${theme.spacing(2.8)} Druk Bold`,
         textTransform: "uppercase",
         letterSpacing: "0.10em"
       }
@@ -57,7 +57,7 @@ const useStyles = makeStyles((theme: Theme) =>
     subHeading: {
       font: `${theme.typography.fontWeightMedium} ${theme.spacing(
         1.4
-      )}px Roboto`,
+      )} Roboto`,
       letterSpacing: "0.333333px",
       lineHeight: "24px",
       margin: theme.spacing(2),
@@ -68,7 +68,7 @@ const useStyles = makeStyles((theme: Theme) =>
         margin: theme.spacing(1,0),
         font: ` ${theme.spacing(
           1.4
-        )}px Work Sans Regular`,
+        )} Work Sans Regular`,
         lineHeight: "22.4px",
         letterSpacing: "0.02em",
       },

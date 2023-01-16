@@ -286,7 +286,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
   rewardPointContainer: {
     padding: '0px 0px 30px 21px',
-    font: `normal 500 ${theme.spacing(1.3)}px Work Sans`,
+    font: `normal 500 ${theme.spacing(1.3)} Work Sans`,
     [theme.breakpoints.down('xs')]: {
       padding: '0px 0px 20px 15px',
     },
@@ -295,13 +295,13 @@ const useStyles = makeStyles((theme: Theme) => ({
     color: '#3D857E',
   },
   productOutOfStock: {
-    font: `normal 600 ${theme.spacing(1.4)}px Work Sans`,
+    font: `normal 600 ${theme.spacing(1.4)} Work Sans`,
     color: 'var(--delet-color)',
     margin: '6px 0px 0px 0px',
     lineHeight: 1.5,
   },
   productOutOfStockDescription: {
-    font: `normal 600 ${theme.spacing(1.4)}px Work Sans`,
+    font: `normal 600 ${theme.spacing(1.4)} Work Sans`,
     color: 'var(--light-gray)',
     margin: '0px 0px 4px 0px',
     lineHeight: 1.5,
@@ -360,7 +360,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     },
   },
   messageHeading: {
-    font: `normal 700 ${theme.spacing(2.0)}px Work Sans`,
+    font: `normal 700 ${theme.spacing(2.0)} Work Sans`,
     color: 'var(--black300)',
     lineHeight: '28px',
     marginBottom: '9px',
@@ -406,7 +406,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     },
   },
   autoDiscount: {
-    font: `normal 600 ${theme.spacing(1.4)}px Work Sans`,
+    font: `normal 600 ${theme.spacing(1.4)} Work Sans`,
     color: '#32B97C',
     margin: '6px 0px 0px 0px',
     lineHeight: 1.5,

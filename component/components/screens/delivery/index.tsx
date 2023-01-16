@@ -59,7 +59,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     // width: '100%'
   },
   textBrand: {
-    font: `normal 700 ${theme.spacing(1.6)}px Work Sans`,
+    font: `normal 700 ${theme.spacing(1.6)} Work Sans`,
     color: 'var(--secondary-black)',
     lineHeight: '18px',
     [theme.breakpoints.down('xs')]: {
@@ -89,11 +89,11 @@ const useStyles = makeStyles((theme: Theme) => ({
     alignItems: 'center',
   },
   heading: {
-    font: `normal 600 ${theme.spacing(1.5)}px Work Sans`,
+    font: `normal 600 ${theme.spacing(1.5)} Work Sans`,
     color: '#333333',
     padding: '20px 0px 0px 0px',
     [theme.breakpoints.down('xs')]: {
-      font: `normal ${theme.spacing(1.5)}px Work Sans SemiBold`,
+      font: `normal ${theme.spacing(1.5)} Work Sans SemiBold`,
     },
   },
   freeDelivery: {
@@ -127,7 +127,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     },
   },
   freeDeliveryText: {
-    font: `normal ${theme.spacing(2.4)}px Recoleta Alt Medium`,
+    font: `normal ${theme.spacing(2.4)} Recoleta Alt Medium`,
     lineHeight: '28px',
     letterSpacing: '1.5px',
     color: '#FFFFFF',
@@ -140,7 +140,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
   paymentDeliveryText: {
     color: '#004236',
-    font: `normal 700 ${theme.spacing(2.4)}px Druk`,
+    font: `normal 700 ${theme.spacing(2.4)} Druk`,
     lineHeight: '28px',
     letterSpacing: '0.08em',
     marginLeft: '20px',
@@ -152,10 +152,10 @@ const useStyles = makeStyles((theme: Theme) => ({
     },
   },
   deliveryCost: {
-    font: `normal 600 ${theme.spacing(1.6)}px Work Sans`,
+    font: `normal 600 ${theme.spacing(1.6)} Work Sans`,
     color: 'var(--secondary-black)',
     [theme.breakpoints.down('xs')]: {
-      font: `normal 600 ${theme.spacing(1.5)}px Work Sans Bold`,
+      font: `normal 600 ${theme.spacing(1.5)} Work Sans Bold`,
     },
     lineHeight: 1.5,
   },
@@ -171,7 +171,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   reuseHeading: {
     font: `normal ${theme.typography.fontWeightMedium} ${theme.spacing(
       1.5
-    )}px Work Sans`,
+    )} Work Sans`,
     color: 'var(--secondary-black)',
     display: 'flex',
     alignItems: 'center',
@@ -179,7 +179,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   view: {
     font: `normal ${theme.typography.fontWeightBold} ${theme.spacing(
       1.4
-    )}px Work Sans`,
+    )} Work Sans`,
     color: 'var(--main-opacity)',
   },
   outerBox: {
@@ -190,7 +190,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     },
   },
   deliveryTimeText: {
-    font: `normal 500 ${theme.spacing(1.2)}px Work Sans`,
+    font: `normal 500 ${theme.spacing(1.2)} Work Sans`,
     lineHeight: '14px',
     color: '#333333',
     letterSpacing: '0em',
@@ -217,11 +217,11 @@ const useStyles = makeStyles((theme: Theme) => ({
     },
   },
   deliveryHeading: {
-    font: `normal 600 ${theme.spacing(1.6)}px Work Sans`,
+    font: `normal 600 ${theme.spacing(1.6)} Work Sans`,
     lineHeight: '19px',
     color: 'var(--black300)',
     [theme.breakpoints.down('xs')]: {
-      font: `normal ${theme.spacing(1.6)}px Work Sans SemiBold`,
+      font: `normal ${theme.spacing(1.6)} Work Sans SemiBold`,
     },
   },
   popoverContainer: {

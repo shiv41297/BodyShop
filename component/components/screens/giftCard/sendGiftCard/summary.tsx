@@ -24,7 +24,7 @@ const useStyles = makeStyles((theme: Theme) =>
     heading: {
       font: `normal ${theme.typography.fontWeightBold} ${theme.spacing(
         1.8
-      )}px Recoleta Alt`,
+      )} Recoleta Alt`,
       lineHeight: "24px",
       color: "var(--secondary-black)",
       letterSpacing: "0.08em",
@@ -33,14 +33,14 @@ const useStyles = makeStyles((theme: Theme) =>
       margin: theme.spacing(2, 0),
     },
     title: {
-      font: `normal ${theme.spacing(1.6)}px Work Sans`,
+      font: `normal ${theme.spacing(1.6)} Work Sans`,
       fontWeight: 500,
       lineHeight: "19px",
       color: "var(--secondary-black)",
       margin: theme.spacing(0.8, 0),
     },
     subTitle: {
-      font: `normal ${theme.spacing(1.5)}px Work Sans`,
+      font: `normal ${theme.spacing(1.5)} Work Sans`,
       fontWeight: 600,
       lineHeight: "18px",
       color: "var(--secondary-black)",
@@ -50,7 +50,7 @@ const useStyles = makeStyles((theme: Theme) =>
       margin: theme.spacing(1.5, 0),
     },
     subMessage: {
-      font: `normal ${theme.spacing(1.5)}px Work Sans`,
+      font: `normal ${theme.spacing(1.5)} Work Sans`,
       fontWeight: "normal",
       lineHeight: "18px",
       color: "var(--secondary-black)",
@@ -62,7 +62,7 @@ const useStyles = makeStyles((theme: Theme) =>
     },
 
     fundName: {
-      font: `normal ${theme.spacing(1.4)}px Work Sans`,
+      font: `normal ${theme.spacing(1.4)} Work Sans`,
       fontWeight: "normal",
       lineHeight: "16px",
       color: "var(--light-gray)",
@@ -98,11 +98,11 @@ const useStyles = makeStyles((theme: Theme) =>
       marginRight: theme.spacing(1),
     },
     subText: {
-      font: `normal 700 ${theme.spacing(1.4)}px Work Sans`,
+      font: `normal 700 ${theme.spacing(1.4)} Work Sans`,
       color: "var(--black)",
     },
     selectedTitle: {
-      font: `normal 700 ${theme.spacing(1.2)}px Work Sans`,
+      font: `normal 700 ${theme.spacing(1.2)} Work Sans`,
       color: "var(--main-opacity)",
       margin: theme.spacing(0.4, 0),
     },

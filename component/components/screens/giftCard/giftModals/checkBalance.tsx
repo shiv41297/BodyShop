@@ -55,7 +55,7 @@ const useStyles = makeStyles((theme) => ({
   heading: {
     font: `normal ${theme.typography.fontWeightBold} ${theme.spacing(
       2.4
-    )}px Work Sans`,
+    )} Work Sans`,
     lineHeight: "28.8px",
     marginBottom: "20px",
   },
@@ -71,7 +71,7 @@ const useStyles = makeStyles((theme) => ({
   inputLabel: {
     font: `normal ${theme.typography.fontWeightRegular} ${theme.spacing(
       1.4
-    )}px Work Sans`,
+    )} Work Sans`,
     lineHeight: "16.42px",
     color: "#333333",
     marginBottom: "8px",
@@ -113,7 +113,7 @@ const useStyles = makeStyles((theme) => ({
     //   textTransform: "uppercase"
     // },
     "&::-webkit-input-placeholder": {
-      font: `normal  ${theme.spacing(1.5)}px Work Sans`,
+      font: `normal  ${theme.spacing(1.5)} Work Sans`,
       color: "var(--light-gray-text)",
       fontWeight: 500,
       // textTransform:"none !important"
@@ -129,11 +129,11 @@ const useStyles = makeStyles((theme) => ({
     lineHeight: "19px",
     font: `normal ${theme.typography.fontWeightRegular} ${theme.spacing(
       1.5
-    )}px Work Sans`,
+    )} Work Sans`,
     letterSpacing: "0.02em",
     color: "#0D0D0D",
     "&::-webkit-input-placeholder": {
-      font: `normal  ${theme.spacing(1.5)}px Work Sans`,
+      font: `normal  ${theme.spacing(1.5)} Work Sans`,
       color: "var(--light-gray-text)",
       fontWeight: 500,
       textTransform:"none !important"
@@ -147,7 +147,7 @@ const useStyles = makeStyles((theme) => ({
     color: "red",
     font: `normal ${theme.typography.fontWeightRegular} ${theme.spacing(
       1.2
-    )}px Work Sans`,
+    )} Work Sans`,
     marginTop: "-6px",
   },
   noMargin: {
@@ -155,7 +155,7 @@ const useStyles = makeStyles((theme) => ({
   },
   link: {
     color: "#044236",
-    font: `normal 600 ${theme.spacing(1.4)}px Work Sans`,
+    font: `normal 600 ${theme.spacing(1.4)} Work Sans`,
     lineHeight: "16px",
     cursor: "pointer",
   },

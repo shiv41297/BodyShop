@@ -41,14 +41,14 @@ const useStyles = makeStyles((theme: Theme) => ({
   heading: {
     font: `normal ${theme.typography.fontWeightMedium} ${theme.spacing(
       2.6
-    )}px Work Sans`,
+    )} Work Sans`,
     lineHeight: '30px',
     color: 'var(--black)',
   },
   subheading: {
     font: `normal ${theme.typography.fontWeightMedium} ${theme.spacing(
       1.4
-    )}px Work Sans`,
+    )} Work Sans`,
     lineHeight: '16px',
     color: 'var(--black)',
     width: theme.spacing(30),
@@ -58,7 +58,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   title: {
     font: `normal ${theme.typography.fontWeightBold} ${theme.spacing(
       1.6
-    )}px Work Sans`,
+    )} Work Sans`,
     lineHeight: '26px',
     margin: theme.spacing(1, 0),
   },

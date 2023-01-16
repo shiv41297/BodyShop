@@ -50,7 +50,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   reuseHeading: {
     font: `normal ${theme.typography.fontWeightMedium} ${theme.spacing(
       1.5
-    )}px Work Sans`,
+    )} Work Sans`,
     color: 'var(--secondary-black)',
     display: 'flex',
     alignItems: 'center',
@@ -76,11 +76,11 @@ const useStyles = makeStyles((theme: Theme) => ({
     borderRadius: '4px',
     [theme.breakpoints.down('xs')]: {
       width: '100%',
-      font: `normal ${theme.spacing(1.4)}px Work Sans Medium`,
+      font: `normal ${theme.spacing(1.4)} Work Sans Medium`,
     },
   },
   addressCount: {
-    font: `normal ${theme.spacing(1.6)}px Recoleta Alt Bold`,
+    font: `normal ${theme.spacing(1.6)} Recoleta Alt Bold`,
     color: '#333333',
     display: 'flex',
     alignItems: 'center',
@@ -104,7 +104,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     textTransform: 'none',
     padding: '18px',
     [theme.breakpoints.down('xs')]: {
-      font: `normal ${theme.spacing(1.3)}px Work Sans Medium`,
+      font: `normal ${theme.spacing(1.3)} Work Sans Medium`,
     },
   },
   radioButton: {
@@ -124,7 +124,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     color: '#333333',
     textTransform: 'capitalize',
     [theme.breakpoints.down('xs')]: {
-      font: `normal ${theme.spacing(1.6)}px Work Sans Medium`,
+      font: `normal ${theme.spacing(1.6)} Work Sans Medium`,
     },
   },
   description: {
@@ -134,13 +134,13 @@ const useStyles = makeStyles((theme: Theme) => ({
     color: '#666666',
     marginTop: '3px',
     [theme.breakpoints.down('xs')]: {
-      font: `normal ${theme.spacing(1.3)}px Work Sans Regular`,
+      font: `normal ${theme.spacing(1.3)} Work Sans Regular`,
     },
   },
   heading: {
     font: `normal ${theme.typography.fontWeightBold} ${theme.spacing(
       2.4
-    )}px Recoleta Alt`,
+    )} Recoleta Alt`,
     lineHeight: '33px',
     color: 'var(--secondary-black)',
     letterSpacing: '0.02em',

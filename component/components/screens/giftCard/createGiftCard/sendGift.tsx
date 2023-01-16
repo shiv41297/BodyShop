@@ -27,12 +27,12 @@ const useStyles = makeStyles((theme: Theme) =>
     heading: {
       font: `normal ${theme.typography.fontWeightBold} ${theme.spacing(
         2.4
-      )}px Recoleta Alt`,
+      )} Recoleta Alt`,
       lineHeight: "33px",
       letterSpacing: "0.02em",
       color: "var(--secondary-black)",
       [theme.breakpoints.down("xs")]: {
-        font: `normal ${theme.spacing(1.6)}px Recoleta Alt Bold`,
+        font: `normal ${theme.spacing(1.6)} Recoleta Alt Bold`,
       },
     },
     description: {
@@ -43,7 +43,7 @@ const useStyles = makeStyles((theme: Theme) =>
       lineHeight: "25.6px",
       margin: theme.spacing(1, 0),
       [theme.breakpoints.down("xs")]: {
-        font: `normal ${theme.spacing(1.4)}px Work Sans Regular`,
+        font: `normal ${theme.spacing(1.4)} Work Sans Regular`,
         lineHeight: "22px",
       },
     },
@@ -55,7 +55,7 @@ const useStyles = makeStyles((theme: Theme) =>
       lineHeight: "25.6px",
       margin: theme.spacing(1),
       [theme.breakpoints.down("xs")]: {
-        font: `normal ${theme.spacing(1.4)}px Work Sans Regular`,
+        font: `normal ${theme.spacing(1.4)} Work Sans Regular`,
         lineHeight: "22px",
         margin: theme.spacing(0),
       },
@@ -64,7 +64,7 @@ const useStyles = makeStyles((theme: Theme) =>
       borderRadius: 4,
       font: `normal ${theme.typography.fontWeightBold} ${theme.spacing(
         1.4
-      )}px Work Sans`,
+      )} Work Sans`,
       textTransform: "capitalize",
       padding: theme.spacing(1, 2),
       letterSpacing: 0.6,
@@ -97,7 +97,7 @@ const useStyles = makeStyles((theme: Theme) =>
       backgroundSize: "cover",
     },
     searchHeading: {
-      font: `normal ${theme.spacing(2.4)}px Druk Bold`,
+      font: `normal ${theme.spacing(2.4)} Druk Bold`,
       color: "#D6CD56",
       lineHeight: "27.96px",
       textTransform: "uppercase",
@@ -112,7 +112,7 @@ const useStyles = makeStyles((theme: Theme) =>
       borderradius: "4px",
       color: "white",
       padding: "20px !important",
-      font: `normal 600 ${theme.spacing(1.6)}px Work Sans !important`,
+      font: `normal 600 ${theme.spacing(1.6)} Work Sans !important`,
       lineHeight: "18px",
       textTransform: "none",
       "&:hover": {
@@ -127,7 +127,7 @@ const useStyles = makeStyles((theme: Theme) =>
       backgroundColor: "var(--white)",
       font: `normal ${theme.typography.fontWeightRegular} ${theme.spacing(
         1.4
-      )}px Work Sans`,
+      )} Work Sans`,
       height: "44px",
       width: "350px",
       margin: 0,
@@ -172,12 +172,12 @@ const useStyles = makeStyles((theme: Theme) =>
       margin: theme.spacing(5, 0),
     },
     modalTitle: {
-      font: `normal ${theme.spacing(2.6)}px Work Sans SemiBold`,
+      font: `normal ${theme.spacing(2.6)} Work Sans SemiBold`,
       lineHeight: "30px",
       color: "var(--black300)",
     },
     modalPara: {
-      font: `normal ${theme.spacing(1.6)}px Work Sans Medium`,
+      font: `normal ${theme.spacing(1.6)} Work Sans Medium`,
       lineHeight: "19px",
       color: "var(--black300)",
       margin: theme.spacing(1.2, 0),
@@ -205,7 +205,7 @@ const useStyles = makeStyles((theme: Theme) =>
     optionTitle: {
       font: `normal ${theme.typography.fontWeightBold} ${theme.spacing(
         1.6
-      )}px Work Sans`,
+      )} Work Sans`,
       lineHeight: "19px",
       color: "var(--secondary-black)",
       margin: theme.spacing(0, 1),
@@ -214,7 +214,7 @@ const useStyles = makeStyles((theme: Theme) =>
       },
     },
     optionTask: {
-      font: `normal  ${theme.spacing(1.4)}px Work Sans`,
+      font: `normal  ${theme.spacing(1.4)} Work Sans`,
       fontWeight: "normal",
       lineHeight: "24px",
       letterSpacing: "-0.333333px",
@@ -226,7 +226,7 @@ const useStyles = makeStyles((theme: Theme) =>
       margin: theme.spacing(0, 1),
     },
     modalPara2: {
-      font: `normal ${theme.spacing(1.3)}px Work Sans Regular`,
+      font: `normal ${theme.spacing(1.3)} Work Sans Regular`,
       lineHeight: "22px",
       color: "var(--grey-color)",
       margin: theme.spacing(0, 1),

@@ -17,7 +17,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   text: {
     font: `normal ${theme.typography.fontWeightBold} ${theme.spacing(
       1.6
-    )}px Work Sans`,
+    )} Work Sans`,
     color: 'var(--black300)',
     lineHeight: '23px',
     letterSpacing: '0.08em',
@@ -27,14 +27,14 @@ const useStyles = makeStyles((theme: Theme) => ({
   option: {
     font: `normal ${theme.typography.fontWeightRegular} ${theme.spacing(
       1.6
-    )}px Work Sans`,
+    )} Work Sans`,
     color: 'var(--secondary-black)',
     lineHeight: '23px',
     letterSpacing: '0.08em',
     marginLeft: theme.spacing(1),
     cursor: 'pointer',
     [theme.breakpoints.down('xs')]: {
-      font: `normal ${theme.spacing(1.4)}px Work Sans SemiBold`,
+      font: `normal ${theme.spacing(1.4)} Work Sans SemiBold`,
     },
   },
   outerDiv: {
@@ -122,11 +122,11 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
   label: {
     paddingBottom: '16px',
-    font: `normal 600 ${theme.spacing(1.6)}px Work Sans`,
+    font: `normal 600 ${theme.spacing(1.6)} Work Sans`,
     color: 'var(--secondary-black)',
     lineHeight: '18px',
     [theme.breakpoints.down('xs')]: {
-      font: `normal ${theme.spacing(1.2)}px Work Sans Medium`,
+      font: `normal ${theme.spacing(1.2)} Work Sans Medium`,
       letterSpacing: '0.06em',
     },
   },

@@ -86,7 +86,7 @@ const useStyles = makeStyles((theme: Theme) =>
       borderRadius: 4,
       font: `normal ${theme.typography.fontWeightBold} ${theme.spacing(
         1.4
-      )}px Work Sans`,
+      )} Work Sans`,
       textTransform: "capitalize",
       padding: theme.spacing(1, 2),
       letterSpacing: 0.6,
@@ -94,7 +94,7 @@ const useStyles = makeStyles((theme: Theme) =>
       [theme.breakpoints.down("sm")]: {
         margin: 0,
         width: "100%",
-        font: `normal ${theme.spacing(1.4)}px Work Sans Medium`,
+        font: `normal ${theme.spacing(1.4)} Work Sans Medium`,
       },
     },
     img: {
@@ -127,7 +127,7 @@ const useStyles = makeStyles((theme: Theme) =>
       flexDirection: "column",
     },
     messageHeading: {
-      font: `normal 700 ${theme.spacing(2.0)}px Work Sans`,
+      font: `normal 700 ${theme.spacing(2.0)} Work Sans`,
       color: "var(--black300)",
       lineHeight: "28px",
       marginBottom: "9px",

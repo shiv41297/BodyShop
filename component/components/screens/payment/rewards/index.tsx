@@ -28,22 +28,22 @@ const useStyles = makeStyles((theme: Theme) => ({
   walletBalance: {
     font: `normal ${theme.typography.fontWeightBold} ${theme.spacing(
       1.8
-    )}px Work Sans`,
+    )} Work Sans`,
     color: theme.palette.primary.main,
     textTransform: 'uppercase',
     [theme.breakpoints.down('xs')]: {
-      font: `normal ${theme.spacing(1.2)}px Work Sans SemiBold`,
+      font: `normal ${theme.spacing(1.2)} Work Sans SemiBold`,
       letterSpacing: '0.06em',
     },
   },
   availableBalance: {
     font: `normal ${theme.typography.fontWeightMedium} ${theme.spacing(
       1.5
-    )}px Work Sans`,
+    )} Work Sans`,
     color: theme.palette.primary.main,
     lineHeight: '24px',
     [theme.breakpoints.down('xs')]: {
-      font: `normal ${theme.spacing(1.1)}px Work Sans Medium`,
+      font: `normal ${theme.spacing(1.1)} Work Sans Medium`,
       letterSpacing: '0.02em',
     },
   },

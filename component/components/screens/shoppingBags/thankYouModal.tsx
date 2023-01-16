@@ -71,7 +71,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     },
   },
   description: {
-    font: `normal 500 ${theme.spacing(1.4)}px Work Sans`,
+    font: `normal 500 ${theme.spacing(1.4)} Work Sans`,
     lineHeight: '24px',
     color: '#333333',
     textAlign: 'center',
@@ -79,18 +79,18 @@ const useStyles = makeStyles((theme: Theme) => ({
     marginBottom: '15px',
     padding: theme.spacing(0, 4),
     [theme.breakpoints.down('sm')]: {
-      font: `normal ${theme.spacing(1.2)}px Work Sans Medium`,
+      font: `normal ${theme.spacing(1.2)} Work Sans Medium`,
     },
   },
   title: {
-    font: `normal 600 ${theme.spacing(1.8)}px Work Sans`,
+    font: `normal 600 ${theme.spacing(1.8)} Work Sans`,
     lineHeight: '24px',
     color: '#333333',
     textAlign: 'center',
     marginTop: '15px',
     padding: theme.spacing(0, 4),
     [theme.breakpoints.down('sm')]: {
-      font: `normal 600 ${theme.spacing(1.6)}px Work Sans Bold`,
+      font: `normal 600 ${theme.spacing(1.6)} Work Sans Bold`,
     },
   },
   closeIcon: {
@@ -117,7 +117,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
   btn: {
     borderRadius: '4px',
-    font: `normal 500 ${theme.spacing(1.6)}px Work Sans !important`,
+    font: `normal 500 ${theme.spacing(1.6)} Work Sans !important`,
     lineHeight: '18.77px',
     color: '#FFFFFF',
     width: '70%',
@@ -150,7 +150,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   heading: {
     font: `normal ${theme.typography.fontWeightBold} ${theme.spacing(
       2.4
-    )}px Recoleta Alt`,
+    )} Recoleta Alt`,
     lineHeight: '33px',
     color: 'var(--secondary-black)',
     letterSpacing: '0.02em',
@@ -190,7 +190,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     height: '14px',
   },
   formLabel: {
-    font: `normal 700 ${theme.spacing(1.8)}px Recoleta Alt`,
+    font: `normal 700 ${theme.spacing(1.8)} Recoleta Alt`,
     lineHeight: '24px',
     color: 'var(--secondary-black)',
     letterSpacing: '0.02em',
@@ -201,11 +201,11 @@ const useStyles = makeStyles((theme: Theme) => ({
     marginBottom: '20px',
   },
   textInfo: {
-    font: `normal 500 ${theme.spacing(1.6)}px Work Sans`,
+    font: `normal 500 ${theme.spacing(1.6)} Work Sans`,
     lineHeight: '21px',
     color: '#666666',
     [theme.breakpoints.down('xs')]: {
-      font: `normal ${theme.spacing(1.2)}px Work Sans Medium`,
+      font: `normal ${theme.spacing(1.2)} Work Sans Medium`,
     },
   },
   outBox: {
@@ -229,7 +229,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   optionsName: {
     font: `normal ${theme.typography.fontWeightBold} ${theme.spacing(
       1.6
-    )}px Work Sans`,
+    )} Work Sans`,
     lineHeight: '19px',
     color: 'var(--black300)',
     margin: theme.spacing(0, 1),
@@ -268,12 +268,12 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
   ratingsHeading: {
     paddingBottom: '8px',
-    font: `normal 700 ${theme.spacing(2.0)}px Recoleta Alt Bold`,
+    font: `normal 700 ${theme.spacing(2.0)} Recoleta Alt Bold`,
     lineHeight: '27.2px',
     color: '#333333',
     letterSpacing: '0.02em',
     [theme.breakpoints.down('xs')]: {
-      font: `normal ${theme.spacing(1.6)}px Recoleta Alt Bold`,
+      font: `normal ${theme.spacing(1.6)} Recoleta Alt Bold`,
     },
   },
   imageContainer: {

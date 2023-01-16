@@ -31,7 +31,7 @@ const useStyles = makeStyles((theme: Theme) =>
     heading: {
       font: `normal ${theme.typography.fontWeightBold} ${theme.spacing(
         2.4
-      )}px Recoleta Alt`,
+      )} Recoleta Alt`,
       lineHeight: "33px",
       color: "var(--secondary-black)",
       letterSpacing: "0.02em",
@@ -79,7 +79,7 @@ const useStyles = makeStyles((theme: Theme) =>
     detailsName: {
       font: `normal ${theme.typography.fontWeightBold} ${theme.spacing(
         1.8
-      )}px Work Sans`,
+      )} Work Sans`,
       lineHeight: "21px",
       color: "var(--secondary-black)",
       margin: theme.spacing(1, 0, 0.5, 0),
@@ -90,7 +90,7 @@ const useStyles = makeStyles((theme: Theme) =>
     seconddetailsName: {
       font: `normal ${theme.typography.fontWeightBold} ${theme.spacing(
         1.8
-      )}px Work Sans`,
+      )} Work Sans`,
       lineHeight: "21px",
       color: "var(--secondary-black)",
       margin: theme.spacing(3, 0, 0, 0),
@@ -118,7 +118,7 @@ const useStyles = makeStyles((theme: Theme) =>
       backgroundColor: "white",
       font: `normal ${theme.typography.fontWeightRegular} ${theme.spacing(
         1.4
-      )}px Work Sans`,
+      )} Work Sans`,
     },
     root: {
       margin: theme.spacing(2.5, 0),

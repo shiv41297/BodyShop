@@ -8,7 +8,7 @@ const styles = makeStyles((theme: Theme) => ({
     color: 'rgba(99, 118, 150, 0.5)',
     marginBottom: '0',
     [theme.breakpoints.down('xs')]: {
-      font: `normal  ${theme.spacing(1.3)}px Work Sans Medium !important`,
+      font: `normal  ${theme.spacing(1.3)} Work Sans Medium !important`,
     },
   },
   cardLabel: {

@@ -44,14 +44,14 @@ const useStyles = makeStyles((theme) => ({
         }
     },
     // heading: {
-    //     font: `normal ${theme.typography.fontWeightBold} ${theme.spacing(2.6)}px Work Sans`,
+    //     font: `normal ${theme.typography.fontWeightBold} ${theme.spacing(2.6)} Work Sans`,
     //     lineHeight: "30px",
     //     textAlign: 'center',
     //     marginTop: '33px',
 
     // },
     description: {
-        font: `normal 500 ${theme.spacing(1.6)}px Work Sans`,
+        font: `normal 500 ${theme.spacing(1.6)} Work Sans`,
         lineHeight: "24px",
         color: '#333333',
         textAlign: 'center',
@@ -70,7 +70,7 @@ const useStyles = makeStyles((theme) => ({
     },
     btn: {
         borderRadius:"4px",
-        font: `normal 500 ${theme.spacing(1.4)}px Work Sans !important`,
+        font: `normal 500 ${theme.spacing(1.4)} Work Sans !important`,
         lineHeight: "16px",
         color: "#FFFFFF"
     },

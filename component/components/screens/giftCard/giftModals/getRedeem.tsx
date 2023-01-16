@@ -40,14 +40,14 @@ const useStyles = makeStyles((theme) => ({
         padding: theme.spacing(1, 0, 0, 0)
     },
     heading: {
-        font: `normal ${theme.typography.fontWeightBold} ${theme.spacing(2.4)}px Work Sans`,
+        font: `normal ${theme.typography.fontWeightBold} ${theme.spacing(2.4)} Work Sans`,
         lineHeight: "28.8px",
         textAlign: 'center',
         marginBottom: '32px',
 
     },
     placeholder: {
-        font: `bold ${theme.typography.fontWeightRegular} ${theme.spacing(4.0)}px Work Sans !important`,
+        font: `bold ${theme.typography.fontWeightRegular} ${theme.spacing(4.0)} Work Sans !important`,
         lineHeight: "46.92px",
         color: '#333333',
         textAlign: 'center',
@@ -57,7 +57,7 @@ const useStyles = makeStyles((theme) => ({
 
     },
     balance: {
-        font: `normal ${theme.typography.fontWeightRegular} ${theme.spacing(1.4)}px Work Sans`,
+        font: `normal ${theme.typography.fontWeightRegular} ${theme.spacing(1.4)} Work Sans`,
         lineHeight: "16px",
         color: '#333333',
         textAlign: 'center',

@@ -48,7 +48,7 @@ const useStyles = makeStyles((theme: Theme) => ({
         }
     },
     description: {
-        font: `normal 500 ${theme.spacing(1.6)}px Work Sans`,
+        font: `normal 500 ${theme.spacing(1.6)} Work Sans`,
         lineHeight: "24px",
         color: '#333333',
         textAlign: 'center',
@@ -60,7 +60,7 @@ const useStyles = makeStyles((theme: Theme) => ({
         // }
     },
     title: {
-        font: `normal 600 ${theme.spacing(2.0)}px Work Sans`,
+        font: `normal 600 ${theme.spacing(2.0)} Work Sans`,
         lineHeight: "24px",
         color: '#333333',
         textAlign: 'center',
@@ -70,7 +70,7 @@ const useStyles = makeStyles((theme: Theme) => ({
             padding: theme.spacing(0.5, 0.5),
         },
         [theme.breakpoints.down("xs")]: {
-            font: `normal ${theme.spacing(1.7)}px Work Sans Bold`,
+            font: `normal ${theme.spacing(1.7)} Work Sans Bold`,
             letterSpacing:"0.06em"
     
           }
@@ -85,11 +85,11 @@ const useStyles = makeStyles((theme: Theme) => ({
     },
     btn: {
         borderRadius:"4px",
-        font: `normal 500 ${theme.spacing(1.6)}px Work Sans !important`,
+        font: `normal 500 ${theme.spacing(1.6)} Work Sans !important`,
         lineHeight: "18.77px",
         color: "#FFFFFF",
         [theme.breakpoints.down("xs")]: {
-            font: `normal ${theme.spacing(1.5)}px Work Sans Medium`,
+            font: `normal ${theme.spacing(1.5)} Work Sans Medium`,
     
           }
     },

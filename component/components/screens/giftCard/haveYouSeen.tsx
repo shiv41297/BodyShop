@@ -65,7 +65,7 @@ const useStyles = makeStyles((theme: Theme) =>
       textAlign: "center",
     },
     heading: {
-      font: `normal ${theme.spacing(2.4)}px Druk Bold`,
+      font: `normal ${theme.spacing(2.4)} Druk Bold`,
       color: "#D6CD56",
       lineHeight: "28px",
       textTransform: "uppercase",
@@ -115,7 +115,7 @@ const useStyles = makeStyles((theme: Theme) =>
     name: {
       font: `normal ${theme.typography.fontWeightBold} ${theme.spacing(
         1.6
-      )}px Work Sans`,
+      )} Work Sans`,
       lineHeight: "18.77px",
       // textOverflow: "ellipsis",
       // overflow: "hidden",
@@ -128,7 +128,7 @@ const useStyles = makeStyles((theme: Theme) =>
         overflow: "hidden",
         textOverflow: "ellipsis",
         width: "165px",
-        font: `normal ${theme.spacing(1.5)}px Work Sans Medium`,
+        font: `normal ${theme.spacing(1.5)} Work Sans Medium`,
         textAlign: "initial",
       },
       [theme.breakpoints.down(325)]: {
@@ -138,7 +138,7 @@ const useStyles = makeStyles((theme: Theme) =>
     description: {
       font: `normal ${theme.typography.fontWeightRegular} ${theme.spacing(
         1.4
-      )}px Work Sans`,
+      )} Work Sans`,
       lineHeight: "22.4px",
       color: "var(--white)",
       letterSpacing: "-0.33 px",
@@ -147,7 +147,7 @@ const useStyles = makeStyles((theme: Theme) =>
         marginTop: "2px",
         letterSpacing: "0.02em",
         textAlign: "initial",
-        font: `normal ${theme.spacing(1.3)}px Work Sans Regular`,
+        font: `normal ${theme.spacing(1.3)} Work Sans Regular`,
       },
     },
     image: {

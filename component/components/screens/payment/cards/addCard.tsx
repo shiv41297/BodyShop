@@ -66,7 +66,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   heading: {
     font: `normal ${theme.typography.fontWeightBold} ${theme.spacing(
       2.6
-    )}px Work Sans`,
+    )} Work Sans`,
     lineHeight: '30px',
     color: 'var(--black)',
     paddingBottom: '25px',
@@ -75,14 +75,14 @@ const useStyles = makeStyles((theme: Theme) => ({
     [theme.breakpoints.down('xs')]: {
       font: `normal ${theme.typography.fontWeightBold} ${theme.spacing(
         1.3
-      )}px Work Sans Bold`,
+      )} Work Sans Bold`,
     },
   },
   // placeholer:{
   //       [theme.breakpoints.down("xs")]: {
   //       font: `normal ${theme.typography.fontWeightBold} ${theme.spacing(
   //         1.5
-  //       )}px Work Sans Medium`,
+  //       )} Work Sans Medium`,
   //     }
   // },
   outerDiv: {
@@ -117,7 +117,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   cardName: {
     font: `normal ${theme.typography.fontWeightMedium} ${theme.spacing(
       1.6
-    )}px Work Sans`,
+    )} Work Sans`,
     lineHeight: '19px',
     fontWeight: 600,
     color: 'var(--black)',
@@ -152,7 +152,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     [theme.breakpoints.down('xs')]: {
       font: `normal ${theme.typography.fontWeightMedium} ${theme.spacing(
         1.4
-      )}px Work Sans Medium`,
+      )} Work Sans Medium`,
     },
     // '& .PrivateSwitchBase-input': {
     // }
@@ -176,7 +176,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     [theme.breakpoints.down('xs')]: {
       font: `normal ${theme.typography.fontWeightMedium} ${theme.spacing(
         1.4
-      )}px Work Sans Medium !important`,
+      )} Work Sans Medium !important`,
     },
   },
 }));

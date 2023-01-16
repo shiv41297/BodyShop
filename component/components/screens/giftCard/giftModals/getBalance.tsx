@@ -37,7 +37,7 @@ const useStyles = makeStyles((theme) => ({
         padding: theme.spacing(1, 0, 0, 0)
     },
     heading: {
-        font: `normal ${theme.typography.fontWeightBold} ${theme.spacing(2.4)}px Work Sans`,
+        font: `normal ${theme.typography.fontWeightBold} ${theme.spacing(2.4)} Work Sans`,
         lineHeight: "29px",
         textAlign: 'center',
         marginBottom: '45px',
@@ -45,7 +45,7 @@ const useStyles = makeStyles((theme) => ({
 
     },
     placeholder: {
-        font: `normal 700 ${theme.spacing(3.4)}px Work Sans`,
+        font: `normal 700 ${theme.spacing(3.4)} Work Sans`,
         lineHeight: "46.92px",
         color: '#333333',
         textAlign: 'center',
@@ -53,7 +53,7 @@ const useStyles = makeStyles((theme) => ({
 
     },
     balance: {
-        font: `normal ${theme.typography.fontWeightRegular} ${theme.spacing(1.4)}px Work Sans`,
+        font: `normal ${theme.typography.fontWeightRegular} ${theme.spacing(1.4)} Work Sans`,
         lineHeight: "16px",
         color: '#044236',
         textAlign: 'center',
@@ -61,7 +61,7 @@ const useStyles = makeStyles((theme) => ({
 
     },
     description: {
-        font: `normal 500 ${theme.spacing(1.2)}px Work Sans`,
+        font: `normal 500 ${theme.spacing(1.2)} Work Sans`,
         lineHeight: '29px',
         letterSpacing: '0em',
         color: '#333333',
@@ -89,14 +89,14 @@ const useStyles = makeStyles((theme) => ({
         "& .MuiButton-root": {
             width: '100%',
         },
-        font: `normal 600 ${theme.spacing(1.4)}px Work Sans`,
+        font: `normal 600 ${theme.spacing(1.4)} Work Sans`,
         lineHeight: '16px',
         letterSpacing: '0em'
     },
     cancelButton: {
         font: `normal 600 ${theme.spacing(
             1.4
-        )}px Work Sans !important`,
+        )} Work Sans !important`,
         borderRadius:'4px !important'
     },
     margin:{

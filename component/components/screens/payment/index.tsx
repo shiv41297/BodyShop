@@ -57,14 +57,14 @@ const useStyles = makeStyles((theme: Theme) => ({
   walletBalance: {
     font: `normal ${theme.typography.fontWeightBold} ${theme.spacing(
       1.8
-    )}px Work Sans`,
+    )} Work Sans`,
     color: theme.palette.primary.main,
     textTransform: 'uppercase',
   },
   availableBalance: {
     font: `normal ${theme.typography.fontWeightMedium} ${theme.spacing(
       1.5
-    )}px Work Sans`,
+    )} Work Sans`,
     color: theme.palette.primary.main,
     lineHeight: '24px',
   },

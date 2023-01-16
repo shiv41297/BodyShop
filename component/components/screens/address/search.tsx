@@ -35,7 +35,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     padding: theme.spacing(0.5, 1),
     font: `normal ${theme.typography.fontWeightRegular} ${theme.spacing(
       1.4
-    )}px Work Sans`,
+    )} Work Sans`,
     // height: "43px",
     flexBasis: '70%',
     [theme.breakpoints.down('xs')]: {

@@ -54,21 +54,21 @@ const useStyles = makeStyles((theme: Theme) => ({
     margin: theme.spacing(1, 0),
   },
   heading: {
-    font: `normal ${theme.spacing(1.8)}px Recoleta Alt Bold`,
+    font: `normal ${theme.spacing(1.8)} Recoleta Alt Bold`,
     color: 'var(--secondary-black)',
     [theme.breakpoints.down('xs')]: {
-      font: `normal ${theme.spacing(1.6)}px Recoleta Alt Bold`,
+      font: `normal ${theme.spacing(1.6)} Recoleta Alt Bold`,
       letterSpacing: '0.03em',
     },
   },
   subHeading: {
     font: `normal ${theme.typography.fontWeightMedium} ${theme.spacing(
       1.4
-    )}px Work Sans`,
+    )} Work Sans`,
     color: 'var(--light-gray)',
     marginLeft: theme.spacing(1),
     [theme.breakpoints.down('xs')]: {
-      font: `normal ${theme.spacing(1.6)}px Recoleta Alt Bold`,
+      font: `normal ${theme.spacing(1.6)} Recoleta Alt Bold`,
       color: 'var(--secondary-black)',
     },
   },
@@ -115,34 +115,34 @@ const useStyles = makeStyles((theme: Theme) => ({
   productName: {
     font: `normal ${theme.typography.fontWeightBold} ${theme.spacing(
       1.5
-    )}px Work Sans`,
+    )} Work Sans`,
     color: 'var(--secondary-black)',
     lineHeight: 1.5,
     cursor: 'pointer',
     [theme.breakpoints.down('xs')]: {
-      font: `normal ${theme.spacing(1.5)}px Work Sans Bold`,
+      font: `normal ${theme.spacing(1.5)} Work Sans Bold`,
     },
     // marginBlockEnd: theme.spacing(5),
   },
   productWeight: {
     font: `normal ${theme.typography.fontWeightMedium} ${theme.spacing(
       1.5
-    )}px Work Sans`,
+    )} Work Sans`,
     color: 'var(--light-gray)',
     marginTop: '6px',
     textTransform: 'capitalize',
     [theme.breakpoints.down('xs')]: {
-      font: `normal ${theme.spacing(1.5)}px Work Sans Medium`,
+      font: `normal ${theme.spacing(1.5)} Work Sans Medium`,
     },
   },
   productOutOfStock: {
-    font: `normal 600 ${theme.spacing(1.4)}px Work Sans`,
+    font: `normal 600 ${theme.spacing(1.4)} Work Sans`,
     color: 'var(--delet-color)',
     margin: '6px 0px 0px 0px',
     lineHeight: 1.5,
   },
   productOutOfStockDescription: {
-    font: `normal 600 ${theme.spacing(1.4)}px Work Sans`,
+    font: `normal 600 ${theme.spacing(1.4)} Work Sans`,
     color: 'var(--light-gray)',
     margin: '0px 0px 4px 0px',
     lineHeight: 1.5,
@@ -188,7 +188,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   deleteBtn: {
     font: `normal ${theme.typography.fontWeightBold} ${theme.spacing(
       1.4
-    )}px Work Sans`,
+    )} Work Sans`,
     textTransform: 'capitalize',
     color: 'var(--delet-color)',
     letterSpacing: 0.5,
@@ -270,7 +270,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     },
   },
   productWishlist: {
-    font: `normal ${theme.spacing(1.4)}px Work Sans`,
+    font: `normal ${theme.spacing(1.4)} Work Sans`,
     lineHeight: '16px',
     fontWeight: 600,
     color: 'var(--green-color)',
@@ -278,21 +278,21 @@ const useStyles = makeStyles((theme: Theme) => ({
     textTransform: 'uppercase',
     cursor: 'pointer',
     [theme.breakpoints.down('xs')]: {
-      font: `normal ${theme.spacing(1.4)}px Work Sans SemiBold`,
+      font: `normal ${theme.spacing(1.4)} Work Sans SemiBold`,
     },
   },
 
   discount: {
     // background: `url(${PRICE})  no-repeat`,
     padding: theme.spacing(0.5, 1.2),
-    font: `normal ${theme.spacing(1.2)}px Work Sans`,
+    font: `normal ${theme.spacing(1.2)} Work Sans`,
     lineHeight: '14px',
     fontWeight: 600,
     color: 'var(--green-color)',
     textTransform: 'uppercase',
   },
   discountPrice: {
-    font: `normal ${theme.spacing(1.5)}px Work Sans`,
+    font: `normal ${theme.spacing(1.5)} Work Sans`,
     lineHeight: '24px',
     fontWeight: 500,
     padding: theme.spacing(0, 1),
@@ -336,7 +336,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     cursor: 'pointer',
   },
   autoDiscount: {
-    font: `normal 600 ${theme.spacing(1.4)}px Work Sans`,
+    font: `normal 600 ${theme.spacing(1.4)} Work Sans`,
     color: '#32B97C',
     margin: '6px 0px 0px 0px',
     lineHeight: 1.5,

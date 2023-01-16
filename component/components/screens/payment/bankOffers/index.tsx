@@ -25,14 +25,14 @@ const useStyles = makeStyles((theme: Theme) =>({
     yourCard: {
       font: `normal ${theme.typography.fontWeightBold} ${theme.spacing(
         1.8
-      )}px Work Sans`,
+      )} Work Sans`,
       lineHeight: "21px",
       textTransform: "uppercase",
       color: "var(--green-color)",
       marginLeft: theme.spacing(1),
     },
     addNewCard: {
-      font: `normal ${theme.spacing(1.4)}px Work Sans`,
+      font: `normal ${theme.spacing(1.4)} Work Sans`,
       fontWeight: 600,
       lineHeight: "16px",
       textTransform: "uppercase",
@@ -63,7 +63,7 @@ const useStyles = makeStyles((theme: Theme) =>({
       alignItems: "center",
     },
     offerName: {
-      font: `normal ${theme.spacing(1.4)}px Work Sans`,
+      font: `normal ${theme.spacing(1.4)} Work Sans`,
       fontWeight: 600,
       lineHeight: "16px",
       textTransform: "uppercase",
@@ -71,7 +71,7 @@ const useStyles = makeStyles((theme: Theme) =>({
       marginLeft: theme.spacing(1),
     },
     offerDesc: {
-      font: `normal ${theme.spacing(1.2)}px Work Sans`,
+      font: `normal ${theme.spacing(1.2)} Work Sans`,
       color: "var(--white)",
       lineHeight: "18px",
       padding: theme.spacing(1, 0, 0, 0),

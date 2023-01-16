@@ -22,7 +22,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   heading: {
     font: `normal ${theme.typography.fontWeightBold} ${theme.spacing(
       1.8
-    )}px Recoleta Alt`,
+    )} Recoleta Alt`,
     color: 'var(--secondary-black)',
     lineHeight: '24px',
     letterSpacing: '0.08em',
@@ -36,28 +36,28 @@ const useStyles = makeStyles((theme: Theme) => ({
   couponTitle: {
     font: `normal ${theme.typography.fontWeightBold} ${theme.spacing(
       2
-    )}px Work Sans`,
+    )} Work Sans`,
     color: 'var(--secondary-black)',
     lineHeight: '23px',
   },
   couponPara: {
     font: `normal ${theme.typography.fontWeightBold} ${theme.spacing(
       1.4
-    )}px Work Sans`,
+    )} Work Sans`,
     color: 'var(--grey-color)',
     lineHeight: '16px',
     textTransform: 'uppercase',
     [theme.breakpoints.down('xs')]: {
       font: `normal ${theme.typography.fontWeightBold} ${theme.spacing(
         1.1
-      )}px Work Sans`,
+      )} Work Sans`,
       lineHeight: '20px',
     },
   },
   couponLink: {
     font: `normal ${theme.typography.fontWeightBold} ${theme.spacing(
       1.6
-    )}px Work Sans`,
+    )} Work Sans`,
     color: 'var(--main-opacity)',
     lineHeight: '19px',
     textTransform: 'uppercase',
@@ -65,7 +65,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   couponDescription: {
     font: `normal ${theme.typography.fontWeightRegular} ${theme.spacing(
       1.5
-    )}px Work Sans`,
+    )} Work Sans`,
     color: 'var(--light-gray)',
     lineHeight: '20px',
   },

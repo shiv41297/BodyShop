@@ -56,7 +56,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   yourCard: {
     font: `normal ${theme.typography.fontWeightBold} ${theme.spacing(
       1.8
-    )}px Work Sans`,
+    )} Work Sans`,
     lineHeight: '21px',
     textTransform: 'uppercase',
     color: 'var(--green-color)',
@@ -64,19 +64,19 @@ const useStyles = makeStyles((theme: Theme) => ({
       textTransform: 'none',
       fontSize: '13.5px',
       color: 'black',
-      font: `normal ${theme.spacing(1.4)}px Recoleta Alt Bold`,
+      font: `normal ${theme.spacing(1.4)} Recoleta Alt Bold`,
       letterSpacing: '0.06em',
     },
   },
   addNewCard: {
-    font: `normal ${theme.spacing(1.4)}px Work Sans`,
+    font: `normal ${theme.spacing(1.4)} Work Sans`,
     fontWeight: 600,
     lineHeight: '16px',
     textTransform: 'uppercase',
     color: 'var(--black)',
     [theme.breakpoints.down('xs')]: {
       textTransform: 'none',
-      font: `normal ${theme.spacing(1.2)}px Work Sans SemiBold`,
+      font: `normal ${theme.spacing(1.2)} Work Sans SemiBold`,
       color: 'var(--main-opacity)',
     },
     cursor: 'pointer',
@@ -137,14 +137,14 @@ const useStyles = makeStyles((theme: Theme) => ({
   textDiv: {
     font: `normal ${theme.typography.fontWeightBold} ${theme.spacing(
       1.3
-    )}px Work Sans`,
+    )} Work Sans`,
     lineHeight: '15px',
     color: '#69BE5B',
   },
   discount: {
     font: `normal ${theme.typography.fontWeightMedium} ${theme.spacing(
       1.3
-    )}px Work Sans`,
+    )} Work Sans`,
     lineHeight: '15px',
     color: '#69BE5B',
     margin: theme.spacing(0.5, 0),
@@ -161,12 +161,12 @@ const useStyles = makeStyles((theme: Theme) => ({
     padding: theme.spacing(14),
   },
   bankTitle: {
-    font: `normal 600 ${theme.spacing(1.6)}px Work Sans`,
+    font: `normal 600 ${theme.spacing(1.6)} Work Sans`,
     color: 'var(--secondary-black)',
     lineHeight: '18px',
     textTransform: 'capitalize',
     [theme.breakpoints.down('xs')]: {
-      font: `normal ${theme.spacing(1.4)}px Work Sans SemiBold`,
+      font: `normal ${theme.spacing(1.4)} Work Sans SemiBold`,
     },
   },
   bankCard: {
@@ -174,7 +174,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     marginTop: '8px',
     [theme.breakpoints.down('xs')]: {
       color: '#666666 !important',
-      font: `normal ${theme.spacing(1.2)}px Work Sans Regular`,
+      font: `normal ${theme.spacing(1.2)} Work Sans Regular`,
     },
   },
   error: {
@@ -194,7 +194,7 @@ const useStyles = makeStyles((theme: Theme) => ({
       '-webkit-text-security': 'disc',
     },
     [theme.breakpoints.down('xs')]: {
-      font: `normal ${theme.spacing(1.0)}px Work Sans Regular`,
+      font: `normal ${theme.spacing(1.0)} Work Sans Regular`,
     },
     // marginBottom: "20px",
   },

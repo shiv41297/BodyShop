@@ -28,7 +28,7 @@ const useStyles = makeStyles((theme: Theme) =>
     heading: {
       font: `normal ${theme.typography.fontWeightBold} ${theme.spacing(
         2.4
-      )}px Recoleta Alt`,
+      )} Recoleta Alt`,
       lineHeight: "33px",
       letterSpacing: "0.02em",
       color: "var(--secondary-black)",
@@ -41,7 +41,7 @@ const useStyles = makeStyles((theme: Theme) =>
     subHeading: {
       font: `normal ${theme.typography.fontWeightBold} ${theme.spacing(
         3.2
-      )}px Work Sans`,
+      )} Work Sans`,
       lineHeight: "38px",
       letterSpacing: "0.02em",
       color: "#40857E",
@@ -82,7 +82,7 @@ const useStyles = makeStyles((theme: Theme) =>
     title: {
       font: `normal ${theme.typography.fontWeightRegular} ${theme.spacing(
         1.3
-      )}px Work Sans`,
+      )} Work Sans`,
       color: "var(--light-gray)",
     },
     outerDiv: {
@@ -95,7 +95,7 @@ const useStyles = makeStyles((theme: Theme) =>
       margin: theme.spacing(2.5, 0),
     },
     Subheading: {
-      font: `normal ${theme.spacing(1.5)}px Work Sans`,
+      font: `normal ${theme.spacing(1.5)} Work Sans`,
       fontWeight: 600,
       lineHeight: "18px",
       color: "var(--secondary-black)",
@@ -103,14 +103,14 @@ const useStyles = makeStyles((theme: Theme) =>
 
     },
     subText: {
-      font: `normal ${theme.spacing(1.2)}px Work Sans`,
+      font: `normal ${theme.spacing(1.2)} Work Sans`,
       fontWeight: 400,
       color: "var(--secondary-black)",
       margin: theme.spacing(0.5, 0),
       textAlign: "center"
     },
     summary: {
-      font: `normal ${theme.spacing(1.6)}px Work Sans`,
+      font: `normal ${theme.spacing(1.6)} Work Sans`,
       lineHeight: "26px",
       color: "var(--light-gray)",
     },

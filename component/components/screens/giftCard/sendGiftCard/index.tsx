@@ -111,7 +111,7 @@ const useStyles = makeStyles((theme: Theme) =>
     productWeight: {
       font: `normal ${theme.typography.fontWeightMedium} ${theme.spacing(
         1.3
-      )}px Work Sans`,
+      )} Work Sans`,
       color: "var(--light-gray)",
       marginTop: "6px",
     },
@@ -138,7 +138,7 @@ const useStyles = makeStyles((theme: Theme) =>
     paymentHeading: {
       font: `normal ${theme.typography.fontWeightBold} ${theme.spacing(
         1.6
-      )}px Recoleta Alt`,
+      )} Recoleta Alt`,
       color: "var(--secondary-black)",
       marginBottom: theme.spacing(2),
       fontWeight: 700,
@@ -152,7 +152,7 @@ const useStyles = makeStyles((theme: Theme) =>
     reuseHeading: {
       font: `normal ${theme.typography.fontWeightMedium} ${theme.spacing(
         1.5
-      )}px Work Sans`,
+      )} Work Sans`,
       color: "var(--secondary-black)",
       display: "flex",
       alignItems: "center",
@@ -164,7 +164,7 @@ const useStyles = makeStyles((theme: Theme) =>
     view: {
       font: `normal ${theme.typography.fontWeightBold} ${theme.spacing(
         1.4
-      )}px Work Sans`,
+      )} Work Sans`,
       color: "var(--main-opacity)",
     },
     grandTotalDiv: {
@@ -175,7 +175,7 @@ const useStyles = makeStyles((theme: Theme) =>
     grandTotal: {
       font: `normal ${theme.typography.fontWeightBold} ${theme.spacing(
         1.6
-      )}px Work Sans`,
+      )} Work Sans`,
       color: "var(--secondary-black)",
     },
     btnDiv: {
@@ -190,14 +190,14 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     saveBagBtn: {
       borderRadius: 4,
-      font: `normal 600 ${theme.spacing(1.4)}px Work Sans`,
+      font: `normal 600 ${theme.spacing(1.4)} Work Sans`,
       textTransform: "capitalize",
       padding: theme.spacing(1.5, 0),
       flexBasis: "47%",
     },
     checkOutBtn: {
       borderRadius: 2,
-      font: `normal 700 ${theme.spacing(1.6)}px Work Sans`,
+      font: `normal 700 ${theme.spacing(1.6)} Work Sans`,
       textTransform: "capitalize",
       // padding: theme.spacing(1.5, 0),
       // marginTop: theme.spacing(1.5),
@@ -216,7 +216,7 @@ const useStyles = makeStyles((theme: Theme) =>
       // width: "40%",
     },
     breadcrumb: {
-      font: `normal 500 ${theme.spacing(1.4)}px Work Sans`,
+      font: `normal 500 ${theme.spacing(1.4)} Work Sans`,
       marginTop: "25px",
       [theme.breakpoints.down("xs")]: {
         display: "none",
@@ -236,7 +236,7 @@ const useStyles = makeStyles((theme: Theme) =>
     heading: {
       font: `normal ${theme.typography.fontWeightBold} ${theme.spacing(
         1.8
-      )}px Work Sans`,
+      )} Work Sans`,
       lineHeight: "18px",
       letterSpacing: "0.02em",
       color: "var(--black)",
@@ -244,7 +244,7 @@ const useStyles = makeStyles((theme: Theme) =>
     subHeading: {
       font: `normal ${theme.typography.fontWeightMedium} ${theme.spacing(
         1.4
-      )}px Work Sans`,
+      )} Work Sans`,
       color: "var(--light-gray)",
       marginLeft: theme.spacing(1),
     },
@@ -300,7 +300,7 @@ const useStyles = makeStyles((theme: Theme) =>
     range: {
       font: `normal ${theme.typography.fontWeightBold} ${theme.spacing(
         3.2
-      )}px Work Sans`,
+      )} Work Sans`,
       lineHeight: "38px",
       color: "var(--white)",
       // position: "absolute",
@@ -308,7 +308,7 @@ const useStyles = makeStyles((theme: Theme) =>
     rangeAmount: {
       font: `normal ${theme.typography.fontWeightBold} ${theme.spacing(
         1.4
-      )}px Work Sans`,
+      )} Work Sans`,
       lineHeight: "16px",
       color: "var(--white)",
       // position: "relative"
@@ -344,7 +344,7 @@ const useStyles = makeStyles((theme: Theme) =>
       },
     },
     messageHeading: {
-      font: `normal 700 ${theme.spacing(2.0)}px Work Sans`,
+      font: `normal 700 ${theme.spacing(2.0)} Work Sans`,
       color: "var(--black300)",
       lineHeight: "28px",
       marginBottom: "9px",
@@ -352,7 +352,7 @@ const useStyles = makeStyles((theme: Theme) =>
       // margin: theme.spacing(0.8, 0),
     },
     bold: {
-      font: `normal 700 ${theme.spacing(1.6)}px Work Sans`,
+      font: `normal 700 ${theme.spacing(1.6)} Work Sans`,
       lineHeight: "24px",
       color: "#333333",
       textAlign: "center",
@@ -361,7 +361,7 @@ const useStyles = makeStyles((theme: Theme) =>
       // padding: theme.spacing(0, 4)
     },
     description: {
-      font: `normal 500 ${theme.spacing(1.6)}px Work Sans`,
+      font: `normal 500 ${theme.spacing(1.6)} Work Sans`,
       lineHeight: "24px",
       color: "#333333",
       textAlign: "center",
@@ -380,14 +380,14 @@ const useStyles = makeStyles((theme: Theme) =>
       textAlign: "center",
       width: "90%",
       diplay: "flex",
-      font: `normal 700 ${theme.spacing(2)}px Work Sans`,
+      font: `normal 700 ${theme.spacing(2)} Work Sans`,
       lineHeight: "23.4px",
       letterSpacing: "0.8px",
     },
     selectedTitle: {
       font: `normal ${theme.typography.fontWeightBold} ${theme.spacing(
         1.4
-      )}px Recoleta Alt`,
+      )} Recoleta Alt`,
       color: "var(--secondary-black)",
       margin: theme.spacing(1, 0),
     },

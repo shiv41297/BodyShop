@@ -59,34 +59,34 @@ const useStyles = makeStyles((theme: Theme) => ({
       marginLeft: '5px',
       letterSpacing: '0.02px',
       [theme.breakpoints.down('xs')]: {
-        font: `normal  ${theme.spacing(1)}px Work Sans Medium`,
+        font: `normal  ${theme.spacing(1)} Work Sans Medium`,
       },
     },
     [theme.breakpoints.down('xs')]: {
-      font: `normal  ${theme.spacing(1.3)}px Work Sans Medium !important`,
+      font: `normal  ${theme.spacing(1.3)} Work Sans Medium !important`,
     },
   },
   heading: {
     font: `normal ${theme.typography.fontWeightBold} ${theme.spacing(
       1.4
-    )}px Work Sans`,
+    )} Work Sans`,
     lineHeight: '16px',
     marginBottom: theme.spacing(0.5),
     color: 'var(--secondary-black)',
     [theme.breakpoints.down('xs')]: {
-      font: `normal  ${theme.spacing(1.4)}px Work Sans SemiBold`,
+      font: `normal  ${theme.spacing(1.4)} Work Sans SemiBold`,
     },
   },
   reviewHeading: {
     font: `normal ${theme.typography.fontWeightRegular} ${theme.spacing(
       1.5
-    )}px Work Sans`,
+    )} Work Sans`,
     lineHeight: '24px',
     margin: theme.spacing(1.5, 0),
     color: 'var(--secondary-black)',
     [theme.breakpoints.down('xs')]: {
       margin: theme.spacing(0, 0),
-      font: `normal ${theme.spacing(1.4)}px Work Sans SemiBold`,
+      font: `normal ${theme.spacing(1.4)} Work Sans SemiBold`,
     },
   },
 
@@ -98,7 +98,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   title: {
     font: `normal ${theme.typography.fontWeightMedium} ${theme.spacing(
       1.3
-    )}px Work Sans`,
+    )} Work Sans`,
     lineHeight: '15px',
     color: 'var(--secondary-black)',
     opacity: '0.9',
@@ -106,7 +106,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     margin: theme.spacing(2, 0, 1, 0),
     [theme.breakpoints.down('xs')]: {
       color: 'black',
-      font: `normal  ${theme.spacing(1.3)}px Work Sans Medium !important`,
+      font: `normal  ${theme.spacing(1.3)} Work Sans Medium !important`,
     },
   },
   inputBox: {
@@ -145,7 +145,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     height: '14px',
   },
   optionTitle: {
-    font: `normal  ${theme.spacing(1.4)}px Work Sans`,
+    font: `normal  ${theme.spacing(1.4)} Work Sans`,
     fontWeight: 500,
     lineHeight: '16px',
     letterSpacing: '-0.02em',
@@ -189,7 +189,7 @@ const useStyles = makeStyles((theme: Theme) => ({
       background: '#FAFAFA !important',
     },
     [theme.breakpoints.down('xs')]: {
-      font: `normal  ${theme.spacing(1.5)}px Work Sans Medium`,
+      font: `normal  ${theme.spacing(1.5)} Work Sans Medium`,
       color: 'grey',
     },
   },
@@ -249,7 +249,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     lineHeight: 1.5,
   },
   linkTag: {
-    font: `normal  ${theme.spacing(1.3)}px Work Sans`,
+    font: `normal  ${theme.spacing(1.3)} Work Sans`,
     fontWeight: 600,
     lineHeight: '15px',
     margin: theme.spacing(0, -0.5),
@@ -257,13 +257,13 @@ const useStyles = makeStyles((theme: Theme) => ({
     textDecoration: 'underline',
     marginRight: theme.spacing(0.5),
     [theme.breakpoints.down('xs')]: {
-      font: `normal  ${theme.spacing(1.4)}px Work Sans SemiBold`,
+      font: `normal  ${theme.spacing(1.4)} Work Sans SemiBold`,
     },
   },
   // formLink: {
   //   "& .MuiTypography-root": {
   //     [theme.breakpoints.down("xs")]: {
-  //       font: `normal  ${theme.spacing(1.4)}px Work Sans SemiBold`,
+  //       font: `normal  ${theme.spacing(1.4)} Work Sans SemiBold`,
   //     }
   //   }
   // },
@@ -275,12 +275,12 @@ const useStyles = makeStyles((theme: Theme) => ({
     display: 'flex',
     marginBottom: 10,
     '& .MuiTypography-body1': {
-      font: `normal  ${theme.spacing(1.3)}px Work Sans`,
+      font: `normal  ${theme.spacing(1.3)} Work Sans`,
       fontWeight: 500,
       lineHeight: '15px',
       color: 'var(--secondary-black)',
       [theme.breakpoints.down('xs')]: {
-        font: `normal  ${theme.spacing(1.4)}px Work Sans SemiBold`,
+        font: `normal  ${theme.spacing(1.4)} Work Sans SemiBold`,
       },
     },
 
@@ -297,9 +297,9 @@ const useStyles = makeStyles((theme: Theme) => ({
     border: '1px solid var(--border-color)',
     font: `normal ${theme.typography.fontWeightRegular} ${theme.spacing(
       1.4
-    )}px Work Sans`,
+    )} Work Sans`,
     [theme.breakpoints.down('xs')]: {
-      font: `normal  ${theme.spacing(1.5)}px Work Sans Medium`,
+      font: `normal  ${theme.spacing(1.5)} Work Sans Medium`,
     },
   },
   optionField: {
@@ -316,7 +316,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     fontWeight: 500,
     lineHeight: 1.5,
     [theme.breakpoints.down('xs')]: {
-      font: `normal  ${theme.spacing(1.3)}px Work Sans SemiBold`,
+      font: `normal  ${theme.spacing(1.3)} Work Sans SemiBold`,
     },
   },
   areaTextField: {
@@ -335,19 +335,19 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
   menuItem: {
     [theme.breakpoints.down('xs')]: {
-      font: `normal  ${theme.spacing(1.5)}px Work Sans Medium`,
+      font: `normal  ${theme.spacing(1.5)} Work Sans Medium`,
     },
   },
   labelRadio: {
     '& .MuiTypography-root': {
       [theme.breakpoints.down('xs')]: {
-        font: `normal  ${theme.spacing(1.5)}px Work Sans Regular !important`,
+        font: `normal  ${theme.spacing(1.5)} Work Sans Regular !important`,
       },
     },
   },
   btn: {
     [theme.breakpoints.down('xs')]: {
-      font: `normal ${theme.spacing(1.4)}px Work Sans Medium !important`,
+      font: `normal ${theme.spacing(1.4)} Work Sans Medium !important`,
     },
   },
 }));
