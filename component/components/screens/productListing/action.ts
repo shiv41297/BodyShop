@@ -5,8 +5,7 @@ import request from '../../../utils/request';
 export function getProductList(params: any, authtoken: any) {
   
   return async (dispatch: any, getState: any) => {
- 
-    console.log(params)
+
     let urldecodeLevel1 = decodeURI(params.search);
     let urldecodeLevel2 = decodeURIComponent(urldecodeLevel1);
 

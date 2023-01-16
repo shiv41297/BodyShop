@@ -714,12 +714,14 @@ export default function Shades(props: Props) {
         <div className={classes.headerDiv}>
           <Typography
             className={classes.header}
-          >{`Select ${configurableOptions?.label}`}</Typography>
+          >
+            {`Select ${configurableOptions?.label}`}
+            </Typography>
           <div
             className={classes.cursor}
             onClick={(e) => toggleDrawer(false)(e)}
           >
-            {/* <img src={CROSS} alt="cross" /> */}
+            <img src={Utils.images.CROSS} alt="cross" />
           </div>
         </div>
       </Box>

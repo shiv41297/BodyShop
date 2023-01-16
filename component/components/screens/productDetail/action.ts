@@ -55,7 +55,6 @@ export const getProductData =
           product.product.configurableProductLinks?.sort(
             (a: any, b: any) => a?.price - b?.price
           );
-          console.log({links})
         //  ==== edit this part for display data correct
         selectedVariantData = links?.filter((item: any) => {
           if (item.isInStock) {
@@ -85,7 +84,6 @@ export const getProductData =
       } else {
         selectedVariantData = product.product;
       }
-      console.group("product.product.configurableProductLinks",product.product.configurableProductOptions?.[0]?.values)
 
       dispatch({
         type: 'getProductData',
