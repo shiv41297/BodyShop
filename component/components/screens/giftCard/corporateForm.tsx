@@ -66,7 +66,7 @@ const useStyles = makeStyles((theme: Theme) =>
     heading: {
       font: `normal ${theme.typography.fontWeightBold} ${theme.spacing(
         2.4
-      )}px Recoleta Alt`,
+      )} Recoleta Alt`,
       lineHeight: "33px",
       color: "var(--secondary-black)",
       letterSpacing: "0.02em",
@@ -108,7 +108,7 @@ const useStyles = makeStyles((theme: Theme) =>
       height: "20px",
       font: `normal ${theme.typography.fontWeightMedium} ${theme.spacing(
         1.4
-      )}px Work Sans`,
+      )} Work Sans`,
       lineHeight: "16px",
       color: "var(--secondary-black)",
       letterSpacing: "-0.02em",
@@ -130,7 +130,7 @@ const useStyles = makeStyles((theme: Theme) =>
       backgroundColor: "white",
       font: `normal ${theme.typography.fontWeightRegular} ${theme.spacing(
         1.4
-      )}px Work Sans`,
+      )} Work Sans`,
       height: "33px",
     },
     textArea: {

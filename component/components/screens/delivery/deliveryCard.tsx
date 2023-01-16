@@ -49,7 +49,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     },
   },
   deliveryTimeText: {
-    font: `normal 500 ${theme.spacing(1.2)}px Work Sans`,
+    font: `normal 500 ${theme.spacing(1.2)} Work Sans`,
     lineHeight: '14px',
     color: '#333333',
     letterSpacing: '0em',
@@ -57,7 +57,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     width: '19rem',
     [theme.breakpoints.down('md')]: {
       width: '14rem',
-      font: `normal ${theme.spacing(1.3)}px Work Sans Regular`,
+      font: `normal ${theme.spacing(1.3)} Work Sans Regular`,
     },
     [theme.breakpoints.down('xs')]: {
       width: 'auto',
@@ -78,18 +78,18 @@ const useStyles = makeStyles((theme: Theme) => ({
     },
   },
   deliveryHeading: {
-    font: `normal 600 ${theme.spacing(1.6)}px Work Sans`,
+    font: `normal 600 ${theme.spacing(1.6)} Work Sans`,
     lineHeight: '19px',
     color: 'var(--black300)',
     [theme.breakpoints.down('xs')]: {
-      font: `normal ${theme.spacing(1.6)}px Work Sans SemiBold`,
+      font: `normal ${theme.spacing(1.6)} Work Sans SemiBold`,
     },
   },
   deliveryCost: {
-    font: `normal 600 ${theme.spacing(1.6)}px Work Sans`,
+    font: `normal 600 ${theme.spacing(1.6)} Work Sans`,
     color: 'var(--secondary-black)',
     [theme.breakpoints.down('xs')]: {
-      font: `normal ${theme.spacing(1.2)}px Work Sans SemiBold`,
+      font: `normal ${theme.spacing(1.2)} Work Sans SemiBold`,
     },
     lineHeight: 1.5,
   },

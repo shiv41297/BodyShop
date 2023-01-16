@@ -43,11 +43,11 @@ const useStyles = makeStyles((theme: Theme) => ({
     margin: 0,
     '& .MuiFormControlLabel-label': {
       marginLeft: theme.spacing(1),
-      font: `normal 600 ${theme.spacing(1.6)}px Work Sans`,
+      font: `normal 600 ${theme.spacing(1.6)} Work Sans`,
       color: 'var(--secondary-black)',
       lineHeight: '18px',
       [theme.breakpoints.down('xs')]: {
-        font: `normal ${theme.spacing(1.4)}px Work Sans SemiBold`,
+        font: `normal ${theme.spacing(1.4)} Work Sans SemiBold`,
         letterSpacing: '0.02em',
       },
     },
@@ -84,15 +84,15 @@ const useStyles = makeStyles((theme: Theme) => ({
     '& .MuiOutlinedInput-input': {
       padding: '15px 14px',
       [theme.breakpoints.down('xs')]: {
-        font: `normal  ${theme.spacing(1.2)}px Work Sans Medium`,
+        font: `normal  ${theme.spacing(1.2)} Work Sans Medium`,
       },
     },
     '&::-webkit-input-placeholder': {
-      font: `normal  ${theme.spacing(1.5)}px Work Sans`,
+      font: `normal  ${theme.spacing(1.5)} Work Sans`,
       color: 'var(--light-gray-text)',
       fontWeight: 500,
       [theme.breakpoints.down('xs')]: {
-        font: `normal ${theme.spacing(1.6)}px Work Sans Medium !important`,
+        font: `normal ${theme.spacing(1.6)} Work Sans Medium !important`,
       },
     },
     [theme.breakpoints.down('sm')]: {
@@ -106,11 +106,11 @@ const useStyles = makeStyles((theme: Theme) => ({
     justifyContent: 'space-between',
     margin: theme.spacing(2.5, 2, 1.5, 2),
     '& .MuiTypography-body1': {
-      font: `normal 600 ${theme.spacing(1.6)}px Work Sans`,
+      font: `normal 600 ${theme.spacing(1.6)} Work Sans`,
       padding: theme.spacing(1, 0),
     },
     '& .MuiTypography-body2': {
-      font: `normal 500 ${theme.spacing(1.4)}px Work Sans Medium`,
+      font: `normal 500 ${theme.spacing(1.4)} Work Sans Medium`,
       padding: theme.spacing(2, 0, 1, 0),
       opacity: 0.9,
       color: 'var(--secondary-black)',
@@ -137,7 +137,7 @@ const useStyles = makeStyles((theme: Theme) => ({
       marginTop: theme.spacing(0),
       marginLeft: theme.spacing(0),
       padding: '15px 50px !important',
-      font: `normal ${theme.spacing(1.4)}px Work Sans Medium !important`,
+      font: `normal ${theme.spacing(1.4)} Work Sans Medium !important`,
     },
   },
   btnSubmitContainer: {
@@ -168,7 +168,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
   delink: {
     [theme.breakpoints.down('xs')]: {
-      font: `normal ${theme.spacing(1.4)}px Work Sans Medium !important`,
+      font: `normal ${theme.spacing(1.4)} Work Sans Medium !important`,
     },
   },
   codInnerDiv: {
@@ -182,7 +182,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
 
   textHeading: {
-    font: `normal ${theme.spacing(1.3)}px Work Sans`,
+    font: `normal ${theme.spacing(1.3)} Work Sans`,
     fontWeight: 500,
     lineHeight: '15px',
     color: 'var(--light-gray)',
@@ -190,11 +190,11 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
   link: {
     color: '#044236',
-    font: `normal 600 ${theme.spacing(1.4)}px Work Sans`,
+    font: `normal 600 ${theme.spacing(1.4)} Work Sans`,
     lineHeight: '16px',
     cursor: 'pointer',
     [theme.breakpoints.down('xs')]: {
-      font: `normal ${theme.spacing(1.2)}px Work Sans SemiBold !important`,
+      font: `normal ${theme.spacing(1.2)} Work Sans SemiBold !important`,
     },
   },
   paytmInfo: {

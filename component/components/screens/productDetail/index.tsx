@@ -256,6 +256,9 @@ const ProductDetail = (props: any) => {
     return state?.loadingReducer?.skeletonLoader;
   });
 
+  console.log(productData.product.configurableProductOptions?.[0]?.values);
+
+
   useEffect(() => {
     if (productData) {
       if (productData?.redirect === 'Not Found') {

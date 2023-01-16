@@ -83,11 +83,11 @@ const styles = makeStyles((theme: Theme) =>({
       // border: "1px solid var(--border-color)",
       font: `normal ${theme.typography.fontWeightRegular} ${theme.spacing(
         1.4
-      )}px Work Sans`,
+      )} Work Sans`,
       [theme.breakpoints.down("xs")]: {
         font: `normal ${theme.spacing(
           1.5
-        )}px Work Sans Medium`,
+        )} Work Sans Medium`,
       }
     },
     errorMessage: {

@@ -198,7 +198,7 @@ const useStyles : any= makeStyles((theme: Theme) =>({
                 "& .MuiTypography-body1": {
                     font: `normal ${theme.spacing(
                         1.4
-                    )}px Work Sans Medium`,
+                    )} Work Sans Medium`,
                 }
             }
         },
@@ -210,7 +210,7 @@ const useStyles : any= makeStyles((theme: Theme) =>({
             backgroundColor: 'white',
             font: `normal ${theme.typography.fontWeightRegular} ${theme.spacing(
                 1.4
-            )}px Work Sans`,
+            )} Work Sans`,
         },
         marginTop: {
             marginTop: '-12px',

@@ -12,7 +12,6 @@ function multiSearchOr(text: any, searchWords: any) {
   }
   return true;
 }
-
 export const getProductData =
   (req: any, params: any, authToken: any) => async (dispatch: any) => {
     // let authToken = req.cookies.authToken;
@@ -68,13 +67,13 @@ export const getProductData =
             );
           }
         });
+        console.log(product.product.configurableProductOptions?.[0]?.values, "product")
 
         // test code
         let searchValue = subcategory
           .replaceAll('-', ' ')
           .split(' ')
           .reverse()[0];
-
         selectedVariant =
           product.product.configurableProductOptions?.[0]?.values &&
           product?.product?.configurableProductOptions?.[0]?.values.find(

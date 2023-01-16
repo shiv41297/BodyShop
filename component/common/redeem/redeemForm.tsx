@@ -22,7 +22,7 @@ import {
 
 const useStyles = makeStyles((theme: Theme) => ({
   textHeading: {
-    font: `normal ${theme.spacing(1.3)}px Work Sans`,
+    font: `normal ${theme.spacing(1.3)} Work Sans`,
     fontWeight: 500,
     lineHeight: '15px',
     color: '#69BE5B',
@@ -62,11 +62,11 @@ const useStyles = makeStyles((theme: Theme) => ({
     lineHeight: '19px',
     font: `normal ${theme.typography.fontWeightRegular} ${theme.spacing(
       1.5
-    )}px Work Sans`,
+    )} Work Sans`,
     letterSpacing: '0.02em',
     color: '#0D0D0D',
     '&::-webkit-input-placeholder': {
-      font: `normal  ${theme.spacing(1.5)}px Work Sans`,
+      font: `normal  ${theme.spacing(1.5)} Work Sans`,
       color: 'var(--light-gray-text)',
       fontWeight: 500,
     },
@@ -76,7 +76,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     color: 'red',
     font: `normal ${theme.typography.fontWeightRegular} ${theme.spacing(
       1.2
-    )}px Work Sans`,
+    )} Work Sans`,
     marginTop: '3px',
   },
   noMargin: {
@@ -84,13 +84,13 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
   link: {
     color: '#044236',
-    font: `normal 600 ${theme.spacing(1.4)}px Work Sans`,
+    font: `normal 600 ${theme.spacing(1.4)} Work Sans`,
     lineHeight: '16px',
     cursor: 'pointer',
     [theme.breakpoints.down('xs')]: {
       font: `normal ${theme.typography.fontWeightRegular} ${theme.spacing(
         1.2
-      )}px Work Sans SemiBold`,
+      )} Work Sans SemiBold`,
     },
   },
 
@@ -133,7 +133,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   inputLabel: {
     font: `normal ${theme.typography.fontWeightRegular} ${theme.spacing(
       1.4
-    )}px Work Sans`,
+    )} Work Sans`,
     lineHeight: '16.42px',
     color: '#333333',
     marginBottom: '8px',
@@ -168,13 +168,13 @@ const useStyles = makeStyles((theme: Theme) => ({
     },
     [theme.breakpoints.down('xs')]: {
       '& .MuiButton-root': {
-        font: `normal ${theme.spacing(1.4)}px Work Sans Medium !important`,
+        font: `normal ${theme.spacing(1.4)} Work Sans Medium !important`,
       },
     },
     marginTop: '21px',
   },
   btnText: {
-    font: `normal ${theme.spacing(1.3)}px Work Sans SemiBold !important`,
+    font: `normal ${theme.spacing(1.3)} Work Sans SemiBold !important`,
   },
   para: {
     // width: '100%',
@@ -182,7 +182,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     // textAlign:"left",
     font: `normal ${theme.typography.fontWeightMedium} ${theme.spacing(
       1.3
-    )}px Work Sans`,
+    )} Work Sans`,
     color: 'var(--light-gray)',
 
     [theme.breakpoints.down('sm')]: {
@@ -194,7 +194,7 @@ const useStyles = makeStyles((theme: Theme) => ({
       margin: theme.spacing(0, 0),
       letterSpacing: '0.5px',
 
-      font: `normal ${theme.spacing(1.3)}px Work Sans Regular`,
+      font: `normal ${theme.spacing(1.3)} Work Sans Regular`,
     },
   },
 }));

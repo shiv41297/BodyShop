@@ -135,7 +135,7 @@ const useStyles = makeStyles((theme: Theme) =>
       },
     },
     heading: {
-      font: `${theme.typography.fontWeightBold} ${theme.spacing(3.2)}px Druk`,
+      font: `${theme.typography.fontWeightBold} ${theme.spacing(3.2)} Druk`,
       letterSpacing: "0.04em",
       lineHeight: "37px",
       color: "#D6CD56",
@@ -143,7 +143,7 @@ const useStyles = makeStyles((theme: Theme) =>
     subHeading: {
       font: `${theme.typography.fontWeightMedium} ${theme.spacing(
         1.6
-      )}px Work Sans`,
+      )} Work Sans`,
       lineHeight: "19px",
       margin: "10px 0 0 0",
       color: "var(--white)",
@@ -151,7 +151,7 @@ const useStyles = makeStyles((theme: Theme) =>
     discoverButton: {
       font: `normal ${theme.typography.fontWeightBold} ${theme.spacing(
         1.5
-      )}px Work Sans`,
+      )} Work Sans`,
 
       color: "var(--white)",
       padding: theme.spacing(1, 3.5),

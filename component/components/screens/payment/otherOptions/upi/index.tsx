@@ -16,11 +16,11 @@ const useStyles = makeStyles((theme: Theme) => ({
     margin: 0,
     '& .MuiFormControlLabel-label': {
       marginLeft: theme.spacing(1),
-      font: `normal 600 ${theme.spacing(1.6)}px Work Sans`,
+      font: `normal 600 ${theme.spacing(1.6)} Work Sans`,
       color: 'var(--secondary-black)',
       lineHeight: '18px',
       [theme.breakpoints.down('xs')]: {
-        font: `normal ${theme.spacing(1.4)}px Work Sans SemiBold`,
+        font: `normal ${theme.spacing(1.4)} Work Sans SemiBold`,
         letterSpacing: '0.02em',
       },
     },
@@ -47,11 +47,11 @@ const useStyles = makeStyles((theme: Theme) => ({
     '& .MuiOutlinedInput-input': {
       padding: '15px 14px',
       [theme.breakpoints.down('xs')]: {
-        font: `normal ${theme.spacing(1.2)}px Work Sans Medium`,
+        font: `normal ${theme.spacing(1.2)} Work Sans Medium`,
       },
     },
     '&::-webkit-input-placeholder': {
-      font: `normal  ${theme.spacing(1.5)}px Work Sans`,
+      font: `normal  ${theme.spacing(1.5)} Work Sans`,
       color: 'var(--light-gray-text)',
       fontWeight: 500,
     },
@@ -97,7 +97,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     marginLeft: theme.spacing(1.2),
   },
   name: {
-    font: `normal ${theme.spacing(1.5)}px Work Sans`,
+    font: `normal ${theme.spacing(1.5)} Work Sans`,
     fontWeight: 500,
     lineHeight: '15px',
     color: 'var(--secondary-black)',
@@ -110,7 +110,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     },
   },
   heading: {
-    font: `normal ${theme.spacing(1.6)}px Work Sans`,
+    font: `normal ${theme.spacing(1.6)} Work Sans`,
     fontWeight: 600,
     lineHeight: '19px',
     color: 'var(--main-opacity)',
@@ -145,7 +145,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     color: 'red',
     font: `normal ${theme.typography.fontWeightRegular} ${theme.spacing(
       1.2
-    )}px Work Sans`,
+    )} Work Sans`,
     margin: '3px 10px 20px 20px',
   },
   greyedOut: {

@@ -63,7 +63,7 @@ const useStyles = makeStyles((theme: Theme) =>
     heading: {
       font: `normal ${theme.typography.fontWeightRegular} ${theme.spacing(
         3.2
-      )}px Druk`,
+      )} Druk`,
       color: "#D6CD56",
       lineHeight: "37px",
       textTransform: "uppercase",
@@ -107,7 +107,7 @@ const useStyles = makeStyles((theme: Theme) =>
     name: {
       font: `normal ${theme.typography.fontWeightBold} ${theme.spacing(
         1.6
-      )}px Work Sans`,
+      )} Work Sans`,
       lineHeight: "18.77px",
       textOverflow: "ellipsis",
       overflow: "hidden",
@@ -118,7 +118,7 @@ const useStyles = makeStyles((theme: Theme) =>
     discription: {
       font: `normal ${theme.typography.fontWeightRegular} ${theme.spacing(
         1.4
-      )}px Work Sans`,
+      )} Work Sans`,
       lineHeight: "22.4px",
       color: "var(--white)",
       letterSpacing: "-0.33 px",

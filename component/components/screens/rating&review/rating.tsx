@@ -44,7 +44,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   heading: {
     font: `normal ${theme.typography.fontWeightBold} ${theme.spacing(
       1.8
-    )}px Work Sans`,
+    )} Work Sans`,
     lineHeight: '29px',
     marginBottom: theme.spacing(0.5),
     color: 'var(--secondary-black)',

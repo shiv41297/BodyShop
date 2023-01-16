@@ -37,7 +37,7 @@ const useStyles = makeStyles((theme: Theme) =>({
     yourCard: {
       font: `normal ${theme.typography.fontWeightBold} ${theme.spacing(
         1.8
-      )}px Work Sans`,
+      )} Work Sans`,
       lineHeight: "21px",
       textTransform: "uppercase",
       color: "var(--green-color)",
@@ -47,12 +47,12 @@ const useStyles = makeStyles((theme: Theme) =>({
         color: "var(--black)",
         font: `normal ${theme.typography.fontWeightBold} ${theme.spacing(
           1.4
-        )}px Recoleta Alt Bold`,
+        )} Recoleta Alt Bold`,
         letterSpacing: "0.06em"
       },
     },
     addNewCard: {
-      font: `normal ${theme.spacing(1.4)}px Work Sans`,
+      font: `normal ${theme.spacing(1.4)} Work Sans`,
       fontWeight: 600,
       lineHeight: "16px",
       textTransform: "uppercase",
@@ -162,7 +162,7 @@ const useStyles = makeStyles((theme: Theme) =>({
       },
     },
     name: {
-      font: `normal ${theme.spacing(1.5)}px Work Sans`,
+      font: `normal ${theme.spacing(1.5)} Work Sans`,
       fontWeight: 500,
       lineHeight: "15px",
       color: "var(--secondary-black)",
@@ -175,7 +175,7 @@ const useStyles = makeStyles((theme: Theme) =>({
       },
     },
     heading: {
-      font: `normal ${theme.spacing(1.6)}px Work Sans`,
+      font: `normal ${theme.spacing(1.6)} Work Sans`,
       fontWeight: 600,
       lineHeight: "19px",
       color: "var(--main-opacity)",
@@ -193,7 +193,7 @@ const useStyles = makeStyles((theme: Theme) =>({
       },
     },
     textHeading: {
-      font: `normal ${theme.spacing(1.3)}px Work Sans`,
+      font: `normal ${theme.spacing(1.3)} Work Sans`,
       fontWeight: 500,
       lineHeight: "15px",
       color: "var(--light-gray)",

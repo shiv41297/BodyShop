@@ -37,7 +37,7 @@ const useStyles = makeStyles((theme: Theme) =>
     heading: {
       font: `normal ${theme.typography.fontWeightBold} ${theme.spacing(
         1.4
-      )}px Recoleta Alt Bold`,
+      )} Recoleta Alt Bold`,
       lineHeight: "33px",
       color: "var(--secondary-black)",
       letterSpacing: "0.02em",
@@ -92,7 +92,7 @@ const useStyles = makeStyles((theme: Theme) =>
     detailsName: {
       font: `normal ${theme.typography.fontWeightBold} ${theme.spacing(
         1.4
-      )}px Work Sans SemiBold`,
+      )} Work Sans SemiBold`,
       lineHeight: "21px",
       color: "var(--secondary-black)",
       [theme.breakpoints.down("xs")]: {
@@ -116,7 +116,7 @@ const useStyles = makeStyles((theme: Theme) =>
     optionsName: {
       font: `normal ${theme.typography.fontWeightBold} ${theme.spacing(
         1.4
-      )}px Work Sans Regular`,
+      )} Work Sans Regular`,
       lineHeight: "19px",
       color: "var(--black300)",
       margin: theme.spacing(0, 1),
@@ -124,7 +124,7 @@ const useStyles = makeStyles((theme: Theme) =>
     link: {
       font: `normal ${theme.typography.fontWeightRegular} ${theme.spacing(
         1.3
-      )}px Work Sans`,
+      )} Work Sans`,
       lineHeight: "22px",
       color: "var(--grey-color)",
       margin: theme.spacing(1, 0),
@@ -135,7 +135,7 @@ const useStyles = makeStyles((theme: Theme) =>
     linkText: {
       font: `normal ${theme.typography.fontWeightRegular} ${theme.spacing(
         1.3
-      )}px Work Sans`,
+      )} Work Sans`,
       lineHeight: "22px",
       color: "var(--grey-color)",
       margin: theme.spacing(-1.5, 0),
@@ -158,7 +158,7 @@ const useStyles = makeStyles((theme: Theme) =>
       backgroundColor: "white",
       font: `normal ${theme.typography.fontWeightRegular} ${theme.spacing(
         1.4
-      )}px Work Sans`,
+      )} Work Sans`,
     },
     root: {
       margin: theme.spacing(2.5, 0),

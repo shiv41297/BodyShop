@@ -39,7 +39,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     letterSpacing: 0.8,
     font: `normal ${theme.typography.fontWeightBold} ${theme.spacing(
       2.4
-    )}px Druk`,
+    )} Druk`,
     color: 'var(--light-green)',
     marginBottom: theme.spacing(2),
     [theme.breakpoints.down('xs')]: {
@@ -49,7 +49,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   paragraph: {
     font: `normal ${theme.typography.fontWeightRegular} ${theme.spacing(
       1.4
-    )}px Roboto`,
+    )} Roboto`,
     color: 'var(--white)',
     flexBasis: '50%',
     lineHeight: 1.5,
@@ -65,7 +65,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   sendButton: {
     font: `normal ${theme.typography.fontWeightBold} ${theme.spacing(
       1.4
-    )}px Work Sans`,
+    )} Work Sans`,
     borderRadius: 4,
     color: theme.palette.primary.main,
     padding: theme.spacing(2, 2),

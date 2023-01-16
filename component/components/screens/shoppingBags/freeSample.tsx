@@ -92,13 +92,13 @@ const useStyles = makeStyles((theme: Theme) => ({
     padding: theme.spacing(0.8, 2),
   },
   heading: {
-    font: `normal  ${theme.spacing(2.4)}px Recoleta Alt Bold`,
+    font: `normal  ${theme.spacing(2.4)} Recoleta Alt Bold`,
     lineHeight: '33px',
     letterSpacing: '0.02em',
     color: 'var(--green-color)',
     [theme.breakpoints.down('xs')]: {
       color: 'var(--black)',
-      font: `normal  ${theme.spacing(1.6)}px Recoleta Alt Bold`,
+      font: `normal  ${theme.spacing(1.6)} Recoleta Alt Bold`,
       letterSpacing: '0.05em',
     },
   },
@@ -127,7 +127,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
   insideDiv: {},
   productName: {
-    font: `normal  ${theme.spacing(2)}px Work Sans`,
+    font: `normal  ${theme.spacing(2)} Work Sans`,
     fontWeight: 600,
     color: 'var(--secondary-black)',
     lineHeight: '24px',
@@ -143,14 +143,14 @@ const useStyles = makeStyles((theme: Theme) => ({
   count: {
     font: `normal ${theme.typography.fontWeightRegular} ${theme.spacing(
       1.4
-    )}px Work Sans`,
+    )} Work Sans`,
     color: 'var(--light-gray)',
     marginTop: theme.spacing(0.3),
   },
   discription: {
     font: `normal ${theme.typography.fontWeightRegular} ${theme.spacing(
       1.2
-    )}px Work Sans`,
+    )} Work Sans`,
     color: 'var(--light-gray)',
     height: 10,
     [theme.breakpoints.down('sm')]: {
@@ -160,7 +160,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   quantity: {
     font: `normal ${theme.typography.fontWeightRegular} ${theme.spacing(
       1.4
-    )}px Work Sans`,
+    )} Work Sans`,
     lineHeight: 1.6,
     height: '16px',
     margin: theme.spacing(0.5, 0, 0, 0),
@@ -173,7 +173,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   price: {
     font: `normal ${theme.typography.fontWeightBold} ${theme.spacing(
       1.8
-    )}px Work Sans`,
+    )} Work Sans`,
     lineHeight: 1.6,
     height: '16px',
     margin: theme.spacing(0.5, 0, 0, 0),

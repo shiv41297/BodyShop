@@ -24,7 +24,7 @@ declare global {
 
 const useStyles = makeStyles((theme: Theme) => ({
   btn: {
-    font: `normal ${theme.spacing(1.3)}px Work Sans Medium`,
+    font: `normal ${theme.spacing(1.3)} Work Sans Medium`,
     '& .MuiButton-contained': {
       color: 'var(--white)',
     },

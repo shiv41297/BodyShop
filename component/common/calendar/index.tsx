@@ -36,7 +36,7 @@ const useStyles = makeStyles((theme: Theme) => ({
       border: '1px solid var(--border-color)',
     },
     '& .MuiInputBase-root ': {
-      font: `normal  ${theme.spacing(1.5)}px Work Sans Medium`,
+      font: `normal  ${theme.spacing(1.5)} Work Sans Medium`,
       backgroundColor: '#ffffff',
     },
     '& .MuiOutlinedInput-notchedOutline': {
@@ -44,7 +44,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     },
   },
   error: {
-    font: `normal 400 ${theme.spacing(1.1)}px Work Sans Medium`,
+    font: `normal 400 ${theme.spacing(1.1)} Work Sans Medium`,
     color: '#f44336',
     lineHeight: 1.66,
   },

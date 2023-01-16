@@ -32,12 +32,12 @@ const useStyles = makeStyles((theme: Theme) =>
     heading: {
       font: `normal ${theme.typography.fontWeightBold} ${theme.spacing(
         2.4
-      )}px Recoleta Alt`,
+      )} Recoleta Alt`,
       lineHeight: "33px",
       letterSpacing: "0.02em",
       color: "var(--secondary-black)",
       [theme.breakpoints.down("xs")]: {
-        font: `normal ${theme.spacing(1.6)}px Recoleta Alt Bold`,
+        font: `normal ${theme.spacing(1.6)} Recoleta Alt Bold`,
         letterSpacing: "0.04em",
       },
     },
@@ -50,7 +50,7 @@ const useStyles = makeStyles((theme: Theme) =>
       margin: theme.spacing(1, 0),
       [theme.breakpoints.down("xs")]: {
         lineHeight: "22px",
-        font: `normal ${theme.spacing(1.4)}px Work Sans Regular`,
+        font: `normal ${theme.spacing(1.4)} Work Sans Regular`,
         letterSpacing: "0.02em",
       },
     },
@@ -65,14 +65,14 @@ const useStyles = makeStyles((theme: Theme) =>
         textAlign: "center",
         lineHeight: "22.4px",
         letterSpacing: "0.02em",
-        font: `normal ${theme.spacing(1.4)}px Work Sans Regular`,
+        font: `normal ${theme.spacing(1.4)} Work Sans Regular`,
       },
     },
     button: {
       borderRadius: 4,
       font: `normal ${theme.typography.fontWeightBold} ${theme.spacing(
         1.4
-      )}px Work Sans`,
+      )} Work Sans`,
       textTransform: "none",
       padding: theme.spacing(1, 2),
       letterSpacing: 0.6,
@@ -80,7 +80,7 @@ const useStyles = makeStyles((theme: Theme) =>
       [theme.breakpoints.down("sm")]: {
         margin: 0,
         width: "100%",
-        font: `normal ${theme.spacing(1.4)}px Work Sans Medium`,
+        font: `normal ${theme.spacing(1.4)} Work Sans Medium`,
       },
     },
     cardContainer: {
@@ -108,7 +108,7 @@ const useStyles = makeStyles((theme: Theme) =>
       alignItems: "center",
     },
     searchHeading: {
-      font: `normal ${theme.spacing(2.4)}px Druk Bold`,
+      font: `normal ${theme.spacing(2.4)} Druk Bold`,
       color: "#D6CD56",
       lineHeight: "27.96px",
       textTransform: "uppercase",
@@ -122,7 +122,7 @@ const useStyles = makeStyles((theme: Theme) =>
       backgroundColor: "var(--white)",
       font: `normal ${theme.typography.fontWeightRegular} ${theme.spacing(
         1.4
-      )}px Work Sans`,
+      )} Work Sans`,
       height: "44px",
       width: "-webkit-fill-available",
       margin: 0,
@@ -161,7 +161,7 @@ const useStyles = makeStyles((theme: Theme) =>
       margin: theme.spacing(3, 0),
     },
     messageHeading: {
-      font: `normal 700 ${theme.spacing(2.0)}px Work Sans`,
+      font: `normal 700 ${theme.spacing(2.0)} Work Sans`,
       color: "var(--black300)",
       lineHeight: "28px",
       marginBottom: "9px",
@@ -176,7 +176,7 @@ const useStyles = makeStyles((theme: Theme) =>
       },
       [theme.breakpoints.down("xs")]: {
         "& .MuiButton-label": {
-          font: `normal ${theme.spacing(1.4)}px Work Sans Medium`,
+          font: `normal ${theme.spacing(1.4)} Work Sans Medium`,
         },
       },
     },

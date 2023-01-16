@@ -139,7 +139,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     backgroundColor: 'white',
     font: `normal ${theme.typography.fontWeightRegular} ${theme.spacing(
       1.4
-    )}px Work Sans`,
+    )} Work Sans`,
   },
   marginTop: {
     marginTop: '-12px',

@@ -26,14 +26,14 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
   outerRoot: {},
   heading: {
-    font: `normal  ${theme.spacing(2.8)}px Recoleta`,
+    font: `normal  ${theme.spacing(2.8)} Recoleta`,
     lineHeight: '38px',
     fontWeight: 600,
     color: 'var(--green-color)',
     marginTop: '20px',
   },
   heading2: {
-    font: `normal  ${theme.spacing(1.6)}px Work Sans Medium`,
+    font: `normal  ${theme.spacing(1.6)} Work Sans Medium`,
     lineHeight: '38px',
     fontWeight: 500,
     color: 'var(--secondary-color)',
@@ -66,14 +66,14 @@ const useStyles = makeStyles((theme: Theme) => ({
     },
   },
   title: {
-    font: `normal  ${theme.spacing(3.6)}px Work Sans`,
+    font: `normal  ${theme.spacing(3.6)} Work Sans`,
     lineHeight: '42px',
     fontWeight: 600,
     color: 'var(--green-color)',
     marginBottom: theme.spacing(0.5),
   },
   subTitle: {
-    font: `normal  ${theme.spacing(1.6)}px Work Sans`,
+    font: `normal  ${theme.spacing(1.6)} Work Sans`,
     lineHeight: '19px',
     fontWeight: 500,
     color: 'var(--black)',
@@ -82,7 +82,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   subHeading: {
     font: `normal ${theme.typography.fontWeightMedium} ${theme.spacing(
       1.4
-    )}px Work Sans`,
+    )} Work Sans`,
     color: 'var(--light-gray)',
     marginLeft: theme.spacing(1),
   },
@@ -111,7 +111,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     width: '45px',
   },
   description: {
-    font: `normal ${theme.spacing(1.4)}px Work Sans !important`,
+    font: `normal ${theme.spacing(1.4)} Work Sans !important`,
   },
 }));
 interface Props {

@@ -58,7 +58,7 @@ const useStyles = makeStyles((theme:Theme) => ({
   heading: {
     font: `normal ${theme.typography.fontWeightBold} ${theme.spacing(
       2.6
-    )}px Work Sans SemiBold`,
+    )} Work Sans SemiBold`,
     lineHeight: "28.8px",
     marginBottom: "25px",
     padding: "10px 0px 10px 0px",
@@ -75,7 +75,7 @@ const useStyles = makeStyles((theme:Theme) => ({
   title: {
     font: `normal ${theme.typography.fontWeightBold} ${theme.spacing(
       1.6
-    )}px Recoleta Alt`,
+    )} Recoleta Alt`,
     lineHeight: "28.8px",
     color: "var(--secondary-black)",
     margin: theme.spacing(1, 2),
@@ -89,14 +89,14 @@ const useStyles = makeStyles((theme:Theme) => ({
   paraHeading: {
     font: `normal ${theme.typography.fontWeightBold} ${theme.spacing(
       1.5
-    )}px Work Sans`,
+    )} Work Sans`,
     lineHeight: "28.8px",
     color: "var(--secondary-black)",
   },
   para: {
     font: `normal ${theme.typography.fontWeightBold} ${theme.spacing(
       1.5
-    )}px Work Sans`,
+    )} Work Sans`,
     lineHeight: "28.8px",
     color: "var(--main-opacity)",
     marginLeft: theme.spacing(1),
@@ -104,7 +104,7 @@ const useStyles = makeStyles((theme:Theme) => ({
   secondPara: {
     font: `normal ${theme.typography.fontWeightMedium} ${theme.spacing(
       1.4
-    )}px Work Sans`,
+    )} Work Sans`,
     lineHeight: "28.8px",
     color: "var(--black)",
   },
@@ -112,7 +112,7 @@ const useStyles = makeStyles((theme:Theme) => ({
     display: "flex",
   },
   date: {
-    font: `normal ${theme.spacing(1.3)}px Work Sans`,
+    font: `normal ${theme.spacing(1.3)} Work Sans`,
     lineHeight: "18px",
     color: "var(--light-gray)",
     padding: theme.spacing(0, 0, 0.5, 0),

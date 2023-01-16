@@ -71,7 +71,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   totalItem: {
     font: `normal ${theme.typography.fontWeightBold} ${theme.spacing(
       2
-    )}px Druk`,
+    )} Druk`,
     padding: theme.spacing(2, 1),
     lineHeight: '23px',
     letterSpacing: '0.04em',

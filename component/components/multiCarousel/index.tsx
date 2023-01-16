@@ -78,7 +78,7 @@ const useStyles = makeStyles((theme: Theme) =>
     heading: {
       font: `normal ${theme.typography.fontWeightBold} ${theme.spacing(
         2.7
-      )}px Druk`,
+      )} Druk`,
       color: theme.palette.primary.main,
       textAlign: "center",
       textTransform: "uppercase",
@@ -93,7 +93,7 @@ const useStyles = makeStyles((theme: Theme) =>
     paragraph: {
       font: `normal ${theme.typography.fontWeightRegular} ${theme.spacing(
         1.4
-      )}px Work Sans`,
+      )} Work Sans`,
       color: theme.palette.primary.main,
       textAlign: "center",
       marginTop: '6px',

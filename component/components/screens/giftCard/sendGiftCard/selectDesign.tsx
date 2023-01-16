@@ -30,13 +30,13 @@ const useStyles = makeStyles((theme: Theme) =>
     heading: {
       font: `normal ${theme.typography.fontWeightBold} ${theme.spacing(
         1.8
-      )}px Recoleta Alt`,
+      )} Recoleta Alt`,
       color: "var(--secondary-black)",
     },
     subheading: {
       font: `normal ${theme.typography.fontWeightMedium} ${theme.spacing(
         1.3
-      )}px Work Sans`,
+      )} Work Sans`,
       color: "var(--main-opacity)",
       marginTop: "14px",
     },

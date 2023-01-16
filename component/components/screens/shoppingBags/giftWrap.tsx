@@ -17,7 +17,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   heading: {
     font: `normal ${theme.typography.fontWeightBold} ${theme.spacing(
       1.8
-    )}px Recoleta Alt`,
+    )} Recoleta Alt`,
     color: 'var(--secondary-black)',
   },
 
@@ -82,23 +82,23 @@ const useStyles = makeStyles((theme: Theme) => ({
     // justifyContent: "space-between",
   },
   productName: {
-    font: `normal ${theme.spacing(1.5)}px Work Sans SemiBold`,
+    font: `normal ${theme.spacing(1.5)} Work Sans SemiBold`,
     color: 'var(--secondary-black)',
     lineHeight: 1.5,
     [theme.breakpoints.down('xs')]: {
-      font: `normal ${theme.spacing(1.5)}px Work Sans SemiBold`,
+      font: `normal ${theme.spacing(1.5)} Work Sans SemiBold`,
     },
   },
   productWeight: {
     font: `normal ${theme.typography.fontWeightMedium} ${theme.spacing(
       1.3
-    )}px Work Sans`,
+    )} Work Sans`,
     color: 'var(--light-gray)',
     marginTop: '6px',
     textTransform: 'capitalize',
     [theme.breakpoints.down('xs')]: {
       // fontSize: "10px",
-      font: `normal ${theme.spacing(1.3)}px Work Sans Regular`,
+      font: `normal ${theme.spacing(1.3)} Work Sans Regular`,
     },
   },
   rightDiv: {

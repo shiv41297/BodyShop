@@ -22,7 +22,7 @@ const useStyles = makeStyles((theme: Theme) =>
     heading: {
       font: `normal ${theme.spacing(
         2.4
-      )}px Recoleta Alt Bold`,
+      )} Recoleta Alt Bold`,
       lineHeight: "33px",
       color: "var(--secondary-black)",
       letterSpacing: "0.02em",
@@ -141,7 +141,7 @@ const useStyles = makeStyles((theme: Theme) =>
     productName: {
       font: `normal ${theme.typography.fontWeightBold} ${theme.spacing(
         1.5
-      )}px Work Sans`,
+      )} Work Sans`,
       color: "var(--secondary-black)",
       lineHeight: "24px",
       // height: '60px',
@@ -154,7 +154,7 @@ const useStyles = makeStyles((theme: Theme) =>
       [theme.breakpoints.down("xs")]:{
         font: `normal ${theme.spacing(
           1.4
-        )}px Work Sans Bold`,
+        )} Work Sans Bold`,
       }
     },
     starDiv: {
@@ -174,14 +174,14 @@ const useStyles = makeStyles((theme: Theme) =>
     count: {
       font: `normal ${theme.typography.fontWeightRegular} ${theme.spacing(
         1.4
-      )}px Work Sans`,
+      )} Work Sans`,
       color: "var(--light-gray)",
       marginTop: theme.spacing(0.3),
     },
     discription: {
       font: `normal ${theme.typography.fontWeightRegular} ${theme.spacing(
         1.2
-      )}px Work Sans`,
+      )} Work Sans`,
       color: "var(--light-gray)",
       height: 25,
       [theme.breakpoints.down("sm")]: {
@@ -191,7 +191,7 @@ const useStyles = makeStyles((theme: Theme) =>
     quantity: {
       font: `normal ${theme.typography.fontWeightRegular} ${theme.spacing(
         1.4
-      )}px Work Sans`,
+      )} Work Sans`,
       lineHeight: 1.6,
       height: "16px",
       margin: theme.spacing(1, 0, 0, 0),
@@ -200,7 +200,7 @@ const useStyles = makeStyles((theme: Theme) =>
       [theme.breakpoints.down("xs")]:{
         font: `normal ${theme.spacing(
           1.2
-        )}px Work Sans Regular`,
+        )} Work Sans Regular`,
         margin: theme.spacing(0.5, 0, 0, 0),
       }
     },
@@ -216,14 +216,14 @@ const useStyles = makeStyles((theme: Theme) =>
     price: {
       font: `normal ${theme.spacing(
         2.4
-      )}px Work Sans Bold`,
+      )} Work Sans Bold`,
       lineHeight: "28px",
 
       color: "var(--secondary-black)",
       [theme.breakpoints.down("xs")]:{
         font: `normal ${theme.spacing(
           1.8
-        )}px Work Sans Bold`, 
+        )} Work Sans Bold`, 
       }
     },
     btn: {
@@ -235,7 +235,7 @@ const useStyles = makeStyles((theme: Theme) =>
           width: "90%",
           font: `normal ${theme.spacing(
             1.6
-          )}px Work Sans Bold`, 
+          )} Work Sans Bold`, 
         }
       }
     },

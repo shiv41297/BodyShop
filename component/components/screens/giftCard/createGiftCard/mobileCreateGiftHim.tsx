@@ -16,7 +16,7 @@ const useStyles = makeStyles((theme: Theme) =>
       backgroundColor: theme.palette.primary.main,
     },
     heading: {
-      font: `normal ${theme.spacing(2.8)}px  Druk Bold`,
+      font: `normal ${theme.spacing(2.8)}  Druk Bold`,
       color: "var(--light-green)",
       lineHeight: "33px",
       marginBottom: theme.spacing(0.5),
@@ -31,7 +31,7 @@ const useStyles = makeStyles((theme: Theme) =>
     subHeading: {
       font: `normal ${theme.typography.fontWeightMedium} ${theme.spacing(
         1.4
-      )}px  Roboto`,
+      )}  Roboto`,
       color: "var(--light-green)",
       lineHeight: "20.4px",
       margin: theme.spacing(1),
@@ -53,13 +53,13 @@ const useStyles = makeStyles((theme: Theme) =>
       borderRadius: "5px",
     },
     title: {
-      font: `normal ${theme.spacing(1.9)}px  Work Sans Bold`,
+      font: `normal ${theme.spacing(1.9)}  Work Sans Bold`,
       color: "var(--primary)",
       textTransform: "uppercase",
       marginBottom: theme.spacing(0.5),
     },
     subTitle: {
-      font: `normal ${theme.spacing(1.4)}px  Work Sans Regular`,
+      font: `normal ${theme.spacing(1.4)}  Work Sans Regular`,
       color: "var(--primary)",
       textAlign: "initial",
       marginBottom: theme.spacing(0.5),
@@ -70,12 +70,12 @@ const useStyles = makeStyles((theme: Theme) =>
       color: "var(--primary) !important",
       margin: theme.spacing(4, 0, 0, 1),
       width: "95%",
-      font: `normal ${theme.spacing(1.4)}px  Work Sans Bold`,
+      font: `normal ${theme.spacing(1.4)}  Work Sans Bold`,
       padding: theme.spacing(1.2),
       letterSpacing: "0.06em",
     },
     para:{
-        font: `normal ${theme.spacing(1.4)}px  Work Sans Regular`,
+        font: `normal ${theme.spacing(1.4)}  Work Sans Regular`,
       color: "var(--white)",
       lineHeight: "22.4px",
       marginBottom: theme.spacing(0.5),
@@ -85,7 +85,7 @@ const useStyles = makeStyles((theme: Theme) =>
         borderradius: "4px",
         color: "white",
         padding: "20px !important",
-        font: `normal 600 ${theme.spacing(1.6)}px Work Sans !important`,
+        font: `normal 600 ${theme.spacing(1.6)} Work Sans !important`,
         lineHeight: "18px",
         textTransform: "none",
         "&:hover": {

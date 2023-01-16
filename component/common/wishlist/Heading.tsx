@@ -27,14 +27,14 @@ const useStyles = makeStyles((theme:Theme) => ({
   heading: {
     font: `normal ${theme.typography.fontWeightBold} ${theme.spacing(
       3.6
-    )}px Work Sans`,
+    )} Work Sans`,
     lineHeight: "42px",
     color: "#004236",
   },
   totalItem: {
     font: `normal ${theme.typography.fontWeightBold} ${theme.spacing(
       2
-    )}px Druk`,
+    )} Druk`,
     margin: theme.spacing(0, 1),
     lineHeight: "23px",
     letterSpacing: "0.04em",
@@ -86,7 +86,7 @@ const useStyles = makeStyles((theme:Theme) => ({
     [theme.breakpoints.down("xs")]: {
       font: `normal ${theme.typography.fontWeightBold} ${theme.spacing(
         2.4
-      )}px Druk`,
+      )} Druk`,
       color: "var(--yellow-color)",
       letterSpacing: "0.04em",
     },
@@ -95,7 +95,7 @@ const useStyles = makeStyles((theme:Theme) => ({
     [theme.breakpoints.down("xs")]: {
       font: `normal ${theme.typography.fontWeightMedium} ${theme.spacing(
         1.3
-      )}px Work Sans SemiBold`,
+      )} Work Sans SemiBold`,
       color: "var(--white)",
       letterSpacing: "0.04em",
     },

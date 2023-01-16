@@ -26,7 +26,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     padding: '0px 15px',
     lineHeight: '19px',
     [theme.breakpoints.down('xs')]: {
-      font: `normal  ${theme.spacing(1.3)}px Work Sans Medium`,
+      font: `normal  ${theme.spacing(1.3)} Work Sans Medium`,
     },
     '& .MuiInput-underline:before': {
       borderBottom: 'none',
@@ -45,7 +45,7 @@ const useStyles = makeStyles((theme: Theme) => ({
       padding: '15px 14px',
     },
     '&::-webkit-input-placeholder': {
-      font: `normal  ${theme.spacing(1.5)}px Work Sans`,
+      font: `normal  ${theme.spacing(1.5)} Work Sans`,
       color: 'var(--light-gray-text)',
       fontWeight: 500,
     },
@@ -84,11 +84,11 @@ const useStyles = makeStyles((theme: Theme) => ({
     margin: 0,
     '& .MuiFormControlLabel-label': {
       marginLeft: theme.spacing(1),
-      font: `normal 600 ${theme.spacing(1.6)}px Work Sans`,
+      font: `normal 600 ${theme.spacing(1.6)} Work Sans`,
       color: 'var(--secondary-black)',
       lineHeight: '18px',
       [theme.breakpoints.down('xs')]: {
-        font: `normal ${theme.spacing(1.4)}px Work Sans SemiBold`,
+        font: `normal ${theme.spacing(1.4)} Work Sans SemiBold`,
         letterSpacing: '0.02em',
       },
     },
@@ -105,7 +105,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     },
   },
   textHeading: {
-    font: `normal ${theme.spacing(1.3)}px Work Sans`,
+    font: `normal ${theme.spacing(1.3)} Work Sans`,
     fontWeight: 500,
     lineHeight: '15px',
     color: 'var(--light-gray)',
@@ -113,7 +113,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
   link: {
     color: '#044236',
-    font: `normal 600 ${theme.spacing(1.4)}px Work Sans`,
+    font: `normal 600 ${theme.spacing(1.4)} Work Sans`,
     lineHeight: '16px',
     cursor: 'pointer',
   },
