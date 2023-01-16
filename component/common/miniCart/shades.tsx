@@ -751,7 +751,7 @@ export default function Shades(props: Props) {
                   onClick={() => handleLike(false, item)}
                 >
                   {/* <FAVORITE_ICON /> */}
-                  {/* <img src={Utils.images.FAVORITE_ICON} alt="heart" /> */}
+                  <img src={Utils.images.FAVORITE_ICON} alt="heart" />
                 </IconButton>
               ) : (
                 <IconButton
@@ -759,7 +759,7 @@ export default function Shades(props: Props) {
                   className={classes.heartImg}
                   onClick={() => handleLike(true, item)}
                 >
-                  {/* <img src={Utils.images.HEART} alt="heart" /> */}
+                  <img src={Utils.images.HEART} alt="heart" />
                   {/* <HEART /> */}
                 </IconButton>
               )}

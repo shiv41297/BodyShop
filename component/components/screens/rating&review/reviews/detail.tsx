@@ -24,6 +24,7 @@ import MessageDialogue from '../../../../common/product/messageDialogue';
 import { isAuthenticated } from '../../../../utils/session';
 import LinearProgressReviews from '../../../../common/linearProgressReviews';
 import RatingModal from '../rating';
+import Image from 'next/image';
 // import { ReducersModal } from "../../../models";
 // import { getProductData, getReviews } from "../../productDetail/action";
 // import { hideSkeleton, showSkeleton } from "../../home/actions";
@@ -225,28 +226,7 @@ const Detail: React.FC<Props> = (props: any) => {
 
     if (!reviewData.nextPage) {
       // dispatch(showSkeleton());
-      dispatch(
-        getProductData(params, (resp: any) => {
-          // dispatch(hideSkeleton());
-          // setProductSku(resp?.product?.sku || null);
-          getReviewData(true, false, resp?.product?.sku, () => {
-            window.addEventListener('scroll', handleScroll);
-          });
-          let breadcrumbData = [
-            { title: 'Home', action: '/' },
-            {
-              title: resp?.product?.name,
-              // action: `/product-detail/${resp?.product?.magentoId}`,
-              action: Utils.CommonFunctions.seoUrl(resp?.product, 'pdp'),
-            },
-            {
-              title: 'Review List',
-              action: `/review-list`,
-            },
-          ];
-          props.setBreadcrumb(breadcrumbData);
-        })
-      );
+      dispatch(getProductData(params,history.query));
     }
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
@@ -347,6 +327,7 @@ const Detail: React.FC<Props> = (props: any) => {
               ) : (
                 reviewData?.isReviewAllowed && (
                   <>
+                  <Image src={Utils.images.EDIT_ICON} height={40} width={40} alt="imgEdit"/>
                     {/* <EDIT_ICON /> */}
                     <Typography variant={'body1'} className={classes.review}>
                       Review product

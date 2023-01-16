@@ -57,7 +57,7 @@ export const getServerSideProps = wrapper.getServerSideProps((store) =>
     let authToken: any = "";
     if (resp) {
       authToken = resp?.data?.data?.authToken;
-    await store.dispatch(getProductData(req, params, authToken));
+    await store.dispatch(getProductData(params, authToken));
 
     return { props: {} };
   }

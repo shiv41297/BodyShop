@@ -13,17 +13,11 @@ function multiSearchOr(text: any, searchWords: any) {
   return true;
 }
 export const getProductData =
-  (req: any, params: any, authToken: any) => async (dispatch: any) => {
-    // let authToken = req.cookies.authToken;
-    // let authToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzZXNzaW9uSWQiOiI2M2EzZWQyYTQ2YWRlMzM4OGRlNjQ4YTkiLCJpc0xvZ2luIjp0cnVlLCJpc0d1ZXN0TG9naW4iOnRydWUsImlhdCI6MTY3MTY4NzQ2NiwiZXhwIjoxNjg3MjM5NDY2fQ.4Eg19HCDEGFUiw562m2nxA7T5WPHZb6bt0yZwfx6Xo0"
+  (params: any, authToken: any) => async (dispatch: any) => {
     let url = Utils.endPoints.PRODUCT_DATA;
-    //subCatgoryid = ""
-
-    let { slug, category, subcategory, googleKey, val } = params;
+    let { subcategory, googleKey, val } = params;
 
     let urlNew;
-
-    // category = ~~category ? ~~category : val;
     if (googleKey != undefined) {
       urlNew = `${Utils.endPoints.PRODUCT_DATA}?subcategoryId=${Number(
         val
