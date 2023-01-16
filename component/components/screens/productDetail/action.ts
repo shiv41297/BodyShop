@@ -56,31 +56,18 @@ export const getProductData =
           product.product.configurableProductLinks?.sort(
             (a: any, b: any) => a?.price - b?.price
           );
-        console.log({links},"links")
         //  ==== edit this part for display data correct
-        selectedVariantData =
-          links?.filter((item: any) => {
-            if(!item.isInStock){  
-              return  item.urlKey===subcategory
-            }
-            else{
-              return (product &&
-                product.product &&
-                product.product?.configurableProductLinks);
-            }
-          })
-          console.log({selectedVariantData}, Array.isArray(selectedVariantData) )
-
-        // const values =
-        //   product &&
-        //   product.product &&
-        //   product.product.configurableProductOptions?.[0]?.values;
-
-        // selectedVariant = values.find(
-        //   (item: any) =>
-        //     item?.label?.toLowerCase() ===
-        //     selectedVariantData?.value?.toLowerCase()
-        // );
+        selectedVariantData = links?.filter((item: any) => {
+          if (item.isInStock) {
+            return item.urlKey === subcategory;
+          } else {
+            return (
+              product &&
+              product.product &&
+              product.product?.configurableProductLinks
+            );
+          }
+        });
 
         // test code
         let searchValue = subcategory

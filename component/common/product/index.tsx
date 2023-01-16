@@ -590,6 +590,7 @@ const Product = (props: Props) => {
     }
   };
 
+
   const categoryId = productData?.category?.child_category?.magentoId;
 
   const navigateTo = () => {
@@ -656,9 +657,9 @@ const Product = (props: Props) => {
           query: {
             slug: `${history.query.slug}`,
             category: `${
-              productData?.categoryData &&
-              productData?.categoryData?.child_category
-                ? productData?.categoryData?.child_category?.urlPath
+              productData?.category &&
+              productData?.category?.child_category
+                ? productData?.category?.child_category?.urlKey
                 : 'trending'
             }`,
             // category: `${history.query.category}`,
@@ -673,9 +674,9 @@ const Product = (props: Props) => {
           query: {
             slug: `${productData.category.urlKey}`,
             category: `${
-              productData?.categoryData &&
-              productData?.categoryData?.child_category
-                ? productData?.categoryData?.child_category?.urlPath
+              productData?.category &&
+              productData?.category?.child_category
+                ? productData?.category?.child_category?.urlKey
                 : 'trending'
             }`,
             // category: categoryId,

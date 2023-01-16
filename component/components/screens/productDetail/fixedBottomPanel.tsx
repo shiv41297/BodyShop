@@ -482,10 +482,10 @@ const FixedBottomPanel = (props: any) => {
   //     }
   // }, [window.scrollY]);
 
-  let discPrice = Utils.CommonFunctions.getAttributeValue(
-    selectedVariantData?.customAttributes,
-    'special_price'
-  );
+  // let discPrice = Utils.CommonFunctions.getAttributeValue(
+  //   selectedVariantData?.customAttributes,
+  //   'special_price'
+  // );
   // const productName = selectedVariantData?.name ? _.truncate(Utils.CommonFunctions.htmlDecode(selectedVariantData?.name),{ 'length': 26,
   // 'omission': ''}) : ""
   // {_.truncate(
@@ -526,7 +526,7 @@ const FixedBottomPanel = (props: any) => {
                 {selectedVariantData?.isInStock ? (
                   // <Box sx={{ display: { xs: "none", sm: "block" } }}>
                   <>
-                    {discPrice ? (
+                    {selectedVariantData && selectedVariantData?.price ? (
                       <div className={classes.discAmount}>
                         <Typography className={classes.price}>
                           ₹
@@ -536,7 +536,7 @@ const FixedBottomPanel = (props: any) => {
                           )}
                         </Typography>
                         <Typography className={classes.productPrice}>
-                          ₹{Utils.CommonFunctions.decimalFlat(discPrice, 0)}
+                          ₹{Utils.CommonFunctions.decimalFlat(selectedVariantData?.price, 0)}
                         </Typography>
                       </div>
                     ) : (
@@ -753,7 +753,7 @@ const FixedBottomPanel = (props: any) => {
                     {selectedVariantData?.isInStock ? (
                       // <Box sx={{ display: { xs: "none", sm: "block" } }}>
                       <>
-                        {discPrice ? (
+                        {selectedVariantData && selectedVariantData?.price ? (
                           <div className={classes.discAmount}>
                             <Typography className={classes.price}>
                               ₹
@@ -763,7 +763,7 @@ const FixedBottomPanel = (props: any) => {
                               )}
                             </Typography>
                             <Typography className={classes.productPrice}>
-                              ₹{Utils.CommonFunctions.decimalFlat(discPrice, 0)}
+                              ₹{Utils.CommonFunctions.decimalFlat(selectedVariantData?.price, 0)}
                             </Typography>
                           </div>
                         ) : (

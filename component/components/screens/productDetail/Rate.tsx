@@ -403,7 +403,6 @@ const Rate = (_props: any) => {
   const [selectedVariant, setSelectedVariant] = React.useState<any>(
     productDetail.selectedVariant
   );
-console.log( productDetail)
   const [state, setState] = React.useState<any>({
     sizeData: [''],
     shadeData: [''],
@@ -422,7 +421,6 @@ console.log( productDetail)
   });
 
   const selectVariant = (product: any, i: any) => {
-    // console.log({value:configurableLinks},configurableLinks[i].urlKey)
     if (configurableLinks[i].urlKey === router.query.subcategory) {
       return;
     } else {
