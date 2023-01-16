@@ -302,9 +302,9 @@ const CustomerReviews: React.FC<Props> = (props: Props) => {
 
     dispatch(
       submitReviewPoll(payload, () => {
-        showSkeleton(true);
+        // showSkeleton(true);
         props.getData(() => {
-          showSkeleton(false);
+          // showSkeleton(false);
         });
       })
     );

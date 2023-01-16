@@ -27,9 +27,9 @@ import Image from "next/image";
 // } from "utils/constantImages";
 import { makeStyles } from "@mui/styles";
 import {
-  showSkeleton,
+  // showSkeleton,
   getHomeData,
-  hideSkeleton,
+  // hideSkeleton,
   getConfig,
 } from "../../../store/home/action";
 import Cookies from "js-cookie";
@@ -225,10 +225,10 @@ const Headers = () => {
   }, []);
 
   const redirectToHome = () => {
-    dispatch(showSkeleton());
+    // dispatch(showSkeleton());
     dispatch(
       getHomeData(authToken),
-      dispatch(hideSkeleton())
+      // dispatch(hideSkeleton())
       // getHomeData(() => {
       //   dispatch(hideSkeleton());
       // })

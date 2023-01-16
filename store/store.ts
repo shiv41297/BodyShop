@@ -10,7 +10,19 @@ import aboutReducer from './about/aboutReducer';
 import { productReducer } from '../component/components/screens/productListing/reducer';
 import { configReducer, homeReducer, loadingReducer } from './home/reducer';
 import { recommendReducer } from '../component/common/recommendationCarousel/reducer';
-import { shoppingBagReducer } from '../component/common/addToCart/reducer';
+import {
+  addressReducer,
+  shoppingBagReducer,
+} from '../component/common/addToCart/reducer';
+import { breadCrumReducer } from '../component/common/breadCrumb/reducer';
+import { couponReducer } from '../component/components/screens/coupon/reducer';
+import { giftReducer } from '../component/components/screens/giftCard/reducer';
+import { otpReducer } from '../component/components/screens/otp/reducer';
+import { offerReducer } from '../component/components/offers/reducer';
+import { paymentReducer } from '../component/components/screens/payment/otherOptions/reducer';
+import { ratingRecuer } from '../component/components/screens/rating&review/reducer';
+import { userDetailReducer } from '../component/components/screens/account/profile/reducer';
+import { wishlistReducer } from '../component/common/wishlist/reducer';
 
 const combinedReducer = combineReducers({
   counter,
@@ -25,6 +37,18 @@ const combinedReducer = combineReducers({
   shoppingBagReducer: shoppingBagReducer,
   productDetailReducer,
   recommendReducer,
+
+  // direct form react code
+  about: aboutReducer,
+  addressReducer: addressReducer,
+  breadCrumReducer: breadCrumReducer,
+  couponReducer: couponReducer,
+  otpReducer: otpReducer,
+  offerReducer: offerReducer,
+  paymentReducer: paymentReducer,
+  ratingRecuer: ratingRecuer,
+  userDetailReducer: userDetailReducer,
+  wishlistReducer: wishlistReducer,
 });
 
 // @ts-ignore
