@@ -6,12 +6,10 @@ export function getProductList(params: any, authtoken: any) {
     let urldecodeLevel1 = decodeURI(params.search);
     let urldecodeLevel2 = decodeURIComponent(urldecodeLevel1);
 
-    if (urldecodeLevel2 && params?.page) {
+    if (urldecodeLevel2 !== "undefined" && params?.page) {
       const obj = JSON.parse(urldecodeLevel2);
       urldecodeLevel2 = JSON.stringify({ ...obj, page: +params.page });
     }
-
-    console.log(urldecodeLevel2, params, "decoded Data");
 
     let data = { ...params, query: "", categoryId: params.categoryId };
 

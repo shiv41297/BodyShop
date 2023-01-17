@@ -363,6 +363,8 @@ function FilterProducts() {
     setAnchorEl(null);
   };
 
+  console.log("location", location);
+
   const handleChange = (_e: any, page: number) => {
     // window.scrollTo(0, 400);
     // setPage(page);
@@ -373,8 +375,6 @@ function FilterProducts() {
       urlKey,
     };
     setApiParams(payload);
-
-    console.log("location", location);
 
     const { slug, googleKey } = location.query;
 
@@ -388,8 +388,19 @@ function FilterProducts() {
       });
     }
 
-    if (location.pathname === "/[slug]/c/[googleKey]") {
+    if (location.pathname === "/[slug]/[category]/c/[gooogleKey]") {
+      location.push({
+        pathname: "/[slug]/[category]/c/[gooogleKey]",
+        query: {
+          ...location.query,
+          page,
+        },
+      });
     }
+
+    if (location.pathname === "/[slug]/h/[googlekey]")
+      if (location.pathname === "/[slug]/c/[googleKey]") {
+      }
 
     if (location.pathname === "/[slug]/p/[googleKey]") {
     }
