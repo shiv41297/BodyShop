@@ -1,46 +1,46 @@
-import { createStyles, Pagination, Theme } from '@mui/material';
+import { createStyles, Pagination, Theme } from "@mui/material";
 // import Pagination from "@material-ui/lab/Pagination";
-import { Skeleton } from '@mui/material';
-import { useSelector } from 'react-redux';
-import { ReducersModal } from '../../models';
-import { makeStyles } from '@mui/styles';
+import { Skeleton } from "@mui/material";
+import { useSelector } from "react-redux";
+import { ReducersModal } from "../../models";
+import { makeStyles } from "@mui/styles";
 
 const useStyles = makeStyles((theme: Theme) => ({
   paginationBox: {
-    display: 'flex',
-    borderTop: '1px solid var(--border-color)',
-    paddingTop: '20px',
-    justifyContent: 'space-between',
-    flexBasis: '100%',
-    '& $p': {
-      fontSize: '16px',
-      lineHeight: '22px',
-      color: 'var(--black300)',
-      '& span': {
+    display: "flex",
+    borderTop: "1px solid var(--border-color)",
+    paddingTop: "20px",
+    justifyContent: "space-between",
+    flexBasis: "100%",
+    "& $p": {
+      fontSize: "16px",
+      lineHeight: "22px",
+      color: "var(--black300)",
+      "& span": {
         fontWeight: 600,
       },
     },
-    [theme.breakpoints.down('xs')]: {
-      justifyContent: 'space-between',
-      padding: '20px 10px',
-      fontSize: '12px',
+    [theme.breakpoints.down("xs")]: {
+      justifyContent: "space-between",
+      padding: "20px 10px",
+      fontSize: "12px",
     },
     // paddingLeft:'25px',
     // paddingRight:'25px'
   },
   pagination: {
-    '& .Mui-selected': {
-      backgroundColor: 'transparent',
+    "& .Mui-selected": {
+      backgroundColor: "transparent",
       borderColor: theme.palette.primary.main,
     },
-    '& .MuiSvgIcon-root': {
-      color: 'black',
+    "& .MuiSvgIcon-root": {
+      color: "black",
     },
-    '& .Mui-disabled': {
+    "& .Mui-disabled": {
       // backgroundColor: "var(--grey-color100)",
     },
-    '& .MuiPagination-ul': {
-      flexWrap: 'nowrap',
+    "& .MuiPagination-ul": {
+      flexWrap: "nowrap",
     },
   },
   description: {
@@ -57,20 +57,29 @@ function CustomPagination(props: any) {
     return state.loadingReducer.skeletonLoader;
   });
 
+  console.log(
+    {
+      data,
+      count,
+      currentPageCount,
+    },
+    "pagination"
+  );
+
   return (
     <div className={classes.paginationBox}>
       {skeletonLoader || Object.keys(data).length === 0 ? (
-        <Skeleton height={20} width={'30%'} />
+        <Skeleton height={20} width={"30%"} />
       ) : data !== undefined ? (
         <>
           <p className={classes.description}>
-            <span>Showing</span>{' '}
+            <span>Showing</span>{" "}
             {`${data?.data?.length} of ${data?.totalCount} ${
-              data?.totalCount > 1 ? 'products' : 'product'
+              data?.totalCount > 1 ? "products" : "product"
             }`}
           </p>
           <Pagination
-            size={'small'}
+            size={"small"}
             defaultPage={1}
             siblingCount={0}
             boundaryCount={1}
@@ -78,7 +87,7 @@ function CustomPagination(props: any) {
             className={classes.pagination}
             // boundaryCount={1}
             count={count}
-            page={currentPageCount}
+            page={+currentPageCount}
             onChange={props.handleChange}
             variant="outlined"
             shape="rounded"

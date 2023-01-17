@@ -10,7 +10,6 @@ import Utils from "../../../component/utils";
 
 function ProductListingWrapper() {
   const productData = useSelector((state: any) => state.productReducer?.data);
- 
 
   return (
     <>

@@ -1,5 +1,5 @@
 
-import { GiftModal } from "../../models"
+import { GiftModal } from "../../../models"
 
 export const giftReducer = (state = new GiftModal(), action: any) => {
   switch (action.type) {
