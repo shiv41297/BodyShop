@@ -291,7 +291,7 @@ const CustomerReviews: React.FC<Props> = (props: Props) => {
   // const reviewData = review?.review || {};
   const profileData =
     useSelector((state: any) => state.userDetailReducer?.userInfo) || {};
-  const urlkey = location.pathname.split('/p/')?.[0]?.split('/').pop();
+  const urlkey = router.pathname.split('/p/')?.[0]?.split('/').pop();
 
   const onClickHelpful = (value: string, reviewData: any) => {
     const payload = {
@@ -331,7 +331,7 @@ const CustomerReviews: React.FC<Props> = (props: Props) => {
           handleClose={() => showLoginAlert(!loginAlert)}
           onOk={() => {
             router.push(
-              `${Utils.routes.LOGIN_OTP}?redirectTo=${location.pathname}`
+              `${Utils.routes.LOGIN_OTP}?redirectTo=${router.pathname}`
             );
             showLoginAlert(false);
           }}
@@ -366,11 +366,9 @@ const CustomerReviews: React.FC<Props> = (props: Props) => {
               router.push({
                 pathname: '/review-list',
                 query: {
-                  id: productData?.magentoId,
-                  subcategoryId: 'location?.state?.categoryId'
-                    ? 'location?.state?.categoryId'
-                    : '0',
-                  urlKey: 'location?.state?.urlKey' ?? urlkey,
+                  slug: `${router.query.slug}`,
+                  googleKey: `${router.query.googleKey}`,
+                  categoryId: `${router.query.categoryId}`,
                   pageName: 'All Reviews',
                 },
               })

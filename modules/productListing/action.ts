@@ -22,7 +22,6 @@ export function getProductList(params: any, authtoken: any) {
       const resp2 = await request
         .get(url2, { headers: { Authorization: "Bearer " + authtoken } })
         .catch((err) => {
-          console.log(err, "error");
         });
 
       let respdata2: any = resp2?.data?.data ? { ...resp2?.data?.data } : {};

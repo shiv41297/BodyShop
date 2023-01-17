@@ -714,12 +714,14 @@ export default function Shades(props: Props) {
         <div className={classes.headerDiv}>
           <Typography
             className={classes.header}
-          >{`Select ${configurableOptions?.label}`}</Typography>
+          >
+            {`Select ${configurableOptions?.label}`}
+            </Typography>
           <div
             className={classes.cursor}
             onClick={(e) => toggleDrawer(false)(e)}
           >
-            {/* <img src={CROSS} alt="cross" /> */}
+            <img src={Utils.images.CROSS} alt="cross" />
           </div>
         </div>
       </Box>
@@ -749,7 +751,7 @@ export default function Shades(props: Props) {
                   onClick={() => handleLike(false, item)}
                 >
                   {/* <FAVORITE_ICON /> */}
-                  {/* <img src={Utils.images.FAVORITE_ICON} alt="heart" /> */}
+                  <img src={Utils.images.FAVORITE_ICON} alt="heart" />
                 </IconButton>
               ) : (
                 <IconButton
@@ -757,7 +759,7 @@ export default function Shades(props: Props) {
                   className={classes.heartImg}
                   onClick={() => handleLike(true, item)}
                 >
-                  {/* <img src={Utils.images.HEART} alt="heart" /> */}
+                  <img src={Utils.images.HEART} alt="heart" />
                   {/* <HEART /> */}
                 </IconButton>
               )}

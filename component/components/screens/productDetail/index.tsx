@@ -691,13 +691,13 @@ const ProductDetail = (props: any) => {
                     ) : null}
                   </Box>
 
-                  {/* <SmallMighty /> */}
+                  <SmallMighty />
 
                   <AdditionalInformation />
                 </>
               )}
-              {/* <RatingsReviews getData={getData} /> */}
-              {/* <CustomerReviews getData={getData} /> */}
+              <RatingsReviews getData={getData} />
+              <CustomerReviews getData={getData} />
               {linkedProducts && linkedProducts.length > 0 ? (
                 <CompleteRoutine
                   details={linkedProducts}

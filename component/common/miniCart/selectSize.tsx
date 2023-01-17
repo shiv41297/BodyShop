@@ -41,6 +41,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { addToWishList, notifyMe, removeFromWishList } from '../product/action';
 import { getWishList } from '../wishlist/action';
 import Link from 'next/link';
+import Image from 'next/image';
 // import { getWishList } from "../../../pages/wishlist/action";
 // import BACK_ARROW from "../../../assets/images/backarrow.png";
 
@@ -672,13 +673,15 @@ const SelectSize: React.FC<any> = (props: Props) => {
 
         <Typography
           className={classes.header}
-        >{`Select ${configurableOptions?.label}`}</Typography>
+        >
+          {`Select ${configurableOptions?.label}`}
+          </Typography>
         <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
           <div
             className={classes.cursor}
             onClick={(e) => toggleDrawer(false)(e)}
           >
-            <img src={Utils.images.CROSS} alt="cross" />
+            <Image src={Utils.images.CROSS} alt="cross" width={40} height={40}/>
           </div>
         </Box>
       </div>
