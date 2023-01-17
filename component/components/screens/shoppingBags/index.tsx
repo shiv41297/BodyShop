@@ -1068,7 +1068,7 @@ const CustomStepper: React.FC<any> = () => {
   }, [data]);
 
   const handleNext = () => {
-    if (isAuthenticated()) {
+    // if (isAuthenticated()) {
       if (typeof window !== 'undefined') {
         localStorage.removeItem('prevPath');
       }
@@ -1242,9 +1242,10 @@ const CustomStepper: React.FC<any> = () => {
           handleCartSummary();
         }
       }
-    } else {
-      showLoginAlert(true);
-    }
+    // } 
+    // else {
+    //   showLoginAlert(true);
+    // }
   };
 
   const goBack = () => {
