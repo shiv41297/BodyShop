@@ -18,6 +18,7 @@ import { StylesProvider, createGenerateClassName } from "@mui/styles";
 import { Box } from "@mui/material";
 import MediaFooter from "../component/components/footers/mediaFooter";
 import Addvertisement from "../component/components/addvertisementCard";
+import Script from "next/script";
 
 // Client-side cache, shared for the whole session of the user in the browser.
 const clientSideEmotionCache = createEmotionCache();
@@ -36,19 +37,48 @@ function MyApp({
   ...rest
 }: MyAppProps) {
   const { store, props } = wrapper.useWrappedStore(rest);
+  const ZENDESK_KEY = `${process.env.NEXT_PUBLIC_ZENDESK_ID}`;
+
   return (
     <CacheProvider value={emotionCache}>
       <Head>
         <meta name="viewport" content="initial-scale=1, width=device-width" />
         <link rel="icon" href="/favicon.svg" />
       </Head>
+      <Script
+        id="ze-snippet"
+        src={`https://static.zdassets.com/ekr/snippet.js?key=${ZENDESK_KEY}`}
+        strategy="afterInteractive"
+        onLoad={() => {
+          if (navigator.onLine) {
+            document.onreadystatechange = function () {
+              if (document.readyState == "complete") {
+                var user = {};
+                if (localStorage.getItem("guestUser") !== "true") {
+                  user = {
+                    name: localStorage.getItem("fullName"),
+                    email: localStorage.getItem("email"),
+                    phone: localStorage.getItem("mobileNo"),
+                  };
+                }
+                //@ts-ignore
+                zE("webWidget", "identify", user);
+                if (localStorage.getItem("underMaintenance") === "1") {
+                  //@ts-ignore
+                  zE && zE.hide();
+                }
+              }
+            };
+          }
+        }}
+      />
 
       <Provider store={store}>
         <ThemeProvider theme={theme}>
           <CssBaseline />
           <StylesProvider generateClassName={generateClassName}>
             <Headers />
-           {/* <Box sx={{ display: { xs: "none", sm: "block" } }}>
+            {/* <Box sx={{ display: { xs: "none", sm: "block" } }}>
               <Addvertisement key="promotional_banner" />
             </Box>  */}
 

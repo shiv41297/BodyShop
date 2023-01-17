@@ -11,7 +11,6 @@ import DiscoverMore from "../component/components/pagesComponents/home/discoverM
 import FindOutMore from "../component/components/pagesComponents/home/findOutMore";
 import HaveYouSeen from "../component/components/pagesComponents/home/haveYouSeen";
 import MoreToShop from "../component/components/pagesComponents/home/moreToShop";
-// import Recommended from "../component/components/pagesComponents/home/recommended";
 import Testimonial from "../component/components/pagesComponents/home/testimonial";
 import { ReducersModal } from "../component/models";
 import Utils from "../component/utils";
@@ -45,8 +44,8 @@ const Index = () => {
   // const homeData = useSelector((state: ReducersModal) => {
   //   return state.homeReducer.homeData})
 
-  const stateData = useSelector((state: any) => state.homeReducer?.homeData);
-  const homeData = stateData;
+  const homeData = useSelector((state: any) => state.homeReducer?.homeData);
+  // const homeData = stateData;
   const dispatch: any = useDispatch();
   const history = useRouter();
 
