@@ -1,16 +1,17 @@
 import Utils from "../../../utils";
-import request from '../../../utils/request';
-
+import request from "../../../utils/request";
 
 export function getProductList(params: any, authtoken: any) {
-  
   return async (dispatch: any, getState: any) => {
- 
-    console.log(params)
     let urldecodeLevel1 = decodeURI(params.search);
     let urldecodeLevel2 = decodeURIComponent(urldecodeLevel1);
 
-    let data = { ...params,  query: "", categoryId: params.categoryId };
+    if (urldecodeLevel2 !== "undefined" && params?.page) {
+      const obj = JSON.parse(urldecodeLevel2);
+      urldecodeLevel2 = JSON.stringify({ ...obj, page: +params.page });
+    }
+
+    let data = { ...params, query: "", categoryId: params.categoryId };
 
     let url2 = Utils.endPoints.PRODUCT_LIST + "?data=" + urldecodeLevel2;
 

@@ -63,7 +63,7 @@ const useStyles = makeStyles((theme: Theme) => ({
       },
     },
     header: {
-      font: `normal ${theme.spacing(2.4)}px Recoleta`,
+      font: `normal ${theme.spacing(2.4)} Recoleta`,
       color: theme.palette.primary.main,
       fontWeight: 600,
       [theme.breakpoints.down("xs")]: {
@@ -98,7 +98,7 @@ const useStyles = makeStyles((theme: Theme) => ({
       padding: "12px",
     },
     textBrand: {
-      font: `normal ${theme.spacing(1.6)}px Work Sans`,
+      font: `normal ${theme.spacing(1.6)} Work Sans`,
       fontWeight: 600,
       color: "var(--secondary-black)",
       [theme.breakpoints.down("xs")]: {
@@ -118,7 +118,7 @@ const useStyles = makeStyles((theme: Theme) => ({
       },
     },
     textQty: {
-      font: `normal ${theme.spacing(1.3)}px Work Sans`,
+      font: `normal ${theme.spacing(1.3)} Work Sans`,
       color: "var(--light-gray)",
       textTransform: "uppercase",
       [theme.breakpoints.down("xs")]: {
@@ -129,7 +129,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     textPrice: {
       font: `normal ${theme.typography.fontWeightRegular} ${theme.spacing(
         1.4
-      )}px Work Sans`,
+      )} Work Sans`,
       marginTop: theme.spacing(1.5),
       [theme.breakpoints.down("xs")]: {
         marginTop: theme.spacing(0.6),
@@ -152,7 +152,7 @@ const useStyles = makeStyles((theme: Theme) => ({
       "& .MuiButton-label": {
         font: `normal ${theme.typography.fontWeightBold} ${theme.spacing(
           1.6
-        )}px Work Sans`,
+        )} Work Sans`,
       },
       [theme.breakpoints.down("xs")]: {
         position: "fixed",
@@ -189,7 +189,7 @@ const useStyles = makeStyles((theme: Theme) => ({
       },
     },
     brandName: {
-      font: `normal ${theme.spacing(1.4)}px Work Sans`,
+      font: `normal ${theme.spacing(1.4)} Work Sans`,
       fontWeight: 500,
       textTransform: "uppercase",
       display: "flex",
@@ -204,7 +204,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     btn: {
       font: `normal ${theme.typography.fontWeightMedium} ${theme.spacing(
         1.5
-      )}px Work Sans`,
+      )} Work Sans`,
       "& .MuiButton-contained": {
         color: "var(--white)",
       },
@@ -227,7 +227,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     name: {
       font: `normal ${theme.typography.fontWeightBold} ${theme.spacing(
         1.4
-      )}px Work Sans`,
+      )} Work Sans`,
       lineHeight: "24px",
       color: "var(--secondary-black)",
       textAlign: "center",
@@ -241,7 +241,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     productNumber: {
       font: `normal ${theme.typography.fontWeightBold} ${theme.spacing(
         1.3
-      )}px Work Sans`,
+      )} Work Sans`,
       lineHeight: "24px",
       color: "var(--light-gray)",
       textAlign: "center",
@@ -309,27 +309,27 @@ const useStyles = makeStyles((theme: Theme) => ({
     fontLabel: {
       font: `normal ${theme.typography.fontWeightBold} ${theme.spacing(
         1.6
-      )}px Work Sans`,
+      )} Work Sans`,
       color: "var(--secondary-black)",
       margin: theme.spacing(1, 0),
       textAlign: "center",
       [theme.breakpoints.down("xs")]: {
         font: `normal ${theme.typography.fontWeightBold} ${theme.spacing(
           1.2
-        )}px Work Sans`,
+        )} Work Sans`,
         margin: theme.spacing(1, 0.8),
       },
     },
     mrp: {
       font: `normal ${theme.typography.fontWeightMedium} ${theme.spacing(
         1.5
-      )}px Work Sans`,
+      )} Work Sans`,
       color: "var(--light-gray)",
       textDecorationLine: "line-through",
       [theme.breakpoints.down("xs")]: {
         font: `normal ${theme.typography.fontWeightMedium} ${theme.spacing(
           1.6
-        )}px Work Sans`,
+        )} Work Sans`,
       },
     },
 
@@ -343,12 +343,12 @@ const useStyles = makeStyles((theme: Theme) => ({
       },
     },
     view: {
-      font: `normal 600 ${theme.spacing(1.8)}px Work Sans`,
+      font: `normal 600 ${theme.spacing(1.8)} Work Sans`,
       lineHeight: "18px",
       color: "var(--secondary-black)",
     },
     discView: {
-      font: `normal 600 ${theme.spacing(1.8)}px Work Sans`,
+      font: `normal 600 ${theme.spacing(1.8)} Work Sans`,
       lineHeight: "18px",
       color: "var(--secondary-black)",
       paddingLeft: "20px",
@@ -356,7 +356,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     grandHeading: {
       font: `normal ${theme.typography.fontWeightBold} ${theme.spacing(
         1.6
-      )}px Work Sans`,
+      )} Work Sans`,
       lineHeight: "19px",
       color: "var(--green-color)",
       [theme.breakpoints.down("xs")]: {
@@ -368,14 +368,14 @@ const useStyles = makeStyles((theme: Theme) => ({
 
     checkOutBtn: {
       borderRadius: 4,
-      font: `normal 600 ${theme.spacing(1.4)}px Work Sans`,
+      font: `normal 600 ${theme.spacing(1.4)} Work Sans`,
       textTransform: "capitalize",
       padding: theme.spacing(1.5, 0),
       flexBasis: "47%",
     },
     saveBagBtn: {
       borderRadius: 4,
-      font: `normal 600 ${theme.spacing(1.4)}px Work Sans`,
+      font: `normal 600 ${theme.spacing(1.4)} Work Sans`,
       textTransform: "capitalize",
       padding: theme.spacing(1.5, 0),
       flexBasis: "47%",
@@ -714,12 +714,14 @@ export default function Shades(props: Props) {
         <div className={classes.headerDiv}>
           <Typography
             className={classes.header}
-          >{`Select ${configurableOptions?.label}`}</Typography>
+          >
+            {`Select ${configurableOptions?.label}`}
+            </Typography>
           <div
             className={classes.cursor}
             onClick={(e) => toggleDrawer(false)(e)}
           >
-            {/* <img src={CROSS} alt="cross" /> */}
+            <img src={Utils.images.CROSS} alt="cross" />
           </div>
         </div>
       </Box>
@@ -749,7 +751,7 @@ export default function Shades(props: Props) {
                   onClick={() => handleLike(false, item)}
                 >
                   {/* <FAVORITE_ICON /> */}
-                  {/* <img src={Utils.images.FAVORITE_ICON} alt="heart" /> */}
+                  <img src={Utils.images.FAVORITE_ICON} alt="heart" />
                 </IconButton>
               ) : (
                 <IconButton
@@ -757,7 +759,7 @@ export default function Shades(props: Props) {
                   className={classes.heartImg}
                   onClick={() => handleLike(true, item)}
                 >
-                  {/* <img src={Utils.images.HEART} alt="heart" /> */}
+                  <img src={Utils.images.HEART} alt="heart" />
                   {/* <HEART /> */}
                 </IconButton>
               )}

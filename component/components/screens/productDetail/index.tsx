@@ -256,6 +256,9 @@ const ProductDetail = (props: any) => {
     return state?.loadingReducer?.skeletonLoader;
   });
 
+  console.log(productData.product.configurableProductOptions?.[0]?.values);
+
+
   useEffect(() => {
     if (productData) {
       if (productData?.redirect === 'Not Found') {
@@ -688,13 +691,13 @@ const ProductDetail = (props: any) => {
                     ) : null}
                   </Box>
 
-                  {/* <SmallMighty /> */}
+                  <SmallMighty />
 
                   <AdditionalInformation />
                 </>
               )}
-              {/* <RatingsReviews getData={getData} /> */}
-              {/* <CustomerReviews getData={getData} /> */}
+              <RatingsReviews getData={getData} />
+              <CustomerReviews getData={getData} />
               {linkedProducts && linkedProducts.length > 0 ? (
                 <CompleteRoutine
                   details={linkedProducts}

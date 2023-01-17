@@ -4,7 +4,6 @@ import { getShoppingBagList } from '../../../common/addToCart/action';
 import {
   hideLoader,
   hideSkeleton,
-  showLoader,
 } from '../../../../store/home/action';
 
 function multiSearchOr(text: any, searchWords: any) {
@@ -13,19 +12,12 @@ function multiSearchOr(text: any, searchWords: any) {
   }
   return true;
 }
-
 export const getProductData =
-  (req: any, params: any, authToken: any) => async (dispatch: any) => {
-    // let authToken = req.cookies.authToken;
-    // let authToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzZXNzaW9uSWQiOiI2M2EzZWQyYTQ2YWRlMzM4OGRlNjQ4YTkiLCJpc0xvZ2luIjp0cnVlLCJpc0d1ZXN0TG9naW4iOnRydWUsImlhdCI6MTY3MTY4NzQ2NiwiZXhwIjoxNjg3MjM5NDY2fQ.4Eg19HCDEGFUiw562m2nxA7T5WPHZb6bt0yZwfx6Xo0"
+  (params: any, authToken: any) => async (dispatch: any) => {
     let url = Utils.endPoints.PRODUCT_DATA;
-    //subCatgoryid = ""
-
-    let { slug, category, subcategory, googleKey, val } = params;
+    let { subcategory, googleKey, val } = params;
 
     let urlNew;
-
-    // category = ~~category ? ~~category : val;
     if (googleKey != undefined) {
       urlNew = `${Utils.endPoints.PRODUCT_DATA}?subcategoryId=${Number(
         val
@@ -56,38 +48,25 @@ export const getProductData =
           product.product.configurableProductLinks?.sort(
             (a: any, b: any) => a?.price - b?.price
           );
-        console.log({links},"links")
         //  ==== edit this part for display data correct
-        selectedVariantData =
-          links?.filter((item: any) => {
-            if(!item.isInStock){  
-              return  item.urlKey===subcategory
-            }
-            else{
-              return (product &&
-                product.product &&
-                product.product?.configurableProductLinks);
-            }
-          })
-          console.log({selectedVariantData}, Array.isArray(selectedVariantData) )
-
-        // const values =
-        //   product &&
-        //   product.product &&
-        //   product.product.configurableProductOptions?.[0]?.values;
-
-        // selectedVariant = values.find(
-        //   (item: any) =>
-        //     item?.label?.toLowerCase() ===
-        //     selectedVariantData?.value?.toLowerCase()
-        // );
+        selectedVariantData = links?.filter((item: any) => {
+          if (item.isInStock) {
+            return item.urlKey === subcategory;
+          } else {
+            return (
+              product &&
+              product.product &&
+              product.product?.configurableProductLinks
+            );
+          }
+        });
+        console.log(product.product.configurableProductOptions?.[0]?.values, "product")
 
         // test code
         let searchValue = subcategory
           .replaceAll('-', ' ')
           .split(' ')
           .reverse()[0];
-
         selectedVariant =
           product.product.configurableProductOptions?.[0]?.values &&
           product?.product?.configurableProductOptions?.[0]?.values.find(
@@ -98,11 +77,12 @@ export const getProductData =
       } else {
         selectedVariantData = product.product;
       }
+
       dispatch({
         type: 'getProductData',
         payload: {
           ...product,
-          selectedVariant,
+          selectedVariant: selectedVariant ? selectedVariant : {},
           selectedVariantData: selectedVariantData[0],
         },
       });

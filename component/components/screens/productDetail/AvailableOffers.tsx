@@ -129,9 +129,9 @@ const AvailableOffers = () => {
     openBankModal: false,
   });
 
-  // useEffect(() => {
-  //   dispatch(getProductOffers('?page=1&limit=100'));
-  // }, []);
+  useEffect(() => {
+    dispatch(getProductOffers('?page=1&limit=100'));
+  }, []);
 
   offerData = useSelector((state: ReducersModal) => state.offerReducer);
 

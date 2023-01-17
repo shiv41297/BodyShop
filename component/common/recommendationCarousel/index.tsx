@@ -12,7 +12,7 @@ import { ReducersModal } from '../../models';
 import Product from '../product';
 import { makeStyles } from '@mui/styles';
 import { Theme } from '@mui/material';
-import { showSkeleton, hideSkeleton } from '../../../store/home/action';
+// import { showSkeleton, hideSkeleton } from '../../../store/home/action';
 
 const useStyles = makeStyles((theme: Theme) => ({
   recommendedRoot: {

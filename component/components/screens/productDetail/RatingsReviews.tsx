@@ -13,6 +13,7 @@ import { makeStyles } from '@mui/styles';
 import MessageDialogue from '../../../common/product/messageDialogue';
 import LinearProgressReviews from '../../../common/linearProgressReviews';
 import { useRouter } from 'next/router';
+import Image from 'next/image';
 
 const useStyles = makeStyles((theme: Theme) => ({
   heading: {
@@ -165,6 +166,7 @@ const RatingsReviews = (props: any) => {
   const reviewData = useSelector(
     (state: ReducersModal) => state.productDetailReducer?.productReviews
   );
+  console.log("reviewData",reviewData)
   // const ratingData = reviewData?.data?.[0] || {};
   return (
     <div id={'reviewsAndReviews'}>
@@ -210,6 +212,7 @@ const RatingsReviews = (props: any) => {
             reviewData?.isReviewAllowed && (
               <>
                 {/* <EDIT_ICON /> */}
+                <Image src={Utils.images.EDIT_ICON} height={40} width={40} alt="imgEdit"/>
                 <Typography className={classes.button}>
                   Review product
                 </Typography>
