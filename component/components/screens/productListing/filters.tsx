@@ -210,52 +210,6 @@ const Filters: React.FC<any> = (props: Props) => {
         categoryId: `${router.query.categoryId}`
       },
     });
-
-    // queryFilter = JSON.parse(decodeURIComponent(queryFilter));
-    // delete queryFilter?.otherFilters;
-    // delete queryFilter?.customAttributes;
-
-    // const data = {
-    //   ...props.obj,
-    //   page: 1,
-    //   authToken: getAuthToken(),
-    //   query: '',
-    //   categoryId: categoryId,
-    // };
-
-    // props.setParams(data);
-    // // dispatch(showLoader());
-    // delete data.selectedFilters;
-    // dispatch(
-    //   getProductList(data, false, () => {
-    //     dispatch(hideLoader());
-    //   })
-    // );
-
-    // if (_.isEmpty(queryFilter)) {
-    //   console.log('line 222');
-    //   router.push({
-    //     pathname: '/[slug]/h/[googleKey]',
-    //     query: {
-    //       slug: `${router.query.slug}`,
-
-    //       googleKey: `${router.query.googleKey}`,
-    //     },
-    //   });
-    // } else {
-    //   console.log('line 233');
-    //   router.push({
-    //     pathname: '/[slug]/h/[googleKey]?',
-    //     query: {
-    //       slug: `${router.query.slug}`,
-    //       search: `?filters=${encodeURI(
-    //         encodeURIComponent(JSON.stringify(data))
-    //       )}`,
-    //       googleKey: `${router.query.googleKey}`,
-    //     },
-    //   });
-    
-    // }
   };
 
   const onCheckboxChange = (e: any, type: string, filter: any, option: any) => {

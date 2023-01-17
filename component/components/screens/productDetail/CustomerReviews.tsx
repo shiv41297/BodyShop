@@ -1,3 +1,5 @@
+/* eslint-disable react/jsx-key */
+/* eslint-disable @next/next/no-img-element */
 import React, { useState } from 'react';
 import { Typography, Divider, Theme } from '@mui/material';
 import { makeStyles } from '@mui/styles';
@@ -340,12 +342,13 @@ const CustomerReviews: React.FC<Props> = (props: Props) => {
           headingClass={classes.messageHeading}
         />
         {skeletonLoader ? (
-          <Skeleton
-            className={classes.skeleton}
-            variant="rectangular"
-            width={100}
-          />
+          'null'
         ) : (
+          // <Skeleton
+          //   className={classes.skeleton}
+          //   variant="rectangular"
+          //   width={100}
+          // />
           <>
             {data?.data?.length > 0 && (
               <Typography className={classes.heading}>
@@ -359,16 +362,19 @@ const CustomerReviews: React.FC<Props> = (props: Props) => {
                { ":id": productData?.magentoId }
              ) */}
         {skeletonLoader ? (
-          <Skeleton variant="rectangular" width={100} />
+          // <Skeleton variant="rectangular" width={100} />
+          'null'
         ) : data?.totalCount > 1 ? (
           <div
             onClick={() =>
               router.push({
                 pathname: '/review-list',
                 query: {
-                  slug: `${router.query.slug}`,
-                  googleKey: `${router.query.googleKey}`,
-                  categoryId: `${router.query.categoryId}`,
+                  id: productData?.magentoId,
+                  subcategoryId: router?.query?.categoryId
+                    ? router?.query?.categoryId
+                    : '0',
+                  urlKey: router?.query?.urlKey ?? urlkey,
                   pageName: 'All Reviews',
                 },
               })
@@ -380,77 +386,80 @@ const CustomerReviews: React.FC<Props> = (props: Props) => {
           ''
         )}
       </div>
-      {/* {data?.data?.length > 0 || skeletonLoader
+      {data?.data?.length > 0 || skeletonLoader
         ? data?.data.map((reviewDat: any) => {
             const reviewData = reviewDat?.review;
             return (
               <div>
                 <div className={classes.headContainer}>
                   {skeletonLoader ? (
-                    <Skeleton
-                      className={classes.skeleton}
-                      width={100}
-                      variant="rectangular"
-                    />
+                    'null'
                   ) : (
+                    // <Skeleton
+                    //   className={classes.skeleton}
+                    //   width={100}
+                    //   variant="rectangular"
+                    // />
                     <Typography className={classes.subHeading}>
                       {reviewData?.Title || ''}
                     </Typography>
                   )}
-                  {skeletonLoader ? (
-                    <Skeleton
-                      className={classes.skeleton}
-                      width={100}
-                      variant="rectangular"
-                    />
-                  ) : (
-                    !reviewData?.isReported &&
-                    profileData?._id !== reviewDat?.userId && (
-                      // <div className={classes.flagIcon} >
-                      <CustomButton
-                        type="button"
-                        color="primary"
-                        fullWidth={false}
-                        variant="outlined"
-                        text={'Report This'}
-                        onClick={() => {
-                          if (!isAuthenticated()) showLoginAlert(true);
-                          else sendReviewReport(reviewDat);
-                        }}
-                        className={classes.reportText}
-                      />
-                    )
-                  )}
+                  {skeletonLoader
+                    ? 'null'
+                    : // <Skeleton
+                      //   className={classes.skeleton}
+                      //   width={100}
+                      //   variant="rectangular"
+                      // />
+                      !reviewData?.isReported &&
+                      profileData?._id !== reviewDat?.userId && (
+                        // <div className={classes.flagIcon} >
+                        <CustomButton
+                          type="button"
+                          color="primary"
+                          fullWidth={false}
+                          variant="outlined"
+                          text={'Report This'}
+                          onClick={() => {
+                            if (!isAuthenticated()) showLoginAlert(true);
+                            else sendReviewReport(reviewDat);
+                          }}
+                          className={classes.reportText}
+                        />
+                      )}
                 </div>
                 <div className={classes.reviewNameContainer}>
                   {skeletonLoader ? (
                     <>
-                      <Skeleton
-                        className={classes.skeleton}
-                        width={100}
-                        variant="rectangular"
-                      />
-                      <Skeleton
-                        className={classes.skeleton}
-                        width={50}
-                        variant="rectangular"
-                      />
+                      null
+                      {/* <Skeleton
+                      className={classes.skeleton}
+                      width={100}
+                      variant="rectangular"
+                    />
+                    <Skeleton
+                      className={classes.skeleton}
+                      width={50}
+                      variant="rectangular"
+                    /> */}
                     </>
                   ) : (
                     <>
                       <Typography className={classes.cardName}>
                         {reviewData?.UserNickname || ''}
                       </Typography>
-
-                      <div className={classes.star}>
-                        <img src={images.STAR_TWO} alt="notFound" />
-                      </div>
+                      <img
+                        src={images.STAR_TWO}
+                        alt="star"
+                        className={classes.star}
+                      />
                       <Typography>{reviewData?.Rating || 0}</Typography>
                     </>
                   )}
                 </div>
                 {skeletonLoader ? (
-                  <Skeleton variant="rectangular" height={60} />
+                  // <Skeleton variant="rectangular" height={60} />
+                  'null'
                 ) : (
                   <Typography className={classes.reviews}>
                     {reviewData?.ReviewText || ''}
@@ -462,17 +471,18 @@ const CustomerReviews: React.FC<Props> = (props: Props) => {
                         className={classes.skeletonContent}
                         key={index + 'customer_review'}
                       >
-                        <Skeleton
-                          className={classes.skeletonSpacing}
-                          variant="rectangular"
-                          width={'50%'}
-                        />
-                        :
-                        <Skeleton
-                          className={classes.skeletonSpacing}
-                          variant="rectangular"
-                          width={'50%'}
-                        />
+                        {/* <Skeleton
+                      className={classes.skeletonSpacing}
+                      variant="rectangular"
+                      width={"50%"}
+                    />
+                    :
+                    <Skeleton
+                      className={classes.skeletonSpacing}
+                      variant="rectangular"
+                      width={"50%"}
+                    /> */}
+                        "null"
                       </div>
                     ))
                   : reviewData?.ContextDataFormatted &&
@@ -520,24 +530,25 @@ const CustomerReviews: React.FC<Props> = (props: Props) => {
                         className={classes.columnContent}
                         key={index + 'customer_review'}
                       >
-                        <Skeleton
-                          className={classes.skeleton}
-                          variant="rectangular"
-                          height={10}
-                          width={'30%'}
-                        />
-                        <Skeleton
-                          className={classes.skeleton}
-                          variant="rectangular"
-                          height={10}
-                          width={'95%'}
-                        />
-                        <Skeleton
-                          className={classes.skeleton}
-                          variant="rectangular"
-                          height={10}
-                          width={'70%'}
-                        />
+                        null
+                        {/* <Skeleton
+                        className={classes.skeleton}
+                        variant="rectangular"
+                        height={10}
+                        width={"30%"}
+                      />
+                      <Skeleton
+                        className={classes.skeleton}
+                        variant="rectangular"
+                        height={10}
+                        width={"95%"}
+                      />
+                      <Skeleton
+                        className={classes.skeleton}
+                        variant="rectangular"
+                        height={10}
+                        width={"70%"}
+                      /> */}
                       </div>
                     ))}
                   </div>
@@ -549,9 +560,11 @@ const CustomerReviews: React.FC<Props> = (props: Props) => {
                         return (
                           <div key={item.key} className={classes.starContainer}>
                             <div className={classes.reviewNameContainer}>
-                              <div className={classes.star1}>
-                                <img src={images.STAR_TWO} alt="notFound" />
-                              </div>
+                              <img
+                                src={images.STAR_TWO}
+                                alt="star"
+                                className={classes.star1}
+                              />
                               <Typography>{item?.data?.Value || 0}</Typography>
                             </div>
                             <div className={classes.progress}>
@@ -578,20 +591,15 @@ const CustomerReviews: React.FC<Props> = (props: Props) => {
                           <>
                             <div className={classes.innerDiv}>
                               <div className={classes.reviewImage}>
-                                {photo?.Sizes?.normal?.Url ? (
-                                  <img
-                                    src={photo.Sizes.normal.Url}
-                                    alt="review images"
-                                    className={classes.reviewImg}
-                                  />
-                                ) : (
-                                  <div className={classes.reviewImg}>
-                                    <img
-                                      src={images.PRODUCT_PLACEHOLDER}
-                                      alt="notFound"
-                                    />
-                                  </div>
-                                )}
+                                <img
+                                  src={
+                                    photo?.Sizes?.normal?.Url
+                                      ? photo.Sizes.normal.Url
+                                      : Utils.images.PRODUCT_PLACEHOLDER
+                                  }
+                                  alt="review images"
+                                  className={classes.reviewImg}
+                                />
                               </div>
                             </div>
                           </>
@@ -601,18 +609,19 @@ const CustomerReviews: React.FC<Props> = (props: Props) => {
                 }
                 {skeletonLoader || skeleton ? (
                   <>
-                    <Skeleton
-                      className={classes.skeleton}
-                      variant="rectangular"
-                      height={20}
-                      width={'50%'}
-                    />
-                    <Skeleton
-                      className={classes.skeleton}
-                      variant="rectangular"
-                      height={20}
-                      width={'50%'}
-                    />
+                    null
+                    {/* <Skeleton
+                    className={classes.skeleton}
+                    variant="rectangular"
+                    height={20}
+                    width={"50%"}
+                  />
+                  <Skeleton
+                    className={classes.skeleton}
+                    variant="rectangular"
+                    height={20}
+                    width={"50%"}
+                  /> */}
                   </>
                 ) : (
                   <>
@@ -656,7 +665,7 @@ const CustomerReviews: React.FC<Props> = (props: Props) => {
               </div>
             );
           })
-        : null} */}
+        : null}
     </>
   );
 };

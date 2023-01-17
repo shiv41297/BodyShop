@@ -1,6 +1,7 @@
 import Utils from '../../../utils';
 import request from '../../../utils/request';
 import { getShoppingBagList } from '../../../common/addToCart/action';
+import _ from "lodash";
 import {
   hideLoader,
   hideSkeleton,
@@ -60,8 +61,6 @@ export const getProductData =
             );
           }
         });
-        console.log(product.product.configurableProductOptions?.[0]?.values, "product")
-
         // test code
         let searchValue = subcategory
           .replaceAll('-', ' ')
@@ -215,6 +214,7 @@ export function getReviews(params: any, callback?: Function) {
       });
   };
 }
+
 
 export function submitQuestionsPoll(params: any, callback?: Function) {
   return (dispatch: any, _getState: any) => {
