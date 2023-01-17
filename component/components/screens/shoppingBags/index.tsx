@@ -2698,21 +2698,21 @@ const CustomStepper: React.FC<any> = () => {
         description={'The Body Shop'}
       />
       {
-        <MessageDialogue
-          cancelText={'Cancel'}
-          okText={'Okay'}
-          open={loginAlert}
-          handleClose={() => showLoginAlert(!loginAlert)}
-          onOk={() => {
-            history.push({ pathname: Utils.routes.SHOPPING_BAG });
-            // history(
-            //   `${Utils.routes.LOGIN_OTP}?redirectTo=${Utils.routes.SHOPPING_BAG}`
-            // );
-          }}
-          message={'Please login to proceed'}
-          heading={'The Body Shop'}
-          headingClass={classes.messageHeading}
-        />
+        // <MessageDialogue
+        //   cancelText={'Cancel'}
+        //   okText={'Okay'}
+        //   open={loginAlert}
+        //   handleClose={() => showLoginAlert(!loginAlert)}
+        //   onOk={() => {
+        //     history.push({ pathname: Utils.routes.SHOPPING_BAG });
+        //     // history(
+        //     //   `${Utils.routes.LOGIN_OTP}?redirectTo=${Utils.routes.SHOPPING_BAG}`
+        //     // );
+        //   }}
+        //   message={'Please login to proceed'}
+        //   heading={'The Body Shop'}
+        //   headingClass={classes.messageHeading}
+        // />
       }
       <Box sx={{ display: { xs: 'block', sm: 'none' } }}>
         <div className={classes.mobileRoot}>
