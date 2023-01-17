@@ -7,30 +7,30 @@ import {
   Hidden,
   IconButton,
   Menu,
-} from '@mui/material';
-import { makeStyles } from '@mui/styles';
+} from "@mui/material";
+import { makeStyles } from "@mui/styles";
 // import { useHistory, useLocation, useParams } from "react-router-dom";
 // import { Helmet } from "react-helmet";
-import clsx from 'clsx';
-import React, { useEffect, useState } from 'react';
+import clsx from "clsx";
+import React, { useEffect, useState } from "react";
 // import Filters from "./filters";
 // import Products from "./listProducts";
-import { useDispatch, useSelector } from 'react-redux';
-import { getProductList } from './action';
-import { ReducersModal } from '../../component/models';
-import RecommendationCarousel from '../../component/common/recommendationCarousel';
+import { useDispatch, useSelector } from "react-redux";
+import { getProductList } from "./action";
+import { ReducersModal } from "../../component/models";
+import RecommendationCarousel from "../../component/common/recommendationCarousel";
 // import Skeleton from "@mui/material/Skeleton";
-import { Skeleton } from '@mui/material';
-import SkeletonProductView from '../../component/common/skeletonList/skeletonProductView';
+import { Skeleton } from "@mui/material";
+import SkeletonProductView from "../../component/common/skeletonList/skeletonProductView";
 // import ProductNotFound from "./productNotFound";
-import { debug } from 'util';
-import Head from 'next/head';
-import Products from './listProducts';
-import Filters from './filters';
-import { FilterProductSkeleton } from '../../../common/skeletonList/filterProductSkeleton';
-import Utils from '../../../utils';
-import { customGa4Event } from '../../../utils/gtag';
-import { useRouter } from 'next/router';
+import { debug } from "util";
+import Head from "next/head";
+import Products from "./listProducts";
+import Filters from "./filters";
+import { FilterProductSkeleton } from "../../../common/skeletonList/filterProductSkeleton";
+import Utils from "../../../utils";
+import { customGa4Event } from "../../../utils/gtag";
+import { useRouter } from "next/router";
 declare global {
   interface Window {
     gtag?: any;
@@ -39,49 +39,49 @@ declare global {
 
 const useStyles = makeStyles((theme: Theme) => ({
   bannerRoot: {
-    background: 'var(--white)',
-    backdropFilter: 'blur(2px)',
-    position: 'relative',
+    background: "var(--white)",
+    backdropFilter: "blur(2px)",
+    position: "relative",
     // top: "-10vh",
   },
   bannerRoot2: {
-    [theme.breakpoints.up('sm')]: {
-      top: '-8vh',
+    [theme.breakpoints.up("sm")]: {
+      top: "-8vh",
     },
   },
   productContainer: {
-    background: 'var(--white)',
+    background: "var(--white)",
   },
   findContainer: {
-    width: '1170px',
-    margin: '0 auto',
-    maxWidth: '100%',
+    width: "1170px",
+    margin: "0 auto",
+    maxWidth: "100%",
   },
   filterHead: {
-    padding: '60px 20px 15px',
+    padding: "60px 20px 15px",
   },
   filterProductText: {
-    letterSpacing: '2px',
+    letterSpacing: "2px",
   },
   leftFilter: {
-    display: 'flex',
-    alignItems: 'center',
-    '& .MuiTypography-body1': {
+    display: "flex",
+    alignItems: "center",
+    "& .MuiTypography-body1": {
       font: `normal ${theme.typography.fontWeightBold} ${theme.spacing(
         2
       )} Druk`,
       marginLeft: theme.spacing(2),
-      lineHeight: '23px',
+      lineHeight: "23px",
     },
   },
   filterImg: {
     width: 20,
   },
   filters: {
-    fontSize: '16px',
+    fontSize: "16px",
     marginLeft: theme.spacing(2),
-    [theme.breakpoints.down('xs')]: {
-      fontSize: '13px',
+    [theme.breakpoints.down("xs")]: {
+      fontSize: "13px",
       marginTop: theme.spacing(1.5),
       marginLeft: theme.spacing(0),
     },
@@ -89,25 +89,25 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
 
   select: {
-    display: 'flex',
-    flexDirection: 'row',
-    justifyContent: 'flex-end',
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "flex-end",
     font: `normal ${theme.typography.fontWeightBold} ${theme.spacing(
       1.5
     )} Wrok Sans`,
-    '& .MuiInput-underline:after': {
-      border: 'none',
+    "& .MuiInput-underline:after": {
+      border: "none",
     },
-    '& .MuiInput-underline:before': {
-      display: 'none',
+    "& .MuiInput-underline:before": {
+      display: "none",
     },
 
-    '& .MuiInput-input': {
+    "& .MuiInput-input": {
       font: `normal ${theme.typography.fontWeightBold} ${theme.spacing(
         2
       )} Druk`,
       marginLeft: theme.spacing(2),
-      lineHeight: '23px',
+      lineHeight: "23px",
     },
   },
   filterBody: {
@@ -116,55 +116,55 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
   filterFooter: {
     marginTop: theme.spacing(10),
-    width: '100%',
+    width: "100%",
   },
   carouselHeading: {
     font: `normal ${theme.typography.fontWeightBold} ${theme.spacing(
       2.4
     )}  Recoleta Alt`,
-    color: '#084236',
+    color: "#084236",
     lineHeight: 1.5,
     marginBottom: theme.spacing(0.5),
-    maxWidth: '500px',
-    [theme.breakpoints.down('xs')]: {
-      maxWidth: 'none',
-      fontSize: '16px',
+    maxWidth: "500px",
+    [theme.breakpoints.down("xs")]: {
+      maxWidth: "none",
+      fontSize: "16px",
       marginTop: theme.spacing(14.5),
     },
-    marginLeft: '10px',
+    marginLeft: "10px",
   },
   arrow: {
     padding: theme.spacing(0, 1),
   },
   button: {
-    '& .MuiTypography-body1': {
+    "& .MuiTypography-body1": {
       font: `normal ${theme.typography.fontWeightBold} ${theme.spacing(
         2
       )}  Druk`,
 
-      lineHeight: '23px',
-      letterSpacing: '0.04em',
-      textTransform: 'uppercase',
+      lineHeight: "23px",
+      letterSpacing: "0.04em",
+      textTransform: "uppercase",
 
-      color: 'var(--black300)',
+      color: "var(--black300)",
     },
-    '& .MuiIconButton-root': {
+    "& .MuiIconButton-root": {
       padding: 0,
-      borderRadius: '0%',
+      borderRadius: "0%",
     },
-    '& .MuiIconButton-root:hover': {
-      background: 'none',
+    "& .MuiIconButton-root:hover": {
+      background: "none",
     },
   },
   link: {
-    color: 'lightblue',
+    color: "lightblue",
     font: `normal 400 ${theme.spacing(2)}  Work Sans`,
-    cursor: 'pointer',
+    cursor: "pointer",
   },
   productData: {
     // margin: theme.spacing(1, "0"),
     padding: theme.spacing(0, 1),
-    [theme.breakpoints.down('xs')]: {
+    [theme.breakpoints.down("xs")]: {
       padding: theme.spacing(0, 0),
     },
   },
@@ -182,7 +182,7 @@ function FilterProducts() {
   const open = Boolean(anchorEl);
   const query = Utils.CommonFunctions.useQuery();
 
-  let queryFilters = query.get('filters') ?? '{}';
+  let queryFilters = query.get("filters") ?? "{}";
   queryFilters = JSON.parse(
     decodeURIComponent(decodeURIComponent(queryFilters))
   );
@@ -214,10 +214,10 @@ function FilterProducts() {
   const products = productData?.products || {};
 
   // let keyword = params?.keyword ?? "";
-  let keyword = '';
+  let keyword = "";
 
   // const fromPath = location?.state?.fromPath || "";
-  const fromPath = '';
+  const fromPath = "";
 
   const urlKey = location.query.slug;
 
@@ -275,7 +275,7 @@ function FilterProducts() {
 
   useEffect(() => {
     window.scrollTo(0, 0);
-    let params: any = { page, limit: 10, type: 'history' };
+    let params: any = { page, limit: 10, type: "history" };
     if (authToken) {
       // dispatch(showSkeleton());
       dispatch(
@@ -297,10 +297,10 @@ function FilterProducts() {
             item_id: j.sku,
             name: j.name,
             item_name: j.name,
-            currency: 'INR',
+            currency: "INR",
             index: index + 1,
-            brand: 'The Body Shop',
-            item_brand: 'The Body Shop',
+            brand: "The Body Shop",
+            item_brand: "The Body Shop",
             category: j.category?.name,
             item_category: j.category?.name,
             list_id: j.sku,
@@ -312,16 +312,16 @@ function FilterProducts() {
           });
           return i;
         }, []);
-      if (typeof window && window.gtag !== 'undefined') {
+      if (typeof window && window.gtag !== "undefined") {
         const gaPayload = {
           items: ProductsArray,
         };
-        customGa4Event('view_item_list', gaPayload);
+        customGa4Event("view_item_list", gaPayload);
         if (
-          process.env.NEXT_PUBLIC_ENV !== 'development' &&
-          process.env.NEXT_PUBLIC_ENV !== 'staging'
+          process.env.NEXT_PUBLIC_ENV !== "development" &&
+          process.env.NEXT_PUBLIC_ENV !== "staging"
         ) {
-          window.gtag('event', 'view_item_list', gaPayload);
+          window.gtag("event", "view_item_list", gaPayload);
         }
       }
     }
@@ -363,9 +363,11 @@ function FilterProducts() {
     setAnchorEl(null);
   };
 
+  console.log("location", location);
+
   const handleChange = (_e: any, page: number) => {
-    window.scrollTo(0, 400);
-    setPage(page);
+    // window.scrollTo(0, 400);
+    // setPage(page);
 
     const payload = {
       ...apiParams,
@@ -373,18 +375,49 @@ function FilterProducts() {
       urlKey,
     };
     setApiParams(payload);
+
+    const { slug, googleKey } = location.query;
+
+    if (location.pathname === "/[slug]/h/[googleKey]") {
+      location.push({
+        pathname: "/[slug]/h/[googleKey]",
+        query: {
+          ...location.query,
+          page,
+        },
+      });
+    }
+
+    if (location.pathname === "/[slug]/[category]/c/[gooogleKey]") {
+      location.push({
+        pathname: "/[slug]/[category]/c/[gooogleKey]",
+        query: {
+          ...location.query,
+          page,
+        },
+      });
+    }
+
+    if (location.pathname === "/[slug]/h/[googlekey]")
+      if (location.pathname === "/[slug]/c/[googleKey]") {
+      }
+
+    if (location.pathname === "/[slug]/p/[googleKey]") {
+    }
+
+    // location.push()
     // dispatch(showLoader());
-    dispatch(
-      getProductList(payload, false, () => {
-        dispatch(hideLoader());
-        history.push({
-          pathname: history.location.pathname,
-          search: `?filters=${encodeURI(
-            encodeURIComponent(JSON.stringify(payload))
-          )}`,
-        });
-      })
-    );
+    // dispatch(
+    //   getProductList(payload, false, () => {
+    //     dispatch(hideLoader());
+    //     history.push({
+    //       pathname: history.location.pathname,
+    //       search: `?filters=${encodeURI(
+    //         encodeURIComponent(JSON.stringify(payload))
+    //       )}`,
+    //     });
+    //   })
+    // );
   };
 
   return (
@@ -428,12 +461,12 @@ function FilterProducts() {
                       {productData?.products?.data ? (
                         <Typography className={classes.filters} variant="body1">
                           <strong> Showing </strong>
-                          {`${productData?.products?.data?.length ?? '0'} of ${
-                            productData?.products?.totalCount ?? '0'
+                          {`${productData?.products?.data?.length ?? "0"} of ${
+                            productData?.products?.totalCount ?? "0"
                           } ${
                             productData?.products?.data?.length === 1
-                              ? 'product'
-                              : 'products'
+                              ? "product"
+                              : "products"
                           }`}
                         </Typography>
                       ) : null}
@@ -462,13 +495,13 @@ function FilterProducts() {
                               id="menu-appbar"
                               anchorEl={anchorEl}
                               anchorOrigin={{
-                                vertical: 'top',
-                                horizontal: 'right',
+                                vertical: "top",
+                                horizontal: "right",
                               }}
                               keepMounted
                               transformOrigin={{
-                                vertical: 'top',
-                                horizontal: 'right',
+                                vertical: "top",
+                                horizontal: "right",
                               }}
                               open={open}
                               onClose={handleClose}
