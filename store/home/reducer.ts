@@ -24,7 +24,7 @@ export const loadingReducer = (
 
 export const homeReducer = (
   state = {
-    homeData: "",
+    homeData: [],
     menuData: [],
     memberShipData: [],
     mobileHomeData: [],

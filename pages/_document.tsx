@@ -32,6 +32,19 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 })(window,document,'script','dataLayer','GTM-T39L5VN';`,
             }}
           ></script>
+          <script>
+            {typeof window !== "undefined" &&
+              ( window.IGLOO = window.IGLOO || {
+                "enable_rip": true, 
+                "enable_flash": false, 
+                "install_flash": false,
+                "loader": {
+                  "version": "general5", 
+                  "fp_static": false 
+                }
+              })
+            }
+          </script>
         </Head>
 
         <body>
@@ -79,28 +92,28 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           />
 
           <Script src="https://accounts.google.com/gsi/client" async defer />
-          <Script
-            src="https://bodyshopstgweb.appskeeper.in/iovation-loader-5.x.js"
-            strategy="lazyOnload"
-            onLoad={() => {
-              if (navigator.onLine) {
-                window.IGLOO = window.IGLOO || {
-                  enable_rip: true, // Enable Real IP protection.
-                  enable_flash: false, // Disable flash
-                  install_flash: false, // Don't ask user to install flash
-                  loader: {
-                    version: "general5", // Non-experimental 5.x updates
-                    fp_static: false, // Don't load 1st party resources
-                  },
-                };
-              }
-            }}
-          />
 
           <Script
             id="razPayId"
             src="https://checkout.razorpay.com/v1/razorpay.js"
           />
+
+          {/* <script src="/iovation-loader-5.x.js"></>
+          <script type="JavaScript">
+            {navigator.onLine} &&{" "}
+            {
+              (window.IGLOO = window.IGLOO || {
+                enable_rip: true,
+                enable_flash: false,
+                install_flash: false,
+                loader: {
+                  version: "general5",
+                  fp_static: false,
+                },
+              })
+            }
+         
+          </script> */}
         </body>
       </Html>
     );

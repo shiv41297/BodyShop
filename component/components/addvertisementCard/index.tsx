@@ -23,7 +23,7 @@ const useStyles = makeStyles((theme: Theme) =>
       position: "sticky",
       top: 130,
 
-      zIndex: 9,
+      zIndex: 99,
     },
     dashedBordered: {
       // border: `1px dashed ${theme.palette.primary.light}`,

@@ -15,6 +15,6 @@
     "jsx": "preserve",
     "incremental": true
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "component/constants/script.js"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "component/constants/script.js", "component/scripts/iovation-loader.ts"],
   "exclude": ["node_modules"]
 }

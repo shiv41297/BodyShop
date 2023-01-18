@@ -318,8 +318,9 @@ const Detail: React.FC<Props> = (props: any) => {
             <div
               className={classes.titleDiv}
               onClick={() => {
-                if (!isAuthenticated()) showLoginAlert(true);
-                else setRatingModalVisibility(true);
+                // if (!isAuthenticated()) showLoginAlert(true);
+                // else 
+                setRatingModalVisibility(true);
               }}
             >
               {skeletonLoader ? (
@@ -327,7 +328,7 @@ const Detail: React.FC<Props> = (props: any) => {
               ) : (
                 reviewData?.isReviewAllowed && (
                   <>
-                  <Image src={Utils.images.EDIT_ICON} height={40} width={40} alt="imgEdit"/>
+                  <Image src={Utils.images.EDIT_ICON} height={20} width={20} alt="imgEdit"/>
                     {/* <EDIT_ICON /> */}
                     <Typography variant={'body1'} className={classes.review}>
                       Review product

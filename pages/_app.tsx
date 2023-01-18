@@ -20,6 +20,7 @@ import "../styles/globals.css";
 import { Box } from "@mui/material";
 import MediaFooter from "../component/components/footers/mediaFooter";
 import Addvertisement from "../component/components/addvertisementCard";
+import Script from "next/script";
 
 // Client-side cache, shared for the whole session of the user in the browser.
 const clientSideEmotionCache = createEmotionCache();
@@ -54,15 +55,23 @@ function MyApp({
         <meta name="viewport" content="initial-scale=1, width=device-width" />
         <link rel="icon" href="/favicon.svg" />
       </Head>
+      <Script src="/iovation-loader-5.x.js" />
 
       <Provider store={store}>
         {globalLoader ? (
           <Backdrop
-            sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
+            sx={{
+              color: "#ffffff",
+              zIndex: (theme) => theme.zIndex.drawer + 1,
+            }}
             open={globalLoader}
           >
             <CircularProgress
-              sx={{ display: "flex", justifyContent: "center" }}
+              sx={{
+                display: "flex",
+                justifyContent: "center",
+                color: "#ffffff",
+              }}
             />
           </Backdrop>
         ) : (
@@ -70,9 +79,9 @@ function MyApp({
             <CssBaseline />
             <StylesProvider generateClassName={generateClassName}>
               <Headers />
-              {/* <Box sx={{ display: { xs: "none", sm: "contents" } }}>
-              <Addvertisement key="promotional_banner" />
-            </Box> */}
+              <Box sx={{ display: { xs: "none", sm: "contents" } }}>
+                <Addvertisement key="promotional_banner" />
+              </Box>
 
               <Box sx={{ marginTop: "130px" }}>
                 <Component {...props.pageProps} />

@@ -14,6 +14,7 @@ import MessageDialogue from '../../../common/product/messageDialogue';
 import LinearProgressReviews from '../../../common/linearProgressReviews';
 import { useRouter } from 'next/router';
 import Image from 'next/image';
+import RatingModal from '../rating&review/rating';
 
 const useStyles = makeStyles((theme: Theme) => ({
   heading: {
@@ -202,8 +203,9 @@ const RatingsReviews = (props: any) => {
         <div
           className={classes.cursor}
           onClick={() => {
-            if (!isAuthenticated()) showLoginAlert(true);
-            else setRatingModalVisibility(true);
+            // if (!isAuthenticated()) showLoginAlert(true);
+            // else 
+            setRatingModalVisibility(true);
           }}
         >
           {skeletonLoader ? (
@@ -212,7 +214,7 @@ const RatingsReviews = (props: any) => {
             reviewData?.isReviewAllowed && (
               <>
                 {/* <EDIT_ICON /> */}
-                <Image src={Utils.images.EDIT_ICON} height={40} width={40} alt="imgEdit"/>
+                <Image src={Utils.images.EDIT_ICON} height={20} width={20} alt="imgEdit"/>
                 <Typography className={classes.button}>
                   Review product
                 </Typography>
@@ -334,7 +336,7 @@ const RatingsReviews = (props: any) => {
         )
         // <Typography className={classes.noReview}>No Reviews Yet</Typography>
       }
-      {/* {ratingModalVisibility && (
+      {ratingModalVisibility && (
         <RatingModal
           product={product}
           // sku={sku}
@@ -344,7 +346,7 @@ const RatingsReviews = (props: any) => {
             setRatingModalVisibility(false);
           }}
         />
-      )} */}
+      )}
     </div>
   );
 };
