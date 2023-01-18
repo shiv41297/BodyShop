@@ -66,6 +66,7 @@ export const getProductData =
           .replaceAll('-', ' ')
           .split(' ')
           .reverse()[0];
+          console.log(product.product,"product.product.configurableProductOptions?.[0]?.values",product.product.configurableProductOptions?.[0]?.values,"selectedVariantData",selectedVariantData)
         selectedVariant =
           product.product.configurableProductOptions?.[0]?.values &&
           product?.product?.configurableProductOptions?.[0]?.values.find(

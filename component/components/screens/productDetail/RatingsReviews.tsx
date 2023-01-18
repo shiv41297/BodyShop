@@ -14,6 +14,7 @@ import MessageDialogue from '../../../common/product/messageDialogue';
 import LinearProgressReviews from '../../../common/linearProgressReviews';
 import { useRouter } from 'next/router';
 import Image from 'next/image';
+import RatingModal from '../rating&review/rating';
 
 const useStyles = makeStyles((theme: Theme) => ({
   heading: {
@@ -166,7 +167,6 @@ const RatingsReviews = (props: any) => {
   const reviewData = useSelector(
     (state: ReducersModal) => state.productDetailReducer?.productReviews
   );
-  console.log("reviewData",reviewData)
   // const ratingData = reviewData?.data?.[0] || {};
   return (
     <div id={'reviewsAndReviews'}>
@@ -202,8 +202,9 @@ const RatingsReviews = (props: any) => {
         <div
           className={classes.cursor}
           onClick={() => {
-            if (!isAuthenticated()) showLoginAlert(true);
-            else setRatingModalVisibility(true);
+            // if (!isAuthenticated()) showLoginAlert(true);
+            // else 
+            setRatingModalVisibility(true);
           }}
         >
           {skeletonLoader ? (
@@ -334,7 +335,7 @@ const RatingsReviews = (props: any) => {
         )
         // <Typography className={classes.noReview}>No Reviews Yet</Typography>
       }
-      {/* {ratingModalVisibility && (
+      {ratingModalVisibility && (
         <RatingModal
           product={product}
           // sku={sku}
@@ -344,7 +345,7 @@ const RatingsReviews = (props: any) => {
             setRatingModalVisibility(false);
           }}
         />
-      )} */}
+      )}
     </div>
   );
 };

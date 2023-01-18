@@ -111,12 +111,12 @@ const RatingModal = (props: Props) => {
           getReviewQuestions({ fp: blackBoxString, sku: sku }, (resp: any) => {
             setRatingData(resp);
             formValidationSchema(resp);
-            setLoader(false);
+            // setLoader(false);
           })
         );
       }
     }
-    setLoader(true);
+    // setLoader(true);
     timeoutId = setInterval(useBlackboxString, 500);
   }, []);
 
