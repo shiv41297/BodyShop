@@ -1,3 +1,6 @@
+// @ts-nocheck
+/* eslint-disable @next/next/no-img-element */
+/* eslint-disable react/jsx-key */
 import {
   Theme,
   Grid,
@@ -17,7 +20,7 @@ import { useEffect, useState } from 'react';
 
 import { useDispatch, useSelector } from 'react-redux';
 import { useRouter } from 'next/router';
-import { getProductData, getReviews } from '../../productDetail/action';
+import { getReviews } from '../../productDetail/action';
 import Utils from '../../../../utils';
 import { handleScrollHeight } from '../../../../utils/scroll';
 import MessageDialogue from '../../../../common/product/messageDialogue';
@@ -25,169 +28,172 @@ import { isAuthenticated } from '../../../../utils/session';
 import LinearProgressReviews from '../../../../common/linearProgressReviews';
 import RatingModal from '../rating';
 import Image from 'next/image';
-// import { ReducersModal } from "../../../models";
-// import { getProductData, getReviews } from "../../productDetail/action";
-// import { hideSkeleton, showSkeleton } from "../../home/actions";
-// import { useNavigate, useLocation } from "react-router-dom";
-// import { handleScrollHeight } from "../../../utils/scroll";
-// import MessageDialogue from "../../../components/common/product/messageDialogue";
-// import { isAuthenticated } from "../../../utils/session";
-// import { EDIT_ICON } from "utils/constantImages";
 
-const useStyles = makeStyles((theme: Theme) => ({
-  root: {
-    borderLeft: '1px solid var(--text-color)',
-    [theme.breakpoints.down('xs')]: {
-      borderLeft: 'none',
+const useStyles = makeStyles((theme: Theme) =>({
+    root: {
+      borderLeft: "1px solid var(--text-color)",
+      [theme.breakpoints.down("xs")]: {
+        borderLeft: "none",
+      },
     },
-  },
-  heading: {
-    font: `normal ${theme.typography.fontWeightBold} ${theme.spacing(
-      2.8
-    )} Recoleta Alt`,
-    lineHeight: '38px',
-    color: 'var(--secondary-black)',
-    margin: theme.spacing(1.5, 2.5),
-    [theme.breakpoints.down('xs')]: {
-      font: `normal ${theme.typography.fontWeightBold} ${theme.spacing(
-        2.5
-      )} Work Sans`,
-      margin: theme.spacing(1.5, 0),
-    },
-  },
-  headerDiv: {
-    borderBottom: '1px solid var(--text-color)',
-  },
-  innerContainer: {
-    margin: theme.spacing(2.5),
-    [theme.breakpoints.down('xs')]: {
-      margin: theme.spacing(0, 0),
-    },
-  },
-  title: {
-    font: `normal ${theme.typography.fontWeightBold} ${theme.spacing(
-      1.8
-    )} Recoleta Alt`,
-    lineHeight: '24px',
-    letterSpacing: '0.02em',
-    color: 'var(--secondary-black)',
-  },
-  titleDiv: {
-    display: 'flex',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    cursor: 'pointer',
-  },
-  review: {
-    font: `normal ${theme.typography.fontWeightBold} ${theme.spacing(
-      1.4
-    )} Work Sans SemiBold`,
-    lineHeight: '16px',
-    color: 'var(--main-opacity)',
-    margin: theme.spacing(0, 0.5),
-  },
-  ratingDiv: {
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    flexDirection: 'column',
-    height: '160px',
-  },
-  ratingContainer: {
-    display: 'flex',
-    justifyContent: 'center',
-    // alignItems: "center",
-  },
-  ratingNumber: {
-    font: `normal ${theme.typography.fontWeightBold} ${theme.spacing(
-      3.2
-    )} Work Sans SemiBold`,
-    lineHeight: '38px',
-    color: 'var(--black)',
-    [theme.breakpoints.down('xs')]: {
+    heading: {
       font: `normal ${theme.typography.fontWeightBold} ${theme.spacing(
         2.8
-      )} Work Sans Bold`,
-      // 16 SemiBold
+      )}px Recoleta Alt`,
+      lineHeight: "38px",
+      color: "var(--secondary-black)",
+      margin: theme.spacing(1.5, 2.5),
+      [theme.breakpoints.down("xs")]: {
+        font: `normal ${theme.typography.fontWeightBold} ${theme.spacing(
+          2.5
+        )}px Work Sans`,
+        margin: theme.spacing(1.5, 0),
+      },
     },
-  },
-  ratingHeading: {
-    font: `normal ${theme.typography.fontWeightBold} ${theme.spacing(
-      3.2
-    )} Work Sans SemiBold`,
-    lineHeight: '38px',
-    color: 'var(--black)',
-    [theme.breakpoints.down('xs')]: {
-      font: `normal ${theme.spacing(1.6)} Work Sans SemiBold`,
-      lineHeight: '38px',
+    headerDiv: {
+      borderBottom: "1px solid var(--text-color)",
     },
-  },
-  rating: {
-    color: 'var(--main-opacity) !important ',
-  },
-  ratingLabel: {
-    margin: theme.spacing(1, 0),
-    font: `normal ${theme.spacing(1.2)} Work Sans`,
-    color: 'var(--light-gray)',
-    lineHeight: '14px',
-    [theme.breakpoints.down('xs')]: {
-      font: `normal ${theme.spacing(1.1)} Work Sans Regular`,
+    innerContainer: {
+      margin: theme.spacing(2.5),
+      [theme.breakpoints.down("xs")]: {
+        margin: theme.spacing(0, 0),
+      },
     },
-  },
-  progressBar: {
-    flexBasis: '40%',
-    borderLeft: '1px solid var(--border-color)',
-    padding: theme.spacing(0.5, 1, 1, 3),
-  },
-  progressContainer: {
-    margin: theme.spacing(1, 0, 0, 0),
-    '& .MuiLinearProgress-colorPrimary': {
-      borderRadius: '2px',
+    title: {
+      font: `normal ${theme.typography.fontWeightBold} ${theme.spacing(
+        1.8
+      )}px Recoleta Alt`,
+      lineHeight: "24px",
+      letterSpacing: "0.02em",
+      color: "var(--secondary-black)",
     },
-  },
-  label: {
-    font: `normal ${theme.typography.fontWeightMedium} ${theme.spacing(
-      1.4
-    )} Work Sans`,
-    lineHeight: '16px',
-    [theme.breakpoints.down('xs')]: {
-      font: `normal ${theme.spacing(1.4)} Work Sans SemiBold`,
+    titleDiv: {
+      display: "flex",
+      justifyContent: "space-between",
+      alignItems: "center",
+      cursor: "pointer",
     },
-  },
-  outerContainer: {
-    padding: theme.spacing(3),
-    [theme.breakpoints.down('xs')]: {
-      padding: theme.spacing(0, 1, 1.5, 1),
+    review: {
+      font: `normal ${theme.typography.fontWeightBold} ${theme.spacing(
+        1.4
+      )}px Work Sans SemiBold`,
+      lineHeight: "16px",
+      color: "var(--main-opacity)",
+      margin: theme.spacing(0, 0.5),
     },
-  },
-  divider: {
-    border: '1px solid var(--text-color)',
-  },
-  outerDiv: {
-    display: 'flex',
-    alignItems: 'center',
-    '& .MuiRating-root': {
-      color: 'var(--main-opacity)',
+    ratingDiv: {
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+      flexDirection: "column",
+      height: "160px",
     },
-  },
-  skeleton: {
-    margin: '10px 10px',
-  },
-  skeletonContainer: {
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    flexDirection: 'column',
-  },
-  messageHeading: {
-    font: `normal 700 ${theme.spacing(2.0)} Work Sans`,
-    color: 'var(--black300)',
-    lineHeight: '28px',
-    marginBottom: '9px',
+    ratingContainer: {
+      display: "flex",
+      justifyContent: "center",
+      // alignItems: "center",
+    },
+    ratingNumber: {
+      font: `normal ${theme.typography.fontWeightBold} ${theme.spacing(
+        3.2
+      )}px Work Sans SemiBold`,
+      lineHeight: "38px",
+      color: "var(--black)",
+      [theme.breakpoints.down("xs")]: {
+        font: `normal ${theme.typography.fontWeightBold} ${theme.spacing(
+          2.8
+        )}px Work Sans Bold`,
+        // 16 SemiBold
+      }
+    },
+    ratingHeading: {
+      font: `normal ${theme.typography.fontWeightBold} ${theme.spacing(
+        3.2
+      )}px Work Sans SemiBold`,
+      lineHeight: "38px",
+      color: "var(--black)",
+      [theme.breakpoints.down("xs")]: {
+        font: `normal ${theme.spacing(
+          1.6
+        )}px Work Sans SemiBold`,
+        lineHeight: "38px",
+      }
+    },
+    rating: {
+      color: "var(--main-opacity) !important ",
+    },
+    ratingLabel: {
+      margin: theme.spacing(1, 0),
+      font: `normal ${theme.spacing(
+        1.2
+      )}px Work Sans`,
+      color: "var(--light-gray)",
+      lineHeight: "14px",
+      [theme.breakpoints.down("xs")]: {
+        font: `normal ${theme.spacing(
+          1.1
+        )}px Work Sans Regular`,
+      }
+    },
+    progressBar: {
+      flexBasis: "40%",
+      borderLeft: "1px solid var(--border-color)",
+      padding: theme.spacing(0.5, 1, 1, 3),
+    },
+    progressContainer: {
+      margin: theme.spacing(1, 0, 0, 0),
+      "& .MuiLinearProgress-colorPrimary": {
+        borderRadius: "2px",
+      },
+    },
+    label: {
+      font: `normal ${theme.typography.fontWeightMedium} ${theme.spacing(
+        1.4
+      )}px Work Sans`,
+      lineHeight: "16px",
+      [theme.breakpoints.down("xs")]: {
+        font: `normal ${theme.spacing(
+          1.4
+        )}px Work Sans SemiBold`,
+      }
+    },
+    outerContainer: {
+      padding: theme.spacing(3),
+      [theme.breakpoints.down("xs")]: {
+        padding: theme.spacing(0, 1, 1.5, 1),
+      },
+    },
+    divider: {
+      border: "1px solid var(--text-color)",
+    },
+    outerDiv: {
+      display: "flex",
+      alignItems: "center",
+      "& .MuiRating-root": {
+        color: "var(--main-opacity)",
+      },
+    },
+    skeleton: {
+      margin: "10px 10px",
+    },
+    skeletonContainer: {
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+      flexDirection: "column",
+    },
+    messageHeading: {
+      font: `normal 700 ${theme.spacing(
+        2.0
+      )}px Work Sans`,
+      color: "var(--black300)",
+      lineHeight: "28px",
+      marginBottom: "9px"
 
-    // margin: theme.spacing(0.8, 0),
-  },
-}));
+      // margin: theme.spacing(0.8, 0),
+    },
+  })
+);
 interface Props {
   setReviewData: Function;
   match?: any;
@@ -197,38 +203,57 @@ const Detail: React.FC<Props> = (props: any) => {
   const classes = useStyles();
   const [ratingModalVisibility, setRatingModalVisibility] =
     useState<boolean>(false);
-  const dispatch: any = useDispatch();
+  const dispatch = useDispatch();
   // const location: any = useLocation();
+  
   const history = useRouter();
-  let location = {
-    id:"", subcategoryId:"", urlKey:""
-  }
-  // const { id, subcategoryId, urlKey } = location && location?.state || null;
-  const { id, subcategoryId, urlKey } = location && location || null;
+  const { id, subcategory, urlKey } = history.query;
   const [data, setData] = useState<any>([]);
   const [reviewData, setReviewData] = useState<any>({});
   // const [productSku, setProductSku] = useState<any>("");
   const [page, setPage] = useState<any>(0);
-  const [loginAlert, showLoginAlert] = useState(false);
+  const [loginAlert, showLoginAlert] = useState(false)
   const [isFetching, setIsFetching] = useState<boolean>(false);
   const limit = 10;
   const productData: any =
-    useSelector((state: any) => state.productDetailReducer?.product) || {};
+    useSelector(
+      (state: any) => state.productDetailReducer?.product
+    ) || {};
 
   useEffect(() => {
     window.scrollTo(0, 0);
 
     let params: any = {
       id,
-      subcategoryId,
+      subcategory,
       urlKey,
     };
-
     if (!reviewData.nextPage) {
       // dispatch(showSkeleton());
-      dispatch(getProductData(params,history.query));
+      // dispatch(
+      //   getProductData(params, (resp: any) => {
+          // dispatch(hideSkeleton());
+          // setProductSku(productData?.sku || null);
+          getReviewData(true, false, productData?.sku, () => {
+            window.addEventListener("scroll", handleScroll);
+          });
+          let breadcrumbData = [
+            { title: "Home", action: "/" },
+            {
+              title: productData?.name,
+              // action: `/product-detail/${productData?.magentoId}`,
+              action: Utils.CommonFunctions.seoUrl(productData, "pdp")
+            },
+            {
+              title: "Review List",
+              action: `/review-list`,
+            },
+          ];
+          props.setBreadcrumb(breadcrumbData);
+        // })
+      // );
     }
-    return () => window.removeEventListener('scroll', handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   const getReviewData = (
@@ -241,6 +266,7 @@ const Detail: React.FC<Props> = (props: any) => {
       const pageNum = hasMore ? page + 1 : callWithCurrentPage ? 1 : page;
       setPage(pageNum);
       const productSku = sku ? sku : productData?.sku; //" BS-91942001"
+     
       dispatch(
         getReviews(
           `?sku=${productSku}&page=${pageNum}&limit=${limit}`,
@@ -287,39 +313,41 @@ const Detail: React.FC<Props> = (props: any) => {
         open={loginAlert}
         handleClose={() => showLoginAlert(!loginAlert)}
         onOk={() => {
-          history.push({
-            // pathname: `${Utils.routes.LOGIN_OTP}?redirectTo=${location.pathname}`,
-            pathname: `${Utils.routes.LOGIN_OTP}`,
-          });
-          showLoginAlert(false);
+          history.push(
+            `${Utils.routes.LOGIN_OTP}?redirectTo=${history.location.pathname}`
+          );
+          showLoginAlert(false)
         }}
         message={'Please login to proceed'}
         heading={'The Body Shop'}
         headingClass={classes.messageHeading}
+
       />
-      <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
+      <Box>
         <div className={classes.headerDiv}>
-          <Typography variant={'h4'} className={classes.heading}>
+          <Typography variant={"h4"} className={classes.heading}>
             {skeletonLoader ? (
               <Skeleton width={300} />
             ) : (
-              (productData?.name || '') + ' - Reviews'
+              (productData?.name || "") + " - Reviews"
             )}
           </Typography>
         </div>
       </Box>
 
       <div className={classes.innerContainer}>
-        <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
+        <Box>
           <div className={classes.titleDiv}>
-            <Typography variant={'h3'} className={classes.title}>
-              {skeletonLoader ? <Skeleton width={120} /> : 'Rating & Reviews'}
+            <Typography variant={"h3"} className={classes.title}>
+              {skeletonLoader ? <Skeleton width={120} /> : "Rating & Reviews"}
             </Typography>
             <div
               className={classes.titleDiv}
               onClick={() => {
-                if (!isAuthenticated()) showLoginAlert(true);
-                else setRatingModalVisibility(true);
+                if (!isAuthenticated())
+                  showLoginAlert(true);
+                else
+                  setRatingModalVisibility(true);
               }}
             >
               {skeletonLoader ? (
@@ -327,9 +355,8 @@ const Detail: React.FC<Props> = (props: any) => {
               ) : (
                 reviewData?.isReviewAllowed && (
                   <>
-                  <Image src={Utils.images.EDIT_ICON} height={40} width={40} alt="imgEdit"/>
-                    {/* <EDIT_ICON /> */}
-                    <Typography variant={'body1'} className={classes.review}>
+                    <Image src={Utils.images.EDIT_ICON} alt="icon" height={30} width={30}/>
+                    <Typography variant={"body1"} className={classes.review}>
                       Review product
                     </Typography>
                   </>
@@ -340,20 +367,19 @@ const Detail: React.FC<Props> = (props: any) => {
         </Box>
 
         <div className={classes.outerContainer}>
-          <Grid container>
+          <Grid container >
             <Grid
               item
               xs={5}
               md={5}
-              className={skeletonLoader ? classes.skeletonContainer : ''}
+              className={skeletonLoader ? classes.skeletonContainer : ""}
             >
               {skeletonLoader ? (
                 Array.of(1, 2, 3).map(() => (
-                  // eslint-disable-next-line react/jsx-key
                   <Skeleton
                     className={classes.skeleton}
                     variant="rectangular"
-                    width={'50%'}
+                    width={"50%"}
                     height={10}
                   />
                 ))
@@ -364,9 +390,7 @@ const Detail: React.FC<Props> = (props: any) => {
                       <Typography className={classes.ratingNumber}>
                         {reviewData?.avgRating || 0}
                       </Typography>
-                      <Typography className={classes.ratingHeading}>
-                        /5
-                      </Typography>
+                      <Typography className={classes.ratingHeading}>/5</Typography>
                     </div>
                   )}
                   {reviewData?.avgRating && (
@@ -382,11 +406,11 @@ const Detail: React.FC<Props> = (props: any) => {
                   )}
                   {reviewData?.totalCount > 0 && (
                     <Typography
-                      variant={'body2'}
+                      variant={"body2"}
                       className={classes.ratingLabel}
                     >
-                      {reviewData?.totalCount || 0} verified{' '}
-                      {reviewData?.totalCount <= 1 ? 'user' : 'users'}
+                      {reviewData?.totalCount || 0} verified{" "}
+                      {reviewData?.totalCount <= 1 ? "user" : "users"}
                     </Typography>
                   )}
                 </div>
@@ -405,7 +429,7 @@ const Detail: React.FC<Props> = (props: any) => {
                     <Skeleton
                       className={classes.skeleton}
                       variant="rectangular"
-                      width={'50%'}
+                      width={"50%"}
                       height={10}
                     />
                   </>
@@ -416,7 +440,6 @@ const Detail: React.FC<Props> = (props: any) => {
                     Array.isArray(reviewData.overallPercentage) &&
                     reviewData.overallPercentage.map((item: any) => {
                       return (
-                        // eslint-disable-next-line react/jsx-key
                         <div className={classes.progressContainer}>
                           <label className={classes.label}>{item.key}</label>
                           <LinearProgressReviews
@@ -428,20 +451,6 @@ const Detail: React.FC<Props> = (props: any) => {
                     })}
                 </div>
               )}
-              {/* <div className={classes.progressBar}>
-                <div className={classes.progressContainer}>
-                  <label className={classes.label}>Performance</label>
-                  <LinearProgressReviews value={82} isPerc={true} />
-                </div>
-                <div className={classes.progressContainer}>
-                  <label className={classes.label}>Quality</label>
-                  <LinearProgressReviews value={90} isPerc={true} />
-                </div>
-                <div className={classes.progressContainer}>
-                  <label className={classes.label}>Value</label>
-                  <LinearProgressReviews value={79} isPerc={true} />
-                </div>
-              </div> */}
             </Grid>
           </Grid>
         </div>

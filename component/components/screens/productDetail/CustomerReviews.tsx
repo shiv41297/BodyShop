@@ -371,10 +371,11 @@ const CustomerReviews: React.FC<Props> = (props: Props) => {
                 pathname: '/review-list',
                 query: {
                   id: productData?.magentoId,
-                  subcategoryId: router?.query?.categoryId
-                    ? router?.query?.categoryId
-                    : '0',
-                  urlKey: router?.query?.urlKey ?? urlkey,
+                  val: router?.query?.val,
+                  slug: router.query.slug,
+                  category: router?.query?.category,
+                  subcategory: router?.query?.subcategory,
+                  googleKey: router?.query?.subcategory,
                   pageName: 'All Reviews',
                 },
               })
@@ -421,8 +422,9 @@ const CustomerReviews: React.FC<Props> = (props: Props) => {
                           variant="outlined"
                           text={'Report This'}
                           onClick={() => {
-                            if (!isAuthenticated()) showLoginAlert(true);
-                            else sendReviewReport(reviewDat);
+                            // if (!isAuthenticated()) showLoginAlert(true);
+                            // else
+                            sendReviewReport(reviewDat);
                           }}
                           className={classes.reportText}
                         />
@@ -643,8 +645,9 @@ const CustomerReviews: React.FC<Props> = (props: Props) => {
                               isOutline={true}
                               text="No"
                               onClick={() => {
-                                if (!isAuthenticated()) showLoginAlert(true);
-                                else onClickHelpful('No', reviewDat);
+                                // if (!isAuthenticated()) showLoginAlert(true);
+                                // else
+                                onClickHelpful('No', reviewDat);
                               }}
                             />
                           </div>
@@ -652,8 +655,9 @@ const CustomerReviews: React.FC<Props> = (props: Props) => {
                             isOutline={true}
                             text="Yes"
                             onClick={() => {
-                              if (!isAuthenticated()) showLoginAlert(true);
-                              else onClickHelpful('Yes', reviewDat);
+                              // if (!isAuthenticated()) showLoginAlert(true);
+                              // else
+                              onClickHelpful('Yes', reviewDat);
                             }}
                           />
                         </div>

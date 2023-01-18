@@ -108,12 +108,15 @@ const ReviewList = () => {
   const classes = useStyles();
   // const dispatch = useDispatch();
   const IMAGE_URL = `${process.env.REACT_APP_MEDIA_URL}`;
+  const productData = useSelector(
+    (state: any) => state.productDetailReducer?.product
+  );
 
   // const [data, setData] = useState<any>([]);
   const [reviewData, setReviewData] = useState<any>({});
   const [breadcrumb, setBreadcrumb] = useState<any>([]);
-  const productData =
-    useSelector((state: any) => state.productDetailReducer?.product) || {};
+  // const productData =
+  //   useSelector((state: any) => state.productDetailReducer?.product) || {};
   const img = productData?.image?.[0]?.file
     ? IMAGE_URL + 'catalog/product' + productData.image[0].file
     : ""
