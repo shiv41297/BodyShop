@@ -36,19 +36,22 @@ function MyApp({
   ...rest
 }: MyAppProps) {
   const { store, props } = wrapper.useWrappedStore(rest);
+
   return (
     <CacheProvider value={emotionCache}>
       <Head>
         <meta name="viewport" content="initial-scale=1, width=device-width" />
         <link rel="icon" href="/favicon.svg" />
+      
       </Head>
+      
 
       <Provider store={store}>
         <ThemeProvider theme={theme}>
           <CssBaseline />
           <StylesProvider generateClassName={generateClassName}>
             <Headers />
-           {/* <Box sx={{ display: { xs: "none", sm: "block" } }}>
+            {/* <Box sx={{ display: { xs: "none", sm: "block" } }}>
               <Addvertisement key="promotional_banner" />
             </Box>  */}
 

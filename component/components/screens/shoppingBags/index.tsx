@@ -1069,9 +1069,9 @@ const CustomStepper: React.FC<any> = () => {
 
   const handleNext = () => {
     // if (isAuthenticated()) {
-      if (typeof window !== 'undefined') {
-        localStorage.removeItem('prevPath');
-      }
+    //   if (typeof window !== 'undefined') {
+    //     localStorage.removeItem('prevPath');
+    //   }
       let ProductsCheckoutbag =
         data?.items &&
         data?.items.reduce((i: any, j: any, index: number) => {
@@ -1242,8 +1242,8 @@ const CustomStepper: React.FC<any> = () => {
           handleCartSummary();
         }
       }
-    // } 
-    // else {
+    // }
+    //  else {
     //   showLoginAlert(true);
     // }
   };
@@ -2698,23 +2698,23 @@ const CustomStepper: React.FC<any> = () => {
         title={'Shopping Cart| The Body Shop'}
         description={'The Body Shop'}
       />
-      {
-        // <MessageDialogue
-        //   cancelText={'Cancel'}
-        //   okText={'Okay'}
-        //   open={loginAlert}
-        //   handleClose={() => showLoginAlert(!loginAlert)}
-        //   onOk={() => {
-        //     history.push({ pathname: Utils.routes.SHOPPING_BAG });
-        //     // history(
-        //     //   `${Utils.routes.LOGIN_OTP}?redirectTo=${Utils.routes.SHOPPING_BAG}`
-        //     // );
-        //   }}
-        //   message={'Please login to proceed'}
-        //   heading={'The Body Shop'}
-        //   headingClass={classes.messageHeading}
-        // />
-      }
+      {/* {
+        <MessageDialogue
+          cancelText={'Cancel'}
+          okText={'Okay'}
+          open={loginAlert}
+          handleClose={() => showLoginAlert(!loginAlert)}
+          onOk={() => {
+            history.push({ pathname: Utils.routes.SHOPPING_BAG });
+            // history(
+            //   `${Utils.routes.LOGIN_OTP}?redirectTo=${Utils.routes.SHOPPING_BAG}`
+            // );
+          }}
+          message={'Please login to proceed'}
+          heading={'The Body Shop'}
+          headingClass={classes.messageHeading}
+        />
+      } */}
       <Box sx={{ display: { xs: 'block', sm: 'none' } }}>
         <div className={classes.mobileRoot}>
           <div className={classes.mobileHeaderContainer}>
