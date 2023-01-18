@@ -12,7 +12,6 @@ import createEmotionCache from "../config/createEmotionCache";
 import theme from "../config/theme";
 import { wrapper } from "../store/store";
 import { Provider } from "react-redux";
-import Headers from "../component/components/headers";
 import Footer from "../component/components/footers";
 import "react-multi-carousel/lib/styles.css";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
@@ -78,15 +77,10 @@ function MyApp({
           <ThemeProvider theme={theme}>
             <CssBaseline />
             <StylesProvider generateClassName={generateClassName}>
-              <Headers />
-              <Box sx={{ display: { xs: "none", sm: "contents" } }}>
+            <Box sx={{ display: { xs: "none", sm: "contents" } }}>
                 <Addvertisement key="promotional_banner" />
               </Box>
-
-              <Box sx={{ marginTop: "130px" }}>
-                <Component {...props.pageProps} />
-              </Box>
-
+              <Component {...props.pageProps} />
               <MediaFooter />
               <Footer />
             </StylesProvider>
