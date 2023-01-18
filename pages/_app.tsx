@@ -12,14 +12,13 @@ import createEmotionCache from "../config/createEmotionCache";
 import theme from "../config/theme";
 import { wrapper } from "../store/store";
 import { Provider } from "react-redux";
-import Headers from "../component/components/headers";
 import Footer from "../component/components/footers";
 import "react-multi-carousel/lib/styles.css";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import "../styles/globals.css";
 import { Box } from "@mui/material";
 import MediaFooter from "../component/components/footers/mediaFooter";
-import Addvertisement from "../component/components/addvertisementCard";
+// import Addvertisement from "../component/components/addvertisementCard";
 
 // Client-side cache, shared for the whole session of the user in the browser.
 const clientSideEmotionCache = createEmotionCache();
@@ -53,10 +52,7 @@ function MyApp({
       <Head>
         <meta name="viewport" content="initial-scale=1, width=device-width" />
         <link rel="icon" href="/favicon.svg" />
-      
       </Head>
-      
-
       <Provider store={store}>
         {globalLoader ? (
           <Backdrop
@@ -71,15 +67,7 @@ function MyApp({
           <ThemeProvider theme={theme}>
             <CssBaseline />
             <StylesProvider generateClassName={generateClassName}>
-              <Headers />
-              {/* <Box sx={{ display: { xs: "none", sm: "block" } }}>
-              <Addvertisement key="promotional_banner" />
-            </Box>  */}
-
-              <Box sx={{ marginTop: "130px" }}>
-                <Component {...props.pageProps} />
-              </Box>
-
+              <Component {...props.pageProps} />
               <MediaFooter />
               <Footer />
             </StylesProvider>

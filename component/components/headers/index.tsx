@@ -189,30 +189,30 @@ const Headers = () => {
       history.push({ pathname, search: "?isSearched=true" });
     }
   };
-  const [menusData, setMenusData] = React.useState(menuData);
+  // const [menusData, setMenusData] = React.useState(menuData);
 
-  let obj: any = {
-    limit: 10,
-    page: 1,
-  };
+  // let obj: any = {
+  //   limit: 10,
+  //   page: 1,
+  // };
   React.useEffect(() => {
-    window.scrollTo(0, 0);
+    // window.scrollTo(0, 0);
     // if (authToken) {
     //   if (!menuData.length) {
-    let url = Utils.CommonFunctions.replaceUrlParams(
-      Utils.endPoints.MENU_LIST,
-      obj
-    );
-    request.get(url).then((resp) => {
-      let menuRespData = resp?.data?.data.filter(
-        (value: any, _index: number) => value.id !== null
-      );
-      setMenusData(menuRespData);
-      dispatch({
-        type: Utils.ActionName.MENU_DATA,
-        payload: { menuData: menuRespData },
-      });
-    });
+    // let url = Utils.CommonFunctions.replaceUrlParams(
+    //   Utils.endPoints.MENU_LIST,
+    //   obj
+    // );
+    // request.get(url).then((resp) => {
+    //   let menuRespData = resp?.data?.data.filter(
+    //     (value: any, _index: number) => value.id !== null
+    //   );
+    //   setMenusData(menuRespData);
+    //   dispatch({
+    //     type: Utils.ActionName.MENU_DATA,
+    //     payload: { menuData: menuRespData },
+    //   });
+    // });
 
     // .catch((_err) => {});
     //   }
@@ -371,7 +371,7 @@ const Headers = () => {
               </Grid>
             </Grid>
           </div>
-          {menusData?.length ? <MiniHeader menuData={menusData} /> : null}
+          {menuData?.length ? <MiniHeader menuData={menuData} /> : null}
         </div>
       </Box>
 
