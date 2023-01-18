@@ -57,15 +57,6 @@ function CustomPagination(props: any) {
     return state.loadingReducer.skeletonLoader;
   });
 
-  console.log(
-    {
-      data,
-      count,
-      currentPageCount,
-    },
-    "pagination"
-  );
-
   return (
     <div className={classes.paginationBox}>
       {skeletonLoader || Object.keys(data).length === 0 ? (

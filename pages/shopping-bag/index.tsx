@@ -1,5 +1,5 @@
 import React from 'react'
-import CustomStepper from '../component/components/screens/shoppingBags'
+import CustomStepper from '../../component/components/screens/shoppingBags'
 
 const ShoppingBag = () => {
   return (

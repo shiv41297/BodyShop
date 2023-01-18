@@ -1068,10 +1068,10 @@ const CustomStepper: React.FC<any> = () => {
   }, [data]);
 
   const handleNext = () => {
-    if (isAuthenticated()) {
-      if (typeof window !== 'undefined') {
-        localStorage.removeItem('prevPath');
-      }
+    // if (isAuthenticated()) {
+    //   if (typeof window !== 'undefined') {
+    //     localStorage.removeItem('prevPath');
+    //   }
       let ProductsCheckoutbag =
         data?.items &&
         data?.items.reduce((i: any, j: any, index: number) => {
@@ -1242,9 +1242,10 @@ const CustomStepper: React.FC<any> = () => {
           handleCartSummary();
         }
       }
-    } else {
-      showLoginAlert(true);
-    }
+    // }
+    //  else {
+    //   showLoginAlert(true);
+    // }
   };
 
   const goBack = () => {
@@ -2697,7 +2698,7 @@ const CustomStepper: React.FC<any> = () => {
         title={'Shopping Cart| The Body Shop'}
         description={'The Body Shop'}
       />
-      {
+      {/* {
         <MessageDialogue
           cancelText={'Cancel'}
           okText={'Okay'}
@@ -2713,7 +2714,7 @@ const CustomStepper: React.FC<any> = () => {
           heading={'The Body Shop'}
           headingClass={classes.messageHeading}
         />
-      }
+      } */}
       <Box sx={{ display: { xs: 'block', sm: 'none' } }}>
         <div className={classes.mobileRoot}>
           <div className={classes.mobileHeaderContainer}>

@@ -47,12 +47,15 @@ function MyApp({
   }, []);
 
   const { store, props } = wrapper.useWrappedStore(rest);
+
   return (
     <CacheProvider value={emotionCache}>
       <Head>
         <meta name="viewport" content="initial-scale=1, width=device-width" />
         <link rel="icon" href="/favicon.svg" />
+      
       </Head>
+      
 
       <Provider store={store}>
         {globalLoader ? (

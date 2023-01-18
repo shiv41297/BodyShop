@@ -338,21 +338,43 @@ function FilterProducts() {
     setSorting(item);
     setApiParams(payload);
 
-    if (item) {
-      window.scrollTo(0, 400);
-      // dispatch(showLoader());
-      dispatch(
-        getProductList(payload, false, () => {
-          dispatch(hideLoader());
-          history.push({
-            pathname: history.location.pathname,
-            search: `?filters=${encodeURI(
-              encodeURIComponent(JSON.stringify(payload))
-            )}`,
-          });
-        })
-      );
+    console.log(payload, "payload");
+
+    if (location.pathname === "/[slug]/h/[googleKey]") {
+      location.push({
+        pathname: "/[slug]/h/[googleKey]",
+        query: {
+          ...location.query,
+          search: `${encodeURI(encodeURIComponent(JSON.stringify(payload)))}`,
+        },
+      });
     }
+
+    if (location.pathname === "/[slug]/[category]/c/[gooogleKey]") {
+      location.push({
+        pathname: "/[slug]/[category]/c/[gooogleKey]",
+        query: {
+          ...location.query,
+          search: `${encodeURI(encodeURIComponent(JSON.stringify(payload)))}`,
+        },
+      });
+    }
+
+    // if (item) {
+    //   // window.scrollTo(0, 400);
+    //   // dispatch(showLoader());
+    //   // dispatch(
+    //   //   getProductList(payload, false, () => {
+    //   //     dispatch(hideLoader());
+    //   //     history.push({
+    //   //       pathname: history.location.pathname,
+    //   //       search: `?filters=${encodeURI(
+    //   //         encodeURIComponent(JSON.stringify(payload))
+    //   //       )}`,
+    //   //     });
+    //   //   })
+    //   // );
+    // }
   };
 
   const handleMenu = (event: any) => {
@@ -362,8 +384,6 @@ function FilterProducts() {
   const handleClose = () => {
     setAnchorEl(null);
   };
-
-  console.log("location", location);
 
   const handleChange = (_e: any, page: number) => {
     // window.scrollTo(0, 400);
