@@ -385,8 +385,6 @@ function FilterProducts() {
     setAnchorEl(null);
   };
 
-  console.log("location", location);
-
   const handleChange = (_e: any, page: number) => {
     // window.scrollTo(0, 400);
     // setPage(page);

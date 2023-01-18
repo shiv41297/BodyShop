@@ -1,9 +1,22 @@
-import React from 'react'
+import Address from '../../../component/components/screens/address';
 
-const index = () => {
+const AddressRoot = () => {
   return (
-    <div>index</div>
-  )
-}
+    <div>
+      <Address
+              section="mybag"
+              radioButton={true}
+              checkoutAddressId={
+                  //   "checkoutAddressId"
+                  // ? "checkoutAddressId"
+                  // : "data?.address?._id"
+                  // ? "data?.address?._id"
+                  // :
+                  null} 
+                //   setCheckoutAddressId={undefined}
+                        />
+    </div>
+  );
+};
 
-export default index
+export default AddressRoot;

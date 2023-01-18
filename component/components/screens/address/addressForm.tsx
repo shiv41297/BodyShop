@@ -185,11 +185,12 @@ const AddressForm: React.FC<Props> = (props: Props) => {
   };
   const AddressSchema = Yup.object().shape({
     fullName: Yup.string().trim().required('Please enter name'),
-    mobile: Yup.string()
-      .required('Please enter mobile number')
-      .matches(Utils.regex.onlyNumberRegex, {
-        message: 'Please enter valid mobile number',
-      }),
+    mobile: Yup.string(),
+      // .required('Please enter mobile number')
+      // .matches(Utils.regex.onlyNumberRegex, {
+      //   message: 'Please enter valid mobile number',
+      // }
+      // ),
     addressLine1: Yup.string().trim().required('Please enter address line 1'),
     // addressLine2: Yup.string().trim().required("Please enter address line 2"),
     city: Yup.string().trim().required('Please enter city'),

@@ -255,7 +255,6 @@ const ProductDetail = (props: any) => {
     return state?.loadingReducer?.skeletonLoader;
   });
 
-  console.log(productData.product.configurableProductOptions?.[0]?.values);
 
   useEffect(() => {
     if (productData) {
@@ -439,42 +438,29 @@ const ProductDetail = (props: any) => {
   );
 
   // const urlkey = location.pathname.split('/p/')?.[0]?.split('/').pop();
-  const { subcategory, googleKey } = query;
 
+  useEffect(() => {
+    if (productData && productData?.product.sku) {
+      getData();
+      window.scrollTo(0, 0);
+      screenViewed({
+        ScreenName: events.SCREEN_PDP,
+        CTGenerated: 'WEB',
+      });
+    }
+  }, []);
   const getData = (callback?: any) => {
-    let params: any = {
-      id: id,
-      subcategoryId: googleKey ? googleKey : 0,
-      urlKey: subcategory ?? subcategory,
-    };
     // if (isSearched || searched) {
     //   params.isSearched = 1;
     // }
-    // dispatch(
-    //   getProductData(params, (resp: any) => {
-    //     // dispatch(hideSkeleton());
-
-    //     // const productSku = "BS-91942001"
-    //     const productSku = resp?.product?.sku || '';
-    //     dispatch(
-    //       getReviews(`?sku=${productSku}&page=1&limit=3`, (_resp: any) => {
-    //         // setRatingData(resp?.data?.[0] || {})
-    //         if (callback) callback();
-    //       })
-    //     );
-    //   })
-    // );
+    const productSku = productData?.product.sku || '';
+    dispatch(
+      getReviews(`?sku=${productSku}&page=1&limit=3`, (resp: any) => {
+        // setRatingData(resp?.data?.[0] || {})
+        if (callback) callback();
+      })
+    );
   };
-
-  useEffect(() => {
-    // dispatch(showSkeleton());
-    getData();
-    window.scrollTo(0, 0);
-    screenViewed({
-      ScreenName: events.SCREEN_PDP,
-      CTGenerated: "WEB",
-    });
-  }, [id]);
 
   const listenToScroll = () => {
     //@ts-ignore
@@ -707,7 +693,7 @@ const ProductDetail = (props: any) => {
                     ) : null}
                   </Box>
 
-                  <SmallMighty />
+                  {/* <SmallMighty /> */}
 
                   <AdditionalInformation />
                 </>
