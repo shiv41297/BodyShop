@@ -1,18 +1,9 @@
 import Utils from '../../../utils';
 import request from '../../../utils/request';
 import { getShoppingBagList } from '../../../common/addToCart/action';
-import _ from "lodash";
-import {
-  hideLoader,
-  hideSkeleton,
-} from '../../../../store/home/action';
+import _ from 'lodash';
+import { hideLoader, hideSkeleton } from '../../../../store/home/action';
 
-function multiSearchOr(text: any, searchWords: any) {
-  for (var i = 0; i < searchWords.length; i++) {
-    if (text.indexOf(searchWords[i]) == -1) return false;
-  }
-  return true;
-}
 export const getProductData =
   (params: any, authToken: any) => async (dispatch: any) => {
     let url = Utils.endPoints.PRODUCT_DATA;
@@ -61,17 +52,25 @@ export const getProductData =
             );
           }
         });
-        // test code
-        let searchValue = subcategory
-          .replaceAll('-', ' ')
-          .split(' ')
-          .reverse()[0];
-          console.log(product.product,"product.product.configurableProductOptions?.[0]?.values",product.product.configurableProductOptions?.[0]?.values,"selectedVariantData",selectedVariantData)
+
+        let attributeKey =
+          product &&
+          product.product &&
+          product.product.configurableProductOptions[0] &&
+          product.product.configurableProductOptions[0].attribute_key;
+
+        let returnColorCode =
+          selectedVariantData[0] &&
+          selectedVariantData[0].customAttributes &&
+          selectedVariantData[0].customAttributes.find(
+            (item: any) => attributeKey === item.attribute_code
+          );
+
         selectedVariant =
           product.product.configurableProductOptions?.[0]?.values &&
-          product?.product?.configurableProductOptions?.[0]?.values.find(
+          product?.product?.configurableProductOptions?.[0]?.values.filter(
             (val: any) => {
-              return multiSearchOr(val.label.toLowerCase(), searchValue);
+              if (val.value == returnColorCode.value) return val;
             }
           );
       } else {
@@ -215,7 +214,6 @@ export function getReviews(params: any, callback?: Function) {
       });
   };
 }
-
 
 export function submitQuestionsPoll(params: any, callback?: Function) {
   return (dispatch: any, _getState: any) => {

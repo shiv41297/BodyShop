@@ -644,6 +644,7 @@ const ProductDetail = (props: any) => {
               <Box sx={{ display: { xs: "none", sm: "block" } }}>
                 <ProductDetails details={productDetail} />
               </Box>
+              
               <Rate />
 
               <Return />
