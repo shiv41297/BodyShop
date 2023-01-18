@@ -338,8 +338,6 @@ function FilterProducts() {
     setSorting(item);
     setApiParams(payload);
 
-    console.log(payload, "payload");
-
     if (location.pathname === "/[slug]/h/[googleKey]") {
       location.push({
         pathname: "/[slug]/h/[googleKey]",

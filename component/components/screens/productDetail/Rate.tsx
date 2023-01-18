@@ -400,9 +400,7 @@ const Rate = (_props: any) => {
 
   let configurableOptions = productData?.configurableProductOptions?.[0];
   let configurableLinks = productData?.configurableProductLinks;
-  const [selectedVariant, setSelectedVariant] = React.useState<any>(
-    productDetail.selectedVariant
-  );
+  
   const [state, setState] = React.useState<any>({
     sizeData: [''],
     shadeData: [''],
@@ -512,7 +510,7 @@ const Rate = (_props: any) => {
         <Skeleton variant="rectangular" height={150} />
       ) : (
         <>
-          {productData?.type === 'configurable' ? (
+          {productData && productData?.type === 'configurable' ? (
             Utils.constants.productVariant.indexOf(
               configurableOptions?.attribute_key
             ) > -1 ? (
@@ -533,7 +531,7 @@ const Rate = (_props: any) => {
                           className={classes.selectShadeBox}
                           style={{
                             backgroundColor:
-                              Utils.CommonFunctions.getColor(selectedVariant),
+                              Utils.CommonFunctions.getColor(productDetail.selectedVariant[0]),
                           }}
                         ></div>
 
@@ -544,7 +542,7 @@ const Rate = (_props: any) => {
                           >
                             {'Out of Stock'}
                           </Typography>
-                        ) : selectedVariant && selectedVariant.label ? (
+                        ) : productDetail.selectedVariant[0] && productDetail.selectedVariant[0] && productDetail.selectedVariant[0].label ? (
                           <Typography
                             className={clsx(
                               classes.colorSubheading,
@@ -553,7 +551,7 @@ const Rate = (_props: any) => {
                             style={{ color: '#004236' }}
                           >
                             {' '}
-                            {selectedVariant && selectedVariant.label}{' '}
+                            {productDetail.selectedVariant[0] && productDetail.selectedVariant[0].label}{' '}
                           </Typography>
                         ) : null}
                       </div>
@@ -577,7 +575,7 @@ const Rate = (_props: any) => {
                                 style={{ backgroundColor: shadeColor }}
                                 isInStock={configProduct?.isInStock}
                                 checked={
-                                  selectedVariant?.value_index ===
+                                  productDetail.selectedVariant[0]?.value_index ===
                                   val?.value_index
                                 }
                                 value={val?.value_index}
@@ -592,11 +590,6 @@ const Rate = (_props: any) => {
                     </div>
                   </div>
                   <div>
-                    {/* { !state.outOfStock ?                                     
-                            <Typography className={classes.fontErrorShade} style={{'color': '#FF0707'}}>{'Out of Stock'}</Typography>
-                        :
-                            null
-                        } */}
                   </div>
                 </div>
               </div>
@@ -626,7 +619,7 @@ const Rate = (_props: any) => {
                                 selected={
                                   // selectedVariant?.isInstock&&
                                   val?.value_index ===
-                                  selectedVariant?.value_index
+                                  productDetail.selectedVariant[0]?.value_index
                                 }
                                 value={val.value_index}
                                 aria-label="left aligned"

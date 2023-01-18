@@ -167,7 +167,6 @@ const RatingsReviews = (props: any) => {
   const reviewData = useSelector(
     (state: ReducersModal) => state.productDetailReducer?.productReviews
   );
-  console.log("reviewData",reviewData)
   // const ratingData = reviewData?.data?.[0] || {};
   return (
     <div id={'reviewsAndReviews'}>
