@@ -1,10 +1,9 @@
-
 import { useEffect } from "react";
 
 import Utils from "../../utils";
 import request from "../../utils/request";
 import { useState } from "react";
-import {  useDispatch, useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import countries from "./countries.json";
 import Link from "next/link";
 import { ReducersModal } from "../../models";
@@ -12,144 +11,139 @@ import { Theme, Box, Typography, Grid, Select, MenuItem } from "@mui/material";
 // import { getAuthToken } from "../../utils/session";
 import { makeStyles } from "@mui/styles";
 
+const useStyles: any = makeStyles((theme: Theme) => ({
+  footerRoot: {
+    backgroundColor: "var(--primary)",
+    padding: theme.spacing(0, 10),
+    [theme.breakpoints.down("md")]: {
+      padding: theme.spacing(0, 1),
+    },
+  },
+  subheading: {
+    textAlign: "center",
+    margin: theme.spacing(1, 1),
+    [theme.breakpoints.down("xs")]: {
+      fontSize: theme.spacing(1.4),
+    },
+  },
+  select: {
+    backgroundColor: "var(--white)",
+    font: `normal ${theme.typography.fontWeightBold} ${theme.spacing(
+      1.5
+    )} Wrok Sans`,
+    width: "50%",
+    "& .MuiSelect-icon": {
+      color: "var(--black)",
+      top: "calc(50% - 13px)",
+    },
+    "& .MuiSelect-iconOutlined": {
+      left: "7px",
+    },
+    "& .MuiSelect-outlined.MuiSelect-outlined": {
+      paddingLeft: "32px",
+    },
+  },
+  maxWidthDiv: {
+    // maxWidth: "var(--max-width)",
+    margin: theme.spacing(0, "auto"),
+    padding: theme.spacing(2.5, 0, 1),
+  },
+  heading: {
+    color: "#D6CE4B",
+    marginBottom: theme.spacing(1.5),
+    textTransform: "uppercase",
+    letterSpacing: "0.04em",
+    font: "26px Druk Bold",
+    lineHeight: "1.235",
 
-const useStyles : any = makeStyles((theme: Theme) =>
-  ({
-    footerRoot: {
-      backgroundColor: "var(--primary)",
-      padding: theme.spacing(0, 10),
-      [theme.breakpoints.down("md")]: {
-        padding: theme.spacing(0, 1),
-      },
+    [theme.breakpoints.down("xs")]: {
+      fontSize: theme.spacing(2),
     },
-    subheading: {
-      textAlign: "center",
-      margin: theme.spacing(1, 1),
-      [theme.breakpoints.down("xs")]: {
-        fontSize: theme.spacing(1.4),
-      },
-    },
-    select: {
-      backgroundColor: "var(--white)",
-      font: `normal ${theme.typography.fontWeightBold} ${theme.spacing(
-        1.5
-      )} Wrok Sans`,
-      width: "50%",
-      "& .MuiSelect-icon": {
-        color: "var(--black)",
-        top: "calc(50% - 13px)",
-      },
-      "& .MuiSelect-iconOutlined": {
-        left: "7px",
-      },
-      "& .MuiSelect-outlined.MuiSelect-outlined": {
-        paddingLeft: "32px",
-      },
-    },
-    maxWidthDiv: {
-      // maxWidth: "var(--max-width)",
-      margin: theme.spacing(0, "auto"),
-      padding: theme.spacing(2.5, 0, 1),
-    },
-    heading: {
-      color: "#D6CE4B",
-      marginBottom: theme.spacing(1.5),
-      textTransform: "uppercase",
-      letterSpacing: "0.04em",
-      font: "26px Druk Bold",
-      lineHeight: "1.235",
-
-      [theme.breakpoints.down("xs")]: {
-        fontSize: theme.spacing(2),
-      },
-
-     
-    },
-    linkDiv: {
-      [theme.breakpoints.down("xs")]: {
-        display: "flex",
-        flexWrap: "wrap",
-      },
-    },
-    link: {
-      [theme.breakpoints.down("xs")]: {
-        flexBasis: "50%",
-      },
-    },
-    linkHeading: {
-      color: "var( --light-creame-color)",
-      marginBottom: theme.spacing(1.5),
-      font: "16px Work Sans Medium",
-    
-    lineHeight: "1.334",
-      [theme.breakpoints.down("xs")]: {
-        fontSize: theme.spacing(1.4),
-      },
-    },
-    subscribeDiv: {
+  },
+  linkDiv: {
+    [theme.breakpoints.down("xs")]: {
       display: "flex",
-      flexDirection: "column",
-      alignItems: "center",
-      justifyContent: "center",
-      margin: theme.spacing(1, 0),
+      flexWrap: "wrap",
     },
-    subscribeHeading: {
-      margin: 0,
-      font: `normal ${theme.typography.fontWeightBold} ${theme.spacing(
-        2.6
-      )} Druk`,
-      letterSpacing: "0.06em",
-      [theme.breakpoints.down("xs")]: {
-        fontSize: theme.spacing(1.8),
-        width: "100%",
-        textAlign: "left",
-      },
+  },
+  link: {
+    [theme.breakpoints.down("xs")]: {
+      flexBasis: "50%",
     },
-    subscribeSubheading: {
-      margin: theme.spacing(0.5, 0, 1),
+  },
+  linkHeading: {
+    color: "var( --light-creame-color)",
+    marginBottom: theme.spacing(1.5),
+    font: "16px Work Sans Medium",
 
-      [theme.breakpoints.down("xs")]: {
-        fontSize: theme.spacing(1.4),
-        width: "100%",
-        textAlign: "left",
-      },
+    lineHeight: "1.334",
+    [theme.breakpoints.down("xs")]: {
+      fontSize: theme.spacing(1.4),
     },
+  },
+  subscribeDiv: {
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    justifyContent: "center",
+    margin: theme.spacing(1, 0),
+  },
+  subscribeHeading: {
+    margin: 0,
+    font: `normal ${theme.typography.fontWeightBold} ${theme.spacing(
+      2.6
+    )} Druk`,
+    letterSpacing: "0.06em",
+    [theme.breakpoints.down("xs")]: {
+      fontSize: theme.spacing(1.8),
+      width: "100%",
+      textAlign: "left",
+    },
+  },
+  subscribeSubheading: {
+    margin: theme.spacing(0.5, 0, 1),
 
-    downFooter: {
-      backgroundColor: "#00352B",
-      padding: theme.spacing(1),
+    [theme.breakpoints.down("xs")]: {
+      fontSize: theme.spacing(1.4),
+      width: "100%",
+      textAlign: "left",
     },
-    caption: {
-      color: "var( --light-creame-color)",
-      textAlign: "center",
-      fontSize: theme.spacing(1.3),
-      [theme.breakpoints.down("xs")]: {
-        fontSize: theme.spacing(1.2),
-      },
+  },
+
+  downFooter: {
+    backgroundColor: "#00352B",
+    padding: theme.spacing(1),
+  },
+  caption: {
+    color: "var( --light-creame-color)",
+    textAlign: "center",
+    fontSize: theme.spacing(1.3),
+    [theme.breakpoints.down("xs")]: {
+      fontSize: theme.spacing(1.2),
     },
-    emailInput: {
-      backgroundColor: "var(--white)",
-      padding: theme.spacing(0.5, 1),
-      font: `normal ${theme.typography.fontWeightRegular} ${theme.spacing(
-        1.4
-      )} Work Sans`,
-      height: "54px",
-      // flexBasis: "70%",
-      width: "30%",
-      "& .MuiInputBase-input": {
-        height: "100%",
-      },
-      [theme.breakpoints.down("sm")]: {
-        width: "auto",
-        textOverflow: "ellipse",
-        padding: theme.spacing(0.5, 4, 0.5, 1),
-      },
-      "&:before": {
-        border: 0,
-      },
+  },
+  emailInput: {
+    backgroundColor: "var(--white)",
+    padding: theme.spacing(0.5, 1),
+    font: `normal ${theme.typography.fontWeightRegular} ${theme.spacing(
+      1.4
+    )} Work Sans`,
+    height: "54px",
+    // flexBasis: "70%",
+    width: "30%",
+    "& .MuiInputBase-input": {
+      height: "100%",
     },
-  })
-,);
+    [theme.breakpoints.down("sm")]: {
+      width: "auto",
+      textOverflow: "ellipse",
+      padding: theme.spacing(0.5, 4, 0.5, 1),
+    },
+    "&:before": {
+      border: 0,
+    },
+  },
+}));
 
 const Footer = () => {
   const classes = useStyles();
@@ -160,29 +154,42 @@ const Footer = () => {
   );
   const [footerNavigation, setFooterNavigation] = useState(footerMenu);
   useEffect(() => {
-    // if (authToken) {
-      // if (!footerNavigation.length) {
-        request
-          .get(Utils.endPoints.FOOTER)
-          .then((resp: any) => {
+    const config = {
+      headers: {
+        Authorization: `Basic ${process.env.NEXT_PUBLIC_API_KEY}`,
+      },
+    };
+    request.post(Utils.endPoints.GUEST_SIGNUP, {}, config).then((resp: any) => {
+      dispatch({
+        type: "auth-token",
+        payload: resp?.data?.data?.authToken,
+      });
 
-            setFooterNavigation(resp?.data?.data);
-            dispatch({
-              type: Utils.ActionName.FOOTER_MENU,
-              payload: { footerMenu: resp?.data?.data },
-            });
-          })
-          .catch((err: any) => {
-            if (err?.response?.data?.message)
-              dispatch({
-                type: "show-alert",
-                payload: {
-                  type: "error",
-                  message: err.response.data.message,
-                },
-              });
+      // if (authToken) {
+      // if (!footerNavigation.length) {
+      request
+        .get(Utils.endPoints.FOOTER, {
+          headers: { Authorization: "Bearer " + resp?.data?.data?.authToken },
+        })
+        .then((resp: any) => {
+          setFooterNavigation(resp?.data?.data);
+          dispatch({
+            type: Utils.ActionName.FOOTER_MENU,
+            payload: { footerMenu: resp?.data?.data },
           });
-      // }
+        })
+        .catch((err: any) => {
+          if (err?.response?.data?.message)
+            dispatch({
+              type: "show-alert",
+              payload: {
+                type: "error",
+                message: err.response.data.message,
+              },
+            });
+        });
+    });
+    // }
     // }
   }, []);
 

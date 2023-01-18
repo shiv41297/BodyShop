@@ -42,18 +42,16 @@ function MyApp({
       <Head>
         <meta name="viewport" content="initial-scale=1, width=device-width" />
         <link rel="icon" href="/favicon.svg" />
-      
       </Head>
-      
 
       <Provider store={store}>
         <ThemeProvider theme={theme}>
           <CssBaseline />
           <StylesProvider generateClassName={generateClassName}>
             <Headers />
-            {/* <Box sx={{ display: { xs: "none", sm: "block" } }}>
+            {/* <Box sx={{ display: { xs: "none", sm: "contents" } }}>
               <Addvertisement key="promotional_banner" />
-            </Box>  */}
+            </Box> */}
 
             <Box sx={{ marginTop: "130px" }}>
               <Component {...props.pageProps} />
