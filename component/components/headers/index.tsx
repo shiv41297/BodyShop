@@ -6,7 +6,6 @@ import request from "../../utils/request";
 import MiniHeader from "./miniHeader";
 import { ReducersModal } from "../../models";
 import { useRouter } from "next/router";
-
 import { useSelector, useDispatch } from "react-redux";
 
 import { Badge, Box, Grid, Theme, Typography } from "@mui/material";
@@ -106,11 +105,10 @@ const Headers = () => {
   const history = useRouter();
   // const location = useLocation();
   const [open, setOpen] = React.useState(false);
-  const [authToken,setAuthToken] = React.useState("");
+  const [authToken, setAuthToken] = React.useState("");
   // const [mobileMenus, setMobileMenus] = React.useState([]);
   const [loginAlert, showLoginAlert] = useState(false);
   const dispatch: any = useDispatch();
-
 
   useEffect(() => {
     const config = {
@@ -124,20 +122,17 @@ const Headers = () => {
         payload: resp?.data?.data?.authToken,
       });
 
-      setAuthToken(resp?.data?.data?.authToken)
+      setAuthToken(resp?.data?.data?.authToken);
       Cookies.set("authToken", resp.data.data?.authToken);
       Cookies.set("guestUser", "true");
-      Cookies.set("domain", "appskeeper.in");
+      // Cookies.set("domain", "appskeeper.in");
     });
   }, []);
 
-  
   useEffect(() => {
     dispatch(getConfig({ configCode: "general" }));
     dispatch(getConfig({ configCode: "payment" }));
   }, []);
-
-  
 
   const pathname = history?.pathname || "";
   useEffect(() => {
@@ -228,7 +223,7 @@ const Headers = () => {
   const redirectToHome = () => {
     // dispatch(showSkeleton());
     dispatch(
-      getHomeData(authToken),
+      getHomeData(authToken)
       // dispatch(hideSkeleton())
       // getHomeData(() => {
       //   dispatch(hideSkeleton());
@@ -393,5 +388,4 @@ const Headers = () => {
     </>
   );
 };
-
 export default Headers;

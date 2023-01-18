@@ -80,6 +80,33 @@ const Index = () => {
 
     //   }))
   }, []);
+  const promotionalProduct = homeData?.find(
+    (data: any) => data?.block_key === "promotional_products"
+  );
+  const giftData = homeData?.find(
+    (data: any) => data?.block_key === "gift_block"
+  );
+  const haveYouSeenData = homeData?.find(
+    (data: any) => data?.block_key === "have_seen"
+  );
+  const testimonialData = homeData?.find(
+    (data: any) => data?.block_key === "testimonial_block"
+  );
+  const recommendedProducts = homeData?.find(
+    (data: any) => data?.block_key === "recommended_products"
+  );
+  const productReviews = homeData?.find(
+    (data: any) => data?.block_key === "product_reviews"
+  );
+  const shareLoveData = homeData?.find(
+    (data: any) => data?.block_key === "share_love"
+  );
+  const moreToShopData = homeData?.find(
+    (data: any) => data?.block_key === "more_shop"
+  );
+  const tipsAdvicesData = homeData?.find(
+    (data: any) => data?.block_key === "tips_block"
+  );
 
   useEffect(() => {
     const promotionalProduct = homeData?.find(
