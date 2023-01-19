@@ -6,12 +6,24 @@ export function getProductList(params: any, authtoken: any) {
     let urldecodeLevel1 = decodeURI(params.search);
     let urldecodeLevel2 = decodeURIComponent(urldecodeLevel1);
 
-    if (urldecodeLevel2 !== "undefined" && params?.page) {
+    if (urldecodeLevel2 !== "undefined") {
       const obj = JSON.parse(urldecodeLevel2);
-      urldecodeLevel2 = JSON.stringify({ ...obj, page: +params.page });
+      obj["limit"] = 12;
+
+      urldecodeLevel2 = JSON.stringify({ ...obj });
+      if (params?.page) {
+        urldecodeLevel2 = JSON.stringify({ ...obj, page: +params.page });
+      }
     }
 
-    let data = { ...params, query: "", categoryId: params.categoryId };
+    let data = {
+      ...params,
+      query: "",
+      categoryId: params.categoryId,
+      limit: 12,
+    };
+
+    //console.log(params, urldecodeLevel2, data);
 
     let url2 = Utils.endPoints.PRODUCT_LIST + "?data=" + urldecodeLevel2;
 

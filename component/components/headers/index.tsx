@@ -106,11 +106,10 @@ const Headers = () => {
   const history = useRouter();
   // const location = useLocation();
   const [open, setOpen] = React.useState(false);
-  const [authToken,setAuthToken] = React.useState("");
+  const [authToken, setAuthToken] = React.useState("");
   // const [mobileMenus, setMobileMenus] = React.useState([]);
   const [loginAlert, showLoginAlert] = useState(false);
   const dispatch: any = useDispatch();
-
 
   useEffect(() => {
     const config = {
@@ -124,20 +123,17 @@ const Headers = () => {
         payload: resp?.data?.data?.authToken,
       });
 
-      setAuthToken(resp?.data?.data?.authToken)
+      setAuthToken(resp?.data?.data?.authToken);
       Cookies.set("authToken", resp.data.data?.authToken);
       Cookies.set("guestUser", "true");
       Cookies.set("domain", "appskeeper.in");
     });
   }, []);
 
-  
   useEffect(() => {
     dispatch(getConfig({ configCode: "general" }));
     dispatch(getConfig({ configCode: "payment" }));
   }, []);
-
-  
 
   const pathname = history?.pathname || "";
   useEffect(() => {
@@ -201,7 +197,7 @@ const Headers = () => {
     page: 1,
   };
   React.useEffect(() => {
-    window.scrollTo(0, 0);
+    // window.scrollTo(0, 0);
     // if (authToken) {
     //   if (!menuData.length) {
     let url = Utils.CommonFunctions.replaceUrlParams(
@@ -219,16 +215,13 @@ const Headers = () => {
       });
     });
 
-    // .catch((_err) => {});
-    //   }
-
     // }
   }, []);
 
   const redirectToHome = () => {
     // dispatch(showSkeleton());
     dispatch(
-      getHomeData(authToken),
+      getHomeData(authToken)
       // dispatch(hideSkeleton())
       // getHomeData(() => {
       //   dispatch(hideSkeleton());
